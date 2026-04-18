@@ -1,15 +1,15 @@
----
+ï»¿---
 name: mura
-version: 1.22.0
-description: 'Mura (?) — Unevenness detection and leveling for software projects. Find inconsistencies in style, patterns, coverage, error handling, API design, naming, and quality distribution. Unevenness is the root cause of overburden (Muri) and waste (Muda). Adapted from Toyota Production System. Standalone skill — no dependencies. USE WHEN: inconsistent, uneven, mixed styles, naming conventions, standardize, level, harmonize, mura, why does this feel messy, normalize, make consistent, code style, pattern consistency.'
+version: 1.23.0
+description: 'Mura (æ–‘) â€” Unevenness detection and leveling for software projects. Find inconsistencies in style, patterns, coverage, error handling, API design, naming, and quality distribution. Unevenness is the root cause of overburden (Muri) and waste (Muda). Adapted from Toyota Production System. Standalone skill â€” no dependencies. USE WHEN: inconsistent, uneven, mixed styles, naming conventions, standardize, level, harmonize, mura, why does this feel messy, normalize, make consistent, code style, pattern consistency.'
 argument-hint: 'Optional: specify focus area (naming, error handling, API style, test coverage, patterns), scope (full project, module, file pair), or reference standard to level against'
 ---
 
-# Mura (?) — Unevenness Detection & Leveling
+# Mura (æ–‘) â€” Unevenness Detection & Leveling
 
 Find where the project contradicts itself. Level it.
 
-> **Governing principles:** [Commander's Intent](../PRINCIPLES.md) — this skill gives you the vocabulary for unevenness; what you find and how you level it is your judgment call. [Observable Autonomy](../PRINCIPLES.md) — show the landscape of inconsistency as you map it; make your leveling rationale visible.
+> **Governing principles:** [Commander's Intent](../PRINCIPLES.md) â€” this skill gives you the vocabulary for unevenness; what you find and how you level it is your judgment call. [Observable Autonomy](../PRINCIPLES.md) â€” show the landscape of inconsistency as you map it; make your leveling rationale visible.
 
 Mura means "unevenness, irregularity, lack of uniformity." In Toyota's system, it's the ROOT CAUSE of the causal chain:
 
@@ -32,14 +32,14 @@ Inconsistency forces developers to carry mental models for each variant (overbur
 
 1. **Consistency over local perfection.** Is the cost of having two approaches higher than the benefit of either? A project where everything uses pattern A is often better than one where half uses superior B and half uses adequate A.
 2. **Name the standard, then measure against it.** What is the dominant pattern here? How far does each area deviate from it?
-3. **Level toward the majority, not the ideal.** Which direction of change touches fewer files? Changing 3 files to match 30 is cheaper than changing 30 to match 3 — unless the 3 represent a strictly necessary improvement.
+3. **Level toward the majority, not the ideal.** Which direction of change touches fewer files? Changing 3 files to match 30 is cheaper than changing 30 to match 3 â€” unless the 3 represent a strictly necessary improvement.
 4. **Some unevenness is intentional.** Does this variation exist because the situation demands a different approach? Distinguish inconsistency (same job, different approach) from diversity (different job, different approach).
 5. **Mura causes Muri causes Muda.** Is this unevenness causing overburden or waste downstream? If yes, the leveling ROI is higher than it appears.
 6. **Ask why, not just where.** When the same unevenness spans multiple areas, what's the root cause? Missing convention? Missing tooling? Missing onboarding? Organizational boundary?
 
 ## Procedure
 
-### Phase 1: SCOPE — What Are We Leveling?
+### Phase 1: SCOPE â€” What Are We Leveling?
 
 Identify the target and the dimensions to check.
 
@@ -47,21 +47,21 @@ Identify the target and the dimensions to check.
 
 The central question: *"If a new contributor has seen one part of this project, can they predict how the next part works?"*
 
-Consider any dimension where inconsistency might hide — naming, error handling, API design, patterns, test style, documentation, coverage distribution, dependency choices, configuration, logging, and anything else that repeats across the codebase. What you check depends on what this project does and where you notice variation.
+Consider any dimension where inconsistency might hide â€” naming, error handling, API design, patterns, test style, documentation, coverage distribution, dependency choices, configuration, logging, and anything else that repeats across the codebase. What you check depends on what this project does and where you notice variation.
 
-Some projects will have perfect naming but wildly inconsistent error handling. Others will be the reverse. The goal is to map what ACTUALLY varies — not to mechanically check a fixed list. If you discover a dimension of unevenness not mentioned above, that's a valuable finding.
+Some projects will have perfect naming but wildly inconsistent error handling. Others will be the reverse. The goal is to map what ACTUALLY varies â€” not to mechanically check a fixed list. If you discover a dimension of unevenness not mentioned above, that's a valuable finding.
 
-### Phase 2: SCAN — Map the Variants
+### Phase 2: SCAN â€” Map the Variants
 
-For each dimension, map what exists. Don't judge yet — just document the landscape.
+For each dimension, map what exists. Don't judge yet â€” just document the landscape.
 
-**Narrate as you scan.** State what you're examining, what variants you find, and how you're counting. The landscape you're mapping is the foundation for every phase that follows — make it visible.
+**Narrate as you scan.** State what you're examining, what variants you find, and how you're counting. The landscape you're mapping is the foundation for every phase that follows â€” make it visible.
 
 **For each dimension, identify:**
-1. **All variants** — every distinct approach used.
-2. **Count** — how many files/modules use each variant.
-3. **The dominant pattern** — whichever variant has the most usage.
-4. **Outliers** — files/modules that deviate from the dominant pattern.
+1. **All variants** â€” every distinct approach used.
+2. **Count** â€” how many files/modules use each variant.
+3. **The dominant pattern** â€” whichever variant has the most usage.
+4. **Outliers** â€” files/modules that deviate from the dominant pattern.
 
 **Output:**
 
@@ -83,13 +83,13 @@ For each dimension, map what exists. Don't judge yet — just document the landsca
 ...
 ```
 
-### Phase 3: ASSESS — Intentional vs Accidental
+### Phase 3: ASSESS â€” Intentional vs Accidental
 
 For each deviation from the dominant pattern, determine: is this inconsistency intentional or accidental?
 
 The key question: **does this deviation exist because the situation genuinely demands a different approach, or because it was written by a different person/at a different time/with different habits?**
 
-Intentional variation is appropriate diversity — keep it. Accidental variation is inconsistency — level it. If you're not sure, investigate — and say you're not sure.
+Intentional variation is appropriate diversity â€” keep it. Accidental variation is inconsistency â€” level it. If you're not sure, investigate â€” and say you're not sure.
 
 **Narrate your reasoning for each classification.** The human (or the next model reviewing this) needs to understand why you judged each deviation as intentional, accidental, or unclear.
 
@@ -101,7 +101,7 @@ Intentional variation is appropriate diversity — keep it. Accidental variation i
 ### Intentional (keep)
 | Dimension | Deviation | Justification |
 |-----------|-----------|---------------|
-| Error handling | api/ uses exceptions | Framework boundary — FastAPI expects exceptions |
+| Error handling | api/ uses exceptions | Framework boundary â€” FastAPI expects exceptions |
 
 ### Accidental (level)
 | Dimension | Deviation | Files | Level toward |
@@ -115,17 +115,17 @@ Intentional variation is appropriate diversity — keep it. Accidental variation i
 |-----------|-----------|----------|
 | Patterns | auth/ uses raw SQL | Performance reason or just different author? |
 
-### Root Cause — 5 Whys (for recurring or widespread unevenness)
-When unevenness spans =3 modules or =2 dimensions, the cause is likely systemic. Trace it:
-1. Why is error handling inconsistent? ? No project convention documented.
-2. Why is there no convention? ? The project grew organically with multiple contributors.
-3. Why didn't contributors converge? ? No linter rule or PR review checklist enforces it.
-4. Why no enforcement? ? Nobody nominated a standard.
-5. **Root cause:** Missing decision — the convention was never explicitly chosen.
+### Root Cause â€” 5 Whys (for recurring or widespread unevenness)
+When unevenness spans â‰¥3 modules or â‰¥2 dimensions, the cause is likely systemic. Trace it:
+1. Why is error handling inconsistent? â†’ No project convention documented.
+2. Why is there no convention? â†’ The project grew organically with multiple contributors.
+3. Why didn't contributors converge? â†’ No linter rule or PR review checklist enforces it.
+4. Why no enforcement? â†’ Nobody nominated a standard.
+5. **Root cause:** Missing decision â€” the convention was never explicitly chosen.
 **Fix:** Choose the dominant pattern, document it, add a lint rule. Prevents recurrence.
 ```
 
-### Phase 4: MEASURE — Unevenness Score
+### Phase 4: MEASURE â€” Unevenness Score
 
 Quantify the overall unevenness. This makes progress trackable across cycles.
 
@@ -139,50 +139,50 @@ Quantify the overall unevenness. This makes progress trackable across cycles.
 | API style | 1 | 100% | 0 | None |
 | Patterns | 3 | 55% | 9 files | High |
 | Test style | 2 | 75% | 4 files | Low |
-| Coverage dist. | — | — | 40% range | High |
+| Coverage dist. | â€” | â€” | 40% range | High |
 
 **Overall Mura score:** [1-10, where 10 = perfectly uniform, 1 = every module is a snowflake]
 ```
 
 **Severity guide:**
-How severe is the unevenness in each dimension? Consider: how many variants exist, what percentage follows the dominant pattern, and how much confusion or downstream harm the deviation causes. Severity is your judgment — a dimension with 3 variants might be Low severity if the variants are well-understood, or High severity if they cause bugs.
+How severe is the unevenness in each dimension? Consider: how many variants exist, what percentage follows the dominant pattern, and how much confusion or downstream harm the deviation causes. Severity is your judgment â€” a dimension with 3 variants might be Low severity if the variants are well-understood, or High severity if they cause bugs.
 
-### Phase 5: LEVEL — Plan the Standardization
+### Phase 5: LEVEL â€” Plan the Standardization
 
 For each accidental deviation, plan the leveling action.
 
 **Prioritize by:**
-1. **Downstream impact** — Does this Mura cause Muri or Muda? If yes, fix it first.
-2. **Developer confusion** — Does this trip up new contributors? Higher priority.
-3. **Blast radius** — How many files need to change? Smaller changes first to build confidence.
+1. **Downstream impact** â€” Does this Mura cause Muri or Muda? If yes, fix it first.
+2. **Developer confusion** â€” Does this trip up new contributors? Higher priority.
+3. **Blast radius** â€” How many files need to change? Smaller changes first to build confidence.
 
 ```
 ## Leveling Plan
 
 | # | Dimension | Action | Files | Risk | Priority |
 |---|-----------|--------|:-----:|:----:|:--------:|
-| 1 | Error handling | Convert null returns ? Result types in cache.py, config.py | 2 | Low | High (causes bugs) |
-| 2 | Naming | Rename camelCase ? snake_case in legacy/ | 4 | Medium (public API?) | Medium |
-| 3 | Logging | Convert printf ? structured in api/ | 3 | Low | Low |
+| 1 | Error handling | Convert null returns â†’ Result types in cache.py, config.py | 2 | Low | High (causes bugs) |
+| 2 | Naming | Rename camelCase â†’ snake_case in legacy/ | 4 | Medium (public API?) | Medium |
+| 3 | Logging | Convert printf â†’ structured in api/ | 3 | Low | Low |
 ```
 
-### Phase 6: ACT — Implement Leveling
+### Phase 6: ACT â€” Implement Leveling
 
 Execute the leveling plan. For each item:
 
-1. Make the change — align the deviation toward the dominant pattern.
-2. Run tests — verify nothing broke.
+1. Make the change â€” align the deviation toward the dominant pattern.
+2. Run tests â€” verify nothing broke.
 3. Check that no NEW unevenness was introduced.
 
 **Leveling discipline:**
 - One dimension at a time. Don't mix naming changes with error handling changes.
 - Use automated tools where possible: formatters for naming, codemods for pattern migration.
-- If leveling one file reveals that the "dominant" pattern is actually worse, stop and reassess. Sometimes the minority is right — but document why.
+- If leveling one file reveals that the "dominant" pattern is actually worse, stop and reassess. Sometimes the minority is right â€” but document why.
 
 ### Phase 7: REPORT
 
 ```
-## Mura Report — [Target] — [Date]
+## Mura Report â€” [Target] â€” [Date]
 
 ### Unevenness Score
 | Metric | Before | After |
@@ -209,13 +209,13 @@ Execute the leveling plan. For each item:
 **If a GENBA.md exists** (look in the skills suite root `~/.copilot/skills/GENBA.md` or the project root), prepend a summary entry so the active ledger stays newest-first:
 
 ```markdown
-### Mura — [date]
+### Mura â€” [date]
 - **Target:** [what was leveled]
 - **Model:** [which LLM]
-- **Mura score:** [before] ? [after]
+- **Mura score:** [before] â†’ [after]
 - **Dimensions leveled:** [which]
 - **Downstream impact:** [Muri/Muda prevented or reduced]
-- **Regression vs prior run:** [better / same / regressed — if regressed, what re-emerged and why?]
+- **Regression vs prior run:** [better / same / regressed â€” if regressed, what re-emerged and why?]
 ```
 
 ## Rules

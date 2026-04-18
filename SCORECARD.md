@@ -38,6 +38,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 30 | 2026-04-18 | Claude Opus 4.7 (6th) | 9.7 | 9.8 | +0.1 | 10.0 | Discovered & restored catastrophic Run 29 regression (PRINCIPLES P3, CHANGELOG 1.16-1.18, GENBA Runs 26-28, SCORECARD Key Deltas re-deletion). Hardened verifier with 3 semantic checks (10 principle inventory, 11 CHANGELOG contiguity, 12 SCORECARD↔GENBA coverage). Mandatory periodic Hansei. v1.20.0. |
 | 31 | 2026-04-18 | Claude Opus 4.6 (12th) | 9.8 | 9.9 | +0.1 | 10.0 | Added Kata Phase 6: PERSIST — git commit after every successful run. Disaster floor is now 1 run deep. project-increment skill gets formal role. v1.21.0. |
 | 32 | 2026-04-18 | GPT-5.3-Codex (3rd) | 9.9 | 10.0 | +0.1 | 10.0 | Enforced model self-identification in Kata and added verify-suite Check 13 for latest-run model consistency across GENBA/SCORECARD. Removed stale temp artifacts. v1.22.0. |
+| 33 | 2026-04-18 | GPT-5.4 | 9.9 | 10.0 | +0.1 | 10.0 | Restored all 7 TPS skill files from committed v1.22.0 encoding corruption and hardened Check 1 to catch replacement-character / cp1252 mojibake. v1.23.0. |
 
 ## Cross-Model Notes
 

@@ -1,5 +1,56 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 33 — 2026-04-18
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | GPT-5.4 |
+| Trigger | "first 1 then 2" |
+| Methodology | Kata → Kaizen (encoding restoration + verifier hardening) |
+
+### 3M Diagnosis Summary
+| Lens | Findings | Critical/High |
+|------|:--------:|:-------------:|
+| Mura | 1 | 1 |
+| Muri | 0 | 0 |
+| Muda | 1 | 0 |
+| Causal chains | 1 | — |
+
+### Findings
+| # | Finding | Lens | Severity | Fixed? | Recurred? |
+|---|---------|------|:--------:|:------:|:---------:|
+| 1 | **Committed encoding regression discovered.** All 7 TPS `SKILL.md` files in `HEAD`/`v1.22.0` had been silently corrupted from clean UTF-8 into mojibake (`?`, `ù`, replacement-character artifacts) while still passing `verify-suite.ps1`. `v1.21.0` was the last clean tag for the full suite. Root cause: shell-based bulk rewrites preserved content changes but not character encoding, converting arrows, em dashes, and Japanese glyphs into cp1252/replacement-character artifacts. | Mura | Critical | Yes | Run 29 |
+| 2 | `verify-suite.ps1` Check 1 detected older double-encoding signatures but not the actual corruption signature present in `v1.22.0` (`�` / `ù`), so a fully committed bad state could pass the integrity gate. | Muda | Medium | Yes | Run 30 |
+
+### Actions Taken
+- Restored all 7 TPS `SKILL.md` files from clean `v1.21.0` sources, preserving UTF-8 text.
+- Re-applied the intended Run 32 `kata/SKILL.md` model self-identification guidance on top of the clean restore.
+- Added a new `kata/SKILL.md` rule requiring explicit UTF-8 for bulk shell rewrites of markdown/ledgers.
+- Hardened `verify-suite.ps1` Check 1 to detect both the Unicode replacement character and the `ù` cp1252 artifact.
+- Version bump: all 7 TPS skills 1.22.0 → 1.23.0.
+
+### Score
+| Dimension | Before | After | Δ |
+|-----------|:------:|:-----:|:-:|
+| Trustworthiness | 9.9 | 10.0 | +0.1 |
+| **Overall** | **9.9** | **10.0** | **+0.1** |
+
+Run 32's `10.0` endpoint was slightly optimistic: the suite had already committed corrupted skill text without detection. Run 33 restores a defensible `10.0` by repairing the text and closing the detector gap that allowed the regression to ship.
+
+### Regression Check
+| Metric | Prev Run | This Run | Delta | Regressed? |
+|--------|:--------:|:--------:|:-----:|:----------:|
+| verify-suite.ps1 failures | 0 | 0 | 0 | No |
+| Verifier check count | 13 | 13 | 0 | No |
+| Committed skill-file mojibake | present in v1.22.0 | removed | — | Repaired |
+
+### Observations
+- Run 33 does **not** advance the Principle 3 silence counter (artifacts changed). Counter remains at 0/3.
+- The most important pattern here is not just "encoding bugs recur" but "bulk-edit convenience paths bypass encoding discipline unless the process forbids them and the verifier catches their signature."
+- `v1.22.0` is now pushed to `origin`; Run 33 repairs that released state in `v1.23.0`.
+
+---
 ## Run 32 — 2026-04-18
 
 | Field | Value |

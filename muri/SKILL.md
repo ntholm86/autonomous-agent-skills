@@ -1,19 +1,19 @@
----
+Ôªø---
 name: muri
-version: 1.22.0
-description: 'Muri (??) ó Overburden detection and simplification for software projects. Find code, modules, functions, and architecture that are asked to do too much. God objects, deep nesting, high parameter counts, excessive responsibilities, overstretched modules. Overburden causes errors, slows development, and creates waste. Adapted from Toyota Production System. Standalone skill ó no dependencies. USE WHEN: too complex, god object, do too much, simplify, decompose, split this, responsibilities, muri, overloaded, overburdened, SRP, single responsibility, this file is too big, too many parameters, spaghetti.'
+version: 1.23.0
+description: 'Muri (ÁÑ°ÁêÜ) ‚Äî Overburden detection and simplification for software projects. Find code, modules, functions, and architecture that are asked to do too much. God objects, deep nesting, high parameter counts, excessive responsibilities, overstretched modules. Overburden causes errors, slows development, and creates waste. Adapted from Toyota Production System. Standalone skill ‚Äî no dependencies. USE WHEN: too complex, god object, do too much, simplify, decompose, split this, responsibilities, muri, overloaded, overburdened, SRP, single responsibility, this file is too big, too many parameters, spaghetti.'
 argument-hint: 'Optional: specify target (module, class, function, file), threshold overrides (max params, max lines, max responsibilities), or focus (structural vs cognitive overburden)'
 ---
 
-# Muri (??) ó Overburden Detection & Simplification
+# Muri (ÁÑ°ÁêÜ) ‚Äî Overburden Detection & Simplification
 
 Find what's asked to do too much. Decompose it.
 
-> **Governing principles:** [Commander's Intent](../PRINCIPLES.md) ó this skill teaches you the concept of overburden; how you detect and decompose it is your call. [Observable Autonomy](../PRINCIPLES.md) ó show what signals you found and why they indicate overburden; make your decomposition rationale visible.
+> **Governing principles:** [Commander's Intent](../PRINCIPLES.md) ‚Äî this skill teaches you the concept of overburden; how you detect and decompose it is your call. [Observable Autonomy](../PRINCIPLES.md) ‚Äî show what signals you found and why they indicate overburden; make your decomposition rationale visible.
 
 Muri means "unreasonableness; beyond one's power." In Toyota's system, it's asking a workstation to exceed its capacity. In software, it's a module, class, or function that carries more responsibility than it can sustain cleanly.
 
-**The causal chain:** Mura ? **Muri** ? Muda. Overburden is often caused by inconsistency upstream (no standard place for X, so everything accumulates in one place) and produces waste downstream (bugs, duplication, abandoned refactoring).
+**The causal chain:** Mura ‚Üí **Muri** ‚Üí Muda. Overburden is often caused by inconsistency upstream (no standard place for X, so everything accumulates in one place) and produces waste downstream (bugs, duplication, abandoned refactoring).
 
 **Muri is not about size alone.** A 500-line file doing one focused thing well is not overburdened. A 200-line file doing 7 unrelated things is. The question is always: how many reasons does this have to change?
 
@@ -31,38 +31,38 @@ Muri means "unreasonableness; beyond one's power." In Toyota's system, it's aski
 
 ## Core Principles
 
-1. **Responsibility, not size.** How many reasons does this have to change? That's the measure of overburden ó not line count.
-2. **Measure the tax.** What does the overburden cost? Time to understand, risk of breaking unrelated behavior, difficulty of testing in isolation ó quantify when you can.
+1. **Responsibility, not size.** How many reasons does this have to change? That's the measure of overburden ‚Äî not line count.
+2. **Measure the tax.** What does the overburden cost? Time to understand, risk of breaking unrelated behavior, difficulty of testing in isolation ‚Äî quantify when you can.
 3. **Decompose along natural seams.** Where are the responsibility boundaries that already exist? Look for clusters of methods that collaborate internally but don't interact with other clusters.
 4. **Simplify before splitting.** Would fewer parameters, flatter nesting, or clearer control flow solve this without splitting? Splitting an inherently simple thing into 3 files adds Mura and makes things worse.
 5. **One level at a time.** Don't go from God object to 20 micromodules. Split into 2-4 focused pieces, verify, then reassess.
 
 ## Procedure
 
-### Phase 1: SCOPE ó What Are We Examining?
+### Phase 1: SCOPE ‚Äî What Are We Examining?
 
 Identify the target. Muri analysis can target different levels:
 
-- **System** ó module/package boundaries. Look at how the pieces of the system relate to each other.
-- **Module** ó files within a module. Look at how concerns are distributed.
-- **Class/Object** ó a single class or object. Look at method cohesion and state use.
-- **Function** ó a single function. Look at parameters, control flow, and length against purpose.
+- **System** ‚Äî module/package boundaries. Look at how the pieces of the system relate to each other.
+- **Module** ‚Äî files within a module. Look at how concerns are distributed.
+- **Class/Object** ‚Äî a single class or object. Look at method cohesion and state use.
+- **Function** ‚Äî a single function. Look at parameters, control flow, and length against purpose.
 
-The signals that indicate overburden at each level are covered in SCAN ó they are not fixed checklists, they depend on the project.
+The signals that indicate overburden at each level are covered in SCAN ‚Äî they are not fixed checklists, they depend on the project.
 
-### Phase 2: SCAN ó Detect Overburden
+### Phase 2: SCAN ‚Äî Detect Overburden
 
 Read the target. Ask: **what here is asked to do too much?**
 
 Overburden has two faces. Look for both:
 
-**Structural signals** ó things you can measure. What thresholds indicate overburden depends on the project's conventions and language norms, but consider: parameter counts, function length, file length, method counts, nesting depth, import counts, cyclomatic complexity, fan-in/fan-out. Determine what thresholds are appropriate for this specific codebase ó don't apply universal numbers blindly. A 60-line function doing one complex algorithm may be fine; a 30-line function mixing HTTP, validation, business logic, and database access is overburdened regardless of length.
+**Structural signals** ‚Äî things you can measure. What thresholds indicate overburden depends on the project's conventions and language norms, but consider: parameter counts, function length, file length, method counts, nesting depth, import counts, cyclomatic complexity, fan-in/fan-out. Determine what thresholds are appropriate for this specific codebase ‚Äî don't apply universal numbers blindly. A 60-line function doing one complex algorithm may be fine; a 30-line function mixing HTTP, validation, business logic, and database access is overburdened regardless of length.
 
-**Cognitive signals** ó things you can sense. Does the description of what this component does require the word "and" more than once? Do methods on a class reference unrelated state? Does changing one behavior require understanding all other behaviors in the same module? Would a new contributor need to understand the whole thing before safely changing any part? Is there fear around modifying this code?
+**Cognitive signals** ‚Äî things you can sense. Does the description of what this component does require the word "and" more than once? Do methods on a class reference unrelated state? Does changing one behavior require understanding all other behaviors in the same module? Would a new contributor need to understand the whole thing before safely changing any part? Is there fear around modifying this code?
 
 **Narrate what you find and why it qualifies as overburden.** State which signals you detected, what they tell you about responsibility density, and what the downstream impact is (bugs, confusion, coupling). The reasoning is the proof.
 
-### Phase 3: ASSESS ó Severity and Impact
+### Phase 3: ASSESS ‚Äî Severity and Impact
 
 For each overburdened component, assess:
 
@@ -72,14 +72,14 @@ For each overburdened component, assess:
 | # | Component | Level | Signals Triggered | Responsibilities | Severity | Impact |
 |---|-----------|:-----:|:-----------------:|:----------------:|:--------:|:------:|
 | 1 | UserService | Class | 22 methods, 14 imports, mixed abstraction | Auth, Profile, Permissions, Notifications, Billing | Critical | Every user story touches this |
-| 2 | process_order() | Function | 8 params, 75 lines, nesting 5 deep | Validate, price, discount, tax, inventory, payment | High | Bug cluster ó 4 of last 10 bugs |
+| 2 | process_order() | Function | 8 params, 75 lines, nesting 5 deep | Validate, price, discount, tax, inventory, payment | High | Bug cluster ‚Äî 4 of last 10 bugs |
 | 3 | utils.py | File | 450 lines, 18 functions | String, date, HTTP, file, crypto helpers | Medium | Grab-bag, but stable |
 ```
 
 **Severity guide:**
-How severe is the overburden in each component? Consider: how many signals are triggered, whether structural and cognitive signals coincide, whether bugs cluster here, and how much team velocity is affected. Severity is your judgment ó a large component might be Low if it's stable and well-understood, or Critical if it's a recurring source of bugs and requires tribal knowledge to change.
+How severe is the overburden in each component? Consider: how many signals are triggered, whether structural and cognitive signals coincide, whether bugs cluster here, and how much team velocity is affected. Severity is your judgment ‚Äî a large component might be Low if it's stable and well-understood, or Critical if it's a recurring source of bugs and requires tribal knowledge to change.
 
-### Phase 4: DECOMPOSE ó Plan the Simplification
+### Phase 4: DECOMPOSE ‚Äî Plan the Simplification
 
 For each component worth addressing (Critical and High priority), design the decomposition.
 
@@ -117,12 +117,12 @@ What strategy fits this case? Explain your reasoning.
 | ProfileService | User profile CRUD | Methods 7-12, fields: profile_repo |
 | BillingService | Billing, invoicing | Methods 13-18, fields: stripe_client |
 
-**Dependency direction:** AuthService ? ProfileService (profiles need auth check). BillingService independent.
+**Dependency direction:** AuthService ‚Üê ProfileService (profiles need auth check). BillingService independent.
 **Risk:** [what could go wrong]
-**Verification:** [how to confirm the split works ó tests, imports, no circular deps]
+**Verification:** [how to confirm the split works ‚Äî tests, imports, no circular deps]
 ```
 
-### Phase 5: ACT ó Implement
+### Phase 5: ACT ‚Äî Implement
 
 Execute the decomposition plan one component at a time.
 
@@ -140,12 +140,12 @@ Execute the decomposition plan one component at a time.
 ### Phase 6: REPORT
 
 ```
-## Muri Report ó [Target] ó [Date]
+## Muri Report ‚Äî [Target] ‚Äî [Date]
 
 ### Summary
 | Metric | Before | After |
 |--------|:------:|:-----:|
-| Components assessed | X | ó |
+| Components assessed | X | ‚Äî |
 | Critical overburden | N | M |
 | High overburden | N | M |
 | Avg function length (target area) | X lines | Y lines |
@@ -154,13 +154,13 @@ Execute the decomposition plan one component at a time.
 ### Decompositions
 | # | Component | Strategy | Split Into | Signals Resolved |
 |---|-----------|----------|:----------:|:----------------:|
-| 1 | UserService | Extract class | 3 services | Method count: 22?8, imports: 14?5 |
-| 2 | process_order() | Extract function + param object | 4 functions + OrderRequest | Params: 8?2, nesting: 5?2 |
+| 1 | UserService | Extract class | 3 services | Method count: 22‚Üí8, imports: 14‚Üí5 |
+| 2 | process_order() | Extract function + param object | 4 functions + OrderRequest | Params: 8‚Üí2, nesting: 5‚Üí2 |
 
 ### Deferred
 | # | Component | Severity | Reason |
 |---|-----------|:--------:|--------|
-| 1 | utils.py | Medium | Stable, low bug rate ó not worth splitting now |
+| 1 | utils.py | Medium | Stable, low bug rate ‚Äî not worth splitting now |
 
 ### Downstream Impact
 - [Did reducing Muri reduce any Muda? Note it here]
@@ -169,14 +169,14 @@ Execute the decomposition plan one component at a time.
 **If a GENBA.md exists** (look in the skills suite root `~/.copilot/skills/GENBA.md` or the project root), prepend a summary entry so the active ledger stays newest-first:
 
 ```markdown
-### Muri ó [date]
+### Muri ‚Äî [date]
 - **Target:** [what was decomposed]
 - **Model:** [which LLM]
 - **Components treated:** [N critical, M high]
 - **Strategy:** [extract class / extract function / etc.]
-- **Key metric change:** [e.g., "UserService: 22 methods ? 8, split into 3 services"]
+- **Key metric change:** [e.g., "UserService: 22 methods ‚Üí 8, split into 3 services"]
 - **Downstream impact:** [Muda prevented or reduced]
-- **Regression vs prior run:** [better / same / regressed ó if regressed, what re-accumulated and why?]
+- **Regression vs prior run:** [better / same / regressed ‚Äî if regressed, what re-accumulated and why?]
 ```
 
 ## Rules

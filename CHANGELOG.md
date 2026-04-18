@@ -9,6 +9,18 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.23.0] - 2026-04-18
+
+### Changed
+
+- **`kata/SKILL.md`:** Re-applied the Run 32 model self-identification contract after restoring the file from the last clean tag, and added an explicit UTF-8 bulk-edit rule so shell-based markdown rewrites do not silently corrupt arrows, em dashes, or Japanese glyphs.
+- **`verify-suite.ps1` Check 1:** Expanded mojibake detection to catch the Unicode replacement character and the `ù` cp1252 artifact seen in corrupted TPS skill files.
+
+### Fixed
+
+- **All 7 TPS `SKILL.md` files:** Restored from the encoding-corrupted `v1.22.0` state to clean UTF-8 text using the last clean tag (`v1.21.0`) as the recovery source, then rebased forward to `v1.23.0`.
+- **`v1.22.0` regression class:** The suite can no longer pass mechanical integrity with committed replacement-character / cp1252 mojibake in skill files.
+
 ## [1.22.0] - 2026-04-18
 
 ### Added

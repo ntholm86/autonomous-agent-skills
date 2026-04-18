@@ -13,7 +13,8 @@
     governing-document integrity (PRINCIPLES.md principle inventory),
     CHANGELOG version contiguity (catches silently-reverted release entries),
     SCORECARD<->GENBA per-run coverage (catches silently-reverted history),
-    and latest-run model identity consistency (catches cross-ledger model drift).
+    latest-run model identity consistency (catches cross-ledger model drift),
+    and replacement-character / mojibake sentinel detection for skill files.
 
     Requires PowerShell 5.1+ (Windows) or PowerShell Core 7+ (any OS).
     On Linux/macOS: install pwsh via https://aka.ms/install-powershell then
@@ -56,7 +57,9 @@ $mojibakePatterns = @(
     [regex]::Escape("$([char]0xE2)$([char]0x20AC)"),   # matches double-encoded em dashes, curly quotes
     [regex]::Escape("$([char]0xE2)$([char]0x2020)"),   # matches double-encoded arrows
     [regex]::Escape("$([char]0xC3)$([char]0xA2)"),     # matches double-encoded a-circumflex
-    [regex]::Escape("$([char]0xE6)$([char]0x201C)$([char]0xB9)")  # matches double-encoded CJK (kaizen/kaikaku)
+    [regex]::Escape("$([char]0xE6)$([char]0x201C)$([char]0xB9)"),  # matches double-encoded CJK (kaizen/kaikaku)
+    [regex]::Escape([string][char]0xFFFD),                            # Unicode replacement character
+    [regex]::Escape([string][char]0x00F9)                             # cp1252 artifact seen in corrupted skill files
 )
 $allMd = Get-ChildItem -Path $script:suiteRoot -Recurse -Include '*.md' -File
 foreach ($file in $allMd) {
