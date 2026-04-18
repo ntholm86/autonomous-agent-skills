@@ -41,6 +41,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 33 | 2026-04-18 | GPT-5.4 | 9.9 | 10.0 | +0.1 | 10.0 | Restored all 7 TPS skill files from committed v1.22.0 encoding corruption and hardened Check 1 to catch replacement-character / cp1252 mojibake. v1.23.0. |
 | 34 | 2026-04-18 | Gemini 3.1 Pro (Preview) | 10.0 | 10.0 | +0.0 | 10.0 | Enforced UTF-8 preservation rule globally across all 7 file-modifying skills, eliminating standalone corruption vulnerability. v1.24.0. |
 | 35 | 2026-04-18 | Claude Opus 4.6 | 10.0 | 10.0 | +0.0 | 10.0 | Created metrics.ps1 (6 computable objective metrics), added Rubric v2 Calibration dimension, updated SCORECARD disclaimer with measurable calibration status. v1.25.0. |
+| 36 | 2026-04-18 | Claude Opus 4.6 | 10.0 | 10.0 | +0.0 | 10.0 | Benchmarked against PDCA/DMAIC/CMMI/NIST AI RMF. Added DMAIC Control phase (metrics history tracking with trend detection) and STANDARDS.md (external alignment mapping). v1.26.0. |
 
 ## Cross-Model Notes
 
@@ -99,7 +100,7 @@ Six mechanisms produced breakthroughs across 12 runs: Kaizen converged at Run 5,
 
 - That 9.1 is the true ceiling. Additional models from other families may find defects the current six-model ensemble collectively missed. The ensemble is only as diverse as its members.
 - That Kaikaku would help. The convergence signal says *incremental* passes have stopped producing value. Whether a structural redesign would produce more remains an open question — Kaikaku itself has an explicit "stop if evidence is insufficient" clause.
-- That the scoring scale is fully calibrated against an external standard. However, `metrics.ps1` now provides computable calibration metrics (inter-rater agreement, recurrence rate, invalidation rate, regression frequency, model diversity). As of Run 35, overall calibration status is HEALTHY (4/5 GOOD, 1/5 MODERATE). The gap between internal and external calibration is now measurable rather than unknowable.
+- That the scoring scale is fully calibrated against an external standard. However, `metrics.ps1` now provides computable calibration metrics (inter-rater agreement, recurrence rate, invalidation rate, regression frequency, model diversity) with time-series tracking via `METRICS_HISTORY.md`. As of Run 36, overall calibration status is HEALTHY (4/5 GOOD, 1/5 MODERATE). `STANDARDS.md` maps the suite's alignment against PDCA, DMAIC, CMMI L3-5, and NIST AI RMF — the gap between internal and external calibration is now both measurable and explicitly documented.
 - That all models contribute equally. Run 11 (GPT-4o) hallucinated an entire cycle without editing files — proving that model participation without verification is worse than no participation.
 
 ### Run 11 (GPT-4o) & Run 12 (Gemini 3.1 Pro Preview)

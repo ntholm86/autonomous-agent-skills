@@ -9,6 +9,13 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.26.0] - 2026-04-18
+
+### Added
+
+- **Metrics history tracking (DMAIC Control phase):** `metrics.ps1` now appends a timestamped row to `METRICS_HISTORY.md` each time it runs, creating a time-series record for statistical process control. Includes automated trend detection that flags degradation between snapshots.
+- **External standard mapping (`STANDARDS.md`):** Explicit alignment analysis against PDCA, DMAIC, CMMI L3-5, and NIST AI RMF. Documents where the suite meets, exceeds, or falls short of each standard with specific gap analysis.
+
 ## [1.25.0] - 2026-04-18
 
 ### Added

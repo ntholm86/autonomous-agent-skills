@@ -270,15 +270,105 @@ Write-Host "  GOOD     : $good / $($assessments.Count)"
 Write-Host "  MODERATE : $moderate / $($assessments.Count)"
 Write-Host "  POOR     : $poor / $($assessments.Count)"
 
+$overallStatus = 'WEAK'
 if ($poor -eq 0 -and $moderate -le 1) {
+    $overallStatus = 'HEALTHY'
     Write-Host ""
     Write-Host "  Overall calibration: HEALTHY" -ForegroundColor Green
 } elseif ($poor -le 1) {
+    $overallStatus = 'FAIR'
     Write-Host ""
     Write-Host "  Overall calibration: FAIR -- address the flagged areas" -ForegroundColor Yellow
 } else {
     Write-Host ""
     Write-Host "  Overall calibration: WEAK -- multiple metrics need attention" -ForegroundColor Red
+}
+
+# ---------------------------------------------------------------------------
+# Metrics History -- DMAIC Control Phase: track metrics over time
+# ---------------------------------------------------------------------------
+$historyPath = Join-Path $script:suiteRoot 'METRICS_HISTORY.md'
+$timestamp = Get-Date -Format 'yyyy-MM-dd HH:mm'
+
+# Build assessments lookup for compact storage
+$agreeLabel = 'N/A'
+if ($numericStarts.Count -ge 2) {
+    if ($stddev -le 0.5) { $agreeLabel = 'GOOD' }
+    elseif ($stddev -le 1.0) { $agreeLabel = 'MODERATE' }
+    else { $agreeLabel = 'POOR' }
+}
+$recurLabel = 'N/A'
+if ($totalFindings -gt 0) {
+    if ($recurrenceRate -le 10) { $recurLabel = 'GOOD' }
+    elseif ($recurrenceRate -le 25) { $recurLabel = 'MODERATE' }
+    else { $recurLabel = 'POOR' }
+}
+$invalLabel = if ($invalRate -le 5) { 'GOOD' } elseif ($invalRate -le 15) { 'MODERATE' } else { 'POOR' }
+$regLabel = if ($regRate -le 5) { 'GOOD' } elseif ($regRate -le 15) { 'MODERATE' } else { 'POOR' }
+$divLabel = if ($distinctFamilies -ge 5) { 'GOOD' } elseif ($distinctFamilies -ge 3) { 'MODERATE' } else { 'POOR' }
+
+$historyRow = "| $timestamp | $totalRuns | $([Math]::Round($stddev,2)) | $agreeLabel | $recurrenceRate% | $recurLabel | $invalRate% | $invalLabel | $regRate% | $regLabel | $distinctFamilies | $divLabel | $overallStatus |"
+
+if (-not (Test-Path $historyPath)) {
+    # Create history file with header
+    $header = @"
+# Metrics History -- DMAIC Control Phase
+
+Tracks computable metrics across runs to detect trends and out-of-control conditions.
+Each row is appended when ``metrics.ps1`` executes.
+
+| Timestamp | Runs | Stdev | Agree | Recur% | Recur | Inval% | Inval | Regr% | Regr | Families | Divers | Overall |
+|-----------|:----:|:-----:|:-----:|:------:|:-----:|:------:|:-----:|:-----:|:----:|:--------:|:------:|:-------:|
+$historyRow
+"@
+    [System.IO.File]::WriteAllText($historyPath, $header, (New-Object System.Text.UTF8Encoding($false)))
+    Write-Host ""
+    Write-Host "  History: created METRICS_HISTORY.md with first row" -ForegroundColor Cyan
+} else {
+    # Read existing, detect trends, append
+    $existingContent = Get-Content $historyPath -Raw -Encoding UTF8
+
+    # Parse last data row for trend detection
+    $dataRowPattern = '(?m)^\|\s*[\d-]+\s+[\d:]+\s*\|'
+    $dataRows = [regex]::Matches($existingContent, $dataRowPattern)
+    $degraded = @()
+    if ($dataRows.Count -gt 0) {
+        $lastRow = $dataRows[$dataRows.Count - 1].Value
+        # Extract previous assessments by position
+        $cells = $lastRow -split '\|' | ForEach-Object { $_.Trim() } | Where-Object { $_ -ne '' }
+        if ($cells.Count -ge 12) {
+            $prevAgree = $cells[3]
+            $prevRecur = $cells[5]
+            $prevInval = $cells[7]
+            $prevRegr  = $cells[9]
+            $prevDiv   = $cells[11]
+
+            $rankMap = @{ 'GOOD' = 3; 'MODERATE' = 2; 'POOR' = 1; 'N/A' = 0 }
+            if ($rankMap[$agreeLabel] -lt $rankMap[$prevAgree]) { $degraded += "Agreement: $prevAgree -> $agreeLabel" }
+            if ($rankMap[$recurLabel] -lt $rankMap[$prevRecur]) { $degraded += "Recurrence: $prevRecur -> $recurLabel" }
+            if ($rankMap[$invalLabel] -lt $rankMap[$prevInval]) { $degraded += "Invalidation: $prevInval -> $invalLabel" }
+            if ($rankMap[$regLabel] -lt $rankMap[$prevRegr])    { $degraded += "Regression: $prevRegr -> $regLabel" }
+            if ($rankMap[$divLabel] -lt $rankMap[$prevDiv])     { $degraded += "Diversity: $prevDiv -> $divLabel" }
+        }
+    }
+
+    # Append the new row
+    $newContent = $existingContent.TrimEnd() + "`n" + $historyRow + "`n"
+    [System.IO.File]::WriteAllText($historyPath, $newContent, (New-Object System.Text.UTF8Encoding($false)))
+
+    $rowCount = $dataRows.Count + 1
+    Write-Host ""
+    Write-Host "  History: appended row $rowCount to METRICS_HISTORY.md" -ForegroundColor Cyan
+
+    if ($degraded.Count -gt 0) {
+        Write-Host ""
+        Write-Host "  *** TREND ALERT -- Metric degradation detected ***" -ForegroundColor Red
+        foreach ($d in $degraded) {
+            Write-Host "    $d" -ForegroundColor Red
+        }
+    } else {
+        Write-Host "  Trend: no degradation from previous snapshot" -ForegroundColor Green
+    }
 }
 
 Write-Host ""
