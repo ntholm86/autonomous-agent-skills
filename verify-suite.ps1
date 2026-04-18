@@ -12,7 +12,8 @@
     cadence (warns when Hansei has not been invoked for 5+ Kata runs),
     governing-document integrity (PRINCIPLES.md principle inventory),
     CHANGELOG version contiguity (catches silently-reverted release entries),
-    and SCORECARD<->GENBA per-run coverage (catches silently-reverted history).
+    SCORECARD<->GENBA per-run coverage (catches silently-reverted history),
+    and latest-run model identity consistency (catches cross-ledger model drift).
 
     Requires PowerShell 5.1+ (Windows) or PowerShell Core 7+ (any OS).
     On Linux/macOS: install pwsh via https://aka.ms/install-powershell then
@@ -49,7 +50,7 @@ Write-Host "Suite root: $script:suiteRoot"
 Write-Host ""
 
 # -- Check 1: Encoding integrity (mojibake) ------------------------------------
-Write-Host "[1/12] Encoding integrity" -ForegroundColor White
+Write-Host "[1/13] Encoding integrity" -ForegroundColor White
 # Build patterns from Unicode code points to avoid encoding issues in the script itself
 $mojibakePatterns = @(
     [regex]::Escape("$([char]0xE2)$([char]0x20AC)"),   # matches double-encoded em dashes, curly quotes
@@ -73,7 +74,7 @@ foreach ($file in $allMd) {
 Pass "Encoding check complete"
 
 # -- Check 2: Placeholder / unfinished text ------------------------------------
-Write-Host "[2/12] Placeholder text" -ForegroundColor White
+Write-Host "[2/13] Placeholder text" -ForegroundColor White
 foreach ($skill in $skills) {
     $path = Join-Path $script:suiteRoot "$skill\SKILL.md"
     if (-not (Test-Path $path)) { Fail "Missing: $skill/SKILL.md"; continue }
@@ -89,7 +90,7 @@ foreach ($skill in $skills) {
 }
 
 # -- Check 3: Cross-reference completeness ------------------------------------
-Write-Host "[3/12] Cross-reference completeness" -ForegroundColor White
+Write-Host "[3/13] Cross-reference completeness" -ForegroundColor White
 $siblingMap = @{
     kata    = @('Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Hansei')
     kaizen  = @('Kata', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Hansei')
@@ -112,7 +113,7 @@ foreach ($skill in $skills) {
 }
 
 # -- Check 4: Version alignment -----------------------------------------------
-Write-Host "[4/12] Version alignment" -ForegroundColor White
+Write-Host "[4/13] Version alignment" -ForegroundColor White
 $versions = @{}
 foreach ($skill in $skills) {
     $path = Join-Path $script:suiteRoot "$skill\SKILL.md"
@@ -133,7 +134,7 @@ if ($unique.Count -gt 1) {
 }
 
 # -- Check 5: GENBA / SCORECARD consistency ------------------------------------
-Write-Host "[5/12] Ledger consistency" -ForegroundColor White
+Write-Host "[5/13] Ledger consistency" -ForegroundColor White
 $genbaPath = Join-Path $script:suiteRoot 'GENBA.md'
 $scorecardPath = Join-Path $script:suiteRoot 'SCORECARD.md'
 if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
@@ -155,7 +156,7 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
 }
 
 # -- Check 6: Frontmatter validation ------------------------------------------
-Write-Host "[6/12] Frontmatter validation" -ForegroundColor White
+Write-Host "[6/13] Frontmatter validation" -ForegroundColor White
 $requiredFields = @('name', 'version', 'description')
 foreach ($skill in $skills) {
     $path = Join-Path $script:suiteRoot "$skill\SKILL.md"
@@ -175,7 +176,7 @@ foreach ($skill in $skills) {
 }
 
 # -- Check 7: File-hash snapshot (diff-based validation) -----------------------
-Write-Host "[7/12] File-hash snapshot" -ForegroundColor White
+Write-Host "[7/13] File-hash snapshot" -ForegroundColor White
 $hashFile = Join-Path $script:suiteRoot 'INTEGRITY.json'
 $current = [ordered]@{}
 foreach ($skill in $skills) {
@@ -220,7 +221,7 @@ $snapshot | ConvertTo-Json -Depth 3 | Set-Content $hashFile -Encoding UTF8
 Pass "Hash snapshot written to INTEGRITY.json"
 
 # -- Check 8: Suite skill inventory -------------------------------------------
-Write-Host "[8/12] Suite skill inventory" -ForegroundColor White
+Write-Host "[8/13] Suite skill inventory" -ForegroundColor White
 $skillDirs = Get-ChildItem -Path $script:suiteRoot -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'SKILL.md') }
 $nonTps = @()
 foreach ($dir in $skillDirs) {
@@ -235,7 +236,7 @@ if ($nonTps.Count -gt 0) {
 }
 
 # -- Check 9: Periodic-Hansei cadence -----------------------------------------
-Write-Host "[9/12] Periodic-Hansei cadence" -ForegroundColor White
+Write-Host "[9/13] Periodic-Hansei cadence" -ForegroundColor White
 if (Test-Path $genbaPath) {
     $gContent = Get-Content $genbaPath -Raw
     $runBlocks = [regex]::Matches($gContent, '(?ms)^## Run (\d+).*?(?=^## Run \d+|\z)')
@@ -271,7 +272,7 @@ if (Test-Path $genbaPath) {
 }
 
 # -- Check 10: PRINCIPLES.md governing-document integrity ----------------------
-Write-Host "[10/12] Governing-document integrity" -ForegroundColor White
+Write-Host "[10/13] Governing-document integrity" -ForegroundColor White
 $principlesPath = Join-Path $script:suiteRoot 'PRINCIPLES.md'
 if (Test-Path $principlesPath) {
     $pContent = Get-Content $principlesPath -Raw
@@ -294,7 +295,7 @@ if (Test-Path $principlesPath) {
 }
 
 # -- Check 11: CHANGELOG version contiguity -----------------------------------
-Write-Host "[11/12] CHANGELOG version contiguity" -ForegroundColor White
+Write-Host "[11/13] CHANGELOG version contiguity" -ForegroundColor White
 $changelogPath = Join-Path $script:suiteRoot 'CHANGELOG.md'
 if (Test-Path $changelogPath) {
     $cContent = Get-Content $changelogPath -Raw
@@ -331,7 +332,7 @@ if (Test-Path $changelogPath) {
 }
 
 # -- Check 12: SCORECARD <-> GENBA per-run coverage ----------------------------
-Write-Host "[12/12] SCORECARD <-> GENBA per-run coverage" -ForegroundColor White
+Write-Host "[12/13] SCORECARD <-> GENBA per-run coverage" -ForegroundColor White
 if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     $gContent = Get-Content $genbaPath -Raw
     $sContent = Get-Content $scorecardPath -Raw
@@ -356,6 +357,55 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     }
 } else {
     Pass 'SCORECARD/GENBA coverage check skipped (one or both missing)'
+}
+
+# -- Check 13: Latest-run model identity consistency --------------------------
+Write-Host "[13/13] Latest-run model identity consistency" -ForegroundColor White
+if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
+    $gContent = Get-Content $genbaPath -Raw
+    $sContent = Get-Content $scorecardPath -Raw
+
+    $runMatches = [regex]::Matches($gContent, '(?m)^## Run (\d+)')
+    if ($runMatches.Count -eq 0) {
+        Fail 'GENBA has no run headings; cannot verify latest model identity'
+    } else {
+        $latestGenbaRun = ($runMatches | ForEach-Object { [int]$_.Groups[1].Value } | Measure-Object -Maximum).Maximum
+        $latestBlock = [regex]::Match($gContent, "(?ms)^## Run $latestGenbaRun\b.*?(?=^## Run \d+|\z)")
+        if (-not $latestBlock.Success) {
+            Fail "Could not extract GENBA block for latest run $latestGenbaRun"
+        } else {
+            $genbaModelMatch = [regex]::Match($latestBlock.Value, '(?m)^\|\s*Model\s*\|\s*(.*?)\s*\|$')
+            if (-not $genbaModelMatch.Success) {
+                Fail "GENBA Run $latestGenbaRun missing '| Model | ... |' row"
+            } else {
+                $genbaModel = $genbaModelMatch.Groups[1].Value.Trim()
+                if ([string]::IsNullOrWhiteSpace($genbaModel) -or $genbaModel -match '^\[.*\]$') {
+                    Fail "GENBA Run $latestGenbaRun model is empty or placeholder: '$genbaModel'"
+                } else {
+                    $scoreRowMatch = [regex]::Match($sContent, "(?m)^\|\s*$latestGenbaRun\s*\|[^\n]*$")
+                    if (-not $scoreRowMatch.Success) {
+                        Fail "SCORECARD missing row for latest GENBA run $latestGenbaRun"
+                    } else {
+                        $parts = $scoreRowMatch.Value -split '\|'
+                        if ($parts.Count -lt 4) {
+                            Fail "SCORECARD Run $latestGenbaRun row is malformed"
+                        } else {
+                            $scoreModel = $parts[3].Trim()
+                            if ([string]::IsNullOrWhiteSpace($scoreModel) -or $scoreModel -match '^\[.*\]$') {
+                                Fail "SCORECARD Run $latestGenbaRun model is empty or placeholder: '$scoreModel'"
+                            } elseif ($scoreModel -ne $genbaModel) {
+                                Fail "Latest run model mismatch for Run $latestGenbaRun GENBA='$genbaModel' vs SCORECARD='$scoreModel'"
+                            } else {
+                                Pass "Latest run model identity is consistent for Run $latestGenbaRun ($genbaModel)"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+} else {
+    Pass 'Latest-run model identity check skipped (one or both missing)'
 }
 
 # -- Summary -------------------------------------------------------------------

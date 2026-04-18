@@ -1,25 +1,25 @@
-Ôªø---
+---
 name: muda
-version: 1.21.0
-description: 'Muda (ÁÑ°ÈßÑ) ‚Äî Waste elimination for software projects. Systematically find and remove what does not earn its maintenance cost. Adapted from Toyota Production System''s 7+1 waste types for codebases, documents, and designs. Standalone skill ‚Äî no dependencies. USE WHEN: prune, simplify, what should I remove, reduce complexity, eliminate waste, dead code, unused, clean up, slim down, muda, declutter, lighten, trim, what here is unnecessary.'
+version: 1.22.0
+description: 'Muda (??) ó Waste elimination for software projects. Systematically find and remove what does not earn its maintenance cost. Adapted from Toyota Production System''s 7+1 waste types for codebases, documents, and designs. Standalone skill ó no dependencies. USE WHEN: prune, simplify, what should I remove, reduce complexity, eliminate waste, dead code, unused, clean up, slim down, muda, declutter, lighten, trim, what here is unnecessary.'
 argument-hint: 'Optional: specify target (codebase, file, module, doc), focus area (deps, abstractions, tests, docs), or severity threshold (type-I only, type-II only, all)'
 ---
 
-# Muda (ÁÑ°ÈßÑ) ‚Äî Waste Elimination
+# Muda (??) ó Waste Elimination
 
 Find what doesn't earn its keep. Remove it. Prove each removal.
 
-> **Governing principles:** [Commander's Intent](../PRINCIPLES.md) ‚Äî this skill gives you the thinking framework; you decide what to find and how to act on it. [Observable Autonomy](../PRINCIPLES.md) ‚Äî narrate your reasoning as you work; every finding must show the *why*, not just the *what*.
+> **Governing principles:** [Commander's Intent](../PRINCIPLES.md) ó this skill gives you the thinking framework; you decide what to find and how to act on it. [Observable Autonomy](../PRINCIPLES.md) ó narrate your reasoning as you work; every finding must show the *why*, not just the *what*.
 
-Muda is one of three deviations in the Toyota Production System (alongside Mura and Muri). Taiichi Ohno identified 7 forms of waste; an 8th (unused talent) was added later. This skill provides the vocabulary ‚Äî you provide the judgment.
+Muda is one of three deviations in the Toyota Production System (alongside Mura and Muri). Taiichi Ohno identified 7 forms of waste; an 8th (unused talent) was added later. This skill provides the vocabulary ó you provide the judgment.
 
-**The causal chain:** Mura ‚Üí Muri ‚Üí Muda. Waste is often the symptom, not the root cause. For root-cause analysis, see Mura and Muri.
+**The causal chain:** Mura ? Muri ? Muda. Waste is often the symptom, not the root cause. For root-cause analysis, see Mura and Muri.
 
 **Part of the TPS skill family:** For unevenness detection, see **Mura**. For overburden reduction, see **Muri**. For incremental improvement, see **Kaizen**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For the full treatment, see **Kata**.
 
 **Two types of waste (Shigeo Shingo):**
-- **Type I:** Non-value-adding but currently necessary. Can't be removed yet ‚Äî flag, minimize, and set a revisit condition.
-- **Type II:** Non-value-adding and unnecessary. Remove ‚Äî after proving it's safe.
+- **Type I:** Non-value-adding but currently necessary. Can't be removed yet ó flag, minimize, and set a revisit condition.
+- **Type II:** Non-value-adding and unnecessary. Remove ó after proving it's safe.
 
 ## When to Use
 
@@ -28,70 +28,70 @@ Muda is one of three deviations in the Toyota Production System (alongside Mura 
 - "dead code", "unused dependencies", "what here is unnecessary?"
 - Any request to simplify, trim, or lighten a project
 - When kaizen converges but the project still feels heavy
-- After a pivot, reorg, or major direction change ‚Äî to clear residue from the old direction
+- After a pivot, reorg, or major direction change ó to clear residue from the old direction
 
 ## Core Principles
 
 1. **Every line has a maintenance tax.** What is that tax here? Consider: cognitive load, test surface, attack surface, merge conflict potential, onboarding friction. Does the value exceed it?
 2. **Deletion is a feature.** What improves if this disappears? Quantify when you can.
-3. **Challenge existence, not quality.** Don't ask "is this well-written?" Ask "should this exist at all?" Well-engineered waste is still waste ‚Äî and harder to spot because it looks legitimate.
+3. **Challenge existence, not quality.** Don't ask "is this well-written?" Ask "should this exist at all?" Well-engineered waste is still waste ó and harder to spot because it looks legitimate.
 4. **Prove before removing.** How do you know nothing depends on this? Show your evidence.
 5. **Respect uncertainty.** If you can't determine whether something is waste, say so explicitly. Flag it as Type I. Intellectual honesty about what you don't know is a feature, not a weakness.
 
 ## Procedure
 
-### Phase 1: SCOPE ‚Äî What Are We Pruning?
+### Phase 1: SCOPE ó What Are We Pruning?
 
 Identify the target and its boundaries.
 
 **Target types:**
-- **Full codebase** ‚Äî scan everything: source, tests, config, deps, docs, CI.
-- **Module/directory** ‚Äî focused prune on a specific subsystem.
-- **Single file** ‚Äî line-by-line waste audit.
-- **Dependencies** ‚Äî dependency tree only (package.json, pyproject.toml, Cargo.toml, etc.).
-- **Documentation** ‚Äî remove stale docs, outdated guides, orphaned references.
-- **Test suite** ‚Äî find tests that test nothing, test removed behavior, or duplicate coverage.
+- **Full codebase** ó scan everything: source, tests, config, deps, docs, CI.
+- **Module/directory** ó focused prune on a specific subsystem.
+- **Single file** ó line-by-line waste audit.
+- **Dependencies** ó dependency tree only (package.json, pyproject.toml, Cargo.toml, etc.).
+- **Documentation** ó remove stale docs, outdated guides, orphaned references.
+- **Test suite** ó find tests that test nothing, test removed behavior, or duplicate coverage.
 
 Note what you're pruning and what's out of scope. Scope creep in a pruning pass is ironic.
 
-### Phase 2: SCAN ‚Äî Think Through Ohno's 8 Lenses
+### Phase 2: SCAN ó Think Through Ohno's 8 Lenses
 
-Read the target carefully. Use these eight lenses ‚Äî each poses a question about a different form of waste. The lenses are your thinking framework, not a checklist to iterate mechanically. How deeply you explore each one, and what you find, depends on this specific target.
+Read the target carefully. Use these eight lenses ó each poses a question about a different form of waste. The lenses are your thinking framework, not a checklist to iterate mechanically. How deeply you explore each one, and what you find, depends on this specific target.
 
 | Lens | The Question |
 |------|-------------|
-| **Overproduction** (ÈÅéÂâ∞ÁîüÁî£) | What here was built ahead of demand? What exists because someone imagined a future need rather than responding to a present one? |
-| **Waiting** (ÂæÖ„Å°) | Where does the system ‚Äî or the developer ‚Äî wait when it doesn't have to? Where is time lost between value-adding steps? |
-| **Transport** (ÈÅãÊê¨) | Where does data move unnecessarily? Where is it copied, serialized, or reformatted when a simpler path exists? |
-| **Over-processing** (Âä†Â∑•ÈÅéÂâ∞) | Where is more work done than the result requires? What abstraction, validation, or ceremony goes beyond what the situation actually demands? |
-| **Inventory** (Âú®Â∫´) | What's sitting around unfinished, unused, or unintegrated? What was started but never completed ‚Äî or completed but never cleaned up? |
-| **Motion** (Âãï‰Ωú) | Where are developers forced into unnecessary movement ‚Äî long navigation paths, scattered configs, context switches, mental translation between inconsistent patterns? |
-| **Defects** (Ê¨†Èô•) | What work exists only to manage problems that may no longer exist? What workarounds have outlived the bugs they were built for? |
-| **Unused Talent** (Êú™‰ΩøÁî®„ÅÆÊâçËÉΩ) | What capabilities does the language, framework, or platform already offer that this project ignores or reimplements by hand? |
+| **Overproduction** (????) | What here was built ahead of demand? What exists because someone imagined a future need rather than responding to a present one? |
+| **Waiting** (??) | Where does the system ó or the developer ó wait when it doesn't have to? Where is time lost between value-adding steps? |
+| **Transport** (??) | Where does data move unnecessarily? Where is it copied, serialized, or reformatted when a simpler path exists? |
+| **Over-processing** (????) | Where is more work done than the result requires? What abstraction, validation, or ceremony goes beyond what the situation actually demands? |
+| **Inventory** (??) | What's sitting around unfinished, unused, or unintegrated? What was started but never completed ó or completed but never cleaned up? |
+| **Motion** (??) | Where are developers forced into unnecessary movement ó long navigation paths, scattered configs, context switches, mental translation between inconsistent patterns? |
+| **Defects** (??) | What work exists only to manage problems that may no longer exist? What workarounds have outlived the bugs they were built for? |
+| **Unused Talent** (??????) | What capabilities does the language, framework, or platform already offer that this project ignores or reimplements by hand? |
 
-**How you apply each lens is up to you.** Some lenses will reveal nothing for this target. Others will reveal clusters. Follow what you find ‚Äî don't force every lens to produce output.
+**How you apply each lens is up to you.** Some lenses will reveal nothing for this target. Others will reveal clusters. Follow what you find ó don't force every lens to produce output.
 
-**Narrate as you scan.** For each finding, explain what you found and why you believe it qualifies as waste. The reasoning is as important as the conclusion ‚Äî it's what makes your work auditable and trustworthy.
+**Narrate as you scan.** For each finding, explain what you found and why you believe it qualifies as waste. The reasoning is as important as the conclusion ó it's what makes your work auditable and trustworthy.
 
-### Phase 3: CLASSIFY ‚Äî Type I or Type II
+### Phase 3: CLASSIFY ó Type I or Type II
 
 For each waste instance found, classify:
 
 ```
 ## Waste Inventory
 
-### Type II ‚Äî Remove (non-value, unnecessary)
+### Type II ó Remove (non-value, unnecessary)
 | # | Waste Type | Location | Description | Confidence |
 |---|:----------:|----------|-------------|:----------:|
 | 1 | Inventory  | src/old_api.py | Module with 0 imports after v2 migration | High |
 | 2 | Over-processing | src/core/factory.py | AbstractWidgetFactory builds only ConcreteWidget | High |
 | 3 | Overproduction | tests/test_edge.py:45-80 | Tests scenarios that violate type constraints | Medium |
 
-### Type I ‚Äî Flag (non-value, but currently necessary)
+### Type I ó Flag (non-value, but currently necessary)
 | # | Waste Type | Location | Description | Revisit When |
 |---|:----------:|----------|-------------|:------------:|
 | 1 | Defects    | src/compat.py | Workaround for dep v2.3 bug | dep releases v2.4 |
-| 2 | Transport  | src/api/mapper.py | DTO‚ÜíEntity mapping | after API v3 unifies models |
+| 2 | Transport  | src/api/mapper.py | DTO?Entity mapping | after API v3 unifies models |
 
 ### Challenged & Kept
 | # | Location | Why it looked like waste | Why it stays |
@@ -100,17 +100,17 @@ For each waste instance found, classify:
 ```
 
 **Confidence levels:**
-- **High:** Verified ‚Äî no callers, no imports, no references. Safe to remove.
+- **High:** Verified ó no callers, no imports, no references. Safe to remove.
 - **Medium:** Likely unused but couldn't fully verify (e.g., dynamically referenced, used in deployment scripts not in repo).
 - **Low:** Suspicious but unclear. Needs human input.
 
 **Verification methods:**
 - Search for all references (imports, calls, config references).
-- Check git blame: when was it last meaningfully changed? (Not formatting ‚Äî meaningful logic changes.)
+- Check git blame: when was it last meaningfully changed? (Not formatting ó meaningful logic changes.)
 - Check test coverage: is anything testing this? If yes, are those tests also waste?
 - Check deployment: is this used in production configs, scripts, or infra not visible in the repo?
 
-### Phase 4: PRIORITIZE ‚Äî ROI of Removal
+### Phase 4: PRIORITIZE ó ROI of Removal
 
 Rank Type II findings by removal value. For each item, consider:
 - **How much maintenance does this cost?** Lines, cognitive load, test surface, coupling.
@@ -119,7 +119,7 @@ Rank Type II findings by removal value. For each item, consider:
 
 Use your judgment to rank by return on removal effort. The highest-value removals are usually: high maintenance cost, low risk, and the system simplifies meaningfully when they're gone.
 
-### Phase 5: ACT ‚Äî Remove
+### Phase 5: ACT ó Remove
 
 For each approved item, execute the removal:
 
@@ -127,7 +127,7 @@ For each approved item, execute the removal:
 2. **Delete orphaned tests.** Tests that only test the removed code.
 3. **Delete orphaned docs.** Documentation that only describes the removed code.
 4. **Update references.** Imports, configs, indexes, table of contents.
-5. **Run tests.** Verify nothing broke. If something breaks, it wasn't waste ‚Äî revert and reclassify.
+5. **Run tests.** Verify nothing broke. If something breaks, it wasn't waste ó revert and reclassify.
 6. **Run the build.** Verify it still compiles/packages.
 
 **Removal discipline:**
@@ -135,12 +135,12 @@ For each approved item, execute the removal:
 - If a removal causes a cascade of failures, stop and assess: either the classification was wrong, or there's hidden coupling that's itself a finding worth noting.
 - Never remove and add in the same pass. Muda is purely subtractive. If removal reveals something that needs adding, note it for a kaizen cycle.
 
-### Phase 6: REPORT ‚Äî Waste Ledger
+### Phase 6: REPORT ó Waste Ledger
 
 Summarize what was done. This is the proof trail.
 
 ```
-## Muda Report ‚Äî [Target] ‚Äî [Date]
+## Muda Report ó [Target] ó [Date]
 
 ### Summary
 | Metric | Value |
@@ -175,13 +175,13 @@ Summarize what was done. This is the proof trail.
 **If a GENBA.md exists** in the skills suite root (`~/.copilot/skills/GENBA.md`) or the project root, prepend a summary entry so the active ledger stays newest-first:
 
 ```markdown
-### Muda ‚Äî [date]
+### Muda ó [date]
 - **Target:** [what was pruned]
 - **Model:** [which LLM]
 - **Removed:** [X lines, Y files, Z deps]
 - **Flagged:** [N Type I items for revisit]
 - **Tests:** [pass/fail count unchanged]
-- **Regression vs prior run:** [better / same / regressed ‚Äî if regressed, what returned and why?]
+- **Regression vs prior run:** [better / same / regressed ó if regressed, what returned and why?]
 ```
 
 ## Rules
@@ -190,6 +190,6 @@ Summarize what was done. This is the proof trail.
 - **Prove it's waste before removing.** "Looks unused" is not sufficient. Verify: no callers, no imports, no config references, no dynamic loading.
 - **When in doubt, Type I.** If you can't prove it's unnecessary, flag it and move on. False positives (deleting something needed) are worse than false negatives (keeping something unnecessary).
 - **Respect the blast radius.** Start with isolated, high-confidence removals. Build trust before tackling coupled items.
-- **Don't refactor.** Muda removes, it doesn't reshape. Refactoring is kaizen's job. If removal creates an opportunity to simplify what remains, note it ‚Äî don't do it now.
+- **Don't refactor.** Muda removes, it doesn't reshape. Refactoring is kaizen's job. If removal creates an opportunity to simplify what remains, note it ó don't do it now.
 - **Partial passes are fine.** User can scope to one waste type ("just check dependencies"), one directory, or one confidence level ("only high-confidence items"). Match the user's intent.
-- **Track what you keep and why.** The "Challenged & Kept" section is as valuable as the removals. It's proof that remaining code was examined and justified ‚Äî not just inherited.
+- **Track what you keep and why.** The "Challenged & Kept" section is as valuable as the removals. It's proof that remaining code was examined and justified ó not just inherited.

@@ -1,5 +1,54 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 32 — 2026-04-18
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | GPT-5.3-Codex (3rd) |
+| Trigger | "OKAY - now i wont tell you what model you re\nPlease run again." |
+| Methodology | Kata → Kaizen (process hardening + verifier extension) |
+
+### 3M Diagnosis Summary
+| Lens | Findings | Critical/High |
+|------|:--------:|:-------------:|
+| Mura | 1 | 1 |
+| Muri | 0 | 0 |
+| Muda | 1 | 0 |
+| Causal chains | 1 | — |
+
+### Findings
+| # | Finding | Lens | Severity | Fixed? | Recurred? |
+|---|---------|------|:--------:|:------:|:---------:|
+| 1 | Model self-identification was not explicitly mandatory in Kata Phase 1 and not mechanically enforced in `verify-suite.ps1`. This allowed cross-ledger model drift (Run 31 was initially recorded as the wrong model and required manual correction). | Mura | High | Yes | First |
+| 2 | Temporary recovery artifacts (`GENBA.md.bak`, `run29.md`, `run29.py`) remained in the suite root, creating avoidable working-tree noise and violating clean-run discipline. | Muda | Low | Yes | First |
+
+### Actions Taken
+- `kata/SKILL.md`: added mandatory model self-identification in Phase 1 and a rules-level requirement that `GENBA.md` and `SCORECARD.md` model fields match for the same run.
+- `verify-suite.ps1`: added Check 13 (latest-run model identity consistency between `GENBA.md` and `SCORECARD.md`), and updated check labels to 13 total checks.
+- Suite cleanup: removed stale temporary files (`GENBA.md.bak`, `run29.md`, `run29.py`).
+- Version bump: all 7 TPS skills 1.21.0 → 1.22.0.
+
+### Score
+| Dimension | Before | After | Δ |
+|-----------|:------:|:-----:|:-:|
+| Internal Consistency | 9.9 | 10.0 | +0.1 |
+| **Overall** | **9.9** | **10.0** | **+0.1** |
+
+The loop now enforces what the user asked for: the model is self-identified each run and mechanically checked for cross-ledger consistency.
+
+### Regression Check
+| Metric | Prev Run | This Run | Delta | Regressed? |
+|--------|:--------:|:--------:|:-----:|:----------:|
+| verify-suite.ps1 failures | 0 | 0 | 0 | No |
+| Verifier check count | 12 | 13 | +1 | No |
+
+### Observations
+- Run 32 does **not** advance the Principle 3 silence counter (artifacts changed). Counter remains at 0/3.
+- Periodic Hansei remains within cadence threshold (2 runs since Run 30 Hansei).
+- This run validates the new default behavior: no user-provided model identity is required.
+
+---
 ## Run 31 — 2026-04-18
 
 | Field | Value |

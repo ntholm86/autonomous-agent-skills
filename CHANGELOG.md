@@ -9,6 +9,21 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.22.0] - 2026-04-18
+
+### Added
+
+- **`verify-suite.ps1` Check 13 — Latest-run model identity consistency:** Validates that the latest run's model string is present and non-placeholder in `GENBA.md`, that `SCORECARD.md` has a row for the same run number, and that both model strings match exactly. Fails on mismatch.
+
+### Changed
+
+- **`kata/SKILL.md` Phase 1:** Added mandatory model self-identification at run start and explicit requirement to write the same model string in both `GENBA.md` and `SCORECARD.md`.
+- **`kata/SKILL.md` Rules:** Added "Self-identify every run" rule to prevent cross-ledger model drift.
+
+### Fixed
+
+- **Suite root cleanup:** Removed lingering temporary recovery artifacts (`GENBA.md.bak`, `run29.md`, `run29.py`) so working-tree status and run persistence are not polluted by stale files.
+
 ## [1.21.0] - 2026-04-18
 
 ### Added
