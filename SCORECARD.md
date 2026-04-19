@@ -46,6 +46,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 38 | 2026-04-19 | GPT-5.4 | 10.0 | 10.0 | +0.0 | 10.0 | Re-ran STANDARDS.md validation. Fixed verify-suite.ps1 timestamp-only INTEGRITY.json churn so clean runs keep stable CM baselines and candidate-silence runs can stay clean. v1.28.0. |
 | 39 | 2026-04-19 | Gemini 2.5 Pro | 10.0 | N/A | N/A | TPS Skill Suite | **Invalidated** — Re-claimed Run 38's already-shipped INTEGRITY.json timestamp-churn fix as new work. Same defect class as Run 11. See Run 40 for the invalidation and process fix. |
 | 40 | 2026-04-19 | Claude Opus 4.7 | 10.0 | 10.0 | +0.0 | TPS Skill Suite | Invalidated Run 39 (hallucinated/duplicate run). Added mandatory Prior-run delta check to Kata Phase 1 GRASP (`git log` + CHANGELOG inspection). v1.29.0. |
+| 41 | 2026-04-19 | Claude Opus 4.7 | 10.0 | 10.0 | +0.0 | TPS Skill Suite (loop) | **Hansei run.** 4 meta-findings: hallucination only caught by next model, 9-run score plateau, 33-run-deferred external-target finding, 35 consecutive Kaizen runs. Most important: the loop has only ever validated itself. v1.30.0. |
 
 ## Cross-Model Notes
 

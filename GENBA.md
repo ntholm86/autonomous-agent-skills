@@ -2,6 +2,83 @@
 ---
 
 ---
+## Run 41 — 2026-04-19
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (loop, not artifact) |
+| Model | Claude Opus 4.7 |
+| Trigger | "Run the Kata again please so we can do hansei" (explicit user request for Hansei) |
+| Methodology | Kata → Hansei (reflection-only, per the skill's "surface, don't act" rule) |
+
+### 3M Diagnosis Summary
+| Lens | Findings | Critical/High |
+|------|:--------:|:-------------:|
+| Mura | 0 (artifact) | — |
+| Muri | 0 | — |
+| Muda | 0 | — |
+| Causal chains | — | — |
+
+No artifact-level findings raised this cycle by design. The user explicitly invoked Hansei; per `hansei/SKILL.md` Phase 6 ("surface, don't act") and the rules section ("One reflection per cycle. Don't conflate reflection with action"), this run produces meta-findings only and recommends concrete next moves for future runs to action.
+
+### Hansei — 2026-04-19
+- **Scope:** Runs 32–40 (9 consecutive 10.0 runs), with cross-references back to Runs 6, 8, 11, 12, 36 where the relevant patterns first appear.
+- **Model:** Claude Opus 4.7
+- **Findings:** 4 patterns crystallized + 1 "most important" finding
+- **Loop status:** **Local plateau**, not convergence. Artifacts changed every run; Principle 3 silence counter remains 0/3.
+- **Regression vs prior Hansei (Run 36):** **Same in surface, worse in substance.** Run 36's Hansei flagged the same plateau (4 consecutive 10.0 runs at that point) and recommended cross-model standards validation. That recommendation was actioned (Run 37). But the deeper Run 36 observation — "every innovation run produces infrastructure subsequent runs consume" — has now compounded: Runs 37–40 are *all* infrastructure-on-infrastructure (verifier hardening verifying the verifier). The flywheel has become a closed loop.
+
+### Hansei Findings
+
+#### Finding 1: Hallucination invalidations are always caught by the *next* model, never the failing one
+- **Evidence:** Run 11 (GPT-4o, hallucinated fixes) was invalidated by Run 12 (Gemini 3.1 Pro). Run 39 (Gemini 2.5 Pro, hallucinated re-claim of Run 38) was invalidated by Run 40 (Opus 4.7). In **both** invalidations, `verify-suite.ps1` reported 0 failures during the failing run — the verifier has no hallucination detection and never has.
+- **What this means:** The current safety net for hallucination is structural (rotating evaluators) not mechanical. If the user ever runs two consecutive sessions with the same model, or with two models from the same family that share a blind spot, a hallucinated run could ship and stay shipped. Run 40's prior-run delta check raises the cost of one specific hallucination shape (re-claiming shipped work), but does not protect against fabricated *new* findings (the Run 11 shape).
+- **Recommended response:** Future Kata run should consider a `verify-suite.ps1` Check 14 that compares the latest GENBA Findings list against the latest CHANGELOG entry's bullets and warns on substantive overlap. This is the mechanical version of the prior-run delta check. It is *not* trivial — it needs fuzzy matching, not exact string comparison — hence flagged for a deliberate future run, not bolted on here.
+
+#### Finding 2: Score plateau at 10.0 for 9 consecutive valid runs (32, 33, 34, 35, 36, 37, 38, 40; Run 39 invalidated)
+- **Evidence:** SCORECARD rows for Runs 32–40 all show End Score = 10.0. Every per-run delta is 0.0 or +0.1 (noise). Every Findings table since Run 32 is dominated by "verifier did not catch X" or "process rule for Y was missing."
+- **What this means:** The suite has zero remaining headroom on its own scale. Every recent improvement is a Trustworthiness reinforcement that mathematically cannot move the score. The loop is now improving the *validator*, not the thing being *validated*. Per Principle 3, this is **local plateau** (silence counter still 0/3 because artifacts change every run), not true convergence.
+- **Recommended response:** Two options for the next run to choose between, explicitly: **(a)** Accept the ceiling, lock the score scale, and shift the success metric to something that *can* move (e.g., "runs since last invalidation," "recurrence rate from `metrics.ps1`," or external-project effectiveness). **(b)** Add a new dimension to Rubric v2 that captures something the current 10 dimensions do not (Hansei finding 4 below offers a candidate).
+
+#### Finding 3: Run 8's deferred finding ("self-targeting only, no external project") has now been deferred for 33 runs
+- **Evidence:** Run 8 Hansei surfaced 3 findings; the user accepted Findings 1 and 2 and explicitly deferred Finding 3 ("in time"). 33 runs and 4 Hansei passes later, no run has applied any TPS skill to a non-skill-suite target. All claims of "the suite improves things" are based on the suite improving itself.
+- **What this means:** This is the suite's central blind spot, and it is older than most of the suite's safety infrastructure. Every verifier check, every metrics dimension, every standards mapping has been validated against the same artifact the validators target. The compounding evidence is for *self-validation infrastructure*, not for the methodology applied to fresh problems. A skeptic could fairly argue the suite has only proven that it can keep finding things to improve in itself — a property that is true of any sufficiently complex system.
+- **Recommended response:** Next external-target Kata run on any non-trivial artifact (a real codebase, a real document, a real design) is now **the highest-value run** the suite can execute, regardless of its outcome. A successful run validates the methodology. An unsuccessful run reveals which 33 runs of self-targeting were ceremonial. Both outcomes are more valuable than continuing to refine the verifier.
+
+#### Finding 4: Methodology monoculture — 35 consecutive Kaizen runs, last Kaikaku evaluation was Run 6
+- **Evidence:** The SCORECARD shows Kaikaku was evaluated and rejected at Run 6 ("Kaikaku rejected — 2 Kaizen fixes"). Every subsequent run (7–40, excluding invalidated Run 39 and Hansei-mode Runs 8, 25, 36) has selected Kaizen. The Kaizen skill itself, in its CHECK phase, says to consider Kaikaku at sustained plateau — a condition that has been met since Run 32 and not actioned.
+- **What this means:** Kaikaku has become aspirational. The suite's own selection rule is being silently overridden by the implicit "Kaizen is the safe choice" bias. The score plateau (Finding 2) and the methodology monoculture (this finding) are the same observation from two angles — the loop keeps doing the same thing because it works locally, even though the global trajectory has stalled.
+- **Recommended response:** Schedule a deliberate Kaikaku evaluation run. Not Kaikaku execution — Kaikaku has its own "explicit user consent before destruction" rule — just an honest evaluation: *"Given 9 runs at 10.0 and 35 consecutive Kaizen choices, what would a from-scratch redesign of the TPS skill suite look like, and is the current architecture the local maximum or the global one?"* The output is a plan, not a destruction. The user then decides.
+
+#### Most important finding (the silence)
+**The suite has been improving how it improves itself, but never improving anything else.** Findings 2, 3, and 4 are three facets of one underlying condition: the loop is closed. Trustworthiness has become a hall of mirrors — the verifier verifies the verifier, the metrics measure the metrics, the standards mapping documents that the suite documents standards. The single act that would falsify or validate any of this in one move is the one act the loop has consistently postponed: **apply it to something else.**
+
+### Actions Taken (this run)
+- `GENBA.md`: prepended this Run 41 Hansei entry per `hansei/SKILL.md` Phase 6.
+- `SCORECARD.md`: appended Run 41 row (10.0 → 10.0, methodology = Hansei, no artifact deltas).
+- `CHANGELOG.md`: added v1.30.0 entry under "Documentation/Reflection" — no skill behavior changed; the deliverable is the recorded reflection itself.
+- Version bump: all 7 TPS skills 1.29.0 → 1.30.0 (matching prior Hansei-run convention from Runs 25 and 36; integrity-hash deltas are otherwise the only change and would not warrant a version bump).
+- **No skill behavior changes.** Per Hansei "one reflection per cycle" rule, the four findings above are recommendations for future runs, not actions for this run.
+
+### Outcome
+- Score: 10.0 → 10.0 (+0.0). Score-of-the-loop unchanged; the Hansei pass produces meta-findings, not artifact improvements.
+- The suite now has explicit, citation-grounded recommendations for the next 1–3 runs (mechanical hallucination check, score-scale review, external-target run, deliberate Kaikaku evaluation). Future agents do not need to re-derive these.
+
+### Regression Check
+| Metric | Prev Run | This Run | Delta | Regressed? |
+|--------|:--------:|:--------:|:-----:|:----------:|
+| verify-suite checks | 13 | 13 | 0 | No |
+| Hansei runs in trail | 4 (Runs 8, 20, 25, 36) | 5 | +1 | No |
+| Runs since last Hansei | 4 | 0 | -4 | No (cadence reset) |
+| Open Hansei recommendations | 0 explicit | 4 explicit | +4 | No (intentional surfacing) |
+| Suite version | 1.29.0 | 1.30.0 | — | No |
+
+### Observations
+- Run 41 does **not** advance the Principle 3 silence counter (artifacts changed: GENBA, SCORECARD, CHANGELOG, all 7 SKILL.md frontmatter). Counter remains at 0/3.
+- This is the first Hansei in suite history that explicitly recommends evaluating Kaikaku. Prior Hansei runs (8, 20, 25, 36) all recommended further Kaizen-shaped improvements.
+- Cadence: 4 runs since Run 36 Hansei (37, 38, 40 — Run 39 invalidated). One below the periodic threshold of 5, triggered early by direct user request. Verifier Check 9 was not yet warning, so the user request — not the mechanism — was the proximate trigger. Worth noting because it suggests human-in-the-loop will continue to outpace the cadence rule for the foreseeable future, which is fine.
+
+---
 ## Run 40 — 2026-04-19
 
 | Field | Value |

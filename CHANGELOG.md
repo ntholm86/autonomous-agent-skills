@@ -9,6 +9,13 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.30.0] - 2026-04-19
+
+### Documentation / Reflection
+
+- **Hansei pass (Run 41).** First Hansei run since Run 36. Surfaced 4 meta-findings about the loop: (1) hallucination invalidations have always been caught by the *next* model, never the failing one, with `verify-suite.ps1` reporting 0 failures both times (Runs 11 and 39); (2) the score has plateaued at 10.0 for 9 consecutive runs because every recent improvement is verifier-on-verifier; (3) Run 8's deferred "self-targeting only" finding has now been deferred for 33 runs and is the suite's central blind spot; (4) 35 consecutive Kaizen runs — Kaikaku has not been evaluated since Run 6 despite the loop's own "consider Kaikaku at plateau" rule. **Most important finding:** the loop is closed — the suite has been improving how it improves itself but never improving anything else. Concrete recommendations recorded in GENBA Run 41 entry for future runs to action.
+- **No skill behavior changes.** Per `hansei/SKILL.md` "one reflection per cycle" rule, the four findings are surfaced as recommendations only. Acting on them is the responsibility of subsequent Kata or Kaikaku runs.
+
 ## [1.29.0] - 2026-04-19
 
 ### Changed
