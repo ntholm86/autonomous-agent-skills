@@ -67,7 +67,7 @@ Before anything else, discover how this project manages versions. Every project 
 
 ### Phase 3: Determine Bump Level
 
-8. **Apply semver rules** (see [Semver Reference](./references/semver.md)):
+8. **Apply semver rules:**
 
    | Change Type | Bump | Examples |
    |-------------|------|----------|

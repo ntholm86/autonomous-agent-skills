@@ -1,5 +1,68 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 44 — 2026-04-19
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | Claude Opus 4.6 |
+| Trigger | "yes lets go" (user authorized Kata self-improvement run) |
+| Methodology | Kata → Kaizen |
+
+### 3M Diagnosis Summary
+| Lens | Findings | Critical/High |
+|------|:--------:|:-------------:|
+| Mura | 5 | 2 |
+| Muri | 2 | 1 |
+| Muda | 2 | 0 |
+| Causal chains | 3 | — |
+
+### Findings
+| # | Finding | Lens | Severity | Fixed? | Recurred? |
+|---|---------|------|:--------:|:------:|:---------:|
+| 1 | verify-suite.ps1 `$siblingMap` excludes Shiken — Check 3 validates 7 skills' cross-refs, not 8; pass message says "6 siblings" not 7 | Mura | Critical | Yes | First |
+| 2 | Kaikaku Phase 5 references "kaizen Phase 0-3" — Kaizen phases are 1-7, no Phase 0 | Mura | High | Yes | First |
+| 3 | project-increment references `./references/semver.md` — file doesn't exist | Mura/Muda | Medium | Yes | First |
+| 4 | RUBRIC_V3_PROPOSAL Dim #6 measurement procedure partially re-absorbs Traceability gap despite GPT-5.4 Finding #4 disclaimer | Mura | Low | Yes | First |
+| 5 | Convergence Integrity (Dim 7) structurally un-earnable — silence counter resets every artifact-changing run, creating Catch-22 with improvement loop | Muri | High | No (observation) | First |
+
+**Recurrence detection:** No recurrences from prior runs. All 4 fixed findings are first occurrences. Finding 1 (Shiken missing from siblingMap) has existed since Shiken was added (Run 43 / v1.32.0) but was never detected because the verifier itself was the gap.
+
+### Actions Taken
+- Fixed verify-suite.ps1: added `shiken` key to `$siblingMap` with 7 siblings; added `'Shiken'` to all 7 existing sibling lists; changed pass message from "6 siblings" to "7 siblings"
+- Fixed kaikaku/SKILL.md: "Phase 0-3" → "Phases 1-3"
+- Fixed project-increment/SKILL.md: removed broken `./references/semver.md` link (semver rules already inlined in table)
+- Fixed RUBRIC_V3_PROPOSAL.md: removed traceability re-absorption text from Dim #6 measurement procedure per GPT-5.4 Finding #4
+
+### v3 Scoring
+| # | Dimension | Score | Delta vs Run 43 | Key Rationale |
+|---|-----------|:-----:|:----:|---------------|
+| 1 | Process Completeness | 9 | 0 | All phases executed with visible artifacts |
+| 2 | Causal Analysis | 8 | 0 | 3M framework strong; no recurrences this run |
+| 3 | Measurement Validity | 7 | 0 | metrics.ps1 reproducible; thresholds unjustified; no Gauge R&R |
+| 4 | Configuration Management | 10 | 0 | Shiken verifier gap now closed; 13-check verifier covers all 8 skills |
+| 5 | Cross-Evaluator Reliability | 7 | 0 | 7 families (GOOD); inter-rater moderate; overlap manual |
+| 6 | Instruction Clarity | 8.5 | +0.5 | Stale refs fixed; RATE dimension fix (prior session) now scored; traceability text cleaned |
+| 7 | Convergence Integrity | 5 | 0 | Silence counter 0/3; structural observation recorded |
+| 8 | Autonomous Reasoning Fidelity | 8.5 | +0.5 | RATE fix empirically validated by Shiken (PARTIAL PASS → PASS); trail-follows-target convention now scored |
+| **Mean** | | **7.875** | **+0.125** | |
+
+### Outcome
+- Score: 7.75 (v3) → 7.875 (v3) (+0.125)
+- Dims 6 and 8 moved because the Shiken-validated RATE fix and trail-follows-target convention (committed prior session) are now first scored by a Kata run. This run's own fixes reinforced Dims 4 and 6.
+
+### Regression Check
+| Metric | Prev Run | This Run | Delta | Regressed? |
+|--------|:--------:|:--------:|:-----:|:----------:|
+| verify-suite.ps1 | 0 failures | 0 failures | 0 | No |
+| Recurrence rate | 2/5 (40%) | 0/4 (0%) | -40% | No (improved) |
+
+### Observations
+- The Convergence Integrity Catch-22 (Finding 5) deserves Hansei attention: the dimension as defined requires 3 consecutive zero-change runs by 3 distinct evaluators, but every improvement run makes changes. The loop can only converge by *stopping*, which means the dimension measures "have you stopped improving" rather than "is the improvement honest." This may need a rubric-level redesign for Dim 7.
+- This is the first Kata run where Shiken findings from a prior session were scored — the RATE fix was empirically validated before being measured by the rubric. This is the intended flow: Shiken finds the vulnerability, the fix is validated by re-running the probe, and the next Kata run incorporates the improvement.
+- Finding 1 (Shiken missing from siblingMap) proves that the verifier has blind spots in its own coverage — it was checking 7 skills when 8 existed. The fix-globally principle applies to the verifier itself.
+
+---
 
 ### Shiken — 2026-04-19 (self-target)
 - **Target:** Shiken skill (shiken/SKILL.md) — self-targeting litmus test

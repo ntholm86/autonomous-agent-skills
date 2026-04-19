@@ -95,13 +95,14 @@ foreach ($skill in $skills) {
 # -- Check 3: Cross-reference completeness ------------------------------------
 Write-Host "[3/13] Cross-reference completeness" -ForegroundColor White
 $siblingMap = @{
-    kata    = @('Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Hansei')
-    kaizen  = @('Kata', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Hansei')
-    kaikaku = @('Kata', 'Kaizen', 'Mura', 'Muri', 'Muda', 'Hansei')
-    mura    = @('Kata', 'Kaizen', 'Kaikaku', 'Muri', 'Muda', 'Hansei')
-    muri    = @('Kata', 'Kaizen', 'Kaikaku', 'Mura', 'Muda', 'Hansei')
-    muda    = @('Kata', 'Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Hansei')
-    hansei  = @('Kata', 'Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Muda')
+    kata    = @('Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Hansei', 'Shiken')
+    kaizen  = @('Kata', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Hansei', 'Shiken')
+    kaikaku = @('Kata', 'Kaizen', 'Mura', 'Muri', 'Muda', 'Hansei', 'Shiken')
+    mura    = @('Kata', 'Kaizen', 'Kaikaku', 'Muri', 'Muda', 'Hansei', 'Shiken')
+    muri    = @('Kata', 'Kaizen', 'Kaikaku', 'Mura', 'Muda', 'Hansei', 'Shiken')
+    muda    = @('Kata', 'Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Hansei', 'Shiken')
+    hansei  = @('Kata', 'Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Shiken')
+    shiken  = @('Kata', 'Kaizen', 'Kaikaku', 'Mura', 'Muri', 'Muda', 'Hansei')
 }
 foreach ($skill in $skills) {
     $path = Join-Path $script:suiteRoot "$skill\SKILL.md"
@@ -112,7 +113,7 @@ foreach ($skill in $skills) {
             Fail "$skill/SKILL.md missing bold reference to **$sib**"
         }
     }
-    Pass "$skill references all 6 siblings"
+    Pass "$skill references all 7 siblings"
 }
 
 # -- Check 4: Version alignment -----------------------------------------------

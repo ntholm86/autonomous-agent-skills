@@ -9,6 +9,15 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.33.0] - 2026-04-19
+
+### Fixed
+
+- **verify-suite.ps1 `$siblingMap` now includes Shiken.** Check 3 validates cross-references for all 8 TPS skills (was 7). Each skill checked against 7 siblings (was 6). Pass message updated.
+- **Kaikaku Phase 5 stale reference corrected.** "kaizen Phase 0-3" → "Phases 1-3" — Kaizen has no Phase 0.
+- **project-increment broken semver.md link removed.** `./references/semver.md` never existed; semver rules already inlined in the table.
+- **RUBRIC_V3_PROPOSAL Dim #6 traceability re-absorption removed.** Measurement procedure text no longer partially absorbs the Traceability gap, per GPT-5.4 Finding #4.
+
 ## [1.32.0] - 2026-04-19
 
 ### Fixed
