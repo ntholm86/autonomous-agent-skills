@@ -9,6 +9,18 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.34.0] - 2026-04-19
+
+### Changed
+
+- **Principle 2 (Observable Autonomy): resolution requirement added.** Evidence must exist at multiple resolutions (full transcript, indexed decisions, executive digest) so each observer class can verify at the depth their time budget allows. Self-authored layers must be explicitly marked. Fidelity degradation (verbatim vs. reconstructed) must be stated.
+- **GENBA's role clarified in Principle 2.** GENBA is "one resolution of the trail — a structured digest of improvement runs — not the entire trail."
+- **Dim 8 (Autonomous Reasoning Fidelity) trail integrity test updated.** "From the GENBA trail alone" replaced with multi-resolution, multi-observer test aligned with the P2 refinement. Scoring guidance updated accordingly.
+
+### Added
+
+- **SCORECARD Runs 45-46.** First external target (Kiroku). Kaikaku greenfield + Kaizen polish. Scores N/A (external target, no self-scoring).
+
 ## [1.33.0] - 2026-04-19
 
 ### Fixed

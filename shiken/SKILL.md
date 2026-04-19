@@ -1,6 +1,6 @@
 ---
 name: shiken
-version: 1.33.0
+version: 1.34.0
 description: 'Shiken (試験) — Novelty probe construction for situational discrimination. Builds examination scenarios that distinguish genuine situated reasoning from pattern-matching by exposing the agent to conditions where routine execution fails but interpretation succeeds. Operationalizes the ARF measurement defined in PRINCIPLES.md. Part of the TPS skill family. USE WHEN: test reasoning quality, construct novelty probes, is the agent actually reasoning, ARF measurement, shiken, novelty injection, anti-compliance test, probe construction, distinguish reasoning from pattern-matching, stress test the agent.'
 argument-hint: 'Required: target to probe (a skill, codebase, document, or process). Optional: probe type focus (underspecification, contradiction, distribution shift, scope boundary, adversarial compliance), number of probes (default 3-5)'
 ---
