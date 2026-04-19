@@ -15,7 +15,7 @@ Muda is one of three deviations in the Toyota Production System (alongside Mura 
 
 **The causal chain:** Mura → Muri → Muda. Waste is often the symptom, not the root cause. For root-cause analysis, see Mura and Muri.
 
-**Part of the TPS skill family:** For unevenness detection, see **Mura**. For overburden reduction, see **Muri**. For incremental improvement, see **Kaizen**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For the full treatment, see **Kata**.
+**Part of the TPS skill family:** For unevenness detection, see **Mura**. For overburden reduction, see **Muri**. For incremental improvement, see **Kaizen**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For novelty probes that test reasoning quality, see **Shiken**. For the full treatment, see **Kata**.
 
 **Two types of waste (Shigeo Shingo):**
 - **Type I:** Non-value-adding but currently necessary. Can't be removed yet — flag, minimize, and set a revisit condition.

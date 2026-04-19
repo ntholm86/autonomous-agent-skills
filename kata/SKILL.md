@@ -17,7 +17,7 @@ Toyota Kata is the meta-pattern — the practice of practicing improvement. It e
 
 **Kata is thin.** It does not duplicate the skills — it sequences them. Each phase references the actual skill to run.
 
-**Part of the TPS skill family:** This is the orchestrator. For individual skills: **Muda** (waste), **Mura** (unevenness), **Muri** (overburden), **Kaizen** (incremental improvement), **Kaikaku** (radical redesign), **Hansei** (reflection on the loop itself).
+**Part of the TPS skill family:** This is the orchestrator. For individual skills: **Muda** (waste), **Mura** (unevenness), **Muri** (overburden), **Kaizen** (incremental improvement), **Kaikaku** (radical redesign), **Hansei** (reflection on the loop itself), **Shiken** (novelty probes for reasoning quality).
 
 ## When to Use
 

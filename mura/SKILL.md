@@ -17,7 +17,7 @@ $$\text{Mura (unevenness)} \xrightarrow{\text{causes}} \text{Muri (overburden)} 
 
 Inconsistency forces developers to carry mental models for each variant (overburden), which produces errors, duplication, and abandoned approaches (waste). Fix the unevenness and you often prevent the downstream problems.
 
-**Part of the TPS skill family:** For waste elimination, see **Muda**. For overburden reduction, see **Muri**. For incremental improvement, see **Kaizen**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For the full treatment, see **Kata**.
+**Part of the TPS skill family:** For waste elimination, see **Muda**. For overburden reduction, see **Muri**. For incremental improvement, see **Kaizen**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For novelty probes that test reasoning quality, see **Shiken**. For the full treatment, see **Kata**.
 
 ## When to Use
 

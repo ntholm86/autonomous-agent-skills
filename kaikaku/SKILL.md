@@ -19,7 +19,7 @@ Kaikaku means "radical change." In Toyota's system, it's triggered when kaizen c
 
 Kaizen preserves. Kaikaku replaces. They complement each other — kaikaku creates a new baseline, then kaizen optimizes from there.
 
-**Part of the TPS skill family:** For incremental improvement, see **Kaizen**. For waste elimination, see **Muda**. For unevenness detection, see **Mura**. For overburden reduction, see **Muri**. For reflection on the improvement loop itself, see **Hansei**. For the full diagnostic + treatment cycle, see **Kata**.
+**Part of the TPS skill family:** For incremental improvement, see **Kaizen**. For waste elimination, see **Muda**. For unevenness detection, see **Mura**. For overburden reduction, see **Muri**. For reflection on the improvement loop itself, see **Hansei**. For novelty probes that test reasoning quality, see **Shiken**. For the full diagnostic + treatment cycle, see **Kata**.
 
 ## When to Use
 

@@ -44,7 +44,7 @@ function Test-BareText {
     return ($stripped -match $Pattern)
 }
 
-$skills = @('kata', 'kaizen', 'kaikaku', 'mura', 'muri', 'muda', 'hansei')
+$skills = @('kata', 'kaizen', 'kaikaku', 'mura', 'muri', 'muda', 'hansei', 'shiken')
 
 Write-Host "`n=== TPS Skill Suite - Mechanical Integrity Check ===" -ForegroundColor Cyan
 Write-Host "Suite root: $script:suiteRoot"
@@ -189,7 +189,7 @@ foreach ($skill in $skills) {
         $current[$rel] = (Get-FileHash $abs -Algorithm SHA256).Hash.Substring(0, 16)
     }
 }
-foreach ($ledger in @('GENBA.md', 'SCORECARD.md', 'CHANGELOG.md', 'PRINCIPLES.md', 'STANDARDS.md', 'METRICS_HISTORY.md', 'verify-suite.ps1', 'metrics.ps1')) {
+foreach ($ledger in @('GENBA.md', 'SCORECARD.md', 'CHANGELOG.md', 'PRINCIPLES.md', 'PROBLEM.md', 'STANDARDS.md', 'METRICS_HISTORY.md', 'verify-suite.ps1', 'metrics.ps1')) {
     $abs = Join-Path $script:suiteRoot $ledger
     if (Test-Path $abs) {
         $current[$ledger] = (Get-FileHash $abs -Algorithm SHA256).Hash.Substring(0, 16)

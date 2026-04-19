@@ -13,7 +13,7 @@ One full improvement cycle: audit → rate → challenge blind spots → priorit
 
 Inspired by PDCA (Plan-Do-Check-Act), OODA (Observe-Orient-Decide-Act), and pre-mortem analysis. The philosophy: small, high-leverage changes compound into excellence. The key insight: what you're NOT seeing matters more than what you are.
 
-**Part of the TPS skill family:** Kaizen is the incremental improvement methodology. For pure waste elimination, see **Muda**. For unevenness detection, see **Mura**. For overburden reduction, see **Muri**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For the full diagnostic + treatment cycle, see **Kata**.
+**Part of the TPS skill family:** Kaizen is the incremental improvement methodology. For pure waste elimination, see **Muda**. For unevenness detection, see **Mura**. For overburden reduction, see **Muri**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For novelty probes that test reasoning quality, see **Shiken**. For the full diagnostic + treatment cycle, see **Kata**.
 
 ## When to Use
 

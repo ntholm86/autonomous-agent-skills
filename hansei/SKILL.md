@@ -15,7 +15,7 @@ In Toyota's culture, Hansei is structured self-criticism — looking back honest
 
 **Hansei is not a retrospective.** Software retrospectives are famously weak — they produce action items nobody implements. Hansei is rigorous: it interrogates the trail, names what's been recurring, surfaces what's been silently ignored, and challenges the methodology itself. It is willing to find that the loop has been wrong.
 
-**Part of the TPS skill family:** For improving the artifact, see **Kaizen**. For redesigning the artifact, see **Kaikaku**. For diagnosing the artifact, see **Muda**, **Mura**, **Muri**. For one full diagnostic + treatment cycle, see **Kata**. Hansei improves the loop that runs all of them.
+**Part of the TPS skill family:** For improving the artifact, see **Kaizen**. For redesigning the artifact, see **Kaikaku**. For diagnosing the artifact, see **Muda**, **Mura**, **Muri**. For novelty probes that test reasoning quality, see **Shiken**. For one full diagnostic + treatment cycle, see **Kata**. Hansei improves the loop that runs all of them.
 
 ## When to Use
 

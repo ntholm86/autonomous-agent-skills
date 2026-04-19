@@ -17,7 +17,7 @@ Muri means "unreasonableness; beyond one's power." In Toyota's system, it's aski
 
 **Muri is not about size alone.** A 500-line file doing one focused thing well is not overburdened. A 200-line file doing 7 unrelated things is. The question is always: how many reasons does this have to change?
 
-**Part of the TPS skill family:** For waste elimination, see **Muda**. For unevenness detection, see **Mura**. For incremental improvement, see **Kaizen**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For the full treatment, see **Kata**.
+**Part of the TPS skill family:** For waste elimination, see **Muda**. For unevenness detection, see **Mura**. For incremental improvement, see **Kaizen**. For radical redesign, see **Kaikaku**. For reflection on the improvement loop itself, see **Hansei**. For novelty probes that test reasoning quality, see **Shiken**. For the full treatment, see **Kata**.
 
 ## When to Use
 
