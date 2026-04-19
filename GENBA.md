@@ -2,6 +2,73 @@
 ---
 
 ---
+## Run 43 — 2026-04-19
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | Claude Opus 4.6 |
+| Trigger | "Okay lets run again with the new rubric" |
+| Methodology | Kata → Kaizen |
+
+### 3M Diagnosis Summary
+| Lens | Findings | Critical/High |
+|------|:--------:|:-------------:|
+| Mura | 13 | 6 |
+| Muri | 5 | 2 |
+| Muda | 9 | 4 |
+| Causal chains | 3 | — |
+
+### Findings
+| # | Finding | Lens | Severity | Fixed? | Recurred? |
+|---|---------|------|:--------:|:------:|:---------:|
+| 1 | STANDARDS.md claims "automated degradation alerts" and "trend alerts detect out-of-control conditions" that don't exist in metrics.ps1 | Muda | Critical | Yes | Run 42 |
+| 2 | Kaizen frontmatter description omits Hansei from TPS family listing (35 runs stale) | Mura/Muda | High | Yes | First |
+| 3 | GENBA.md location lookup string has 4 phrasings across 7 skills | Mura | Critical | Yes | Run 29 |
+| 4 | Kata says "Japanese glyphs" while all other skills say "non-ASCII glyphs" | Mura | Critical | Yes | First |
+| 5 | SCORECARD Historical Snapshot describes false convergence without v3-invalidation caveat | Muda | High | Yes | First |
+
+**Recurrence detection:** Finding 1 was identified by the GPT-5.4 review in Run 42 but only documented in the proposal, not fixed in STANDARDS.md. Finding 3 traces to Run 29 which attempted to standardize GENBA location strings but did so incompletely (4 phrasings remained).
+
+### Actions Taken
+- Fixed STANDARDS.md: removed "automated degradation alerts" claim from DMAIC Control; changed OPM from "Meets" to "Partial" with honest description
+- Fixed kaizen/SKILL.md: added "Hansei (reflection)" to TPS family listing in frontmatter
+- Standardized GENBA location string across kaikaku, mura, muri, hansei to match kaizen/muda canonical format
+- Fixed kata/SKILL.md: "Japanese glyphs" → "non-ASCII glyphs" to match all other skills
+- Added v3-invalidation caveat to SCORECARD Historical Snapshot
+
+### v3 Scoring — First Baseline
+| # | Dimension | Score | Key Rationale |
+|---|-----------|:-----:|---------------|
+| 1 | Process Completeness | 9 | All PDCA/DMAIC phases executed with visible artifacts |
+| 2 | Causal Analysis | 8 | 3M framework strong; 17.5% recurrence rate (MODERATE) |
+| 3 | Measurement Validity | 7 | metrics.ps1 exists, reproducible; thresholds unjustified; no Gauge R&R |
+| 4 | Configuration Management | 10 | Strong CM: git, tags, INTEGRITY.json, 13-check verifier |
+| 5 | Cross-Evaluator Reliability | 7 | 7 families (GOOD); inter-rater stdev 0.52 (MODERATE); overlap not measured |
+| 6 | Instruction Clarity | 8 | Portable across 7 families; Mura fixes improve clarity this run |
+| 7 | Convergence Integrity | 5 | Silence counter 0/3; loop has never converged by own definition |
+| 8 | Autonomous Reasoning Fidelity | 8 | Freedom-of-thought and trail-integrity tests both pass; minor prescriptive drift |
+| **Mean** | | **7.75** | |
+
+### Outcome
+- Score: 7.75 (v3 baseline) → 7.75 (v3) (+0.0)
+- First v3 scoring run. Score is in predicted range (7.2-7.9). Largest gap: Convergence Integrity (5) — the loop has never truly converged.
+
+### Regression Check
+| Metric | Prev Run | This Run | Delta | Regressed? |
+|--------|:--------:|:--------:|:-----:|:----------:|
+| verify-suite.ps1 | 0 failures | Pending | — | — |
+| Calibration | FAIR (3G/2M) | Pending | — | — |
+
+### Observations
+- The v3 rubric immediately revealed the Convergence Integrity gap that v1/v2 was blind to — this validates Success Criteria #2 ("v3 exposes ≥2 gaps the v2 rubric was blind to"). The other exposed gap is Measurement Validity (threshold justification, Gauge R&R).
+- Finding 1 (STANDARDS.md stale claims) recurred from Run 42 — the proposal documented the issue but didn't fix the source document. This is a known pattern: documenting a problem is not fixing it.
+- Finding 3 (GENBA location string) recurred from Run 29 — the original fix was applied to 4 skills but missed 3 variants. Reinforces the "fix globally" principle.
+- The v3 baseline of 7.75 means the rubric has ~2.25 points of headroom before any ceiling concern. This is by design.
+
+---
+
+---
 ## Run 42 — 2026-04-19
 
 | Field | Value |

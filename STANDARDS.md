@@ -24,9 +24,9 @@ Created Run 36 to make the alignment explicit and the gaps visible.
 | **Measure** | metrics.ps1 computes 6 objective metrics from ledger data. SCORECARD tracks scores per run. De-anchored start scores provide independent measurement. Rubric v2 defines 10 measurable dimensions | Meets |
 | **Analyze** | 3M diagnostic (Mura/Muri/Muda) with causal chain analysis. Mura-first principle addresses root causes before symptoms. REFLECT phase performs statistical pattern recognition across runs | Exceeds |
 | **Improve** | Kaizen (incremental) and Kaikaku (radical) methodologies with ROI-based prioritization. "Fix globally, not locally" rule prevents partial fixes | Meets |
-| **Control** | METRICS_HISTORY.md tracks metrics over time with trend detection. verify-suite.ps1 (13 mechanical checks) runs after every cycle. INTEGRITY.json file-hash snapshots detect drift. Git tags create immutable baselines | Meets |
+| **Control** | METRICS_HISTORY.md tracks metrics over time. verify-suite.ps1 (13 mechanical checks) runs after every cycle. INTEGRITY.json file-hash snapshots detect drift. Git tags create immutable baselines. Note: automated degradation alerts are not yet implemented — trend detection is manual via snapshot comparison | Meets |
 
-**Assessment:** Full DMAIC coverage. The Analyze phase exceeds Six Sigma's typical root cause analysis by using a structured 3-lens causal framework. The Control phase now includes time-series metric tracking (METRICS_HISTORY.md) with automated degradation alerts. **Meets or exceeds DMAIC.**
+**Assessment:** Full DMAIC coverage. The Analyze phase exceeds Six Sigma's typical root cause analysis by using a structured 3-lens causal framework. The Control phase includes time-series metric tracking (METRICS_HISTORY.md) with manual trend comparison; automated degradation alerts are a future enhancement. **Meets or exceeds DMAIC.**
 
 ---
 
@@ -38,7 +38,7 @@ Created Run 36 to make the alignment explicit and the gaps visible.
 | **Process Quality Assurance (PPQA)** | verify-suite.ps1 (13 checks), metrics.ps1 (6 metrics), INTEGRITY.json (hash snapshots covering ledgers, standard docs, and verification scripts without timestamp-only churn on no-change runs) | L3 | Meets |
 | **Configuration Management (CM)** | Git versioning, annotated tags, CHANGELOG.md (Keep a Changelog format), PERSIST phase after every run, script self-verification, stable no-change integrity baselines | L3 | Meets |
 | **Causal Analysis & Resolution (CAR)** | 3M causal chains (Mura causes Muri causes Muda). GENBA records root causes and whether fixes stuck. Recurrence detection across runs | L5 | Meets |
-| **Organizational Performance Management (OPM)** | METRICS_HISTORY.md tracks quantitative process baselines over time. metrics.ps1 computes statistical indicators. Trend alerts detect out-of-control conditions | L5 | Meets |
+| **Organizational Performance Management (OPM)** | METRICS_HISTORY.md tracks quantitative process baselines over time. metrics.ps1 computes statistical indicators. Trend detection is manual (snapshot comparison); automated alerts are not yet implemented | L5 | Partial |
 | **Decision Analysis & Resolution (DAR)** | ROI-based finding prioritization. Mura-first principle. Kaizen vs Kaikaku selection criteria. Phase 2 CHALLENGE provides structured methodology selection | L3 | Meets |
 | **Quantitative Project Management (QPM)** | SCORECARD trajectory data. metrics.ps1 statistical analysis. Inter-rater agreement measurement. METRICS_HISTORY.md for SPC | L4 | Meets |
 

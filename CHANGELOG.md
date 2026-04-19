@@ -9,6 +9,20 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.32.0] - 2026-04-19
+
+### Fixed
+
+- **STANDARDS.md stale claims corrected (W1).** Removed "automated degradation alerts" from DMAIC Control and "trend alerts detect out-of-control conditions" from CMMI OPM. Both were overstated — `metrics.ps1` does not implement automated alerts. OPM status changed from "Meets" to "Partial."
+- **Kaizen frontmatter now includes Hansei (M1/W3).** The TPS family listing in kaizen/SKILL.md was missing Hansei for 35 runs since it was added at Run 7.
+- **GENBA location string standardized (M3).** 4 variant phrasings across 7 skills reduced to 1 canonical format. Kaikaku, Mura, Muri, and Hansei now match the Kaizen/Muda format. Recurrence from Run 29's incomplete fix.
+- **Kata UTF-8 rule wording aligned (M2).** "Japanese glyphs" → "non-ASCII glyphs" to match all other skills.
+- **Historical Snapshot caveat added (W2).** SCORECARD's Run 13 convergence analysis now notes that the 10.0 plateau was a rubric ceiling, not genuine convergence, per Run 41 Hansei and Rubric v3 Kaikaku.
+
+### Added
+
+- **First v3 baseline score: 7.75.** Scored against 8-dimension standards-anchored rubric. Strongest: Configuration Management (10). Weakest: Convergence Integrity (5).
+
 ## [1.31.0] - 2026-04-19
 
 ### Changed

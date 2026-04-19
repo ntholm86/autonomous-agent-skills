@@ -48,6 +48,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 40 | 2026-04-19 | Claude Opus 4.7 | 10.0 | 10.0 | +0.0 | TPS Skill Suite | Invalidated Run 39 (hallucinated/duplicate run). Added mandatory Prior-run delta check to Kata Phase 1 GRASP (`git log` + CHANGELOG inspection). v1.29.0. |
 | 41 | 2026-04-19 | Claude Opus 4.7 | 10.0 | 10.0 | +0.0 | TPS Skill Suite (loop) | **Hansei run.** 4 meta-findings: hallucination only caught by next model, 9-run score plateau, 33-run-deferred external-target finding, 35 consecutive Kaizen runs. Most important: the loop has only ever validated itself. v1.30.0. |
 | 42 | 2026-04-19 | Claude Opus 4.6 | 10.0 (v2) | 10.0 (v2) | +0.0 | TPS Skill Suite | **Kaikaku: Rubric v3 adopted.** Standards-anchored 8-dimension rubric replaces ad-hoc v1/v2 (10 dims). Cross-model reviewed by GPT-5.4 + Gemini 3.1 Pro Preview. Predicted v3 baseline: ~7.2. v1.31.0. |
+| 43 | 2026-04-19 | Claude Opus 4.6 | 7.75 (v3) | 7.75 (v3) | +0.0 | TPS Skill Suite | **First v3 scoring run.** 5 Kaizen fixes (STANDARDS.md stale claims, Kaizen frontmatter, GENBA location string 4→1 phrasing, Kata UTF-8 wording, Historical Snapshot caveat). v3 baseline: 7.75. Weakest: Convergence Integrity (5). v1.32.0. |
 
 ## Cross-Model Notes
 
@@ -68,6 +69,8 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 ## Historical Snapshot (Through Run 13)
 
 This section was written at an earlier convergence checkpoint (through Run 13). It is preserved for auditability and historical context.
+
+> **Caveat (Run 42):** The 10.0 plateau described below was later identified as a rubric ceiling, not genuine quality convergence. Run 41 Hansei found "the loop has only ever validated itself," and Rubric v3 (adopted Run 42) exposed that the v1/v2 rubric was ad-hoc with no external grounding. The predicted v3 baseline of ~7.2 means the analysis below describes convergence against a self-referential standard. The historical insights about cross-model validation and ensemble blind spots remain valid — the scoring basis does not.
 
 ### How convergence was achieved — the recipe
 
