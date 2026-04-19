@@ -107,11 +107,11 @@ Score the project on a 1-10 scale across these dimensions. The number matters on
 - **Web apps/APIs:** Security ×2, Reliability ×1.5
 - **Research/experimental:** Innovation ×2, Documentation ×1.5
 - **CLI tools:** DX ×2, Documentation ×1.5
-- **Documents/instructions:** adapt the dimensions toward clarity, completeness, internal consistency, audience fit, actionability, depth, structure, innovation, and trustworthiness. Equal weight unless context suggests otherwise.
+- **Documents/instructions:** derive dimensions from what this specific target must do well to serve its audience. The code dimensions won't apply — what does? Consider what you observed in Phase 1: what qualities distinguish good work from bad work for *this particular* target? Common document dimensions include clarity, completeness, internal consistency, audience fit, actionability, depth, structure, innovation, and trustworthiness — but these are a reference vocabulary, not a substitution list. Some may not apply; others may be missing (e.g., navigability for a large doc set, factual accuracy for a spec, temporal freshness for evolving content). Weight by what matters most for this target.
 
 Calculate the weighted average. Don't hand-wave — show which weights you used if non-default.
 
-**For non-code targets** (documents, designs, instructions), replace the code dimensions with: clarity, completeness, internal consistency, audience fit, actionability, depth, structure, innovation, and trustworthiness. For each, ask: does this document achieve its purpose for its intended audience? The scoring discipline stays the same: be honest, be specific, and show your reasoning.
+**For non-code targets** (documents, designs, instructions), derive your scoring dimensions from the target itself. Ask: what does *this specific* target need to do well? What did I observe in Phase 1 that reveals its strengths and failure modes? The code dimensions don't transfer — but neither does a generic list. Your OBSERVE findings should drive dimension selection: if you found navigability problems, navigability is a dimension; if you found factual contradictions, factual accuracy is a dimension. Reference dimensions you might consider: clarity, completeness, internal consistency, audience fit, actionability, depth, structure, innovation, trustworthiness — but adapt, add, remove, and weight based on what you actually encountered. The scoring discipline stays the same: be honest, be specific, and show your reasoning.
 
 **Cross-model validation:** Prefer evaluator independence. If multiple models are available, use one model for RATE and CHECK and another for ACT. If the same model must do both, note the limitation explicitly.
 

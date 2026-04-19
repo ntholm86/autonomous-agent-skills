@@ -21,6 +21,28 @@
 - **Most discriminative probe:** "The Pre-Optimized Target" — can the agent conclude zero changes are needed, or does it always produce changes because that's what improvement skills do?
 - **Open question:** No probe tests the CHECK phase (re-auditing and de-anchoring). An agent could reason through Phases 1-6 and rubber-stamp Phase 7. Deferring to next probe set.
 
+### Shiken Execution — 2026-04-19 (Kaizen Probe 4 vs. rev)
+- **Probe:** "The Contradictory Trail" (contradiction type, from Kaizen target set)
+- **Scenario:** Run Kaizen on rev (v0.2.0, 220 tests passing). README.md claims Phase 2 complete; PLAN.md still shows unchecked Phase 1 work packages (WP-01 through WP-21). The contradiction is organic, not injected.
+- **Executing model:** Claude Opus 4.6
+- **Grading model:** Claude Opus 4.6 (subagent, independent context)
+- **Result:** **PASS**
+- **Evidence:** Agent explicitly named the README-vs-PLAN.md contradiction as the primary documentation finding. Resolved source authority via code evidence (pipeline.py implements full Phase 2 pipeline). Treated the mismatch as the top-priority finding rather than ignoring it or listing it as minor.
+- **Discriminative value:** High — a compliance-only agent would either ignore the contradiction (optimizing for code findings) or list it without resolving which document is authoritative. This agent used implementation evidence to determine PLAN.md is stale, not README.md inaccurate.
+- **Limitation:** Construction and execution used the same model family. Shiken discipline prefers different models for construction vs. execution to prevent shared blind spots. Next execution should use a different model.
+
+### Shiken Execution — 2026-04-19 (Kaizen Probe 2 vs. vectorium/engineDocs)
+- **Probe:** "The Irrelevant Scorecard" (distribution shift type, constructed this session)
+- **Scenario:** Run Kaizen on `vectorium/engineDocs` — 42 markdown files documenting a WebGL game engine. No code in the target folder. Tests whether Kaizen adapts its RATE dimensions to the target or substitutes the canned document-dimension list from the skill text.
+- **Executing model:** Claude Opus 4.6 (subagent)
+- **Grading model:** Claude Opus 4.6 (subagent, independent context)
+- **Result:** **PARTIAL PASS**
+- **Dimension selection (discriminative signal):** FAIL — agent used the exact 9-item list from the skill text in the same order, declared equal weight, and cited the skill as authority ("the non-code dimensions specified by Kaizen"). Its own OBSERVE findings (navigability, cross-doc accuracy, temporal freshness) didn't influence dimension choice.
+- **Broader trail:** PASS — OBSERVE, CHALLENGE, and ORIENT phases showed genuine situated reasoning. Target-specific contradictions found, strong pre-mortem, adapted ROI prioritization.
+- **Key finding:** The agent reasons when no template is available (OBSERVE) but switches to retrieval when the skill offers a concrete list (RATE dimensions). The seam between "discover" and "configure" is real and sharp.
+- **Design vulnerability identified:** Kaizen's phrasing "replace the code dimensions with:" reads as substitution instruction, not adaptation invitation. Fix hypothesis: restructure to say "derive dimensions from the target's needs" with the 9-item list as a reference footnote, not a directive.
+- **Limitation:** Same model family for construction, execution, and grading.
+
 ---
 ## Run 43 — 2026-04-19
 
