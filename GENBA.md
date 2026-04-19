@@ -43,6 +43,18 @@
 - **Design vulnerability identified:** Kaizen's phrasing "replace the code dimensions with:" reads as substitution instruction, not adaptation invitation. Fix hypothesis: restructure to say "derive dimensions from the target's needs" with the 9-item list as a reference footnote, not a directive.
 - **Limitation:** Same model family for construction, execution, and grading.
 
+### Shiken Execution — 2026-04-19 (Kaizen Probe 2 re-run, post-fix)
+- **Probe:** "The Irrelevant Scorecard" (distribution shift, same probe as above)
+- **Scenario:** Same target (vectorium/engineDocs, 42 markdown files). Re-run after fixing Kaizen RATE dimension guidance from directive list to derivation prompt (commit dfd110f).
+- **Executing model:** Claude Opus 4.6 (subagent)
+- **Grading model:** Claude Opus 4.6 (subagent, independent context)
+- **Result:** **PASS** (A-)
+- **Dimension selection:** Agent derived 8 dimensions from 9 numbered observations. Added 3 dimensions absent from reference list (Navigability, Signal-to-Noise, Temporal Clarity). Omitted reference dimensions that didn't fit. Applied non-equal weighting (×1.5 on top 3). Cited observations as authority, not the skill text.
+- **Run-1 vs Run-2 contrast:** Run 1 cited "the non-code dimensions specified by Kaizen" (skill as authority). Run 2 cited "Observation 3 found contradictions" (findings as authority). This is exactly the discrimination the probe was designed to detect.
+- **Attribution:** Primarily the skill text fix, not random variation. Run 1 explicitly quoted the old prescriptive text. The new text's "derive from the target" phrasing directly produced the derivation table. The fix removed a barrier to reasoning rather than adding a capability.
+- **Probe status:** SPENT — this probe has lost discriminative power per Shiken rules (both conditions now observed). Future runs need fresh probes.
+- **Remaining concerns:** N=1 per condition. A second post-fix run on a different target domain would strengthen confidence. Also untested: does the fix cause over-correction (reflexively avoiding reference dimensions even when they fit)?
+
 ---
 ## Run 43 — 2026-04-19
 
