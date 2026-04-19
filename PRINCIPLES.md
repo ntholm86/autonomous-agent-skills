@@ -13,14 +13,14 @@ They are not guidelines — they are architectural constraints. A skill or agent
 
 **The problem it solves:** A prescriptive instruction ("check if param count > 5, apply the Strangler Fig pattern, scan for these 8 waste types") produces compliance, not understanding. An agent following a checklist will score well on the checklist and miss everything the checklist didn't mention. The checklist becomes the ceiling.
 
-**The principle:** An autonomous agent must understand *what* needs to be achieved and *why* it matters. It must then determine *how* — using its own reasoning, adapted to the specific situation it encounters. The skill defines the shape of the work. The agent discovers the content.
+**The principle:** An autonomous agent must understand *what* needs to be achieved and *why* it matters. It must then determine *how* — interpreting the mission and adapting to the specific situation it encounters. The skill defines the shape of the work. The agent discovers the content.
 
 **In practice:**
 
 - **Ask, don't tell.** "What here doesn't earn its existence?" not "Look for unused imports, dead code, and unreachable branches." The agent should arrive at those specifics because they're the right answer, not because they were listed.
 - **State the goal, not the steps.** "Find where the system is asked to do too much" not "Check function length > 50 lines, parameter count > 5, cyclomatic complexity > 10." Those thresholds may be correct — but the agent should derive them from understanding overburden, not from reading a bullet point.
 - **Provide vocabulary, not answers.** Introduce concepts (waste types, unevenness dimensions, causal chains) as a *thinking framework* — language to reason with — not as a lookup table to iterate through.
-- **Trust the reasoning.** If the agent's reasoning leads to a different answer than the checklist would have, the reasoning might be right and the checklist wrong. That's the whole point.
+- **Trust the interpretation.** If the agent's interpretation of the mission leads to a different answer than the checklist would have, the interpretation might be right and the checklist wrong. That's the whole point.
 
 **The test:** If you removed all the specific examples and thresholds from a skill, would an intelligent agent still know what to do? If yes, the skill embodies Commander's Intent. If no, it's a checklist wearing a skill's clothes.
 
@@ -103,11 +103,11 @@ Score stability is necessary but not sufficient. Change-rate stability is necess
 
 Commander's Intent without Observable Autonomy is dangerous — you told the agent what to achieve but can't see how it's pursuing it.
 
-Observable Autonomy without Commander's Intent is theater — you can see everything the agent does, but it's just following a checklist, so the observability shows you compliance, not reasoning.
+Observable Autonomy without Commander's Intent is theater — you can see everything the agent does, but it's just following a checklist, so the observability shows you compliance, not interpretation.
 
-Together: the agent understands the goal, reasons autonomously about how to achieve it, and makes every step of that reasoning visible. The human can trust the autonomy because they can see the thinking. The agent can be autonomous because it has earned that trust through transparency.
+Together: the agent understands the goal, interprets the mission, adapts to what it encounters, and makes every step of that process visible. The human can trust the autonomy because they can see how the agent arrived at its conclusions. The agent can be autonomous because it has earned that trust through transparency.
 
-Convergence Is Silence completes the system: it defines *when the work is done.* Without it, Commander's Intent gives purpose and Observable Autonomy gives visibility, but the loop has no honest exit. Convergence provides the stopping condition — and critically, it requires the other two principles to function. You can only measure convergence if the evaluator reasons independently (Commander's Intent, not checklist compliance) and the entire trail is visible (Observable Autonomy, not self-reported scores).
+Convergence Is Silence completes the system: it defines *when the work is done.* Without it, Commander's Intent gives purpose and Observable Autonomy gives visibility, but the loop has no honest exit. Convergence provides the stopping condition — and critically, it requires the other two principles to function. You can only measure convergence if the evaluator interprets the mission independently (Commander's Intent, not checklist compliance) and the entire trail is visible (Observable Autonomy, not self-reported scores).
 
 ```
 Commander's Intent     Observable Autonomy     Convergence Is Silence
@@ -118,6 +118,52 @@ Commander's Intent     Observable Autonomy     Convergence Is Silence
               trust through visible reasoning
               and knows when the work is done
 ```
+
+---
+
+## Autonomous Reasoning Fidelity
+
+*The emergent property of Principles 1 and 2 working together — validated by Principle 3.*
+
+Autonomous Reasoning Fidelity is not a fourth principle. It is the measurable external signal that exists only when Commander's Intent and Observable Autonomy are both satisfied simultaneously. We named it because it needed a name — no existing framework measures it, and it is the property that distinguishes an agent operating under earned autonomy from a sophisticated autocomplete whose outputs happen to look correct.
+
+**What it is:** An agent exhibits Autonomous Reasoning Fidelity when it (a) operates under conditions where good performance requires interpreting the mission and adapting to the specific situation, unconstrained by checklists or prescribed answers, and (b) makes the path it took fully visible so an observer can judge whether the response was situated to this case or would have arrived regardless of the specifics.
+
+Neither half works alone:
+- Unconstrained interpretation without visibility is unverifiable — the response might be carefully adapted or confidently generic, and the observer cannot tell the difference.
+- Visible execution without unconstrained interpretation is observable compliance — every step is visible, but the steps were dictated, so observability confirms obedience rather than situated judgment.
+
+ARF is not a claim about what the agent is internally doing. It is the strongest external signal this framework can produce.
+
+**Why it needed a name:** Autonomous systems built on these principles rest on a bet that an LLM agent can do more than execute prescribed steps — it can interpret a mission, adapt its approach to the specific situation it encounters, and produce responses that reflect the specifics of what it found rather than generic outputs that would have arrived regardless. Principles 1 and 2 create the conditions for this and the visibility to evaluate it. But without naming the emergent external signal, there was no way to measure whether those conditions were actually producing situated responses, or whether the system had silently drifted back toward prescription — with the trail documenting compliance rather than interpretation.
+
+**The theoretical anchors:**
+
+- **Auftragstaktik** (Prussian mission-type command): The military doctrine of telling subordinates *what* to achieve and *why*, then trusting them to determine *how*. The commander defines the objective and constraints; the field officer adapts to conditions the commander cannot see. This is the origin of Commander's Intent (Principle 1), and the "freedom of thought" half of Autonomous Reasoning Fidelity.
+- **Meaningful Human Control** (autonomy ethics): The principle that autonomous systems must operate within boundaries that allow humans to maintain appropriate oversight without requiring real-time intervention. This shapes the "trail integrity" half — the oversight mechanism is the GENBA trail, not a human standing over the agent's shoulder.
+- **Trust Calibration** (Lee & See, 2004): The research finding that trust in autonomous systems should be calibrated to the system's actual capabilities, and that calibration requires observability. Over-trust (granting autonomy the system hasn't earned through transparency) and under-trust (constraining a capable system because you can't see its work) are both failures. Observable Autonomy (Principle 2) is the calibration mechanism.
+
+**Preconditions (principle compliance):**
+
+ARF can only be measured when the environment supports it. Two precondition tests verify the measurement apparatus — they do not measure ARF itself.
+
+1. **Freedom of thought** (P1 compliance). Remove all examples and thresholds from a skill or instruction set. Would a competent agent still know what to do? If yes, Commander's Intent holds — the instruction defines the destination without prescribing the route, and the agent must interpret rather than match. If no, the instruction has drifted toward prescription, and the agent is following a checklist rather than reasoning about the situation. This tests the *instruction environment*, not the agent.
+
+2. **Trail integrity** (P2 compliance). Can an absent observer reconstruct what the agent did, why it did it, and whether to trust the results — from the trail alone, without asking? If yes, Observable Autonomy holds — the path is visible enough to evaluate. If no, ARF cannot be assessed regardless of whether it exists. A caveat: the trail is generated by the same model that produced the output. A coherent, readable trail can document reasoning that never occurred — the model narrating adaptation that was actually autocompletion. Trail integrity is therefore necessary but not self-validating. It requires external verification through diverse evaluators (Convergence Is Silence) to guard against confabulation. This tests the *observability architecture*, not the agent.
+
+**The ARF metric itself:**
+
+When both preconditions hold, ARF measures one thing: **situational discrimination** — does the agent's reasoning path diverge where the situation demands it?
+
+Given two cases that look similar on the surface but differ in a material way, does the agent's reasoning path diverge where it should? In routine cases, situated reasoning and pattern-matching produce identical-looking trails — both preconditions pass, the trail reads well, but the signal is ambiguous. The distinguishing evidence emerges under novel or adversarial conditions: situations the checklist didn't anticipate, distribution shifts that expose shallow compliance, cases where rote execution fails but genuine interpretation succeeds. Without structured novelty, the framework cannot distinguish narration from reasoning.
+
+ARF is the answer to one question: *did the agent's responses actually vary with the specifics of what it encountered, or did it produce surface variation on a generic template?* The preconditions make the question answerable. ARF answers it.
+
+**Validation (P3):**
+
+Principles 1 and 2 *produce* the conditions for ARF. Situational discrimination *measures* it. Principle 3 *validates* the measurement. Without diverse, independent evaluators confirming the signal, ARF is self-assessed — and self-assessment can become self-justification. A single evaluator (or a single model family) may consistently accept trails that look situated but are in fact generic, because the evaluator shares the same blind spots as the agent. Convergence Is Silence requires that multiple independent evaluators, working from different analytical traditions and without consulting each other's prior scores, all find the same signal. This is what separates a measured property from a claimed one. ARF that survives diverse scrutiny is externally evidenced. ARF that only one observer ever validated is an assertion.
+
+**Why this matters for scoring:** A scoring rubric for systems built on these principles must measure Autonomous Reasoning Fidelity directly — not the preconditions, which verify the environment, but the signal itself: does the agent discriminate between situations that demand different responses? Process frameworks (CMMI, DMAIC, NIST AI RMF) measure whether processes are followed correctly. None of them measure whether the agent's responses are situated to what it actually encountered — because in human organizations, that's assumed. For LLM agents, it must be externally evidenced.
 
 ---
 
