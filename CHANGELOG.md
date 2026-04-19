@@ -9,6 +9,16 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [1.29.0] - 2026-04-19
+
+### Changed
+
+- **Kata Phase 1 GRASP — mandatory prior-run delta check.** `kata/SKILL.md` now requires the agent to run `git log --oneline -5` and read the latest `CHANGELOG.md` entry before diagnosing, so findings already shipped in the prior run cannot be re-claimed as new work. This closes the loophole that produced Run 11 (GPT-4o hallucinated fixes) and Run 39 (Gemini 2.5 Pro re-claimed Run 38's shipped INTEGRITY.json fix).
+
+### Fixed
+
+- **Run 39 invalidated.** Marked as `**Invalidated**` in `SCORECARD.md` and annotated as `STATUS: INVALIDATED` in `GENBA.md` with prose preserved per the Run 11 precedent. The integrity-snapshot fix attributed to Run 39 was already shipped in v1.28.0 / Run 38 and is not re-released here.
+
 ## [1.28.0] - 2026-04-19
 
 ### Changed

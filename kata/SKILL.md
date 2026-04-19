@@ -1,6 +1,6 @@
 ﻿---
 name: kata
-version: 1.28.0
+version: 1.29.0
 description: 'Kata (型) — Full TPS treatment orchestrator. Runs the complete Toyota Production System diagnostic and improvement cycle: diagnose with all 3M lenses (Mura → Muri → Muda in causal order), assess severity to select methodology (Kaizen for incremental, Kaikaku for radical), execute the selected methodology, chronicle results in GENBA.md, and persist to git. The meta-pattern — the routine of improvement itself. USE WHEN: full treatment, kata, TPS, give me everything, full diagnostic, complete analysis, run all lenses, comprehensive improvement, what does this project need.'
 argument-hint: 'Optional: specify target project/module, skip diagnosis if already done ("just run kaizen"), or focus the diagnosis ("only check the API layer")'
 ---
@@ -39,6 +39,8 @@ Toyota Kata is the meta-pattern — the practice of practicing improvement. It e
 ### Phase 1: GRASP — Understand Current Condition
 
 **Pre-run integrity check:** Before diagnosing, if `verify-suite.ps1` is available, run it to confirm the current state is known-good. If it reports failures, fix them first — diagnosing a corrupted or tampered state wastes the entire cycle. If the script is unavailable, proceed but note the limitation.
+
+**Prior-run delta check (mandatory):** Before diagnosing, inspect what the most recent run already accomplished so you don't re-claim its work. Run `git log --oneline -5` from the suite root and read the latest released entry in `CHANGELOG.md`. If the immediately prior GENBA run number is already committed (tag matches), the suite is at a clean checkpoint. If the latest GENBA/SCORECARD entries are *ahead* of git, that uncommitted state is the prior run's incomplete CHRONICLE/PERSIST — it is *not* an invitation to redo that run's work. Findings already shipped in the latest CHANGELOG version must not be reported as new findings; doing so produces a hallucinated/duplicate run (see Run 11 and Run 39 in `GENBA.md` for precedent invalidations).
 
 **Model self-identification (mandatory):** At the start of every run, explicitly state which model is executing the cycle and record the same string in both `GENBA.md` (`| Model | ... |`) and `SCORECARD.md` (Model column). Do not wait for the user to provide model identity.
 
