@@ -57,12 +57,26 @@ Autonomy is a *function* of transparency:
 - Less visibility → trust decays → autonomy must be constrained
 - Zero visibility → zero trust → autonomy must be revoked regardless of competence
 
+**The resolution requirement:** Observability is not binary — it is a function of observer, time budget, and evidence resolution. A trail that exists at only one resolution is observable to one class of observer and opaque to the rest. A 50-page transcript is unobservable to the deployer with 2 minutes; a 1-paragraph summary is unobservable to the regulator with an afternoon.
+
+Evidence must therefore exist at multiple resolutions simultaneously, so that each observer class can verify at the depth their time budget allows:
+
+- **Full evidence** — the complete reasoning exchange (prompts, responses, tool calls, dead ends, reversals). This is the ground truth. An observer with unlimited time can replay the entire sequence.
+- **Indexed evidence** — key decisions, realizations, and turning points highlighted within the full evidence, so an observer with bounded time can navigate to what matters without reading everything.
+- **Digested evidence** — a summary that gives any observer a 60-second understanding of direction, recent decisions, and integrity. Must point to disagreements and reversals, not just outcomes.
+
+A single-resolution trail satisfies one observer at the cost of silently excluding the others. This exclusion violates the principle even when the trail itself is honest — because observability that only one party can consume is not observability, it is the *appearance* of observability.
+
+Where the agent authors its own summary, this must be explicitly marked so observers can discount accordingly. A summary written by the audited party is evidence, but it is not independent evidence.
+
+Where verbatim capture is impossible (e.g., platform limitations prevent transcript export), the trail must explicitly mark its fidelity rather than silently degrading. "Reconstructed from agent memory" and "verbatim tool output" are different trust levels; conflating them is dishonest.
+
 **In practice:**
 
 - **Narrate, don't summarize.** An agent running a skill should produce output as it works — what it's examining, what it's finding, what it's deciding, why. Not a final report after the fact. The human watching the observatory should be able to follow the agent's reasoning in real time.
 - **Show the reasoning, not just the conclusion.** "I removed `utils/helpers.py` because no module imports it and its tests are orphaned" — not just "Removed 1 file." The *why* is what makes the action observable.
 - **Make uncertainty visible.** When the agent isn't sure, it should say so explicitly. "This might be dead code, but I can't trace the dynamic import in `loader.py` — flagging for human review" is more trustworthy than silent confidence.
-- **Record everything in GENBA.md.** The experimental ledger is not optional documentation. It is the proof trail. Every run produces a GENBA entry. Every entry is comparable to the prior entry. The trajectory is visible. This is what makes the self-improvement loop provable.
+- **Record everything in GENBA.md.** The experimental ledger is not optional documentation. It is the proof trail. Every run produces a GENBA entry. Every entry is comparable to the prior entry. The trajectory is visible. This is what makes the self-improvement loop provable. GENBA is one resolution of the trail — a structured digest of improvement runs — not the entire trail. The full reasoning exchange (session transcripts, decision index) is the primary evidence; GENBA indexes and summarizes a specific class of session.
 - **Design for the absent human.** The observatory pattern assumes the human may not be watching right now but will review later. The trail must be legible after the fact, not just during execution. Timestamps, context, reasoning — all durable.
 
 **The test:** If the human stepped away for an hour and came back, could they reconstruct what the agent did, why, and whether to trust the results — from the trail alone, without asking? If yes, the system has Observable Autonomy. If no, the autonomy is unsafe regardless of how good the agent's work was.
