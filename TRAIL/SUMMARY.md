@@ -1,28 +1,33 @@
-# Trail Summary
+﻿# Trail Summary
 
-*Last updated: 2026-04-19 - rebuild-planning session*
+*Last updated: 2026-04-19 - skills-rebuild session*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
 
-**One-line status:** Skills rebuild planned - Kiroku tooling built, measurement framework designed (Tier 1 + Tier 2), rebuild Intent written. Execution pending.
+**One-line status:** Skills v2.0.0 written - 5 skills derived from Principles (down from 8). Tier 1 self-score: 6.875/10. Needs cross-model validation and infrastructure rebuild.
 
 ## Direction
 
-The TPS Skill Suite is being rebuilt from scratch. The system will derive skills from PRINCIPLES.md and PROBLEM.md alone, without copying v1.34.0. Measurement now has two tiers: Skill Quality (existing rubric v3) and Work Quality (5 new output dimensions). The rebuild is the first real test of both Kiroku and the measurement framework.
+The TPS Skill Suite has been rebuilt from PRINCIPLES.md and PROBLEM.md alone. The system determined that 5 skills are needed (Kata, Kaizen, Kaikaku, Hansei, Shiken), down from 8. The three diagnostic lenses (Mura, Muri, Muda) are now vocabulary within Kaizen, not standalone skills. Project-increment was removed as a non-reasoning utility.
 
 ## Recent Decisions
 
-1. **Kiroku tooling is PowerShell scripts + agent protocol** - not a VS Code extension or Python package. Agent captures reasoning; scripts handle mechanical validation.
-2. **Measurement split into Tier 1 (input) and Tier 2 (output)** - Rubric v3 stays as Tier 1. New Tier 2 measures whether work done under the skills actually succeeds. Pass/fail scoring.
-3. **System determines what skills exist, not the human** - number and nature of skills derived from Principles, not prescribed.
-4. **No human edits to skill files** - all changes through Intents, making the audit trail complete.
+1. **Diagnostic lenses are vocabulary, not skills** (DEC-007) - Mura/Muri/Muda absorbed into Kaizen's diagnostic phase as "thinking tools, not a procedure."
+2. **Five skills, not eight** (DEC-008) - Kata, Kaizen, Kaikaku, Hansei, Shiken. The absorbed skills were always invoked through Kata, never independently.
+3. **Vocabulary embedded, not referenced** (DEC-009) - Unevenness/overburden/waste are sections within Kaizen, not external references.
+
+## Self-Evaluation
+
+Tier 1 (Rubric v3): 6.875/10. Strong on Instruction Clarity (9) and ARF (9). Weak on Configuration Management (5) and Cross-Evaluator Reliability (4) - expected at this stage.
+
+Tier 2 (W4 - Observer Satisfaction): Self-assessed Pass. The trail contains reasoning, decisions with alternatives, and honest evaluation. Caveat: self-assessed, requires independent validation.
 
 ## Integrity Notes
 
-- This trail was started mid-session (Kiroku tooling didn't exist at the start). Part 1 decisions are reconstructed.
-- The session file uses `reconstructed` fidelity throughout.
-- The measurement framework is untested - it was designed in the same session as the rebuild planning.
+- All skills written fresh from Principles. v1.34.0 archived but not consulted during writing.
+- Self-evaluation scores are honest but single-model. Dims 4 and 5 will improve mechanically with infrastructure and cross-model validation.
+- The score drop from 7.875 to 6.875 is expected: the new suite lacks infrastructure that the old suite accumulated over 44 runs.
 
 ## Observer Guide
 

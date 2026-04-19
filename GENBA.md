@@ -1,5 +1,52 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 47 — 2026-04-19
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | Claude Opus 4.6 |
+| Trigger | REBUILD_INTENT.md - derive skills from Principles alone |
+| Methodology | Kaikaku (full rebuild) |
+
+### What Was Done
+Skills rebuilt from PRINCIPLES.md + PROBLEM.md. No copy-paste from v1.34.0.
+
+**Structure change:** 8 skills -> 5 skills
+- Kata (orchestrator) - diagnose, decide, execute, record, persist
+- Kaizen (core improvement) - now includes diagnostic vocabulary (unevenness, overburden, waste)
+- Kaikaku (radical redesign evaluation)
+- Hansei (meta-reflection on the loop)
+- Shiken (novelty probes for ARF)
+
+**Removed:** Mura, Muri, Muda (absorbed into Kaizen), Project-increment (utility)
+
+### Key Decisions
+- DEC-007: Diagnostic lenses are vocabulary in Kaizen, not standalone skills
+- DEC-008: Five skills, not eight
+- DEC-009: Vocabulary embedded, not referenced externally
+
+### Tier 1 Self-Evaluation (Rubric v3)
+| Dim | Score | Note |
+|-----|:-----:|------|
+| 1 Process Completeness | 7 | Phases defined; infrastructure not yet updated |
+| 2 Causal Analysis | 8 | Root cause emphasis in Kaizen and Kaikaku |
+| 3 Measurement Validity | 6 | Rubric exists but not referenced by skills |
+| 4 Config Management | 5 | No INTEGRITY.json, CHANGELOG, or tagging yet |
+| 5 Cross-Evaluator Reliability | 4 | Single model so far |
+| 6 Instruction Clarity | 9 | Clear, concise, consistent structure |
+| 7 Convergence Integrity | 7 | P3 honored; no mechanical verifier yet |
+| 8 ARF | 9 | Primary design target - destinations not routes |
+| **Overall** | **6.875** | |
+
+### Tier 2
+- W4 (Observer Satisfaction): Self-assessed Pass (Kiroku trail readable)
+
+### Score Change
+v1.34.0: 7.875 -> v2.0.0: 6.875 (-1.0)
+Drop is in infrastructure dims (4, 5). Skill quality dims (6, 7, 8) are higher.
+
+---
 ## Run 44 — 2026-04-19
 
 | Field | Value |

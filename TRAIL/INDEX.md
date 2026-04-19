@@ -1,6 +1,6 @@
 # Decision Index
 
-*Last updated: 2026-04-19 - rebuild-planning session*
+*Last updated: 2026-04-19 - skills-rebuild session*
 
 ---
 
@@ -64,4 +64,34 @@
 - **Decision:** The system may read v1.34.0 skills to understand what was tried, but must not copy-paste. Each skill freshly reasoned from Principles.
 - **Rationale:** The goal is to test whether fresh reasoning from Principles produces the same, different, or better skills than 44 runs of iterative patching.
 - **Alternatives considered:** Start from v1.34.0 and simplify (incremental, not rebuild), ignore v1.34.0 entirely (loses lessons learned)
+- **Status:** active
+
+### DEC-007: Diagnostic lenses are vocabulary in Kaizen, not standalone skills
+- **Date:** 2026-04-19
+- **Session:** [skills-rebuild](sessions/2026-04-19-skills-rebuild.md)
+- **Fidelity:** reconstructed
+- **Participants:** human, Claude Opus 4.6
+- **Decision:** Mura (unevenness), Muri (overburden), Muda (waste) become diagnostic vocabulary within Kaizen, not separate skills.
+- **Rationale:** P1 says "provide vocabulary, not answers." Making them separate skills fragments a single activity (diagnosis) into three prescribed steps. A competent agent should determine which lens applies, not be told to invoke each in order.
+- **Alternatives considered:** Keep as 3 separate skills (v1.34.0 approach), merge into 1 diagnostic skill separate from Kaizen
+- **Status:** active
+
+### DEC-008: Five skills, not eight
+- **Date:** 2026-04-19
+- **Session:** [skills-rebuild](sessions/2026-04-19-skills-rebuild.md)
+- **Fidelity:** reconstructed
+- **Participants:** human, Claude Opus 4.6
+- **Decision:** Suite reduced to 5 skills (Kata, Kaizen, Kaikaku, Hansei, Shiken). Mura/Muri/Muda absorbed into Kaizen. Project-increment removed (utility, not reasoning).
+- **Rationale:** The 3 diagnostic skills were always invoked through Kata, never independently. Project-increment doesn't embody any Principle.
+- **Alternatives considered:** Keep 8 skills, keep 6, keep 3
+- **Status:** active
+
+### DEC-009: Diagnostic vocabulary embedded in Kaizen, not referenced externally
+- **Date:** 2026-04-19
+- **Session:** [skills-rebuild](sessions/2026-04-19-skills-rebuild.md)
+- **Fidelity:** reconstructed
+- **Participants:** human, Claude Opus 4.6
+- **Decision:** Unevenness/overburden/waste described as sections within Kaizen's Diagnose phase, labeled "thinking tools, not a procedure."
+- **Rationale:** When writing Kaizen, the lenses emerged as natural sections. This is the Commander's Intent test: an agent would know to look for these without being told to invoke separate skills.
+- **Alternatives considered:** Reference external directories as supplementary reading, include extended examples
 - **Status:** active
