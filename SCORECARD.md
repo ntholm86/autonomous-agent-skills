@@ -57,6 +57,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 49 | 2026-04-20 | GPT-5.4 xhigh | N/A | N/A | N/A | TPS Skill Suite | **Kaizen.** Canonicalized trail routing by target repo so direct chat work and Kata runs share `TARGET_REPO/TRAIL/`; migrated the live suite ledger to `TRAIL/GENBA.md` and updated verifier/metrics to match. |
 | 50 | 2026-04-20 | Claude Opus 4.6 | N/A | N/A | N/A | TPS Skill Suite | **Kaizen.** Added root README.md (entry point for newcomers). Archived 7 journey documents to v1_archive/. Root files 17→10. v2.2.0. |
 | 51 | 2026-04-20 | Claude Opus 4.6 | 7.625 (v3) | 7.875 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** First scored run with measurement protocol. Fixed metrics.ps1 parser (regex→split, 11 silently-dropped rows recovered, 0 POOR metrics). SCORECARD version v2.1.0→v2.2.0. Dims 3,4 improved. |
+| 52 | 2026-04-20 | Claude Opus 4.6 | 7.875 (v3) | 8.125 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** Focused on weak dims. Justified metrics thresholds (CMMI/ICC/Six Sigma anchors). Added verify-suite Check 14 (score/artifact correlation for P3). Cleaned METRICS_HISTORY. Dims 3,7 improved. |
 
 ## Cross-Model Notes
 
@@ -177,7 +178,7 @@ Adopted Run 42 (2026-04-19). Standards-anchored 8-dimension rubric. Full rationa
 - 0-3: heavily prescriptive or poorly observable; autonomy not trustworthy
 
 **Explicit non-goals** (removed dimensions with documented rationale):
-- **Formal Traceability** (CMMI L5): Out of scored scope. 3 principles and 7 skills do not require a formal matrix. Acknowledged gap against CMMI L5.
+- **Formal Traceability** (CMMI L5): Out of scored scope. 3 principles and 6 skills do not require a formal matrix. Acknowledged gap against CMMI L5.
 - **Risk Governance** (NIST AI RMF): No production deployment, no user-safety risk. Quality risks caught by Convergence Integrity (#7) and verifier.
 - **Innovation**: No quality framework measures novelty. Valuable but unmeasurable by standards. Kept in v1 Internal Quality appendix.
 

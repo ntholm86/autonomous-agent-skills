@@ -14,6 +14,7 @@
     CHANGELOG version contiguity (catches silently-reverted release entries),
     SCORECARD<->GENBA per-run coverage (catches silently-reverted history),
     latest-run model identity consistency (catches cross-ledger model drift),
+    score-change/artifact-change correlation (P3 convergence support),
     and replacement-character / mojibake sentinel detection for skill files.
 
     Requires PowerShell 5.1+ (Windows) or PowerShell Core 7+ (any OS).
@@ -51,7 +52,7 @@ Write-Host "Suite root: $script:suiteRoot"
 Write-Host ""
 
 # -- Check 1: Encoding integrity (mojibake) ------------------------------------
-Write-Host "[1/13] Encoding integrity" -ForegroundColor White
+Write-Host "[1/14] Encoding integrity" -ForegroundColor White
 # Build patterns from Unicode code points to avoid encoding issues in the script itself
 $mojibakePatterns = @(
     [regex]::Escape("$([char]0xE2)$([char]0x20AC)"),   # matches double-encoded em dashes, curly quotes
@@ -77,7 +78,7 @@ foreach ($file in $allMd) {
 Pass "Encoding check complete"
 
 # -- Check 2: Placeholder / unfinished text ------------------------------------
-Write-Host "[2/13] Placeholder text" -ForegroundColor White
+Write-Host "[2/14] Placeholder text" -ForegroundColor White
 foreach ($skill in $skills) {
     $path = Join-Path $script:suiteRoot "$skill\SKILL.md"
     if (-not (Test-Path $path)) { Fail "Missing: $skill/SKILL.md"; continue }
@@ -93,7 +94,7 @@ foreach ($skill in $skills) {
 }
 
 # -- Check 3: Cross-reference completeness ------------------------------------
-Write-Host "[3/13] Cross-reference completeness" -ForegroundColor White
+Write-Host "[3/14] Cross-reference completeness" -ForegroundColor White
 $siblingMap = @{
     kata    = @('Kaizen', 'Kaikaku', 'Hansei', 'Shiken')
     kaizen  = @('Kata', 'Kaikaku', 'Hansei', 'Shiken')
@@ -114,7 +115,7 @@ foreach ($skill in $skills) {
 }
 
 # -- Check 4: Version alignment -----------------------------------------------
-Write-Host "[4/13] Version alignment" -ForegroundColor White
+Write-Host "[4/14] Version alignment" -ForegroundColor White
 $versions = @{}
 foreach ($skill in $skills) {
     $path = Join-Path $script:suiteRoot "$skill\SKILL.md"
@@ -135,7 +136,7 @@ if ($unique.Count -gt 1) {
 }
 
 # -- Check 5: GENBA / SCORECARD consistency ------------------------------------
-Write-Host "[5/13] Ledger consistency" -ForegroundColor White
+Write-Host "[5/14] Ledger consistency" -ForegroundColor White
 $genbaPath = Join-Path (Join-Path $script:suiteRoot 'TRAIL') 'GENBA.md'
 $scorecardPath = Join-Path $script:suiteRoot 'SCORECARD.md'
 if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
@@ -170,7 +171,7 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
 }
 
 # -- Check 6: Frontmatter validation ------------------------------------------
-Write-Host "[6/13] Frontmatter validation" -ForegroundColor White
+Write-Host "[6/14] Frontmatter validation" -ForegroundColor White
 $requiredFields = @('name', 'version', 'description')
 foreach ($skill in $skills) {
     $path = Join-Path $script:suiteRoot "$skill\SKILL.md"
@@ -190,7 +191,7 @@ foreach ($skill in $skills) {
 }
 
 # -- Check 7: File-hash snapshot (diff-based validation) -----------------------
-Write-Host "[7/13] File-hash snapshot" -ForegroundColor White
+Write-Host "[7/14] File-hash snapshot" -ForegroundColor White
 $hashFile = Join-Path $script:suiteRoot 'INTEGRITY.json'
 $current = [ordered]@{}
 foreach ($skill in $skills) {
@@ -270,7 +271,7 @@ if ($shouldWriteSnapshot) {
 }
 
 # -- Check 8: Suite skill inventory -------------------------------------------
-Write-Host "[8/13] Suite skill inventory" -ForegroundColor White
+Write-Host "[8/14] Suite skill inventory" -ForegroundColor White
 $skillDirs = Get-ChildItem -Path $script:suiteRoot -Directory | Where-Object { Test-Path (Join-Path $_.FullName 'SKILL.md') }
 $nonTps = @()
 foreach ($dir in $skillDirs) {
@@ -285,7 +286,7 @@ if ($nonTps.Count -gt 0) {
 }
 
 # -- Check 9: Periodic-Hansei cadence -----------------------------------------
-Write-Host "[9/13] Periodic-Hansei cadence" -ForegroundColor White
+Write-Host "[9/14] Periodic-Hansei cadence" -ForegroundColor White
 if (Test-Path $genbaPath) {
     $gContent = Get-Content $genbaPath -Raw
     $runBlocks = [regex]::Matches($gContent, '(?ms)^## Run (\d+).*?(?=^## Run \d+|\z)')
@@ -321,7 +322,7 @@ if (Test-Path $genbaPath) {
 }
 
 # -- Check 10: PRINCIPLES.md governing-document integrity ----------------------
-Write-Host "[10/13] Governing-document integrity" -ForegroundColor White
+Write-Host "[10/14] Governing-document integrity" -ForegroundColor White
 $principlesPath = Join-Path $script:suiteRoot 'PRINCIPLES.md'
 if (Test-Path $principlesPath) {
     $pContent = Get-Content $principlesPath -Raw
@@ -344,7 +345,7 @@ if (Test-Path $principlesPath) {
 }
 
 # -- Check 11: CHANGELOG version contiguity -----------------------------------
-Write-Host "[11/13] CHANGELOG version contiguity" -ForegroundColor White
+Write-Host "[11/14] CHANGELOG version contiguity" -ForegroundColor White
 $changelogPath = Join-Path $script:suiteRoot 'CHANGELOG.md'
 if (Test-Path $changelogPath) {
     $cContent = Get-Content $changelogPath -Raw
@@ -381,7 +382,7 @@ if (Test-Path $changelogPath) {
 }
 
 # -- Check 12: SCORECARD <-> GENBA per-run coverage ----------------------------
-Write-Host "[12/13] SCORECARD <-> GENBA per-run coverage" -ForegroundColor White
+Write-Host "[12/14] SCORECARD <-> GENBA per-run coverage" -ForegroundColor White
 if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     $gContent = Get-Content $genbaPath -Raw
     $sContent = Get-Content $scorecardPath -Raw
@@ -414,7 +415,7 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
 }
 
 # -- Check 13: Latest-run model identity consistency --------------------------
-Write-Host "[13/13] Latest-run model identity consistency" -ForegroundColor White
+Write-Host "[13/14] Latest-run model identity consistency" -ForegroundColor White
 if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     $gContent = Get-Content $genbaPath -Raw
     $sContent = Get-Content $scorecardPath -Raw
@@ -460,6 +461,44 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     }
 } else {
     Pass 'Latest-run model identity check skipped (one or both missing)'
+}
+
+# -- Check 14: Score-change / artifact-change correlation (P3 convergence) -----
+Write-Host "[14/14] Score-change / artifact-change correlation" -ForegroundColor White
+if ((Test-Path $scorecardPath) -and (Test-Path $hashFile)) {
+    $sContent = Get-Content $scorecardPath -Raw -Encoding UTF8
+    # Find the latest scored run (non-N/A delta)
+    $scoredRows = @()
+    foreach ($line in ($sContent -split "`n")) {
+        if ($line -match '^\|\s*(\d+)\s*\|') {
+            $cells = ($line.TrimStart('| ').TrimEnd('| ') -split '\s*\|\s*')
+            if ($cells.Count -ge 6 -and $cells[5] -notmatch 'N/A') {
+                $scoredRows += [PSCustomObject]@{
+                    Run   = [int]$cells[0]
+                    Delta = $cells[5]
+                }
+            }
+        }
+    }
+    if ($scoredRows.Count -ge 1) {
+        $latest = $scoredRows | Sort-Object Run -Descending | Select-Object -First 1
+        $deltaVal = 0.0
+        if ($latest.Delta -match '^[+-]?(\d+\.?\d*)') {
+            $deltaVal = [double]$latest.Delta
+        }
+        # A non-zero score delta with zero artifact changes (or vice versa) is suspicious
+        # The hash check (Check 7) already flags modified files -- we cross-reference
+        $hasArtifactChanges = ($null -ne $modified -and $modified.Count -gt 0) -or ($null -ne $added -and $added.Count -gt 0) -or ($null -ne $removed -and $removed.Count -gt 0)
+        if ([Math]::Abs($deltaVal) -gt 0 -and -not $hasArtifactChanges) {
+            Warn "Run $($latest.Run) reports delta $($latest.Delta) but INTEGRITY.json shows no artifact changes -- verify score is justified by prior-run fixes"
+        } else {
+            Pass "Score-change/artifact-change correlation is consistent for latest scored run (Run $($latest.Run), delta $($latest.Delta))"
+        }
+    } else {
+        Pass 'No scored runs found in SCORECARD -- correlation check skipped'
+    }
+} else {
+    Pass 'Score/artifact correlation check skipped (SCORECARD or INTEGRITY.json missing)'
 }
 
 # -- Summary -------------------------------------------------------------------

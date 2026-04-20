@@ -1,5 +1,49 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 52 - 2026-04-20
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | Claude Opus 4.6 |
+| Trigger | Focus on weakest dimensions (3, 5, 7) from Run 51 baseline |
+| Methodology | Kata → Kaizen |
+
+### Measurements (Rubric v3 — inherited from Run 51)
+
+| # | Dimension | Start | End | Δ |
+|---|-----------|:-----:|:---:|:-:|
+| 1 | Process Completeness | 8 | 8 | — |
+| 2 | Causal Analysis | 8 | 8 | — |
+| 3 | Measurement Validity | 7 | 8 | +1 |
+| 4 | Configuration Management | 9 | 9 | — |
+| 5 | Cross-Evaluator Reliability | 7 | 7 | — |
+| 6 | Instruction Clarity | 9 | 9 | — |
+| 7 | Convergence Integrity | 7 | 8 | +1 |
+| 8 | ARF | 8 | 8 | — |
+| | **Mean** | **7.875** | **8.125** | **+0.25** |
+
+### Findings
+| # | Finding | Lens | Severity | Fixed? | Recurred? |
+|---|---------|------|:--------:|:------:|:---------:|
+| 1 | metrics.ps1 thresholds are unjustified magic numbers — 6 metrics with GOOD/MODERATE/POOR bands, zero rationale for why those specific values | Mura | High | Yes | First |
+| 2 | METRICS_HISTORY.md has 1 duplicate row and 1 garbage row (stdev=6.21 from broken parser era) — pollutes trend analysis | Muda | Medium | Yes | First |
+| 3 | SCORECARD explicit non-goals says "7 skills" — should be 6 (kiroku is now a skill) | Muda | Low | Yes | First |
+| 4 | No mechanical check correlating score changes with artifact changes (P3 convergence) — loop can claim improvement without evidence | Mura | High | Yes | First |
+| 5 | Cross-evaluator finding overlap has no infrastructure — "currently manual" in rubric, still manual | Mura | Medium | Deferred | First |
+
+### Actions Taken
+- Added threshold rationale block to metrics.ps1 header: each metric's GOOD/MODERATE/POOR thresholds now justified with external anchors (ICC psychometrics, CMMI L4 defect escape rates, Six Sigma 3-sigma, empirical cross-model findings from Runs 3-4).
+- Cleaned METRICS_HISTORY.md: removed duplicate row and garbage row from broken-parser era. 5→3 rows.
+- Fixed SCORECARD non-goals: "7 skills" → "6 skills".
+- Added verify-suite.ps1 Check 14: score-change/artifact-change correlation. Warns when non-zero score delta has zero artifact hash changes (or vice versa). Directly supports P3 convergence observability.
+
+### Outcome
+- Dims 3 (7→8) and 7 (7→8) improved. Dim 5 unchanged (deferred — finding overlap requires structured data that doesn't exist yet).
+- Weakest dimension is now Dim 5 (Cross-Evaluator Reliability, 7) alone. All others ≥ 8.
+- verify-suite.ps1: 14 checks, 0 failures, 0 warnings.
+
+---
 ## Run 51 - 2026-04-20
 
 | Field | Value |

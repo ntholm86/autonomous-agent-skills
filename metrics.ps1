@@ -15,6 +15,38 @@
       5. Model diversity index   -- how many distinct model families have participated?
       6. Fix durability          -- what fraction of runs produced lasting improvements?
 
+    Threshold rationale (CMMI QPM L4 -- operationally defined):
+      Agreement (stdev of de-anchored start scores):
+        GOOD <= 0.5  : on a 1-10 scale, 0.5 stdev means ~95% of scores fall
+                       within 1 point of the mean. Comparable to inter-rater
+                       reliability thresholds in psychometrics (ICC > 0.75).
+        MODERATE <= 1.0 : evaluators disagree by up to 2 points -- actionable
+                          but not disqualifying.
+        POOR > 1.0   : >2-point spread suggests evaluators are measuring
+                        different things or anchoring to different baselines.
+      Recurrence rate:
+        GOOD <= 10%  : comparable to software defect escape rates in CMMI L4
+                       organizations. Most fixes stick.
+        MODERATE <= 25% : 1 in 4 fixes fails -- root causes may be structural.
+        POOR > 25%   : fixes are cosmetic, not causal.
+      Invalidation rate:
+        GOOD <= 5%   : <1 in 20 runs produces unusable output. Comparable to
+                       manufacturing defect rates at Six Sigma 3-sigma level.
+        MODERATE <= 15% : occasional tool/model failure, manageable.
+        POOR > 15%   : the evaluation process itself is unreliable.
+      Regression rate:
+        GOOD <= 5%   : same threshold as invalidation -- improvements should
+                       be at least as durable as the process is valid.
+        MODERATE <= 15% : some backsliding, often from rubric changes.
+        POOR > 15%   : the loop is not locking in gains.
+      Model diversity:
+        GOOD >= 5    : enough families to surface family-specific blind spots.
+                       Based on empirical finding that 3-4 families still miss
+                       defects (Runs 3-4 showed different models find different
+                       defects at the same score).
+        MODERATE >= 3 : minimum for meaningful cross-validation.
+        POOR < 3     : effectively single-evaluator despite multiple runs.
+
     Requires PowerShell 5.1+ (Windows) or PowerShell Core 7+ (any OS).
 .EXAMPLE
     .\metrics.ps1
