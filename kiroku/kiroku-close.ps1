@@ -68,7 +68,7 @@ $timestamp = Get-Date -Format "yyyy-MM-ddTHH:mm:ssK"
 
 # Update session metadata
 $content = [System.IO.File]::ReadAllText($SessionFile, [System.Text.Encoding]::UTF8)
-$content = $content -replace 'status:\s*in-progress', "status: completed`nclosed: $timestamp"
+$content = $content -replace 'status:\s*in-progress', "status: closed`nclosed: $timestamp"
 [System.IO.File]::WriteAllText($SessionFile, $content, [System.Text.Encoding]::UTF8)
 
 Write-Host "Session closed: $(Split-Path $SessionFile -Leaf)"

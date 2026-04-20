@@ -93,12 +93,14 @@ Other skills may add their own artifacts to `TRAIL/` (e.g., Kata adds `GENBA.md`
 
 ## When to use this
 
-Every session where substantive work happens on a target. If the work produces decisions, changes, or findings, it produces a trail. No run is invisible.
+Every session where substantive work happens. If the work produces decisions, changes, or findings, it produces a trail. No session is invisible.
 
-This includes:
-- Improvement runs on target projects (kata, kaizen, kaikaku)
+This includes any autonomous work:
+- Software development, refactoring, bug fixes
 - Design conversations that produce architectural decisions
-- Reflections that change the improvement process itself
+- Reviews, audits, investigations
+- Planning sessions, hiring discussions, legal reviews
+- Improvement cycles (kata, kaizen, kaikaku) — these add their own artifacts to TRAIL/
 
 ## Target resolution
 

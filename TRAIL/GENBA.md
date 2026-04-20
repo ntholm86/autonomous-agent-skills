@@ -1,5 +1,35 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 51 - 2026-04-20
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (kiroku) |
+| Model | Claude Opus 4.6 |
+| Trigger | Kata run on kiroku after v2.1.0 GENBA separation — consistency check |
+| Methodology | Kata → Kaizen (consistency fixes) |
+
+### Findings
+- README template in kiroku-start.ps1 still referenced GENBA.md (contradicts v2.1.0 separation)
+- kiroku-close.ps1 normal path wrote `status: completed` while -All path wrote `status: closed`
+- SKILL.md "When to use" examples were Kata-centric, not domain-agnostic
+- GENBA glossary entry in README template was dead reference
+
+### Actions
+- Removed GENBA from README template (table + file descriptions + glossary)
+- Normalized kiroku-close.ps1 to `status: closed` for both normal and -All paths
+- Broadened "When to use" with domain-agnostic examples (software dev, reviews, planning, legal)
+- Updated SUMMARY.md and GENBA.md
+
+### Verification
+- kiroku-validate: 0 failures, 1 warning (4 historical sparse rationale — pre-existing)
+- Confirmed `status: closed` on new session file
+- Confirmed zero GENBA references in kiroku-start.ps1
+
+### Assessment
+Kiroku is now fully consistent with v2.1.0 domain-agnostic design. No GENBA leak into generated artifacts.
+
+---
 ## Run 50 - 2026-04-20
 
 | Field | Value |

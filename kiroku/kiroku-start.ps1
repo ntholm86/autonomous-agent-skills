@@ -51,16 +51,14 @@ This directory contains the complete audit trail for autonomous agent operations
 | Time budget | Start here |
 |---|---|
 | 30 seconds | **SUMMARY.md** - direction, recent decisions, current state |
-| 5 minutes | **GENBA.md** - per-run evidence: what was found, what was done, what changed |
 | 15 minutes | **INDEX.md** - every decision with rationale, linked to the session that produced it |
 | Full review | **sessions/** - complete reasoning transcripts |
 
 ## What each file is
 
-- **SUMMARY.md** - Cross-run executive digest. Updated after each run. Answers: *where is this project headed?*
-- **GENBA.md** - Run ledger. One entry per autonomous operation, newest first. Answers: *what happened in each run?*
+- **SUMMARY.md** - Executive digest. Updated after each session. Answers: *where is this headed?*
 - **INDEX.md** - Decision index (auto-generated). Every ``[!DECISION]`` from sessions, extracted with rationale. Answers: *what was decided and why?*
-- **sessions/** - Full session transcripts. The ground truth. Answers: *what was the agent's complete reasoning?*
+- **sessions/** - Full session transcripts. The ground truth. Answers: *what was the complete reasoning?*
 
 ## Glossary
 
@@ -68,8 +66,6 @@ This directory contains the complete audit trail for autonomous agent operations
 - **Kaizen** - Incremental improvement. The target's structure is sound; specific things need fixing.
 - **Kaikaku** - Radical redesign. The target's structure cannot reach its goals through incremental changes.
 - **Hansei** - Reflection on the improvement loop itself, not the target.
-- **GENBA** - The place where actual work happens (Japanese: the real place). Here: the ledger of what actually occurred.
-
 ## Fidelity levels
 
 Session transcripts are marked with a fidelity level:
