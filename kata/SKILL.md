@@ -70,6 +70,8 @@ The `-Project` parameter determines where `TRAIL/` lives — always in the targe
 
 If direct VS Code chat work and Kata both act on the same repository, they append to the same `TARGET_REPO/TRAIL/`. The trigger differs; the trail does not.
 
+**Pre-flight CM check.** Before modifying files, verify the latest GENBA entry's claims: are the changes it reported actually present? This catches inter-run CM drift (insertions, reverts, or formatting changes that occurred between sessions). If drift is found, record it as a finding before proceeding — the drift itself may be the highest-leverage fix.
+
 Invoke the selected skill. It does the work. During execution, mark decisions, realizations, and reversals in the session transcript.
 
 After execution, close the session:
@@ -122,4 +124,13 @@ When these conditions are met, record the convergence and stop. Do not manufactu
 
 ## Periodic Hansei
 
-After every 10 runs on the same target, invoke Hansei regardless of findings. The loop must examine itself.
+Hansei is triggered by signals, not by fixed cadence. Invoke Hansei when any of these conditions hold:
+
+1. **Recurring findings:** 3+ consecutive Kaizen runs produce findings in the same defect class (same root cause wearing different symptoms).
+2. **Sustained plateau:** 3+ consecutive zero-delta runs without convergence being declared (the loop is running but not moving).
+3. **Methodology doubt:** The evaluator suspects the rubric, measurements, or diagnostic approach is measuring the wrong things.
+4. **Explicit human request:** The human asks for reflection.
+
+The verifier (`verify-suite.ps1` Check 9) monitors signal 2 (sustained plateau via SCORECARD deltas). Signals 1, 3, and 4 are judgment-based — the evaluator or human must recognize them.
+
+**What this replaces:** Prior versions used a fixed cadence (every N runs). Cadence-driven Hansei risks compliance-shaped reflection — producing bullets to satisfy a periodic rule rather than reflecting because there is something to reflect on. Signal-driven Hansei fires when reflection has a purpose.

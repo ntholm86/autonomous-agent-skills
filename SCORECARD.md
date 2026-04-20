@@ -66,6 +66,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 58 | 2026-04-20 | Claude Sonnet 4.6 | 8.375 (v3) | 8.4375 (v3) | +0.0625 | TPS Skill Suite | **Kaizen.** Removed 3 orphan SCORECARD rows that escaped all 14 verifier checks. Completed 7-run CHANGELOG gap and released v2.3.0. D4 improved. |
 | 59 | 2026-04-20 | Claude Sonnet 4.7 | 8.4375 (v3) | 8.6875 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** Added metrics.ps1 Metric 7 (computed P3 silence counter) — convergence is now derivable from SCORECARD data instead of self-asserted. Tightened Kata Convergence wording to mirror PRINCIPLES §3. D3, D6, D7 improved. |
 | 60 | 2026-04-20 | Claude Sonnet 4.7 | 8.6875 (v3) | 8.6875 (v3) | +0.0 | TPS Skill Suite (loop) | **Hansei.** Periodic reflection (verifier-cadenced). 4 new findings: incentive structure incompatible with stopping condition; inter-run CM drift now structural pattern (Run 54 F#2 returned); external-target finding 19 runs deferred (Run 41 F#3 still open); cadence-driven Hansei risks compliance shape. Most Important Finding unchanged from Runs 41/54. Recommendations: silence test (Run 61), external target (Run 62), restructure Hansei trigger. |
+| 61 | 2026-04-20 | Claude Sonnet 4.7 | 8.6875 (v3) | 8.9375 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** Addressed 3 of 4 Hansei Run 60 findings: (1) explicit "silence is valid" guidance in Kaizen Diagnose + Self-Evaluate; (2) pre-flight CM check in Kata Execute; (3) signal-based Hansei trigger replacing fixed cadence in Kata + verify-suite Check 9. D4, D6, D7 improved. |
 
 ## Dimension Trajectory (Rubric v3)
 
@@ -84,6 +85,7 @@ Per-dimension end-of-run scores for all v3-scored runs. Shows which dimensions d
 | 57 | 8 | 8 | 8 | 9 | 8 | 9 | 8 | 9 | 8.375 | v3 + measurement protocol |
 | 58 | 8 | 8 | 8 | 9.5 | 8 | 9 | 8 | 9 | 8.4375 | v3 + measurement protocol |
 | 59 | 8 | 8 | 8.5 | 9.5 | 8 | 9.5 | 9 | 9 | 8.6875 | v3 + measurement protocol |
+| 61 | 8 | 8 | 8.5 | 10 | 8 | 10 | 10 | 9 | 8.9375 | v3 + measurement protocol |
 
 **Key:**
 - **D1-D8** — Rubric v3 dimensions (full names in Scoring Rubric v3 below).
@@ -105,6 +107,7 @@ Dimension scores are the **end-of-run** state (post-improvement). For start/end/
 - Run 58 Claude Sonnet 4.6: Found 3 orphan main-run-table rows in SCORECARD that had escaped all 14 mechanical checks (parsers stop at `## Dimension Trajectory` — defect lived below that boundary). Also surfaced 7-run CHANGELOG gap since v2.2.0. Both were structural CM defects, not reasoning failures. Released v2.3.0.
 - Run 59 Claude Sonnet 4.7: Found that the P3 silence counter was self-narrated text rather than computed from data. Added Metric 7 to `metrics.ps1` to derive the counter mechanically (chain length + distinct families + drift detection). D7 (Convergence Integrity) becomes mechanically grounded for the first time.
 - Run 60 Claude Sonnet 4.7 (Hansei): Periodic loop reflection. Surfaced that the loop's incentive structure (every Kaizen rewarded for finding things) is structurally incompatible with its stopping condition (zero artifact changes). Run 41's external-target finding now 19 runs deferred — same Most Important Finding as Runs 41 and 54 in new framing. Recommendations queued for Runs 61-62: silence test, then external target.
+- Run 61 Claude Sonnet 4.7: Addressed 3 of 4 Hansei Run 60 structural findings. Added explicit "silence is valid" guidance to Kaizen (F#1). Restructured Hansei trigger from fixed cadence to signal-based in Kata and verify-suite Check 9 (F#4). Added pre-flight CM verification to Kata Execute (F#2). D4 reaches 10 (CM now has proactive + reactive coverage); D6 reaches 10 (Kaizen silence path explicit); D7 reaches 10 (convergence has both measurement and methodology support).
 - The trajectory is durable on the run table above. Future runs append a row there with model identity, score delta, and a one-line reason the score moved.
 
 ## Current Status
@@ -113,7 +116,7 @@ Dimension scores are the **end-of-run** state (post-improvement). For start/end/
 - The current live release is **v2.3.0**. Run 47 rebuilt the suite (v2.0.0); Run 48 repaired shipped defects (v2.0.1); subsequent sessions rewrote kiroku principle-first and separated GENBA ownership (v2.1.0); Run 50 added README, archived journey docs, and implemented context-derived measurement protocol (v2.2.0); Run 58 completed the accumulated CHANGELOG for Runs 51–57 and released v2.3.0.
 - **Scoring uses Rubric v3 (adopted Run 42) for all runs from Run 42 forward.** Runs 17-41 used Rubric v1/v2 (10 dimensions). Pre-v1 scores used an implicit narrower basis. v3 scores are not directly comparable to v1/v2 scores — a v3 baseline of ~7.2 is expected and by design (see RUBRIC_V3_PROPOSAL.md).
 - v1/v2 scores are preserved unchanged in the run table for auditability.
-- Principle 3 silence counter: 1/3 (computed by `metrics.ps1` Metric 7 — Run 60 Hansei produced +0.0 delta and now anchors a silent chain of length 1, by Claude Sonnet 4.7). **Caveat surfaced by Run 60 Hansei F#1:** the current definition counts any zero-delta run (including Hansei) as silent, so the chain can advance through methodology choice rather than evidence of convergence. Run 61 (silence test) is the deliberate test of whether this metric can fire on a *Kaizen* run that finds nothing actionable. See PRINCIPLES.md §3.
+- Principle 3 silence counter: 0/3 (reset by Run 61 artifact changes — silence chain from Run 60 broken). See PRINCIPLES.md §3 for the convergence definition. **Note:** Run 60 Hansei F#1 identified that the silence counter can advance through Hansei zero-deltas but resets on the Kaizen runs that follow. Run 61 added explicit silence-valid guidance to Kaizen; the next silent Kaizen run will be the first genuine test of the convergence mechanism.
 
 ## Historical Snapshot
 

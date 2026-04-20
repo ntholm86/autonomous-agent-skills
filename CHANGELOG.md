@@ -12,10 +12,14 @@ and this project adheres to a custom versioning scheme.
 ### Added
 
 - **metrics.ps1 Metric 7: P3 Convergence Silence Counter.** Computes consecutive zero-delta runs and distinct evaluators in the silence chain from SCORECARD data. Detects drift between the asserted counter and the computed value. Convergence is now derivable from data instead of self-asserted. (Run 59)
+- **kaizen/SKILL.md: explicit silence-valid guidance.** After the three diagnostic lenses: "Silence is a valid outcome." In Self-Evaluate: silence recorded as convergence evidence, not failure. Addresses Hansei Run 60 F#1 (incentive structure incompatible with stopping condition). (Run 61)
+- **kata/SKILL.md: pre-flight CM check in Execute step.** Agents now verify the latest GENBA entry's claims before modifying files, catching inter-run drift proactively instead of reactively. Addresses Hansei Run 60 F#2 (CM drift structural). (Run 61)
 
 ### Changed
 
 - **kata/SKILL.md Convergence section tightened.** "produce the same assessment" → "produce the same score (within a defined tolerance)" — mirrors PRINCIPLES.md §3 precisely. Added explicit reference to `metrics.ps1` as the computation source for the silence counter. (Run 59)
+- **kata/SKILL.md Periodic Hansei restructured from cadence to signal-based.** Fixed 10-run cadence replaced with 4 signal-based triggers: recurring-class findings (3+), sustained plateau (3+ zero-delta), methodology doubt, human request. Addresses Hansei Run 60 F#4. (Run 61)
+- **verify-suite.ps1 Check 9 restructured from cadence to signal-based.** Fixed 5-run Hansei cadence check replaced with sustained-plateau detection: walks SCORECARD rows backward, counts consecutive zero-delta runs, warns at ≥3. Uses `Get-ScorecardRunRows` object model. (Run 61)
 
 ### Reflection
 

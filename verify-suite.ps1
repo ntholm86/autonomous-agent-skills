@@ -9,7 +9,7 @@
     version alignment, ledger consistency, frontmatter validation, file-hash
     snapshot (diff-based validation inspired by evo's proof ledger), suite skill
     inventory (detects orphan/non-TPS skill directories), periodic-Hansei
-    cadence (warns when Hansei has not been invoked for 5+ Kata runs),
+    signal detection (warns on sustained plateau: 3+ consecutive zero-delta runs),
     governing-document integrity (PRINCIPLES.md principle inventory),
     CHANGELOG version contiguity (catches silently-reverted release entries),
     SCORECARD<->GENBA per-run coverage (catches silently-reverted history),
@@ -342,7 +342,7 @@ if ($nonTps.Count -gt 0) {
     Pass 'Only TPS skills present'
 }
 
-# -- Check 9: Periodic-Hansei cadence -----------------------------------------
+# -- Check 9: Periodic-Hansei signal detection --------------------------------
 Write-Host "[9/14] Periodic-Hansei cadence" -ForegroundColor White
 if (Test-Path $genbaPath) {
     $gContent = Get-Content $genbaPath -Raw
@@ -364,18 +364,37 @@ if (Test-Path $genbaPath) {
         }
     }
 
-    if ($null -eq $lastHanseiRun) {
-        Warn "GENBA shows no Hansei invocation. Periodic-Hansei rule (every 5 Kata runs) overdue."
-    } else {
-        $runsAfterHansei = $latestRun - $lastHanseiRun
-        if ($runsAfterHansei -ge 5) {
-            Warn "$runsAfterHansei Kata runs since last Hansei reference in GENBA. Periodic-Hansei (default 5) overdue."
+    # Signal-based: check for sustained plateau (3+ consecutive zero-delta runs
+    # without convergence declared). This replaces the old fixed-cadence check.
+    $scPath = Join-Path $script:suiteRoot 'SCORECARD.md'
+    if (Test-Path $scPath) {
+        $scContent = Get-Content $scPath -Raw
+        $scRunRows = Get-ScorecardRunRows $scContent
+        # Walk backward from latest run, count consecutive zero-delta rows
+        $zeroChain = 0
+        $sortedRows = $scRunRows | Sort-Object { $_.Run } -Descending
+        foreach ($row in $sortedRows) {
+            if ($row.Delta -match '^\+?-?0\.0+$') {
+                $zeroChain++
+            } else {
+                break
+            }
+        }
+        if ($zeroChain -ge 3 -and $null -ne $lastHanseiRun -and $latestRun -gt $lastHanseiRun) {
+            Warn "$zeroChain consecutive zero-delta runs detected (sustained plateau). Hansei signal triggered — consider loop reflection."
         } else {
-            Pass "$runsAfterHansei Kata runs since last Hansei (within periodic threshold of 5)"
+            Pass "No sustained-plateau signal ($zeroChain consecutive zero-delta runs, threshold 3)"
+        }
+    } else {
+        # Fallback: no SCORECARD, use simple run-count check
+        if ($null -eq $lastHanseiRun) {
+            Warn "GENBA shows no Hansei invocation. Consider whether Hansei signals (recurring findings, plateau, methodology doubt) are present."
+        } else {
+            Pass "Last Hansei at Run $lastHanseiRun (signal-based check — no SCORECARD for plateau detection)"
         }
     }
 } else {
-    Warn 'TRAIL/GENBA.md not found — cannot check Hansei cadence'
+    Warn 'TRAIL/GENBA.md not found — cannot check Hansei signals'
 }
 
 # -- Check 10: PRINCIPLES.md governing-document integrity ----------------------

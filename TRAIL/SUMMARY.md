@@ -1,41 +1,40 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-20 - Kata Run 60 (Claude Sonnet 4.7, Hansei)*
+*Last updated: 2026-04-20 - Kata Run 61 (Claude Sonnet 4.7, Kaizen)*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
 
-**One-line status:** Suite v2.3.0+. Run 60 (Hansei) reflected on Runs 55–59 and surfaced that the loop's incentive structure is structurally incompatible with its own stopping condition; Run 41's external-target finding remains open after 19 runs. Score 8.6875 (v3, unchanged — Hansei produces meta-findings, not artifact deltas).
+**One-line status:** Suite v2.3.0+. Run 61 addressed 3 of 4 Hansei Run 60 structural findings: silence-valid guidance in Kaizen, signal-based Hansei trigger in Kata + verifier, pre-flight CM check in Kata. Score 8.9375 (v3). D4, D6, D7 reach 10. External target (Run 62) is the remaining queued recommendation.
 
 ## Target Condition
 
-Bring P2 (Observable Autonomy) to colleagues' daily work. The skill files must be readable by someone with no prior context. *(Run 60 Hansei: this Target Condition has been deferred for 19 runs since Run 41 named external-target work as "the highest-value run the suite can execute regardless of outcome.")*
+Bring P2 (Observable Autonomy) to colleagues' daily work. The skill files must be readable by someone with no prior context. *(Run 60 Hansei: this Target Condition has been deferred for 19 runs since Run 41 named external-target work as "the highest-value run the suite can execute regardless of outcome." Run 62 addresses this.)*
 
 ## Direction
 
-The loop is mechanically healthy (verify-suite 0 failures, 14 checks) but strategically unchanged from Run 41. Internal Kaizen has diminishing returns; the Most Important Finding has appeared in 3 consecutive Hansei runs (41, 54, 60) without action.
+Run 61 resolved the three artifact-fixable structural findings from Hansei. The remaining Hansei finding (F#3: external target) requires execution, not artifact change. The loop now has the methodology infrastructure to support both silence (convergence) and external targets.
 
-- Run 58 closed structural CM defects, released v2.3.0.
-- Run 59 made convergence measurable (Metric 7), tightened P3 propagation in Kata.
-- Run 60 (Hansei) recommends Run 61 silence test, Run 62 external target.
+- Run 59 made convergence measurable (Metric 7).
+- Run 60 (Hansei) identified 4 structural findings; recommended Runs 61-62.
+- Run 61 fixed F#1 (incentive structure), F#2 (CM drift), F#4 (Hansei trigger). Score 8.9375.
 
-Next: **Run 61 silence test** — fresh evaluator instructed to report findings OR silence; both are valid. This tests whether Metric 7 can ever fire under current incentives.
+Next: **Run 62: external target** — apply Kata to a non-self, non-Kiroku target from the workspace. This is the 19-run-deferred finding from Run 41. Both success and failure are more valuable than another internal Kaizen.
 
 ## Key Decisions
 
-- [!DECISION] Run 60 Hansei: 4 new meta-findings; loop deemed strategically unchanged since Run 41; Run 41 F#3 (external target) explicitly redeferred and called out. Recommendations queued for Runs 61–62. (Run 60)
-- [!DECISION] D7 scored 8 → 9: silence counter is now computed mechanically with drift detection, not self-narrated. Convergence Integrity has a real measurement substrate. (Run 59)
-- [!DECISION] D4 scored 9 → 9.5: CHANGELOG complete, orphan structural defect removed, version aligned. (Run 58)
-- [DEC-043](INDEX.md) Validate D8 (ARF) and mark the post-rebuild Shiken recommendation from Run 54 as satisfied. (Run 57)
+- [!DECISION] Run 61: Kaizen silence-valid path added; signal-based Hansei trigger replaces fixed cadence; pre-flight CM check added. 3/4 Hansei findings addressed. (Run 61)
+- [!DECISION] Run 60 Hansei: 4 new meta-findings; loop deemed strategically unchanged since Run 41; Run 41 F#3 (external target) explicitly redeferred and called out. (Run 60)
+- [!DECISION] D7 scored 8 → 9 → 10: convergence infrastructure now complete (Metric 7 + silence-valid Kaizen + signal-based Hansei). (Runs 59, 61)
 
 See [INDEX.md](INDEX.md) for the full decision index.
 
 ## Open Concerns
 
 - SUMMARY.md requires manual agent updates after each session
-- P3 silence counter at 0/3 (computed) — needs 3 consecutive zero-delta runs from distinct evaluators before convergence can be declared
-- **Run 41 F#3 (external target) deferred for 19 runs across 2 Hansei reaffirmations.** Loop has not changed orientation. Should drive Run 62.
-- **Hansei cadence accelerating** (33 → 13 → 5 runs between) without corresponding strategic change. Risk of routine reflection.
+- P3 silence counter at 0/3 (computed) — reset by Run 61 artifact changes; needs 3 consecutive zero-delta runs from distinct evaluators
+- **Run 41 F#3 (external target) deferred for 20 runs across 2 Hansei reaffirmations.** Queued for Run 62.
+- D1 (Process Completeness) and D2 (Causal Analysis) static at 8 since Run 51 — Hansei Run 60 F#4 noted possible anchoring
 
 ## Integrity Notes
 

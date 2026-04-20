@@ -1,5 +1,58 @@
 ﻿<!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 61 - 2026-04-20
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | Claude Sonnet 4.7 |
+| Trigger | Hansei Run 60 recommendations R#1 (incentive structure), R#3 (Hansei trigger restructuring), and F#2 (CM drift structural) |
+| Methodology | Kata → Kaizen |
+
+### Measurements (Rubric v3)
+
+| # | Dimension | Start | End | Δ |
+|---|-----------|:-----:|:---:|:-:|
+| D1 | Process Completeness | 8 | 8 | 0 |
+| D2 | Causal Analysis | 8 | 8 | 0 |
+| D3 | Measurement Validity | 8.5 | 8.5 | 0 |
+| D4 | Configuration Management | 9.5 | 10 | +0.5 |
+| D5 | Cross-Evaluator Reliability | 8 | 8 | 0 |
+| D6 | Instruction Clarity | 9.5 | 10 | +0.5 |
+| D7 | Convergence Integrity | 9 | 10 | +1 |
+| D8 | ARF | 9 | 9 | 0 |
+| | **Mean** | **8.6875** | **8.9375** | **+0.25** |
+
+### Diagnosis
+
+Hansei Run 60 surfaced 4 structural findings. Three are addressable through artifact changes:
+
+| # | Finding (from Run 60) | Root Cause | Category | Severity | Fix? |
+|---|---|---|---|---|---|
+| 1 | F#1: Incentive structure incompatible with stopping condition — every Kaizen rewarded for finding things; convergence requires finding nothing | Kaizen SKILL.md has no explicit guidance that silence is a valid diagnosis outcome. Kata convergence mentions it but Kaizen's flow assumes findings exist. | Mura | High | Yes |
+| 2 | F#2: Inter-run CM drift is structural — verifier is reactive, new defect categories keep appearing | Kata Execute step has no pre-flight CM verification — agents modify files without checking whether prior claims still hold | Muda | Medium | Yes |
+| 3 | F#4: Cadence-driven Hansei risks compliance-shaped reflection — fixed 5-run trigger fires on schedule, not on signal | Kata Periodic Hansei uses fixed run count; verify-suite Check 9 enforces the fixed cadence | Mura | High | Yes |
+
+F#3 (external target deferred 19 runs) is not fixable by artifact change — it requires Run 62 execution. Queued.
+
+### Actions
+
+1. **Kaizen SKILL.md — silence is valid.** Added explicit guidance after the three diagnostic lenses: "Silence is a valid outcome. If genuine examination reveals nothing actionable, report that." Also added guidance in Self-Evaluate: if no changes were made, score +0.0 and record the run advances the P3 silence chain.
+
+2. **Kata SKILL.md — signal-based Hansei trigger.** Replaced "After every 10 runs on the same target, invoke Hansei regardless of findings" with 4 signal-based triggers: (a) 3+ consecutive recurring-class findings, (b) sustained plateau (3+ zero-delta runs), (c) methodology doubt, (d) explicit human request. Added "What this replaces" rationale.
+
+3. **Kata SKILL.md — pre-flight CM check.** Added to Execute step before invoking the selected skill: verify the latest GENBA entry's claims, catch inter-run drift before modifying further, record drift as a finding.
+
+4. **verify-suite.ps1 Check 9 — signal-based.** Replaced fixed 5-run cadence check with sustained-plateau detection: walks SCORECARD rows backward, counts consecutive zero-delta rows, warns at ≥3. Uses the existing `Get-ScorecardRunRows` function's object model (`.Run`, `.Delta` properties). Fixed a type mismatch bug in the initial implementation (Sort-Object against objects, not raw strings).
+
+### Verification
+- `verify-suite.ps1`: **0 failures, 0 warnings.** All 14 checks pass including the restructured Check 9.
+- No regressions: all other checks unaffected.
+
+### Assessment
+This run directly addresses 3 of 4 Hansei Run 60 findings through structural artifact changes. The incentive paradox (F#1) is now mitigated by explicit guidance — future evaluators are told that silence is valid and convergence-advancing. The Hansei trigger (F#4) is now signal-based, removing the compliance-cadence pattern. The CM drift pattern (F#2) has a proactive check instead of only reactive verifier hardening. The remaining finding (F#3, external target) requires execution, not artifact change — queued for Run 62.
+
+---
 ## Run 60 (Hansei) - 2026-04-20
 
 | Field | Value |

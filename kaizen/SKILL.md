@@ -29,6 +29,8 @@ Three diagnostic lenses are available. They are vocabulary for thinking about di
 
 Use these lenses as thinking tools. If the target's problems do not fit any of them, describe what you actually see. The diagnosis must reflect the target, not the categories.
 
+**Silence is a valid outcome.** If genuine examination reveals nothing actionable, report that. "I examined the target with these lenses and found nothing that warrants change" is a legitimate diagnosis — it advances the convergence chain (Principle 3). Do not manufacture findings to justify the run.
+
 ### Challenge Blind Spots
 
 After the initial diagnosis, ask: *What am I not seeing?*
@@ -77,3 +79,5 @@ Be honest. A score that inflates progress undermines the loop. If the target was
 If a formal scoring rubric exists for this target (e.g., Rubric v3 for the skill suite), score against it. If the measurements were context-derived, score against those and state the scores explicitly so the next evaluator can compare on the same basis — or revise the measurements if they no longer fit.
 
 The scores go into the GENBA entry. The gap between current scores and the Target Condition is what drives the next run.
+
+If the diagnosis found nothing actionable and no changes were made, score the target at its current level (+0.0 delta). This is not failure — it is evidence of convergence. Record the silence explicitly: what was examined, why nothing warranted change, and that the run advances the P3 silence chain.
