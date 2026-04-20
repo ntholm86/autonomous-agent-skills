@@ -18,11 +18,11 @@ Kata is the orchestrator. It takes a target, determines what that target needs, 
 Understand the target before acting on it.
 
 - What is this target? What does it do? Who uses it?
-- What state is it in? Read its history if one exists (GENBA, changelogs, prior runs).
+- What state is it in? Read its history if one exists (TRAIL/, changelogs, prior runs).
 - What has been tried before? What worked? What did not?
 - What is the triggering concern? (User request, periodic review, prior-run finding)
 
-If this target has a GENBA.md, read the most recent entries. If a prior run exists, verify its claims: check that changes it reported are actually present. Do not anchor to a prior run's score.
+If this target has a `TRAIL/` directory, read `TRAIL/GENBA.md` for the most recent run entries. If a prior run exists, verify its claims: check that changes it reported are actually present. Do not anchor to a prior run's score.
 
 ### 2. Diagnose
 
@@ -51,15 +51,22 @@ Invoke the selected skill. It does the work and produces its output.
 
 ### 5. Record
 
-After execution, update the target's GENBA.md (create it if needed). Prepend the new entry (newest-first). Every entry includes:
+After execution, update the target's audit trail. All trail artifacts live in a single `TRAIL/` directory:
 
-- Run number, date, model identity
-- What was found (findings with root causes)
-- What was done (actions taken)
-- What changed (concrete diffs, not vague descriptions)
-- Assessment (current state, score if applicable)
+- **`TRAIL/GENBA.md`** — the run ledger. Prepend the new entry (newest-first). Every entry includes:
+  - Run number, date, model identity
+  - What was found (findings with root causes)
+  - What was done (actions taken)
+  - What changed (concrete diffs, not vague descriptions)
+  - Assessment (current state, score if applicable)
 
-If the target uses Kiroku trails, also update the session transcript and decision index.
+- **`TRAIL/sessions/`** — the session transcript. Mark decisions with `[!DECISION]` (include rationale and alternatives considered), realizations with `[!REALIZATION]`, reversals with `[!REVERSAL]`.
+
+- **`TRAIL/INDEX.md`** — auto-generated decision index. Run `kiroku-index.ps1` after closing the session.
+
+- **`TRAIL/SUMMARY.md`** — executive digest. Updated after each run. Must not duplicate GENBA content — SUMMARY gives direction and cross-run context; GENBA gives per-run evidence.
+
+The observer looks at one directory. CHANGELOG.md stays outside TRAIL/ — it serves project users, not process observers.
 
 ### 6. Persist
 
