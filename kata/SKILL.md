@@ -90,6 +90,8 @@ After execution, update the target's audit trail. All trail artifacts live in a 
   - Measurements (what was measured, the scores, and the delta from prior run — this is what makes the gap visible and drives the next run)
   - Assessment (one sentence: current state, what remains)
 
+- **SCORECARD Dimension Trajectory** — if the target has a SCORECARD with a Dimension Trajectory table, append a row with the end-of-run per-dimension scores. The run table shows only the mean; the Dimension Trajectory shows which dimensions moved. This is the indexed-resolution view for P2: a human scanning the scorecard can see what changed without reading GENBA.
+
 - **`TRAIL/sessions/`** — the session transcript. Mark decisions with `[!DECISION]` (include rationale and alternatives considered), realizations with `[!REALIZATION]`, reversals with `[!REVERSAL]`.
 
 - **`TRAIL/INDEX.md`** — auto-generated decision index. Run `kiroku-index.ps1` after closing the session.

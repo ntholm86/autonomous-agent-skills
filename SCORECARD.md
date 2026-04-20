@@ -59,6 +59,24 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 51 | 2026-04-20 | Claude Opus 4.6 | 7.625 (v3) | 7.875 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** First scored run with measurement protocol. Fixed metrics.ps1 parser (regex→split, 11 silently-dropped rows recovered, 0 POOR metrics). SCORECARD version v2.1.0→v2.2.0. Dims 3,4 improved. |
 | 52 | 2026-04-20 | Claude Opus 4.6 | 7.875 (v3) | 8.125 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** Focused on weak dims. Justified metrics thresholds (CMMI/ICC/Six Sigma anchors). Added verify-suite Check 14 (score/artifact correlation for P3). Cleaned METRICS_HISTORY. Dims 3,7 improved. |
 
+## Dimension Trajectory (Rubric v3)
+
+Per-dimension end-of-run scores for all v3-scored runs. Shows which dimensions drove each delta — the run table above shows only the mean. Measurement scheme noted per run; if a run revises the scheme, the revision is a `[!DECISION]` in GENBA.
+
+| Run | D1 Proc | D2 Cause | D3 Meas | D4 CM | D5 XEval | D6 Clarity | D7 Conv | D8 ARF | Mean | Scheme |
+|:---:|:-------:|:--------:|:-------:|:-----:|:--------:|:----------:|:-------:|:------:|:----:|--------|
+| 43 | 9 | 8 | 7 | 10 | 7 | 8 | 5 | 8 | 7.75 | v3 baseline |
+| 44 | 9 | 8 | 7 | 10 | 7 | 8.5 | 5 | 8.5 | 7.875 | v3 baseline |
+| 47 | 7 | 8 | 6 | 5 | 4 | 9 | 7 | 9 | 6.875 | v3 post-rebuild |
+| 51 | 8 | 8 | 7 | 9 | 7 | 9 | 7 | 8 | 7.875 | v3 + measurement protocol |
+| 52 | 8 | 8 | 8 | 9 | 7 | 9 | 8 | 8 | 8.125 | v3 + measurement protocol |
+
+**Key:**
+- **D1-D8** — Rubric v3 dimensions (full names in Scoring Rubric v3 below).
+- **Scheme** — Measurement scheme used. "v3 baseline" = Rubric v3 adopted at Run 42. "v3 post-rebuild" = re-scored after Kaikaku (Run 47). "v3 + measurement protocol" = context-derived measurements formally recorded in GENBA per Kata Step 1 (Run 51+).
+
+Dimension scores are the **end-of-run** state (post-improvement). For start/end/delta per dimension within a single run, see `TRAIL/GENBA.md`.
+
 ## Cross-Model Notes
 
 - Run 2 baseline agreement: GPT-5.4 independently matched Claude's 8.4 post-Run-1 score before applying new edits.
