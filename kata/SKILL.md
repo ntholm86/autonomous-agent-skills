@@ -47,7 +47,21 @@ Based on the diagnosis, select the methodology:
 
 ### 4. Execute
 
-Invoke the selected skill. It does the work and produces its output.
+Before executing, start a kiroku session for the target:
+
+```powershell
+& "<skills-dir>/kiroku/kiroku-start.ps1" -Slug "<methodology>-<target>" -Project "<target-path>"
+```
+
+The `-Project` parameter determines where `TRAIL/` lives — always in the target being worked on. When Kata targets an external repo, the trail goes in that repo. When Kata targets the skills suite itself, the trail goes in the skills directory.
+
+Invoke the selected skill. It does the work. During execution, mark decisions, realizations, and reversals in the session transcript.
+
+After execution, close the session:
+
+```powershell
+& "<skills-dir>/kiroku/kiroku-close.ps1" -Project "<target-path>"
+```
 
 ### 5. Record
 
