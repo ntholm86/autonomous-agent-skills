@@ -1,6 +1,6 @@
 ---
 name: kiroku
-version: 2.3.0
+version: 2.4.0
 description: 'Evidence trail management. Start sessions, record decisions during work, close sessions, index decisions, validate trail integrity. The implementation of Observable Autonomy (Principle 2). USE WHEN: start session, record trail, kiroku, audit trail, evidence, close session, validate trail, begin work, observable autonomy, track decisions.'
 argument-hint: 'Specify the target project path where TRAIL/ should be managed'
 ---

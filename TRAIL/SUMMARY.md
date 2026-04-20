@@ -9,9 +9,9 @@
 
 > **Has a human reviewed this trail since the last autonomous run?**
 >
-> - [ ] Yes
-> - Last reviewed: _never_
-> - Reviewer: _none_
+> - [x] Yes
+> - Last reviewed: 20-04-2026
+> - Reviewer: Nils Holmager
 >
 > When you (a human) read this trail, replace `[ ]` with `[x]`, set the date (YYYY-MM-DD), add your initials/name, and append a row to the Review Log below. The framework can prove the trail exists; only you can prove it was actually read. `metrics.ps1` Metric 11 reports days-since-last-review and total review rate.
 
@@ -23,7 +23,7 @@
 
 ---
 
-**One-line status:** Suite v2.3.0+. Run 65 surfaced two tooling defects: `verify-suite.ps1` Check 5 still treated every `*external*` SCORECARD row as non-suite even though the suite GENBA intentionally records Run 62 for methodology validation, and `kiroku-validate.ps1` Check 7 counted any raw `*not recorded*` substring in the index, including explanatory prose. Both parser rules were fixed. The suite now passes `verify-suite.ps1` with 0 failures, 0 warnings, and `kiroku-validate.ps1` warns only on 4 genuine historical decisions whose alternatives were never recorded. P3 remains 1/3.
+**One-line status:** Suite v2.4.0 (2026-04-20). Evidence-substrate reframe + Out-of-Scope section in PROBLEM.md + Metric 11 (reviewer engagement, POOR baseline) + GENBA archival (41 KB active / 135 KB archive). Consolidates Unreleased items from Runs 59-65. No skill behavior changes; this is a scope-narrowing + observability release. `verify-suite.ps1` passes with 0 failures, 0 warnings. P3 remains 1/3.
 
 ## Target Condition
 
