@@ -1,6 +1,6 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-20 - Kata Run 62 (Claude Sonnet 4.7, Kaizen — external target: leifoglenedk)*
+*Last updated: 2026-04-20 - Kata Run 62 (Claude Opus 4.6, Kaizen — external target: leifoglenedk)*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---

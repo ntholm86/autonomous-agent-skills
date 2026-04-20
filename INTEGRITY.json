@@ -1,5 +1,5 @@
 ﻿{
-    "last_verified":  "2026-04-20T14:32:41.1290256+02:00",
+    "last_verified":  "2026-04-20T14:42:56.2708106+02:00",
     "suite_version":  "2.3.0",
     "latest_scored_run":  61,
     "files":  {
@@ -8,8 +8,8 @@
                   "kaikaku/SKILL.md":  "0D56E3CB9702912F",
                   "hansei/SKILL.md":  "F228B4902D432FA2",
                   "shiken/SKILL.md":  "FB26C6CA44EE30E0",
-                  "TRAIL/GENBA.md":  "B02A8115F5F504DA",
-                  "SCORECARD.md":  "24B3ACEA664F15BB",
+                  "TRAIL/GENBA.md":  "4E365E4F057E9229",
+                  "SCORECARD.md":  "843AE79F350BE28D",
                   "CHANGELOG.md":  "8C6C17F9769B97B4",
                   "PRINCIPLES.md":  "1D4C2338FC8F78E3",
                   "PROBLEM.md":  "9BFE39BB602E518A",

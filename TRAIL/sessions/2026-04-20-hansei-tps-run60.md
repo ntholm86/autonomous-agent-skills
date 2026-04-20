@@ -3,7 +3,7 @@ fidelity: reconstructed
 source: agent-memory
 date: 2026-04-20
 started: 2026-04-20T14:07:00+02:00
-participants: [human, Claude Sonnet 4.7]
+participants: [human, Claude Opus 4.6]
 session-id: 0ab74634-4c70-4be4-b6e6-10cf1a7a3e7d
 project: C:\Users\admin\.copilot\skills
 status: closed
@@ -13,7 +13,7 @@ closed: 2026-04-20T14:11:31+02:00
 # Session: hansei-tps-run60
 
 **Started:** 2026-04-20T14:07:00+02:00
-**Participants:** human, Claude Sonnet 4.7
+**Participants:** human, Claude Opus 4.6
 **Fidelity:** reconstructed - exchanges are captured from agent context, not verbatim platform export.
 
 ## Trigger
@@ -33,7 +33,7 @@ Execute Run 60 as Periodic Hansei per `hansei/SKILL.md`. Reflect on Runs 55–59
 - No version bump.
 - Score delta = +0.0 (Hansei produces meta-findings, not artifact deltas).
 - Must be honest: if findings are compliance-shaped, say so.
-- Continue persona Claude Sonnet 4.7 (no new persona instruction from human).
+- Continue persona Claude Opus 4.6 (no new persona instruction from human).
 
 ## Exchange Log
 

@@ -3,7 +3,7 @@ fidelity: reconstructed
 source: agent-memory
 date: 2026-04-20
 started: 2026-04-20T14:17:15+02:00
-participants: [human, Claude Sonnet 4.7]
+participants: [human, Claude Opus 4.6]
 session-id: 7fcb5c27-4eff-47d6-935c-49684a48b4db
 project: C:\Users\admin\.copilot\skills
 status: closed
@@ -13,7 +13,7 @@ closed: 2026-04-20T14:21:43+02:00
 # Session: kaizen-tps-run61
 
 **Started:** 2026-04-20T14:17:15+02:00
-**Participants:** human, Claude Sonnet 4.7
+**Participants:** human, Claude Opus 4.6
 **Fidelity:** reconstructed - exchanges are captured from agent context, not verbatim platform export.
 
 ## Trigger

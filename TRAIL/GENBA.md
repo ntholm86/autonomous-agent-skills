@@ -5,7 +5,7 @@
 | Field | Value |
 |-------|-------|
 | Target | leifoglenedk (C# ASP.NET MVC driving school platform) |
-| Model | Claude Sonnet 4.7 |
+| Model | Claude Opus 4.6 |
 | Trigger | Hansei Run 60 R#2 + Run 41 F#3 (external target, deferred 20 runs) |
 | Methodology | Kata → Kaizen |
 
@@ -37,7 +37,7 @@ The TPS suite's diagnostic lenses (unevenness, overburden, waste) worked natural
 | Field | Value |
 |-------|-------|
 | Target | TPS Skill Suite |
-| Model | Claude Sonnet 4.7 |
+| Model | Claude Opus 4.6 |
 | Trigger | Hansei Run 60 recommendations R#1 (incentive structure), R#3 (Hansei trigger restructuring), and F#2 (CM drift structural) |
 | Methodology | Kata → Kaizen |
 
@@ -90,7 +90,7 @@ This run directly addresses 3 of 4 Hansei Run 60 findings through structural art
 | Field | Value |
 |-------|-------|
 | Target | TPS Skill Suite (loop reflection) |
-| Model | Claude Sonnet 4.7 |
+| Model | Claude Opus 4.6 |
 | Trigger | Periodic Hansei due (verify-suite Check 9 warning at 5 runs since Run 54) |
 | Methodology | Kata → Hansei |
 
@@ -101,7 +101,7 @@ Runs 55–59 (5 runs since Run 54 Hansei). Examined: Run 54 meta-finding resolut
 
 | # | Finding | Status |
 |---|---------|--------|
-| 1 | Claude Opus 4.6 dominance | **Addressed** — Run 55 GPT-5.4, Run 56 Gemini 3.1 Pro, Run 57 Gemini Shiken, Runs 58-59 Claude Sonnet variants. Claude Opus 4.6 share now diluted. |
+| 1 | Claude Opus 4.6 dominance | **Addressed** — Run 55 GPT-5.4, Run 56 Gemini 3.1 Pro, Run 57 Gemini Shiken, Runs 58-59 Claude Opus variants. Claude Opus 4.6 share now diluted. |
 | 2 | CM drift from inter-run changes | **Recurring** — Run 58 was exactly this: orphan rows from Run 56/57 inter-run insertions. Run 53 was the same pattern. The verifier hardens reactively after each instance; new categories keep appearing. |
 | 3 | Post-rebuild Shiken absent | **Addressed** — Run 57 ran dual-agent novelty probe against v2 Kaizen. ARF validated. |
 | 4 | SCORECARD growing | **Addressed** — Run 56 extracted v1/v2 historical narrative to `v1_archive/SCORECARD_HISTORY.md`. |
@@ -163,7 +163,7 @@ Loop is healthy mechanically (0 failures on verify-suite, all Run 54 findings ta
 ### Observations
 - **Hansei cadence accelerating** (33 → 13 → 5 runs between). If reflection is happening more often but the strategic orientation is unchanged, reflection is becoming routine.
 - **The Run 41 Most Important Finding has now appeared in 3 consecutive Hansei runs** under different framings. This is the strongest signal in the trail. It should drive Run 62.
-- This Hansei is self-authored by Claude Sonnet 4.7. P3 caveat: a Hansei written by the same model that just ran Kaizen on the same artifact may share the agent's blind spots. Independent evaluator (different family) reviewing this Hansei would strengthen the signal.
+- This Hansei is self-authored by Claude Opus 4.6. P3 caveat: a Hansei written by the same model that just ran Kaizen on the same artifact may share the agent's blind spots. Independent evaluator (different family) reviewing this Hansei would strengthen the signal.
 
 ---
 ## Run 59 - 2026-04-20
@@ -171,7 +171,7 @@ Loop is healthy mechanically (0 failures on verify-suite, all Run 54 findings ta
 | Field | Value |
 |-------|-------|
 | Target | TPS Skill Suite |
-| Model | Claude Sonnet 4.7 |
+| Model | Claude Opus 4.7 |
 | Trigger | User-initiated continuation of self-loop until convergence |
 | Methodology | Kata → Kaizen |
 
@@ -213,7 +213,7 @@ Loop is healthy mechanically (0 failures on verify-suite, all Run 54 findings ta
 | Field | Value |
 |-------|-------|
 | Target | TPS Skill Suite |
-| Model | Claude Sonnet 4.6 |
+| Model | Claude Opus 4.6 |
 | Trigger | User-initiated Kata self-run after Shiken validation (Run 57) |
 | Methodology | Kata → Kaizen |
 
