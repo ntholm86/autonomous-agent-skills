@@ -70,9 +70,9 @@ After execution, close the session:
 
 ### 5. Record
 
-After execution, update the target's audit trail. All trail artifacts live in a single `TRAIL/` directory. Kiroku manages the core evidence layer (sessions, INDEX, SUMMARY). Kata owns the run ledger:
+After execution, update the target's audit trail. All trail artifacts live in a single `TRAIL/` directory. Kiroku manages the core evidence layer (sessions, INDEX, SUMMARY). When Kata evaluates a target as a whole (scored, cross-model), it also maintains a run ledger:
 
-- **`TRAIL/GENBA.md`** — Kata's run ledger. Prepend the new entry (newest-first). Keep entries compact (~10 lines max). Every entry includes:
+- **`TRAIL/GENBA.md`** — Kata's evaluation run ledger. Used when the entire target is evaluated (e.g., suite-level scoring runs recorded in SCORECARD.md). Not used for development work on individual components — that's tracked by kiroku sessions alone. Prepend the new entry (newest-first). Keep entries compact (~10 lines max). Every entry includes:
   - Run number, date, model identity
   - What was found (key findings only — root causes, not exhaustive lists)
   - What was done (actions taken — omit file manifests, `git log` has those)

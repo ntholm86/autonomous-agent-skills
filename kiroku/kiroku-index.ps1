@@ -28,9 +28,9 @@ foreach ($file in $sessionFiles) {
     $lines = $content -split "`n"
     
     for ($i = 0; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -match '\[!DECISION\]') {
+        if ($lines[$i] -match '^\s*\[!DECISION\]') {
             # Skip markers inside HTML comments (template text)
-            if ($lines[$i] -match '<!--' -or $lines[$i] -match '^\s*Mark decisions') {
+            if ($lines[$i] -match '<!--') {
                 continue
             }
             # Extract decision text — the rest of the line after the marker

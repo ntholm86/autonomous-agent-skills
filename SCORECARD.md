@@ -69,7 +69,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 ## Current Status
 
 - The run table above is the source of truth for per-run scores and outcomes; `TRAIL/GENBA.md` is the source of truth for per-run findings, actions, and reasoning.
-- The current live release is **v2.0.1**. Run 47 records the rebuild itself; Run 48 records the first cross-model validation and the repair of the shipped v2.0.0 artifact.
+- The current live release is **v2.1.0**. Run 47 rebuilt the suite (v2.0.0); Run 48 repaired shipped defects (v2.0.1); subsequent sessions rewrote kiroku principle-first and separated GENBA ownership (v2.1.0).
 - **Scoring uses Rubric v3 (adopted Run 42) for all runs from Run 42 forward.** Runs 17-41 used Rubric v1/v2 (10 dimensions). Pre-v1 scores used an implicit narrower basis. v3 scores are not directly comparable to v1/v2 scores — a v3 baseline of ~7.2 is expected and by design (see RUBRIC_V3_PROPOSAL.md).
 - v1/v2 scores are preserved unchanged in the run table for auditability.
 - Principle 3 silence counter: 0/3 (resets on any artifact change). See PRINCIPLES.md §3 for the convergence definition.

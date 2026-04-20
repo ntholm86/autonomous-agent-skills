@@ -63,7 +63,7 @@ foreach ($file in $sessionFiles) {
     $content = [System.IO.File]::ReadAllText($file.FullName, [System.Text.Encoding]::UTF8)
     $lines = $content -split "`n"
     foreach ($line in $lines) {
-        if ($line -match '\[!DECISION\]' -and $line -notmatch '<!--' -and $line -notmatch '^\s*Mark decisions') {
+        if ($line -match '^\s*\[!DECISION\]' -and $line -notmatch '<!--') {
             $sessionDecisions++
         }
     }
