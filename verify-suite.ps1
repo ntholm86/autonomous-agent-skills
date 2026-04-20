@@ -299,8 +299,8 @@ if (Test-Path $genbaPath) {
             $latestRun = $runNumber
         }
 
-        # Only count explicit Hansei sections, not narrative mentions in findings or observations.
-        if ($block.Value -match '(?im)^###+\s*Hansei(?:\s+Pass)?\b') {
+        # Only count explicit Hansei sections or Hansei runs, not narrative mentions in findings or observations.
+        if ($block.Value -match '(?im)^###+\s*Hansei(?:\s+Pass)?\b' -or $block.Value -match '(?im)^## Run \d+\s*\(Hansei\)') {
             if ($null -eq $lastHanseiRun -or $runNumber -gt $lastHanseiRun) {
                 $lastHanseiRun = $runNumber
             }

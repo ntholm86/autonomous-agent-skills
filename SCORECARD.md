@@ -59,6 +59,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 51 | 2026-04-20 | Claude Opus 4.6 | 7.625 (v3) | 7.875 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** First scored run with measurement protocol. Fixed metrics.ps1 parser (regex→split, 11 silently-dropped rows recovered, 0 POOR metrics). SCORECARD version v2.1.0→v2.2.0. Dims 3,4 improved. |
 | 52 | 2026-04-20 | Claude Opus 4.6 | 7.875 (v3) | 8.125 (v3) | +0.25 | TPS Skill Suite | **Kaizen.** Focused on weak dims. Justified metrics thresholds (CMMI/ICC/Six Sigma anchors). Added verify-suite Check 14 (score/artifact correlation for P3). Cleaned METRICS_HISTORY. Dims 3,7 improved. |
 | 53 | 2026-04-20 | Claude Opus 4.6 | 8.125 (v3) | 8.125 (v3) | +0.0 | TPS Skill Suite | **Kaizen.** P2 verification run. Fixed README stale check count (13→14), CHANGELOG [Unreleased] gap, SUMMARY staleness. Sub-threshold CM housekeeping. |
+| 54 | 2026-04-20 | Claude Opus 4.6 | 8.125 (v3) | 8.125 (v3) | +0.0 | TPS Skill Suite (loop) | **Hansei.** 4 new meta-findings: Claude dominance (9/13 runs), CM drift from inter-run changes, post-rebuild Shiken absent, SCORECARD growing. Run 41's 4 findings all addressed. Recommendation: next run by different model family. |
 
 ## Dimension Trajectory (Rubric v3)
 
