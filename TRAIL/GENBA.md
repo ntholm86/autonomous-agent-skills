@@ -1,5 +1,37 @@
 ﻿<!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 62 (External Target) - 2026-04-20
+
+| Field | Value |
+|-------|-------|
+| Target | leifoglenedk (C# ASP.NET MVC driving school platform) |
+| Model | Claude Sonnet 4.7 |
+| Trigger | Hansei Run 60 R#2 + Run 41 F#3 (external target, deferred 20 runs) |
+| Methodology | Kata → Kaizen |
+
+### Purpose
+First genuine external-target run on a production codebase. Validates that the TPS skill suite methodology works on non-self targets — the 20-run-deferred finding from Run 41 that appeared in 3 consecutive Hansei runs.
+
+### Diagnosis (Kaizen lenses)
+1. **Muda (waste/risk):** SHA-256 password hashing without salt in production auth. Zero test coverage on encryption function.
+2. **Mura (unevenness):** MockRepository doesn't replicate real Repository business logic (StatusID filtering, ordering). Tests pass but don't verify production behavior.
+3. **Muda:** BusinessConstants (Runs 1-2) have no regression tests — values could drift silently.
+
+### Actions
+- Created `Tests/Unit/BusinessLogicTests.cs`: 16 tests (Encryption: 5, BusinessConstants regression: 6, student/status filtering: 5)
+- Flagged security issues prominently (credentials in git, SHA-256 no salt) — requires human action
+
+### Outcome
+- Build SUCCESS, **60/60 tests pass** (was 44/44)
+- Security findings flagged for human action (P0)
+- leifoglenedk TRAIL updated (GENBA Run 3, SUMMARY, INDEX)
+
+### Methodology Validation
+The TPS suite's diagnostic lenses (unevenness, overburden, waste) worked naturally on an external C# ASP.NET codebase with no modification. The Kata cycle (grasp → diagnose → decide → execute → record → persist) produced verifiable improvements. Commander's Intent (Principle 1) guided the agent to appropriate findings without domain-specific checklists.
+
+**Run 41 F#3 status: ADDRESSED.** The methodology generalizes to external targets.
+
+---
 ## Run 61 - 2026-04-20
 
 | Field | Value |
