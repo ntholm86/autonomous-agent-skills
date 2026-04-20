@@ -123,6 +123,20 @@ Together: the agent understands the goal, interprets the mission, adapts to what
 
 Convergence Is Silence completes the system: it defines *when the work is done.* Without it, Commander's Intent gives purpose and Observable Autonomy gives visibility, but the loop has no honest exit. Convergence provides the stopping condition — and critically, it requires the other two principles to function. You can only measure convergence if the evaluator interprets the mission independently (Commander's Intent, not checklist compliance) and the entire trail is visible (Observable Autonomy, not self-reported scores).
 
+### Scope clarification: evidence substrate, not trust manufacturing
+
+These principles do not *create* trust. They produce an **evidence substrate** on which trust *can* form — if observers actually consume the evidence, if the reasoning shown is genuinely correct (not just visible), and if the social, organizational, and incentive conditions for delegation exist independently.
+
+Specifically, this framework does not address:
+
+- Whether humans articulate intent clearly enough for Commander's Intent to operate on stable input.
+- Whether transparency translates into correctness — a trail can be honest, legible, and wrong.
+- Whether reviewers actually read the trail, or whether evidence accumulates into noise.
+- Whether organizations or individuals are willing to delegate to AI at all, regardless of evidence quality.
+- Whether incentives, liability structures, and shared values — the social layer of trust — are in place.
+
+The principles are necessary but not sufficient. They make trust *possible to form on observable grounds*. They do not guarantee trust will form, nor that it should.
+
 ```
 Commander's Intent     Observable Autonomy     Convergence Is Silence
 (what + why)           (show everything)       (when to stop)

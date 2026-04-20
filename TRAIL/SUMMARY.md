@@ -5,6 +5,24 @@
 
 ---
 
+## Human Review Checkpoint
+
+> **Has a human reviewed this trail since the last autonomous run?**
+>
+> - [ ] Yes
+> - Last reviewed: _never_
+> - Reviewer: _none_
+>
+> When you (a human) read this trail, replace `[ ]` with `[x]`, set the date (YYYY-MM-DD), add your initials/name, and append a row to the Review Log below. The framework can prove the trail exists; only you can prove it was actually read. `metrics.ps1` Metric 11 reports days-since-last-review and total review rate.
+
+### Review Log
+
+| Date | Reviewer | Last run reviewed | Notes |
+|------|----------|-------------------|-------|
+| _none yet_ | | | |
+
+---
+
 **One-line status:** Suite v2.3.0+. Run 65 surfaced two tooling defects: `verify-suite.ps1` Check 5 still treated every `*external*` SCORECARD row as non-suite even though the suite GENBA intentionally records Run 62 for methodology validation, and `kiroku-validate.ps1` Check 7 counted any raw `*not recorded*` substring in the index, including explanatory prose. Both parser rules were fixed. The suite now passes `verify-suite.ps1` with 0 failures, 0 warnings, and `kiroku-validate.ps1` warns only on 4 genuine historical decisions whose alternatives were never recorded. P3 remains 1/3.
 
 ## Target Condition

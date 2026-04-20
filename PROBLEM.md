@@ -192,6 +192,25 @@ The principles are the theoretical core. Commander's Intent makes interpretation
 
 ---
 
+## Out of Scope: What This Framework Does Not Solve
+
+This framework is an **evidence substrate**, not a trust generator. It produces the conditions under which trust *can* form on observable grounds, but it does not manufacture trust, guarantee adoption, or solve the social, organizational, and human-factors problems that surround autonomous AI. Naming these limits explicitly prevents the framework from being judged against claims it never made.
+
+The following are real, important problems that this framework does **not** address:
+
+1. **Reviewer engagement and scaling.** Earned autonomy is meaningful only if someone evaluates the evidence. If no one reads the trail, autonomy becomes de facto unconditional regardless of how much evidence exists. If everyone reads it, the reviewer becomes the bottleneck. The framework provides multi-resolution evidence to lower the cost of review, and an in-trail reviewer-engagement signal so non-engagement is at least visible — but it has no answer for *how* organizations actually staff, incentivize, and sustain meaningful human review at scale. **This is the framework's deepest unresolved gap.** It is named here so it cannot be hidden by the existence of the trail.
+2. **Reasoning correctness.** Transparency proves *visibility*, not *correctness*. A trail can be honest, legible, and wrong. The agent can show its reasoning step by step and still arrive at a defective conclusion — or narrate a confident-looking adaptation that was actually pattern-matching. Convergence Is Silence (P3) is the framework's primary defense against this, but it depends on diverse evaluators being available, willing, and competent. Where they are not, transparency does not save you.
+3. **Human intent stability.** Commander's Intent assumes the human can articulate a destination clearly enough for the agent to interpret it. Real missions are often vague, contradictory, politically constrained, or shifting over time. The framework can clarify ambiguity through dialogue at session start, but if the upstream intent is unstable, every downstream decision inherits that instability.
+4. **Organizational willingness to delegate.** Many organizations do not want AI to have autonomy at all — earned or not. Fear of loss of control, job displacement, liability, political consequences, and being blamed for AI mistakes are legitimate concerns the framework cannot address. The framework's claim is conditional: *if* you want to delegate, here is how to make the delegation observable. It does not argue that you should.
+5. **Incentives, values, and the social layer of trust.** Reliability is one component of trust. Trust also requires shared values, aligned incentives, and demonstrated character over time — none of which the framework supplies. The framework is a **governance and evidence layer**, not a trust model. Governance enables trust; it does not create it.
+6. **Domain measurability.** The principles are domain-portable; the existence of a meaningful "target condition" is not. In some domains the next improvement is unclear, unmeasurable, or politically contested. The framework gives the agent discipline for navigating uncertainty, but it cannot manufacture a measurable target where none exists.
+7. **Legal liability and accountability assignment.** The trail makes accountability *possible*; policy and law must define who bears it when earned autonomy produces a bad outcome. This is named in "What Must Be Built on Top" — repeated here because the absence of an accountability framework can hollow out the value of the trail.
+8. **Adoption and organizational psychology.** Whether stakeholders will accept the concept of "earned autonomy" at all is a sociological question the framework treats as a precondition. If the answer is no for a given organization or domain, the framework is inert there regardless of how well it functions.
+
+These are not disclaimers added defensively. They are scope boundaries. A framework that claims to solve them would be overclaiming. A framework that pretends they don't exist would be dishonest. Naming them here is itself an instance of Observable Autonomy applied to the framework's own design.
+
+---
+
 ## The Problem In Two Sentences
 
 How do we structure the relationship between human and AI so that the AI must interpret the mission and adapt to context rather than merely follow prescribed steps? And how do we make that reasoning visible enough for different observers to justify granting or withholding autonomy?

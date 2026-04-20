@@ -18,6 +18,7 @@
       8. Session elapsed time    -- how long do sessions take? (model speed, suite overhead)
       9. Transcript size         -- how large are session transcripts? (effort/context cost proxy)
      10. GENBA growth rate       -- is the ledger becoming a scaling bottleneck?
+     11. Reviewer engagement     -- is anyone actually reading the trail?
 
     Threshold rationale (CMMI QPM L4 -- operationally defined):
       Agreement (stdev of de-anchored start scores):
@@ -469,6 +470,98 @@ if (Test-Path $genbaPath) {
     }
 } else {
     Write-Host "    TRAIL/GENBA.md not found"
+}
+
+# ---------------------------------------------------------------------------
+# Metric 11: Reviewer Engagement
+# ---------------------------------------------------------------------------
+# Audit trails are necessary but not sufficient. Trust requires that someone
+# actually reads them. This metric makes review activity observable so that
+# non-engagement is at least visible. Parses TRAIL/SUMMARY.md for the
+# "Human Review Checkpoint" block (checkbox state, last-reviewed date) and
+# the "Review Log" table for total review history.
+#
+# Threshold rationale:
+#   GOOD     : checkbox is [x] AND a Review Log row exists since the latest run
+#   MODERATE : a review exists but is stale (>= 1 run behind, < 5 runs behind)
+#   POOR     : no review ever recorded, or >= 5 runs behind the active ledger
+Write-Host ""
+Write-Host "[11] Reviewer Engagement" -ForegroundColor White
+$summaryPath = Join-Path (Join-Path $script:suiteRoot 'TRAIL') 'SUMMARY.md'
+if (Test-Path $summaryPath) {
+    $sumContent = Get-Content $summaryPath -Raw -Encoding UTF8
+
+    # Parse checkbox state under "## Human Review Checkpoint"
+    $checkboxState = 'unknown'
+    $checkpointBlock = [regex]::Match($sumContent, '(?ms)##\s+Human Review Checkpoint.*?(?=^##\s|\z)')
+    if ($checkpointBlock.Success) {
+        if ($checkpointBlock.Value -match '(?m)^\s*>\s*-\s*\[x\]\s*Yes') {
+            $checkboxState = 'checked'
+        } elseif ($checkpointBlock.Value -match '(?m)^\s*>\s*-\s*\[\s*\]\s*Yes') {
+            $checkboxState = 'unchecked'
+        }
+    }
+
+    # Parse "Last reviewed: YYYY-MM-DD" date
+    $lastReviewedDate = $null
+    $daysSinceReview = $null
+    if ($checkpointBlock.Success -and $checkpointBlock.Value -match '(?m)Last reviewed:\s*(\d{4}-\d{2}-\d{2})') {
+        try {
+            $lastReviewedDate = [DateTime]::ParseExact($Matches[1], 'yyyy-MM-dd', $null)
+            $daysSinceReview = [int]((Get-Date).Date - $lastReviewedDate).TotalDays
+        } catch { }
+    }
+
+    # Parse Review Log table rows (skip placeholder "_none yet_")
+    $reviewRows = @()
+    $logBlock = [regex]::Match($sumContent, '(?ms)###\s+Review Log.*?(?=^---|\z)')
+    if ($logBlock.Success) {
+        foreach ($line in ($logBlock.Value -split "`r?`n")) {
+            if ($line -match '^\|\s*(\d{4}-\d{2}-\d{2})\s*\|\s*([^|]+?)\s*\|\s*Run\s+(\d+)\s*\|') {
+                $reviewRows += [PSCustomObject]@{
+                    Date     = $Matches[1]
+                    Reviewer = $Matches[2].Trim()
+                    Run      = [int]$Matches[3]
+                }
+            }
+        }
+    }
+
+    # Determine latest active-ledger run number
+    $latestActiveRun = $null
+    if (Test-Path $genbaPath) {
+        $runMatches = [regex]::Matches($gContent, '(?m)^##\s+Run\s+(\d+)')
+        if ($runMatches.Count -gt 0) {
+            $latestActiveRun = ($runMatches | ForEach-Object { [int]$_.Groups[1].Value } | Measure-Object -Maximum).Maximum
+        }
+    }
+    $latestReviewedRun = if ($reviewRows.Count -gt 0) { ($reviewRows | Measure-Object -Property Run -Maximum).Maximum } else { $null }
+    $runsBehind = if ($null -ne $latestActiveRun -and $null -ne $latestReviewedRun) { $latestActiveRun - $latestReviewedRun } else { $null }
+
+    Write-Host "    Checkpoint state  : $checkboxState"
+    if ($null -ne $daysSinceReview) {
+        Write-Host "    Last reviewed     : $($lastReviewedDate.ToString('yyyy-MM-dd')) ($daysSinceReview day(s) ago)"
+    } else {
+        Write-Host "    Last reviewed     : never"
+    }
+    Write-Host "    Review log rows   : $($reviewRows.Count)"
+    if ($null -ne $latestActiveRun) {
+        if ($null -ne $latestReviewedRun) {
+            Write-Host "    Coverage          : last review = Run $latestReviewedRun, latest = Run $latestActiveRun ($runsBehind run(s) behind)"
+        } else {
+            Write-Host "    Coverage          : latest = Run $latestActiveRun, no review recorded"
+        }
+    }
+
+    if ($checkboxState -eq 'checked' -and $null -ne $runsBehind -and $runsBehind -eq 0) {
+        Write-Host "    Assessment        : GOOD -- trail acknowledged and review is current" -ForegroundColor Green
+    } elseif ($null -ne $runsBehind -and $runsBehind -lt 5 -and $reviewRows.Count -gt 0) {
+        Write-Host "    Assessment        : MODERATE -- review recorded but stale ($runsBehind run(s) behind)" -ForegroundColor Yellow
+    } else {
+        Write-Host "    Assessment        : POOR -- no current human review; trail risks accumulating into noise" -ForegroundColor Red
+    }
+} else {
+    Write-Host "    TRAIL/SUMMARY.md not found -- cannot evaluate reviewer engagement"
 }
 
 # ---------------------------------------------------------------------------
