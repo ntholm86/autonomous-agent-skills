@@ -136,7 +136,7 @@ if ($unique.Count -gt 1) {
 
 # -- Check 5: GENBA / SCORECARD consistency ------------------------------------
 Write-Host "[5/13] Ledger consistency" -ForegroundColor White
-$genbaPath = Join-Path $script:suiteRoot 'GENBA.md'
+$genbaPath = Join-Path (Join-Path $script:suiteRoot 'TRAIL') 'GENBA.md'
 $scorecardPath = Join-Path $script:suiteRoot 'SCORECARD.md'
 if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     $gContent = Get-Content $genbaPath -Raw
@@ -160,12 +160,12 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     }
 
     if ($gRuns -ne $tpsRows.Count) {
-        Warn "GENBA has $gRuns run entries, SCORECARD has $($tpsRows.Count) TPS Skill Suite rows ($invalidatedRows invalidated row(s); external-target rows ignored)"
+        Warn "TRAIL/GENBA.md has $gRuns run entries, SCORECARD has $($tpsRows.Count) TPS Skill Suite rows ($invalidatedRows invalidated row(s); external-target rows ignored)"
     } else {
-        Pass "GENBA ($gRuns) and SCORECARD ($($tpsRows.Count)) TPS Skill Suite counts match"
+        Pass "TRAIL/GENBA.md ($gRuns) and SCORECARD ($($tpsRows.Count)) TPS Skill Suite counts match"
     }
 } else {
-    if (-not (Test-Path $genbaPath))     { Warn 'GENBA.md not found' }
+    if (-not (Test-Path $genbaPath))     { Warn 'TRAIL/GENBA.md not found' }
     if (-not (Test-Path $scorecardPath)) { Warn 'SCORECARD.md not found' }
 }
 
@@ -200,7 +200,7 @@ foreach ($skill in $skills) {
         $current[$rel] = (Get-FileHash $abs -Algorithm SHA256).Hash.Substring(0, 16)
     }
 }
-foreach ($ledger in @('GENBA.md', 'SCORECARD.md', 'CHANGELOG.md', 'PRINCIPLES.md', 'PROBLEM.md', 'STANDARDS.md', 'METRICS_HISTORY.md', 'verify-suite.ps1', 'metrics.ps1')) {
+foreach ($ledger in @('TRAIL/GENBA.md', 'SCORECARD.md', 'CHANGELOG.md', 'PRINCIPLES.md', 'PROBLEM.md', 'STANDARDS.md', 'METRICS_HISTORY.md', 'verify-suite.ps1', 'metrics.ps1')) {
     $abs = Join-Path $script:suiteRoot $ledger
     if (Test-Path $abs) {
         $current[$ledger] = (Get-FileHash $abs -Algorithm SHA256).Hash.Substring(0, 16)
@@ -317,7 +317,7 @@ if (Test-Path $genbaPath) {
         }
     }
 } else {
-    Warn 'GENBA.md not found — cannot check Hansei cadence'
+    Warn 'TRAIL/GENBA.md not found — cannot check Hansei cadence'
 }
 
 # -- Check 10: PRINCIPLES.md governing-document integrity ----------------------
@@ -410,7 +410,7 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
         Pass "Every non-invalidated TPS Skill Suite SCORECARD row has a matching GENBA entry"
     }
 } else {
-    Pass 'SCORECARD/GENBA coverage check skipped (one or both missing)'
+    Pass 'SCORECARD/TRAIL/GENBA coverage check skipped (one or both missing)'
 }
 
 # -- Check 13: Latest-run model identity consistency --------------------------

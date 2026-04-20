@@ -54,6 +54,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 46 | 2026-04-19 | Claude Opus 4.6 | N/A | N/A | N/A | Kiroku (external) | Kaizen: 7 fixes — stale statuses, DEC numbering scheme (R-prefix for retroactive), timestamp convention honesty, core principle dedup, session metadata update. Convention stabilizing. |
 | 47 | 2026-04-19 | Claude Opus 4.6 | 7.875 (v3) | 6.875 (v3, intended) | -1.0 | TPS Skill Suite v2 | **Kaikaku rebuild.** Re-derived from Principles alone: 8 skills -> 5. Self-score captured the intended artifact; Run 48 later found shipped integrity defects in the live files. v2.0.0. |
 | 48 | 2026-04-19 | GPT-5.4 | N/A | N/A | N/A | TPS Skill Suite v2 | **Cross-model validation.** Found shipped v2.0.0 integrity regressions (4 concatenated skill files, retired skills still live, verifier still on 8-skill/v1 layout). Fixed and released v2.0.1. |
+| 49 | 2026-04-20 | GPT-5.4 xhigh | N/A | N/A | N/A | TPS Skill Suite | **Kaizen.** Canonicalized trail routing by target repo so direct chat work and Kata runs share `TARGET_REPO/TRAIL/`; migrated the live suite ledger to `TRAIL/GENBA.md` and updated verifier/metrics to match. |
 
 ## Cross-Model Notes
 
@@ -67,7 +68,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 
 ## Current Status
 
-- The run table above is the source of truth for per-run scores and outcomes; `GENBA.md` is the source of truth for per-run findings, actions, and reasoning.
+- The run table above is the source of truth for per-run scores and outcomes; `TRAIL/GENBA.md` is the source of truth for per-run findings, actions, and reasoning.
 - The current live release is **v2.0.1**. Run 47 records the rebuild itself; Run 48 records the first cross-model validation and the repair of the shipped v2.0.0 artifact.
 - **Scoring uses Rubric v3 (adopted Run 42) for all runs from Run 42 forward.** Runs 17-41 used Rubric v1/v2 (10 dimensions). Pre-v1 scores used an implicit narrower basis. v3 scores are not directly comparable to v1/v2 scores — a v3 baseline of ~7.2 is expected and by design (see RUBRIC_V3_PROPOSAL.md).
 - v1/v2 scores are preserved unchanged in the run table for auditability.
@@ -109,7 +110,7 @@ Six mechanisms produced breakthroughs across 12 runs: Kaizen converged at Run 5,
 ### What this experiment proves
 
 - Self-targeting works. The TPS skill suite found and fixed real defects in itself across four independent runs with measurable, durable, regression-free improvement.
-- Observable Autonomy (Principle 2) is not theoretical. The GENBA.md + SCORECARD.md trail made every run's reasoning reviewable after the fact — and made *this conclusion* reconstructable from the record alone.
+- Observable Autonomy (Principle 2) is not theoretical. The TRAIL/GENBA.md + SCORECARD.md trail made every run's reasoning reviewable after the fact — and made *this conclusion* reconstructable from the record alone.
 - Commander's Intent (Principle 1) is not theoretical. Four different models with different training produced consistent-but-non-redundant findings. That only happens when the skills provide vocabulary and framework rather than checklists.
 - Cross-model validation is a primitive operation in autonomous improvement loops, not a nice-to-have. Single-model self-targeting would have converged around 8.4 and stopped finding real defects by Run 2.
 

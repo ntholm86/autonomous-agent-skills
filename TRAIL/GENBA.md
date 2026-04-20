@@ -1,5 +1,45 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 49 - 2026-04-20
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | GPT-5.4 xhigh |
+| Trigger | User clarification: canonical audit trail must be keyed by the target repo, not by the invocation source |
+| Methodology | Kata -> Kaizen (self-target, trail-routing clarification) |
+
+### 3M Diagnosis Summary
+| Lens | Findings | Critical/High |
+|------|:--------:|:-------------:|
+| Mura | 2 | 2 |
+| Muri | 0 | 0 |
+| Muda | 1 | 1 |
+| Causal chains | 1 | - |
+
+### Findings
+| # | Finding | Lens | Severity | Fixed? | Recurred? |
+|---|---------|------|:--------:|:------:|:---------:|
+| 1 | The trail-routing rule was correct in spirit but not explicit enough in the activation points, so the agent could still anchor on the skills repo rather than the repo actually being improved. | Mura | High | Yes | First |
+| 2 | The skills suite itself still kept its live run ledger at repo root (`GENBA.md`) while Kata and Kiroku declared `TRAIL/` as the canonical evidence location. | Mura/Muda | Critical | Yes | First |
+| 3 | `verify-suite.ps1` and `metrics.ps1` still hardcoded the old root ledger path, so the suite could not migrate to `TRAIL/GENBA.md` without breaking its own checks. | Muda | High | Yes | First |
+
+### Actions Taken
+- Moved the live suite ledger from repo root `GENBA.md` to `TRAIL/GENBA.md`.
+- Updated `verify-suite.ps1` and `metrics.ps1` to use `TRAIL/GENBA.md` as the canonical ledger path.
+- Clarified target resolution in `kata/SKILL.md`, `kiroku/SKILL.md`, and the global VS Code Copilot instruction: direct chat work and Kata work on the same target repo must append to the same `TARGET_REPO/TRAIL/`.
+- Updated `SCORECARD.md` and `TRAIL/SUMMARY.md` to reflect the canonical trail location and the outcome of this run.
+
+### Outcome
+- The skills suite now follows the same trail contract it prescribes to other repos: the canonical self-targeting trail lives in `skills/TRAIL/`.
+- Direct chat work and Kata work are now explicitly keyed to the same target-repo trail, which matches the developer workflow the user described.
+- No full Rubric v3 rescore in this run; the purpose of the cycle was trail-routing correction and contract enforcement.
+
+### Observations
+- The load-bearing invariant is not "use the skills repo trail"; it is "use the trail belonging to the repo being improved."
+- Fixing the activation wording matters as much as fixing the file path. Observable Autonomy fails if the rule exists only implicitly.
+
+---
 ## Run 48 - 2026-04-19
 
 | Field | Value |

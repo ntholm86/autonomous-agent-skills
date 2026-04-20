@@ -53,7 +53,11 @@ Before executing, start a kiroku session for the target:
 & "<skills-dir>/kiroku/kiroku-start.ps1" -Slug "<methodology>-<target>" -Project "<target-path>"
 ```
 
+First determine `<target-path>` correctly. It is the repository being improved, not the repository that happens to contain the skill scripts.
+
 The `-Project` parameter determines where `TRAIL/` lives — always in the target being worked on. When Kata targets an external repo, the trail goes in that repo. When Kata targets the skills suite itself, the trail goes in the skills directory.
+
+If direct VS Code chat work and Kata both act on the same repository, they append to the same `TARGET_REPO/TRAIL/`. The trigger differs; the trail does not.
 
 Invoke the selected skill. It does the work. During execution, mark decisions, realizations, and reversals in the session transcript.
 

@@ -1,7 +1,7 @@
 <#
 .SYNOPSIS
     Computable metrics for the TPS Skill Suite -- objective statistics derived
-    from SCORECARD.md and GENBA.md ledger data.
+    from SCORECARD.md and TRAIL/GENBA.md ledger data.
 .DESCRIPTION
     Bridges the gap between semantic scoring (Rubric v1) and mechanical
     checking (verify-suite.ps1) by computing reproducible, model-independent
@@ -59,9 +59,9 @@ $invalidated = @($rows | Where-Object { $_.Result -match $invalidPattern })
 $valid = @($rows | Where-Object { $_.Result -notmatch $invalidPattern })
 
 # ---------------------------------------------------------------------------
-# Parse GENBA.md for recurrence data
+# Parse TRAIL/GENBA.md for recurrence data
 # ---------------------------------------------------------------------------
-$genbaPath = Join-Path $script:suiteRoot 'GENBA.md'
+$genbaPath = Join-Path (Join-Path $script:suiteRoot 'TRAIL') 'GENBA.md'
 $recurrenceCount = 0
 $totalFindings = 0
 if (Test-Path $genbaPath) {
@@ -141,7 +141,7 @@ if ($totalFindings -gt 0) {
         Write-Host "    Assessment       : POOR -- high recurrence, root causes not addressed (> 25%)" -ForegroundColor Red
     }
 } else {
-    Write-Host "    No structured findings in GENBA.md"
+    Write-Host "    No structured findings in TRAIL/GENBA.md"
 }
 
 # ---------------------------------------------------------------------------

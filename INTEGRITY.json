@@ -1,20 +1,20 @@
 ﻿{
-    "last_verified":  "2026-04-19T19:10:14.2581302+02:00",
+    "last_verified":  "2026-04-20T06:38:28.6165749+02:00",
     "suite_version":  "2.0.1",
     "files":  {
-                  "kata/SKILL.md":  "87906BB9E89D91C0",
+                  "kata/SKILL.md":  "5E52EB9DEDF84E2D",
                   "kaizen/SKILL.md":  "F7F91C019521B4AA",
                   "kaikaku/SKILL.md":  "B3E4C63C3C7CA438",
                   "hansei/SKILL.md":  "C92ED14546C85B72",
                   "shiken/SKILL.md":  "CB44528B2753108E",
-                  "GENBA.md":  "EB0C0CBD177E9AF8",
-                  "SCORECARD.md":  "A78F211F08EC8E5C",
+                  "TRAIL/GENBA.md":  "E1E29FA0B2279B43",
+                  "SCORECARD.md":  "78BDEB4D0E130547",
                   "CHANGELOG.md":  "070F7389CD3FC0C9",
-                  "PRINCIPLES.md":  "506C648467FFBC79",
+                  "PRINCIPLES.md":  "3B427E5BCB5DCB8F",
                   "PROBLEM.md":  "9BFE39BB602E518A",
                   "STANDARDS.md":  "0362C1C17C6E506D",
                   "METRICS_HISTORY.md":  "063DFC8D22AB67C9",
-                  "verify-suite.ps1":  "F13B1D1F60BF4D4B",
-                  "metrics.ps1":  "53BA828703A9C2B0"
+                  "verify-suite.ps1":  "D74353E2E7376225",
+                  "metrics.ps1":  "DC71530A0495E6F7"
               }
 }

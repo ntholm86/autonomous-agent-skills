@@ -20,6 +20,16 @@ This includes:
 - Design conversations that produce architectural decisions
 - Hansei reflections that change the improvement process itself
 
+## Target Resolution
+
+The trail belongs to the target repository, not to the mechanism that invoked kiroku.
+
+- Direct VS Code work on repository `X` writes to `X/TRAIL/`
+- Kata targeting repository `X` writes to `X/TRAIL/`
+- Self-targeting the skills suite writes to `skills/TRAIL/`
+
+If direct chat work and Kata both act on the same repository during the same period, they share one trail. The session transcript records who initiated the work; the audit trail location is still keyed by the target repository.
+
 ## The scripts
 
 Four PowerShell scripts in this folder manage the trail lifecycle:
@@ -88,7 +98,7 @@ This structure implements the three evidence resolutions required by Principle 2
 | Resolution | Artifact | Observer time budget |
 |---|---|---|
 | **Digested** | SUMMARY.md | 30 seconds |
-| **Indexed** | INDEX.md + GENBA.md | 5-15 minutes |
+| **Indexed** | TRAIL/INDEX.md + TRAIL/GENBA.md | 5-15 minutes |
 | **Full** | sessions/ transcripts | Unlimited |
 
 ## During a session
