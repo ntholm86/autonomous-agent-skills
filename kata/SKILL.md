@@ -122,6 +122,8 @@ Kata honors Principle 3. Convergence requires three simultaneous conditions:
 
 When these conditions are met, record the convergence and stop. Do not manufacture findings to justify continued execution. The P3 silence counter is computed by `metrics.ps1` from SCORECARD data — it is not asserted by the agent. If the asserted counter drifts from the computed value, the metrics output flags it.
 
+**Operational note:** In chat-based tools, changing the selected model inside the same conversation does **not** satisfy independent assessment. Prior scores and reasoning remain in context. For a run to count toward convergence, start a fresh conversation/session with that evaluator and do not expose prior scores.
+
 ## Periodic Hansei
 
 Hansei is triggered by signals, not by fixed cadence. Invoke Hansei when any of these conditions hold:

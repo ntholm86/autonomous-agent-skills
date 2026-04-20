@@ -1,5 +1,34 @@
 ﻿<!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 64 - 2026-04-20
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | GPT-5.4 |
+| Trigger | User switched model family inside the same conversation to attempt the next convergence run |
+| Methodology | Kata → Kaizen |
+
+### Independence Gate
+This run is **not** a valid Principle 3 convergence datapoint. Although the model family changed, prior scores and Run 63 conclusions were already visible in conversation context. Under `PRINCIPLES.md` §3, a same-conversation model switch is not an independent assessment.
+
+### Diagnosis
+- `TRAIL/SUMMARY.md` drifted: `## Open Concerns` still said the P3 silence counter was `0/3`, while `SCORECARD.md`, `TRAIL/GENBA.md`, and `## Direction` already recorded Run 63 as `1/3`.
+- The suite defined independent assessment conceptually, but did not operationalize a chat-specific rule that model switches inside the same conversation inherit prior scores/context and therefore do not qualify for convergence accounting.
+- `metrics.ps1` Metric 7 claimed to walk backward from the most recent valid scored run, but the implementation actually broke on any trailing `N/A` row. Recording Run 64 as non-scoring therefore falsely reset the computed silence counter from `1` to `0`.
+
+### Actions
+- Corrected the stale P3 counter in `TRAIL/SUMMARY.md` and updated the digest for the latest run state.
+- Clarified Principle 3 / Kata convergence guidance: a valid convergence run must begin in a fresh conversation/session; changing models inside an existing conversation does not count.
+- Fixed `metrics.ps1` Metric 7 to skip non-scoring rows instead of treating them as chain breakers, matching the documented intent of starting from the latest valid scored run.
+
+### Outcome
+- No independent score assigned for Run 64.
+- P3 silence counter remains **1/3**.
+- Run recorded for audit honesty, but excluded from convergence accounting.
+- `verify-suite.ps1`: 0 failures, 1 expected warning. `metrics.ps1` now computes `1/3` again after the fix.
+
+---
 ## Run 63 - 2026-04-20
 
 | Field | Value |

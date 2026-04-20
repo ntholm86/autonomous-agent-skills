@@ -20,12 +20,14 @@ and this project adheres to a custom versioning scheme.
 - **kata/SKILL.md Convergence section tightened.** "produce the same assessment" → "produce the same score (within a defined tolerance)" — mirrors PRINCIPLES.md §3 precisely. Added explicit reference to `metrics.ps1` as the computation source for the silence counter. (Run 59)
 - **kata/SKILL.md Periodic Hansei restructured from cadence to signal-based.** Fixed 10-run cadence replaced with 4 signal-based triggers: recurring-class findings (3+), sustained plateau (3+ zero-delta), methodology doubt, human request. Addresses Hansei Run 60 F#4. (Run 61)
 - **verify-suite.ps1 Check 9 restructured from cadence to signal-based.** Fixed 5-run Hansei cadence check replaced with sustained-plateau detection: walks SCORECARD rows backward, counts consecutive zero-delta runs, warns at ≥3. Uses `Get-ScorecardRunRows` object model. (Run 61)
+- **metrics.ps1 Metric 7 now skips non-scoring rows when computing the P3 silence chain.** External-target rows and explicitly excluded follow-up audits no longer falsely reset the computed counter; invalidated and non-zero scored runs still break the chain. (Run 64)
 
 ### Reflection
 
 - **Run 60 Hansei (no skill behavior changes).** Periodic loop reflection. 4 new findings: incentive structure incompatible with stopping condition; inter-run CM drift recurring as structural pattern; external-target finding now 19 runs deferred (Run 41 F#3 still open); cadence-driven Hansei risks compliance shape. Most Important Finding unchanged from Runs 41 and 54. Recommendations queued for Runs 61 (silence test) and 62 (external target). See `TRAIL/GENBA.md` Run 60 entry. (Run 60)
 - **Run 62 external target (leifoglenedk).** First genuine external-target run. Kata→Kaizen on C# ASP.NET MVC driving school platform. Added 16 business logic tests (60/60 pass). Security findings flagged. Addresses Run 41 F#3 (20-run-deferred external target). Methodology validated: no skill modifications needed. See `TRAIL/GENBA.md` Run 62 entry and `C:\git\leifoglenedk\TRAIL\`. (Run 62)
 - **Run 63 silence (no changes).** First genuine silence run. Read all 5 skill files + PRINCIPLES + README + SCORECARD rubric + CHANGELOG. Found 6 observations — all design tensions inherent in principle-first systems, none actionable. Zero artifact changes. P3 silence counter: 0 → 1. (Run 63)
+- **Run 64 non-independent cross-model follow-up.** Different model family, but prior scores were visible in the same conversation, so the run does not qualify for Principle 3 convergence accounting. Fixed stale `TRAIL/SUMMARY.md` counter text, repaired `metrics.ps1` Metric 7 so non-scoring rows do not reset the silence chain, and clarified in `PRINCIPLES.md` + `kata/SKILL.md` that same-conversation model switches are not independent assessment. P3 remains 1/3. (Run 64)
 
 ## [2.3.0] - 2026-04-20
 

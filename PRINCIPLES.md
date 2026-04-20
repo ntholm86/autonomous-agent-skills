@@ -101,7 +101,7 @@ Score stability is necessary but not sufficient. Change-rate stability is necess
 
 2. **Zero material change.** Each of those N evaluations ends with no changes to the artifact itself. The only output is the evaluation record (ledger entries, trajectory rows). If a run produces a diff to the artifact, the convergence counter resets to zero — regardless of whether the score changed.
 
-3. **Independent assessment.** Each evaluator scores the artifact fresh, without consulting prior scores. If evaluators anchor to the previous score, convergence measures social conformity, not quality. The de-anchoring rule is not optional — it is what makes convergence *observable* rather than *assumed*.
+3. **Independent assessment.** Each evaluator scores the artifact fresh, without consulting prior scores. If evaluators anchor to the previous score, convergence measures social conformity, not quality. The de-anchoring rule is not optional — it is what makes convergence *observable* rather than *assumed*. In chat-based systems, switching to a new model inside the same conversation is **not** independent assessment — prior scores remain in context. A valid convergence evaluation must begin in a fresh conversation/session for that evaluator.
 
 **The minimum bar:** 3 consecutive runs, 3 distinct evaluators, same score, zero artifact changes. Below this, you have improvement trajectory. Above this, you have convergence. There is no middle ground.
 

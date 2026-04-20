@@ -293,7 +293,9 @@ Write-Host "    Durability           : $durability% of runs produced lasting imp
 # ---------------------------------------------------------------------------
 # Walks SCORECARD rows backward from the most recent valid scored run.
 # A run contributes to silence if its delta is +0.0 (zero score change).
-# The chain is broken by any non-zero delta, invalidated row, or N/A delta.
+# Non-scoring rows (for example external-target runs or explicitly excluded
+# follow-up audits) are skipped rather than treated as chain breakers.
+# The chain is broken by any non-zero delta or invalidated row.
 # Distinct model families in the chain are also counted -- P3 requires
 # >= 3 consecutive silent runs from >= 3 distinct evaluators.
 #
@@ -304,11 +306,12 @@ Write-Host ""
 Write-Host "[7] P3 Convergence Silence Counter" -ForegroundColor White
 $silentChain = @()
 $zeroDeltaPattern = '^\+?-?0\.0+$'
-# Walk backward through ALL rows (valid + invalidated), break on invalidation or non-zero
+# Walk backward through ALL rows (valid + invalidated). Skip non-scoring rows,
+# but break on invalidation or the first non-zero scored delta.
 for ($i = $rows.Count - 1; $i -ge 0; $i--) {
     $r = $rows[$i]
     if ($r.Result -match $invalidPattern) { break }
-    if ($r.Delta -eq 'N/A' -or $r.Delta -eq '') { break }
+    if ($r.Delta -eq 'N/A' -or $r.Delta -eq '') { continue }
     if ($r.Delta -notmatch $zeroDeltaPattern) { break }
     $silentChain += $r
 }
