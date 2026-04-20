@@ -9,6 +9,24 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.2.0] - 2026-04-20
+
+### Added
+
+- **Root README.md created.** Suite now has an entry point: 6-skill table, principles summary, directory structure, getting-started guide.
+
+### Changed
+
+- **7 journey documents archived to v1_archive/.** REBUILD_INTENT.md, SUITE_TRANSFORMATION.md, PLAIN_LANGUAGE_THESIS.md, DELEGABILITY_CONTRACT.md, WORKED_EXAMPLE_DATAKIT.md, RUBRIC_V3_PROPOSAL.md, and MEASUREMENT.md moved via `git mv` (history preserved). Root files reduced from 17 to 10.
+## [2.1.0] - 2026-04-20
+
+### Changed
+
+- **Kiroku rewritten principle-first for colleague adoption.** Domain-agnostic evidence trail management. GENBA ownership separated to Kata.
+- **Indexer and validator `[!DECISION]` matching anchored to line start.** Eliminates false positives from narrative references to the marker.
+- **Kata GENBA wording sharpened.** GENBA is for suite-level evaluation runs only, not skill-level development work.
+- **Trail routing canonicalized.** Direct chat work and Kata runs on the same target share one `TARGET_REPO/TRAIL/`. Suite ledger moved from root to `TRAIL/GENBA.md`.
+
 ## [2.0.1] - 2026-04-19
 
 ### Fixed

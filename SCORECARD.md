@@ -55,6 +55,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 47 | 2026-04-19 | Claude Opus 4.6 | 7.875 (v3) | 6.875 (v3, intended) | -1.0 | TPS Skill Suite v2 | **Kaikaku rebuild.** Re-derived from Principles alone: 8 skills -> 5. Self-score captured the intended artifact; Run 48 later found shipped integrity defects in the live files. v2.0.0. |
 | 48 | 2026-04-19 | GPT-5.4 | N/A | N/A | N/A | TPS Skill Suite v2 | **Cross-model validation.** Found shipped v2.0.0 integrity regressions (4 concatenated skill files, retired skills still live, verifier still on 8-skill/v1 layout). Fixed and released v2.0.1. |
 | 49 | 2026-04-20 | GPT-5.4 xhigh | N/A | N/A | N/A | TPS Skill Suite | **Kaizen.** Canonicalized trail routing by target repo so direct chat work and Kata runs share `TARGET_REPO/TRAIL/`; migrated the live suite ledger to `TRAIL/GENBA.md` and updated verifier/metrics to match. |
+| 50 | 2026-04-20 | Claude Opus 4.6 | N/A | N/A | N/A | TPS Skill Suite | **Kaizen.** Added root README.md (entry point for newcomers). Archived 7 journey documents to v1_archive/. Root files 17→10. v2.2.0. |
 
 ## Cross-Model Notes
 

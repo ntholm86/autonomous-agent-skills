@@ -1,5 +1,32 @@
 <!-- markdownlint-disable MD024 MD036 MD041 MD022 MD032 MD058 MD060 -->
 ---
+## Run 50 - 2026-04-20
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite |
+| Model | Claude Opus 4.6 |
+| Trigger | First suite-level evaluation since v2.1.0 rewrite and Runs 47-49 tightening |
+| Methodology | Kata → Kaizen |
+
+### Findings
+| # | Finding | Lens | Severity | Fixed? |
+|---|---------|------|:--------:|:------:|
+| 1 | No root README.md — newcomer has no entry point to the repo | Mura | High | Yes |
+| 2 | 7 journey/historical documents at root (REBUILD_INTENT, SUITE_TRANSFORMATION, etc.) clutter the repo for someone with no prior context | Muda | Medium | Yes |
+| 3 | SCORECARD serves dual audiences (history + status) without distinguishing them | Muri | Low | Deferred |
+
+### Actions Taken
+- Created `README.md` at suite root: 6-skill table, principles summary, directory structure, getting-started guide.
+- Archived 7 journey documents to `v1_archive/` via `git mv` (preserves history): REBUILD_INTENT, SUITE_TRANSFORMATION, PLAIN_LANGUAGE_THESIS, DELEGABILITY_CONTRACT, WORKED_EXAMPLE_DATAKIT, RUBRIC_V3_PROPOSAL, MEASUREMENT.
+- Verified: 0 cross-references to archived files. verify-suite.ps1: 0 failures, 0 warnings.
+
+### Outcome
+- Root now has 10 files (was 17) + 6 skill directories. README.md is the entry point.
+- Target Condition ("readable by someone with no prior context") directly served.
+- SCORECARD restructuring deferred — lower ROI than entry-point creation.
+
+---
 ## Run 49 - 2026-04-20
 
 | Field | Value |

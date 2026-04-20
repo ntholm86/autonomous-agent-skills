@@ -1,11 +1,11 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-20 - suite-tightening session*
+*Last updated: 2026-04-20 - Kata Run 50 (Kaizen)*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
 
-**One-line status:** Suite v2.1.0 stable. Trail validates clean (0 failures, 0 warnings). GENBA scope clarified as suite-level evaluation runs only.
+**One-line status:** Suite v2.2.0 stable. Root README.md added as newcomer entry point. 7 journey docs archived. Trail validates clean (0 failures, 0 warnings).
 
 ## Target Condition
 
@@ -13,13 +13,13 @@ Bring P2 (Observable Autonomy) to colleagues' daily work. The skill files must b
 
 ## Direction
 
-Tightening pass: fixed indexer/validator false positives (narrative `[!DECISION]` references counted as real decisions — anchored to line start), updated SCORECARD to v2.1.0, sharpened Kata GENBA wording to distinguish evaluation runs from skill-level dev work.
+Newcomer readability pass: added root README.md (skill table, principles summary, directory structure, getting started). Archived 7 rebuild-era documents from root to v1_archive/. Root files reduced from 17 to 10.
 
 ## Key Decisions
 
+- [DEC-033](INDEX.md) Add root README.md and archive 7 journey documents to v1_archive/
 - [DEC-032](INDEX.md) Anchor `[!DECISION]` matching to line start in indexer and validator
 - [DEC-031](INDEX.md) Separate GENBA.md ownership from kiroku to Kata
-- [DEC-030](INDEX.md) Make target-repo routing explicit at every activation point
 
 See [INDEX.md](INDEX.md) for the full 32-decision index.
 
