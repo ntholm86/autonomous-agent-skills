@@ -9,15 +9,28 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.3.0] - 2026-04-20
+
 ### Added
 
-- **Dimension Trajectory table in SCORECARD.md.** Per-dimension end-of-run scores for all v3-scored runs, showing which dimensions drove each delta. Populated from GENBA for Runs 43, 44, 47, 51, 52. Scheme column tracks measurement methodology changes across runs.
-- **Kata Step 5: Dimension Trajectory instruction.** Agents now populate the Dimension Trajectory table when recording a scored run. Directly addresses P2 (Observable Autonomy) at indexed resolution.
+- **Dimension Trajectory table in SCORECARD.md.** Per-dimension end-of-run scores for all v3-scored runs, showing which dimensions drove each delta. Populated from GENBA for Runs 43–57. Scheme column tracks measurement methodology changes across runs. (Run 55)
+- **Kata Step 5: Dimension Trajectory instruction.** Agents now populate the Dimension Trajectory table when recording a scored run. Directly addresses P2 (Observable Autonomy) at indexed resolution. (Run 55)
+- **verify-suite.ps1 Check 14: score-change/artifact-change correlation.** Catches fabricated improvements by verifying score increases correlate with artifact diffs. Supports Principle 3 convergence infrastructure. (Run 52)
+
+### Changed
+
+- **metrics.ps1 threshold rationale documented inline.** All 5 metric thresholds now carry CMMI QPM L4, ICC psychometrics, or Six Sigma 3σ anchors, making scores reproducible and defensible. (Run 52)
+- **SCORECARD v1/v2 historical narrative extracted to v1_archive/SCORECARD_HISTORY.md.** Reduces SCORECARD to the active scoring record only, improving 2-minute observer readability. (Run 56)
 
 ### Fixed
 
-- **Scoped SCORECARD parsing in `metrics.ps1` to the main run table.** Dimension Trajectory and rubric tables no longer inflate run counts or distort derived metrics.
-- **Hardened `verify-suite.ps1` SCORECARD and correlation checks.** Run-consuming checks now read the main run table instead of numeric tables generally, GENBA run counting is anchored to top-level headings, and Check 14 is snapshot-aware so clean re-verification of an already-recorded scored run does not warn spuriously.
+- **metrics.ps1 SCORECARD parser rewritten (regex → field split).** Recovered 11 silently-dropped run rows; model diversity and fix durability now computed on the full dataset. (Run 51)
+- **SCORECARD version string corrected v2.1.0 → v2.2.0.** Stale version label from pre-release draft. (Run 51)
+- **Scoped SCORECARD parsing in `metrics.ps1` to the main run table.** Dimension Trajectory and rubric tables no longer inflate run counts or distort derived metrics. (Run 55)
+- **Hardened `verify-suite.ps1` SCORECARD and correlation checks.** Run-consuming checks now read the main run table instead of numeric tables generally, GENBA run counting is anchored to top-level headings, and Check 14 is snapshot-aware so clean re-verification of an already-recorded scored run does not warn spuriously. (Run 55)
+- **README.md verify-suite check count corrected 13 → 14.** Stale count after Check 14 was added. (Run 53)
+- **METRICS_HISTORY.md cleaned.** Removed 1 duplicate row and 1 garbage row from the history file. (Run 52)
+- **SCORECARD.md orphan rows removed.** Three main-run-table rows (2× Run 57, 1× Run 56) that escaped into the Dimension Trajectory section via insertion error removed. (Run 58)
 
 ## [2.2.0] - 2026-04-20
 
