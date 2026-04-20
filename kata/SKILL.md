@@ -25,6 +25,16 @@ Understand the target before acting on it.
 
 If this target has a `TRAIL/` directory, read `TRAIL/GENBA.md` for the most recent run entries. If a prior run exists, verify its claims: check that changes it reported are actually present. Do not anchor to a prior run's score.
 
+**Derive measurements.** After understanding the target, determine what to measure — based on what this target is, what the Target Condition is, and what would make improvement (or its absence) visible. The measurements must make sense for *this* target:
+
+- A skill suite that claims to produce autonomous reasoning should be measured on whether it actually does (ARF, principle compliance, convergence integrity).
+- A web application should be measured on what makes it good at being a web application (security posture, accessibility, test coverage, API consistency — whatever the agent determines matters after reading the code).
+- A library should be measured on what makes it good at being a library (API surface clarity, documentation coverage, backward compatibility).
+
+Do not prescribe the measurements in advance. Derive them from what you find. State each measurement and why it matters for this target. If a prior run on this target established a measurement scheme (recorded in GENBA), inherit it unless you have reason to revise — and if you revise, record the revision as a `[!DECISION]` with rationale.
+
+If a formal scoring rubric exists for this target (e.g., Rubric v3 in SCORECARD.md for the skill suite), use it. Rubrics are one form of measurement scheme — pre-agreed, externally anchored. They don't replace context-derived measurements; they complement them.
+
 ### 2. Diagnose
 
 Examine the target and determine what it needs. Three classical diagnostic lenses are available as vocabulary:
@@ -72,11 +82,12 @@ After execution, close the session:
 
 After execution, update the target's audit trail. All trail artifacts live in a single `TRAIL/` directory. Kiroku manages the core evidence layer (sessions, INDEX, SUMMARY). When Kata evaluates a target as a whole (scored, cross-model), it also maintains a run ledger:
 
-- **`TRAIL/GENBA.md`** — Kata's evaluation run ledger. Used when the entire target is evaluated (e.g., suite-level scoring runs recorded in SCORECARD.md). Not used for development work on individual components — that's tracked by kiroku sessions alone. Prepend the new entry (newest-first). Keep entries compact (~10 lines max). Every entry includes:
+- **`TRAIL/GENBA.md`** — Kata's evaluation run ledger. Used when the entire target is evaluated (e.g., suite-level scoring runs recorded in SCORECARD.md). Not used for development work on individual components — that's tracked by kiroku sessions alone. Prepend the new entry (newest-first). Keep entries compact. Every entry includes:
   - Run number, date, model identity
   - What was found (key findings only — root causes, not exhaustive lists)
   - What was done (actions taken — omit file manifests, `git log` has those)
   - Verification result (build/tests pass/fail)
+  - Measurements (what was measured, the scores, and the delta from prior run — this is what makes the gap visible and drives the next run)
   - Assessment (one sentence: current state, what remains)
 
 - **`TRAIL/sessions/`** — the session transcript. Mark decisions with `[!DECISION]` (include rationale and alternatives considered), realizations with `[!REALIZATION]`, reversals with `[!REVERSAL]`.

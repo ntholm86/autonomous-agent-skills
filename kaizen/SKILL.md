@@ -70,6 +70,10 @@ After all changes:
 
 ### Self-Evaluate
 
-Score the target's current state. Be honest. A score that inflates progress undermines the loop. If the target was 4/10 before and your changes brought it to 5/10, say 5/10 - not 7/10 because you tried hard.
+Score the target against the measurements derived during Grasp (Kata Step 1). These are the measurements that were determined to matter for *this specific target* — not a universal checklist.
 
-If a scoring rubric exists for the target, use it. If not, state your criteria explicitly so the next evaluator can score on the same basis.
+Be honest. A score that inflates progress undermines the loop. If the target was 4/10 before and your changes brought it to 5/10, say 5/10 — not 7/10 because you tried hard.
+
+If a formal scoring rubric exists for this target (e.g., Rubric v3 for the skill suite), score against it. If the measurements were context-derived, score against those and state the scores explicitly so the next evaluator can compare on the same basis — or revise the measurements if they no longer fit.
+
+The scores go into the GENBA entry. The gap between current scores and the Target Condition is what drives the next run.
