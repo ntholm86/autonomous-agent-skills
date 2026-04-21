@@ -1,6 +1,6 @@
 ﻿---
 name: kata
-version: 2.6.1
+version: 2.6.2
 description: 'Orchestrate an improvement cycle: diagnose, select methodology, execute, record, persist. The meta-pattern that connects all skills into a coherent workflow. USE WHEN: improve, audit, review, full treatment, kata, run the loop, comprehensive improvement, what does this project need.'
 argument-hint: 'Specify the target (project, file, system) and optionally a focus area or concern'
 ---
@@ -41,7 +41,7 @@ The loop's own operational metrics (elapsed time, transcript size, artifact grow
 
 **Record the measurement scheme.** This is Step 1's observable output — without it, an observer cannot verify what the run was measured against. Before moving to Diagnosis, write a brief measurement scheme statement in this run's GENBA entry:
 - What is being measured and why each measurement matters for this target.
-- Whether this inherits or revises a prior run's scheme. If inheriting unchanged, one sentence suffices: *"Inheriting Rubric v3 — no revision."* If revising, record it as `[!DECISION]` with rationale.
+- Whether this inherits or revises a prior run's scheme. If inheriting unchanged, one sentence suffices: *"Inheriting [target's scheme name] — no revision."* If revising, record it as `[!DECISION]` with rationale. (The scheme name is whatever was derived for this target in its first run — e.g., "Rubric v3" for the TPS Skill Suite, "M1–M7 article metrics" for a preprint, or a bespoke scheme for a new target.)
 
 An observer reading only the GENBA entry should be able to answer *"what was this run measured against and why?"* without consulting the kiroku session or prior runs.
 

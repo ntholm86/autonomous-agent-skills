@@ -102,7 +102,7 @@ Score stability is necessary but not sufficient. Change-rate stability is necess
 
 **The principle:** Convergence requires three simultaneous conditions:
 
-1. **Score agreement.** N consecutive evaluations by M distinct evaluators produce the same score (within a defined tolerance). The evaluators must be meaningfully diverse — different models, different people, different analytical traditions. Same-family evaluators (e.g., multiple versions of one model) count as one.
+1. **Score agreement.** N consecutive evaluations by M distinct evaluators produce the same score (within a defined tolerance). The evaluators must be meaningfully diverse — different models, different people, different analytical traditions. Same-family evaluators (e.g., multiple versions of one model) count as one. The root cause: each model family develops habituated blind spots -- patterns present in every prior run that the family has stopped questioning. A different family, trained and evaluated independently, will not share those blind spots. This is why the mechanism is analogous to scientific peer review: the value is not in more reviews but in *independent* reviews.
 
 2. **Zero material change.** Each of those N evaluations ends with no changes to the artifact itself. The only output is the evaluation record (ledger entries, trajectory rows). If a run produces a diff to the artifact, the convergence counter resets to zero — regardless of whether the score changed.
 

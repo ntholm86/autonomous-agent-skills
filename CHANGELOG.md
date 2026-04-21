@@ -9,6 +9,14 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.6.2] - 2026-04-21
+
+### Fixed
+
+- **`kata/SKILL.md` Step 1: inheriting-scheme example de-prescripted.** The short-form example previously read `"Inheriting Rubric v3 — no revision."` — a target-specific rubric name hardcoded as the canonical form, implying it is the universal default. Replaced with `"Inheriting [target's scheme name] — no revision."` and added a clarifying parenthetical naming Rubric v3, M1–M7, and bespoke schemes as equivalent, target-derived examples. Root cause: example was written when the suite self-targeted only; became prescriptive by implication once external targets were added. P1 (Commander's Intent) compliance. (Run 81)
+- **`PRINCIPLES.md` Principle 3 Condition 1: added causal reasoning for same-family independence rule.** After "Same-family evaluators count as one," added the root-cause explanation: each model family develops habituated blind spots from prior runs; a different family does not share them. This is why the value is independent reviews, not more reviews. Ports the clearest normative clarification from the public manifesto into the canonical specification. (Run 82)
+- **`TRAIL/GENBA.md`: removed two duplicate Run 79 entries.** Three identical Run 79 entries accumulated from separate conversation passes. Kept the first (backtick-formatted) entry; removed the two duplicates that followed. (Run 82)
+
 ## [2.6.1] - 2026-04-21
 
 ### Fixed

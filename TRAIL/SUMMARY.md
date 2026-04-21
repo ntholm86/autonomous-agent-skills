@@ -1,6 +1,6 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-21 - Run 79: Kaizen (active fix) — Gemini 3.1 Pro (Preview). Found and fixed a mechanical defect where P3 Convergence Counter computationally drifted. This active fix breaks the P3 silence chain (reset to 0/3). verify-suite clean, metrics clean. Score 9.125→9.125 (+0.0).*
+*Last updated: 2026-04-21 - Run 82: Kaizen — Claude Sonnet 4.6. Run 81 bookkeeping cleanup (SCORECARD rows 80/81 fixed, 2 duplicate Run 79 GENBA entries removed, all skills bumped to v2.6.2). Selective manifesto delta pass: PRINCIPLES.md P3 Condition 1 now explains habituated-blind-spots as root cause for same-family independence rule. PRINCIPLES.md content change resets P3 counter to 0/3. Score 9.125→9.125 (+0.0). v2.6.2.*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
@@ -23,7 +23,7 @@
 
 ---
 
-**One-line status:** Suite v2.6.1 scores 9.125/10 (v3). P3 convergence was broken by Run 79: a non-Claude model (Gemini 3.1 Pro) found and fixed a mechanical defect in `metrics.ps1` that prior models accepted. P3 counter resets to 0/3.
+**One-line status:** Suite v2.6.2 scores 9.125/10 (v3). P3 counter reset to 0/3 by Run 82 (PRINCIPLES.md content change). Pre-existing GENBA.md mojibake from runs 51–60 era (249 lines) pending cleanup in a dedicated run.
 
 ## Target Condition
 

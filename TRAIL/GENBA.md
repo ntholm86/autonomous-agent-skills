@@ -2,119 +2,107 @@
 
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
-
-## Run 80 - 2026-04-21
-
-| Field | Value |
-|-------|-------|
-| Target | TPS Skill Suite (self-targeting) |
-| Model | Gemini 3.1 Pro (Preview) |
-| Trigger | User-requested Kaizen Run 80 |
-| Methodology | Kaizen |
-
-**Measurement scheme:** Inheriting Rubric v3 + measurement protocol - no revision.
-
-**Key findings:** Found 2 actionable defects under P3 Counter Integrity / Configuration Management lenses. (1) metrics.ps1 Metric 7 computed 5 consecutive runs (then 1) despite asserted 0/3 (*** DRIFT ***). Root cause: the (?i)\(silence regex matched the (silence... literal text embedded within Run 79's explanation string. (2) SCORECARD.md chronological sorting was broken; Run 79 had been appended between Run 76 and 78.
-
-**What was done:** Fixed metrics.ps1 Metric 7 regex to ^\s*\*\*[^*]+\(\s*(?i)silence to correctly parse methodological declarations exclusively at the front of the Result column. Sorted SCORECARD.md rows 76-79 chronologically so metrics reverse-looping calculation functions properly.
-
-**Verification:** verify-suite.ps1: 0/0. metrics.ps1 computed silent chain now successfully parses the trail exactly matching SCORECARD (Computed: 0 / Asserted: 0) without any DRIFT warnings.
-
-**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 -> mean=9.125. Delta: +0.0.
-
-**Assessment:** Active Kaizen fix. Restored deterministic measurement integrity that was broken by overlapping text formats, proving again that measurement schemes must gracefully handle explanatory data. P3 silence counter remains at 0/3.
----
-## Run 80 - 2026-04-21
+## Run 82 - 2026-04-21
 
 | Field | Value |
 |-------|-------|
 | Target | TPS Skill Suite (self-targeting) |
-| Model | Gemini 3.1 Pro (Preview) |
-| Trigger | User-requested Kaizen Run 80 |
+| Model | Claude Sonnet 4.6 |
+| Trigger | Run 81 bookkeeping gaps + selective manifesto-to-PRINCIPLES delta pass (approved by user). |
 | Methodology | Kaizen |
 
-**Measurement scheme:** Inheriting Rubric v3 + measurement protocol - no revision.
+**Measurement scheme:** Inheriting Rubric v3 + measurement protocol — no revision.
 
-**Key findings:** Found 2 actionable defects under P3 Counter Integrity / Configuration Management lenses. (1) metrics.ps1 Metric 7 computed 5 consecutive runs (then 1) despite asserted 0/3 (*** DRIFT ***). Root cause: the (?i)\(silence regex matched the (silence... literal text embedded within Run 79's explanation string. (2) SCORECARD.md chronological sorting was broken; Run 79 had been appended between Run 76 and 78.
+**Key findings:**
+1. Run 81 SCORECARD rows 80 and 81 were concatenated on a single line (LF-vs-CRLF mismatch in multi_replace_string_in_file tool), in wrong ascending order (81 before 80).
+2. Three Run 79 GENBA entries (2 duplicates from separate session passes). Kept first; removed 2 extras.
+3. Version mismatch: kata bumped to 2.6.2 in Run 81 but the other 4 skills remained at 2.6.1.
+4. PRINCIPLES.md P3 Condition 1 stated "same-family evaluators count as one" without explaining why. Manifesto's public articulation added the causal mechanism (habituated blind spots, independent-reviews analogy) — a genuine doctrinal clarification worth porting.
+5. Pre-existing finding (not actioned this session): GENBA.md lines 1232+ (runs 51–60 era) contain unrepaired mojibake (`â€"`, `â†'`). Verify-suite Check 1 reports 249 failures on this content. This pre-dates this session and was present before the Run 82 stash-diff confirmed it. Scope: bookkeeping session — mojibake repair deferred to a dedicated cleanup run.
 
-**What was done:** Fixed metrics.ps1 Metric 7 regex to ^\s*\*\*[^*]+\(\s*(?i)silence to correctly parse methodological declarations exclusively at the front of the Result column. Sorted SCORECARD.md rows 76-79 chronologically so metrics reverse-looping calculation functions properly.
+**What was done:**
+- SCORECARD main table: split concatenated rows 80/81 into separate lines; reordered to ascending (79 → 80 → 81). Dimension Trajectory rows 80/81 also reordered.
+- GENBA.md: removed 2 duplicate Run 79 entries.
+- All 5 skills bumped to v2.6.2 (kata was already 2.6.2; hansei/kaikaku/kaizen/shiken bumped to match).
+- PRINCIPLES.md P3 Condition 1: added habituated-blind-spots causal explanation after "count as one." Ported from manifesto. (selective delta pass — no other manifesto content warranted porting; PRINCIPLES.md already had richer normative content in all other areas)
+- CHANGELOG v2.6.2 section added covering all four changes.
 
-**Verification:** verify-suite.ps1: 0/0. metrics.ps1 computed silent chain now successfully parses the trail exactly matching SCORECARD (Computed: 0 / Asserted: 0) without any DRIFT warnings.
-
-**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 -> mean=9.125. Delta: +0.0.
-
-**Assessment:** Active Kaizen fix. Restored deterministic measurement integrity that was broken by overlapping text formats, proving again that measurement schemes must gracefully handle explanatory data. P3 silence counter remains at 0/3.
-
----
-## Run 79 - 2026-04-21
-
-| Field | Value |
-|-------|-------|
-| Target | TPS Skill Suite (self-targeting) |
-| Model | Gemini 3.1 Pro (Preview) |
-| Trigger | User-requested Step 1: verify P3 convergence with a non-Claude model. |
-| Methodology | Kaizen |
-
-**Measurement scheme:** Inheriting Rubric v3 + measurement protocol - no revision. 
-
-**Key findings:** Found 1 actionable defect under the P3 Counter Integrity lens. `metrics.ps1` Metric 7 computed 0 consecutive runs despite SCORECARD asserting 3/3 (`*** DRIFT ***`). Root cause: brittle regex `(?i)\(silence\)` rejected the annotation `(silence, post-convergence)` from Run 78, breaking the chain. This proves Principle 3: convergence must be tested by independent evaluators to catch blind spots prior models accepted.
-Other 7 lenses showed no actionable findings (Unevenness, Overburden, Waste, P1 drift, P2 trail, D2 ceiling, D5 ceiling). 
-
-**What was done:** Fixed `metrics.ps1` Metric 7 regex to `(?i)\(silence` to correctly parse explicit silence runs regardless of subsequent in-parentheses annotations. 
-
-**Verification:** verify-suite.ps1: 0 failures, 0 warnings. metrics.ps1 computed silent chain now successfully parses the trail matching SCORECARD.
-
-**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 -> mean=9.125. Delta: +0.0.
-
-**Assessment:** Active Kaizen fix. The suite was not fully converged, as a mechanical drift defect was discovered and resolved. P3 silence chain is broken and resets to 0.
-
-
-
----
-## Run 79 - 2026-04-21
-
-| Field | Value |
-|-------|-------|
-| Target | TPS Skill Suite (self-targeting) |
-| Model | Gemini 3.1 Pro (Preview) |
-| Trigger | User-requested Step 1: verify P3 convergence with a non-Claude model. |
-| Methodology | Kaizen |
-
-**Measurement scheme:** Inheriting Rubric v3 + measurement protocol - no revision. 
-
-**Key findings:** Found 1 actionable defect under the P3 Counter Integrity lens. `metrics.ps1` Metric 7 computed 0 consecutive runs despite SCORECARD asserting 3/3 (`*** DRIFT ***`). Root cause: brittle regex `(?i)\(silence\)` rejected the annotation `(silence, post-convergence)` from Run 78, breaking the chain. This proves Principle 3: convergence must be tested by independent evaluators to catch blind spots prior models accepted.
-Other 7 lenses showed no actionable findings (Unevenness, Overburden, Waste, P1 drift, P2 trail, D2 ceiling, D5 ceiling). 
-
-**What was done:** Fixed `metrics.ps1` Metric 7 regex to `(?i)\(silence` to correctly parse explicit silence runs regardless of subsequent in-parentheses annotations. 
-
-**Verification:** verify-suite.ps1: 0 failures, 0 warnings. metrics.ps1 computed silent chain now successfully parses the trail matching SCORECARD.
-
-**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 -> mean=9.125. Delta: +0.0.
-
-**Assessment:** Active Kaizen fix. The suite was not fully converged, as a mechanical drift defect was discovered and resolved. P3 silence chain is broken and resets to 0.
----
-## Run 79 - 2026-04-21
-
-| Field | Value |
-|-------|-------|
-| Target | TPS Skill Suite (self-targeting) |
-| Model | Gemini 3.1 Pro (Preview) |
-| Trigger | User-requested Step 1: verify P3 convergence with a non-Claude model. |
-| Methodology | Kaizen |
-
-**Measurement scheme:** Inheriting Rubric v3 + measurement protocol — no revision. 
-
-**Key findings:** Found 1 actionable defect under the P3 Counter Integrity lens. metrics.ps1 Metric 7 computed 0 consecutive runs despite SCORECARD asserting 3/3 (*** DRIFT ***). Root cause: brittle regex (?i)\(silence\) rejected the annotation (silence, post-convergence) from Run 78, breaking the chain. This proves Principle 3: convergence must be tested by independent evaluators to catch blind spots prior models accepted.
-Other 7 lenses showed no actionable findings (Unevenness, Overburden, Waste, P1 drift, P2 trail, D2 ceiling, D5 ceiling). 
-
-**What was done:** Fixed metrics.ps1 Metric 7 regex to (?i)\(silence to correctly parse explicit silence runs regardless of subsequent in-parentheses annotations. 
-
-**Verification:** verify-suite.ps1: 0 failures, 0 warnings. metrics.ps1 computed silent chain now successfully parses the trail matching SCORECARD.
+**Verification:** verify-suite structural checks 3–14: all PASS. Check 1 (encoding): 249 pre-existing mojibake failures in GENBA.md (runs 51–60 era, present before this session, not introduced by Run 82). 1 warning: Hansei cadence signal (4 consecutive zero-delta runs = plateau — valid signal for next session).
 
 **Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 → mean=9.125. Delta: +0.0.
 
-**Assessment:** Active Kaizen fix. The suite was not fully converged, as a mechanical drift defect was discovered and resolved. P3 silence chain is broken and resets to 0.
+**Assessment:** All Run 81 bookkeeping gaps resolved. One doctrinal clarification ported from manifesto into canonical PRINCIPLES.md (P3 independence root cause). Content change to PRINCIPLES.md resets P3 counter to 0/3. v2.6.2.
 
+[!DECISION] PRINCIPLES.md change is warranted: the habituated-blind-spots causal mechanism is genuinely more explanatory than "count as one" alone. It's not redundant with any existing PRINCIPLES.md content.
+[!REALIZATION] The multi_replace_string_in_file tool uses LF line endings regardless of the target file's CRLF convention. Any replacement that inserts newlines into a CRLF file will produce rows that appear concatenated (since `\n` without `\r` may not split properly in some parsers/editors). Verify row-separation after any multi-line multi_replace in CRLF files.
+
+---
+
+## Run 81 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (self-targeting) |
+| Model | Claude Sonnet 4.6 |
+| Trigger | User-surfaced prescriptive drift: kata/SKILL.md Step 1 short-form example used "Inheriting Rubric v3" as universal default, implying a skills-suite-specific rubric applies to all targets. |
+| Methodology | Kaizen |
+
+**Measurement scheme:** Inheriting Rubric v3 + measurement protocol — no revision.
+
+**[!DECISION]** Finding: Kata Step 1 measurement-scheme short-form example read `"Inheriting Rubric v3 — no revision."` — a target-specific name hardcoded as the canonical form. Root cause: the example was written when the suite was self-targeting only; once external targets were added, the example became prescriptive by implication. Fix: replaced with `"Inheriting [target's scheme name] — no revision."` and added a clarifying parenthetical naming Rubric v3, M1–M7, and bespoke schemes as equivalent examples. This is P1 (Commander's Intent) compliance — instructions must not imply a specific answer by example.
+
+**What was done:** One-line edit to `kata/SKILL.md` Step 1 inheriting-scheme example. kata bumped to v2.6.2.
+
+**Verification:** Single targeted fix, no structural changes. verify-suite pre-flight not required for one-line doc edit, but CM integrity: 1 file changed, 1 line replaced.
+
+**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 → mean=9.125. Delta: +0.0 (sub-threshold doc fix; no dimension moves).
+
+**Assessment:** Active Kaizen fix (prescriptive drift in skill text). P3 counter resets to 0/3 (artifact change).
+
+---
+## Run 80 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (self-targeting) |
+| Model | Gemini 3.1 Pro (Preview) |
+| Trigger | User-requested Kaizen Run 80 |
+| Methodology | Kaizen |
+
+**Measurement scheme:** Inheriting Rubric v3 + measurement protocol - no revision.
+
+**Key findings:** Found 2 actionable defects under P3 Counter Integrity / Configuration Management lenses. (1) metrics.ps1 Metric 7 computed 5 consecutive runs (then 1) despite asserted 0/3 (*** DRIFT ***). Root cause: the (?i)\(silence regex matched the (silence... literal text embedded within Run 79's explanation string. (2) SCORECARD.md chronological sorting was broken; Run 79 had been appended between Run 76 and 78.
+
+**What was done:** Fixed metrics.ps1 Metric 7 regex to ^\s*\*\*[^*]+\(\s*(?i)silence to correctly parse methodological declarations exclusively at the front of the Result column. Sorted SCORECARD.md rows 76-79 chronologically so metrics reverse-looping calculation functions properly.
+
+**Verification:** verify-suite.ps1: 0/0. metrics.ps1 computed silent chain now successfully parses the trail exactly matching SCORECARD (Computed: 0 / Asserted: 0) without any DRIFT warnings.
+
+**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 -> mean=9.125. Delta: +0.0.
+
+**Assessment:** Active Kaizen fix. Restored deterministic measurement integrity that was broken by overlapping text formats, proving again that measurement schemes must gracefully handle explanatory data. P3 silence counter remains at 0/3.
+
+---
+## Run 79 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (self-targeting) |
+| Model | Gemini 3.1 Pro (Preview) |
+| Trigger | User-requested Step 1: verify P3 convergence with a non-Claude model. |
+| Methodology | Kaizen |
+
+**Measurement scheme:** Inheriting Rubric v3 + measurement protocol - no revision. 
+
+**Key findings:** Found 1 actionable defect under the P3 Counter Integrity lens. `metrics.ps1` Metric 7 computed 0 consecutive runs despite SCORECARD asserting 3/3 (`*** DRIFT ***`). Root cause: brittle regex `(?i)\(silence\)` rejected the annotation `(silence, post-convergence)` from Run 78, breaking the chain. This proves Principle 3: convergence must be tested by independent evaluators to catch blind spots prior models accepted.
+Other 7 lenses showed no actionable findings (Unevenness, Overburden, Waste, P1 drift, P2 trail, D2 ceiling, D5 ceiling). 
+
+**What was done:** Fixed `metrics.ps1` Metric 7 regex to `(?i)\(silence` to correctly parse explicit silence runs regardless of subsequent in-parentheses annotations. 
+
+**Verification:** verify-suite.ps1: 0 failures, 0 warnings. metrics.ps1 computed silent chain now successfully parses the trail matching SCORECARD.
+
+**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 -> mean=9.125. Delta: +0.0.
+
+**Assessment:** Active Kaizen fix. The suite was not fully converged, as a mechanical drift defect was discovered and resolved. P3 silence chain is broken and resets to 0.
 
 ---
 ## Run 78 - 2026-04-21
