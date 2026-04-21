@@ -9,7 +9,38 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
-## [2.8.2] - 2026-04-21
+## [2.9.0] - 2026-04-21
+
+### Changed
+
+- **`PROBLEM.md` rewritten from intent.** Structural rewrite, substance preserved. Six divergences from the previous architecture, actioned:
+  1. **Front-loaded the two-sentence problem statement.** "The Problem In Two Sentences" is no longer buried at the bottom — moved into the Digest at the top, along with the rest of a 60-second summary. A reader now sees the destination before the route.
+  2. **Applied Principle 2's resolution requirement to the document itself.** Added Digest (full, indexed summary) and an Index section, so practitioner/deployer/regulator/liability-bearer reading budgets are all served by the same file. The document now practices what it prescribes.
+  3. **Promoted "Who the Evidence Must Serve" (the five observers) earlier.** Previously deep inside the document; now directly after Delegability. The five-observer taxonomy is the clearest expression of what "earned autonomy" means operationally, and it belongs before the "what existing work solves" comparison, not after.
+  4. **Sharpened "delegability" with a four-part operational test.** Previously named but semi-circular ("the operational discipline of converting demonstrated, visible, situated reasoning into bounded, revocable authority"). Now paired with four questions each observer class asks from the trail: visibility at my resolution, situatedness, bounded scope, revocability. A single "no" narrows scope — the framework functioning correctly, not failing.
+  5. **ARF defined canonically in PROBLEM.md; PRINCIPLES.md cross-references it.** ARF had overlapping definitions in both files. PROBLEM.md is now the conceptual home ("what the framework measures"); PRINCIPLES.md holds the operational definition (preconditions, situational discrimination, validation test) with a cross-reference up.
+  6. **Tightened prose throughout.** Removed repetition between "How the Principles Address Both Problems" and later ARF sections. No substance removed; same claims, fewer passes through them.
+
+- **`PRINCIPLES.md` rewritten from intent.** Same preserve-substance, restructure-architecture discipline:
+  1. **Digest at top.** One-paragraph summary of all three principles + ARF. Same multi-resolution logic as PROBLEM.md.
+  2. **Principle 3 re-symmetrized to match Principles 1 and 2.** Previously P3 opened with a compound operational paragraph while P1 and P2 opened with single statements. Now P3 opens with one sentence at the same abstraction level, and the three operational conditions are pushed into a "The test" subsection — matching P1's "The test" and P2's resolution requirement structure.
+  3. **ARF section reframed as operational definition.** Cross-references PROBLEM.md for the conceptual definition. Content preserved: theoretical anchors (Auftragstaktik, Meaningful Human Control, Lee & See), preconditions (freedom of thought, trail integrity), situational discrimination, P3 validation, implementation note, why-this-matters-for-scoring.
+  4. **Tool prescriptions moved to STANDARDS.md.** "For skill authors" item 5 previously listed `verify-suite.ps1`, `INTEGRITY.json`, `SCORECARD.md` as part of a document that opens with "they are not guidelines — they are architectural constraints." Tool prescriptions are neither architectural nor constraints; they are this suite's implementation of the constraints. They now live in a new "Suite tooling — when and how" section at the top of STANDARDS.md. PRINCIPLES.md "For skill authors" closes with a pointer to STANDARDS.md.
+  5. **Context pointer to PROBLEM.md added at top.** The document previously stood alone; in practice it requires PROBLEM.md context. Now explicit.
+
+- **`STANDARDS.md`: new "Suite tooling — when and how (for skill authors)" section.** Consolidates the tool-prescription content removed from PRINCIPLES.md. Lists `verify-suite.ps1`, `INTEGRITY.json`, `metrics.ps1`, `METRICS_HISTORY.md`, `SCORECARD.md`, `GENBA.md`, `kiroku/` — when to run, what they check, fidelity level. Includes the "these are one implementation, not the specification" framing.
+
+All 6 skills bumped 2.8.2 → 2.9.0. No skill-behavior changes. Minor version (not major) — substance of principles unchanged, only the architecture of the documents was restructured.
+
+### Rationale
+
+The prompting context for this run: user's previous turn asked whether, understanding the intent behind PROBLEM.md and PRINCIPLES.md, the agent would write them the same way. Agent answered no and named 6 divergences. User (this turn) asked for the rewrite, explicitly to enable cross-model verification (Principle 3). Kata was the correct discipline — doctrinal change to the constitutional layer — but Step 0 (Intent) and Step 2 (Diagnose) were already done from the prior turn, so the cycle compressed to Execute → Record → Persist → Verify.
+
+### Verification pending
+
+This release exists primarily to be evaluated by a different model family. The human explicitly stated the intent to verify with another model. Principle 3 convergence is not yet claimed — only an intent rewrite ready for independent assessment. The next cross-family evaluator should re-derive the measurement scheme from the rewritten artifacts and report convergence or divergence with the inherited scheme, per P3's independent-assessment condition.
+
+
 
 ### Changed
 

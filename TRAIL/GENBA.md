@@ -2,6 +2,51 @@
 
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
+## Run 86 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite — scoped to `PROBLEM.md` + `PRINCIPLES.md` + `STANDARDS.md` (foundational docs) |
+| Model | Claude Opus 4.6 |
+| Trigger | User: "I want you to re-write/redefine them - now that you know the intent. And then i want to use another model afterwards to verify your re-definition. use kata if that is more correct - otherwise dont. You judge." Previous turn asked if the agent, understanding intent, would write the documents the same way — agent said no and named 6 divergences. |
+| Methodology | Kaizen (compressed) — Step 0 (Intent) and Step 2 (Diagnose) done in prior turn; this run executed Execute → Record → Persist → Verify. |
+
+**Measurement scheme:** Bespoke — the target is the foundational documents themselves, not the skill suite as a whole. Rubric v3 (D1-D8) does not apply to the constitutional layer. Four scoped measurements: (1) *intent-fidelity* — does each sentence serve the intent in PROBLEM.md digest?; (2) *architectural symmetry* — do P1/P2/P3 open at the same abstraction level and use the same structure?; (3) *resolution compliance* — do the documents themselves satisfy the multi-resolution requirement they prescribe?; (4) *boundary integrity* — is tool prescription out of PRINCIPLES.md and in STANDARDS.md? **Re-derivation: new bespoke scheme.** This run exists primarily to be handed to a different model family for independent assessment — the scheme is first-pass and explicitly expects re-derivation.
+
+**Key findings (all from the prior turn, actioned here):**
+1. Documents worked backwards — destination buried at the bottom.
+2. Single-resolution violating P2 — one long text for all observer classes.
+3. ARF defined twice (both files).
+4. P3 structurally asymmetric to P1/P2 (compound opening vs single-sentence opening).
+5. Tool prescriptions leaked into PRINCIPLES.md "For skill authors" item 5.
+6. "Delegability" named but not operationalized.
+
+**What was done:**
+- **PROBLEM.md rewritten.** Digest + Index front-loaded. Five-observer section promoted earlier. Delegability now has a 4-question operational test (visibility at my resolution / situatedness / bounded scope / revocability). ARF defined canonically here. Substance preserved: Two Problems framing, five observers, Out-of-Scope section, What-Must-Be-Built-on-Top, Working Hypothesis, theoretical anchors.
+- **PRINCIPLES.md rewritten.** Digest at top. P3 opening single-sentence symmetrized with P1/P2; three operational conditions pushed into "The test" subsection. ARF section reframed as operational definition with cross-reference to PROBLEM.md for the conceptual definition. Tool prescriptions removed from "For skill authors"; replaced with pointer to STANDARDS.md.
+- **STANDARDS.md:** new "Suite tooling — when and how (for skill authors)" section at the top. Consolidates the tool-prescription content removed from PRINCIPLES.md.
+- All 6 skills bumped 2.8.2 → 2.9.0 (minor bump: substance of principles unchanged, architecture of the documents was restructured).
+
+**Verification:** verify-suite pending (run next). kiroku-validate pending.
+
+**Measurements:** Bespoke scoped assessment.
+- *Intent-fidelity:* Pass. Each section of the rewrite traces to one of the 6 divergences or to preserved substance. No new claims introduced.
+- *Architectural symmetry:* Pass (P1/P2/P3 now open with one-sentence declarations; operational details in subsections).
+- *Resolution compliance:* Pass (both docs now have Digest as a 60-second read; PROBLEM.md has Index; full-resolution is the body).
+- *Boundary integrity:* Pass (no `verify-suite.ps1`, `INTEGRITY.json`, `SCORECARD.md` references remain in PRINCIPLES.md body; all moved to STANDARDS.md).
+
+Suite-level Rubric v3 score unchanged (9.125). Score movement explicitly deferred to the cross-family evaluator the user stated they will run next. **This is Principle 3 operating correctly: the authoring model does not claim convergence credit for its own rewrite.**
+
+**Assessment:** Foundational documents restructured per 6-divergence diagnosis from prior turn. Substance preserved. Artifact is ready for independent assessment by a different model family. P3 counter: N/A until independent evaluator runs.
+
+[!DECISION] Compressed Kata cycle — skipped explicit Step 0 and Step 2 because both were done in the prior conversational turn. Recording the skip here so the run is auditable: *Step 0 (Intent): user prompt = "rewrite them from intent, prepare for cross-model verify." Step 2 (Diagnose): the 6 divergences enumerated in the previous turn's answer.* Full Kata ceremony would have been overburden (muri).
+[!DECISION] Minor version bump (2.8.2 → 2.9.0), not major. No skill-behavior changes; only constitutional-document architecture changed. Semantic-version rule: breaking API change = major; additive feature = minor; fix = patch. Restructuring the documents that govern *how* skills behave, without changing any skill behavior, is the minor-bump case.
+[!DECISION] Tool prescriptions moved to STANDARDS.md rather than a new operational-standards document. STANDARDS.md already holds external-standard alignment (PDCA/DMAIC/CMMI/NIST AI RMF mappings); adding a "suite tooling" section at the top keeps the operational content in one place. Avoided creating a new file.
+[!REALIZATION] The intent-first rewrite surfaced that *delegability* was load-bearing vocabulary without an operational test — the previous turn called this out but the rewrite is where it got fixed. The four-question operational test (visibility / situatedness / bounded scope / revocability) is new operational content, but it's new operationalization of an existing concept, not new substance.
+[!REALIZATION] The document now teaches Principle 2 by practicing it. Previous version prescribed multi-resolution evidence but *was* single-resolution. This is the instance of the framework that self-targets most directly.
+
+---
+
 ## Run 85 - 2026-04-21
 
 | Field | Value |

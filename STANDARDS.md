@@ -3,6 +3,21 @@
 How the TPS Skill Suite maps to recognized process-quality and AI governance standards.
 Created Run 36 to make the alignment explicit and the gaps visible.
 
+## Suite tooling — when and how (for skill authors)
+
+The principles in [PRINCIPLES.md](./PRINCIPLES.md) define architectural constraints. The tooling below is how this specific suite *implements* those constraints — it is prescribed, not principled, and belongs here rather than in PRINCIPLES.md.
+
+- **`verify-suite.ps1`** — mechanical integrity checks (encoding, placeholders, cross-references, version alignment, ledger consistency, mojibake sentinels). Run after every Kata/Kaizen cycle. Zero failures required before commit.
+- **`INTEGRITY.json`** — file-hash snapshot of skills, standard docs, and verification scripts. Diff-based validation inspired by evo's proof ledger. Stable on no-change runs (no timestamp churn).
+- **`metrics.ps1` + `METRICS_HISTORY.md`** — quantitative metrics computed from ledger data and tracked over time. Manual trend comparison; automated alerts are a future enhancement.
+- **`SCORECARD.md`** — cross-run trajectory and the scoring rubric. Every Kata run appends to it.
+- **`GENBA.md`** — the active run ledger. The primary indexed-resolution evidence for Principle 2.
+- **`kiroku/`** — session scripts that capture full-resolution evidence (Intent, Exchange Log, decisions, realizations, reversals) during work.
+
+These artifacts are part of the suite. They are not optional tooling. But they are one implementation of Observable Autonomy, not the specification of it — see PRINCIPLES.md § Autonomous Reasoning Fidelity "Implementation note."
+
+---
+
 ## PDCA (Deming Cycle) — Plan-Do-Check-Act
 
 | Phase | Suite Implementation | Status |
