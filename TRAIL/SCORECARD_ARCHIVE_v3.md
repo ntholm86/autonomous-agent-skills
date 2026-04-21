@@ -2,46 +2,6 @@
 
 <!-- markdownlint-disable MD012 -->
 
-**Status:** Empty board. Awaiting first Kata cycle under the externally-anchored Manifesto (`C:\git\manifesto\`).
-
-## Why this file is empty
-
-Prior to 2026-04-21, this scorecard governed both:
-
-- The TPS skill suite (an *implementation* — PowerShell scripts, skill prompts, Kiroku tooling), and
-- The PROBLEM/PRINCIPLES documents (the *theory* — universal manifesto for autonomous-development).
-
-Measuring the theory with the implementation's rubric created a circular dependency: the constitution was being shaped by the tool built to enforce it. The Manifesto was extracted to `C:\git\manifesto\` with its own scorecard. This scorecard is now reset so the suite can re-derive its measurements purely as a *tool*, anchored to the external Manifesto as Commander's Intent.
-
-The 86-run history (Rubric v3, Runs 1–86) is preserved verbatim at `TRAIL/SCORECARD_ARCHIVE_v3.md`. Treat it as historical context, not as inherited measurements.
-
-## Next step
-
-The next Kata cycle on this target must:
-
-1. Read `C:\git\manifesto\PROBLEM.md` and `C:\git\manifesto\PRINCIPLES.md` as the external constitution.
-2. In Step 1 (Grasp), derive measurements appropriate for *this target as a tooling implementation* — not for the theory it serves.
-3. Record the derived scheme as a `[!DECISION]` in the kiroku session and write it into this file.
-4. From Run 87 onward, every run records `start→end` per derived dimension here.
-
-P3 convergence chain is reset: the prior 3/3 chain (Runs 73–75) was on the conflated rubric and does not transfer.
-
-## Run Ledger
-
-| Run | Date | Model | Start Score | End Score | Delta | Target | Result |
-| --- | ---- | ----- | :---------: | :-------: | :---: | :----: | ------ |
-| 87  | TBD  | TBD   | N/A         | N/A       | N/A   | TPS Skill Suite | **Pending — measurement scheme derivation.** |
-
-## Dimension Trajectory
-
-*Empty until Run 87 derives the new scheme.*
-
-| Run | (dimensions TBD) | Mean | Scheme | Derived |
-| --- | --- | :--: | ------ | ------- |
-# TPS Skill Suite Scorecard
-
-<!-- markdownlint-disable MD012 -->
-
 Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills.
 
 | Run | Date | Model | Start Score | End Score | Delta | Target | Result |

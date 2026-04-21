@@ -1484,3 +1484,13 @@ Prior run measurements: N/A (first measurement-protocol run — this establishes
 - Silence counter: 0/3 (artifact changes made).
 
 ---
+[!DECISION] 2026-04-21 - SCORECARD reset following Manifesto extraction.
+
+The Rubric v3 (8-dim) scorecard governing Runs 1-86 conflated theory and implementation. With PROBLEM.md/PRINCIPLES.md extracted to C:\git\manifesto\, the suite is now purely a tooling implementation and must re-derive its measurements as such.
+
+Archived: SCORECARD.md -> TRAIL/SCORECARD_ARCHIVE_v3.md, METRICS_HISTORY.md -> TRAIL/METRICS_HISTORY_ARCHIVE.md.
+Reset: empty SCORECARD.md + empty METRICS_HISTORY.md, awaiting Run 87 derivation.
+P3 chain (3/3 from Runs 73-75) does not transfer - those scores were against the conflated rubric.
+
+Next Kata cycle on this target must read external Manifesto first, derive measurements appropriate for tooling, and record the scheme as [!DECISION] in GENBA + write it into SCORECARD.md.
+
