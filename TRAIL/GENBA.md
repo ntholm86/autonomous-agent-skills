@@ -3,6 +3,27 @@
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
 ---
+## Run 77 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | SupplementPlanner (external) — c:\git\SupplementPlanner |
+| Model | Claude Sonnet 4.6 |
+| Trigger | User-requested Kaizen on SupplementPlanner addressing Run 76 findings: security hardening, test infrastructure, phantom scaffold. |
+| Methodology | Kaizen — code changes + test install |
+
+**TPS GENBA applies:** N/A — external target. TPS rubric v3 not applicable.
+
+**Changes shipped (summary):**
+- CORS: restricted to `CORS_ORIGIN` env var (was open wildcard)
+- CSP: re-enabled with API-appropriate directives (was `false`)
+- JWT: refresh tokens now signed with separate `JWT_REFRESH_SECRET`
+- Vitest installed in `apps/api`; 9 security tests added, all pass
+- Pubmed phantom directory given README stub
+
+**Verification:** API tsc --noEmit: ✅ 0 errors. Web tsc --noEmit: ✅ 0 errors. Vitest: ✅ 9/9 pass.
+
+---
 ## Run 76 - 2026-04-21
 
 | Field | Value |
