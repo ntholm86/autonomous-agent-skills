@@ -1,6 +1,11 @@
-# The Problem
+﻿# The Problem
 
 *What this work is actually trying to solve.*
+
+> **Authorship & License**
+> Author: Nils Holmager | Date: April 2026
+> This philosophical framework and documentation are licensed under a [Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA 4.0)](https://creativecommons.org/licenses/by-sa/4.0/). You are free to share and adapt this material, provided you give appropriate credit and distribute your contributions under the same license.
+> The accompanying execution tools and scripts are licensed under the MIT License.
 
 ---
 

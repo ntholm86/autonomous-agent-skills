@@ -1,6 +1,13 @@
-# TPS Skill Suite
+﻿# TPS Skill Suite
+
+**Author**: Nils Holmager | **Date**: April 2026
 
 A set of skills for autonomous improvement work. Each skill is a self-contained instruction file that an AI agent (or human) loads when the situation calls for it.
+
+### License and Attribution
+This repository uses a **dual-licensing model**:
+- **Philosophical Framework & Documentation** (`PROBLEM.md`, `PRINCIPLES.md`, `decision-journal.md`, `SKILL.md` files): Licensed under [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/). Attribution is required.
+- **Code & Tooling** (PowerShell scripts): Licensed under the permissive [MIT License](LICENSE).
 
 ## Skills
 
