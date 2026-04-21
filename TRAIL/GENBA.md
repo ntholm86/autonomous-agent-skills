@@ -3,6 +3,51 @@
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
 ---
+## Run 67 - 2026-04-21 - External target (evo)
+
+| Field | Value |
+|-------|-------|
+| Target | evo (`c:\git\evo`) — not the skills suite |
+| Model | Claude Opus 4.7 |
+| Trigger | User-requested follow-up to Run 66's process-level finding ("evo has shipped 10 versions of apikit adding tests for known bugs without ever generating a source fix") with explicit instruction to "scope it carefully" |
+| Methodology | Kaizen |
+
+### Independence Gate
+This is **not** a suite-self-evaluation run. No suite-level score is asserted. P3 silence counter remains **1/3** from Run 63.
+
+### What was done (in evo)
+- Started a Kiroku session in `c:\git\evo\TRAIL\` (target-routed; not in the skills suite).
+- Read `fitness.py`, `strategy.py`, `core/propose.py`, `core/analyze.py`, `models.py` to identify the structural cause. Apikit uses the `balanced` strategy, so the actively-discouraging "prefer test_addition" prompt branch in `propose.py` does *not* fire. The deeper cause: the LLM-only analyzer has no mechanical signal for the pattern "test asserts buggy behavior as canonical," and the Pareto gate rewards `test_count↑` monotonically.
+- Considered three scoped fixes: (A) docs only, (B) prompt guidance, (C) mechanical detector with weakness injection. Chose (C) — strongest behavioral signal at smallest surface area.
+- Created `src/evo/bug_asserting_tests.py` (~150 LOC). Pure-regex scan over `tests/**/*.py` for 7 conservative markers (`BUG:`, "documents the bug", "validation weakness", "currently accepted", "should be addressed", "pending fix", "asserts buggy behavior"). Returns `[]` on clean repos. One `Weakness` per file with line-number summary; capped at 20 to bound prompt size.
+- Wired into `core/analyze.py` `run()` after the LLM weakness response. Gated on `Category.BUG_FIX in strategy.categories`. Wrapped in `safe_fallback`. Dedup by (file, priority).
+- Added `tests/test_bug_asserting_tests.py` (10 cases): clean repo, non-Python, each marker, multi-finding summarisation, blocked scopes, max cap, OSError-graceful, missing path.
+- Full evo test suite: **2088 passed, 2 skipped, 0 failed** (was 2078 passed before this change).
+- Shipped in evo as commit on the working branch (`CHANGELOG.md` "Unreleased" section).
+
+### Falsification step
+Smoke-tested the detector against current `c:\git\apikit` (post-Run-66-fix). Expected ≤1 finding (Run 66 was supposed to clean it up). **Actual: 5 findings across 5 test files** — `test_app.py`, `test_items.py`, `test_models.py`, `test_store.py`, `test_user_validation.py`. Run 66 only addressed the duplicate-user pattern; apikit *still* has 4 other source defects whose only structural protection is bug-asserting tests. The detector is not synthetic — it surfaces real, currently-undetected debt on a real evo-generated repo.
+
+### Methodology validation — did the suite help, get in the way, or both?
+
+**Helped:**
+1. **Kaizen's "single highest-leverage change" framing forced rejection of the larger options.** Without it I would have shipped option (C) plus prompt guidance (B) plus a fitness-side disincentive in the same run. Recording (A)/(B) as deferred follow-ups produced a smaller, more reviewable change with a clear next step.
+2. **`[!DECISION]` markers + alternatives capture made the scope discipline visible** — the Kiroku session names the rejected reward-function change explicitly.
+3. **Falsification-by-smoke-test was an organic instinct that the suite then captured as primary evidence.** The "apikit still has 5 findings" result is now the strongest single data point in the session — it converts "this might help" into "this finds real debt." Worth surfacing as a Kaizen pattern.
+
+**Got in the way:** Nothing material.
+
+**Resolution of Run 66's noted gap:** Run 66 flagged the absence of a named diagnostic lens for "load-bearing wrong tests." This run did not add the lens to the skill suite, but it *did* operationalize the pattern in a target tool (evo) as a mechanical detector. The next Hansei should decide whether to also lift the concept into the suite vocabulary or leave it as target-specific tooling.
+
+### Outcome (skills suite)
+- `verify-suite.ps1`: **0 failures, 0 warnings**
+- `metrics.ps1`: P3 silence counter still **1/3**
+- No changes to skills suite files were required to perform the external run. SCORECARD row 67 added; this GENBA entry added.
+
+### Assessment
+The TPS Skill Suite v2.4.0 successfully scoped a real behavioral change to a non-trivial external tool. The "scope carefully" constraint was honored mechanically (one new module + one injection point + one test file + zero changes to evo's reward shape), and falsified empirically (the change finds real defects the previous setup missed). One vocabulary suggestion carried forward from Run 66.
+
+---
 ## Run 66 - 2026-04-20 - External target (apikit)
 
 | Field | Value |
