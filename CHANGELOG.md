@@ -9,9 +9,12 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.6.1] - 2026-04-21
+
 ### Fixed
 
-- **`SCORECARD.md`: Added missing row for Run 70 (Shiken, non-scoring).** Run 70 was recorded in GENBA but had no SCORECARD row, causing verify-suite.ps1 Check 13 to fail. Convention (established by Run 57 and all external-target runs) requires rows for all runs; "non-scoring" describes the N/A dimension values, not the absence of a row. (Run 71)
+- **`metrics.ps1` Metric 7: Require `(silence)` Result marker in addition to zero delta for P3 silence chain.** Metric 7 previously used `delta=0` as the only criterion for P3 silence. Zero-delta action runs (e.g., CM fixes, sub-threshold housekeeping with no score movement) were counted as silence votes, generating a false DRIFT warning. Root cause: P3 requires zero artifact changes in addition to zero score delta; `(silence)` in the SCORECARD Result column is the SCORECARD-detectable proxy for "zero artifact changes." Fix: walk now breaks on zero-delta rows without the `(silence)` marker, treating them as chain-breakers rather than silence votes. Updated Metric 7 comment to document the two-criterion requirement. (Run 72)
+- **`kata/SKILL.md` Step 5: Document `(silence)` Result convention for silence SCORECARD entries.** Added a "Silence run convention" note to the SCORECARD Dimension Trajectory bullet in Step 5. States that silence runs (P3-advancing) must include `(silence)` in parentheses in the main run table's Result column (e.g., `Kaizen (silence). ...`), and that bare occurrences without parentheses (e.g., "not a silence run") do not qualify. Closes the gap where the convention was practiced (Run 63) but not documented. (Run 72)
 
 ## [2.6.0] - 2026-04-21
 

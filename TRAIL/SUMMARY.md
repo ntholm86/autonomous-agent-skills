@@ -1,6 +1,6 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-21 - Run 71: CM fix — added missing SCORECARD row for Run 70 (Shiken); verify-suite.ps1 0 failures, 0 warnings. Score 9.3125→9.3125 (+0.0). P3 counter 0/3 (artifact change).*
+*Last updated: 2026-04-21 - Run 72: Metric 7 false-positive DRIFT fix — zero-delta action runs now correctly excluded from P3 silence chain; `(silence)` Result marker required. Score 9.0625→9.125 (+0.0625). D7 9.5→10. P3 counter 0/3 (artifact change).*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
@@ -23,7 +23,7 @@
 
 ---
 
-**One-line status:** Suite v2.6.0 scores 9.3125/10 (v3). Run 71 found and fixed a CM gap (missing SCORECARD row for Run 70 Shiken run); independently re-derived scores match prior run. P3 counter 0/3 (artifact change — not a silence run).
+**One-line status:** Suite v2.6.1 scores 9.125/10 (v3). Run 72 found and fixed a Metric 7 false-positive DRIFT (zero-delta action runs were counted as P3 silence); D7 restored to 10. P3 counter 0/3 (artifact change).
 
 ## Target Condition
 
@@ -31,15 +31,17 @@ Bring P2 (Observable Autonomy) to colleagues' daily work. The skill files must b
 
 ## Direction
 
-Run 71 was a CM fix run: pre-flight verify-suite.ps1 found Check 13 failing (missing SCORECARD row for Run 70). Fixed. Independently re-derived scores matched 9.3125 exactly. P3 counter stays at 0/3 because an artifact change was made.
+Run 72 was a Kaizen action run: metrics.ps1 Metric 7 was generating a false DRIFT warning because zero-delta action runs (Run 71 CM fix) were counted as P3 silence votes. Fix: Metric 7 now requires `(silence)` in SCORECARD Result column in addition to zero delta. Kata Step 5 updated with silence convention. D7 rises 9.5→10. Score 9.0625→9.125.
+
+Note: Independent start score of 9.0625 diverges from Run 71's end score (9.3125) because D7 was re-assessed as 9.5 pre-fix (Metric 7 bug undermines "mechanically grounded" claim). This is expected with genuine independent assessment.
 
 Remaining work:
-- D2 (Causal Analysis) static at 8 since Run 51 — recurrence rate 13.4% MODERATE.
-- P3 needs 3 consecutive zero-delta, zero-artifact-change runs from distinct evaluators in fresh sessions. Next evaluator starting fresh should find verify-suite.ps1 clean (0 failures, 0 warnings) and may be the first genuine convergence vote.
+- D2 (Causal Analysis) static at 8 since Run 51 — recurrence rate 13.3% MODERATE.
+- P3 needs 3 consecutive zero-delta, zero-artifact-change runs from distinct evaluators in fresh sessions. Next evaluator starting fresh should find verify-suite.ps1 0/0 AND metrics.ps1 Metric 7 no-DRIFT (computed=asserted=0).
 
 ## Key Decisions
 
-- [!DECISION] Run 71 SCORECARD row (2026-04-21): Add missing SCORECARD row for Run 70 (Shiken). Root cause: executor labeled run "non-scoring" and skipped the row, but the convention (established by Run 57 Shiken + all external target rows) requires rows for ALL runs. verify-suite.ps1 Check 13 detected the gap. Fix: N/A row added. Alternatives: (a) accept the gap — rejected, verifier failing is not background noise; (b) change convention so non-scoring runs skip rows — rejected, existing convention is correct. (Run 71)
+- [!DECISION] Run 72 Metric 7 fix (2026-04-21): Metric 7 now requires `(silence)` in SCORECARD Result column in addition to zero delta for P3 silence chain. Root cause: `delta=0` alone cannot distinguish genuine P3 silence (zero artifact changes) from zero-delta action runs (CM fixes etc.). Alternatives: (a) accept DRIFT as background noise — rejected, would grow worse with each zero-delta action run; (b) vote silence and let the DRIFT resolve via future non-zero delta — rejected, underlying bug persists for future zero-delta action runs. Also added Kata Step 5 silence convention note so executors know to include `(silence)` in Result. D7 9.5→10. Root cause: executor labeled run "non-scoring" and skipped the row, but the convention (established by Run 57 Shiken + all external target rows) requires rows for ALL runs. verify-suite.ps1 Check 13 detected the gap. Fix: N/A row added. Alternatives: (a) accept the gap — rejected, verifier failing is not background noise; (b) change convention so non-scoring runs skip rows — rejected, existing convention is correct. (Run 71)
 - [!DECISION] Run 69 Kaizen: Changed SCORECARD Dimension Trajectory from end-only to start→end format + added Derived column. Added Kata Step 1 "Record the measurement scheme" paragraph. Updated Kata Step 5 to specify start→end format. Root cause: observer had to reconstruct start scores and derived measurements from GENBA + prior runs — violates P2. All 5 skills bumped to v2.6.0. D1 9→9.5. P3 counter 0/3.
 - [!DECISION] Run 68 Evidence sections (2026-04-21): Add observer-centric `## Evidence` sections to Kaizen, Kaikaku, Hansei, Shiken. Each section states what an observer should find in the trail — without prescribing the reasoning process (P1 compliant). Root cause: observable outputs were defined only at Kata orchestration level, leaving individual skill execution unspecified for trail consumers. Alternatives: (a) silence — rejected, real gap; (b) prescriptive step-lists — rejected, violates P1. (Run 68)
 - [!DECISION] Standardization direction (2026-04-21): adopt a two-layer model for clarity under human-context uncertainty: (1) fixed canonical framework steps for execution and auditability, (2) audience-adaptive evidence presentation for practitioners, deployers, regulators, and other observer contexts.

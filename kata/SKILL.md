@@ -1,6 +1,6 @@
----
+﻿---
 name: kata
-version: 2.6.0
+version: 2.6.1
 description: 'Orchestrate an improvement cycle: diagnose, select methodology, execute, record, persist. The meta-pattern that connects all skills into a coherent workflow. USE WHEN: improve, audit, review, full treatment, kata, run the loop, comprehensive improvement, what does this project need.'
 argument-hint: 'Specify the target (project, file, system) and optionally a focus area or concern'
 ---
@@ -103,6 +103,8 @@ After execution, update the target's audit trail. All trail artifacts live in a 
   - Assessment (one sentence: current state, what remains)
 
 - **SCORECARD Dimension Trajectory** — if the target has a SCORECARD with a Dimension Trajectory table, append a row with **start→end scores for every measurement** (format: `start→end`, e.g., `8→9`). This applies to both rubric dimensions and any derived measurements recorded in Step 1. Use the `Derived` column for any measurements beyond the standard rubric — list each as `Name: start→end`. The run table shows only the mean; the Dimension Trajectory shows which specific dimensions moved, where each started, and what was measured at all. An observer reading the Dimension Trajectory row alone should be able to verify the run's claimed delta without consulting GENBA.
+
+  **Silence run convention:** For runs where the P3 silence chain advances (zero score delta AND zero artifact changes), include the marker `(silence)` in the main run table's Result column immediately after the methodology name (e.g., `Kaizen (silence). ...`). `metrics.ps1` Metric 7 uses this `(silence)` marker — in parentheses — to distinguish genuine P3 silence from zero-delta action runs such as CM fixes that leave scores unchanged but still modify files. Bare occurrences of the word without parentheses (e.g., "not a silence run") do not qualify. Zero-delta rows without `(silence)` in the Result break the computed silence chain.
 
 - **`TRAIL/sessions/`** — the session transcript. Mark decisions with `[!DECISION]` (include rationale and alternatives considered), realizations with `[!REALIZATION]`, reversals with `[!REVERSAL]`.
 

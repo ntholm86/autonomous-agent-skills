@@ -3,6 +3,54 @@
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
 ---
+## Run 72 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (self-targeting) |
+| Model | Claude Sonnet 4.6 |
+| Trigger | User-requested Kata self-targeting, P3 convergence attempt. Fresh session — scores re-derived independently without prior-run anchoring (P3 independence requirement). |
+| Methodology | Kaizen (Metric 7 fix) |
+
+**Measurement scheme:** Inheriting Rubric v3 — no revision. Independent re-derivation from current file state (P3 independence requirement). Start scores reflect current state before fix; Run 71's end scores (9.3125) not consulted before deriving.
+
+### Pre-flight CM Check
+
+verify-suite.ps1 run before any modifications: **0 failures, 0 warnings**. Suite is clean.
+
+### Findings
+
+| # | Finding | Root cause | Recurred? | Action |
+|---|---------|------------|-----------|--------|
+| 1 | `metrics.ps1` Metric 7 generates DRIFT warning (computed=1, asserted=0): Run 71 (CM fix, delta=+0.0) is counted as a P3 silence run. Running metrics.ps1 after the session shows "computed silent chain: 1" vs. "asserted counter: 0/3". The asserted value is correct; the computed value is wrong. | Metric 7 uses `delta=0` as the only criterion for P3 silence. But P3 silence requires zero artifact changes in addition to zero score delta. Zero-delta action runs (CM fixes, sub-threshold housekeeping with no score movement) are structurally indistinguishable from silence by delta alone. Prior evaluators (Runs 69-71) ran verify-suite.ps1 (passes) but not metrics.ps1, so this DRIFT was present but undetected after Run 71. | New (related to Run 64's Metric 7 fix for N/A rows, but different direction: that fixed false RESETS; this fixes false ADVANCES) | Fixed Metric 7 to require `(silence)` in SCORECARD Result column in addition to zero delta. Kata Step 5 updated to document the `(silence)` convention. |
+
+### Verification
+
+- `metrics.ps1` Metric 7 before fix: computed=1, asserted=0, DRIFT flagged
+- `metrics.ps1` Metric 7 after fix: computed=0, asserted=0, **no DRIFT**
+- `verify-suite.ps1`: **0 failures, 0 warnings** (post-fix)
+
+### Measurements (Rubric v3)
+
+Independent re-derivation from current file state. Prior run end scores (9.3125) not consulted before deriving.
+
+| Dimension | Start | End | Delta | Notes |
+|-----------|-------|-----|-------|-------|
+| D1 Process Completeness | 9.5 | 9.5 | 0 | All phases explicit. Evidence sections present in all skills. Kata Step 5 silence convention addition is part of D7 fix scope, not a D1 improvement. |
+| D2 Causal Analysis | 8 | 8 | 0 | Recurrence rate 13.3% (MODERATE). Root causes identified consistently. Principled ceiling — no path to improvement visible. |
+| D3 Measurement Validity | 8.5 | 8.5 | 0 | 11 metrics operational. Metric 7 bug was a correctness issue, not a threshold calibration issue; D3 unchanged. |
+| D4 Configuration Management | 10 | 10 | 0 | verify-suite.ps1 0/0 pre- and post-fix. |
+| D5 Cross-Evaluator Reliability | 8 | 8 | 0 | Three model families (Claude, GPT, Gemini) scored. P3 counter 0/3. |
+| D6 Instruction Clarity | 10 | 10 | 0 | Skills clear and unambiguous. No prescriptive drift observed. |
+| D7 Convergence Integrity | 9.5 | 10 | +0.5 | Pre-fix: Metric 7 produced wrong computed P3 value (1 vs. correct 0), undermining the "mechanically grounded" claim. Post-fix: computed=asserted=0, no DRIFT, mechanism correct. |
+| D8 ARF | 9 | 9 | 0 | Run 70 Shiken PASS. Multi-resolution trail present. Self-administered limitation noted. |
+| **Mean** | **9.0625** | **9.125** | **+0.0625** | |
+
+### Assessment
+
+Pre-flight verify-suite.ps1 was clean. Running metrics.ps1 found Metric 7 DRIFT — a real defect undetected by prior evaluators who only ran verify-suite.ps1. Independent start score of 9.0625 (D7=9.5) reflects the pre-fix state honestly. Fix restores D7 to 10. P3 counter stays at 0/3 (artifact change). The next evaluator starting fresh with a clean verify-suite.ps1 and a clean metrics.ps1 (no DRIFT) may be the first genuine convergence vote.
+
+---
 ## Run 71 - 2026-04-21
 
 | Field | Value |

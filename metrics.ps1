@@ -303,12 +303,25 @@ Write-Host "    Durability           : $durability% of runs produced lasting imp
 # Metric 7: Principle 3 Convergence Silence Counter (computed, not asserted)
 # ---------------------------------------------------------------------------
 # Walks SCORECARD rows backward from the most recent valid scored run.
-# A run contributes to silence if its delta is +0.0 (zero score change).
-# Non-scoring rows (for example external-target runs or explicitly excluded
-# follow-up audits) are skipped rather than treated as chain breakers.
-# The chain is broken by any non-zero delta or invalidated row.
-# Distinct model families in the chain are also counted -- P3 requires
-# >= 3 consecutive silent runs from >= 3 distinct evaluators.
+# A run contributes to silence if TWO criteria are both met:
+#   (1) delta is +0.0 (zero score change), AND
+#   (2) the Result column contains the word "silence".
+#
+# Criterion (2) distinguishes genuine P3 silence runs from zero-delta action
+# runs (e.g., CM fixes that leave scores unchanged). P3 requires zero artifact
+# changes in addition to zero score delta; the "silence" keyword in the Result
+# column is the SCORECARD-detectable proxy for zero artifact changes.
+#
+# Convention (see also Kata Step 5): silence SCORECARD entries must include
+# the marker "(silence)" (in parentheses) in the Result column, e.g.,
+# "Kaizen (silence). ...". Bare occurrences of the word without parentheses
+# (e.g., "not a silence run") do NOT qualify. Zero-delta action runs that
+# do NOT include the "(silence)" marker break the chain.
+#
+# Non-scoring rows (N/A delta) are skipped rather than treated as chain
+# breakers, so external-target runs do not interrupt the silence chain.
+# The chain is broken by any non-zero delta, invalidated row, or zero-delta
+# row without the "silence" marker.
 #
 # This metric exists to detect drift between the asserted SCORECARD counter
 # and the actual chain. Convergence cannot be self-narrated -- it must be
@@ -318,12 +331,16 @@ Write-Host "[7] P3 Convergence Silence Counter" -ForegroundColor White
 $silentChain = @()
 $zeroDeltaPattern = '^\+?-?0\.0+$'
 # Walk backward through ALL rows (valid + invalidated). Skip non-scoring rows,
-# but break on invalidation or the first non-zero scored delta.
+# but break on invalidation, non-zero scored delta, or zero-delta non-silence.
 for ($i = $rows.Count - 1; $i -ge 0; $i--) {
     $r = $rows[$i]
     if ($r.Result -match $invalidPattern) { break }
     if ($r.Delta -eq 'N/A' -or $r.Delta -eq '') { continue }
     if ($r.Delta -notmatch $zeroDeltaPattern) { break }
+    # Zero-delta action runs (CM fixes, sub-threshold housekeeping, etc.) that
+    # are not explicitly marked 'silence' break the chain -- they are not P3
+    # silence votes even though the score did not move.
+    if ($r.Result -notmatch '(?i)\(silence\)') { break }
     $silentChain += $r
 }
 $silentRuns = $silentChain.Count
