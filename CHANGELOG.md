@@ -9,6 +9,18 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.7.1] - 2026-04-21
+
+### Fixed
+
+- **`TRAIL/GENBA.md`: 249-line mojibake block repaired.** The runs 51-60 era contained UTF-8 double-encoded em-dashes, arrows, en-dashes, and a handful of less common sequences. Deferred through Runs 82 and 83 as "pre-existing, scope-limited." Repaired in Run 84 via targeted Unicode sequence replacement: 208 em-dashes (`0x00E2 0x20AC 0x201D` → `—`), 56 arrows (`0x00E2 0x2020 0x2019` → `→`), 7 en-dashes, and 4 single-instance artifacts (↑, ↔, ‰, ≥). Two remaining occurrences on line 57 were backtick-quoted literal examples describing the mojibake itself — rewritten as prose so the documentation of the bug no longer reproduces the bug. verify-suite Check 1 now reports 0 encoding failures (was 249).
+
+### Changed
+
+- **`kata/SKILL.md` Step 2 (Diagnose): holistic-scan discipline added.** Previously the Diagnose phase's default scope was implicitly the current change. After three consecutive change-scoped runs (typical pattern for a loop that's finding small incremental fixes), the next run must treat the whole artifact as the target. Two explicit signals for this: sustained plateau combined with active external criticism, and tooling results the loop has stopped interrogating (persistent warnings, deferred findings, ignored metrics). Root cause: Run 83's near-convergence score was partly built on Kata evaluating what it changed rather than what accumulated. The 249-line mojibake block and other structural debt were not seen because no run's scan included them — each run verified its own change was clean and moved on. A holistic scan that finds nothing is still a valid diagnosis; a change-scoped scan that finds nothing is not.
+
+All 5 skills bumped to v2.7.1 to reflect the Kata behavior change.
+
 ## [2.7.0] - 2026-04-21
 
 ### Changed

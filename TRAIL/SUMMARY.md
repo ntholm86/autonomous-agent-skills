@@ -1,6 +1,6 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-21 - Run 83: Kata (P3 doctrinal refinement) — Claude Sonnet 4.6. Closed measurement-derivation independence gap: P3 now requires cross-family re-derivation of the measurement scheme, not just independent scoring. Convergence bar upgraded accordingly. All 5 skills bumped to v2.7.0. Run 82 bookkeeping defects (duplicate row, broken DimTraj encoding) cleaned. P3 counter resets to 0/3. Score 9.125→9.125 (+0.0). v2.7.0.*
+*Last updated: 2026-04-21 - Run 84: Kata (holistic-scan discipline) — Claude Sonnet 4.6. Added rule to kata/SKILL.md Step 2 requiring the whole artifact to be scanned after 3 consecutive change-scoped runs. Repaired 249-line GENBA mojibake block deferred through Runs 82 and 83. Caught a subagent hallucination mid-run and corrected it (Principle 2 self-application: visible ≠ correct). All 5 skills at v2.7.1. verify-suite 0 failures (was 249). P3 counter resets to 0/3. Score 9.125→9.125 (+0.0).*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
@@ -23,7 +23,7 @@
 
 ---
 
-**One-line status:** Suite v2.7.0 scores 9.125/10 (v3). P3 counter reset to 0/3 by Run 83 (PRINCIPLES.md + kata/SKILL.md content change — measurement-derivation independence added to convergence requirements). Pre-existing GENBA.md mojibake from runs 51–60 era (249 lines) pending cleanup in a dedicated run.
+**One-line status:** Suite v2.7.1 scores 9.125/10 (v3). P3 counter reset to 0/3 by Run 84 (kata/SKILL.md content change — holistic-scan discipline in Diagnose). GENBA mojibake (249 lines, deferred through Runs 82-83) repaired. verify-suite clean (0 failures, 1 Hansei-cadence warning — same 6-plateau signal that holistic-scan addresses structurally).
 
 ## Target Condition
 

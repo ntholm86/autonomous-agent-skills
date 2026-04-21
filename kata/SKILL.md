@@ -1,6 +1,6 @@
 ---
 name: kata
-version: 2.7.0
+version: 2.7.1
 description: 'Orchestrate an improvement cycle: diagnose, select methodology, execute, record, persist. The meta-pattern that connects all skills into a coherent workflow. USE WHEN: improve, audit, review, full treatment, kata, run the loop, comprehensive improvement, what does this project need.'
 argument-hint: 'Specify the target (project, file, system) and optionally a focus area or concern'
 ---
@@ -63,6 +63,15 @@ Examine the target and determine what it needs. Three classical diagnostic lense
 These are thinking tools, not a procedure. Use whichever reveals what matters. Use none if the situation calls for something else. The diagnosis must be grounded in what you find, not in which categories exist.
 
 For each finding: identify the root cause, not just the symptom. "This function is too long" is a symptom. "This function handles three unrelated responsibilities because they were added incrementally without refactoring" is a root cause.
+
+**Scope the diagnosis to the artifact, not to the change.** Each run's natural pull is to evaluate what was *changed* — the edit that triggered this run, the finding surfaced by the prior run. That scope is insufficient. Accumulated defects that no individual change introduced (stale verifier logic, documentation drift, tooling that silently degrades, mojibake aging in place) are invisible to change-scoped diagnosis. A run that only evaluates its own change will report a clean diagnosis while the artifact as a whole decays.
+
+The corrective discipline: before concluding the Diagnose phase, spend at least part of the lens scan on the *whole* artifact with no privileged focus on recent changes. If three or more consecutive runs have each scoped their diagnosis to the current change, the next run must treat the whole artifact as the target. Two signals that this is overdue:
+
+- **Sustained plateau** (3+ zero-delta runs) combined with **active external criticism** — if an outside observer or a Kaizen-lens-alone pass finds real defects, the prior runs were scanning too narrowly.
+- **Tooling results the loop hasn't interrogated** — e.g. persistent verifier warnings, deferred findings that have rolled forward through multiple sessions, or metrics the loop has stopped treating as signal.
+
+A holistic scan that finds nothing is still a valid diagnosis. A change-scoped scan that finds nothing is not — it has only verified that the change is clean, not that the artifact is.
 
 ### 3. Decide
 

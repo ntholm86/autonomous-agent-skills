@@ -89,6 +89,7 @@ Persistent cross-model trajectory for Kata self-targeting runs on the TPS skills
 | 81 | 2026-04-21 | Claude Sonnet 4.6 | 9.125 | 9.125 | +0.0 | TPS Skill Suite | **Kaizen.** Prescriptive drift fix: `kata/SKILL.md` Step 1 inheriting-scheme example hardcoded `"Rubric v3"` as universal default. Replaced with neutral `[target's scheme name]` + clarifying parenthetical. P1 compliance. v2.6.2. P3 counter resets 0/3 (artifact change). |
 | 82 | 2026-04-21 | Claude Sonnet 4.6 | 9.125 | 9.125 | +0.0 | TPS Skill Suite | **Kaizen.** Run 81 bookkeeping cleanup + selective manifesto delta pass. SCORECARD rows 80/81 concatenation fixed (CRLF/LF mismatch). 2 duplicate Run 79 GENBA entries removed. 4 skills bumped to v2.6.2. PRINCIPLES.md P3 Condition 1 added habituated-blind-spots causal explanation (ported from manifesto). P3 counter resets 0/3. v2.6.2. |
 | 83 | 2026-04-21 | Claude Sonnet 4.6 | 9.125 | 9.125 | +0.0 | TPS Skill Suite | **Kata (P3 doctrinal refinement).** Closed measurement-derivation independence gap in P3 + kata Step 1: independent scoring alone is insufficient if all evaluators inherit one family's measurement scheme. New rule: cross-family evaluators re-derive the scheme before scoring; convergence validates the scheme, divergence is a finding. External rubrics exempt from re-derivation but not from divergence-as-finding. Minimum convergence bar now requires ≥1 re-derivation convergent with inherited scheme. Also fixed Run 82 bookkeeping defects (duplicate Run 82 main-table row, broken `u{2192}` encoding in DimTraj Run 82 row, blank line between DimTraj rows 80-81, trailing `\` on rows 79/82, row 80 em-dash). v2.7.0. P3 counter resets 0/3 (artifact + principle change). |
+| 84 | 2026-04-21 | Claude Sonnet 4.6 | 9.125 | 9.125 | +0.0 | TPS Skill Suite | **Kata (holistic-scan discipline).** Root-cause diagnosis of "why did Kata near-converge with real defects present?" — each run evaluated only its own change, never the accumulated state. Added holistic-scan rule to `kata/SKILL.md` Step 2: after 3 consecutive change-scoped runs, next run must treat whole artifact as target. Repaired 249-line mojibake block in GENBA (deferred through Runs 82 and 83). Caught and corrected a subagent hallucination mid-run that had produced a false "Check 6 hardcoded" finding — Principle 2 self-application (visible ≠ correct). verify-suite: 0 failures (was 249). v2.7.1. P3 counter resets 0/3. |
 
 ## Dimension Trajectory (Rubric v3)
 
@@ -122,6 +123,7 @@ Per-dimension scores for all v3-scored self-targeting runs. **Runs 43–68 (hist
 | 81 | 9.5→9.5 | 8→8 | 8.5→8.5 | 10→10 | 8→8 | 10→10 | 10→10 | 9→9 | 9.125→9.125 | v3 + measurement protocol | — |
 | 82 | 9.5→9.5 | 8→8 | 8.5→8.5 | 10→10 | 8→8 | 10→10 | 10→10 | 9→9 | 9.125→9.125 | v3 + measurement protocol | — |
 | 83 | 9.5→9.5 | 8→8 | 8.5→8.5 | 10→10 | 8→8 | 10→10 | 10→10 | 9→9 | 9.125→9.125 | v3 + measurement protocol | — |
+| 84 | 9.5→9.5 | 8→8 | 8.5→8.5 | 10→10 | 8→8 | 10→10 | 10→10 | 9→9 | 9.125→9.125 | v3 + measurement protocol | — |
 
 **Key:**
 - **D1-D8** — Rubric v3 dimensions (full names in Scoring Rubric v3 below).
