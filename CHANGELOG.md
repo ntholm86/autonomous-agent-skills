@@ -9,6 +9,16 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.7.0] - 2026-04-21
+
+### Changed
+
+- **`PRINCIPLES.md` Principle 3: independence now extends to measurement-scheme derivation, not just scoring.** Previously, Condition 3 required each evaluator to score independently, but the measurement scheme itself was derived by the first run and silently inherited by all subsequent runs. This left a single-point-of-failure: if the deriving family had a blind spot in choosing *what to measure*, subsequent scoring convergence would reflect that blind spot rather than artifact quality. New requirement: a genuinely independent evaluator re-derives the measurement scheme from the target before scoring. Re-derivation convergence validates the scheme; divergence is itself a finding. Pre-agreed externally anchored rubrics are exempt from re-derivation but not from the divergence-as-finding rule. The minimum convergence bar updated accordingly: 3 runs, 3 distinct evaluator families, same score, zero changes, **and at least one re-derivation that converged**.
+- **`kata/SKILL.md` Step 1: re-derivation protocol.** When the current evaluator family differs from the family that derived the inherited scheme, re-derive independently and compare. Three recorded outcomes: `Re-derivation: convergent` (validates the scheme), `Re-derivation: divergent` (records the blind spot as a finding), `Re-derivation: inherited (same family)` (no cross-family validation this run — defers the check). External rubrics remain inheritable.
+- **`kata/SKILL.md` Convergence section: aligned with the new P3.** Condition 3 now requires that at least one of the three evaluators have re-derived the measurement scheme and found it convergent with the inherited scheme.
+
+Root cause for the gap: P3 originally treated the measurement scheme as fixed infrastructure ("what is being measured") rather than as an evaluator-dependent derivation ("what this family decided to measure"). For externally anchored rubrics this distinction was invisible; for derived schemes it meant one family's framing propagated unchallenged through the convergence chain. The fix closes the loop without breaking existing runs on external rubrics.
+
 ## [2.6.3] - 2026-04-21
 
 ### Added

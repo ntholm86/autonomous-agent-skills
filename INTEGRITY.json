@@ -1,22 +1,22 @@
 ﻿{
-    "last_verified":  "2026-04-21T13:50:41.0482823+02:00",
-    "suite_version":  "2.6.1",
-    "latest_scored_run":  79,
+    "last_verified":  "2026-04-21T16:47:01.8790777+02:00",
+    "suite_version":  "2.7.0",
+    "latest_scored_run":  83,
     "files":  {
-                  "kata/SKILL.md":  "A80BE47EE82AFA7F",
-                  "kaizen/SKILL.md":  "152722884DEFA725",
-                  "kaikaku/SKILL.md":  "A2B6E89AE3DB32D3",
-                  "hansei/SKILL.md":  "898D75A34D918867",
-                  "shiken/SKILL.md":  "304A43129112F37D",
-                  "TRAIL/GENBA.md":  "AB814169B9BA5BE5",
+                  "kata/SKILL.md":  "F654BD85747FD1EC",
+                  "kaizen/SKILL.md":  "875492D30FAC006E",
+                  "kaikaku/SKILL.md":  "FCB09E58D977F822",
+                  "hansei/SKILL.md":  "D546168E7594E3D1",
+                  "shiken/SKILL.md":  "E390AF9758E2998D",
+                  "TRAIL/GENBA.md":  "7779D484FCA8870F",
                   "TRAIL/GENBA_ARCHIVE.md":  "B9080FDE0EDF1577",
-                  "SCORECARD.md":  "4CD8ACA2DA41202F",
-                  "CHANGELOG.md":  "4615B3C876501868",
-                  "PRINCIPLES.md":  "BF57D27AFB990EEA",
-                  "PROBLEM.md":  "FF4A5B566734671B",
+                  "SCORECARD.md":  "A673D4B8B10F3520",
+                  "CHANGELOG.md":  "C6457966C65E34AA",
+                  "PRINCIPLES.md":  "2291C4A60B1BD437",
+                  "PROBLEM.md":  "46CF981F22B83B23",
                   "STANDARDS.md":  "0362C1C17C6E506D",
-                  "METRICS_HISTORY.md":  "7ABE3DBF56217ED8",
+                  "METRICS_HISTORY.md":  "1ADDAEC389B38F11",
                   "verify-suite.ps1":  "1F39D7BA8572B4F0",
-                  "metrics.ps1":  "A1C0A98DC7107E0A"
+                  "metrics.ps1":  "F4171874CAD6731B"
               }
 }

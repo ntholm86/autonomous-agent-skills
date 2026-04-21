@@ -1,6 +1,6 @@
-﻿---
+---
 name: kata
-version: 2.6.3
+version: 2.7.0
 description: 'Orchestrate an improvement cycle: diagnose, select methodology, execute, record, persist. The meta-pattern that connects all skills into a coherent workflow. USE WHEN: improve, audit, review, full treatment, kata, run the loop, comprehensive improvement, what does this project need.'
 argument-hint: 'Specify the target (project, file, system) and optionally a focus area or concern'
 ---
@@ -33,9 +33,16 @@ If this target has a `TRAIL/` directory, read `TRAIL/GENBA.md` for the most rece
 - A web application should be measured on what makes it good at being a web application (security posture, accessibility, test coverage, API consistency — whatever the agent determines matters after reading the code).
 - A library should be measured on what makes it good at being a library (API surface clarity, documentation coverage, backward compatibility).
 
-Do not prescribe the measurements in advance. Derive them from what you find. State each measurement and why it matters for this target. If a prior run on this target established a measurement scheme (recorded in GENBA), inherit it unless you have reason to revise — and if you revise, record the revision as a `[!DECISION]` with rationale.
+Do not prescribe the measurements in advance. Derive them from what you find. State each measurement and why it matters for this target.
 
-If a formal scoring rubric exists for this target (e.g., Rubric v3 in SCORECARD.md for the skill suite), use it. Rubrics are one form of measurement scheme — pre-agreed, externally anchored. They don't replace context-derived measurements; they complement them.
+**Re-derivation on evaluator-family change.** If a prior run on this target established a measurement scheme (recorded in GENBA), do not silently inherit it if your evaluator family differs from the family that derived it. Re-derive independently from the target, then compare against the inherited scheme:
+
+- If your derivation converges with the inherited scheme (substantively the same measurements, same rationale), record `Re-derivation: convergent` in the GENBA entry and proceed. This is genuine validation of the scheme — one more family independently arrived at the same framing.
+- If your derivation diverges (different measurements surface, or the rationale for existing ones no longer holds), record `Re-derivation: divergent` as a `[!REALIZATION]` with specifics. Divergence is a finding: the inherited scheme had a blind spot one family could not see. Decide whether to extend the scheme, replace it, or record the divergence for a future run to reconcile. Treat revisions as `[!DECISION]` entries with rationale.
+
+If your evaluator family matches the family that derived the scheme, inherit it — cross-family re-derivation is the mechanism that earns inheritance rights for subsequent same-family runs. Record `Re-derivation: inherited (same family)` in the GENBA entry.
+
+If a formal scoring rubric exists for this target (e.g., Rubric v3 in SCORECARD.md for the skill suite), it is externally anchored and exempt from re-derivation. But it is not exempt from the divergence-as-finding rule: if your independent examination suggests the rubric is insufficient for this artifact, record that as a finding, not a silent deviation.
 
 The loop's own operational metrics (elapsed time, transcript size, artifact growth) are measurements too. If they trend poorly, that is a finding — the loop should diagnose and address its own resource consumption the same way it addresses any other deficiency.
 
@@ -128,9 +135,9 @@ Commit the changes to version control. The disaster recovery floor is one run de
 
 Kata honors Principle 3. Convergence requires three simultaneous conditions:
 
-1. Three or more consecutive evaluations by distinct evaluators produce the same score (within a defined tolerance)
+1. Three or more consecutive evaluations by distinct evaluator families produce the same score (within a defined tolerance)
 2. Zero artifact changes in each of those evaluations
-3. Each evaluator scored independently without consulting prior scores
+3. Each evaluator scored independently without consulting prior scores, **and at least one of the three re-derived the measurement scheme from the target and found it convergent** (see Step 1)
 
 When these conditions are met, record the convergence and stop. Do not manufacture findings to justify continued execution. The P3 silence counter is computed by `metrics.ps1` from SCORECARD data — it is not asserted by the agent. If the asserted counter drifts from the computed value, the metrics output flags it.
 

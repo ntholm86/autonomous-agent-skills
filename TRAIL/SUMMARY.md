@@ -1,6 +1,6 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-21 - Run 82: Kaizen — Claude Sonnet 4.6. Run 81 bookkeeping cleanup (SCORECARD rows 80/81 fixed, 2 duplicate Run 79 GENBA entries removed, all skills bumped to v2.6.2). Selective manifesto delta pass: PRINCIPLES.md P3 Condition 1 now explains habituated-blind-spots as root cause for same-family independence rule. PRINCIPLES.md content change resets P3 counter to 0/3. Score 9.125→9.125 (+0.0). v2.6.2.*
+*Last updated: 2026-04-21 - Run 83: Kata (P3 doctrinal refinement) — Claude Sonnet 4.6. Closed measurement-derivation independence gap: P3 now requires cross-family re-derivation of the measurement scheme, not just independent scoring. Convergence bar upgraded accordingly. All 5 skills bumped to v2.7.0. Run 82 bookkeeping defects (duplicate row, broken DimTraj encoding) cleaned. P3 counter resets to 0/3. Score 9.125→9.125 (+0.0). v2.7.0.*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
@@ -23,7 +23,7 @@
 
 ---
 
-**One-line status:** Suite v2.6.2 scores 9.125/10 (v3). P3 counter reset to 0/3 by Run 82 (PRINCIPLES.md content change). Pre-existing GENBA.md mojibake from runs 51–60 era (249 lines) pending cleanup in a dedicated run.
+**One-line status:** Suite v2.7.0 scores 9.125/10 (v3). P3 counter reset to 0/3 by Run 83 (PRINCIPLES.md + kata/SKILL.md content change — measurement-derivation independence added to convergence requirements). Pre-existing GENBA.md mojibake from runs 51–60 era (249 lines) pending cleanup in a dedicated run.
 
 ## Target Condition
 

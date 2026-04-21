@@ -2,6 +2,42 @@
 
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
+## Run 83 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (self-targeting) |
+| Model | Claude Sonnet 4.6 |
+| Trigger | User question "DO you think our definition of convergence is true?" surfaced a single-point-of-failure in P3: independent scoring is required, but the measurement scheme is derived once (by the first evaluator family) and silently inherited by all subsequent evaluators. One family's framing of what *good* means propagates unchallenged through the convergence chain. User approved Kata on PRINCIPLES.md P3 + kata/SKILL.md Step 1. |
+| Methodology | Kata (P3 doctrinal refinement) |
+
+**Measurement scheme:** Inheriting Rubric v3 + measurement protocol — no revision. **Re-derivation: inherited (same family, external rubric).** Claude Sonnet 4.6 — same family as Runs 82, 81, 78, 75, 73, 72. Rubric v3 is pre-agreed externally anchored, exempt from re-derivation under the new rule this run introduces. First cross-family re-derivation remains pending — will be executed on the next non-Claude-family evaluator run.
+
+**Key findings:**
+1. **P3 independence is partial.** Condition 3 requires evaluators to score independently but silently permits inheritance of the measurement scheme. If the deriving family has a blind spot in choosing *what to measure*, subsequent scoring agreement reflects that blind spot, not artifact quality. This is the "rubric measures the recipe, not the meal" problem from Run 41 Hansei, surfaced doctrinally.
+2. **Kata Step 1 embeds the gap.** Current rule: "inherit unless you have reason to revise." A subsequent-family evaluator never sees the scheme as something requiring active re-examination — it arrives as infrastructure.
+3. **Run 82 bookkeeping introduced new defects while claiming to fix old ones.** Main table: duplicate Run 82 row. DimTraj Run 82 row: broken Unicode escapes (`u{2192}`, `u{2014}` instead of `→`, `—`) from a failed encoding pass. Blank line separated DimTraj row 80 from row 81. Row 80 used ASCII `-` instead of em-dash. Trailing `\` at end-of-line on rows 79 and first Run 82. These slipped past Run 82's own verification.
+
+**What was done:**
+- **PRINCIPLES.md P3 Condition 3:** Added "Independence extends to the measurement scheme, not just the score" paragraph. Re-derivation outcome (convergent/divergent) must be recorded. Pre-agreed external rubrics exempt from re-derivation but not from divergence-as-finding. Minimum bar updated: now requires ≥1 re-derivation convergent with the inherited scheme.
+- **kata/SKILL.md Step 1:** Added re-derivation protocol with three outcomes (`convergent`, `divergent`, `inherited (same family)`). External rubrics remain inheritable; divergence-as-finding rule still applies.
+- **kata/SKILL.md Convergence section:** Aligned with updated P3 — Condition 3 now requires at least one evaluator to have re-derived and found convergent.
+- **CHANGELOG:** [2.7.0] entry with rationale.
+- **All 5 skill files:** bumped to v2.7.0.
+- **SCORECARD bookkeeping:** Removed duplicate Run 82 row. Fixed broken DimTraj Run 82 encoding. Collapsed blank line between DimTraj rows 80-81. Normalized row 80 em-dash. Removed trailing `\` on rows 79 and 82.
+
+**Verification:** verify-suite pending (run after edits complete). P3 counter resets to 0/3 (both artifact and principle change).
+
+**Measurements:** D1=9.5, D2=8, D3=8.5, D4=10, D5=8, D6=10, D7=10, D8=9 → mean=9.125. Delta: +0.0. The principle refinement is doctrinal improvement without score movement — the rubric doesn't directly reward doctrinal deepening. This is a known D2 ceiling symptom.
+
+**Assessment:** P3 now has a mechanism to detect measurement-scheme blind spots that survive scoring-level independence. The protocol is dormant until the next non-Claude-family evaluator runs — first cross-family re-derivation will either validate or challenge the current scheme. v2.7.0.
+
+[!DECISION] Scope kept tight: PRINCIPLES.md P3 + kata/SKILL.md Step 1 + Convergence section. Did not touch hansei/kaizen/kaikaku/shiken skill bodies. The principle change propagates to them by reference, not by duplication.
+[!REALIZATION] The four critiques of convergence in the philosophical answer all trace back to one root cause: the measurement scheme is not subject to the same independence requirement as the scores. Fixing the root closes the four symptoms as much as is fixable within LLM-based evaluation constraints. External anchoring (Tier 2 metrics, human reviewers, real-world outcomes) remains the outer fix this principle cannot reach.
+[!REALIZATION] Run 82's own cleanup pass introduced the defects it claimed to fix. Bookkeeping runs need their own post-edit verification pass — the act of editing rows is exactly where encoding/CRLF/duplication defects are born.
+
+---
+
 ## Run 82 - 2026-04-21
 
 | Field | Value |
