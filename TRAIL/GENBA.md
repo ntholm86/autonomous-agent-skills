@@ -2,6 +2,37 @@
 
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
+## Run 87 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (C:\Users\admin\.copilot\skills) — as a tooling implementation only; theory is now external at C:\git\manifesto\. |
+| Model | Claude Opus 4.7 |
+| Trigger | User: "THe original scoreboard is still an important part of the evidence trail. yes i want you to do the next run." Following extraction of PROBLEM.md+PRINCIPLES.md to an independent manifesto repo and reset of SCORECARD.md + METRICS_HISTORY.md. User also asked whether deriving new measurements is a task for the suite to solve itself — answer: yes, via Kata Step 1. |
+| Methodology | Kata (full cycle) — Step 0 Intent in chat, Step 1 Grasp + measurement derivation in this run, Step 5 Record via this entry + new SCORECARD.md. No Kaizen fixes applied; this run's deliverable is the rubric itself, plus a v4 baseline score. |
+
+**Measurement scheme:** **Rubric v4 — derived this run.** Six dimensions: D1 Intent Fidelity, D2 Resolution Coverage, D3 Convergence Integrity, D4 Transferability, D5 Artifact Integrity, D6 ARF Evidence. Derivation path: walked the four delegability questions from Manifesto PROBLEM.md § Delegability back through the three Principles + ARF, then mapped to independent, testable tool properties. v3's theory-measuring dimensions (D2 Cause, D3 Measurement, D6 Clarity) deliberately excluded — they measured the constitution, which is no longer a target here. Full rubric with anchors, target condition, and hand-off instructions in SCORECARD.md. **Re-derivation:** derived. This is the first run on Rubric v4; next run by a distinct evaluator family must re-derive per Manifesto P3 condition 3.
+
+**Key findings (Grasp phase):**
+1. **The conflated-rubric score was flattering.** v3 mean ~9.1; v4 baseline mean 6.67. The drop is honest measurement surfacing — the suite was scored higher than it deserved as a tool because v3 dimensions like "Process soundness" and "Measurement basis" rewarded theory quality rather than tool fitness.
+2. **D6 ARF Evidence is the weakest dimension (5/10).** Both prior Shiken probes (Run 57, Run 70) were self-administered within the Claude family. Under v4 anchors, that is exactly 5.
+3. **D2 Resolution Coverage is structurally capped at 6** until a regulator-oriented digest variant and mechanical observer-class coverage check exist. The suite currently produces trails that work for practitioners and next-agent resolution but don't provide a digest tuned to regulator-style exhaustive review.
+4. **D4 Transferability cannot reach 7 without maintainer engagement.** External-target runs exist (leifoglenedk, apikit, evo, kiroku, SupplementPlanner) with artifacts shipped, but no evidence any target's maintainer read and acted on the trail. Run 62's leifoglenedk has 16 tests added; Run 77's SupplementPlanner has JWT isolation tests shipped. These are artifacts the framework claims to produce — but stakeholder engagement remains the unmet hurdle.
+
+**What was done:**
+- Derived Rubric v4 with 1-10 anchors per dimension, recorded in new SCORECARD.md.
+- Wrote Target Condition in formal decomposition (D3 ≥ 9 with chain, D4 ≥ 7 with engagement, D6 ≥ 7 with current-rubric probe, no dim below 7).
+- Scored v4 baseline: 8 / 6 / 7 / 6 / 8 / 5, mean 6.67.
+- Added hand-off instructions to Run 88 (distinct evaluator family; must re-derive; convergent vs divergent outcomes both valid evidence).
+
+**Verification:** pending verify-suite.ps1 run — the scorecard format changed (Rubric v3 → v4 columns), verifier Check 12 "SCORECARD ↔ GENBA per-run coverage" must still pass against this new Run 87 row. If Check 14 (score/artifact correlation) assumed v3 dimensions it will break; will be logged as a finding for a subsequent run rather than fixed here (this run's scope is measurement derivation only, not verifier refactoring).
+
+**Assessment:** Rubric v4 exists, is anchored to the external Manifesto, and produces an honest baseline (6.67) that reflects where the suite actually sits when measured against what a deployer would ask. Next move: Run 88 (distinct evaluator family) to validate the rubric via re-derivation.
+
+**Self-assessment caveat:** I am Claude Opus 4.7. I authored the v2.9.0 Manifesto rewrite and then derived v4. My rubric may share blind spots with my rebuild. This is not a convergence run and does not advance the P3 counter. The value of this run is strictly: a measurement scheme now exists and is visible enough for a distinct-family evaluator to re-derive against it.
+
+---
+
 ## Run 86 - 2026-04-21
 
 | Field | Value |

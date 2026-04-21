@@ -1,6 +1,6 @@
 # Trail Summary
 
-*Last updated: 2026-04-21 - Run 85: Kata scoped to intent/SKILL.md - Claude Sonnet 4.6. First Kata cycle on the newborn intent skill (born v2.8.0, integrated v2.8.1). 5 findings actioned: stale argument-hint frontmatter, P1 tension in "Extract" (skill teaching P1 was itself checklist-shaped), redundant "Narrate" list, "Standalone" naming collision, thin porting section. Bespoke micro-scheme used for diagnosis (Rubric v3 is suite-level); Rubric v3 scored for suite-level delta (9.125 -> 9.125, +0.0, movement deferred). All skills at v2.8.2. verify-suite 0 failures. P3 counter resets to 0/3.*
+*Last updated: 2026-04-21 - Run 87: Kata self-targeting for rubric re-derivation - Claude Opus 4.7. First run after Manifesto extraction (PROBLEM.md + PRINCIPLES.md → C:\git\manifesto\) and SCORECARD/METRICS_HISTORY reset. Derived Rubric v4 (6 dimensions) anchored to the external Manifesto's deployer-delegability test. v4 baseline mean: 6.67 (D1=8, D2=6, D3=7, D4=6, D5=8, D6=5). Previous v3 scores (~9.1 mean across Runs 43-86) archived at TRAIL/SCORECARD_ARCHIVE_v3.md and do not transfer. P3 counter: 0/3 (first v4 run; next run must be distinct evaluator family with re-derivation). verify-suite 0 failures, 1 expected reset warning.*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
@@ -9,7 +9,7 @@
 
 > **Has a human reviewed this trail since the last autonomous run?**
 >
-> - [x] Yes
+> - [ ] Yes
 > - Last reviewed: 2026-04-20
 > - Reviewer: Nils Holmager
 >
@@ -23,22 +23,23 @@
 
 ---
 
-**One-line status:** Suite v2.7.1 scores 9.125/10 (v3). P3 counter reset to 0/3 by Run 84 (kata/SKILL.md content change — holistic-scan discipline in Diagnose). GENBA mojibake (249 lines, deferred through Runs 82-83) repaired. verify-suite clean (0 failures, 1 Hansei-cadence warning — same 6-plateau signal that holistic-scan addresses structurally).
+**One-line status:** Suite v2.9.0, Rubric v4 baseline 6.67. Manifesto now external at `C:\git\manifesto\`. P3 chain restarted at 0/3 under v4; next run must be distinct evaluator family with measurement re-derivation (per Manifesto P3 cond. 3).
 
 ## Target Condition
 
-Bring P2 (Observable Autonomy) to colleagues' daily work. The skill files must be readable by someone with no prior context. *(Run 63: the suite is converging — the first evaluator found nothing worth changing.)*
+The TPS suite is a delegable Manifesto implementation — validated by a P3 convergence chain of 3 distinct evaluator families on the suite itself AND sustained by demonstrated efficacy on ≥ 2 distinct external targets with trails legible to those targets' stakeholders. Decomposed: D3 ≥ 9 with chain, D4 ≥ 7 with maintainer engagement, D6 ≥ 7 with Rubric-v4-era probe, no dim below 7.
 
 ## Direction
 
-Run 79 evaluated the suite using Gemini 3.1 Pro (a previously untested model family). It found an active defect in the P3 Counter Integrity (a brittle regex matching 'silence' in metrics.ps1 rejected perfectly clear (silence, post-convergence) markers, resulting in invisible computational drift: 0 computed vs 3/3 asserted).
-
-Because this was a concrete, mechanically validated defect that prior models missed or accommodated, fixing it meant the suite was NOT converged. Therefore, the P3 counter correctly resets to 0/3. The fix ensures that future explicitly marked silences are captured robustly. P3 was proven correct: only mechanically enforced diverse evaluation stops models from reinforcing the prior evaluator's complacency.
+Rubric v4 is the new measurement substrate. Run 88 (distinct evaluator family, fresh conversation) must re-derive the scheme from Manifesto + target before scoring. Convergent re-derivation earns v4 its first family-cross validation; divergent re-derivation is a finding, not a failure. Also pending from metrics.ps1: Metric 10 flagged active GENBA at 120 KB (archival recommended); Metric 5 flagged single-family diversity (expected post-reset).
 
 ## Key Decisions
 
+- [!DECISION] Run 87 — Rubric v4 derived (2026-04-21): Six dimensions (D1 Intent Fidelity, D2 Resolution Coverage, D3 Convergence Integrity, D4 Transferability, D5 Artifact Integrity, D6 ARF Evidence) derived from the four-question delegability test in Manifesto PROBLEM.md. Anchors at 3/5/7/9/10 for derivation-not-vibes scoring. Alternatives rejected: renaming v3 (re-creates conflation), 3-dim rubric (collapses independent aspects), 10-dim rubric (over-granular). Baseline: 6.67 (D1=8, D2=6, D3=7, D4=6, D5=8, D6=5). Scheme: derived. This run does not advance P3 counter; Run 88 must be distinct family + re-derive.
+- [!DECISION] Run 87 reset bookkeeping (2026-04-21): SCORECARD + METRICS_HISTORY archived to TRAIL/ (preserved verbatim for evidence trail). Empty boards created. verify-suite.ps1 Check 10 (Governing-document integrity) skipped — constitution is external now. Same commit as manifesto extraction.
+- [!DECISION] Manifesto extraction (2026-04-21): PROBLEM.md + PRINCIPLES.md moved to standalone repo C:\git\manifesto\ with its own SCORECARD (theory-quality dimensions) and GENBA. Root cause: measuring theory with the tool's rubric forced theory to shape-shift to the tool — architectural contamination identified by the user. Suite now consumes Manifesto as external Commander's Intent rather than owning it.
 - [!DECISION] Run 79 P3 Drift resolution / chain reset: An independent Gemini evaluation found a concrete functional defect in `metrics.ps1` Metric 7 which was computationally ignoring the `(silence, post-convergence)` label because of a brittle exact-match regex limit. Fixed the regex. Re-evaluated the suite. Because a defect was genuinely found and fixed, Convergence P3 counter naturally resets 3/3→0/3. This affirms Principle 3's premise: diverse multi-model testing catches what models from the same LLM family habituate to or ignore.
-- [!DECISION] Run 75 silence / convergence declared: Examined all 5 skills + kiroku + PRINCIPLES + README + CHANGELOG + SCORECARD across 8 lenses. Independent re-derivation: 9.125 (matches Runs 73-74 post-derivation cross-check). No actionable findings. Alternatives: (a) flag kiroku version diff — rejected, intentional, verifier clean; (b) flag D2 ceiling — rejected, no new structural insight; (c) flag P3 diversity gap (2 Claude families, not 3 independent families) — noted honestly in GENBA/SUMMARY but not a finding warranting artifact change; (d) manufacture cosmetic finding — explicitly rejected per P3 incentive trap. P3 counter 2→3/3. Convergence declared. (Run 75)
+- [!DECISION] Run 75 silence / convergence declared (v3, superseded by v4 reset): Examined all 5 skills + kiroku + PRINCIPLES + README + CHANGELOG + SCORECARD across 8 lenses. Independent re-derivation: 9.125 (matches Runs 73-74 post-derivation cross-check). No actionable findings. **Note under v4:** this convergence was against the conflated Rubric v3 and does not transfer.
 - [!DECISION] Run 74 silence: Examined all 5 skills + kiroku + PRINCIPLES + README + CHANGELOG + SCORECARD across 8 lenses. Independent re-derivation: 9.125 (matches Run 73 post-derivation cross-check). No actionable findings. Alternatives: (a) flag kiroku version diff — rejected, intentional convention, verifier clean; (b) flag D2 ceiling — rejected, no new structural insight; (c) manufacture cosmetic finding to justify execution — explicitly rejected per P3 incentive trap. P3 counter 1→2. (Run 74)
 - [!DECISION] Run 73 silence: Examined all 5 skills, kiroku, PRINCIPLES, README, CHANGELOG. Found no actionable findings. Kiroku version difference (v2.4.0 vs v2.6.1) is intentional per CHANGELOG "All 5 skill files" convention; verify-suite does not flag it. D2 ceiling at 8 is structural. P3 counter 0→1. Alternatives: (a) flag kiroku version — rejected, verifier clean and convention intentional; (b) flag D2 — rejected, no new information since last examination. (Run 73)
 - [!DECISION] Run 72 Metric 7 fix (2026-04-21): Metric 7 now requires `(silence)` in SCORECARD Result column in addition to zero delta for P3 silence chain. Root cause: `delta=0` alone cannot distinguish genuine P3 silence (zero artifact changes) from zero-delta action runs (CM fixes etc.). Alternatives: (a) accept DRIFT as background noise — rejected, would grow worse with each zero-delta action run; (b) vote silence and let the DRIFT resolve via future non-zero delta — rejected, underlying bug persists for future zero-delta action runs. Also added Kata Step 5 silence convention note so executors know to include `(silence)` in Result. D7 9.5→10. Root cause: executor labeled run "non-scoring" and skipped the row, but the convention (established by Run 57 Shiken + all external target rows) requires rows for ALL runs. verify-suite.ps1 Check 13 detected the gap. Fix: N/A row added. Alternatives: (a) accept the gap — rejected, verifier failing is not background noise; (b) change convention so non-scoring runs skip rows — rejected, existing convention is correct. (Run 71)
