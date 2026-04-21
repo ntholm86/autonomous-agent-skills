@@ -25,8 +25,17 @@ param(
     [string]$Participants = "human, Claude Opus 4.6",
     
     [ValidateSet("verbatim", "reconstructed", "mixed")]
-    [string]$Fidelity = "reconstructed"
+    [string]$Fidelity = "reconstructed",
+
+    [switch]$AllowConcurrentOpen
 )
+
+if (-not (Test-Path $Project)) {
+    Write-Error "Project path not found: $Project"
+    exit 1
+}
+
+$Project = (Resolve-Path $Project).Path
 
 # Auto-generate slug if not provided
 if (-not $Slug) {
@@ -42,6 +51,28 @@ $trailDir = Join-Path (Join-Path $Project "TRAIL") "sessions"
 if (-not (Test-Path $trailDir)) {
     New-Item -ItemType Directory -Path $trailDir -Force | Out-Null
     Write-Host "Created TRAIL/sessions/ in $Project"
+}
+
+if (-not $AllowConcurrentOpen) {
+    $openSessions = Get-ChildItem -Path $trailDir -Filter "*.md" -ErrorAction SilentlyContinue |
+        Where-Object {
+            $c = [System.IO.File]::ReadAllText($_.FullName, [System.Text.Encoding]::UTF8)
+            $c -match 'status:\s*in-progress'
+        } |
+        Sort-Object Name
+
+    if ($openSessions.Count -gt 0) {
+        Write-Error "Cannot start a new session while another session is in-progress. This prevents silent trail gaps."
+        Write-Host "Open session(s):"
+        foreach ($s in $openSessions) {
+            Write-Host "  - $($s.Name)"
+        }
+        Write-Host ""
+        Write-Host "Next steps:"
+        Write-Host "  - Close the active session: .\kiroku\kiroku-close.ps1 -Project \"$Project\""
+        Write-Host "  - Or explicitly allow overlap: .\kiroku\kiroku-start.ps1 ... -AllowConcurrentOpen"
+        exit 1
+    }
 }
 
 # Create TRAIL/README.md on first use (observer entry point)

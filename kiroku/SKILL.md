@@ -129,6 +129,7 @@ Creates `TRAIL/sessions/YYYY-MM-DD-{slug}.md` with YAML frontmatter. On first us
 - `-Project`: Target project path (default: current directory)
 - `-Participants`: Who's involved (default: "human, Claude Opus 4.6")
 - `-Fidelity`: verbatim | reconstructed | mixed (default: reconstructed)
+- `-AllowConcurrentOpen`: Optional escape hatch. By default, start is blocked if another in-progress session exists to prevent silent evidence gaps.
 
 ### `kiroku-close.ps1` — End a session
 
@@ -156,14 +157,15 @@ Scans all session files for `[!DECISION]` markers. Extracts decision text, ratio
 .\kiroku-validate.ps1 -Project "C:\git\mathkit"
 ```
 
-Validates 7 checks:
+Validates 8 checks:
 1. Trail structure (SUMMARY, INDEX, sessions/, README exist)
-2. Session fidelity headers present
+2. Session headers and scope correctness (fidelity/source/project target)
 3. Decision count consistency (sessions vs INDEX)
-4. Summary freshness and self-authorship warning
-5. No unclosed sessions (except current)
-6. Fidelity honesty (verbatim claims have verbatim markers)
-7. Decision recording quality (rationale present on decisions)
+4. Summary/index freshness and self-authorship warning
+5. Open-session safety (single open session, non-empty Trigger/Intent, stale session detection)
+6. Fidelity honesty (verbatim or mixed claims require verbatim markers)
+7. Secret hygiene (high-confidence credential patterns)
+8. Validation performance guardrail (runtime visibility)
 
 ## Fidelity honesty
 

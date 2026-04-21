@@ -9,6 +9,20 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.5.0] - 2026-04-21
+
+### Added
+
+- **`kaizen/SKILL.md`, `kaikaku/SKILL.md`, `hansei/SKILL.md`, `shiken/SKILL.md`: `## Evidence` sections.** Each individual skill now specifies what an observer should be able to find in the kiroku session after the skill completes — observable output categories, not process steps. Kaizen Evidence: what was examined, what was selected, what was changed/verified, the score. Kaikaku Evidence: evidence marshaled, ceiling assessment, recommendation, bias checks. Hansei Evidence: what was examined, recurring patterns, blind spots, trajectory characterization, recommendations. Shiken Evidence: probe design, execution trace, ARF assessment. All framed observer-centric (what observers can find), not agent-prescriptive (what agents must do). Closes D1 ceiling at 8 since Run 51. (Run 68)
+
+### Fixed
+
+- **`metrics.ps1` Metric 11: false POOR eliminated.** (a) Date format in `TRAIL/SUMMARY.md` corrected from `20-04-2026` (DD-MM-YYYY, rejected by regex) to `2026-04-20` (YYYY-MM-DD). (b) Assessment logic now gives GOOD when checkbox is checked AND date is ≤ 7 days old, even when Review Log has no rows, with a note prompting the reviewer to populate the Review Log for a full audit trail. Metric 11 flipped POOR → GOOD. (Run 68)
+
+### Changed
+
+- All 5 skill files bumped from v2.4.0 → v2.5.0 to maintain version alignment (Check 4). (Run 68)
+
 ## [2.4.0] - 2026-04-20
 
 ### Scope

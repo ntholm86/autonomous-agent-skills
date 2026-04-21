@@ -1,6 +1,6 @@
 ---
 name: kaikaku
-version: 2.4.0
+version: 2.5.0
 description: 'Radical redesign evaluation. When incremental improvement has converged too low or the architecture is fundamentally wrong, Kaikaku determines whether to redesign and produces a migration plan if warranted. USE WHEN: redesign, start over, rethink, rewrite, architecture is wrong, kaizen isnt working, converged too low, fundamental change, kaikaku, radical change, clean slate, rearchitect, pivot.'
 argument-hint: 'Specify the target to evaluate for radical redesign and optionally the evidence that incremental improvement is insufficient'
 ---
@@ -69,3 +69,14 @@ Kaikaku must resist two biases:
 - **The novelty bias:** "This would be more elegant if we rewrote it." Elegance is not a reason for redesign. The question is whether the goals are reachable, not whether the code is pretty.
 
 State which bias you checked yourself against and what you found.
+
+## Evidence
+
+An observer reading the kiroku session after this skill completes should be able to find:
+
+- **The evidence marshaled.** What specifically argued for or against radical redesign: the Kaizen trajectory shown, the structural constraint identified (or why none exists), the distinction between structural and implementation problems.
+- **The ceiling assessment.** The estimated best-achievable state under the current structure and whether that meets the goals.
+- **The recommendation.** Which of the three outcomes was reached (continue Kaizen, partial restructuring, or full redesign), with full rationale. If redesign: the migration plan.
+- **The bias checks.** An explicit assessment of sunk-cost bias and novelty bias — not just that they were checked, but what was found.
+
+Mark decisions `[!DECISION]`, realizations `[!REALIZATION]`, reversals `[!REVERSAL]` in the session as they occur.

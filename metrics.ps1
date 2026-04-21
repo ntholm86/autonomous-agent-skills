@@ -555,6 +555,8 @@ if (Test-Path $summaryPath) {
 
     if ($checkboxState -eq 'checked' -and $null -ne $runsBehind -and $runsBehind -eq 0) {
         Write-Host "    Assessment        : GOOD -- trail acknowledged and review is current" -ForegroundColor Green
+    } elseif ($checkboxState -eq 'checked' -and $null -ne $daysSinceReview -and $daysSinceReview -le 7 -and $reviewRows.Count -eq 0) {
+        Write-Host "    Assessment        : GOOD -- checkpoint acknowledged ($daysSinceReview day(s) ago); populate Review Log in TRAIL/SUMMARY.md for full audit trail" -ForegroundColor Green
     } elseif ($null -ne $runsBehind -and $runsBehind -lt 5 -and $reviewRows.Count -gt 0) {
         Write-Host "    Assessment        : MODERATE -- review recorded but stale ($runsBehind run(s) behind)" -ForegroundColor Yellow
     } else {

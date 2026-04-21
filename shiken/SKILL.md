@@ -1,6 +1,6 @@
 ---
 name: shiken
-version: 2.4.0
+version: 2.5.0
 description: 'Construct novelty probes that distinguish genuine situated reasoning from pattern-matching. Builds examination scenarios where routine execution fails but interpretation succeeds. Measures Autonomous Reasoning Fidelity. USE WHEN: test reasoning quality, construct novelty probes, is the agent actually reasoning, ARF measurement, shiken, novelty injection, anti-compliance test, distinguish reasoning from pattern-matching, stress test.'
 argument-hint: 'Specify the skill or system to probe, and optionally the aspect of reasoning to test'
 ---
@@ -77,3 +77,13 @@ Bad probes:
 ## What Shiken Does Not Do
 
 Shiken does not prove inner reasoning exists. It produces external evidence about whether the agent's responses vary with the specifics of what it encounters. This is the strongest signal the framework can produce - not a metaphysical claim, but an observable behavioral difference.
+
+## Evidence
+
+An observer reading the kiroku session after this skill completes should be able to find:
+
+- **The probe design.** The pair of cases, the material difference between them, the predicted divergence point, and the compliance baseline.
+- **The execution trace for each case.** The agent's actual reasoning path at the predicted divergence point.
+- **The ARF assessment.** Whether divergence was present, absent, or unexpected — and what that means for the target skill's reasoning quality. If unexpected: what it reveals about either the probe design or the agent's behavior.
+
+Mark decisions `[!DECISION]`, realizations `[!REALIZATION]`, reversals `[!REVERSAL]` in the session as they occur.

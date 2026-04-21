@@ -3,6 +3,47 @@
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
 ---
+## Run 68 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (self-targeting) |
+| Model | Claude Sonnet 4.6 |
+| Trigger | User-requested Kata self-targeting run. Commander's Intent: "Improve the suite's clarity and observability while preserving Commander's Intent: standardize what must be observable, not how the evaluator must think." |
+| Methodology | Kaizen |
+
+### Findings
+
+| # | Finding | Root cause | Recurred? | Action |
+|---|---------|------------|-----------|--------|
+| 1 | Individual skills (Kaizen, Kaikaku, Hansei, Shiken) specify what to DO but not what the trail must contain when the skill completes. An agent reading any individual skill file doesn't know what evidence to deposit in the kiroku session. | Observable output requirements were defined only at the Kata orchestration level (Steps 4–5), not at the skill execution level. | First | Added `## Evidence` section to all 4 individual skills: observer-centric statement of what an observer should find in the trail after the skill completes. Does not prescribe reasoning process (P1 compliant). |
+| 2 | `metrics.ps1` Metric 11 reported POOR despite SUMMARY.md checkpoint being checked with reviewer date. Root cause (a): reviewer wrote `20-04-2026` (DD-MM-YYYY) but the regex expects `\d{4}-\d{2}-\d{2}` (YYYY-MM-DD) — date never parsed. Root cause (b): assessment logic gave no credit for checkbox-checked + date parsed when Review Log has no rows. | Format mismatch (template says YYYY-MM-DD, reviewer used DD-MM-YYYY) + assessment logic gap for checkpoint-only evidence. | First | Fixed SUMMARY.md date to `2026-04-20`; added new GOOD case to assessment: if checkbox checked + date ≤ 7 days old + Review Log empty → GOOD with note to populate Review Log. |
+
+### Verification
+
+- `verify-suite.ps1`: **0 failures, 0 warnings**
+- `metrics.ps1` Metric 11: **GOOD** (was POOR — false negative eliminated)
+- All 5 skills at v2.5.0; Check 4 passes; INTEGRITY.json updated
+
+### Measurements (Rubric v3 + measurement protocol)
+
+| Dimension | Start | End | Delta | Notes |
+|-----------|-------|-----|-------|-------|
+| D1 Process Completeness | 8 | 9 | +1 | Evidence sections add explicit phase-level artifact requirements; the "phases described but artifacts implicit" gap is now closed |
+| D2 Causal Analysis | 8 | 8 | 0 | Recurrence rate unchanged (13.7%); Evidence section now requires root cause in trail, helps future runs |
+| D3 Measurement Validity | 8.5 | 8.5 | 0 | No measurement scheme changes |
+| D4 Configuration Management | 10 | 10 | 0 | 0/0 failures; INTEGRITY.json updated |
+| D5 Cross-Evaluator Reliability | 8 | 8 | 0 | No new cross-evaluator data this run |
+| D6 Instruction Clarity | 10 | 10 | 0 | Evidence sections add clarity; ceiling already held |
+| D7 Convergence Integrity | 10 | 10 | 0 | P3 counter resets to 0/3 (non-zero delta breaks Run 63 silence chain); mechanism intact |
+| D8 ARF | 9 | 9 | 0 | Evidence sections are P1-compliant (outputs specified, route open); D8 improvement requires external validation |
+| **Mean** | **8.9375** | **9.0625** | **+0.125** | |
+
+### Assessment
+
+Evidence sections close the D1 ceiling stuck at 8 since Run 51. Every skill now states what observers can expect to find in the trail — without prescribing reasoning process. The metrics.ps1 false-POOR for Metric 11 is eliminated. P3 silence counter resets to 0/3 (this run's +0.125 delta breaks Run 63's chain); next convergence attempt must begin in a fresh conversation.
+
+---
 ## Run 67 - 2026-04-21 - External target (evo)
 
 | Field | Value |

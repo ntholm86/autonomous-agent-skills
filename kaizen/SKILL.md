@@ -1,6 +1,6 @@
 ---
 name: kaizen
-version: 2.4.0
+version: 2.5.0
 description: 'Incremental improvement - diagnose, challenge blind spots, prioritize by impact, implement, verify. The core improvement cycle. Includes diagnostic vocabulary for unevenness, overburden, and waste. USE WHEN: audit, review, rate, improve, make impressive, quality loop, iterate, kaizen, evolve this, what would make this better, ROI analysis, blind spots, what am I missing.'
 argument-hint: 'Specify the target to improve and optionally a focus area or quality concern'
 ---
@@ -81,3 +81,14 @@ If a formal scoring rubric exists for this target (e.g., Rubric v3 for the skill
 The scores go into the GENBA entry. The gap between current scores and the Target Condition is what drives the next run.
 
 If the diagnosis found nothing actionable and no changes were made, score the target at its current level (+0.0 delta). This is not failure — it is evidence of convergence. Record the silence explicitly: what was examined, why nothing warranted change, and that the run advances the P3 silence chain.
+
+## Evidence
+
+An observer reading the kiroku session after this skill completes should be able to find:
+
+- **What was examined and found.** Which aspects of the target were looked at. Each finding with its root cause identified (not just the symptom). If nothing warranted change, an explicit statement of that with reasoning — silence is a valid outcome that advances Principle 3.
+- **What was selected.** The highest-leverage finding chosen and why alternatives were ranked lower.
+- **What was changed and verified.** For each change: the before-state, the after-state, and evidence that the change is correct (tests pass, no regressions). For silence: confirmation that no regression was introduced.
+- **The score.** End-of-run score against the measurements from Kata Step 1, with delta from the prior run.
+
+Mark decisions `[!DECISION]`, realizations `[!REALIZATION]`, reversals `[!REVERSAL]` in the session as they occur.

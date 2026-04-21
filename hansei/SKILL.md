@@ -1,6 +1,6 @@
 ---
 name: hansei
-version: 2.4.0
+version: 2.5.0
 description: 'Reflect on the improvement loop itself. Examine the trail, surface recurring findings, blind spots, methodology effectiveness, and what the loop has been ignoring. Meta-improvement - improving the improvement process. USE WHEN: reflect, retrospective, what are we missing, blind spots in the loop, why does this keep recurring, hansei, examine the trail, meta-improvement, loop critique, what hasnt worked, why is the score plateauing.'
 argument-hint: 'Specify the target whose improvement history to reflect on, and optionally a specific concern about the loop'
 ---
@@ -91,3 +91,15 @@ Hansei produces a reflection, not a fix. Its output is:
 4. Specific recommendations for the next cycle (focus area, methodology change, rubric revision, etc.)
 
 Hansei does not modify the target artifact. It modifies the loop's approach for the next iteration.
+
+## Evidence
+
+An observer reading the kiroku session after this skill completes should be able to find:
+
+- **What was examined.** Which loop aspects were looked at — trail history, recurring patterns, blind spots, intent drift, retirement candidates, methodology, trajectory. What was *not* examined and why.
+- **Recurring patterns.** For each: what it is, how many times it has appeared, and the root cause assessment (structural or fixable?).
+- **Blind spots surfaced.** What the loop has not been looking at. If nothing found: explicit statement with reasoning.
+- **Trajectory characterization.** Whether the loop is progressing, approaching convergence, stagnating, or showing signs it needs Kaikaku on itself.
+- **Recommendations.** Specific, actionable guidance for the next cycle. These are Hansei's artifact — it does not modify the target.
+
+Mark decisions `[!DECISION]`, realizations `[!REALIZATION]`, reversals `[!REVERSAL]` in the session as they occur.
