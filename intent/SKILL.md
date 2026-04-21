@@ -1,6 +1,6 @@
 ---
 name: intent
-version: 2.8.0
+version: 2.8.1
 description: 'Apply Commander''s Intent to the user''s own prompt before acting. Interpret what the user is trying to achieve, not what they literally wrote. Narrate the interpretation so the user can correct drift before work begins. USE WHEN: any substantive user request that implies work (build, fix, improve, explain, investigate, decide). SKIP WHEN: the request is unambiguous and mechanical (a specific file read, a one-line command, a yes/no confirmation).'
 argument-hint: 'Automatic — applies to the incoming prompt, not invoked explicitly'
 ---
@@ -71,6 +71,10 @@ This skill runs first. Other TPS skills (Kata, Kaizen, Kaikaku, Hansei, Shiken) 
 
 When the prompt invokes a specific methodology ("run Kata on X"), Intent still applies — "run Kata" is itself an interpretable statement. The user might mean the full orchestration, a specific phase, or merely the vocabulary.
 
-## Standalone Use
+**Kata integration:** Intent is Step 0 of the Kata cycle (see [kata/SKILL.md](../kata/SKILL.md)). Every Kata run begins with Intent extraction before grasping the target. The interpretation is recorded in the kiroku session's Intent section and is part of the evidence trail.
+
+**Standalone invocation:** Intent can also be invoked independently of Kata, in the same way kiroku can be invoked without running a full improvement cycle. Any conversation involving a substantive request — design discussion, code question, architectural decision, bug investigation — benefits from the extract/narrate/check-gap sequence regardless of whether a Kata cycle is running. When used standalone, the narration goes into the conversation; no session file is required unless the work ends up producing one.
+
+## Standalone Use (outside TPS)
 
 This skill is designed to be shareable independently. It references the TPS Principles for grounding but does not require the other TPS skills to be present. If adopted alone in another environment, replace the cross-references with equivalents in that environment, or keep them as-is — the principle they point to is not TPS-specific.

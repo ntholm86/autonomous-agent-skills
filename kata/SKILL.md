@@ -1,6 +1,6 @@
 ---
 name: kata
-version: 2.8.0
+version: 2.8.1
 description: 'Orchestrate an improvement cycle: diagnose, select methodology, execute, record, persist. The meta-pattern that connects all skills into a coherent workflow. USE WHEN: improve, audit, review, full treatment, kata, run the loop, comprehensive improvement, what does this project need.'
 argument-hint: 'Specify the target (project, file, system) and optionally a focus area or concern'
 ---
@@ -12,6 +12,16 @@ argument-hint: 'Specify the target (project, file, system) and optionally a focu
 Kata is the orchestrator. It takes a target, determines what that target needs, selects and executes the right methodology, records everything, and persists the results.
 
 ## The Cycle
+
+### 0. Interpret the Request
+
+Before grasping the target, grasp the request. Apply the **Intent** skill ([intent/SKILL.md](../intent/SKILL.md)) to whatever prompt triggered this Kata run — whether a user message, a scheduled review, or a prior-run finding.
+
+Extract what the requester actually wants, narrate the interpretation, and check the gap against the literal text. If the interpretation materially diverges from the literal request, surface the divergence before entering Step 1. If the interpretation changes what the target is, Step 1 operates on the corrected target, not the originally-named one.
+
+This step is observable: the interpretation goes into the kiroku session's Intent section verbatim (or into the conversation if no session log is active). An observer reading only the trail must be able to answer *"what did the agent take the requester to mean, and what did they ignore or change from the literal prompt?"* without reading the original message.
+
+Intent runs on every Kata cycle. A one-line *"the prompt was unambiguous; proceeding as stated"* is a valid outcome when warranted — silence is not.
 
 ### 1. Grasp the Situation
 

@@ -9,6 +9,13 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.8.1] - 2026-04-21
+
+### Changed
+
+- **`kata/SKILL.md`: Intent integrated as Step 0 of the cycle.** Before "Grasp the Situation," every Kata run now begins with Intent extraction applied to the triggering prompt. Interpretation goes into the kiroku session's Intent section verbatim. If the interpretation changes what the target is, Step 1 operates on the corrected target. Closes the gap where Kata would operate on the literal target name without first verifying what the requester actually wanted.
+- **`intent/SKILL.md`: explicit standalone invocation path.** Documents that Intent can be invoked independently of Kata — any substantive conversation benefits from the extract/narrate/check-gap sequence, with the narration going into the conversation rather than a session file. Same pattern as kiroku being usable outside a Kata cycle.
+
 ## [2.8.0] - 2026-04-21
 
 ### Added
