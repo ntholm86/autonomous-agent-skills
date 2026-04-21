@@ -3,6 +3,33 @@
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
 ---
+## Run 76 - 2026-04-21
+
+| Field | Value |
+|-------|-------|
+| Target | SupplementPlanner (external) — c:\git\SupplementPlanner |
+| Model | Claude Sonnet 4.6 |
+| Trigger | User-requested Kata run on external project. First run, no prior trail. Mission: "Determine whether what was planned is what was shipped." |
+| Methodology | Kata (Diagnose) — no code changes |
+
+**Measurement scheme:** Derived from mission (plan-vs-shipped gap analysis on a web application). Rubric v3 does not apply to external targets. Five derived measurements: (1) Feature presence — pass/fail per major planned feature; (2) Build integrity — TypeScript type-check + Vite build; (3) Test coverage — yes/no; (4) Security posture — flag/clear per item; (5) Document credibility — do plan docs accurately reflect shipped state.
+
+**Key findings (root causes):**
+1. Plan docs conflate intent with completion — all ✅ markers look identical whether shipped or not; docs were written as forward-looking specs in a chat-based LLM workflow and never revised as status records.
+2. Zero test infrastructure is architectural, not a task gap — no test runner installed in either package.
+3. Three security configurations are dev-mode defaults never hardened: `cors()` with no origin restriction (OWASP A05 HIGH), `contentSecurityPolicy: false` (MEDIUM), access+refresh JWT tokens share same secret (MEDIUM). Human action required — no auto-fix.
+4. Four planned features not shipped: Tesseract OCR label scanning, application metrics/monitoring, PubMed feature routes (empty directory scaffolded), GDPR data export endpoint.
+5. Phantom scaffolding: `apps/api/src/features/pubmed/` is an empty directory — scaffolded then abandoned.
+
+**What was done:** Read 12 planning documents; cross-referenced against schema, source files, and dependency manifests. Ran TypeScript type-check + Vite build. Checked git for committed credentials. Created TRAIL/ in target project. No code changes.
+
+**Verification:** API tsc --noEmit: ✅ 0 errors. Web tsc --noEmit: ✅ 0 errors. Web vite build: ✅ success. Tests: ❌ no test framework.
+
+**Measurements:** Feature presence 14/18 (78%). Build integrity 3/3 PASS. Test coverage: ZERO. Security flags: 3 open. Document credibility: LOW.
+
+**Assessment:** Core functionality is shipped and type-clean. The plan-vs-shipped gap is narrower than the document volume implies — most Phase 1-3 MVP features are present. Highest-leverage next actions: add test infrastructure, harden the three security configurations, update plan documents to distinguish shipped from planned.
+
+---
 ## Run 75 - 2026-04-21
 
 | Field | Value |
