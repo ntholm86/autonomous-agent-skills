@@ -8,7 +8,7 @@
 | Field | Value |
 |-------|-------|
 | Target | evo (`c:\git\evo`) — not the skills suite |
-| Model | Claude Opus 4.7 |
+| Model | Claude Opus 4.6 |
 | Trigger | User-requested follow-up to Run 66's process-level finding ("evo has shipped 10 versions of apikit adding tests for known bugs without ever generating a source fix") with explicit instruction to "scope it carefully" |
 | Methodology | Kaizen |
 
