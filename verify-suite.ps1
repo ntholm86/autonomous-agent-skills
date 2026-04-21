@@ -10,7 +10,7 @@
     snapshot (diff-based validation inspired by evo's proof ledger), suite skill
     inventory (detects orphan/non-TPS skill directories), periodic-Hansei
     signal detection (warns on sustained plateau: 3+ consecutive zero-delta runs),
-    governing-document integrity (PRINCIPLES.md principle inventory),
+    governing-document integrity (skipped, manifesto extracted),
     CHANGELOG version contiguity (catches silently-reverted release entries),
     SCORECARD<->GENBA per-run coverage (catches silently-reverted history),
     latest-run model identity consistency (catches cross-ledger model drift),
@@ -255,7 +255,7 @@ foreach ($skill in $skills) {
         $current[$rel] = (Get-FileHash $abs -Algorithm SHA256).Hash.Substring(0, 16)
     }
 }
-foreach ($ledger in @('TRAIL/GENBA.md', 'TRAIL/GENBA_ARCHIVE.md', 'SCORECARD.md', 'CHANGELOG.md', 'PRINCIPLES.md', 'PROBLEM.md', 'STANDARDS.md', 'METRICS_HISTORY.md', 'verify-suite.ps1', 'metrics.ps1')) {
+foreach ($ledger in @('TRAIL/GENBA.md', 'TRAIL/GENBA_ARCHIVE.md', 'SCORECARD.md', 'CHANGELOG.md', 'STANDARDS.md', 'METRICS_HISTORY.md', 'verify-suite.ps1', 'metrics.ps1')) {
     $abs = Join-Path $script:suiteRoot $ledger
     if (Test-Path $abs) {
         $current[$ledger] = (Get-FileHash $abs -Algorithm SHA256).Hash.Substring(0, 16)
@@ -410,28 +410,9 @@ if (Test-Path $genbaPath) {
     Warn 'TRAIL/GENBA.md not found — cannot check Hansei signals'
 }
 
-# -- Check 10: PRINCIPLES.md governing-document integrity ----------------------
-Write-Host "[10/14] Governing-document integrity" -ForegroundColor White
-$principlesPath = Join-Path $script:suiteRoot 'PRINCIPLES.md'
-if (Test-Path $principlesPath) {
-    $pContent = Get-Content $principlesPath -Raw
-    $expectedPrinciples = @(
-        @{ Number = 1; Name = "Commander's Intent" },
-        @{ Number = 2; Name = "Observable Autonomy" },
-        @{ Number = 3; Name = "Convergence Is Silence" }
-    )
-    foreach ($p in $expectedPrinciples) {
-        $pattern = "## Principle $($p.Number):\s*$([regex]::Escape($p.Name))"
-        if ($pContent -notmatch $pattern) {
-            Fail "PRINCIPLES.md missing Principle $($p.Number): $($p.Name)"
-        }
-    }
-    if ($script:failures.Count -eq 0) {
-        Pass "PRINCIPLES.md contains all $($expectedPrinciples.Count) expected principles"
-    }
-} else {
-    Fail 'PRINCIPLES.md not found — governing document missing'
-}
+# -- Check 10: PRINCIPLES.md governing-document integrity (Skipped) --------
+Write-Host "[10/14] Governing-document integrity (Skipped - Manifesto Extracted)" -ForegroundColor DarkGray
+Pass "Governing-document extracted to independent manifesto repository"
 
 # -- Check 11: CHANGELOG version contiguity -----------------------------------
 Write-Host "[11/14] CHANGELOG version contiguity" -ForegroundColor White

@@ -1,5 +1,5 @@
 ﻿{
-    "last_verified":  "2026-04-21T17:54:39.2649560+02:00",
+    "last_verified":  "2026-04-21T19:15:28.4643995+02:00",
     "suite_version":  "2.9.0",
     "latest_scored_run":  86,
     "files":  {
@@ -13,11 +13,9 @@
                   "TRAIL/GENBA_ARCHIVE.md":  "B9080FDE0EDF1577",
                   "SCORECARD.md":  "FDB4EBDDEF6A5ADA",
                   "CHANGELOG.md":  "85B5F262EB293F62",
-                  "PRINCIPLES.md":  "59E1B82154507926",
-                  "PROBLEM.md":  "CFB67C7185D2E066",
                   "STANDARDS.md":  "7A678D46046EC38E",
                   "METRICS_HISTORY.md":  "1ADDAEC389B38F11",
-                  "verify-suite.ps1":  "044FF198EF653235",
+                  "verify-suite.ps1":  "8B122DCB24639C38",
                   "metrics.ps1":  "F4171874CAD6731B"
               }
 }
