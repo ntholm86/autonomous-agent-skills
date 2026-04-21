@@ -9,6 +9,16 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.6.3] - 2026-04-21
+
+### Added
+
+- **`kaizen/SKILL.md`: per-phase output narration requirements.** Three additions make Observable Autonomy explicit at the phase level rather than only at the run level (GENBA):
+  - **Diagnose:** Agent must narrate per-lens before moving on — state each lens name, what was examined under it, and what was found. Additional context-specific lenses beyond the three canonical ones (Unevenness, Overburden, Waste) are explicitly encouraged and must also be named and reported.
+  - **Challenge Blind Spots:** Agent must surface each blind-spot question and answer it explicitly before moving to Prioritize. "I asked X; it revealed nothing" is more trustworthy than silence.
+  - **Prioritize:** Agent must show the ranked findings with a one-sentence rationale for each rank position before implementing.
+  Root cause for the gap: the Evidence section captured what *should be in the session record* but did not require phase-by-phase visible output during execution. A human observing a live run could not see the reasoning at each phase transition.
+
 ## [2.6.2] - 2026-04-21
 
 ### Fixed

@@ -1,6 +1,6 @@
 ﻿---
 name: kaizen
-version: 2.6.2
+version: 2.6.3
 description: 'Incremental improvement - diagnose, challenge blind spots, prioritize by impact, implement, verify. The core improvement cycle. Includes diagnostic vocabulary for unevenness, overburden, and waste. USE WHEN: audit, review, rate, improve, make impressive, quality loop, iterate, kaizen, evolve this, what would make this better, ROI analysis, blind spots, what am I missing.'
 argument-hint: 'Specify the target to improve and optionally a focus area or quality concern'
 ---
@@ -27,7 +27,11 @@ Three diagnostic lenses are available. They are vocabulary for thinking about di
 
 **Waste** - Where does the target carry things that do not earn their existence? Dead code, unused abstractions, validation that can never fire, documentation that restates what the code already says. Waste matters because it creates cognitive load without contributing value. Every unnecessary element is something a future developer must understand before they can change what is around it.
 
-Use these lenses as thinking tools. If the target's problems do not fit any of them, describe what you actually see. The diagnosis must reflect the target, not the categories.
+Use these lenses as thinking tools. If the target's problems do not fit any of them, describe what you actually see. The diagnosis must reflect the target, not the categories. Context often warrants additional lenses beyond the three canonical ones — derive them from what you find (for example: P1 compliance, trail integrity, counter validity for a skill suite; security posture, test coverage for a web app). Whatever lenses you apply, name them.
+
+For each finding: identify the root cause, not just the symptom. "This function is too long" is a symptom. "This function handles three unrelated responsibilities because they were added incrementally without refactoring" is a root cause.
+
+**Show the diagnosis before moving on.** For each lens applied, state: the lens name, what was examined under it, and what was found (or "nothing actionable"). An observer should be able to read this output and know exactly which lenses were active and what each one revealed. Do not defer this to the GENBA entry — narrate it now.
 
 **Silence is a valid outcome.** If genuine examination reveals nothing actionable, report that. "I examined the target with these lenses and found nothing that warrants change" is a legitimate diagnosis — it advances the convergence chain (Principle 3). Do not manufacture findings to justify the run.
 
@@ -42,6 +46,8 @@ After the initial diagnosis, ask: *What am I not seeing?*
 
 This is not performative skepticism. It is a genuine attempt to catch what the first pass missed. If you find nothing, say so. Do not manufacture blind spots to appear thorough.
 
+**Show the blind-spot examination before moving on.** State each question you asked. Answer it — in one sentence if the answer is short, in more if the answer matters. "I asked X; it revealed nothing" is more trustworthy than silence. If a question surfaces a real gap, that gap becomes a finding and enters the prioritization phase.
+
 ### Prioritize
 
 Rank findings by impact. The question is not "how many things can I fix" but "what single change would improve this target the most?"
@@ -53,6 +59,8 @@ For each finding, consider:
 - Does fixing this resolve other findings too?
 
 Start with the highest-leverage change. Not everything needs to be fixed in one pass. Kaizen is incremental.
+
+**Show the ranking before implementing.** List the findings in order with a one-sentence rationale for each rank position. An observer should not need to read the implementation to understand why you acted on what you acted on.
 
 ### Implement
 
