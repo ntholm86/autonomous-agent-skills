@@ -109,6 +109,8 @@ Do nothing now. Revisit when (a) a colleague actually evaluates the suite and th
 
 **Status:** Parked (recorded 2026-04-22). User flagged as "important thoughts — please note these things so we don't forget."
 
+**Note (2026-04-22):** The *sequential* form of this pattern has been promoted to [PATTERNS.md as PT-001](PATTERNS.md#pt-001--sequential-cross-family-convergence-with-handoff) on the strength of validated instances (TPS Runs 96/97, manifesto Runs 4–6). DB-003 remains parked for the *parallel* form — multi-family agents running concurrently on the same phase or different phases of one workflow with a judge consolidation step. Promotion of the parallel form to PT-002 is contingent on a first validated instance, which is currently blocked on orchestration tooling.
+
 **Origin:** Conversation 2026-04-22 after building the kiroku Pending Handoff envelope (kiroku v2.5.0). User observation: *"I am starting to see darkness at the end of the tunnel."*
 
 ### The pattern (user's own framing, captured)
