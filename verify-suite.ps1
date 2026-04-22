@@ -59,7 +59,8 @@ function Get-ScorecardRunRows {
         }
 
         if ($line -match '^##\s+') {
-            break
+            $inRunTable = $false
+            continue
         }
 
         if ($line -match '^\|\s*:?-+:?\s*\|') {
@@ -197,7 +198,12 @@ if ((Test-Path $genbaPath) -and (Test-Path $scorecardPath)) {
     $genbaRunNumbers = @([regex]::Matches($gFullContent, '(?m)^## Run (\d+)') | ForEach-Object { [int]$_.Groups[1].Value })
     $gRuns = $genbaRunNumbers.Count
 
-    $sContent = Get-Content $scorecardPath -Raw
+    $sContent = Get-Content $scorecardPath -Raw -Encoding UTF8
+    $scorecardArchives = Get-ChildItem -Path (Join-Path $script:suiteRoot 'TRAIL') -Filter 'SCORECARD_ARCHIVE*.md'
+    foreach ($archive in $scorecardArchives) {
+        $sContent += "`n" + (Get-Content $archive.FullName -Raw -Encoding UTF8)
+    }
+    
     $scorecardRunRows = @(Get-ScorecardRunRows -Content $sContent)
     $genbaTrackedRows = @()
     $invalidatedRows = 0
