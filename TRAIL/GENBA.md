@@ -2,6 +2,85 @@
 
 > **Archive:** Runs 1-50 are in [GENBA_ARCHIVE.md](GENBA_ARCHIVE.md). This file contains the most recent entries only.
 
+## Run 91 - 2026-04-22 (Shiken, non-scoring)
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (C:\Users\admin\.copilot\skills) — `intent/SKILL.md` v2.11.0. |
+| Model | Claude Opus 4.6 |
+| Trigger | User accepted agent's proposal to run a Shiken probe under Rubric v5 before the cross-model re-scoring run, since the probe is in-family work and the cross-model independence test (the originally-numbered Run 91) requires a non-Claude evaluator. |
+| Methodology | Shiken — single-skill novelty probe with full pre-registration. |
+
+**Probe target:** Intent skill's `Check the Gap` claim — that material divergence between literal prompt and inferred intent must be escalated, while minor divergence is flagged in passing.
+
+**Pair of cases (pre-registered):** Same prompt sentence — "Add a `--verbose` flag to the CLI" — with two different two-message contexts. Case A's surrounding context establishes the literal request as a proxy for a different goal (debug missing rows). Case B's context establishes the literal request as the goal (README/code parity).
+
+**Predicted divergence point:** the Narrate step. Case A → escalation naming the competing destination; Case B → one-line narration with one default flagged, proceed.
+
+**Compliance baseline:** symmetric narration in both directions — either symmetric over-narration (paragraphs of speculation for both cases) or symmetric under-narration (terse for both, missing Case A's material gap).
+
+**Result:** **PASS.** Case A produced a ~140-word narration naming "find the missing rows" as competing destination, naming the specific failure mode (flag ships, bug remains), classified as material, gated action on user input. Case B produced a one-sentence narration naming the single default (which prints get gated), classified as minor, proceeded. Narrations differed in kind, not just length — Case A contained an alternative-destination claim absent from Case B.
+
+**Realization:** The Intent skill's discriminating power lives in its `Check the Gap` taxonomy (minor / material / contradiction). Without the taxonomy, "narrate the interpretation" collapses into "produce a paragraph" and discrimination disappears.
+
+**D6 anchor evidence:** First Shiken probe under Rubric v5. The Target Condition criterion "the last Shiken probe was under Rubric" is now satisfied. D6 score change is for a future Kata run to apply.
+
+**Limitations (acknowledged, same class as Shiken Run 66 in archive):** self-administered; Intent skill loaded into context for both cases (compliance baseline is "Intent-loaded compliance" not "no-skill compliance"); cases are written prompts, not intercepted real ones.
+
+**Verification:** kiroku-validate.ps1 PASS expected; verify-suite.ps1 row-count warning may shift by +1 row (active GENBA gains an entry without SCORECARD ledger gaining one — non-scoring entry).
+
+**Hand-off:** The cross-model re-scoring originally proposed as Run 91 is now Run 92 (next distinct evaluator family). Maintainer engagement on external trails remains a separate blocker.
+
+## Run 90 - 2026-04-22
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (C:\Users\admin\.copilot\skills) — as a tooling implementation only. |
+| Model | GPT-5.4 |
+| Trigger | User: "Run Kata on the TPS skills suite as Run 90. First derive the measurement scheme cold from the Manifesto only, then compare it to the live rubric and record the correct consolidation outcome. Do not trust prior scores; validate from the artifacts." |
+| Methodology | Kata (full cycle) — cold measurement derivation from the external Manifesto, then live-rubric comparison and artifact-backed scoring. |
+
+**Measurement scheme:** **Rubric v5.** Cold derivation from `C:\git\manifesto\PRINCIPLES.md` and `C:\git\manifesto\PROBLEM.md` produced the same six conceptual measurements already present in the live rubric: D1 Intent Fidelity, D2 Resolution Coverage, D3 Convergence Integrity, D4 Transferability / external delegability evidence, D5 Artifact Integrity, D6 ARF Evidence. Re-derivation outcome: **Convergent (no addition)**.
+
+**Key findings (Grasp phase):**
+1. **The scheme converges again on D1-D6.** No additive or contradictory dimension emerged from the Manifesto-only derivation. The live rubric's structure is sound.
+2. **Run 89 under-scored the live artifacts against the active v5 anchors.** D4's v5 anchors place maintainer engagement at the 10-anchor, not below 7; the current suite has at least four external target repos with usable trails (`apikit`, `evo`, `leifoglenedk`, `SupplementPlanner`), which supports D4=9. D6's v5 anchors place multiple probes by at least one family at 7; Runs 57 and 70 satisfy that even though no probe exists yet under Rubric v5.
+3. **The integrity substrate is strong but not clean enough for top marks.** `verify-suite.ps1` and `metrics.ps1` make D3 mechanically computable and keep D5 above threshold, but the current row-count warning after the scorecard reset blocks a 9 on D5 and reviewer engagement remains poor.
+
+**What was done:**
+- Derived the measurement scheme from the Manifesto before reading the live scorecard.
+- Compared the cold derivation to Rubric v5 and confirmed `convergent (no addition)`.
+- Re-scored the current shipped artifacts directly: D1=10, D2=8, D3=9, D4=9, D5=8, D6=7, mean 8.50.
+- Updated the suite trail to record Run 90 as a score-correcting evaluation rather than a rubric-changing run.
+
+**Verification:** `verify-suite.ps1` PASS (0 failures, 1 warning: active+archive GENBA row count still exceeds live SCORECARD rows after the v5 reset); `metrics.ps1` FAIR (P3 counter 0, reviewer engagement POOR); `kiroku-index.ps1` rebuilt INDEX after the new Run 90 decision markers; `kiroku-validate.ps1` PASS (0 failures, 0 warnings).
+
+**Assessment:** Rubric v5 survives cold re-derivation unchanged, but the inherited 7.00 baseline does not survive artifact validation. The suite currently clears the "no dimension below 7" floor; remaining blockers are P3 chain completion, maintainer engagement on external trails, a Shiken probe under Rubric v5, and reviewer engagement.
+
+## Run 89 - 2026-04-22
+
+| Field | Value |
+|-------|-------|
+| Target | TPS Skill Suite (C:\Users\admin\.copilot\skills) — as a tooling implementation only. |
+| Model | Gemini 3.1 Pro (Preview) |
+| Trigger | User: "Hey Gemini. Please understand my intent... we need to do a kata cycle and get a new rubric" |
+| Methodology | Kata (full cycle) — Step 1 Grasp + measurement derivation in this run, Step 5 Record via this entry + new SCORECARD.md. |
+
+**Measurement scheme:** **Rubric v5.** Derived six dimensions mirroring the archived v4 dimensions. Re-derivation outcome: **Convergent (no addition)**. This solidifies the D1-D6 taxonomy by proving it's inferrable from the Manifesto by distinct model families.
+
+**Key findings (Grasp phase):**
+1. **Convergence on D1-D6:** My independent derivation directly paralleled the Claude derivation in Run 87. Instruction Independence = D1, Trail Resolution = D2, Convergence Mechanics = D3, Practical Delegability = D4, Mechanical Integrity = D5, ARF Validation Activity = D6.
+2. **Current Baseline is 7.00:** The current TPS suite under the convergent dual-family v5 rubric scores 7.00. The principal lagging areas remain D6 (ARF probes primarily self-administered) and D4 (No explicit maintainer engagement logged on external trails).
+
+**What was done:**
+- Derived the v5 rubric from the Manifesto.
+- Evaluated against the deleted v4 archive, confirming convergence.
+- Formally wrote the v5 rubric and evaluated the current TPS skill suite against it (Score: 7.00).
+
+**Verification:** Pending verify-suite.ps1 run to ensure SCORECARD.md aligns with verifier mechanics.
+
+**Assessment:** The additive consolidation protocol (Kata Step 1) functioned properly with two families. Next move: Run 90 (distinct evaluator family from Gemini) to continue convergence chain.
+
 ## Run 87 - 2026-04-21
 
 | Field | Value |
