@@ -9,6 +9,17 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.11.0] - 2026-04-22
+
+### Changed
+
+- **Sequential additive rubric consolidation (Kata Step 1).** Replaced the looser "Re-derivation on evaluator-family change" subsection with an additive consolidation protocol. Re-derivation now produces exactly one of four labelled outcomes — `convergent (no addition)`, `convergent with refinement`, `divergent (additive)`, `divergent (contradictory)` — each with a defined marker convention (`[!DECISION]` for refinements and additions, `[!REVERSAL]` for retirements). Divergent-additive findings must be merged into the rubric **this run**, not deferred to "a future run." Family-vs-version is defined: family change requires re-derivation; same-family different-version recommends but does not require it.
+- **Rubric Provenance ledger.** New section in `SCORECARD.md` listing each Rubric v4 dimension with its contributing family-version, originating run, and rationale. Future divergent-additive runs extend the table; divergent-contradictory runs mark rows retired. Makes the rubric's evolution legible to the deployer-class observer who asks *"which families have shaped this rubric?"*
+- **Cold-derivation hygiene.** Documented as recommended protocol: derive your own measurement list before studying the existing rubric, then compare. The engine cannot enforce blindfolding; the protocol is what we can ship.
+- **Background:** This is the chosen mechanism after a feasibility investigation into the parallel cross-model relay (Intent/Grasp/Measurement rotated across three model families). The relay is achievable today only as a manual human-as-courier protocol — not engine-orchestratable. Sequential additive trades the relay's full upstream-blind-spot protection for ~1× cost vs ~9× cost per evaluation, while still ending the prior single-family-derives-and-others-inherit pattern.
+
+All 6 skills bumped 2.10.0 → 2.11.0. No skill behavior changes outside Kata Step 1.
+
 ## [2.10.0] - 2026-04-22
 
 ### Changed

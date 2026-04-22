@@ -1,6 +1,6 @@
 # Trail Summary
 
-*Last updated: 2026-04-21 - Run 87: Kata self-targeting for rubric re-derivation - Claude Opus 4.7. First run after Manifesto extraction (PROBLEM.md + PRINCIPLES.md → C:\git\manifesto\) and SCORECARD/METRICS_HISTORY reset. Derived Rubric v4 (6 dimensions) anchored to the external Manifesto's deployer-delegability test. v4 baseline mean: 6.67 (D1=8, D2=6, D3=7, D4=6, D5=8, D6=5). Previous v3 scores (~9.1 mean across Runs 43-86) archived at TRAIL/SCORECARD_ARCHIVE_v3.md and do not transfer. P3 counter: 0/3 (first v4 run; next run must be distinct evaluator family with re-derivation). verify-suite 0 failures, 1 expected reset warning.*
+*Last updated: 2026-04-22T06:34:35+02:00 - Kata cycle by Claude Sonnet 4.6 — sequential additive rubric consolidation shipped (v2.11.0). Replaced Kata Step 1's looser "Re-derivation on evaluator-family change" with a four-outcome additive consolidation protocol (`convergent (no addition)` / `convergent with refinement` / `divergent (additive)` / `divergent (contradictory)`), defined family-vs-version, added cold-derivation-before-comparison hygiene, and added a Rubric Provenance ledger to SCORECARD.md. Background: parallel cross-model relay was investigated this same day and found feasible only as a manual human-as-courier protocol — not engine-orchestratable — so sequential additive is the chosen mechanism until the engine catches up. verify-suite: 0 failures, 1 expected pre-existing warning.*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---

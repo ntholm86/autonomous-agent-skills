@@ -12,6 +12,21 @@ The v3 rubric governed Runs 1–86 over a conflated artifact (theory + implement
 
 The v1–v3 history — 86 runs — is preserved at [TRAIL/SCORECARD_ARCHIVE_v3.md](TRAIL/SCORECARD_ARCHIVE_v3.md). Evidence, not inheritance.
 
+## Rubric Provenance
+
+The rubric evolves additively across evaluator families per the Kata Step 1 consolidation protocol. Each row records which family-version contributed each dimension and in which run. New runs that surface novel dimensions (Re-derivation: divergent additive) extend this table; runs that retire dimensions (Re-derivation: divergent contradictory) mark the row retired and reference the retiring run.
+
+| Dimension | Contributed by | Run | Status | Rationale |
+|---|---|---|---|---|
+| D1 Intent Fidelity | Claude (TPS suite, Run 87 derivation) | 87 | active | Direct expression of Manifesto P1; tests whether skills force interpretation. |
+| D2 Resolution Coverage | Claude (TPS suite, Run 87 derivation) | 87 | active | Direct expression of Manifesto P2 resolution requirement. |
+| D3 Convergence Integrity | Claude (TPS suite, Run 87 derivation) | 87 | active | Direct expression of Manifesto P3; checks the stopping condition is computable. |
+| D4 Transferability | Claude (TPS suite, Run 87 derivation) | 87 | active | Tests the framework's "implementation-agnostic" claim against external targets. |
+| D5 Artifact Integrity | Claude (TPS suite, Run 87 derivation) | 87 | active | Trail trustworthiness; defect classes caught by mechanical check, not next-model inspection. |
+| D6 ARF Evidence | Claude (TPS suite, Run 87 derivation) | 87 | active | The framework's emergent property must be probe-evidenced, not asserted. |
+
+*Future runs by other families (GPT, Gemini, etc.) extend this table when their independent re-derivation surfaces additional dimensions. See [kata/SKILL.md § Step 1](kata/SKILL.md) for the protocol.*
+
 ## Rubric v4 — Six Dimensions
 
 Each dimension is scored 1–10 against the anchors below. Score the anchor that most closely matches observed evidence; halves (e.g., 7.5) are allowed when evidence sits cleanly between two anchors. If no anchor fits, the evidence is ambiguous — record a finding, not a guess.

@@ -1,6 +1,6 @@
 ---
 name: kata
-version: 2.10.0
+version: 2.11.0
 description: 'Orchestrate an improvement cycle: diagnose, select methodology, execute, record, persist. The meta-pattern that connects all skills into a coherent workflow. USE WHEN: improve, audit, review, full treatment, kata, run the loop, comprehensive improvement, what does this project need.'
 argument-hint: 'Specify the target (project, file, system) and optionally a focus area or concern'
 ---
@@ -45,14 +45,27 @@ If this target has a `TRAIL/` directory, read `TRAIL/GENBA.md` for the most rece
 
 Do not prescribe the measurements in advance. Derive them from what you find. State each measurement and why it matters for this target.
 
-**Re-derivation on evaluator-family change.** If a prior run on this target established a measurement scheme (recorded in GENBA), do not silently inherit it if your evaluator family differs from the family that derived it. Re-derive independently from the target, then compare against the inherited scheme:
+**Re-derivation and additive consolidation on evaluator change.** If a prior run on this target established a measurement scheme (recorded in GENBA or SCORECARD), do not silently inherit it when your evaluator differs from the family-version that derived it. Re-derive independently, then consolidate.
 
-- If your derivation converges with the inherited scheme (substantively the same measurements, same rationale), record `Re-derivation: convergent` in the GENBA entry and proceed. This is genuine validation of the scheme — one more family independently arrived at the same framing.
-- If your derivation diverges (different measurements surface, or the rationale for existing ones no longer holds), record `Re-derivation: divergent` as a `[!REALIZATION]` with specifics. Divergence is a finding: the inherited scheme had a blind spot one family could not see. Decide whether to extend the scheme, replace it, or record the divergence for a future run to reconcile. Treat revisions as `[!DECISION]` entries with rationale.
+**Recommended hygiene — cold derivation before comparison.** The engine cannot blindfold an evaluator from prior context, but the protocol can be stated: derive your own list of measurements *before* studying the existing rubric in detail, then compare. An evaluator that reads the existing rubric first will mostly reproduce it, and the consolidation step becomes hollow.
 
-If your evaluator family matches the family that derived the scheme, inherit it — cross-family re-derivation is the mechanism that earns inheritance rights for subsequent same-family runs. Record `Re-derivation: inherited (same family)` in the GENBA entry.
+**Family vs. version.** "Family" is the model lineage (e.g., Claude, GPT, Gemini). "Version" is a release within a family (e.g., Sonnet 4.6 vs Sonnet 4.7). Re-derivation is *required* on family change; on same-family different-version it is *recommended* but not required. Provenance records the full family-version regardless.
 
-If a formal scoring rubric exists for this target (e.g., Rubric v3 in SCORECARD.md for the skill suite), it is externally anchored and exempt from re-derivation. But it is not exempt from the divergence-as-finding rule: if your independent examination suggests the rubric is insufficient for this artifact, record that as a finding, not a silent deviation.
+**Four outcomes** — every re-derivation produces exactly one. Record the outcome label in the GENBA entry.
+
+- **Convergent (no addition).** Your independent derivation produced the same measurements with the same rationale; no new dimensions, no refinements. Record `Re-derivation: convergent (no addition)`. This is the strongest validation of the rubric and counts toward P3 silence (provided the run also produces zero artifact changes).
+
+- **Convergent with refinement.** Same dimensions, but you would phrase or anchor one differently. Record `Re-derivation: convergent with refinement` and apply the refinement as a `[!DECISION]` with rationale. Refinements must not change what is being measured — only how it is described, anchored, or scored. If the change alters what is measured, it is one of the next two outcomes, not this one.
+
+- **Divergent (additive).** Your derivation surfaced a measurement the existing rubric does not capture. Record `Re-derivation: divergent (additive)` and merge the new dimension into the rubric **this run** as a `[!DECISION]` (do not defer to "a future run"). Add a row to the SCORECARD Rubric Provenance table attributing the dimension to your family-version. Bump the rubric version (e.g., v4 → v4.1).
+
+- **Divergent (contradictory).** Your derivation argues an existing dimension should not be there — measures the wrong thing, double-counts, or rests on a rationale that does not survive scrutiny. Record `Re-derivation: divergent (contradictory)` and retire the dimension as a `[!REVERSAL]` with rationale and Provenance update. Bump the rubric version.
+
+**Same-family runs** still compare against the inherited scheme but are exempt from the consolidation requirement. Record `Re-derivation: inherited (same family, version <X.Y>)`.
+
+**Externally anchored rubrics** (published standards: PDCA, DMAIC, NIST AI RMF, etc.) are exempt from re-derivation and consolidation. They are not exempt from the divergence-as-finding rule: if your independent examination suggests the standard is insufficient for this artifact, record that as a finding for the standard's owners, not a silent deviation.
+
+**Rubric Provenance ledger.** Every target with a non-trivial measurement scheme maintains a Rubric Provenance table in its SCORECARD (or equivalent). Each row: dimension name, contributing family-version, run number, one-line rationale. The table makes the rubric's evolution legible to a deployer who asks *"which families have shaped this rubric, and what did each one add?"* Without it, "consolidated rubric" collapses into "whatever the latest model thought was worth keeping."
 
 The loop's own operational metrics (elapsed time, transcript size, artifact growth) are measurements too. If they trend poorly, that is a finding — the loop should diagnose and address its own resource consumption the same way it addresses any other deficiency.
 
