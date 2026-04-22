@@ -1,6 +1,6 @@
 ﻿# Trail Summary
 
-*Last updated: 2026-04-22 - Per-skill convergence chain initiated for Intent skill: peg 1/3 (Claude Opus 4.6, contaminated) scored 37.0/40.0 against cold-derived single-principle (P1) rubric. Per-skill scorecard `intent/SCORECARD.md` created. Pegs 2 and 3 require fresh sessions in different model families.*
+*Last updated: 2026-04-22 - Recorded shared-family-pool realization (DEC-123): the model-family pool is a shared substrate for evaluator independence across intent interpretation, grasp, measurement derivation, judge panels per phase, and hansei — not just P3 score-replication. Parked as forward-looking note; no artifact changes; tooling blocker (parallel multi-family orchestration) remains.*
 *This summary is self-authored. Cross-verify with the session transcripts for independent confirmation.*
 
 ---
@@ -35,6 +35,7 @@ With the 2nd peg established in the P3 chain at 8.83, the primary remaining bloc
 
 ## Key Decisions
 
+- [!REALIZATION] DEC-123: Model-family pool is the framework's evaluator-independence substrate. P3 score-replication is one consumer; intent interpretation, grasp, measurement derivation, judge panels per phase, and hansei are others. Currently blocked on parallel multi-family orchestration tooling. Parked, not promoted.
 - [!DECISION] Run 97 executed a cold derivation of measurements from `PRINCIPLES.md` and `PROBLEM.md` to ensure Grok's evaluation was independent of prior families' anchors, resulting in Convergent (no addition).
 - [!DECISION] Validated the 8.83 score through artifact inspection, establishing the 2nd peg in the P3 convergence chain.
 
