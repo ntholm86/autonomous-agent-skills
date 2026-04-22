@@ -55,14 +55,15 @@ See [INDEX.md](INDEX.md) for the full decision index.
 *Filled by the closing agent if a successor session is expected. Sentinel `None — work complete.` if not.*
 
 - **Target model family:** GPT (the remaining unused family in the P3 chain — pool is Claude/Gemini/Grok/GPT; pegs 1–2 used Claude/Gemini and Grok).
+- **Important context:** the Manifesto has been updated since Runs 96/97 (notably PROOF.md additions for empirical P3 evidence, plus manifesto Runs 3 and 5 and Kaizen clarifications). The peg 3 derivation must be against *current* manifesto state, and divergence from the 8.83 baseline is informative, not a failure.
 - **Reading order (start fresh, no prior context):**
-  1. `PRINCIPLES.md` and `PROBLEM.md` in the manifesto repo (`c:\git\manifesto`) — the source documents the rubric is derived from.
-  2. `SCORECARD.md` (this repo) — current dimensions, scores, and the Rubric v5 anchors.
+  1. `PRINCIPLES.md`, `PROBLEM.md`, and `PROOF.md` in the manifesto repo (`c:\git\manifesto`) — the source documents the rubric is derived from. Read at current HEAD.
+  2. `SCORECARD.md` (this repo) — current dimensions, scores, and the Rubric v5 anchors. Note: this was derived against an earlier manifesto state.
   3. `TRAIL/SUMMARY.md` (this section) and the latest two session logs in `TRAIL/sessions/`.
 - **Do NOT read (contamination risk):**
-  - Run 95–97 session logs *before* attempting an independent cold derivation of the rubric — they will anchor your scoring to the prior families' interpretations. Read them only after recording your own derivation.
+  - Run 95–97 session logs *before* attempting an independent cold derivation of the rubric — they will anchor your scoring to the prior families' interpretations against the prior manifesto state. Read them only after recording your own derivation.
 - **Task statement (paste verbatim into the fresh session):**
 
-  > Run a peg 3/3 evaluation of the TPS skills suite at `C:\Users\admin\.copilot\skills` against the Manifesto at `c:\git\manifesto`. First, cold-derive your own scoring dimensions from PRINCIPLES.md and PROBLEM.md *without* reading prior runs' session logs. Then compare your derivation to the Rubric v5 in SCORECARD.md. Score the suite. The convergence chain advances if your score and dimensions match the existing 8.83/Rubric v5 baseline (silence). Disclose any contamination — including any prior conversation context with the user about this work — in the session log, and exclude the run from the chain if found. Use the Kiroku scripts in `kiroku/` to start, close, and validate the session.
+  > Run a fresh peg-3 evaluation of the TPS skills suite at `C:\Users\admin\.copilot\skills` against the **current** Manifesto at `c:\git\manifesto`. Important: the Manifesto has been updated since the prior pegs (Runs 96/97) — notably PROOF.md (empirical P3 evidence), the manifesto's own SCORECARD/Runs 3 and 5, and Kaizen clarifications. Therefore: **do not anchor to the 8.83/Rubric v5 baseline as ground truth.** Cold-derive your scoring dimensions from the *current* PRINCIPLES.md, PROBLEM.md, and PROOF.md without reading prior runs' session logs. Then compare your derivation to Rubric v5 in SCORECARD.md. Score the suite against your own derivation. Silence (chain advances) requires that your derived dimensions and score reproduce Rubric v5 and 8.83. Divergence — additive dimension, refined dimension, contradictory finding, or score change — is a legitimate signal that the Manifesto update meaningfully changed the measurement, and must be recorded honestly rather than reconciled away. Disclose any contamination (including any prior conversation context with the user about this work) in the session log and exclude the run from the chain if found. Use the Kiroku scripts in `kiroku/` to start, close, and validate the session.
 
 - **Closed by:** `TRAIL/sessions/` latest closed session (whichever Run 97 artifact is most recent).
