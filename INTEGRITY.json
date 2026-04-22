@@ -1,7 +1,7 @@
 ﻿{
-    "last_verified":  "2026-04-22T06:34:16.3416352+02:00",
+    "last_verified":  "2026-04-22T06:55:06.7374161+02:00",
     "suite_version":  "2.11.0",
-    "latest_scored_run":  null,
+    "latest_scored_run":  88,
     "files":  {
                   "kata/SKILL.md":  "93C4C73AF52A2E60",
                   "kaizen/SKILL.md":  "57CE496566D2A5D9",
@@ -11,8 +11,8 @@
                   "intent/SKILL.md":  "563776EB54491D5C",
                   "TRAIL/GENBA.md":  "B616D3C2D6C8CC6F",
                   "TRAIL/GENBA_ARCHIVE.md":  "B9080FDE0EDF1577",
-                  "SCORECARD.md":  "09178B3113626887",
-                  "CHANGELOG.md":  "A9B617E43D2DA5CA",
+                  "SCORECARD.md":  "CAA9578771B9C43C",
+                  "CHANGELOG.md":  "E84B8E22B99EBF66",
                   "STANDARDS.md":  "7A678D46046EC38E",
                   "METRICS_HISTORY.md":  "0F6C25BAFC27D4F0",
                   "verify-suite.ps1":  "8B122DCB24639C38",

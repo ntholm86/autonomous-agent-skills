@@ -9,6 +9,18 @@ and this project adheres to a custom versioning scheme.
 
 ## [Unreleased]
 
+## [2.11.1] - 2026-04-22
+
+### Changed
+
+- **SCORECARD reset to allow the v2.11.0 protocol to be exercised on a clean slate.** The previous Rubric v4 (six dimensions D1–D6, derived in Run 87) was laid by a single evaluator family (Claude) before v2.11.0 existed. With v2.11.0 in place, the immediate next Kata cycle on this target should be by a distinct evaluator family — but if that family reads a fully-populated SCORECARD during Grasp, the cold-derivation hygiene cannot bite and the consolidation outcome is structurally biased toward `convergent (no addition)`. The reset removes the single-family anchor so the next evaluator can derive cold; the run after that is then the first genuine test of additive consolidation against a rubric that itself was laid under the protocol.
+- **Pre-reset state preserved.** Rubric v4 dimensions, scoring rationales, Runs 87–88 ledger, and Dimension Trajectory moved verbatim to `TRAIL/SCORECARD_ARCHIVE_v4_pre-protocol.md`. Earlier v3 history (Runs 1–86) remains at `TRAIL/SCORECARD_ARCHIVE_v3.md`. Runs 87–88 marked `**Invalidated**` in the live ledger so verify-suite Check 5 / Check 12 handle them via the existing invalidation path — no script changes needed.
+- **No skill behavior changes.** This is a state-of-the-suite change, not a skill-content change. Skill files remain at v2.11.0.
+
+### Why this is a patch and not a major
+
+The reset does not retract or contradict v4's measurement work — it stages the rubric so that the v2.11.0 mechanism (which itself is unchanged) can produce evidence it has never produced. v4 is preserved as a candidate input that the next post-reset run will compare against.
+
 ## [2.11.0] - 2026-04-22
 
 ### Changed

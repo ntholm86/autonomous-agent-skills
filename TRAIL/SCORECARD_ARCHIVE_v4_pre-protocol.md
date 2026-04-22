@@ -1,62 +1,16 @@
-﻿# TPS Skill Suite Scorecard
+﻿# TPS Skill Suite Scorecard — v4 Pre-Protocol Archive
 
-<!-- markdownlint-disable MD012 -->
+> **Archived 2026-04-22.** This file preserves the Rubric v4 dimensions, scoring rationales, Run Ledger, and Dimension Trajectory as they stood at the end of Run 88, before the v2.11.0 sequential additive consolidation protocol was exercised.
+>
+> **Reason for archive:** Rubric v4 (Runs 87–88) was derived by a single evaluator family (Claude) before the v2.11.0 additive consolidation protocol existed. To exercise the protocol cleanly — without the next evaluator family anchoring on dimensions a prior single family declared — the live `SCORECARD.md` was reset to a stub. The next Kata cycle by a distinct evaluator family will derive the rubric cold under the v2.11.0 protocol; subsequent runs will then perform genuine additive consolidation against that derivation.
+>
+> **What this archive is for:** post-hoc comparison only. Scores in this file are NOT directly comparable to scores produced under any post-reset rubric.
+>
+> See live [SCORECARD.md](../SCORECARD.md) for current state and [CHANGELOG.md](../CHANGELOG.md) v2.11.1 for the reset rationale.
 
-**Target:** `C:\Users\admin\.copilot\skills\` — TPS skill suite as a tooling implementation.
-**Commander's Intent:** `C:\git\manifesto\PROBLEM.md` and `C:\git\manifesto\PRINCIPLES.md` (external, versioned separately).
-**Measurement scheme:** *Pending derivation under v2.11.0 additive consolidation protocol — see [kata/SKILL.md § Step 1](kata/SKILL.md).*
+---
 
-## State: post-reset, awaiting first protocol derivation
-
-The previous Rubric v4 (Runs 87–88) was derived by a single evaluator family (Claude) before the v2.11.0 sequential additive consolidation protocol existed. On 2026-04-22 the live rubric was reset to remove the single-family anchor, so the next evaluator can derive cold under the protocol.
-
-- **Pre-protocol v4 archive:** [TRAIL/SCORECARD_ARCHIVE_v4_pre-protocol.md](TRAIL/SCORECARD_ARCHIVE_v4_pre-protocol.md) — preserves Rubric v4 dimensions, Runs 87–88 scores, and the v3 archive pointer it itself referenced.
-- **Earlier v3 history (Runs 1–86):** preserved at [TRAIL/SCORECARD_ARCHIVE_v3.md](TRAIL/SCORECARD_ARCHIVE_v3.md) via the v4 archive.
-
-Scores under archived rubrics are not directly comparable to scores produced under any post-reset rubric. Evidence, not inheritance.
-
-## Protocol for the next run
-
-The next Kata cycle on this target (Run 89) MUST be performed by a distinct evaluator family from Claude (per Manifesto P3 + the v2.11.0 cold-derivation hygiene). That run will:
-
-1. Derive its own measurement scheme cold from `PROBLEM.md` + `PRINCIPLES.md`, **before** consulting the archive.
-2. After deriving, compare its derivation against the archived v4 dimensions and label the consolidation outcome (`convergent (no addition)` / `convergent with refinement` / `divergent (additive)` / `divergent (contradictory)`).
-3. Populate the Rubric Provenance table below with each dimension it lays in.
-4. Score the suite against its own rubric and record the run.
-
-Subsequent runs (Run 90+) by additional families perform genuine additive consolidation against whatever the first post-reset rubric is.
-
-## Rubric Provenance
-
-The rubric evolves additively across evaluator families per the Kata Step 1 consolidation protocol. Each row records which family-version contributed each dimension and in which run.
-
-| Dimension | Contributed by | Run | Status | Rationale |
-|---|---|---|---|---|
-| *(empty — first post-reset derivation pending)* | | | | |
-
-## Rubric (active)
-
-*Empty — pending first post-reset derivation.* The next evaluator family will lay dimensions here as part of Run 89.
-
-## Target Condition
-
-The TPS suite is a delegable Manifesto implementation — validated by a P3 convergence chain of three distinct evaluator families on the suite itself AND sustained by demonstrated efficacy on ≥2 distinct external targets with trails legible to those targets' stakeholders. The formal numeric decomposition is deferred until the rubric is laid; the convergence-chain and external-target requirements are framework-level and survive the reset.
-
-## Run Ledger
-
-| Run | Date | Model | Start Score | End Score | Delta | Target | Result |
-| --- | ---- | ----- | :---------: | :-------: | :---: | :----: | ------ |
-| 87  | 2026-04-21 | Claude Opus 4.7 | N/A | 6.67 | N/A | TPS Skill Suite | **Invalidated** — derived Rubric v4 before v2.11.0 protocol existed; archived to [SCORECARD_ARCHIVE_v4_pre-protocol.md](TRAIL/SCORECARD_ARCHIVE_v4_pre-protocol.md). |
-| 88  | 2026-04-22 | Claude Opus 4.7 | 6.67 | 7.83 | +1.16 | TPS Skill Suite | **Invalidated** — second run under pre-protocol v4 rubric; archived. |
-
-## Dimension Trajectory
-
-*Empty — resets when first post-reset derivation lands. Pre-reset trajectory preserved in [v4 pre-protocol archive](TRAIL/SCORECARD_ARCHIVE_v4_pre-protocol.md).*
-
-## Hand-off to Run 89
-
-Run 89 must be a Kata cycle by a distinct evaluator family (GPT, Gemini, or other non-Claude family). The first action is cold derivation per the protocol above. If Run 89 is also Claude, it does not progress the convergence chain and the rubric anchor problem is not solved.
-# TPS Skill Suite Scorecard
+## TPS Skill Suite Scorecard
 
 <!-- markdownlint-disable MD012 -->
 
