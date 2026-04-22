@@ -170,3 +170,38 @@ Until then, the pattern is approximated **sequentially** (different families acr
 The user proposed (2026-04-22) elevating this to a 4th principle: *"Cross-Phase Multi-Model Consolidation."* Declined for now on three grounds: (a) P3 (Convergence Is Silence) already states the abstract claim â€” this pattern is one *operationalization* of P3, not a separate principle; (b) the empirical assertion (higher robustness, lower bias, greater trustworthiness than single-model or single-phase ensembles) is unproven and PROOF.md's discipline requires evidence before principle-level claims; (c) PROBLEM.md `What Must Be Built on Top` already accommodates it correctly as an implementation problem.
 
 If empirical evidence eventually demonstrates that **parallel** cross-phase multi-family consolidation produces strictly stronger signal than the **sequential** P3 silence chains we use today, the natural promotion path is a **P3 refinement** (analogous to how P2 gained the "resolution requirement" refinement), not a 4th principle. A standalone 4th principle would only be justified if the pattern addresses a failure mode that P3 cannot detect â€” currently no such failure mode is named.
+
+---
+
+## DB-004 — Rename Intent skill to Ito (naming consistency pass)
+
+**Status:** Parked (recorded 2026-04-22). User-raised consideration.
+
+### The idea
+
+Rename the `intent` skill to `ito` (??, Japanese for `intent`) to match the naming convention of the other six skills: `kata`, `kaizen`, `kaikaku`, `hansei`, `shiken`, `kiroku`. `intent` is currently the only English-named skill.
+
+### Arguments for
+
+- **Aesthetic / convention consistency.** All other skills are Japanese. `intent` is the lone outlier.
+- **Skill folder, file paths, and CLI feel more uniform** under a single naming scheme.
+
+### Arguments against (why parked, not adopted)
+
+1. **The other Japanese names earn their semantic weight; `ito` does not.** `Kata` carries `practiced form`, `Kaizen` carries `continuous small improvement`, `Hansei` carries `honest self-reflection on failure`, etc. Each Japanese term encodes a meaning that English would need a phrase to capture. `Ito` essentially translates 1:1 to `intent` with no semantic gain. The other names are not Japanese for the sake of being Japanese — they are Japanese because the concepts originated in that vocabulary.
+
+2. **Direct lexical link to PRINCIPLES.md is lost.** Manifesto Principle 1 is *Commander's Intent*. The skill is currently named to mirror the principle directly. Renaming inserts a translation step (`Ito = Intent = Commander's Intent`) that English-reading observers — the manifesto's primary audience — would have to perform.
+
+3. **Skill-artifact change with active convergence chain.** The Intent skill's per-skill convergence chain is in flight (peg 1/3 done, pegs 2/3 pending). Renaming is exactly the kind of skill-artifact change that disturbs in-flight chains (see commit 27291c8 for the kiroku v2.5.0 lesson).
+
+4. **Cost of rename is non-trivial.** Folder rename, all cross-references in PRINCIPLES, PATTERNS, SCORECARD, GENBA, every session log, the per-skill scorecard, the verifier's skill inventory check (verify-suite Check 8). The rename touches the entire trail history retroactively if done literally, or creates a versioning fork if done from-now-on.
+
+### Promotion path (if accepted later)
+
+Defer to a deliberate **v3.0.0 rename pass** with all in-flight skill chains explicitly paused or reset. Not a cosmetic mid-cycle change. Trail history would be left at `intent` as historical truth; only the live skill folder and cross-references would move.
+
+### What this entry is NOT
+
+- Not a current commitment.
+- Not blocked on tooling — blocked on the question of whether semantic gain justifies the disturbance cost.
+- Not a manifesto-level concern. Pure naming.
