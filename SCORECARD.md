@@ -117,8 +117,8 @@ The TPS suite is a delegable Manifesto implementation - validated by a P3 conver
 | 93 | Claude Opus 4.7 | TPS suite | 10->10 | 8->8 | 9->9 | 9->9 | 8->8 | 7->7 | 8.50->8.50 | |
 | 94 | Gemini 3.1 | TPS suite | 10->10 | 8->8 | 9->9 | 9->9 | 8->8 | 7->7 | 8.50->8.50 | |
 | 95 | GPT-5.4 | Kaizen skill probe | 10->10 | 8->8 | 9->9 | 9->9 | 8->8 | 7->9 | 8.50->8.83 | second-family current-rubric ARF evidence |
-| 96 | Gemini 3.1 | TPS suite | 10->10 | 8->8 | 9->9 | 9->9 | 8->8 | 9->9 | 8.83->8.83 | cross-model baseline validation |
-| 97 | Grok Code Fast 1 | TPS suite | 10->10 | 8->8 | 9->9 | 9->9 | 8->8 | 9->9 | 8.83->8.83 | establishes 2nd peg in P3 chain |
+| 96 | Gemini 3.1 | TPS suite | 10->10 | 8->8 | 9->9 | 9->9 | 8->8 | 9->9 | 8.83->8.83 | **Convergent (silence)** - cross-model baseline validation |
+| 97 | Grok Code Fast 1 | TPS suite | 10->10 | 8->8 | 9->9 | 9->9 | 8->8 | 9->9 | 8.83->8.83 | **Convergent (silence)** - establishes 2nd peg in P3 chain |
 
 ## Hand-off from Run 96
 

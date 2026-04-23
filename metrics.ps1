@@ -329,7 +329,7 @@ Write-Host "    Durability           : $durability% of runs produced lasting imp
 Write-Host ""
 Write-Host "[7] P3 Convergence Silence Counter" -ForegroundColor White
 $silentChain = @()
-$zeroDeltaPattern = '^\+?-?0\.0+$'
+$zeroDeltaPattern = '^\+?-?0(\.0+)?$'
 # Walk backward through ALL rows (valid + invalidated). Skip non-scoring rows,
 # but break on invalidation, non-zero scored delta, or zero-delta non-silence.
 for ($i = $rows.Count - 1; $i -ge 0; $i--) {
