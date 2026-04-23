@@ -1,0 +1,47 @@
+name: Create Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version tag (e.g. v2.5.0)'
+        required: true
+      notes:
+        description: 'Release notes (one line summary)'
+        required: false
+        default: ''
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate version format
+        run: |
+          if [[ ! "${{ github.event.inputs.version }}" =~ ^v[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Version must be in format vX.Y.Z"
+            exit 1
+          fi
+
+      - name: Create tag
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Actions"
+          git tag ${{ github.event.inputs.version }}
+          git push origin ${{ github.event.inputs.version }}
+
+      - name: Create GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create ${{ github.event.inputs.version }} \
+            --title "TPS Skill Suite ${{ github.event.inputs.version }}" \
+            --notes "${{ github.event.inputs.notes }}" \
+            --latest
