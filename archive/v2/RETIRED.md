@@ -4,7 +4,9 @@ The contents of `archive/v2/` are **retired**. They are kept as historical evide
 
 ## What is retired
 
-- **`SCORECARD.md`** (this directory). The v2.4.1 score of **8.83** at chain position **2/3** does not transfer to v3. v3 is a different artifact; Principle 3 (condition 2) requires the convergence counter to reset on material change.
+- **`SCORECARD.md`** (this directory). v2's target was always **10/10**; the last score of **8.83** at chain position **2/3** was a waypoint on the way there, not a destination. v2 was not retired because 8.83 was good enough. It was retired because the *substrate* the rubric measured (six skills, three trail files, prescriptive checklists, Tier 1 self-scoring) was the wrong substrate. The score does not transfer to v3 \u2014 not because the number was low, but because v3 deliberately deleted the rubric it was scored against.
+
+  v3's equivalent of "10/10" is **3/3 convergence by three distinct fresh-session evaluator families, each finding nothing material to change**. This is a stricter bar than the v2 rubric ever set: a self-scored 10 from one author is cheap; agreement from three independent strangers is not. The goal is still 10. The author no longer awards it.
 - **`METRICS_HISTORY.md`** (this directory). The 11 metrics tracked across runs 1\u201397 measured the v2 substrate; most do not exist in v3 (no SCORECARD parser, no GENBA file, no run numbers, no Tier 1 dimensions).
 - **`INTEGRITY.json`** (this directory). v2 integrity snapshots refer to file paths that no longer exist in the live tree.
 - **`STANDARDS.md`** and **`PATTERNS.md`** (this directory). v2-specific operational standards, superseded by the v3 layout.
