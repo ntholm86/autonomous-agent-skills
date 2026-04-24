@@ -98,7 +98,7 @@ def check_log_format() -> list[str]:
 
 def check_no_mojibake() -> list[str]:
     failures: list[str] = []
-    skip_dirs = {"archive", ".git", ".github", "tools"}
+    skip_dirs = {"archive", ".git"}
     for path in ROOT.rglob("*"):
         if not path.is_file():
             continue

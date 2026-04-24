@@ -420,3 +420,47 @@ None. Trail entry appended only.
 ### Reflection
 
 [!REALIZATION] Reaching peg 2/3 with a distinct model family validates the underlying cleanliness of the v3 architectural pivot. As the evaluator changes from Anthropic to Gemini, the core logic established by the existing artifacts successfully prevents fabricated work or hallucinations. Reaching peg 3/3 with a third unique model family will solidify the release.
+
+## 2026-04-24 — v3-verifier-scope-repair
+
+- target: skills repo (v3 live tree)
+- operator: user
+- agent: GitHub Copilot (GPT-5.3-Codex; provider-family: openai/gpt-5.x; tool-call ID prefix not exposed in this runtime)
+- skill: improve
+- outcome: actionable finding fixed — verifier mojibake scan scope aligned with stated live-tree contract; convergence chain reset
+- delta: tools/verify.py (`skip_dirs` changed from `{archive,.git,.github,tools}` to `{archive,.git}`)
+
+### Interpretation of the ask
+
+The operator asked for an independent peg 3/3 convergence evaluation on branch `v3-redesign`: read the principles, run `improve` against the full live tree, challenge the first read, and either declare silence or make a real fix if something actionable is found.
+
+I interpreted this as a strict honesty test, not a chain-completion ceremony. If a material inconsistency exists in the live artifact, the right action is to fix it and reset the chain.
+
+### Examination
+
+Three lenses applied to all tracked live-tree files (`.github/workflows/release.yml`, `CHANGELOG.md`, `CITATION.cff`, `improve/SKILL.md`, `LICENSE`, `OBSERVABLE-LOOPS.md`, `PRINCIPLES.md`, `probe/SKILL.md`, `README.md`, `REDESIGN.md`, `tools/record.py`, `tools/verify.py`, `trail/log.md`, `trail/README.md`):
+
+- **Inconsistency.** `tools/verify.py` states check 5 as "No U+FFFD replacement characters anywhere in the live tree (excludes archive/)". `README.md` mirrors this expectation. But implementation in `check_no_mojibake` skipped `.github` and `tools` in addition to `archive` and `.git`. That means the verifier's behavior was narrower than the contract it claimed.
+- **Overburden.** None found. Component boundaries remain compact and clear.
+- **Waste.** None found beyond the inconsistency above.
+
+Challenge the first read:
+- Could the `.github` and `tools` exclusions be intentional? I looked for any documented rationale in `README.md`, `trail/README.md`, and `REDESIGN.md`; none exists.
+- Could this be cosmetic only? No. This is a real integrity-gap class: UTF-8 corruption in active tooling/workflow files would be silently missed while the verifier reports full live-tree coverage.
+
+### Decision
+
+[!DECISION] Apply one incremental fix in `tools/verify.py`: remove unintended `.github` and `tools` exclusions from mojibake scanning so implementation and declared contract match.
+
+[!REVERSAL] Initial path considered: silence peg 3/3. Reversed after full-tree read surfaced the verifier scope mismatch as a material, low-risk, high-leverage fix.
+
+### Action
+
+- Edited `tools/verify.py` in `check_no_mojibake`:
+	- from: `skip_dirs = {"archive", ".git", ".github", "tools"}`
+	- to: `skip_dirs = {"archive", ".git"}`
+- Verification run: `python tools/verify.py` -> `OK — trail integrity checks pass` (exit code 0).
+
+### Reflection
+
+[!REALIZATION] The suite was close to convergence, but this run found a mechanical-integrity blind spot in the verifier itself. Per Principle 3, any material artifact change resets the chain. This entry is therefore a legitimate reset, not a failure of the protocol.
