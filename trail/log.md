@@ -548,3 +548,61 @@ Challenge the first read: I considered embedding all scope rules directly into `
 ### Reflection
 
 [!REALIZATION] This is a material governance change to the skills artifact, so skills convergence resets to zero again. The next convergence run should be treated as peg 1/3 under the new protocol.
+
+## 2026-04-24 — v3-baseline-lock
+
+- target: skills repo (v3-redesign)
+- operator: user
+- agent: GitHub Copilot (GPT-5.3-Codex; provider-family: openai/gpt-5.x; tool-call ID prefix not exposed in this runtime)
+- skill: improve
+- outcome: baseline locked
+- delta: trail/log.md appended only
+
+### Interpretation of the ask
+
+This run is Step 1 of the convergence scope protocol: freeze upstream references before any convergence-scoring runs. Scope is baseline locking only, not convergence scoring.
+
+### Examination
+
+Applied protocol checks for baseline freeze inputs in required order (`CONVERGENCE_SCOPE_PROTOCOL.md` -> `README.md` -> `PRINCIPLES.md` -> `improve/SKILL.md` -> `trail/README.md` -> `trail/log.md`).
+
+No artifact defects were evaluated in this run because Step 1 is reference locking, not improvement/scoring.
+
+### Decision
+
+[!DECISION] Freeze references for intent, problem, principles, and skills at explicit repo+ref coordinates so downstream runs can be judged against a fixed target.
+
+### Action
+
+Locked references recorded:
+
+1. Intent claim
+	- repo: `https://github.com/ntholm86/kata`
+	- branch: `v3-redesign`
+	- commit: `466f34f5f43499e3de379e69ea32ecf89d7c3b99`
+	- artifact: `README.md` section "Research intent and done condition"
+
+2. Problem definition (external)
+	- repo: `https://github.com/ntholm86/autonomous-agent-principles`
+	- tag: `v1.0.0`
+	- commit: `a9e1e27`
+	- artifact: `PROBLEM.md`
+
+3. Principles (external canonical + local copy provenance)
+	- canonical repo: `https://github.com/ntholm86/autonomous-agent-principles`
+	- tag: `v1.0.0`
+	- commit: `a9e1e27`
+	- canonical artifact: `PRINCIPLES.md`
+	- local copy artifact: `PRINCIPLES.md` in this repo (declares same source/tag/commit)
+
+4. Skills artifact
+	- repo: `https://github.com/ntholm86/kata`
+	- branch: `v3-redesign`
+	- commit: `466f34f5f43499e3de379e69ea32ecf89d7c3b99`
+	- artifacts: `improve/SKILL.md`, `probe/SKILL.md`, `CONVERGENCE_SCOPE_PROTOCOL.md`, `tools/verify.py`, `trail/README.md`
+
+Verification command required by this run: `python tools/verify.py`.
+
+### Reflection
+
+[!REALIZATION] Baseline locking establishes what downstream convergence runs are allowed to claim. Any material change to the locked upstream references triggers reset scope according to `CONVERGENCE_SCOPE_PROTOCOL.md`.
