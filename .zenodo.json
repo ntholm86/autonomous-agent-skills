@@ -1,0 +1,30 @@
+{
+  "title": "Autonomous Development Skills Suite: Improve and Probe Skills for AI Agents",
+  "description": "A suite of reasoning skills for autonomous AI agents implementing the Autonomous Agent Principles framework. Skills include Improve (examine, decide, change, verify, record) and Probe (construct novelty probes to distinguish situated reasoning from pattern-matching). Accompanied by Python tools for trail management and integrity verification. Evaluated across multiple model families with convergence protocols. Constitutional foundation in the companion Autonomous Agent Principles repository.",
+  "creators": [
+    {
+      "name": "Holmager, Nils Wendelboe",
+      "orcid": "0009-0009-7157-9084"
+    }
+  ],
+  "upload_type": "software",
+  "license": "MIT",
+  "access_right": "open",
+  "keywords": [
+    "autonomous agents",
+    "AI skills",
+    "improvement",
+    "probe",
+    "evidence trail",
+    "agent governance",
+    "large language models"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.19732890",
+      "relation": "isDerivedFrom",
+      "resource_type": "software",
+      "scheme": "doi"
+    }
+  ]
+}
