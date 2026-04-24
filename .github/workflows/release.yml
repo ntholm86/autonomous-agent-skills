@@ -42,6 +42,6 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: |
           gh release create ${{ github.event.inputs.version }} \
-            --title "TPS Skill Suite ${{ github.event.inputs.version }}" \
+            --title "Autonomous Development Skills Suite ${{ github.event.inputs.version }}" \
             --notes "${{ github.event.inputs.notes }}" \
             --latest

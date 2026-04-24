@@ -54,6 +54,7 @@ The probe outcome is one of:
 
 Append an entry to `trail/log.md` containing:
 
+- The mandatory metadata (`target`, `agent`, `skill`, `outcome`). For `outcome`, state the verdict.
 - The claim being tested.
 - Both cases (verbatim) and the pre-registered expectations.
 - Both responses (verbatim or linked).

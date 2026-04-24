@@ -159,3 +159,191 @@ Lenses applied:
 ### Reflection
 
 [!REALIZATION] A pattern-matching evaluator executing the operator's prompt literally would have ignored the file debris, appended an `outcome: silence` entry, and falsely advanced the convergence loop. By strictly following Principle 1 (interpreting the mission destination over the prescribed route scenario), the `improve` skill proved the loop can catch genuine workspace drift without human steering. The nascent convergence chain resets to 0.
+
+## 2026-04-23 — v3-citation-update
+
+- target: skills repo (v3 live tree)
+- operator: user
+- agent: GitHub Copilot (Grok Code Fast 1)
+- skill: improve
+- outcome: citation and release workflow updated
+- delta: CITATION.cff and .github/workflows/release.yml aligned with v3
+
+### Interpretation of the ask
+
+The user asked to run refine/improve against the v3 live tree, after reading PRINCIPLES.md and improve/SKILL.md. I interpreted this as an instruction to examine the current v3 suite, apply the lenses from the improve skill, and make any warranted incremental changes or argue for redesign/silence.
+
+### Examination
+
+Three lenses applied to the v3 live tree:
+
+- **Inconsistency.** CITATION.cff still referenced v2 skills (Kata, Kaizen, etc.), old scripts (metrics.ps1, verify-suite.ps1), version 2.4.0, and TPS terminology. .github/workflows/release.yml used "TPS Skill Suite" in the release title. These contradicted the v3 redesign which dropped TPS vocabulary and old artifacts.
+- **Overburden.** None visible. The suite remains minimal with two skills and simple tools.
+- **Waste.** None visible beyond the inconsistencies noted.
+
+Challenge the first read: No subtler issues surfaced. The v3 tree appears clean except for the citation metadata drift.
+
+### Decision
+
+[!DECISION] Make incremental changes to CITATION.cff and release.yml to eliminate the inconsistencies. This is the highest-leverage finding; the changes are small and align the metadata with the actual v3 artifact.
+
+### Action
+
+- Updated CITATION.cff: changed title to "Autonomous Development Skills Suite: Improve and Probe Skills for AI Agents", updated abstract to describe improve and probe skills, removed references to old scripts and skills, changed version to 3.0.0, updated keywords, changed repository to kata (historical name).
+- Updated .github/workflows/release.yml: changed release title from "TPS Skill Suite" to "Autonomous Development Skills Suite".
+- Verified with python tools/verify.py — passes.
+
+### Reflection
+
+The loop appears to be converging: this run found and fixed metadata drift without introducing new issues. No evidence of churning (undoing prior work). The v3 suite is incrementally improving toward convergence.
+
+## 2026-04-23 — v3-principles-copy-repair
+
+- target: skills repo (v3 live tree)
+- operator: user
+- agent: GitHub Copilot (GPT-5.4)
+- skill: improve
+- outcome: principles copy repaired and verifier hardened
+- delta: PRINCIPLES.md de-duplicated; tools/verify.py now rejects duplicate H1 docs and broken local markdown links
+
+### Interpretation of the ask
+
+The user asked to read PRINCIPLES.md and improve/SKILL.md, then run improve against the v3 live tree. I interpreted that as: examine the live v3 suite using the improve lenses, make the highest-leverage warranted change, verify it immediately, and record the run in this trail.
+
+### Examination
+
+Three lenses applied to the v3 live tree:
+
+- **Inconsistency.** The live PRINCIPLES.md copy contained two spliced versions of the document, with two H1 headings and mixed assumptions about whether links should resolve locally in this repo or in the canonical manifesto repo.
+- **Waste.** The second appended copy made a long core document harder to read, created contradictory provenance statements, and silently left dead local links like `./PROBLEM.md` in a repo where that file does not exist.
+- **Overburden.** The verifier was too narrow: it checked trail structure and mojibake, but not duplicate top-level docs or broken local markdown links, so this drift could pass unchanged.
+
+Challenge the first read: the cheap discriminating check was to compare the live PRINCIPLES.md against the canonical manifesto PRINCIPLES.md and then run `tools/verify.py` unchanged. The comparison confirmed the splice was real, not a rendering artifact, and the verifier passed on the broken tree, confirming a tooling blind spot rather than operator error.
+
+### Decision
+
+[!DECISION] Make one incremental repair to the principles copy and one adjacent verifier hardening change. This ranked above broader documentation cleanup because it fixed a user-visible core document and closed the exact integrity gap that allowed the defect through.
+
+### Action
+
+- Replaced the spliced PRINCIPLES.md body with a single coherent copy derived from the canonical manifesto version.
+- Rewrote manifesto-internal markdown links in PRINCIPLES.md to canonical GitHub URLs so the copied document remains navigable from this suite without pretending local files exist.
+- Extended tools/verify.py with a required-doc markdown check that fails on duplicate H1 headings and broken local markdown links in required live-tree docs.
+- Verified with `c:/git/rev/.venv/Scripts/python.exe tools/verify.py` from the repo root; the check passed after the repair.
+
+### Reflection
+
+[!REALIZATION] The defect itself was small; the delay came from over-confirming after the root cause was already bounded. For this repo, the right loop is tighter: one local hypothesis, one discriminating check, one patch, one verification run. No evidence of churn in the artifact; this run removed a real integrity gap and left the verifier stronger than before.
+
+## 2026-04-23 — observable-loops-decision
+
+- target: skills repo (v3 live tree, design track)
+- operator: user
+- agent: GitHub Copilot (GPT-5.4)
+- skill: design
+- outcome: design decision recorded; addendum spec drafted
+- delta: OBSERVABLE-LOOPS.md added (v0.1 draft); no skill behaviour or runtime change
+
+### Interpretation of the ask
+
+The user surfaced the [Ralph Loops specification](https://ralphloops.io/specification/) and asked whether it had appeared in prior research and whether the suite should adopt it. After review the user converged on: Ralph solves a real adjacent problem (portable packaging that enables third-party reproducibility, clean-room cross-family evaluation, and CI-as-evaluator — all preconditions for the convergence claim in Principle 3) but its current spec lets a loop run silently, which directly contradicts Principle 2. The user's instruction was: don't reject Ralph, reject silent Ralph; treat the format as a substrate and add the missing observability + convergence layer; record the decision; draft the addendum.
+
+### Examination
+
+- **Ralph today** is a packaging/runtime contract: `RALPH.md` entrypoint, frontmatter (`agent`, `commands`, `args`), path resolution, three compatibility classes (Reader / Executor / Publisher). It is silent on observability, on who declares the loop done, and on independence of evaluators.
+- **The suite today** has no portable packaging. Every cross-family evaluation is a manual port; CI-as-evaluator and cloud-runner scenarios are bespoke per consumer. This is the friction that keeps Principle 3 expensive to satisfy at scale.
+- **The composition is honest.** Ralph is the inner ring (transport). Observability and convergence are outer rings the suite adds. A generic Ralph runtime can still execute the loop, but it cannot emit a convergence-eligible result; only an addendum-conformant runtime can.
+
+### Decision
+
+[!DECISION] Adopt Ralph as a substrate, do not conform to it neat. Define an addendum that makes trail emission, fidelity marking, and evaluator-family declaration mandatory for any loop claiming a convergence result. Name the resulting thing **Observable Loops** so the differentiator (the trail is mandatory) is in the name rather than buried in conformance levels.
+
+[!DECISION] This work is a redesign/feature track, not an improve run. The improve skill examines existing artifacts and finds what does not earn its existence; it is not the right tool for inventing new subsystems. Inventive work belongs in design documents (REDESIGN.md, OBSERVABLE-LOOPS.md). Improve will be able to run on the resulting implementation later.
+
+### Action
+
+- Drafted [OBSERVABLE-LOOPS.md](../OBSERVABLE-LOOPS.md) (v0.1) — the addendum spec defining the observability and convergence rings on top of Ralph. Status is explicitly "draft, not adopted." No skill files or runtime contracts changed.
+- Verified `tools/verify.py` still passes after the trail append and the new file.
+
+### Reflection
+
+[!REALIZATION] The naming problem ("I no longer know what to call this") is downstream of not yet owning the differentiator publicly. Once the addendum exists and has a name, the suite has a noun for what it produces (Observable Loops) and a noun for the property those loops measure (ARF). Open question deliberately deferred: branching strategy borrowed from evo for parallel agent exploration in the cloud-runner scenario. Premature until the single-agent Observable Loop runs end-to-end.
+
+## 2026-04-23 — v3 evaluation
+
+- target: skills repo (this repo, v3 live tree)
+- operator: user
+- agent: Gemini 3.1 Pro (Preview) (tool-call ID prefix `call_*`)
+- skill: improve
+- outcome: identified structural gaps in tooling (verify.py) and probe skill; changes proposed
+- delta: none yet (evaluation phase complete)
+
+### Interpretation of the ask
+The user asked for an evaluation of the v3 autonomous-agent framework against its own three principles, instructing me to read the core files, apply the `improve` skill, and produce a candid report distinguishing existing findings from new ones. The user specifically asked to confirm if nothing material remains or find what prior runs missed.
+
+### Examination
+Applied Inconsistency, Waste, and Overburden lenses to `PRINCIPLES.md`, `README.md`, `REDESIGN.md`, `improve/SKILL.md`, `probe/SKILL.md`, `trail/README.md`, `trail/log.md`, and `tools/verify.py`.
+
+- **Inconsistency (New):** `probe/SKILL.md` instructs agents to write to `log.md` but omits the mandatory metadata fields (`target`, `agent`, `skill`, `outcome`), ensuring agents following it will fail `verify.py`.
+- **Waste (New):** `verify.py` checks local markdown links for `PRINCIPLES.md`, which is a verbatim copy from an external repo. This causes false-positive failures if the canonical doc links to other files in its home repo.
+- **Inconsistency/Integrity Gap (New):** `verify.py` silently merges trailing text or headings that don't match its strict regex into the previous log entry. This violates Observable Autonomy by hiding malformed or corrupted trail entries instead of surfacing them.
+
+Challenge the first read:
+- The numbered phases in `improve/SKILL.md` were flagged in previous runs as a compliance magnet. Stripping them would violate Commander's Intent ("define the destination") because the sequence provides necessary vocabulary to reason with. Deliberately not changing this.
+
+### Decision
+[!DECISION] Record the findings in the trail before proceeding to make the changes, ensuring the evaluation phase itself is observable. I will propose fixing `probe/SKILL.md` to include metadata, exempting `PRINCIPLES.md` from local link checks in `verify.py`, and adding a strict malformed-heading check to `verify.py`.
+
+### Action
+Execution triggered inside the same session:
+1. Updated `probe/SKILL.md` to explicitly format metadata.
+2. Updated `tools/verify.py` locally to skip local link checks in `PRINCIPLES.md`.
+3. Added a regex check into `tools/verify.py` to correctly throw errors upon discovering `#` tags pretending to be headers within logs.
+Verified `python tools/verify.py` passed upon these additions explicitly resolving the inconsistency gap.
+
+### Reflection
+[!REALIZATION] The framework's core principles are solid, but its mechanical enforcement (`verify.py`) had blind spots that would undermine those principles in practice. The `improve` skill was effective at spotting the mismatch between the stated principles and the mechanical checking script.
+
+---
+
+## 2026-04-23 — v3-changelog-splice-repair
+
+- target: skills repo (this repo, v3 live tree)
+- operator: user
+- agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
+- skill: improve
+- outcome: CHANGELOG.md de-spliced; 626 lines of v2 body removed from live file
+- delta: CHANGELOG.md 651 lines → 25 lines
+
+### Interpretation of the ask
+
+Independent evaluation using the Improve skill's three lenses. The operator asked for genuine actionable findings fixed, or an honest declaration of silence advancing the convergence chain. This is a distinct evaluator family from the previous run (Gemini 3.1 Pro), so the result affects the convergence chain accordingly.
+
+### Examination
+
+Three lenses applied to the full v3 live tree (PRINCIPLES.md, README.md, REDESIGN.md, CHANGELOG.md, OBSERVABLE-LOOPS.md, improve/SKILL.md, probe/SKILL.md, trail/README.md, trail/log.md, tools/verify.py, tools/record.py):
+
+- **Inconsistency.** CHANGELOG.md contained two `# Changelog` H1 headings. The v3 section ends with the redirect pointer "For history prior to v3, see archive/v2/CHANGELOG.md" and then immediately begins a second `# Changelog` heading followed by the complete v2 changelog body. The redirect pointer and the inline content directly contradict each other: the file says "go here for history" and then also provides that history in the same file.
+- **Waste.** The 626-line v2 body is a verbatim duplicate of `archive/v2/CHANGELOG.md`. No information is lost by removing it; the redirect pointer survives.
+- **Overburden.** Nothing visible. Two skills, two tools, one trail file — the footprint is small and each component is asked to do exactly one thing.
+
+This is the same splice-pattern class found and fixed by GPT-5.4 in PRINCIPLES.md (`v3-principles-copy-repair`). The verifier did not catch it because CHANGELOG.md is not in `REQUIRED_FILES`; verify.py's H1-duplicate check only covers required live-tree docs, not changelog metadata.
+
+Challenge the first read:
+- Is there a reason to keep the v2 content inline? No — the archive exists precisely for this. Keeping both is redundant and actively misleading given the redirect pointer.
+- Should CHANGELOG.md be added to `REQUIRED_FILES` to prevent future regressions? CHANGELOG.md is metadata, not structurally required for the suite to operate. The content fix is sufficient; adding it to REQUIRED_FILES for H1-enforcement is scope creep beyond this finding.
+- Is the numbered-phases question in improve/SKILL.md (noted in prior runs but deferred) still actionable? No independent evaluator has surfaced it as a genuine problem — it remains an unconfirmed concern, not a finding.
+
+### Decision
+
+[!DECISION] Remove the spliced v2 content from CHANGELOG.md. Single highest-leverage finding: eliminates 626 lines of genuine waste, resolves a direct contradiction (redirect pointer vs. inline content), and is safe to execute without operator confirmation. The change is reversible (`git checkout CHANGELOG.md`) and leaves `python tools/verify.py` passing.
+
+### Action
+
+Truncated CHANGELOG.md at the splice boundary: kept the v3 section (lines 1–25 including the redirect pointer), removed the appended v2 body (626 lines). Done with a Python inline command that located the exact splice marker and wrote back only the v3 content with UTF-8 encoding preserved.
+
+Verification: `python tools/verify.py` — `OK — trail integrity checks pass`, both before and after the change.
+
+### Reflection
+
+[!REALIZATION] The same splice class has now appeared twice in the live tree — PRINCIPLES.md (caught by GPT-5.4) and CHANGELOG.md (caught here). This is a pattern, not a one-off accident. The migration that moved v2 content to archive/v2/ did not uniformly clean the live files. The convergence chain resets to 0 — a real change was made. The first silence run must come from a fresh session and a distinct evaluator family after this commit.

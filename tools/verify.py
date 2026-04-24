@@ -10,9 +10,11 @@ Checks:
 3. Entries are in non-decreasing date order.
 4. Every entry contains the mandatory metadata fields: target, agent, skill, outcome.
 5. No U+FFFD replacement characters (mojibake) anywhere in the live tree
-   (excludes archive/).
+    (excludes archive/).
 6. PRINCIPLES.md, REDESIGN.md, improve/SKILL.md, probe/SKILL.md, trail/README.md,
-   trail/log.md all exist.
+    trail/log.md all exist.
+7. Required markdown docs do not contain duplicate H1 headings, and their local
+    markdown links resolve.
 
 Exit code: 0 if all checks pass, 1 otherwise.
 """
@@ -37,6 +39,9 @@ REQUIRED_FILES = [
 
 ENTRY_HEADING = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s+[\u2014-]\s+(.+?)\s*$")
 META_FIELD = re.compile(r"^-\s+(target|agent|skill|outcome)\s*:", re.MULTILINE)
+H1_HEADING = re.compile(r"^#\s+.+$", re.MULTILINE)
+MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
+EXTERNAL_LINK = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
 
 
 def check_required_files() -> list[str]:
@@ -59,6 +64,7 @@ def check_log_format() -> list[str]:
     current_date: str | None = None
     current_slug: str | None = None
     current_body: list[str] = []
+    malformed_heading = re.compile(r"^#{1,3}\s*\d{4}-\d{2}-\d{2}")
     for line in text.splitlines():
         m = ENTRY_HEADING.match(line)
         if m:
@@ -66,6 +72,8 @@ def check_log_format() -> list[str]:
                 entries.append((current_date, current_slug or "", "\n".join(current_body)))
             current_date, current_slug = m.group(1), m.group(2)
             current_body = []
+        elif malformed_heading.match(line):
+            failures.append(f"malformed entry heading in trail/log.md: {line}")
         elif current_date is not None:
             current_body.append(line)
     if current_date is not None:
@@ -108,11 +116,41 @@ def check_no_mojibake() -> list[str]:
     return failures
 
 
+def check_required_markdown_docs() -> list[str]:
+    failures: list[str] = []
+    # PRINCIPLES.md is a verbatim external copy; its relative links point to its home repo
+    markdown_files = [rel for rel in REQUIRED_FILES if rel.endswith(".md") and rel not in ("trail/log.md", "PRINCIPLES.md")]
+    for rel in markdown_files:
+        path = ROOT / rel
+        if not path.exists():
+            continue
+
+        text = path.read_text(encoding="utf-8")
+        if len(H1_HEADING.findall(text)) > 1:
+            failures.append(f"multiple H1 headings in {rel}")
+
+        for raw_target in MARKDOWN_LINK.findall(text):
+            target = raw_target.strip()
+            if not target or target.startswith("#") or EXTERNAL_LINK.match(target):
+                continue
+
+            link_path = target.split("#", 1)[0]
+            if not link_path:
+                continue
+
+            resolved = (path.parent / link_path).resolve()
+            if not resolved.exists():
+                failures.append(f"broken local markdown link in {rel}: {target}")
+
+    return failures
+
+
 def main() -> int:
     all_failures: list[str] = []
     all_failures.extend(check_required_files())
     all_failures.extend(check_log_format())
     all_failures.extend(check_no_mojibake())
+    all_failures.extend(check_required_markdown_docs())
 
     if all_failures:
         print(f"FAIL — {len(all_failures)} issue(s):")
