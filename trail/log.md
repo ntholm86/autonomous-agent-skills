@@ -871,3 +871,45 @@ The previous entry (`trail/README.md drift fix`, v3.0.1 / fc91fa1) materially ch
 ### Reflection
 
 [!REALIZATION] The drift-fix entry was honest about the change but silent about its chain implication. Same class as the PROOF.md gap that was just closed in the manifesto repo: the framework discloses what happened but is sometimes silent about what the disclosure entails. Worth watching for as a recurring pattern.
+
+## 2026-04-24 — trail-README-splice-repair
+
+- target: skills repo (v3 live tree, HEAD 057b897)
+- operator: maintainer (Nils Holmager)
+- agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot; provider-family: anthropic/claude-sonnet-4.x)
+- skill: improve
+- outcome: actionable finding fixed — trail/README.md had v2 splice tail (lines 45-70); fully removed; convergence chain resets to 0/3
+- delta: trail/README.md truncated from 70 lines to 44 lines; chain reset
+
+### Interpretation of the ask
+
+The operator asked to start convergence peg 1/3 on the skills layer for v3.0.1. Per the protocol I read in order: CONVERGENCE_SCOPE_PROTOCOL.md, README.md, PRINCIPLES.md, improve/SKILL.md, trail/README.md, trail/log.md. The layer under evaluation is skills.
+
+This run was preceded by two small metadata-only commits (CITATION.cff author full name; PRINCIPLES.md copy header updated to dea859d). Per the reset matrix, metadata-only changes do not require a reset; the chain was already at 0/3 from the v3.0.1 trail/README.md drift fix. This run begins the new chain.
+
+### Examination
+
+Three lenses applied to the full v3 live tree (CONVERGENCE_SCOPE_PROTOCOL.md, PRINCIPLES.md, README.md, REDESIGN.md, CHANGELOG.md, OBSERVABLE-LOOPS.md, improve/SKILL.md, probe/SKILL.md, trail/README.md, trail/log.md, tools/verify.py, tools/record.py, CITATION.cff, .github/workflows/release.yml):
+
+- **Inconsistency.** trail/README.md (70 lines before fix) contained the correct v3 content on lines 1-44, then immediately continued with v2 leftover content on lines 45-70: a table row from the v2 "How to read this" section, a v2 "What each file is" section referencing SUMMARY.md and INDEX.md (neither of which exist in v3), a v2 "Glossary" section listing Kata/Kaizen/Kaikaku/Hansei vocabulary (all retired in v3), a second v2 "Fidelity levels" section (duplicate), and a second v2 "Integrity" section with different wording. This directly contradicts the v3 architecture declared in REDESIGN.md and described in the v3 section of the same file.
+- **Overburden.** None found beyond the splice defect.
+- **Waste.** The v2 tail is 26 lines of content that references non-existent files and retired vocabulary.
+
+Challenge the first read: Is this the same class as PRINCIPLES.md (fixed in v3-principles-copy-repair) and CHANGELOG.md (fixed in v3-changelog-splice-repair)? Yes, identical class. The v3.0.1 rewrite of trail/README.md appears to have written the new v3 content but appended rather than replaced, leaving the old v2 tail intact. The verifier did not catch this because verify.py checks REQUIRED_FILES for H1-duplicate headings, but trail/README.md's v2 tail starts at line 45 with a table row, not an H1 heading — a blind spot.
+
+### Decision
+
+[!DECISION] Truncate trail/README.md to the clean v3 section (lines 1-44). Single operation; no information loss (v2 archive exists for provenance).
+
+### Action
+
+- Truncated trail/README.md to lines 1-44 using a Python file read/write with UTF-8 encoding preserved.
+- Verification: `python tools/verify.py` returns `OK — trail integrity checks pass`.
+- Final line count: 44 (from 70).
+
+### Reflection
+
+[!REALIZATION] This is the third occurrence of the same splice-append defect class in this repo: PRINCIPLES.md (v3-principles-copy-repair, GPT-5.4), CHANGELOG.md (v3-changelog-splice-repair, Claude Sonnet 4.6), trail/README.md (this run, Claude Sonnet 4.6). All three were caught by fresh-session evaluators, not by the verifier. The pattern suggests the v2-to-v3 migration used append-style writes rather than replace-style writes. The convergence chain correctly prevented any from being ratified.
+
+[!REALIZATION] Before the next peg 1/3 run can honestly declare silence, the evaluator should rule out a fourth occurrence. The verifier catches H1 duplicates only in REQUIRED_FILES. Docs not in REQUIRED_FILES (REDESIGN.md, OBSERVABLE-LOOPS.md) should also be spot-checked. Adding a broader duplicate-H1 check to verify.py would close this blind spot permanently.
+
