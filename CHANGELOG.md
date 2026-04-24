@@ -1,6 +1,11 @@
 # Changelog
 
-## Unreleased — v3.0.0 (branch `v3-redesign`)
+## v3.0.1 — 2026-04-24
+
+### Changed
+- trail/README.md corrected to reflect the v3 trail structure and remove the v2 splice tail.
+
+## v3.0.0 — 2026-04-23 (branch `v3-redesign`)
 
 Radical redesign. See [REDESIGN.md](./REDESIGN.md) for the full rationale.
 

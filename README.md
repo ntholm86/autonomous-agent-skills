@@ -91,9 +91,9 @@ python tools/record.py summary
 
 ## Versioning and convergence
 
-Untagged. v3 is on branch `v3-redesign` until it has been reviewed by at least three independent evaluators from distinct model families, each finding nothing material to change. That is what convergence (Principle 3) requires; v2's in-progress 2/3 chain was invalidated by the redesign and does not carry over.
+Tagged, but not yet converged. v3 lives on branch `v3-redesign`; tags (for example, `v3.0.1`) mark snapshots, not convergence. Convergence (Principle 3) still requires three independent silence runs from distinct model families; v2's in-progress 2/3 chain was invalidated by the redesign and does not carry over.
 
-Convergence claims in this repo are scope-bound by [CONVERGENCE_SCOPE_PROTOCOL.md](./CONVERGENCE_SCOPE_PROTOCOL.md). Evaluators should treat that file as mandatory pre-read during Grasp for convergence runs.
+Convergence claims in this repo are scope-bound by [CONVERGENCE_SCOPE_PROTOCOL.md](./CONVERGENCE_SCOPE_PROTOCOL.md). Evaluators should treat that file as mandatory pre-read during Grasp for convergence runs, and read the current chain from [trail/log.md](./trail/log.md).
 
 ## License
 

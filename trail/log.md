@@ -913,3 +913,41 @@ Challenge the first read: Is this the same class as PRINCIPLES.md (fixed in v3-p
 
 [!REALIZATION] Before the next peg 1/3 run can honestly declare silence, the evaluator should rule out a fourth occurrence. The verifier catches H1 duplicates only in REQUIRED_FILES. Docs not in REQUIRED_FILES (REDESIGN.md, OBSERVABLE-LOOPS.md) should also be spot-checked. Adding a broader duplicate-H1 check to verify.py would close this blind spot permanently.
 
+
+## 2026-04-24 — v3-peg2-openai-metadata-fix
+
+- target: skills repo (v3 live tree)
+- operator: user
+- agent: GitHub Copilot (GPT-5.2-Codex; provider-family: openai/gpt-5.x; tool-call ID prefix not exposed)
+- skill: improve
+- outcome: actionable finding fixed — version metadata aligned with v3.0.1 tag; convergence chain reset
+- delta: README.md, CHANGELOG.md, CITATION.cff
+
+### Interpretation of the ask
+
+Act as the independent evaluator for skills convergence peg 2/3 on the kata skills repository. Apply Improve under the convergence scope protocol and either declare silence or fix any material issue found.
+
+### Examination
+
+Three lenses applied to the live tree:
+
+- **Inconsistency.** `README.md` states "Untagged" even though tags `v3.0.0` and `v3.0.1` exist. `CHANGELOG.md` marks v3.0.0 as "Unreleased" despite the tags, and `CITATION.cff` still reports version 3.0.0 with date 2026-04-23. These conflict with the tagged release state.
+- **Overburden.** None found. The suite remains minimal with two skills and two tools.
+- **Waste.** None found beyond the metadata drift above.
+
+Challenge the first read: confirmed the tags exist locally and are current (`git tag -l "v3.0.*"`). The mismatch is factual and affects external auditability, so it clears the materiality bar.
+
+### Decision
+
+[!DECISION] Align the version metadata with the existing v3.0.1 tag across README, CHANGELOG, and CITATION.
+
+### Action
+
+- Updated `README.md` to reflect tagged-but-not-converged status and point to the chain in `trail/log.md`.
+- Added a v3.0.1 entry to `CHANGELOG.md` and dated v3.0.0 as released.
+- Updated `CITATION.cff` to version 3.0.1 and date 2026-04-24.
+- Verification: `python tools/verify.py` (OK — trail integrity checks pass).
+
+### Reflection
+
+[!REALIZATION] Metadata drift after tags is a repeatable failure mode; it undermines auditability even when skills behavior is unchanged. This run resets the skills convergence chain to 0/3.
