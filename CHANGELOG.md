@@ -1,5 +1,18 @@
 # Changelog
 
+## v3.1.0 — 2026-04-24
+
+### Changed
+- README.md "Versioning and convergence" section updated to reflect convergence achieved.
+- CITATION.cff bumped to v3.1.0.
+
+### Evidence
+- Skills convergence: 3/3 silence (Anthropic, xAI/Grok, Google/Gemini). Trail slugs: `v3-silence-1`, `v3-silence-2`, `v3-silence-3`.
+- Cross-layer coherence: silence. Trail slug: `cross-layer-coherence`.
+- All four entries in `trail/log.md`. Verified by `tools/verify.py` (0 failures, 0 warnings).
+
+---
+
 ## v3.0.1 — 2026-04-24
 
 ### Changed

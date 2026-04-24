@@ -91,7 +91,11 @@ python tools/record.py summary
 
 ## Versioning and convergence
 
-Tagged, but not yet converged. v3 lives on branch `v3-redesign`; tags (for example, `v3.0.1`) mark snapshots, not convergence. Convergence (Principle 3) still requires three independent silence runs from distinct model families; v2's in-progress 2/3 chain was invalidated by the redesign and does not carry over.
+**Converged.** v3.1.0 (2026-04-24) is the first release with full convergence evidence.
+
+- Skills convergence: three independent silence runs from distinct model families — Anthropic (Claude Sonnet 4.6), xAI/Grok, Google/Gemini — each applied cold to the live tree. No material changes proposed.
+- Cross-layer coherence: a fourth evaluation found no contradiction between the problem artifact, principles artifact, and skills.
+- All four results are recorded in [trail/log.md](./trail/log.md).
 
 Convergence claims in this repo are scope-bound by [CONVERGENCE_SCOPE_PROTOCOL.md](./CONVERGENCE_SCOPE_PROTOCOL.md). Evaluators should treat that file as mandatory pre-read during Grasp for convergence runs, and read the current chain from [trail/log.md](./trail/log.md).
 
