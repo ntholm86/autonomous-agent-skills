@@ -837,3 +837,37 @@ Re-reading PRINCIPLES.md L85 closely showed that the indexed layer must be "high
 ### Reflection
 
 [!REALIZATION] My first attempt to append this entry corrupted itself: I used a PowerShell here-string for the trail body, and PowerShell consumed every backtick as an escape character (`` `t `` became a tab, `` `a `` became BEL, all inline-code backticks were stripped). The user spotted the visible damage immediately ("what happened with this line"). Rewrote using a Python script that has no escape-character collisions with markdown. Lesson: never compose markdown trail entries through PowerShell here-strings; the metasyntax overlap is a footgun.
+
+---
+
+## 2026-04-24 — v3.0.1 chain status declared
+
+- target: skills repo (this repo, v3 live tree)
+- operator: maintainer (Nils Holmager)
+- agent: Claude (Anthropic, GitHub Copilot)
+- skill: improve (incremental, bookkeeping)
+- outcome: chain status made explicit; no artifact change
+- delta: trail/log.md appended only
+
+### Interpretation of the ask
+
+The previous entry (`trail/README.md drift fix`, v3.0.1 / fc91fa1) materially changed a live-tree document but did not declare what that change does to the convergence chain. Per Principle 3 condition 2, any material artifact change resets the chain. The chain ratified at v3.0.0 / d75b5e1 (Gemini -> Claude -> GPT -> coherence silence) does not transitively cover v3.0.1. Operator asked this be made explicit so a future stranger reading the trail does not infer that v3.0.1 carries the v3.0.0 ratification.
+
+### Decision
+
+[!DECISION] Declare the convergence chain reset to 0/3 as of v3.0.1 / fc91fa1. The v3.0.0 chain remains valid evidence for what it ratified (commit d75b5e1, the pre-fix state of the suite). It does not ratify the post-fix state. A new chain — three fresh-session evaluations from distinct evaluator families against the v3.0.1 live tree — is required to re-converge.
+
+[!DECISION] Do not retroactively edit the v3.0.1 trail entry. Append-only ledger; later clarifications go in later entries.
+
+### Action
+
+- This entry, appended.
+- No code or doc changes.
+
+### Verification
+
+- `python tools/verify.py` -> OK (expected; no structural change).
+
+### Reflection
+
+[!REALIZATION] The drift-fix entry was honest about the change but silent about its chain implication. Same class as the PROOF.md gap that was just closed in the manifesto repo: the framework discloses what happened but is sometimes silent about what the disclosure entails. Worth watching for as a recurring pattern.
