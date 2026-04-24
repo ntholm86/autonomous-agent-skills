@@ -788,3 +788,52 @@ No artifact changes. Trail entry appended only. Verification: `python tools/veri
 ### Reflection
 
 [!REALIZATION] The cross-layer coherence test is now complete. Per the convergence scope protocol execution sequence: Step 1 (baseline lock) — done; Step 2 (0/3 start) — done; Step 3 (3/3 skills convergence) — done; Step 4 (cross-layer coherence) — done, silence. Step 5 (publication gate) is now the remaining step: problem converged, principles converged, skills converged (3/3), coherence check silent. Evidence package (trail/log.md, archived v2, REDESIGN.md) is complete and reviewable on branch `v3-redesign`.
+
+---
+
+## 2026-04-24 — trail/README.md drift fix
+
+- target: kata skills repo (this repo)
+- operator: maintainer (Nils Holmager)
+- agent: Claude (Anthropic, tool-call ID prefix `toolu_vrtx_*`)
+- skill: improve (incremental)
+- outcome: trail/README.md rewritten to match actual v3 structure; v3.0.1 cut
+- delta: v3.0.0 -> v3.0.1
+
+### Examination
+
+During publication prep for v1.0.0 of the manifesto, the maintainer asked whether the v3 trail (two files: `log.md` + `sessions/`) satisfied PRINCIPLES.md's three-resolution requirement. Investigation revealed two cross-file drift defects in `trail/README.md`:
+
+1. The README described a three-FILE structure (`SUMMARY.md`, `INDEX.md`, `sessions/`) that no longer exists — `SUMMARY.md` and `INDEX.md` were retired in the v3 redesign.
+2. The Glossary still defined the v2 skill vocabulary (Kata, Kaizen, Kaikaku, Hansei) — none of which exist as skills in v3 (only `improve` and `probe`).
+
+Re-reading PRINCIPLES.md L85 closely showed that the indexed layer must be "highlighted *within* the full evidence" — it does not require a separate file. Kata's `[!DECISION]` / `[!REALIZATION]` / `[!REVERSAL]` markers inside `sessions/*.md` already satisfy this. So the implementation was compliant; only the documentation drifted.
+
+[!REALIZATION] v3 has three resolutions across two files (digest in `log.md`, indexed via grep over markers in `sessions/`, full in `sessions/*.md`). The v3 redesign retired the separate INDEX/SUMMARY files but kept the resolution semantics. The README was never updated to describe the new arrangement.
+
+[!REALIZATION] This drift was found by human review during publication prep, after the v3-redesign branch had passed its three-peg cross-layer coherence chain (Run pegs in 2026-04-23 entry). Same defect class as the manifesto's PROOF.md falsification finding: convergence runs reading the files for their first-order content can step past second-order claims-vs-reality contradictions. Two instances now, in the same week, in different repos.
+
+### Decision
+
+[!DECISION] Rewrite `trail/README.md` to describe the actual three-resolution-across-two-files structure, with a grep example for the indexed layer. Update the Glossary to reflect v3 skills (`improve`, `probe`) and note v1/v2 vocabulary preserved in `archive/v2/`.
+
+[!DECISION] Do not change PROOF.md in the manifesto. The L52 phrasing ("the resolution they need") doesn't claim a number; the three-resolution claim holds. The `trail/README.md` defect is a kata-repo issue outside the manifesto convergence chain's scope.
+
+[!DECISION] Cut v3.0.1 for the README fix. Keep v3.0.0 tag at d75b5e1 (the convergence-validated commit) — that is what the chain ratified.
+
+### Action
+
+- Rewrote `trail/README.md` (file recreated; 49 lines, was 38 lines).
+- Glossary now lists `improve` and `probe`; explicitly notes v1/v2 vocabulary moved to `archive/v2/`.
+- Added grep example for recovering the indexed layer.
+
+### Verification
+
+- `archive/v2/` exists (verified by directory listing) — README claim is accurate.
+- `improve/` and `probe/` exist as skills — README claim is accurate.
+- `log.md` and `sessions/` are the only two trail-content paths — README structure matches reality.
+- This trail entry will be committed alongside the README fix and tagged v3.0.1.
+
+### Reflection
+
+[!REALIZATION] My first attempt to append this entry corrupted itself: I used a PowerShell here-string for the trail body, and PowerShell consumed every backtick as an escape character (`` `t `` became a tab, `` `a `` became BEL, all inline-code backticks were stripped). The user spotted the visible damage immediately ("what happened with this line"). Rewrote using a Python script that has no escape-character collisions with markdown. Lesson: never compose markdown trail entries through PowerShell here-strings; the metasyntax overlap is a footgun.

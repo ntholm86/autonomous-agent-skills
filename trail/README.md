@@ -1,79 +1,79 @@
-# Trail format
+﻿# Audit Trail: kata skills
 
-A single append-only markdown file (`log.md`) is the trail for this suite. Every autonomous operation adds an entry. Entries are never edited or deleted; corrections are appended as new entries that reference the entry being corrected.
+This directory is the audit trail for autonomous agent operations on this repository. It is the reference implementation of the [Observable Autonomy](../PRINCIPLES.md) principle's resolution requirement.
 
-## Why one file
+## The three resolutions
 
-v2 maintained three files (TRAIL/sessions/, GENBA.md, SCORECARD.md) because Principle 2 requires multi-resolution evidence. The mistake was conflating *resolution* with *file count*. Resolution is a property of content (full vs indexed vs digested) — it does not require separate files. Three files meant three parsers, three drift surfaces, and several runs spent reconciling them.
+The manifesto's `PRINCIPLES.md` requires that evidence exist at three resolutions simultaneously: **Digest** (60-second view), **Indexed** (decisions navigable in bounded time), and **Full** (complete reasoning, ground truth). Three resolutions, not three files — the indexed layer lives *within* the full layer.
 
-In v3, multi-resolution lives within `log.md`:
+| Resolution | Where it lives | Time budget | Answers |
+|---|---|---|---|
+| **Digest** | `log.md` | 30–60 seconds | Where is this going? What just happened? |
+| **Indexed** | `[!DECISION]`, `[!REALIZATION]`, `[!REVERSAL]` markers inside `sessions/*.md` | minutes | What was decided, when, and why? |
+| **Full** | `sessions/*.md` | hours | The complete reasoning exchange — prompts, responses, dead ends, reversals |
 
-- **Full evidence** — the entry body. Reasoning, decisions, verification.
-- **Indexed evidence** — `[!DECISION]`, `[!REVERSAL]`, `[!REALIZATION]` markers a reader can grep for.
-- **Digested evidence** — `tools/record.py summary` prints a 60-second view of the latest entry.
+### Reading the indexed layer
 
-## Entry format
+The indexed layer is recovered by grep, not by a separate file. From the repo root:
 
-Every entry begins with a level-2 heading containing the date and a short slug, followed by metadata, then the body. Example:
-
-```markdown
-## 2026-04-23 — v3 redesign
-
-- target: skills repo
-- operator: maintainer
-- agent: Claude (Anthropic, tool-call ID prefix `toolu_*`)
-- skill: improve
-- outcome: redesign argued and executed
-- delta: v2.4.1 → v3.0.0 (branch v3-redesign, not yet merged)
-
-### Interpretation of the ask
-
-[narrate what you understood the operator to be asking]
-
-### Examination
-
-[lenses applied; what each revealed]
-
-### Decision
-
-[!DECISION] [the chosen course and why]
-
-### Action
-
-[what was changed; verification evidence]
-
-### Reflection
-
-[is the loop converging or churning; any surprises]
+```sh
+grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/sessions/
 ```
 
-## Rules
+This returns every load-bearing turning point across all sessions, with file and line, in seconds. The markers are inserted by the operating agent during the session, in context, so the rationale lives one paragraph away rather than in a separately-curated index that can drift.
 
-1. **Append only.** Never edit or delete an entry. Corrections are new entries that reference the entry being corrected by date and slug.
-2. **One entry per autonomous operation.** Not per file change. An operation is a complete cycle of examine-decide-act-verify-record.
-3. **Mark moments inline.** `[!DECISION]`, `[!REVERSAL]`, `[!REALIZATION]` go in the prose where they happen. Readers grep for them.
-4. **Mark fidelity.** If reconstructing rather than capturing verbatim, write `(reconstructed from agent memory)` at that point. Do not silently degrade.
-5. **Identify the agent.** Provider name and (where observable) tool-call ID prefix. This is how cross-model convergence claims become checkable.
-6. **Date entries in ISO format** (`YYYY-MM-DD`). For multiple entries on one day, suffix the slug, not the date.
+## The two skills
 
-## Tools
+The kata suite has two skills:
 
-- `tools/record.py new --slug=<slug>` — append a stub entry to `log.md`.
-- `tools/record.py summary` — print a 60-second digest of the latest entry.
-- `tools/verify.py` — check trail integrity (chronological order, mandatory metadata fields present).
+- **improve** — examine a target, find what most needs changing, change it (or argue for radical redesign), verify, and record. Combines incremental refinement, structural rethinking, and reflection on the loop itself in a single skill.
+- **probe** — construct a novelty probe (Shiken-style) that distinguishes genuine situated reasoning from pattern-matching against a checklist.
 
-Both scripts are pure Python 3 with no third-party dependencies. They run on Windows, macOS, and Linux.
+Earlier versions of this suite (v1, v2) had more skills with Japanese vocabulary (Kata, Kaizen, Kaikaku, Hansei, Mura, Muri, Muda, Intent). v3 collapsed them into the two above. The full history is preserved in `archive/v2/` and the v2 tags.
 
-## Reading convergence state from the log
+## Fidelity levels
 
-v2 tracked convergence in a separate `SCORECARD.md` with a counter row. v3 reads the same information from `log.md` directly. The chain length is:
+Session transcripts are marked with a fidelity level:
 
-> the number of consecutive most-recent entries whose `outcome` is silence (no material change to the artifact) **and** whose `agent` field names a distinct provider/family from the entry before it.
+- **verbatim** — exported directly from the chat platform. Exact dialogue preserved. Highest trust.
+- **reconstructed** — recreated from agent context/memory. Captures decisions, reasoning, and outcomes accurately, but exact wording may differ. Key facts and decisions are reliable; phrasing and sequence may be approximate.
+- **mixed** — contains both verbatim tool outputs and reconstructed narrative.
 
-A chain reaches **3/3 (converged)** when three such entries exist in a row, from three distinct evaluator families, each performed in a fresh conversation (i.e. independent assessment per Principle 3, condition 3). Any entry whose `outcome` records a change to the artifact resets the chain to zero — regardless of whether the change improved a score.
+## Integrity
 
-The chain has no separate counter file. It is a property of the log.
+All summaries and digests are self-authored by the agent that produced the work. For independent confirmation, cross-verify claims against the session transcripts (full resolution) and the actual code changes (`git log`).
+# Audit Trail: skills
 
-Convergence is always relative to declared mission intent, not text stability alone. Each entry should therefore state which layer is being evaluated (problem, principles, skills, or cross-layer coherence) and why that run contributes to the publication claim. A silence run that does not specify this can show local cleanliness, but it does not by itself demonstrate research-level completion.
+This directory contains the complete audit trail for autonomous agent operations on this project.
 
-Convergence runs must apply [CONVERGENCE_SCOPE_PROTOCOL.md](../CONVERGENCE_SCOPE_PROTOCOL.md) during Grasp. If the protocol is not read, the run can still be useful diagnostics but should not be counted as a convergence-advancing evaluation.
+## How to read this
+
+| Time budget | Start here |
+|---|---|
+| 30 seconds | **SUMMARY.md** - direction, recent decisions, current state |
+| 15 minutes | **INDEX.md** - every decision with rationale, linked to the session that produced it |
+| Full review | **sessions/** - complete reasoning transcripts |
+
+## What each file is
+
+- **SUMMARY.md** - Executive digest. Updated after each session. Answers: *where is this headed?*
+- **INDEX.md** - Decision index (auto-generated). Every `[!DECISION]` from sessions, extracted with rationale. Answers: *what was decided and why?*
+- **sessions/** - Full session transcripts. The ground truth. Answers: *what was the complete reasoning?*
+
+## Glossary
+
+- **Kata** - The orchestration skill that runs an improvement cycle: diagnose the target, select a methodology, execute, record, persist.
+- **Kaizen** - Incremental improvement. The target's structure is sound; specific things need fixing.
+- **Kaikaku** - Radical redesign. The target's structure cannot reach its goals through incremental changes.
+- **Hansei** - Reflection on the improvement loop itself, not the target.
+## Fidelity levels
+
+Session transcripts are marked with a fidelity level:
+
+- **verbatim** - Exported directly from the chat platform. Exact dialogue preserved. Highest trust.
+- **reconstructed** - Recreated from agent context/memory. Captures decisions, reasoning, and outcomes accurately, but exact wording may differ from the original exchange. Typical accuracy: key facts and decisions are reliable; phrasing and sequence may be approximate.
+- **mixed** - Contains both verbatim tool outputs and reconstructed narrative.
+
+## Integrity
+
+All summaries and digests in this trail are self-authored by the agent that produced the work. Cross-verify claims against the session transcripts and the actual code changes (git log) for independent confirmation.
