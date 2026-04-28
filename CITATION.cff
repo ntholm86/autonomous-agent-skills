@@ -1,20 +1,21 @@
 cff-version: 1.2.0
 message: "If you use this skill suite, please cite it as below."
 type: software
-title: "Autonomous Development Skills Suite: Improve and Probe Skills for AI Agents"
+title: "Autonomous Development Skills Suite: Four Composable Skills for AI Agents"
 abstract: >
-  A suite of reasoning skills for autonomous AI agents implementing the
-  Autonomous Agent Principles framework. Skills include Improve (examine,
-  decide, change, verify, record) and Probe (construct novelty probes to
-  distinguish situated reasoning from pattern-matching). Accompanied by
-  Python tools for trail management and integrity verification. Evaluated
-  across multiple model families with convergence protocols. Constitutional
-  foundation in the companion Autonomous Agent Principles repository.
+  A suite of four composable reasoning skills for autonomous AI agents implementing the
+  Autonomous Agent Principles framework. Skills: Intent (surface interpretation before
+  acting), Improve (examine, decide, change, verify, record), Probe (construct novelty
+  probes to distinguish situated reasoning from pattern-matching), and Trail (append
+  a structured evidence log after every session). Accompanied by Python tools for trail
+  management and integrity verification. Evaluated across multiple model families with
+  convergence protocols. Constitutional foundation in the companion Autonomous Agent
+  Principles repository.
 authors:
   - family-names: Holmager
     given-names: Nils Wendelboe
     orcid: "https://orcid.org/0009-0009-7157-9084"
-repository-code: "https://github.com/ntholm86/kata"
+repository-code: "https://github.com/ntholm86/autonomous-agent-skills"
 license: MIT
 version: "3.1.0"
 date-released: "2026-04-24"

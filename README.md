@@ -4,7 +4,7 @@
 
 Four composable skills that operationalize three principles for autonomous agents.
 
-> **The repository is named `kata` for historical reasons.** v1 and v2 of this suite were named after Toyota Production System concepts (Kata, Kaizen, Kaikaku, Hansei, Shiken, Kiroku). v3 dropped that vocabulary in favour of plain English. The repository name is kept as a project codename to preserve URL, DOI, and citation lineage.
+> **This repository was previously named `kata`.** v1 and v2 of this suite used Toyota Production System vocabulary (Kata, Kaizen, Kaikaku, Hansei, Shiken, Kiroku). v3 dropped that vocabulary in favour of plain English. The repository was renamed `autonomous-agent-skills` at v3.2.0; GitHub redirects all old URLs automatically.
 
 ## What this is
 
