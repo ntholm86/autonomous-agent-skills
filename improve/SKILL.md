@@ -1,6 +1,6 @@
 ---
 name: improve
-version: 3.0.0
+version: 3.1.0
 description: 'The improvement skill. Examine a target, find what most needs changing, change it (or argue for radical redesign), verify, and record. Combines incremental refinement, structural rethinking, and reflection on the loop itself. USE WHEN: improve, audit, review, fix, refactor, redesign, evaluate, what would make this better, am I missing something.'
 argument-hint: 'The target to improve, and optionally the concern (correctness, simplicity, performance, etc.)'
 ---
@@ -23,7 +23,9 @@ This skill exists to enact three principles. Read [PRINCIPLES.md](../PRINCIPLES.
 
 ### 1. Understand the target and the ask
 
-Before examining anything, narrate your interpretation of what you've been asked to do, in your own words. State what you believe the destination is and what would count as success. If your interpretation diverges from a literal reading of the request, say so explicitly so the operator can correct course before you act.
+*If [Intent](../intent/SKILL.md) is installed, apply it now — it handles this step in full. Continue to step 2 when done.*
+
+If Intent is not installed: before examining anything, narrate your interpretation of what you've been asked to do, in your own words. State what you believe the destination is and what would count as success. If your interpretation diverges from a literal reading of the request, say so explicitly so the operator can correct course before you act.
 
 If the ask is about convergence or publication readiness, read [CONVERGENCE_SCOPE_PROTOCOL.md](../CONVERGENCE_SCOPE_PROTOCOL.md) before proceeding, then declare which layer (problem, principles, skills, cross-layer coherence) this run is evaluating.
 
@@ -78,7 +80,9 @@ If the loop is churning, that is itself a finding. Surface it. Do not silently k
 
 ### 7. Record
 
-Append a single entry to `trail/log.md`. The entry must include:
+*If [Trail](../trail/SKILL.md) is installed, apply it now — it handles this step in full.*
+
+If Trail is not installed: append a single entry to `trail/log.md`. The entry must include:
 
 - Date, target, operator (if known), model identity (provider + tool-call ID prefix if observable).
 - Your interpretation of the ask.
@@ -97,5 +101,5 @@ This skill must be runnable on itself. If running Improve on `improve/SKILL.md` 
 ## What this skill does not do
 
 - It does not score the target on a numerical rubric. v2 did this and the question "who made up these metrics?" never went away. Convergence — diverse independent evaluators finding nothing to change — is the only honest measure of done.
-- It does not orchestrate other skills. There is one other skill (Probe) and you decide when to call it.
+- It does not orchestrate other skills. The other skills (Intent, Trail, Probe) run independently. Improve delegates to Intent (step 1) and Trail (step 7) when they are installed, but does not require them.
 - It does not tell you when to stop. The convergence protocol in PRINCIPLES.md does.

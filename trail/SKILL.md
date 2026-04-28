@@ -1,0 +1,159 @@
+---
+name: trail
+version: 1.0.0
+description: 'Evidence trail management. Append a structured entry to trail/log.md at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
+argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
+---
+
+# Trail
+
+*The record of what actually happened.*
+
+> **Governing principle:** [Observable Autonomy](../PRINCIPLES.md#principle-2-observable-autonomy) — *The degree of autonomy a system deserves is bounded by the degree of transparency it provides.* This skill is how that transparency is produced.
+
+Autonomy without evidence is abdication. When an agent does work autonomously, the question is never "did it do something?" but "can someone who wasn't there reconstruct what happened, why, and whether to trust it?"
+
+A trail that answers this earns the right to more autonomy. A trail that doesn't — or doesn't exist — means autonomy must be constrained regardless of how competent the work was.
+
+```
+Evidence → Trust → Autonomy
+```
+
+---
+
+## The Structure
+
+One file: `trail/log.md`. Append-only. One `##` entry per session, newest at the bottom.
+
+```
+trail/
+  log.md          — append-only ledger, one entry per session
+  sessions/       — optional: full verbatim transcripts, linked from log entries
+```
+
+Each entry in `log.md` follows this shape:
+
+```markdown
+## YYYY-MM-DD — <slug>
+
+- target: <what was worked on>
+- operator: <who initiated>
+- agent: <model / provider>
+- skill: <which skill was applied>
+- outcome: <what resulted>
+- delta: <version before → after, or a one-line summary of change>
+
+### Interpretation of the ask
+
+<What was asked for, verbatim or as close as possible. What the agent understood it to mean.
+If Intent was applied, paste its narration here.>
+
+### Examination
+
+<What was looked at. What each lens revealed — including "nothing actionable.">
+
+### Decision
+
+[!DECISION] <choice made, rationale, alternatives rejected>
+
+### Action
+
+<What was done. Reasoning shown, not just the diff.>
+
+### Reflection
+
+<Is the loop converging or churning? What would the next run look at?>
+```
+
+---
+
+## Three markers
+
+Insert these inline wherever they occur — inside any section, not only Decision:
+
+**`[!DECISION]`** — A choice that could have gone differently. Always include rationale and at least one rejected alternative.
+
+**`[!REALIZATION]`** — Something discovered during the work that changed understanding.
+
+**`[!REVERSAL]`** — A decision made and then undone. Reversals are more valuable than decisions — they show the reasoning evolved.
+
+```markdown
+[!DECISION] Collapsed six skills to two.
+Rationale: the framework's mechanism contradicted its own first principle.
+Alternative: keep all six, add cross-references — rejected, complexity without payoff.
+
+[!REALIZATION] The debug log captures zero conversation content — only session_start metadata.
+
+[!REVERSAL] Initially planned to keep the PowerShell scripts. Reversed after confirming
+they bind the suite to one OS for no reason a few hundred lines of Python won't satisfy.
+```
+
+To find every load-bearing decision across all sessions:
+
+```sh
+grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/sessions/
+```
+
+---
+
+## Three resolutions
+
+The trail must be readable at three levels simultaneously — because different observers have different time budgets:
+
+| Resolution | Where | Time budget | Answers |
+|---|---|---|---|
+| **Digest** | The `outcome` and `delta` fields in `log.md` | 30 seconds | What just happened? Should I be concerned? |
+| **Indexed** | The `[!DECISION]` / `[!REALIZATION]` / `[!REVERSAL]` markers | minutes | What was decided, when, and why? |
+| **Full** | `sessions/*.md` — verbatim transcripts | hours | The complete reasoning, including dead ends |
+
+A trail at only one resolution is observable to one class of observer and invisible to the rest.
+
+---
+
+## Fidelity
+
+Mark every session transcript with its fidelity level:
+
+- **verbatim** — exported directly from the platform. Exact dialogue preserved. Highest trust.
+- **reconstructed** — recreated from memory. Decisions and outcomes reliable; exact wording approximate.
+- **mixed** — verbatim tool outputs with reconstructed narrative.
+
+A summary written by the audited party is evidence, but it is not independent evidence. Mark it as such.
+
+---
+
+## When to write an entry
+
+Every session where substantive work happens. If the work produces decisions, changes, or findings, it produces a log entry. No autonomous session is invisible.
+
+Write during the session, not after. A trail written from memory compresses and rationalises. The markers belong in context, at the moment the decision or reversal occurs.
+
+---
+
+## What this skill is not
+
+**Not a log of events.** A log records what happened. A trail records why — the reasoning that made the action the right choice. Without the why, an observer can see the diff but cannot judge whether it was correct.
+
+**Not a post-hoc summary.** Better than nothing. Not the same as a trail written in real time.
+
+**Not overhead.** The three markers take seconds. The cost of skipping them is discovering months later that no one can reconstruct why a critical decision was made.
+
+---
+
+## The test
+
+Can someone who was not present reconstruct what was done, why each significant decision was made, and whether the work achieved what was asked for — using only `trail/log.md` and the linked sessions?
+
+If yes, the trail is sufficient. If no, something is missing.
+
+---
+
+## Composing with other skills
+
+Trail works standalone. When Intent is also active, paste its narration verbatim into the "Interpretation of the ask" section of the log entry — this is how context carries across sessions. When Improve or Probe is also active, the log entry records what that skill examined and decided.
+
+The `tools/record.py` script can stub a new entry for you:
+
+```sh
+python tools/record.py new --slug=<slug> --target=<target> --skill=trail
+```

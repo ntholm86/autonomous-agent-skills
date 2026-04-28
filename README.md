@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19732827.svg)](https://doi.org/10.5281/zenodo.19732827)
 
-Two skills and a trail format that operationalize three principles for autonomous agents.
+Four composable skills that operationalize three principles for autonomous agents.
 
 > **The repository is named `kata` for historical reasons.** v1 and v2 of this suite were named after Toyota Production System concepts (Kata, Kaizen, Kaikaku, Hansei, Shiken, Kiroku). v3 dropped that vocabulary in favour of plain English. The repository name is kept as a project codename to preserve URL, DOI, and citation lineage.
 
@@ -35,11 +35,16 @@ Operational scoping rules for convergence are defined in [CONVERGENCE_SCOPE_PROT
 ## What's here
 
 ```
-PRINCIPLES.md     # Copy of the canonical principles (manifesto repo wins on conflict).
-REDESIGN.md       # Why v3 exists. The audit trail for the v2 → v3 rebuild.
-README.md         # This file.
-LICENSE           # MIT.
-CITATION.cff      # Academic citation metadata (Zenodo will pick this up on release).
+CONVERGENCE_SCOPE_PROTOCOL.md
+improve/
+PRINCIPLES.md
+README.md
+LICENSE
+CITATION.cff
+
+intent/           # The intent skill. Surfaces the agent's interpretation of the ask before
+                  # any work begins — the operator catches misreading at the cheapest moment.
+                  # Runs first; Improve and Probe delegate to it when it is installed.
 
 improve/          # The improvement skill. Examine, decide, change, verify, record. Or argue
                   # convincingly that nothing should change. Combines what v2 split into
@@ -50,6 +55,7 @@ probe/            # The reasoning probe. Construct paired cases that look simila
                   # Operationalizes ARF measurement.
 
 trail/
+  SKILL.md        # The trail skill. Append a structured log entry after every session.
   README.md       # Trail format spec.
   log.md          # The append-only trail. One entry per autonomous operation.
 
@@ -63,12 +69,14 @@ archive/v2/       # The previous version of this suite, kept as evidence and for
 
 ## Using the skills
 
-Both skills are markdown files an agent reads at the start of an autonomous operation.
+All four skills are markdown files an agent reads at the start of an autonomous operation. Each works standalone; any combination works. Install only what you need.
 
-- **Improve** is the default skill. Use it for any examine-and-change cycle: audit, refactor, redesign, evaluate, fix. It does both incremental and radical work; it picks which mode the situation calls for.
-- **Probe** tests whether the agent is actually reasoning about a situation or pattern-matching against a template. Use it when you want evidence (one way or the other) about reasoning quality.
+- **Intent** is the entry point. One skill, immediate impact — the agent surfaces its interpretation before acting. Start here if you want one thing that makes AI agents less wrong from the first message.
+- **Trail** makes Intent durable. Without Trail, the interpretation from one session is gone by the next. With Trail, it accumulates in `trail/log.md` and Intent reads it on every future session.
+- **Improve** is the examination and change skill. Use it for any audit, refactor, redesign, or fix. Delegates to Intent (step 1) and Trail (step 7) when they are installed.
+- **Probe** tests whether the agent is actually reasoning or pattern-matching. Use it when you want evidence (one way or the other) about reasoning quality. Delegates to Trail (step 5) when installed.
 
-There is no orchestrator, no scoring rubric, no separate intent step. The skills define the shape; the agent does the reasoning. The trail is the proof.
+There is no orchestrator and no scoring rubric. The skills define the shape; the agent does the reasoning. The trail is the proof.
 
 ## Trail format
 

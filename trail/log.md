@@ -59,6 +59,52 @@ Files moved to `archive/v2/`:
 
 The TRAIL move required robocopy because git mv hit a Windows file lock; the rename was then staged with `git add -A`.
 
+---
+
+## 2026-04-28 — four-skill composable architecture
+
+- target: skills repo (this repo)
+- operator: maintainer (Nils Holmager)
+- agent: Claude Sonnet 4.6 (Anthropic, GitHub Copilot)
+- skill: improve (self-targeting)
+- outcome: two new skills added (Intent, Trail); Improve and Probe refactored to delegate; README updated
+- delta: v3.1.0 → v3.2.0 (live tree, not yet tagged)
+
+### Interpretation of the ask
+
+Operator's stated intent across this session: make the suite composable. Intent and Trail should be standalone skills a developer can install one at a time, starting with Intent alone and seeing immediate value. Improve and Probe should delegate to Intent and Trail rather than duplicating the behaviour. The entry point for a new user is Intent, not the whole suite.
+
+I interpreted this as: (1) create intent/SKILL.md and trail/SKILL.md in the repo, (2) refactor Improve step 1 and step 7 to delegate when those skills are installed, (3) refactor Probe step 5 to delegate when Trail is installed, (4) update the README to describe four skills and a composable installation model. I did not interpret it as permission to touch the PRINCIPLES.md, CONVERGENCE_SCOPE_PROTOCOL.md, or citation/DOI metadata.
+
+### Examination
+
+- **Inconsistency.** Improve step 1 was the Intent skill, written inline. Improve step 7 was the Trail skill, written inline. Probe step 5 was Trail, written inline again. The behaviour was defined in three places and could drift independently. The suite claimed "no orchestration" but its two skills were secretly orchestrating two undeclared sub-skills.
+- **Overburden.** Improve was doing three jobs: interpreting intent, examining/improving, and recording. Two of those are now separate skills.
+- **Waste.** None of the existing structure needed removal. The refactor was purely additive (new skill files) plus delegation wiring (three step replacements).
+
+[!REALIZATION] The trail/ directory already existed as the log location. Placing trail/SKILL.md there is intentional — the skill lives next to the data it writes, and an agent loading the skill has immediate access to the existing log.
+
+### Decision
+
+[!DECISION] Add Intent and Trail as first-class skills alongside Improve and Probe. Keep Improve and Probe fully functional as standalone skills by using "if X is installed, delegate; otherwise do it yourself" pattern — not hard dependencies.
+
+[!DECISION] README describes the composable installation progression: Intent alone → add Trail → add Improve → add Probe = full loop. This is the entry-point story for new users.
+
+### Action
+
+Files created:
+- `intent/SKILL.md` — new skill, maps to Commander's Intent principle.
+- `trail/SKILL.md` — new skill, maps to Observable Autonomy principle. Lives alongside trail/log.md.
+
+Files modified:
+- `improve/SKILL.md` — step 1 delegates to Intent; step 7 delegates to Trail; "What this skill does not do" updated; version 3.0.0 → 3.1.0.
+- `probe/SKILL.md` — step 5 delegates to Trail; version 3.0.0 → 3.1.0.
+- `README.md` — opening description, directory listing (added intent/, updated trail/), "Using the skills" section rewritten.
+
+### Reflection
+
+The loop is converging, not churning. The v3 redesign correctly identified the minimum — but the minimum turned out to be two skills short. Intent and Trail were always implicit in Improve and Probe; making them explicit is the right move. The next convergence run should evaluate whether the four-skill description in PRINCIPLES.md or CONVERGENCE_SCOPE_PROTOCOL.md needs updating to reflect the expanded scope.
+
 Verification: tree is internally consistent — `improve/SKILL.md`, `probe/SKILL.md`, `PRINCIPLES.md`, `trail/README.md`, `trail/log.md` all reference each other correctly; no stale references to v2 paths in the new files; v2 paths under archive/v2/ remain readable.
 
 ### Reflection
