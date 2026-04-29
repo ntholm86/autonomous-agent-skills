@@ -2,15 +2,19 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19842994.svg)](https://doi.org/10.5281/zenodo.19842994)
 
-Four composable skills that operationalize three principles for autonomous agents.
+An autonomous self-improving loop — and the four skills that power it. The loop has run on this repository dozens of times. Every iteration is recorded in `trail/log.md`. Three principles govern every run.
 
 > **This repository was previously named `kata`.** v1 and v2 of this suite used Toyota Production System vocabulary (Kata, Kaizen, Kaikaku, Hansei, Shiken, Kiroku). v3 dropped that vocabulary in favour of plain English. The repository was renamed `autonomous-agent-skills` at v3.2.0; GitHub redirects all old URLs automatically.
 
 ## What this is
 
-An implementation of the [autonomous-agent-principles](https://github.com/ntholm86/autonomous-agent-principles) governance framework. The principles come from that repo (CC BY-SA 4.0); this repo is one tool suite that operates under them (MIT).
+This repository is the loop it describes. An autonomous agent reads the skills, examines the target, decides what to change, makes the change, and records the reasoning — then the next run starts from that new state. The skills in this repo have been applied to this repo itself, repeatedly, under observation, until independent evaluators from three different model families found nothing left to change.
 
-The three principles, in 60 seconds:
+The four skills are both the tool and the proof of concept.
+
+This is one implementation of the [autonomous-agent-principles](https://github.com/ntholm86/autonomous-agent-principles) governance framework. The principles come from that repo (CC BY-SA 4.0); this repo is one tool suite that operates under them (MIT).
+
+The three principles that govern every iteration, in 60 seconds:
 
 1. **Commander's Intent** — define the destination, never prescribe the route. Agents reason about goals; they don't execute checklists.
 2. **Observable Autonomy** — every autonomous step produces a continuous, multi-resolution trail. If you can't see it, it shouldn't be doing it.
