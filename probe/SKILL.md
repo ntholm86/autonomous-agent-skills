@@ -13,7 +13,9 @@ This is the only skill in the suite that genuinely tests something external. Imp
 
 ## Governing principles
 
-Read [PRINCIPLES.md](../PRINCIPLES.md). Probe operationalizes the ARF (Autonomous Reasoning Fidelity) measurement defined there. In routine cases, situated reasoning and pattern-matching produce identical-looking trails. The distinguishing evidence emerges only under structured novelty.
+Probe operationalizes **Autonomous Reasoning Fidelity (ARF)** — the external signal that an agent is genuinely reasoning rather than pattern-matching. In routine cases, the two produce identical-looking trails. The distinguishing evidence emerges only under structured novelty.
+
+Full statement of the principles: [PRINCIPLES.md](../PRINCIPLES.md) — read it if available, but this skill operates fully without it.
 
 ## The work
 

@@ -25,6 +25,16 @@ Evidence → Trust → Autonomy
 
 One file: `trail/log.md`. Append-only. One `##` entry per session, newest at the bottom.
 
+If `trail/log.md` does not exist yet, create it now with this header before proceeding:
+
+```markdown
+# Trail log
+
+Append-only ledger of autonomous operations on this repo. Newest entries at the bottom.
+
+---
+```
+
 ```
 trail/
   log.md          — append-only ledger, one entry per session

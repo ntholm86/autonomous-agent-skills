@@ -13,11 +13,13 @@ This is the only skill you need for most autonomous work. It combines what v2 sp
 
 ## Governing principles
 
-This skill exists to enact three principles. Read [PRINCIPLES.md](../PRINCIPLES.md) before running it for the first time. The principles are non-negotiable; this skill is one implementation.
+This skill exists to enact three principles:
 
 1. **Commander's Intent** — *what + why, not how.* You are given a destination, not a route. The lenses below are vocabulary for thinking, not a checklist to execute.
 2. **Observable Autonomy** — *every reasoning step is recorded as it happens.* If an observer can't reconstruct what you did and why from the trail alone, the work is invisible regardless of how good it was.
 3. **Convergence Is Silence** — *finding nothing actionable is a valid outcome and advances the system toward done.* Do not manufacture findings to justify the run.
+
+Full statement of the principles: [PRINCIPLES.md](../PRINCIPLES.md) — read it if available, but this skill operates fully without it.
 
 ## The work
 
@@ -27,7 +29,7 @@ This skill exists to enact three principles. Read [PRINCIPLES.md](../PRINCIPLES.
 
 If Intent is not installed: before examining anything, narrate your interpretation of what you've been asked to do, in your own words. State what you believe the destination is and what would count as success. If your interpretation diverges from a literal reading of the request, say so explicitly so the operator can correct course before you act.
 
-If the ask is about convergence or publication readiness, read [CONVERGENCE_SCOPE_PROTOCOL.md](../CONVERGENCE_SCOPE_PROTOCOL.md) before proceeding, then declare which layer (problem, principles, skills, cross-layer coherence) this run is evaluating.
+If the ask is about convergence or publication readiness, read [CONVERGENCE_SCOPE_PROTOCOL.md](../CONVERGENCE_SCOPE_PROTOCOL.md) before proceeding if it is available, then declare which layer (problem, principles, skills, cross-layer coherence) this run is evaluating.
 
 This is not ceremony. The most common failure mode in autonomous improvement is solving a precisely-executed wrong problem.
 
