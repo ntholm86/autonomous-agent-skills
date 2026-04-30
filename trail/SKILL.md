@@ -1,6 +1,6 @@
 ---
 name: trail
-version: 1.3.0
+version: 1.4.0
 description: 'Evidence trail management. Append a structured entry to trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
@@ -32,9 +32,9 @@ Every repo gets its own trail. The trail is local evidence for that project — 
 
 One file: `trail/log.md` in the target repo root. Append-only. One `##` entry per session, newest at the bottom.
 
-If `trail/log.md` does not exist yet, initialise the trail now:
+If `trail/log.md` does not exist yet, initialise it:
 
-1. Create `trail/log.md` with this header:
+Create `trail/log.md` with this header:
 
 ```markdown
 # Trail log
@@ -44,25 +44,31 @@ Append-only ledger of autonomous operations on this repo. Newest entries at the 
 ---
 ```
 
-2. Copy `record.py` from the skills install directory (`tools/record.py` next to this SKILL.md) into `trail/record.py` in the target repo. This gives the project a self-contained history viewer — no dependency on the global skills install.
+That's it. Nothing else gets installed into the target repo. `record.py` lives in the skills install (`tools/record.py` next to this SKILL.md) and is invoked from there — it writes into the current working directory by default, or whatever `$TRAIL_ROOT` points to.
 
-After initialisation, the user can run `python trail/record.py history` from the repo root to see the improvement timeline.
-
-After every session that appends a new entry to `log.md`, also regenerate the committed history view:
+After every session that appends a new entry to `log.md`, regenerate the committed history view from the **target repo root**:
 
 ```
-python trail/record.py history --write
+python <skills>/tools/record.py history --write
 ```
 
-This writes `trail/history.md` — a markdown summary of all runs that renders cleanly on GitHub. Commit it alongside `log.md` so anyone viewing the repo can see the improvement record without running anything.
+Replace `<skills>` with the absolute path to the skills install (e.g. `~/.copilot/skills` or `%USERPROFILE%\.copilot\skills`). This writes `trail/history.md` in the current directory — a markdown summary of all runs that renders cleanly on GitHub. Commit it alongside `log.md`.
+
+For ad-hoc viewing in the terminal:
+
+```
+python <skills>/tools/record.py history    # timeline to stdout
+python <skills>/tools/record.py summary    # digest of the most recent run
+```
 
 ```
 trail/
   log.md          — append-only ledger, one entry per session (the source of truth)
   history.md      — auto-generated readable summary (regenerated each run)
-  record.py       — history/summary viewer (copied from skills tools/)
   sessions/       — optional: full verbatim transcripts, linked from log entries
 ```
+
+Both files are committed. `record.py` is **not** committed to the target repo — it stays in the skills install.
 
 Each entry in `log.md` follows this shape:
 

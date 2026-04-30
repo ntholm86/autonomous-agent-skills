@@ -73,22 +73,24 @@ All four skills work with only their own `SKILL.md`. No required sibling files.
 
 The trail is **per project**. It lives in the root of the repo being worked on — not inside `.copilot/skills/`.
 
-When the trail skill runs for the first time on a project it will:
-1. Create `<repo-root>/trail/log.md` (the append-only evidence log)
-2. Copy `record.py` from the skills install into `<repo-root>/trail/record.py`
+When the trail skill runs for the first time on a project it creates a single file:
+`<repo-root>/trail/log.md` (the append-only evidence log).
 
-After every run that adds an entry to `log.md`, regenerate the readable summary:
+Nothing else gets installed into the target repo. `record.py` stays in the skills install and is invoked from there — it writes into the current working directory by default, or whatever `$TRAIL_ROOT` points to.
+
+After every run that adds an entry to `log.md`, regenerate the readable summary **from the target repo root**:
 ```
-python trail/record.py history --write    # writes trail/history.md
+python <skills>/tools/record.py history --write    # writes trail/history.md
+```
+Replace `<skills>` with your skills install path (e.g. `~/.copilot/skills`).
+
+For ad-hoc viewing:
+```
+python <skills>/tools/record.py history    # timeline to stdout
+python <skills>/tools/record.py summary    # digest of the most recent run
 ```
 
-For ad-hoc viewing in the terminal:
-```
-python trail/record.py history    # timeline to stdout
-python trail/record.py summary    # digest of the most recent run
-```
-
-`trail/log.md` is the source of truth (append-only). `trail/history.md` is auto-generated and renders cleanly on GitHub. Commit both alongside your code.
+Commit `trail/log.md` and `trail/history.md`. **Do not** commit `record.py` to the target repo — it lives in the skills install only.
 
 ---
 

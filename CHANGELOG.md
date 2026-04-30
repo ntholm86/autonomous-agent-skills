@@ -1,5 +1,20 @@
 # Changelog
 
+## v3.5.0 — 2026-04-30
+
+### Changed
+- `tools/record.py` now resolves the trail root from `$TRAIL_ROOT` or current working directory — no longer from its own file location. The script stays in the skills install and writes to whatever target repo invokes it. **No more copying `record.py` into target repos.**
+- `trail/SKILL.md`: removed the "copy `record.py` into target repo" init step. Init now creates only `trail/log.md`. Documentation shows invoking `python <skills>/tools/record.py ...` from the target repo root.
+- `INSTALLING.md`: same simplification.
+
+### Rationale
+A `record.py` showing up in someone else's repo trail folder is noise that creates confusion ("what is this script doing in my repo?"). The skill should leave a minimum, legible footprint in the target repo: `log.md` and `history.md`, both human-readable, both committed. The tool that produces them belongs in the skills install.
+
+### Migration
+If an existing target repo has `trail/record.py`, delete it and `.gitignore` is unnecessary — just stop committing it. Existing `trail/log.md` and `trail/history.md` are unaffected.
+
+---
+
 ## v3.4.0 — 2026-04-30
 
 ### Added

@@ -19,11 +19,26 @@ from __future__ import annotations
 
 import argparse
 import datetime as _dt
+import os
 import re
 import sys
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+
+def _resolve_root() -> Path:
+    """Resolve the target repo root.
+
+    Order: $TRAIL_ROOT env var, else current working directory.
+    record.py lives in the skills install (read-only); it always writes
+    into the target repo, never into its own folder.
+    """
+    env = os.environ.get("TRAIL_ROOT")
+    if env:
+        return Path(env).resolve()
+    return Path.cwd().resolve()
+
+
+ROOT = _resolve_root()
 LOG = ROOT / "trail" / "log.md"
 
 ENTRY_HEADING = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s+[\u2014-]\s+(.+?)\s*$")
