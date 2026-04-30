@@ -96,7 +96,7 @@ If Trail is not installed: append a single entry to `trail/log.md`. The entry mu
 - Any reflection on the loop itself.
 - Marked moments: `[!DECISION]`, `[!REVERSAL]`, `[!REALIZATION]`.
 
-The format spec is in [trail/README.md](../trail/README.md). The script `tools/record.py` can stub a new entry for you.
+The format spec is in [trail/SKILL.md](../trail/SKILL.md). The script `<skills>/tools/record.py` can stub a new entry for you.
 
 ## Self-targeting
 

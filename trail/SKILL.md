@@ -224,8 +224,8 @@ If yes, the trail is sufficient. If no, something is missing.
 
 Trail works standalone. When Intent is also active, paste its narration verbatim into the "Interpretation of the ask" section of the log entry — this is how context carries across sessions. When Improve or Probe is also active, the log entry records what that skill examined and decided.
 
-The `tools/record.py` script can stub a new entry for you:
+The `<skills>/tools/record.py` script can stub a new entry for you:
 
 ```sh
-python tools/record.py new --slug=<slug> --target=<target> --skill=trail
+python <skills>/tools/record.py new --slug=<slug> --target=<target> --skill=trail
 ```

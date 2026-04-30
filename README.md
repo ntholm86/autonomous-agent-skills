@@ -76,8 +76,8 @@ python tools/verify.py
 
 **Append a trail entry:**
 ```bash
-python tools/record.py new --slug=my-operation --target=some-repo
-python tools/record.py summary
+python <skills>/tools/record.py new --slug=my-operation --target=some-repo
+python <skills>/tools/record.py summary
 ```
 
 **Version:** v3.6.0 (2026-04-30) — [CHANGELOG.md](./CHANGELOG.md)  

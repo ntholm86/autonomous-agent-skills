@@ -1525,3 +1525,45 @@ verify.py passes after change.
 ### Reflection
 
 The codebase is nearing convergence. Prior sessions addressed conceptual consistency (like defining convergence), but this run surfaced a mechanical inconsistency created by a recent refactor (v3.5.0). As architectural changes are made, documentation often lags. Addressing this makes the skills usable again for local installations.
+## 2026-04-30 — relative-path-inconsistencies
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Gemini 3.1 Pro)
+- skill: improve + intent
+- outcome: changed
+- delta: fixed broken link to format spec and invalid relative paths to record.py in documentation
+
+### Interpretation of the ask
+
+Run the full Improve loop on the repo using the convergence-loop prompt. Intent: find the highest-leverage remaining change that makes the skills more effective on any arbitrary codebase, or declare convergence if nothing remains. Constraints: generic first, no test infrastructure, human-readable, one change per run.
+
+### Examination
+
+**Inconsistency lens:** 
+1. improve/SKILL.md was telling users that the trail format spec is in [trail/README.md](../trail/README.md). This file is not copied down by users (it is the audit trail documentation of the *skills* repo itself), resulting in a dead link. The format spec was actually moved to 	rail/SKILL.md.
+2. 	rail/SKILL.md and README.md both instructed users to run python tools/record.py new ... to stub a new entry. Because users run these commands from *their* target repo root, not the .copilot/skills repo root, 	ools/record.py fails with a File Not Found error. In 3.5.0 the decision was made that <skills>/tools/record.py must stay inside the skills installation, yet parts of the documentation still assumed 	ools/ was located in the working directory.
+
+**Waste lens:** Nothing actionable.
+
+**Overburden lens:** Nothing actionable.
+
+**Challenge:** Are these mechanical documentation fixes hiding a deeper architectural issue? No. These are residual inconsistencies stemming from the 3.5.0 refactor (where ecord.py stopped being copied to target repos) and the 3.2.0 suite unbundling (where trail was separated into its own skill). Fixing these mechanical paths prevents user friction when adopting the V3 architecture on new codebases.
+
+### Decision
+
+[!DECISION] Update relative paths in improve/SKILL.md, 	rail/SKILL.md, and README.md to correct the dead format spec link and explicitly use <skills>/tools/record.py for commands meant to be run from target repos. 
+Alternatives ranked: (1) this change — directly fixes broken paths and commands that prevent users from utilizing the trail functionality properly; (2) change 	ools/verify.py as well — rejected, as verify is run against the skills repo itself so 	ools/verify.py is correct; (3) silence — rejected, as we found actionable misconfigurations.
+
+### Action
+
+- Modified improve/SKILL.md to point to [trail/SKILL.md](../trail/SKILL.md) for the format spec.
+- Modified improve/SKILL.md to reference <skills>/tools/record.py.
+- Modified 	rail/SKILL.md to change python tools/record.py new ... to python <skills>/tools/record.py new ....
+- Modified README.md to change python tools/record.py new ... and summary to python <skills>/tools/record.py ....
+
+verify.py passes after change.
+
+### Reflection
+
+This session caught follow-on bugs originating from the 3.5.0 architectural change. It reinforces that when we shift file boundaries (like deciding ecord.py should no longer exist relative to the target's .copilot folder), we must sweep text content for embedded assumptions. The loop is getting closer to convergence.

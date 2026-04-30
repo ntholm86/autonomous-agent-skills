@@ -41,6 +41,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 34 | 2026-04-30 | readme-goal-section | changed — added "The goal" section to README.md | README.md gains explicit statement of operator intent and verification philosophy |
 | ▸ 35 | 2026-04-30 | readme-stopped-to-converged | changed — "stopped" → "converged" in README opening paragraph | one word change; README opening now consistent with PRINCIPLES.md definition and Evidence section framing |
 | ▸ 36 | 2026-04-30 | install-instructions-missing-tools | changed | added \	ools/\ to README.md and INSTALLING.md copy instructions |
+| ▸ 37 | 2026-04-30 | relative-path-inconsistencies | changed | fixed broken link to format spec and invalid relative paths to record.py in documentation |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -201,4 +202,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Update \README.md\ and \INSTALLING.md\ to explicitly include \	ools/\ in the installation instructions. Alternatives ranked: (1) this change — fixes a broken workflow that violates Observable Autonomy due to missing tooling; (2) change \	rail/SKILL.md\ to make \	ools/\ an optional sibling file — rejected, trail requires history generation to fulfill multi-resolution observability; (3) silence — rejected, the local install instructions actively broke the workflow.
 
-**36 runs total — 26 with changes, 10 silence**
+### Run 37 — 2026-04-30 — relative-path-inconsistencies
+
+- **decided:** Update relative paths in improve/SKILL.md, 	rail/SKILL.md, and README.md to correct the dead format spec link and explicitly use <skills>/tools/record.py for commands meant to be run from target repos.
+
+**37 runs total — 27 with changes, 10 silence**
