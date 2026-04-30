@@ -28,7 +28,9 @@ See [INSTALLING.md](./INSTALLING.md) for setup details.
 
 No orchestrator. No scoring rubric. No human in the loop between iterations.
 
-Each run reads the complete trail of every prior decision before acting. That accumulated context is not a log — it is memory. The agent doesn't repeat the same analysis; it builds on what it already concluded, and challenges it. After enough iterations on this repo, it stopped making incremental fixes and proposed restructuring the suite entirely. Twice. Both times the reasoning was in the trail before any human saw it.
+Each run reads the complete trail of every prior decision before acting. That accumulated context is both log and memory. The agent doesn't repeat the same analysis; it builds on what it already concluded, and challenges it. After enough iterations on this repo, it stopped making incremental fixes and proposed restructuring the suite entirely. Twice. Both times the reasoning was in the trail before any human saw it.
+
+The reasoning itself follows the Improve skill's loop: interpret the ask, examine what's actually there (not what should be there), form a judgment, decide — or argue convincingly that nothing should change. Every step is made explicit. The agent names what it looked at, what each lens revealed, what it chose and why, and what it rejected. A decision without a rejected alternative isn't a decision — it's an output.
 
 Every decision, reversal, and dead end is recorded in `trail/log.md`. That file is the proof that the autonomy was real — not that it produced good outputs, but that the reasoning behind each output can be reconstructed, audited, and challenged by anyone who wasn't there.
 
