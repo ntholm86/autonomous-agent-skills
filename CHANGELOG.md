@@ -11,7 +11,7 @@
 A `record.py` showing up in someone else's repo trail folder is noise that creates confusion ("what is this script doing in my repo?"). The skill should leave a minimum, legible footprint in the target repo: `log.md` and `history.md`, both human-readable, both committed. The tool that produces them belongs in the skills install.
 
 ### Migration
-If an existing target repo has `trail/record.py`, delete it and `.gitignore` is unnecessary — just stop committing it. Existing `trail/log.md` and `trail/history.md` are unaffected.
+If an existing target repo has `trail/record.py`, simply `git rm` it — stop committing it going forward. Existing `trail/log.md` and `trail/history.md` are unaffected; regenerate `history.md` by invoking the skills-install copy from the target repo root.
 
 ---
 
@@ -49,6 +49,17 @@ If an existing target repo has `trail/record.py`, delete it and `.gitignore` is 
 
 ### Fixed
 - `trail/SKILL.md`: made trail location explicit — the `trail/` folder lives in the **root of the target repo**, not in the skills install directory. Previous wording was ambiguous and agents defaulted to writing the trail relative to themselves (the skills folder). Each repo now gets its own trail.
+
+---
+
+## v3.3.1 — 2026-04-29
+
+### Changed
+- `improve/SKILL.md`: principles inlined; `PRINCIPLES.md` and `CONVERGENCE_SCOPE_PROTOCOL.md` references changed to "if available".
+- `probe/SKILL.md`: ARF definition inlined; `PRINCIPLES.md` reference changed to "if available".
+- `trail/SKILL.md`: added self-init instruction — create `trail/log.md` if it does not exist.
+
+All four skills now operate correctly with only their own `SKILL.md` present — no required sibling files.
 
 ---
 
