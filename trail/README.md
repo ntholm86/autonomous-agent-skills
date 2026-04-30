@@ -22,14 +22,16 @@ grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/sessions/
 
 This returns every load-bearing turning point across all sessions, with file and line, in seconds. The markers are inserted by the operating agent during the session, in context, so the rationale lives one paragraph away rather than in a separately-curated index that can drift.
 
-## The two skills
+## The four skills
 
-The kata suite has two skills:
+The suite has four skills:
 
-- **improve** — examine a target, find what most needs changing, change it (or argue for radical redesign), verify, and record. Combines incremental refinement, structural rethinking, and reflection on the loop itself in a single skill.
+- **intent** — state the agent's interpretation of the ask before work begins. Catches misreading early.
+- **improve** — examine a target, find what most needs changing, change it (or argue for radical redesign), verify, and record. The core autonomous loop.
 - **probe** — construct a novelty probe (Shiken-style) that distinguishes genuine situated reasoning from pattern-matching against a checklist.
+- **trail** — append a structured evidence entry to `trail/log.md` after every session. Implements Observable Autonomy.
 
-Earlier versions of this suite (v1, v2) had more skills with Japanese vocabulary (Kata, Kaizen, Kaikaku, Hansei, Mura, Muri, Muda, Intent). v3 collapsed them into the two above. The full history is preserved in `archive/v2/` and the v2 tags.
+Earlier versions of this suite (v1, v2) had more skills with Japanese vocabulary (Kata, Kaizen, Kaikaku, Hansei, Mura, Muri, Muda, Intent). v3.0.0 collapsed them into two (improve and probe). v3.2.0 re-extracted intent and trail as standalone first-class skills. The full history is preserved in `archive/v2/` and the v2 tags.
 
 ## Fidelity levels
 

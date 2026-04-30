@@ -1319,3 +1319,45 @@ Validation:
 [!REALIZATION] The durable fix was split between code and data. The verifier was partly wrong, but the trail was also genuinely broken. Fixing only one side would have left the repo drifting.
 
 [!REALIZATION] Checking fenced code blocks as live markdown was too naive for this repo. Once the verifier stopped treating examples as content, the remaining failures were all real and actionable.
+
+## 2026-04-30 — trail-readme-skill-count
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: Claude Sonnet 4.6 (Anthropic / GitHub Copilot)
+- skill: improve
+- outcome: changed — corrected stale skill count in trail/README.md
+- delta: trail/README.md "The two skills" → "The four skills" (intent, improve, probe, trail)
+
+### Interpretation of the ask
+
+Full repo audit. User confirmed intent: skills must target any repo generically, no special self-targeting infrastructure. Find what is wrong with the repo as a generic consumer would encounter it.
+
+### Examination
+
+**Inconsistency lens:** `trail/README.md` had a section titled "The two skills" stating "The kata suite has two skills: improve and probe." Factually wrong since v3.2.0 (2026-04-28) when intent and trail were added as standalone skills. The paragraph also listed Intent as a v2 skill "collapsed" into v3's two — contradicting its current status as a first-class skill. This file is in REQUIRED_FILES and is the first README a user reads in the trail directory.
+
+**Waste lens:** Nothing actionable in the live tree. Archive files are intentionally preserved history.
+
+**Overburden lens:** Nothing actionable.
+
+Secondary finding (not actioned this run): `archive/OBSERVABLE-LOOPS.md` uses `./` relative links for `PRINCIPLES.md`, `trail/log.md`, `trail/README.md`, `tools/verify.py` — all should be `../` since the file is in `archive/`. Deferred: archive draft, not checked by verify.py, lower leverage than the required-file factual error.
+
+verify.py returned OK before and after the change.
+
+### Decision
+
+[!DECISION] Fix trail/README.md. Single highest-leverage change: a REQUIRED_FILE containing an actively false claim about the number of skills. A user reading trail/ directory would believe the suite is two skills and that Intent was retired. Both wrong.
+
+### Action
+
+Updated `trail/README.md`:
+- Section heading: "The two skills" → "The four skills"
+- Listed all four skills with accurate descriptions
+- Fixed "Earlier versions" paragraph: "v3 collapsed them into the two above" → "v3.0.0 collapsed them into two; v3.2.0 re-extracted intent and trail as standalone first-class skills"
+
+verify.py passes after change.
+
+### Reflection
+
+Loop is converging. This was a stale-content inconsistency introduced when v3.2.0 added the two new skills but trail/README.md was not updated. The verifier checks links and structure but not factual accuracy of prose — this class of drift requires a human or agent audit to catch. No churn observed.

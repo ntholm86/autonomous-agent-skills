@@ -36,6 +36,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 29 | 2026-04-30 | v3.3.2-trail-location-fix | trail SKILL.md location ambiguity fixed; v3.3.2 shipped | v3.3.1 -> v3.3.2 |
 | ▸ 30 | 2026-04-30 | readme-human-scan-and-user-direction | README tightened for human scanning; user-set direction made explicit | README wording only; no behavior change |
 | ▸ 31 | 2026-04-30 | verify-contract-and-trail-repair | verifier aligned with current repo contract; trail integrity restored | `tools/verify.py`, `improve/SKILL.md`, `CHANGELOG.md`, `trail/log.md`, `trail/history.md` |
+| ▸ 32 | 2026-04-30 | trail-readme-skill-count | changed — corrected stale skill count in trail/README.md | trail/README.md "The two skills" → "The four skills" (intent, improve, probe, trail) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -176,4 +177,8 @@ Do not edit by hand — re-run the command to refresh.
 - **decided:** Fix the verifier contract in code instead of restoring removed placeholder files. The repo truth lives in the current docs and changelog; the verifier must follow that truth.
 - **decided:** Repair the trail data rather than weakening the trail checks. The point of the verifier is to catch exactly this kind of drift.
 
-**31 runs total — 21 with changes, 10 silence**
+### Run 32 — 2026-04-30 — trail-readme-skill-count
+
+- **decided:** Fix trail/README.md. Single highest-leverage change: a REQUIRED_FILE containing an actively false claim about the number of skills. A user reading trail/ directory would believe the suite is two skills and that Intent was retired. Both wrong.
+
+**32 runs total — 22 with changes, 10 silence**
