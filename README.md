@@ -4,6 +4,12 @@
 
 Four skills that give any AI agent a complete improvement loop for any codebase: interpret the prompt, observe the target, find the highest-leverage change, make it, and record the evidence. The loop ran on this repository more than 100 times and restructured the suite twice. It stopped when three independent evaluators from distinct model families found nothing left to change. Guided by the [three principles](./PRINCIPLES.md).
 
+## The goal
+
+The skills are generic — they target any codebase. Applying them to this repository is not a special case; it is the verification mechanism. If the skills can make themselves better, the claim that they improve any codebase is grounded. If they can't, the claim is hollow.
+
+The destination is a skillset so well-crafted that any AI agent running it produces a better, more trustworthy improvement loop than it would without it. Done is not a feature list. Done is convergence: diverse, independent evaluators find nothing left to change. The [trail](./trail/log.md) is the running proof.
+
 ## The four skills
 
 | Skill | What it does |

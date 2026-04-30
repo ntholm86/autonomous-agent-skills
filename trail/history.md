@@ -38,6 +38,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 31 | 2026-04-30 | verify-contract-and-trail-repair | verifier aligned with current repo contract; trail integrity restored | `tools/verify.py`, `improve/SKILL.md`, `CHANGELOG.md`, `trail/log.md`, `trail/history.md` |
 | ▸ 32 | 2026-04-30 | trail-readme-skill-count | changed — corrected stale skill count in trail/README.md | trail/README.md "The two skills" → "The four skills" (intent, improve, probe, trail) |
 | ▸ 33 | 2026-04-30 | readme-title-and-hook | changed — README title and opening paragraph rewritten for first impression | README.md title "Skills" → "Autonomous Development Skills Suite"; opening paragraph now leads with what it does, proof, and stopping condition |
+| ▸ 34 | 2026-04-30 | readme-goal-section | changed — added "The goal" section to README.md | README.md gains explicit statement of operator intent and verification philosophy |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -186,4 +187,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Title + opening paragraph. Single incremental change. Ranked alternatives: (1) title fix only — would improve headline but not the hook; (2) restructure the whole page — overkill, structure is sound; (3) this change — highest leverage per word changed.
 
-**33 runs total — 23 with changes, 10 silence**
+### Run 34 — 2026-04-30 — readme-goal-section
+
+- **decided:** Add "The goal" section immediately after the opening paragraph. This is the highest-leverage single addition: it is the answer to the first question any new reader should ask, and without it the rest of the README reads as a feature description rather than a principled claim.
+
+**34 runs total — 24 with changes, 10 silence**

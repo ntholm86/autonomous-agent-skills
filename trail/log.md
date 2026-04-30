@@ -1402,3 +1402,52 @@ verify.py passes after change.
 ### Reflection
 
 Loop converging. Prior runs fixed structure and completeness; this run fixes the first impression. The title was the last major inconsistency with the citation record. No churn — this is not undoing anything from a prior run.
+
+## 2026-04-30 — readme-goal-section
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: Claude Sonnet 4.6 (Anthropic / GitHub Copilot)
+- skill: improve + intent
+- outcome: changed — added "The goal" section to README.md
+- delta: README.md gains explicit statement of operator intent and verification philosophy
+
+### Interpretation of the ask
+
+> [!IMPORTANT]
+> **This trail entry records the operator's stated intent for the entire project — not just this session. It is the most important entry in this log.**
+
+The operator confirmed the following interpretation as accurate and complete:
+
+The skills are generic tools. Applying them to this repo is not maintenance — it is the verification mechanism. If the skills cannot make themselves better, the claim that they improve any codebase is hollow. The destination is a skillset so well-crafted that any AI agent running it produces a better, more trustworthy improvement loop than it would without it. Done is convergence — diverse, independent evaluators find nothing left to change. The trail is the running proof.
+
+Constraints the operator has consistently enforced across all sessions:
+1. Generic first — no special treatment for this repo over any other target.
+2. No test infrastructure — the loop is the test; the trail is the evidence.
+3. Human-readable — if a reader doesn't recognise a term, it fails.
+4. One change per run, highest leverage, stated reason.
+5. Principles are architectural constraints, not guidelines. Violating them means the skill is broken.
+
+The operator explicitly stated: "this is extremely important — emphasize it."
+
+### Examination
+
+**Waste lens:** README did not state the goal of the project anywhere. A reader could understand what the skills do without understanding why this repo exists and what it is trying to prove. That gap means the most important context — that self-targeting is the verification mechanism, not a special case — was invisible.
+
+### Decision
+
+[!DECISION] Add "The goal" section immediately after the opening paragraph. This is the highest-leverage single addition: it is the answer to the first question any new reader should ask, and without it the rest of the README reads as a feature description rather than a principled claim.
+
+### Action
+
+Added `## The goal` section between opening paragraph and "The four skills":
+
+> The skills are generic — they target any codebase. Applying them to this repository is not a special case; it is the verification mechanism. If the skills can make themselves better, the claim that they improve any codebase is grounded. If they can't, the claim is hollow.
+>
+> The destination is a skillset so well-crafted that any AI agent running it produces a better, more trustworthy improvement loop than it would without it. Done is not a feature list. Done is convergence: diverse, independent evaluators find nothing left to change. The trail is the running proof.
+
+verify.py passes after change.
+
+### Reflection
+
+[!REALIZATION] This entry records the operator's intent not because the README lacked a goal section, but because the intent itself had never been formally committed to the trail. All prior sessions operated on this intent implicitly. Making it explicit and permanent in the trail is the correct place for it — the trail is the evidence layer, and the operator's intent is the most load-bearing piece of context in the entire system. Any future agent reading this log now has the destination stated directly, not inferred from patterns.
