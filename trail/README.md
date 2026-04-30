@@ -1,4 +1,4 @@
-﻿# Audit Trail: kata skills
+﻿# Audit Trail
 
 This directory is the audit trail for autonomous agent operations on this repository. It is the reference implementation of the [Observable Autonomy](../PRINCIPLES.md) principle's resolution requirement.
 

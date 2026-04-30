@@ -1772,3 +1772,39 @@ Alternative considered: also strip "kata skills" / "Shiken-style" v2 vocabulary 
 ### Reflection
 
 Seven consecutive iterations, every one a documentation drift finding. The pattern remains the same: when an architectural decision is made, references in surrounding documentation don't get swept. This iteration uncovered a finding in a file (`trail/README.md`) that hadn't been examined in the prior six iterations — silence cannot be declared without examining all live docs at least once. Two known-but-deferred items remain in `trail/README.md` (v2 vocabulary in title and skill descriptions). The next iteration will sweep those, then re-examine for silence.
+
+## 2026-04-30 — trail-readme-v2-vocabulary
+
+- target: trail/README.md
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve
+- outcome: one incremental change
+- delta: removed "kata skills" from H1 title — retired v2 vocabulary
+
+### Interpretation of the ask
+
+Run the autonomous improve loop on the skills repo itself until silence (zero actionable findings). Iteration 8. One change per run.
+
+### Examination
+
+`trail/README.md` re-read in full. Two v2 vocabulary items noted in Iteration 7's reflection:
+
+- **Inconsistency lens:** H1 title `# Audit Trail: kata skills` — "kata skills" was the v2 name for the suite, retired in v3.0.0. The v3 suite is named "Autonomous Development Skills Suite". A reader opening `trail/README.md` in a v3 install sees a title referring to a product that no longer exists by that name.
+- **Inconsistency lens (secondary):** probe skill description contains "(Shiken-style)" — v2 jargon from the Japanese vocabulary layer that v3 retired. Ranked below the title: it is a parenthetical in a paragraph, not the first line. Deferred to Iteration 9.
+- **Waste, Overburden:** Nothing actionable.
+
+### Decision
+
+[!DECISION] Remove "kata skills" subtitle from the H1. Change to `# Audit Trail` — accurate and version-stable without referencing a retired name.
+Rationale: title is the highest-visibility element; a confused reader who sees a v2 name in a v3 context may assume they have the wrong file or wrong version. The "Shiken-style" item is a parenthetical in a paragraph — deferred per one-change-per-iteration protocol.
+Alternative considered: rename to `# Audit Trail: autonomous-agent-skills` — rejected, adds a specific repo name that would need updating if the suite is forked or renamed.
+
+### Action
+
+Changed `# Audit Trail: kata skills` to `# Audit Trail` in `trail/README.md`.
+Ran `python verify.py` → OK.
+
+### Reflection
+
+Eight consecutive iterations, all documentation drift. One known item remains in `trail/README.md` ("Shiken-style" in probe description). If that is the only finding in Iteration 9, fixing it would clear the last known residue of v2 vocabulary in the live docs, making Iteration 10 the first plausible silence run for Claude Sonnet 4.6.
