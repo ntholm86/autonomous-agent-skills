@@ -112,7 +112,7 @@ python tools/record.py summary
 - Cross-layer coherence: a fourth evaluation found no contradiction between the problem artifact, principles artifact, and skills.
 - All four results are recorded in [trail/log.md](./trail/log.md).
 
-**Future direction:** [OBSERVABLE-LOOPS.md](./OBSERVABLE-LOOPS.md) is a draft packaging contract that would make any Observable Loop portable across runtimes and verifiable by CI — the trail-mandatory, cross-family-evaluator model as a standard format. Draft only; no runtime conforms to it yet.
+**Future direction:** [archive/OBSERVABLE-LOOPS.md](./archive/OBSERVABLE-LOOPS.md) is a draft packaging contract that would make any Observable Loop portable across runtimes and verifiable by CI — the trail-mandatory, cross-family-evaluator model as a standard format. Draft only; no runtime conforms to it yet.
 
 ## License
 
