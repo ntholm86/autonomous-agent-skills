@@ -92,6 +92,18 @@ python <skills>/tools/record.py summary    # digest of the most recent run
 
 Commit `trail/log.md` and `trail/history.md`. **Do not** commit `record.py` to the target repo — it lives in the skills install only.
 
+### Multi-iteration runs
+
+Each iteration is a separate trail entry. The commit sequence is:
+
+```
+iteration 1 → append trail entry → record.py history --write → commit
+iteration 2 → append trail entry → record.py history --write → commit
+...
+```
+
+Append and commit **before** starting the next iteration. A partial run (agent crashes, user stops at iteration 4 of 10) must produce partial trail — batch writing at the end of all iterations defeats the purpose.
+
 ---
 
 ## Using a skill

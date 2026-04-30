@@ -107,11 +107,21 @@ python tools/record.py summary
 
 ## Versioning and convergence
 
-**Converged.** v3.1.0 (2026-04-24) is the first release with full convergence evidence.
+**Current version: v3.6.0** (2026-04-30). Skills are actively maintained; see [CHANGELOG.md](./CHANGELOG.md) for the full history.
+
+**Convergence baseline: v3.1.0** (2026-04-24) is the last release with full convergence evidence.
 
 - Skills convergence: three independent silence runs from distinct model families — Anthropic (Claude Sonnet 4.6), xAI/Grok, Google/Gemini — each applied cold to the live tree. No material changes proposed.
 - Cross-layer coherence: a fourth evaluation found no contradiction between the problem artifact, principles artifact, and skills.
 - All four results are recorded in [trail/log.md](./trail/log.md).
+
+Post-v3.1.0 changes (v3.2.0 – v3.6.0) are additive or clarifying. Notable changes since the convergence baseline:
+
+- **v3.2.0**: Intent and Trail promoted to standalone first-class skills.
+- **v3.3.x**: Trail location made explicit (target repo root); `INSTALLING.md` rewritten; skills made self-contained (no required sibling files).
+- **v3.4.0**: `record.py history --write` produces `trail/history.md` as a committed artifact.
+- **v3.5.0**: `record.py` no longer copied into target repos — stays in the skills install.
+- **v3.6.0**: Multi-iteration trail protocol: each iteration is a separate trail entry committed before the next iteration begins.
 
 Convergence claims in this repo are scope-bound by [CONVERGENCE_SCOPE_PROTOCOL.md](./CONVERGENCE_SCOPE_PROTOCOL.md). Evaluators should treat that file as mandatory pre-read during Grasp for convergence runs, and read the current chain from [trail/log.md](./trail/log.md).
 

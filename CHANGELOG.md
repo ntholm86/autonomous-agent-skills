@@ -1,5 +1,16 @@
 # Changelog
 
+## v3.6.0 — 2026-04-30
+
+### Changed
+- `trail/SKILL.md` v1.5.0: added `### Multi-iteration runs` protocol under "When to write an entry". Each iteration is a separate trail entry appended and committed **before** the next iteration begins. A partial run must produce partial trail — batch writing at end-of-session is now an explicit violation.
+- `improve/SKILL.md` v3.2.0: step 7 "Record" now opens with the multi-iteration requirement. A user who stops a 10-iteration run after iteration 4 must have 4 committed trail entries, not 0.
+
+### Rationale
+The per-iteration commit requirement was always implied by "write during the session, not after" but never stated as a structural rule. This session produced evidence that an agent will batch-write at the end unless the rule is explicit: three trail entries written in a single block at session end, rather than one per iteration. The fix makes the checkpoint sequence (`iteration → append entry → record.py history --write → commit`) a first-class part of both skills.
+
+---
+
 ## v3.5.0 — 2026-04-30
 
 ### Changed
