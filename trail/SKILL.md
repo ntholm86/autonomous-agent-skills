@@ -46,13 +46,21 @@ Append-only ledger of autonomous operations on this repo. Newest entries at the 
 
 That's it. Nothing else gets installed into the target repo. `record.py` lives in the skills install (`tools/record.py` next to this SKILL.md) and is invoked from there — it writes into the current working directory by default, or whatever `$TRAIL_ROOT` points to.
 
-After every session that appends a new entry to `log.md`, regenerate the committed history view from the **target repo root**:
+After appending to `log.md`, two more steps are **mandatory before the next iteration begins**:
 
+**Step 1 — regenerate history** (from the target repo root):
 ```
 python <skills>/tools/record.py history --write
 ```
+Replace `<skills>` with the absolute path to the skills install (e.g. `~/.copilot/skills` or `%USERPROFILE%\.copilot\skills`). This writes `trail/history.md` — a readable summary of all runs. Do not skip this step.
 
-Replace `<skills>` with the absolute path to the skills install (e.g. `~/.copilot/skills` or `%USERPROFILE%\.copilot\skills`). This writes `trail/history.md` in the current directory — a markdown summary of all runs that renders cleanly on GitHub. Commit it alongside `log.md`.
+**Step 2 — commit both files**:
+```
+git add trail/log.md trail/history.md
+git commit -m "trail: <slug>"
+```
+
+Both `log.md` and `history.md` must be committed together. `history.md` is generated from `log.md` — if only one is committed they will diverge.
 
 For ad-hoc viewing in the terminal:
 
@@ -173,15 +181,24 @@ Write during the session, not after. A trail written from memory compresses and 
 
 Do not buffer entries to write at the end of all iterations. The trail is the checkpoint: if the agent crashes, times out, or the user stops the run after iteration 3 of 10, the first 3 entries must already be committed to `log.md`.
 
-The commit sequence for a multi-iteration run is:
+The mandatory sequence per iteration:
 
 ```
-iteration 1 → append trail entry 1 → run: record.py history --write → commit
-iteration 2 → append trail entry 2 → run: record.py history --write → commit
+iteration 1:
+  1. append entry to trail/log.md
+  2. python <skills>/tools/record.py history --write   ← updates trail/history.md
+  3. git add trail/log.md trail/history.md && git commit -m "trail: <slug>-1"
+  ↓ only now begin iteration 2
+
+iteration 2:
+  1. append entry to trail/log.md
+  2. python <skills>/tools/record.py history --write
+  3. git add trail/log.md trail/history.md && git commit -m "trail: <slug>-2"
+  ↓ only now begin iteration 3
 ...
 ```
 
-Each trail append + history regeneration is a Git checkpoint. A partial run is recoverable; a batch write at the end is not.
+Do not begin the next iteration until steps 1–3 are complete. Each commit is a checkpoint — if the agent crashes or the user stops after iteration 3 of 10, the first 3 entries are already committed in both files. Batching at the end defeats this.
 
 ---
 
