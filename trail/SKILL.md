@@ -138,7 +138,7 @@ they bind the suite to one OS for no reason a few hundred lines of Python won't 
 To find every load-bearing decision across all sessions:
 
 ```sh
-grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/sessions/
+grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/
 ```
 
 ---

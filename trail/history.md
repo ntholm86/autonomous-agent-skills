@@ -46,6 +46,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 39 | 2026-04-30 | probe-unexplained-v2-jargon | one incremental change | replaced "(Tier 1)" jargon with an explanation readable without v2 knowledge |
 | ▸ 40 | 2026-04-30 | remove-verify-from-export | one incremental change | moved verify.py out of the exportable tools/ config directory |
 | ▸ 41 | 2026-04-30 | changelog-version-drift | one incremental change | added v3.6.1 entry to CHANGELOG.md; bumped version string in README.md |
+| ▸ 42 | 2026-04-30 | indexed-marker-grep-path | one incremental change | fixed broken grep command path in indexed-marker recovery instructions |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -227,4 +228,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Add a v3.6.1 entry to CHANGELOG.md summarising all five fixes from Iterations 1–5, and bump the version string in README.md to match.
 
-**41 runs total — 31 with changes, 10 silence**
+### Run 42 — 2026-04-30 — indexed-marker-grep-path
+
+- **decided:** Change the grep target from `trail/sessions/` to `trail/` in both files. This covers `log.md` (where markers actually live) and `sessions/*.md` (if the optional layer is in use).
+
+**42 runs total — 32 with changes, 10 silence**

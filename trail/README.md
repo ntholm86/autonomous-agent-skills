@@ -9,7 +9,7 @@ The manifesto's `PRINCIPLES.md` requires that evidence exist at three resolution
 | Resolution | Where it lives | Time budget | Answers |
 |---|---|---|---|
 | **Digest** | `log.md` | 30–60 seconds | Where is this going? What just happened? |
-| **Indexed** | `[!DECISION]`, `[!REALIZATION]`, `[!REVERSAL]` markers inside `sessions/*.md` | minutes | What was decided, when, and why? |
+| **Indexed** | `[!DECISION]`, `[!REALIZATION]`, `[!REVERSAL]` markers inside `log.md` (and `sessions/*.md` if used) | minutes | What was decided, when, and why? |
 | **Full** | `sessions/*.md` | hours | The complete reasoning exchange — prompts, responses, dead ends, reversals |
 
 ### Reading the indexed layer
@@ -17,7 +17,7 @@ The manifesto's `PRINCIPLES.md` requires that evidence exist at three resolution
 The indexed layer is recovered by grep, not by a separate file. From the repo root:
 
 ```sh
-grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/sessions/
+grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/
 ```
 
 This returns every load-bearing turning point across all sessions, with file and line, in seconds. The markers are inserted by the operating agent during the session, in context, so the rationale lives one paragraph away rather than in a separately-curated index that can drift.

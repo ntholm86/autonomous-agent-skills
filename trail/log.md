@@ -1728,3 +1728,47 @@ Alternative considered: declare silence, treat CHANGELOG as operator-managed —
 ### Reflection
 
 Six consecutive iterations, all documentation drift. The pattern is remarkably consistent: every finding has been a reference that wasn't updated when the thing it referred to changed. The loop appears to be in late-stage convergence — each finding requires deeper reading to uncover. The next iteration is a strong candidate for first silence. If silence is achieved, this would be the first Claude Sonnet 4.6 silence run on the v3.6.x iteration of the repo.
+
+## 2026-04-30 — indexed-marker-grep-path
+
+- target: trail/README.md, trail/SKILL.md
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve
+- outcome: one incremental change
+- delta: fixed broken grep command path in indexed-marker recovery instructions
+
+### Interpretation of the ask
+
+Run the autonomous improve loop on the skills repo itself until silence (zero actionable findings). Iteration 7. One change per run.
+
+### Examination
+
+This iteration extended examination to `trail/README.md`, which had not been read yet this session.
+
+- **Inconsistency lens:** Both `trail/README.md` and `trail/SKILL.md` document the same recovery command for indexed markers:
+  ```
+  grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' trail/sessions/
+  ```
+  But our actual practice — and what `trail/SKILL.md` itself states elsewhere ("Insert these inline wherever they occur — inside any section") — places the markers in `trail/log.md`. The current `log.md` contains dozens of `[!DECISION]` markers; `trail/sessions/` contains exactly one file. A user following the documented command would get near-zero results despite the abundance of markers. This is a functional bug, not just stale wording.
+
+  Additional inconsistency in `trail/README.md`: title still reads "Audit Trail: kata skills" (v2 vocabulary); description of probe still says "Shiken-style" (v2 jargon). Noted but ranked below the broken grep — those are wording issues, this is a broken instruction.
+
+- **Waste lens:** Nothing actionable.
+- **Overburden lens:** Nothing actionable.
+
+### Decision
+
+[!DECISION] Change the grep target from `trail/sessions/` to `trail/` in both files. This covers `log.md` (where markers actually live) and `sessions/*.md` (if the optional layer is in use).
+Rationale: this is a functional bug — the documented recovery procedure does not work. Higher leverage than fixing the v2 vocabulary in the same file, which is cosmetic.
+Alternative considered: also strip "kata skills" / "Shiken-style" v2 vocabulary in the same edit — rejected, one change per iteration. Logged for future iterations.
+
+### Action
+
+1. Edited `trail/README.md`: changed grep path from `trail/sessions/` to `trail/`; updated the resolutions table to clarify markers live in `log.md` (and `sessions/*.md` if used).
+2. Edited `trail/SKILL.md`: same grep path fix.
+3. Ran `python verify.py` → OK.
+
+### Reflection
+
+Seven consecutive iterations, every one a documentation drift finding. The pattern remains the same: when an architectural decision is made, references in surrounding documentation don't get swept. This iteration uncovered a finding in a file (`trail/README.md`) that hadn't been examined in the prior six iterations — silence cannot be declared without examining all live docs at least once. Two known-but-deferred items remain in `trail/README.md` (v2 vocabulary in title and skill descriptions). The next iteration will sweep those, then re-examine for silence.
