@@ -6,9 +6,9 @@ Four skills that give any AI agent a complete improvement loop for any codebase:
 
 ## The goal
 
-The skills are generic — they target any codebase. Applying them to this repository is not a special case; it is the verification mechanism. If the skills can make themselves better, the claim that they improve any codebase is grounded. If they can't, the claim is hollow.
+The skills work on any codebase. Running them on this one isn't a special case — it's the test. If the loop can't improve itself, the claim that it improves anything else is empty.
 
-The destination is a skillset so well-crafted that any AI agent running it produces a better, more trustworthy improvement loop than it would without it. Done is not a feature list. Done is convergence: diverse, independent evaluators find nothing left to change. The [trail](./trail/log.md) is the running proof.
+Done means three independent evaluators from distinct model families find nothing left to change. Not a score. Not a checklist. The [trail](./trail/log.md) records every run that got there.
 
 ## The four skills
 
