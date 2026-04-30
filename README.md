@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19842994.svg)](https://doi.org/10.5281/zenodo.19842994)
 
-Four skills that give any AI agent a complete improvement loop for any codebase: interpret the prompt, observe the target, find the highest-leverage change, make it, and record the evidence. The loop ran on this repository more than 100 times and restructured the suite twice. It stopped when three independent evaluators from distinct model families found nothing left to change.
+Four skills that give any AI agent a complete improvement loop for any codebase: interpret the prompt, observe the target, find the highest-leverage change, make it, and record the evidence. The loop ran on this repository more than 100 times and restructured the suite twice. It stopped when three independent evaluators from distinct model families found nothing left to change. Guided by the [three principles](./PRINCIPLES.md).
 
 ## The four skills
 
