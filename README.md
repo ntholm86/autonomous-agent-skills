@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19842994.svg)](https://doi.org/10.5281/zenodo.19842994)
 
-An autonomous improvement loop — and the four skills that power it. The loop has run more than 100 times on this repository, understanding its own mechanics, deciding how to improve it — with the [three principles](./PRINCIPLES.md) as the requirements. During the process, it decided on its own to refactor itself, twice.
+An autonomous improvement loop — and the four skills that power it. The loop can target any codebase and has run more than 100 times on this repository, understanding its own mechanics, deciding how to improve it — with the [three principles](./PRINCIPLES.md) as the requirements. During the process, it decided on its own to refactor itself, twice.
 
 ## The four skills
 
@@ -10,7 +10,7 @@ An autonomous improvement loop — and the four skills that power it. The loop h
 |---|---|
 | **[Intent](./intent/SKILL.md)** | Surfaces the agent's interpretation of the ask *before* any work begins. Catches misreading at the cheapest moment. Start here. |
 | **[Improve](./improve/SKILL.md)** | Examine, decide, change, verify, record — or argue convincingly that nothing should change. The core autonomous loop. |
-| **[Probe](./probe/SKILL.md)** | Constructs two cases that look similar but differ materially. If the agent's response doesn't diverge where it should, you have evidence of pattern-matching, not reasoning. Measures [Autonomous Reasoning Fidelity (ARF)](https://github.com/ntholm86/autonomous-agent-principles). |
+| **[Probe](./probe/SKILL.md)** | Constructs two cases that look similar but differ materially. If the agent's response doesn't diverge where it should, you have evidence of pattern-matching, not reasoning. Measures [Autonomous Reasoning Fidelity (ARF)](./PRINCIPLES.md). |
 | **[Trail](./trail/SKILL.md)** | Appends a structured entry to `trail/log.md` after every session. Knowledge accumulates; each run reads all prior decisions before acting. |
 
 Each skill is standalone. Install only what you need. Any combination works.
@@ -26,9 +26,11 @@ See [INSTALLING.md](./INSTALLING.md) for setup details.
 
 ## How it works
 
-No code to run, no orchestrator, no scoring rubric. The skills define the shape; the agent does the reasoning. The trail is the proof.
+No orchestrator. No scoring rubric. No human in the loop between iterations.
 
-Each run reads the full trail of prior iterations before acting — that accumulated reflection is what surfaced the need for structural change rather than incremental improvement. Every iteration is recorded in `trail/log.md` including the reasoning behind every autonomous decision. Earlier iterations are preserved in `archive/v2/`.
+Each run reads the complete trail of every prior decision before acting. That accumulated context is not a log — it is memory. The agent doesn't repeat the same analysis; it builds on what it already concluded, and challenges it. After enough iterations on this repo, it stopped making incremental fixes and proposed restructuring the suite entirely. Twice. Both times the reasoning was in the trail before any human saw it.
+
+Every decision, reversal, and dead end is recorded in `trail/log.md`. That file is the proof that the autonomy was real — not that it produced good outputs, but that the reasoning behind each output can be reconstructed, audited, and challenged by anyone who wasn't there.
 
 ## The three principles
 
