@@ -52,7 +52,6 @@ your-repo/
         SKILL.md
       tools/
         record.py
-        verify.py
 ```
 
 Optionally copy `PRINCIPLES.md` next to the skill folders — the skills reference it but work fully without it (the principles are inlined in each SKILL.md).

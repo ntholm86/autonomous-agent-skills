@@ -1651,3 +1651,43 @@ With:
 ### Reflection
 
 Four consecutive iterations have found and fixed documentation drift: missing install entries, stale path prefixes, a ghost file reference, and now unexplained jargon from a retired architecture. All four findings share the same pattern: when architectural decisions are made, their vocabulary (file names, path conventions, tier names) leaves residue in surrounding text that doesn't get swept at the time. The loop is converging — each finding is narrower in scope than the last. The next run may achieve silence.
+
+## 2026-04-30 — remove-verify-from-export
+
+- target: INSTALLING.md, verify.py
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve, trail
+- outcome: one incremental change
+- delta: moved verify.py out of the exportable tools/ config directory
+
+### Interpretation of the ask
+
+Run the autonomous improve loop on the skills repo itself until silence (zero actionable findings) or the agent cannot advance. Iteration 5. One change per run.
+
+### Examination
+
+All four SKILL.md files, INSTALLING.md, README.md, and `tools/verify.py` re-read in full this iteration.
+
+- **Inconsistency lens:** Iteration 1 instructed users to export the `tools/` folder. This caused them to export both `record.py` (which they need) and `verify.py` (which they don't). Worse, `verify.py` is hard-coded to check the internal structure of the `autonomous-agent-skills` repository, so running it inside an exported target repo fails unconditionally. It looks for files like `README.md` and `CHANGELOG.md` that are intentionally NOT exported. `INSTALLING.md` explicitly lists it in the full-install tree.
+- **Waste lens:** Distributing `verify.py` to users' target repositories serves no purpose.
+
+### Decision
+
+[!DECISION] Move `verify.py` from `tools/` into the repo root (`verify.py`), and remove it from `INSTALLING.md`'s exported full-install tree.
+Rationale: `verify.py` is an internal CI/CD script for the skills repo itself, not an end-user utility. It was mistakenly placed in `tools/` alongside `record.py`. Moving it prevents it from being copied via `cp -r tools/` and removes broken tools from users' repos.
+Alternative considered: Rewrite `verify.py` so it works dynamically depending on whether it's run in the skills repo or a target repo — rejected. Target repos shouldn't need a static script checking standard file locations; their CI should do that.
+
+[!REVERSAL] Reverses the portion of Iteration 1's decision that implicitly told users to copy `verify.py` by grouping it in the `tools/` directory export. 
+
+### Action
+
+1. `mv tools/verify.py verify.py`
+2. Edited `verify.py`'s internal path resolution (`ROOT = Path(__file__).resolve().parent`)
+3. Removed `verify.py` from `INSTALLING.md`'s "Full install" diagram
+4. Updated `README.md` to reference `python verify.py` instead of `python tools/verify.py`.
+5. Ran `python verify.py` successfully.
+
+### Reflection
+
+This completes the sweep of errors caused by the v3.5.0 extraction of tools. Breaking changes to script paths often reveal themselves in layers: first, we fixed the paths in instructions, and now we fixed the taxonomy of the files themselves (exportable vs internal tools). This loop has driven structural cleanup of the repo. We will check for convergence in Iteration 6.

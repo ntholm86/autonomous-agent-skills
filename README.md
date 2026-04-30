@@ -71,7 +71,7 @@ All runs are recorded in [trail/log.md](./trail/log.md). Earlier iterations in `
 
 **Verify integrity:**
 ```bash
-python tools/verify.py
+python verify.py
 ```
 
 **Append a trail entry:**

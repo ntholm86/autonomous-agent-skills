@@ -44,6 +44,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 37 | 2026-04-30 | relative-path-inconsistencies | changed | fixed broken link to format spec and invalid relative paths to record.py in documentation |
 | ▸ 38 | 2026-04-30 | ghost-protocol-reference | changed | removed references to nonexistent CONVERGENCE_SCOPE_PROTOCOL.md from INSTALLING.md and improve/SKILL.md |
 | ▸ 39 | 2026-04-30 | probe-unexplained-v2-jargon | one incremental change | replaced "(Tier 1)" jargon with an explanation readable without v2 knowledge |
+| ▸ 40 | 2026-04-30 | remove-verify-from-export | one incremental change | moved verify.py out of the exportable tools/ config directory |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -216,4 +217,9 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Remove the unexplained v2 jargon and replace with a self-contained explanation of the failure mode being avoided. The functional claim of the sentence is preserved; the opaque reference is eliminated.
 
-**39 runs total — 29 with changes, 10 silence**
+### Run 40 — 2026-04-30 — remove-verify-from-export
+
+- **decided:** Move `verify.py` from `tools/` into the repo root (`verify.py`), and remove it from `INSTALLING.md`'s exported full-install tree.
+- **REVERSAL:** Reverses the portion of Iteration 1's decision that implicitly told users to copy `verify.py` by grouping it in the `tools/` directory export.
+
+**40 runs total — 30 with changes, 10 silence**
