@@ -34,15 +34,17 @@ The reasoning follows a specific sequence, drawn from Toyota Production System (
 
 **Intent first.** Before touching anything, the agent applies Commander's Intent in reverse — decoding what the human actually wants, not what they literally wrote. It names the interpretation and one rejected alternative, Coaching Kata style: what is the target condition, what is the actual condition, what is in the way. The user sees the interpretation before work begins and can correct it at zero cost.
 
+> [!IMPORTANT]
+> **[Commander's Intent](./PRINCIPLES.md), Principle 1** — define the destination, never prescribe the route. The Intent skill operationalizes this in reverse: decode the human's goal before touching anything.
+
 **Then Genba** — go to where the work is. Read the actual code, the actual trail, the actual output. Not a summary, not an assumption. The agent forms its model from what is there, not what should be there.
 
 **Then the three TPS lenses:** **Waste** (what carries no value), **Overburden** (what is asked to do too much), **Inconsistency** (where the target contradicts itself). Applied as thinking tools, not a checklist — and only the ones the target invites.
 
 **Then Hansei** — structured reflection after acting. This includes reading the full list of prior iterations in the trail — not to repeat them, but to evaluate whether the loop is converging or drifting. Did this run move toward the target condition or away from it? What should the next run look at? Every decision names what was rejected and why. A decision without a rejected alternative isn't a decision — it's an output.
 
-> Every decision, reversal, and dead end is recorded in `trail/log.md`. That file is the proof that the autonomy was real — not that it produced good outputs, but that the reasoning behind each output can be reconstructed, audited, and challenged by anyone who wasn't there.
->
-> — [Observable Autonomy](./PRINCIPLES.md), Principle 2
+> [!IMPORTANT]
+> **[Observable Autonomy](./PRINCIPLES.md), Principle 2** — every autonomous step produces a continuous trail. Every decision, reversal, and dead end is recorded in `trail/log.md`. That file is the proof: the reasoning behind each output can be reconstructed, audited, and challenged by anyone who wasn't there.
 
 ## The three principles
 
@@ -57,6 +59,9 @@ Full statement: [PRINCIPLES.md](./PRINCIPLES.md).
 ## Evidence
 
 This repository is the loop it describes. Applied to itself, 100+ times, until three independent evaluators from distinct model families — Anthropic (Claude Sonnet 4.6), xAI/Grok, Google/Gemini — found nothing left to change. That is the convergence baseline at v3.1.0 (2026-04-24).
+
+> [!IMPORTANT]
+> **[Convergence Is Silence](./PRINCIPLES.md), Principle 3** — convergence requires silence from evaluators that don't share the same training, reasoning patterns, or failure modes. One model's silence is not convergence.
 
 All runs are recorded in [trail/log.md](./trail/log.md). Earlier iterations in `archive/v2/`.
 
