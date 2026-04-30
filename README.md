@@ -10,7 +10,7 @@ An autonomous improvement loop — and the four skills that power it. The loop h
 |---|---|
 | **[Intent](./intent/SKILL.md)** | Surfaces the agent's interpretation of the ask *before* any work begins. Catches misreading at the cheapest moment. Start here. |
 | **[Improve](./improve/SKILL.md)** | Examine, decide, change, verify, record — or argue convincingly that nothing should change. The core autonomous loop. |
-| **[Probe](./probe/SKILL.md)** | Constructs two cases that look similar but differ materially. If the agent's response doesn't diverge where it should, you have evidence of pattern-matching, not reasoning. |
+| **[Probe](./probe/SKILL.md)** | Constructs two cases that look similar but differ materially. If the agent's response doesn't diverge where it should, you have evidence of pattern-matching, not reasoning. Measures [Autonomous Reasoning Fidelity (ARF)](https://github.com/ntholm86/autonomous-agent-principles). |
 | **[Trail](./trail/SKILL.md)** | Appends a structured entry to `trail/log.md` after every session. Knowledge accumulates; each run reads all prior decisions before acting. |
 
 Each skill is standalone. Install only what you need. Any combination works.
