@@ -119,7 +119,7 @@ All four skills now operate correctly with only their own `SKILL.md` present —
 
 ## v3.0.0 — 2026-04-23 (branch `v3-redesign`)
 
-Radical redesign. See [REDESIGN.md](./REDESIGN.md) for the full rationale.
+Radical redesign. See [trail/log.md](./trail/log.md) for the rationale and decision trail.
 
 ### Changed
 - Skill count reduced from 6 to 2: `improve` (Kaizen + Kaikaku + Hansei + Intent + Kata) and `probe` (Shiken).

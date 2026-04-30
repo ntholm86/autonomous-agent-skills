@@ -11,8 +11,7 @@ Checks:
 4. Every entry contains the mandatory metadata fields: target, agent, skill, outcome.
 5. No U+FFFD replacement characters (mojibake) anywhere in the live tree
     (excludes archive/).
-6. PRINCIPLES.md, REDESIGN.md, CONVERGENCE_SCOPE_PROTOCOL.md, improve/SKILL.md,
-    probe/SKILL.md, trail/README.md, trail/log.md all exist.
+6. Live repo files that current docs depend on exist.
 7. Required markdown docs do not contain duplicate H1 headings, and their local
     markdown links resolve.
 
@@ -28,12 +27,13 @@ ROOT = Path(__file__).resolve().parent.parent
 LOG = ROOT / "trail" / "log.md"
 
 REQUIRED_FILES = [
-    "PRINCIPLES.md",
-    "REDESIGN.md",
-    "CONVERGENCE_SCOPE_PROTOCOL.md",
     "README.md",
+    "CHANGELOG.md",
+    "INSTALLING.md",
     "improve/SKILL.md",
     "probe/SKILL.md",
+    "intent/SKILL.md",
+    "trail/SKILL.md",
     "trail/README.md",
     "trail/log.md",
 ]
@@ -43,6 +43,18 @@ META_FIELD = re.compile(r"^-\s+(target|agent|skill|outcome)\s*:", re.MULTILINE)
 H1_HEADING = re.compile(r"^#\s+.+$", re.MULTILINE)
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 EXTERNAL_LINK = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
+
+
+def _strip_fenced_code_blocks(text: str) -> str:
+    lines: list[str] = []
+    in_fence = False
+    for line in text.splitlines():
+        if line.startswith("```"):
+            in_fence = not in_fence
+            continue
+        if not in_fence:
+            lines.append(line)
+    return "\n".join(lines)
 
 
 def check_required_files() -> list[str]:
@@ -127,10 +139,11 @@ def check_required_markdown_docs() -> list[str]:
             continue
 
         text = path.read_text(encoding="utf-8")
-        if len(H1_HEADING.findall(text)) > 1:
+        analysis_text = _strip_fenced_code_blocks(text)
+        if len(H1_HEADING.findall(analysis_text)) > 1:
             failures.append(f"multiple H1 headings in {rel}")
 
-        for raw_target in MARKDOWN_LINK.findall(text):
+        for raw_target in MARKDOWN_LINK.findall(analysis_text):
             target = raw_target.strip()
             if not target or target.startswith("#") or EXTERNAL_LINK.match(target):
                 continue

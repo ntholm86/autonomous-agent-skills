@@ -61,62 +61,6 @@ The TRAIL move required robocopy because git mv hit a Windows file lock; the ren
 
 ---
 
-## 2026-04-28 — four-skill composable architecture
-
-- target: skills repo (this repo)
-- operator: maintainer (Nils Holmager)
-- agent: Claude Sonnet 4.6 (Anthropic, GitHub Copilot)
-- skill: improve (self-targeting)
-- outcome: two new skills added (Intent, Trail); Improve and Probe refactored to delegate; README updated
-- delta: v3.1.0 → v3.2.0 (live tree, not yet tagged)
-
-### Interpretation of the ask
-
-Operator's stated intent across this session: make the suite composable. Intent and Trail should be standalone skills a developer can install one at a time, starting with Intent alone and seeing immediate value. Improve and Probe should delegate to Intent and Trail rather than duplicating the behaviour. The entry point for a new user is Intent, not the whole suite.
-
-I interpreted this as: (1) create intent/SKILL.md and trail/SKILL.md in the repo, (2) refactor Improve step 1 and step 7 to delegate when those skills are installed, (3) refactor Probe step 5 to delegate when Trail is installed, (4) update the README to describe four skills and a composable installation model. I did not interpret it as permission to touch the PRINCIPLES.md, CONVERGENCE_SCOPE_PROTOCOL.md, or citation/DOI metadata.
-
-### Examination
-
-- **Inconsistency.** Improve step 1 was the Intent skill, written inline. Improve step 7 was the Trail skill, written inline. Probe step 5 was Trail, written inline again. The behaviour was defined in three places and could drift independently. The suite claimed "no orchestration" but its two skills were secretly orchestrating two undeclared sub-skills.
-- **Overburden.** Improve was doing three jobs: interpreting intent, examining/improving, and recording. Two of those are now separate skills.
-- **Waste.** None of the existing structure needed removal. The refactor was purely additive (new skill files) plus delegation wiring (three step replacements).
-
-[!REALIZATION] The trail/ directory already existed as the log location. Placing trail/SKILL.md there is intentional — the skill lives next to the data it writes, and an agent loading the skill has immediate access to the existing log.
-
-### Decision
-
-[!DECISION] Add Intent and Trail as first-class skills alongside Improve and Probe. Keep Improve and Probe fully functional as standalone skills by using "if X is installed, delegate; otherwise do it yourself" pattern — not hard dependencies.
-
-[!DECISION] README describes the composable installation progression: Intent alone → add Trail → add Improve → add Probe = full loop. This is the entry-point story for new users.
-
-### Action
-
-Files created:
-- `intent/SKILL.md` — new skill, maps to Commander's Intent principle.
-- `trail/SKILL.md` — new skill, maps to Observable Autonomy principle. Lives alongside trail/log.md.
-
-Files modified:
-- `improve/SKILL.md` — step 1 delegates to Intent; step 7 delegates to Trail; "What this skill does not do" updated; version 3.0.0 → 3.1.0.
-- `probe/SKILL.md` — step 5 delegates to Trail; version 3.0.0 → 3.1.0.
-- `README.md` — opening description, directory listing (added intent/, updated trail/), "Using the skills" section rewritten.
-
-### Reflection
-
-The loop is converging, not churning. The v3 redesign correctly identified the minimum — but the minimum turned out to be two skills short. Intent and Trail were always implicit in Improve and Probe; making them explicit is the right move. The next convergence run should evaluate whether the four-skill description in PRINCIPLES.md or CONVERGENCE_SCOPE_PROTOCOL.md needs updating to reflect the expanded scope.
-
-Verification: tree is internally consistent — `improve/SKILL.md`, `probe/SKILL.md`, `PRINCIPLES.md`, `trail/README.md`, `trail/log.md` all reference each other correctly; no stale references to v2 paths in the new files; v2 paths under archive/v2/ remain readable.
-
-### Reflection
-
-[!REALIZATION] The framework's third principle (Convergence Is Silence) deliberately invalidates the in-progress v2 convergence chain. v2 was at 2/3 with Gemini 3.1 Pro and Grok Code Fast 1 at score 8.83. Because the artifact has now changed materially, the counter resets. This is not a failure — it is the protocol working as designed. v3 must restart convergence from zero on its own merits. The v2 chain is preserved in archive/v2/ as evidence that v2 was *approaching* convergence, not as a credential that carries over.
-
-[!REALIZATION] Self-targeting fidelity: this redesign was driven by `improve/SKILL.md` operating on the suite that contains it. The skill survived the test — it produced the diagnosis, surfaced the redesign argument, executed the change, and recorded the evidence in the format the skill itself specifies. If `improve` had been too prescriptive, it would have produced a list of incremental v2 fixes instead of arguing for redesign. If it had been too vague, it would have produced no actionable plan. Neither happened.
-
-[!DECISION] Convergence on v3 is the maintainer's to drive, not mine. They will need at least three independent fresh-conversation evaluations from distinct model families, each re-deriving the measurement scheme, each finding nothing material to change. v3.0.0 will not be tagged until that chain reaches 3/3.
-
----
-
 ## 2026-04-23 — v3 self-target and v2 retirement
 
 - target: skills repo (this repo, v3 live tree)
@@ -1144,6 +1088,62 @@ None. Trail entry only. Verification: `python tools/verify.py`.
 
 [!REALIZATION] Steps 1–4 of the convergence scope protocol are now satisfied for the skills layer. Step 5 (evidence package complete and reviewable for Zenodo) remains. The cross-layer coherence check confirmed that the v3 skillset is not just internally consistent but coherent with its upstream problem and principles — the chain from gap to framework to implementation holds end-to-end.
 
+## 2026-04-28 — four-skill composable architecture
+
+- target: skills repo (this repo)
+- operator: maintainer (Nils Holmager)
+- agent: Claude Sonnet 4.6 (Anthropic, GitHub Copilot)
+- skill: improve (self-targeting)
+- outcome: two new skills added (Intent, Trail); Improve and Probe refactored to delegate; README updated
+- delta: v3.1.0 → v3.2.0 (live tree, not yet tagged)
+
+### Interpretation of the ask
+
+Operator's stated intent across this session: make the suite composable. Intent and Trail should be standalone skills a developer can install one at a time, starting with Intent alone and seeing immediate value. Improve and Probe should delegate to Intent and Trail rather than duplicating the behaviour. The entry point for a new user is Intent, not the whole suite.
+
+I interpreted this as: (1) create intent/SKILL.md and trail/SKILL.md in the repo, (2) refactor Improve step 1 and step 7 to delegate when those skills are installed, (3) refactor Probe step 5 to delegate when Trail is installed, (4) update the README to describe four skills and a composable installation model. I did not interpret it as permission to touch the PRINCIPLES.md, CONVERGENCE_SCOPE_PROTOCOL.md, or citation/DOI metadata.
+
+### Examination
+
+- **Inconsistency.** Improve step 1 was the Intent skill, written inline. Improve step 7 was the Trail skill, written inline. Probe step 5 was Trail, written inline again. The behaviour was defined in three places and could drift independently. The suite claimed "no orchestration" but its two skills were secretly orchestrating two undeclared sub-skills.
+- **Overburden.** Improve was doing three jobs: interpreting intent, examining/improving, and recording. Two of those are now separate skills.
+- **Waste.** None of the existing structure needed removal. The refactor was purely additive (new skill files) plus delegation wiring (three step replacements).
+
+[!REALIZATION] The trail/ directory already existed as the log location. Placing trail/SKILL.md there is intentional — the skill lives next to the data it writes, and an agent loading the skill has immediate access to the existing log.
+
+### Decision
+
+[!DECISION] Add Intent and Trail as first-class skills alongside Improve and Probe. Keep Improve and Probe fully functional as standalone skills by using "if X is installed, delegate; otherwise do it yourself" pattern — not hard dependencies.
+
+[!DECISION] README describes the composable installation progression: Intent alone → add Trail → add Improve → add Probe = full loop. This is the entry-point story for new users.
+
+### Action
+
+Files created:
+- `intent/SKILL.md` — new skill, maps to Commander's Intent principle.
+- `trail/SKILL.md` — new skill, maps to Observable Autonomy principle. Lives alongside trail/log.md.
+
+Files modified:
+- `improve/SKILL.md` — step 1 delegates to Intent; step 7 delegates to Trail; "What this skill does not do" updated; version 3.0.0 → 3.1.0.
+- `probe/SKILL.md` — step 5 delegates to Trail; version 3.0.0 → 3.1.0.
+- `README.md` — opening description, directory listing (added intent/, updated trail/), "Using the skills" section rewritten.
+
+### Reflection
+
+The loop is converging, not churning. The v3 redesign correctly identified the minimum — but the minimum turned out to be two skills short. Intent and Trail were always implicit in Improve and Probe; making them explicit is the right move. The next convergence run should evaluate whether the four-skill description in PRINCIPLES.md or CONVERGENCE_SCOPE_PROTOCOL.md needs updating to reflect the expanded scope.
+
+Verification: tree is internally consistent — `improve/SKILL.md`, `probe/SKILL.md`, `PRINCIPLES.md`, `trail/README.md`, `trail/log.md` all reference each other correctly; no stale references to v2 paths in the new files; v2 paths under archive/v2/ remain readable.
+
+### Reflection
+
+[!REALIZATION] The framework's third principle (Convergence Is Silence) deliberately invalidates the in-progress v2 convergence chain. v2 was at 2/3 with Gemini 3.1 Pro and Grok Code Fast 1 at score 8.83. Because the artifact has now changed materially, the counter resets. This is not a failure — it is the protocol working as designed. v3 must restart convergence from zero on its own merits. The v2 chain is preserved in archive/v2/ as evidence that v2 was *approaching* convergence, not as a credential that carries over.
+
+[!REALIZATION] Self-targeting fidelity: this redesign was driven by `improve/SKILL.md` operating on the suite that contains it. The skill survived the test — it produced the diagnosis, surfaced the redesign argument, executed the change, and recorded the evidence in the format the skill itself specifies. If `improve` had been too prescriptive, it would have produced a list of incremental v2 fixes instead of arguing for redesign. If it had been too vague, it would have produced no actionable plan. Neither happened.
+
+[!DECISION] Convergence on v3 is the maintainer's to drive, not mine. They will need at least three independent fresh-conversation evaluations from distinct model families, each re-deriving the measurement scheme, each finding nothing material to change. v3.0.0 will not be tagged until that chain reaches 3/3.
+
+---
+
 ## 2026-04-29 — v3.3.0-history-and-install
 
 - target: skills repo (this repo)
@@ -1192,36 +1192,42 @@ INSTALLING.md is the kind of file that should have existed at v3.0.0. The discov
 
 ---
 
-## 2026-04-30 � v3.3.2-trail-location-fix
+## 2026-04-30 — v3.3.2-trail-location-fix
 
 - target: skills repo (this repo)
 - operator: Nils Holmager
 - agent: Claude Sonnet 4.5 (Anthropic / GitHub Copilot)
 - skill: improve
 - outcome: trail SKILL.md location ambiguity fixed; v3.3.2 shipped
-- delta: v3.3.1 ? v3.3.2
+- delta: v3.3.1 -> v3.3.2
 
 ### Interpretation of the ask
 
-User said: 'The intent of the trail folder is that it will appear in the scope of what you are targeting with the skill. If I chose to target my own hobby project repo � then the trail is relevant ONLY for that project � and so there must be one trail folder for each repo.'
+User said: 'The intent of the trail folder is that it will appear in the scope of what you are targeting with the skill. If I chose to target my own hobby project repo - then the trail is relevant only for that project - and so there must be one trail folder for each repo.'
 
-Meaning: the trail belongs in the target repo, not in the skills install directory. The SKILL.md was ambiguous; agents were defaulting to writing relative to themselves (skills folder) instead of the project being worked on.
+Meaning: the trail belongs in the target repo, not in the skills install directory. The SKILL.md was ambiguous; agents were defaulting to writing relative to themselves (the skills folder) instead of the project being worked on.
 
 ### Examination
 
-**Inconsistency lens**: trail/SKILL.md said 'trail/log.md' without specifying the base directory. This is ambiguous when the skill is installed globally � the agent has no clear anchor. The rest of the skill design assumes per-repo trails ('this repo', 'Append-only ledger of autonomous operations on this repo') but never explicitly states where 'this repo' root is.
+**Inconsistency lens**: trail/SKILL.md said 'trail/log.md' without specifying the base directory. This is ambiguous when the skill is installed globally - the agent has no clear anchor. The rest of the skill design assumes per-repo trails ('this repo', 'Append-only ledger of autonomous operations on this repo') but never explicitly states where 'this repo' root is.
 
-**Waste lens**: The ambiguity caused misrouted trail entries � the global skills folder accumulated entries that should have gone into individual project repos. The per-repo isolation was the design intent from the start, never made explicit.
+**Waste lens**: The ambiguity caused misrouted trail entries - the global skills folder accumulated entries that should have gone into individual project repos. The per-repo isolation was the design intent from the start, never made explicit.
 
 ### Decision
 
-[!DECISION] Added explicit location statement to The Structure section of trail/SKILL.md: 'The trail lives in the root of the target repo being worked on � not in the skills install directory.' With concrete examples (c:\git\clikit\trail\log.md).\nRationale: the fix is a wording clarification, not a structural change. The design was always per-repo; it just was never stated.\nAlternative: add a 'configuration' section with a variable for trail root � rejected, over-engineered for a naming problem.\n\n### Action
+[!DECISION] Added explicit location statement to The Structure section of trail/SKILL.md: 'The trail lives in the root of the target repo being worked on - not in the skills install directory.' With concrete examples (`c:\git\clikit\trail\log.md`).
 
-Edited trail/SKILL.md The Structure section to lead with the location rule. Bumped trail skill version 1.0.0 ? 1.1.0. Bumped repo version 3.3.1 ? 3.3.2 in CHANGELOG.md and CITATION.cff.
+Rationale: the fix is a wording clarification, not a structural change. The design was always per-repo; it just was never stated.
+
+Alternative: add a 'configuration' section with a variable for trail root - rejected, over-engineered for a naming problem.
+
+### Action
+
+Edited trail/SKILL.md The Structure section to lead with the location rule. Bumped trail skill version 1.0.0 -> 1.1.0. Bumped repo version 3.3.1 -> 3.3.2 in CHANGELOG.md and CITATION.cff.
 
 ### Reflection
 
-This ambiguity would have caused silent misbehaviour on every new repo run: the agent writes the trail to the wrong place, the user sees nothing in their project, trust is not built. One sentence fixes it. The lesson: location is load-bearing � never leave it implicit.
+This ambiguity would have caused silent misbehaviour on every new repo run: the agent writes the trail to the wrong place, the user sees nothing in their project, trust is not built. One sentence fixes it. The lesson: location is load-bearing - never leave it implicit.
 
 ---
 
@@ -1266,3 +1272,50 @@ Validation:
 [!REALIZATION] The main comprehension risk was not "too much autonomy" in the system itself, but autonomy presented without an obvious steering wheel. One short sentence near the top of "How it works" fixes that mental model.
 
 [!REALIZATION] Most of the AI-like feel came from repeated contrastive phrasing and overwritten transitions, not from the underlying concepts. The concepts held up once the prose got shorter.
+
+---
+
+## 2026-04-30 — verify-contract-and-trail-repair
+
+- target: skills repo (this repo)
+- operator: Nils Holmager
+- agent: GitHub Copilot (GPT-5.4)
+- skill: improve
+- outcome: verifier aligned with current repo contract; trail integrity restored
+- delta: `tools/verify.py`, `improve/SKILL.md`, `CHANGELOG.md`, `trail/log.md`, `trail/history.md`
+
+### Interpretation of the ask
+
+User asked how to fix the integrity failures "for good" after `tools/verify.py` reported a mix of missing files, malformed trail data, and broken links.
+
+I interpreted this as a request to repair the root causes, not to suppress the check: update the verifier to match the current v3 contract, repair the stale links, and fix the corrupted trail data so the repo can validate cleanly again.
+
+### Examination
+
+- **Inconsistency.** `tools/verify.py` still required `REDESIGN.md` and `CONVERGENCE_SCOPE_PROTOCOL.md`, even though `CHANGELOG.md` says they became optional in v3.3.1.
+- **Waste.** The verifier was treating fenced markdown examples as live headings and links, which produced a false multiple-H1 failure in `trail/SKILL.md`.
+- **Inconsistency.** `trail/log.md` contained one malformed `2026-04-30` heading and one `2026-04-28` entry placed before older `2026-04-23` entries, so the log no longer met its own chronological contract.
+
+### Decision
+
+[!DECISION] Fix the verifier contract in code instead of restoring removed placeholder files. The repo truth lives in the current docs and changelog; the verifier must follow that truth.
+
+[!DECISION] Repair the trail data rather than weakening the trail checks. The point of the verifier is to catch exactly this kind of drift.
+
+### Action
+
+Files modified:
+- `tools/verify.py` — removed stale required-doc assumptions; added current live docs; ignored fenced code blocks during markdown H1/link checks.
+- `improve/SKILL.md` — changed the optional convergence protocol reference from a broken local link to plain text.
+- `CHANGELOG.md` — replaced the dead `REDESIGN.md` link with a live link to `trail/log.md`.
+- `trail/log.md` — moved the `2026-04-28` entry into chronological order and rewrote the corrupted `v3.3.2-trail-location-fix` entry.
+
+Validation:
+- `python tools/record.py history --write`
+- `python tools/verify.py`
+
+### Reflection
+
+[!REALIZATION] The durable fix was split between code and data. The verifier was partly wrong, but the trail was also genuinely broken. Fixing only one side would have left the repo drifting.
+
+[!REALIZATION] Checking fenced code blocks as live markdown was too naive for this repo. Once the verifier stopped treating examples as content, the remaining failures were all real and actionable.
