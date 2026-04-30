@@ -1189,3 +1189,36 @@ Files created:
 The `history` command closes the proof-of-improvement gap that the v2 scorecard used to fill. The scorecard encoded what to measure; the history command reads what actually happened. These are not equivalent â€” the history view is stronger evidence because it cannot be optimised toward in advance.
 
 INSTALLING.md is the kind of file that should have existed at v3.0.0. The discovery-rule confusion is predictable and the fix is a one-time document, not a structural change to the skills.
+
+---
+
+## 2026-04-30 — v3.3.2-trail-location-fix
+
+- target: skills repo (this repo)
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.5 (Anthropic / GitHub Copilot)
+- skill: improve
+- outcome: trail SKILL.md location ambiguity fixed; v3.3.2 shipped
+- delta: v3.3.1 ? v3.3.2
+
+### Interpretation of the ask
+
+User said: 'The intent of the trail folder is that it will appear in the scope of what you are targeting with the skill. If I chose to target my own hobby project repo — then the trail is relevant ONLY for that project — and so there must be one trail folder for each repo.'
+
+Meaning: the trail belongs in the target repo, not in the skills install directory. The SKILL.md was ambiguous; agents were defaulting to writing relative to themselves (skills folder) instead of the project being worked on.
+
+### Examination
+
+**Inconsistency lens**: trail/SKILL.md said 'trail/log.md' without specifying the base directory. This is ambiguous when the skill is installed globally — the agent has no clear anchor. The rest of the skill design assumes per-repo trails ('this repo', 'Append-only ledger of autonomous operations on this repo') but never explicitly states where 'this repo' root is.
+
+**Waste lens**: The ambiguity caused misrouted trail entries — the global skills folder accumulated entries that should have gone into individual project repos. The per-repo isolation was the design intent from the start, never made explicit.
+
+### Decision
+
+[!DECISION] Added explicit location statement to The Structure section of trail/SKILL.md: 'The trail lives in the root of the target repo being worked on — not in the skills install directory.' With concrete examples (c:\git\clikit\trail\log.md).\nRationale: the fix is a wording clarification, not a structural change. The design was always per-repo; it just was never stated.\nAlternative: add a 'configuration' section with a variable for trail root — rejected, over-engineered for a naming problem.\n\n### Action
+
+Edited trail/SKILL.md The Structure section to lead with the location rule. Bumped trail skill version 1.0.0 ? 1.1.0. Bumped repo version 3.3.1 ? 3.3.2 in CHANGELOG.md and CITATION.cff.
+
+### Reflection
+
+This ambiguity would have caused silent misbehaviour on every new repo run: the agent writes the trail to the wrong place, the user sees nothing in their project, trust is not built. One sentence fixes it. The lesson: location is load-bearing — never leave it implicit.

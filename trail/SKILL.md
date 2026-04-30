@@ -1,7 +1,7 @@
 ---
 name: trail
-version: 1.0.0
-description: 'Evidence trail management. Append a structured entry to trail/log.md at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
+version: 1.1.0
+description: 'Evidence trail management. Append a structured entry to trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
 
@@ -23,7 +23,14 @@ Evidence → Trust → Autonomy
 
 ## The Structure
 
-One file: `trail/log.md`. Append-only. One `##` entry per session, newest at the bottom.
+The trail lives in the **root of the target repo being worked on** — not in the skills install directory.
+
+If you are improving `c:\git\clikit`, the trail is `c:\git\clikit\trail\log.md`.
+If you are improving `~/projects/myapp`, the trail is `~/projects/myapp/trail/log.md`.
+
+Every repo gets its own trail. The trail is local evidence for that project — it belongs with the project.
+
+One file: `trail/log.md` in the target repo root. Append-only. One `##` entry per session, newest at the bottom.
 
 If `trail/log.md` does not exist yet, create it now with this header before proceeding:
 

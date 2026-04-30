@@ -1,5 +1,12 @@
 # Changelog
 
+## v3.3.2 — 2026-04-30
+
+### Fixed
+- `trail/SKILL.md`: made trail location explicit — the `trail/` folder lives in the **root of the target repo**, not in the skills install directory. Previous wording was ambiguous and agents defaulted to writing the trail relative to themselves (the skills folder). Each repo now gets its own trail.
+
+---
+
 ## v3.3.0 — 2026-04-29
 
 ### Added
