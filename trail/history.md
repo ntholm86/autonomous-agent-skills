@@ -39,6 +39,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 32 | 2026-04-30 | trail-readme-skill-count | changed — corrected stale skill count in trail/README.md | trail/README.md "The two skills" → "The four skills" (intent, improve, probe, trail) |
 | ▸ 33 | 2026-04-30 | readme-title-and-hook | changed — README title and opening paragraph rewritten for first impression | README.md title "Skills" → "Autonomous Development Skills Suite"; opening paragraph now leads with what it does, proof, and stopping condition |
 | ▸ 34 | 2026-04-30 | readme-goal-section | changed — added "The goal" section to README.md | README.md gains explicit statement of operator intent and verification philosophy |
+| ▸ 35 | 2026-04-30 | readme-stopped-to-converged | changed — "stopped" → "converged" in README opening paragraph | one word change; README opening now consistent with PRINCIPLES.md definition and Evidence section framing |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -191,4 +192,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Add "The goal" section immediately after the opening paragraph. This is the highest-leverage single addition: it is the answer to the first question any new reader should ask, and without it the rest of the README reads as a feature description rather than a principled claim.
 
-**34 runs total — 24 with changes, 10 silence**
+### Run 35 — 2026-04-30 — readme-stopped-to-converged
+
+- **decided:** Change "stopped" to "converged" in the opening paragraph. One word. The opening is the first statement any reader or agent encounters about what the loop does. If it encodes the wrong mental model of convergence (permanent cessation vs. point-in-time state), that model propagates into how the agent understands the stopping condition. Alternatives ranked: (1) this change — highest leverage per word changed; (2) add first-run guidance to Intent — addresses a minor edge case; (3) declare convergence — premature given the identified inconsistency.
+
+**35 runs total — 25 with changes, 10 silence**

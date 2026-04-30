@@ -1451,3 +1451,40 @@ verify.py passes after change.
 ### Reflection
 
 [!REALIZATION] This entry records the operator's intent not because the README lacked a goal section, but because the intent itself had never been formally committed to the trail. All prior sessions operated on this intent implicitly. Making it explicit and permanent in the trail is the correct place for it — the trail is the evidence layer, and the operator's intent is the most load-bearing piece of context in the entire system. Any future agent reading this log now has the destination stated directly, not inferred from patterns.
+
+## 2026-04-30 — readme-stopped-to-converged
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: Claude Sonnet 4.6 (Anthropic / GitHub Copilot)
+- skill: improve + intent
+- outcome: changed — "stopped" → "converged" in README opening paragraph
+- delta: one word change; README opening now consistent with PRINCIPLES.md definition and Evidence section framing
+
+### Interpretation of the ask
+
+Run the full Improve loop on the repo using the operator's convergence-loop prompt as the initial brief. Intent: find the highest-leverage remaining change that makes the skills more effective on any arbitrary codebase, or declare convergence if nothing remains. Constraints: generic first, no test infrastructure, human-readable, one change per run.
+
+### Examination
+
+**Inconsistency lens:** The opening paragraph read "It stopped when three independent evaluators from distinct model families found nothing left to change." The Evidence section reads "That is the convergence baseline at v3.1.0 (2026-04-24)" and the Reference section shows the project at v3.6.0 — six releases after the claimed "stop." The word "stopped" implies permanent cessation. PRINCIPLES.md defines convergence as evaluators finding nothing to change at a point in time, not as the project ending. The opening misstated what convergence means. The Evidence section used the correct framing ("convergence baseline"); the opening did not.
+
+**Waste lens:** Nothing actionable.
+
+**Overburden lens:** Nothing actionable.
+
+**Challenge:** Considered whether a structural gap in Probe's connection to the convergence protocol was higher leverage — but Probe already states "convergence (Principle 3) is the meta-measurement." Considered whether first-run / no-trail clarity in Intent was a real gap — but Trail's initialization instruction and any competent agent bridges it. The "stopped" inconsistency is the one place where the opening actively misstates the core concept the entire suite is built on. That is the highest leverage finding.
+
+### Decision
+
+[!DECISION] Change "stopped" to "converged" in the opening paragraph. One word. The opening is the first statement any reader or agent encounters about what the loop does. If it encodes the wrong mental model of convergence (permanent cessation vs. point-in-time state), that model propagates into how the agent understands the stopping condition. Alternatives ranked: (1) this change — highest leverage per word changed; (2) add first-run guidance to Intent — addresses a minor edge case; (3) declare convergence — premature given the identified inconsistency.
+
+### Action
+
+Changed `"It stopped when three independent evaluators"` to `"It converged when three independent evaluators"` in the opening paragraph of README.md.
+
+verify.py passes after change.
+
+### Reflection
+
+The loop is converging. This session has been primarily README editorial work — the skills themselves are unchanged. The remaining gap is whether a new convergence run (with a different model family) agrees. This run's finding was small but precise: one word that misstated the central concept. That is what late-stage convergence looks like — the large structural changes happened in prior sessions; what remains is semantic precision.
