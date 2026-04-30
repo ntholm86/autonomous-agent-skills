@@ -1691,3 +1691,40 @@ Alternative considered: Rewrite `verify.py` so it works dynamically depending on
 ### Reflection
 
 This completes the sweep of errors caused by the v3.5.0 extraction of tools. Breaking changes to script paths often reveal themselves in layers: first, we fixed the paths in instructions, and now we fixed the taxonomy of the files themselves (exportable vs internal tools). This loop has driven structural cleanup of the repo. We will check for convergence in Iteration 6.
+
+## 2026-04-30 — changelog-version-drift
+
+- target: CHANGELOG.md, README.md
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve
+- outcome: one incremental change
+- delta: added v3.6.1 entry to CHANGELOG.md; bumped version string in README.md
+
+### Interpretation of the ask
+
+Run the autonomous improve loop on the skills repo itself until silence (zero actionable findings) or the agent cannot advance. Iteration 6. One change per run.
+
+### Examination
+
+All four SKILL.md files, INSTALLING.md, README.md, CHANGELOG.md re-read in full this iteration.
+
+- **Inconsistency lens:** `CHANGELOG.md` has not been updated to reflect the five substantive changes made in Iterations 1–5 of this session. The repo's established convention is to version every fix session — v3.3.2 → v3.3.3 → v3.3.4 are all same-day patch entries with per-session CHANGELOG records. `README.md` still reads `v3.6.0 (2026-04-30)` but five fixes have been applied since that entry was written. A reader comparing the current files against CHANGELOG would find unexplained drift.
+- **Waste lens:** Nothing actionable.
+- **Overburden lens:** Nothing actionable.
+
+### Decision
+
+[!DECISION] Add a v3.6.1 entry to CHANGELOG.md summarising all five fixes from Iterations 1–5, and bump the version string in README.md to match.
+Rationale: a version bump = CHANGELOG entry + README version string is a paired unit of work by this repo's convention; they always move together. The finding is a genuine consistency gap, not a manufactured one.
+Alternative considered: declare silence, treat CHANGELOG as operator-managed — rejected, because every prior fix session in this repo's history has a corresponding CHANGELOG entry, making the omission inconsistent with the repo's own practice.
+
+### Action
+
+1. Prepended `## v3.6.1 — 2026-04-30` to `CHANGELOG.md` with a "Fixed" section listing all five doc-drift corrections from Iterations 1–5.
+2. Updated `README.md` version string from `v3.6.0` to `v3.6.1`.
+3. Ran `python verify.py` → OK.
+
+### Reflection
+
+Six consecutive iterations, all documentation drift. The pattern is remarkably consistent: every finding has been a reference that wasn't updated when the thing it referred to changed. The loop appears to be in late-stage convergence — each finding requires deeper reading to uncover. The next iteration is a strong candidate for first silence. If silence is achieved, this would be the first Claude Sonnet 4.6 silence run on the v3.6.x iteration of the repo.

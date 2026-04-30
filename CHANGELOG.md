@@ -1,5 +1,19 @@
 # Changelog
 
+## v3.6.1 — 2026-04-30
+
+### Fixed
+- `INSTALLING.md`, `README.md`: added `tools/` to the full-install directory tree and quick-start step (missing since v3.5.0 moved `record.py` to the skills install).
+- `trail/SKILL.md`, `improve/SKILL.md`, `README.md`: corrected `record.py` path prefix from `tools/record.py` to `<skills>/tools/record.py` — the script lives in the skills install, not the target repo root.
+- `INSTALLING.md`, `improve/SKILL.md`: removed all references to `CONVERGENCE_SCOPE_PROTOCOL.md`, which no longer exists in the repo.
+- `probe/SKILL.md`: removed unexplained v2 jargon "(Tier 1)" and replaced with a self-contained description of the failure mode being avoided.
+- `INSTALLING.md`, `README.md`: removed `verify.py` from the exported `tools/` list; moved it to the repo root as an internal CI script. Users should not copy it to their target repos.
+
+### Rationale
+Five documentation-drift fixes found by the convergence loop running self-targeted after v3.6.0. Each finding had the same root cause: when an architectural decision is made, references in surrounding documentation don't get swept. All five are now resolved.
+
+---
+
 ## v3.6.0 — 2026-04-30
 
 ### Changed
