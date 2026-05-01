@@ -73,6 +73,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 66 | 2026-05-01 | docs-readme-compass-orientation | fixed stale README description — runs now start with compass.md, not the full trail | v3.9.1 (no version bump — docs fix only) |
 | ▸ 67 | 2026-05-01 | compass-seed-evo-vision | created .trail/compass.md — first compass for this repo, capturing the evo connection and constraints that must hold before integration | no version bump — compass is a new artifact, not a code change |
 | ▸ 68 | 2026-05-01 | split-vision-from-compass | introduced `.trail/vision.md` as a sibling to `.trail/compass.md`; vision is operator-held and never written by any skill, compass is Retrospect-derived and rewritten each run | suite v3.9.1 → v3.10.0; improve 3.3.0 → 3.4.0; retrospect 1.1.0 → 1.2.0; trail 1.6.0 → 1.7.0 |
+| ▸ 69 | 2026-05-01 | hunch-skill-added | added Hunch as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct | suite v3.10.0 → v3.11.0; new `hunch/SKILL.md` v1.0.0 |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -362,4 +363,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Split orientation into two artifacts: `.trail/vision.md` (operator-held, stable, never written by any skill) and `.trail/compass.md` (Retrospect-derived, rewritten each run). Improve reads vision first, then compass, then trail. Vision is the destination; compass is the current location; trail is the path.
 
-**68 runs total — 54 with changes, 14 silence**
+### Run 69 — 2026-05-01 — hunch-skill-added
+
+- **decided:** Add a new sixth skill, Hunch, with this contract:
+
+**69 runs total — 55 with changes, 14 silence**

@@ -3036,3 +3036,69 @@ It is different in one specific way: the doc updates here are the contract chang
 **Across-trail macro-Hansei** *(triggered: this run is structural; the prior [!REALIZATION] in run "compass-seed-evo-vision" predicted exactly this split)*:
 
 The realization in the previous run already named this fix: "operator strategic vision belongs elsewhere — perhaps in the README or a separate `.trail/vision.md`. This seeding is a documented bootstrap exception." This run executed that prediction. That is a healthy sign: the trail's [!REALIZATION] markers are doing what they are supposed to do — surfacing structural debt that subsequent runs can act on. If they had been ignored, this run would have been another doc edit instead.
+
+## 2026-05-01 — hunch-skill-added
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve (operator-directed addition; not a loop-discovered finding)
+- outcome: added Hunch as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct
+- delta: suite v3.10.0 → v3.11.0; new `hunch/SKILL.md` v1.0.0
+
+### Interpretation of the ask
+
+The operator named the deepest bottleneck under "autonomous compass derivation": vision derivation. Vision (operator-held) only captures what the human has managed to externalise. The richer interior model — interests, focus, ethics, hunches — stays implicit. The operator chose the "Hunch" shape from three offered: an on-demand skill that lets the AI surface its own in-progress guesses about where the human is heading and have the human respond, narrowing the compass earlier in the iterative process. Explicitly: invoked on demand, not part of the autonomous loop; allowed to orchestrate reasoning logic but must not become a checklist.
+
+### Examination
+
+Looked at what the suite already has for direction-setting:
+- **Intent** — surfaces interpretation of *one specific request* before action.
+- **Vision** — operator-held destination, written by the operator only.
+- **Compass** — agent-derived synthesis of where the target currently is, written by Retrospect.
+- **No mechanism for** — agent-derived guesses about where the operator wants the target to go *that the operator has not yet articulated*.
+
+That gap is the exact one the operator named. Nothing in the existing skill set surfaces hunches as questions; the agent either guesses silently and acts, or asks generic clarification questions that put the synthesis cost back on the human.
+
+### Decision
+
+[!DECISION] Add a new sixth skill, Hunch, with this contract:
+- Invoked on demand (operator-triggered or by another skill that detects need); not in the autonomous loop.
+- Six steps: gather signal → form hunches → turn each into a question → surface one at a time in priority order → record what was learned (believed, rejected, still open) → record the run.
+- Hunches must be specific enough to be wrong, sourced (so the operator can correct the source-reading not just the conclusion), and stated as guesses not findings.
+- Never writes to `.trail/vision.md` without operator approval.
+- Records silence honestly when the agent has no genuine hunch to offer.
+
+Alternatives offered to the operator and considered:
+1. *Vision elicitation skill (extension of Intent)* — rejected by operator implicitly by choosing Hunch, which is more bidirectional. Intent is one-way (agent states interpretation); Hunch is iterative and conversational.
+2. *Conversation-as-evidence (read sessions/ the way Retrospect reads log.md)* — partially absorbed into Hunch step 1. A standalone skill for this could exist later if Hunch's signal-gathering proves too thin.
+3. *Hunches as a separate `.trail/hunches.md` artifact* — rejected for now. Recording in the trail entry is sufficient and avoids creating another orientation file before the vision/compass split has been proven in use.
+
+### Action
+
+1. Created `hunch/SKILL.md` (v1.0.0): six steps, governing principles section, "When to invoke" guidance (four trigger conditions), "What this skill does not do" section that distinguishes Hunch from Intent, Retrospect, and from any acting role. Self-targeting paragraph included.
+2. Updated `README.md`: header changed from "Five skills" to "Six skills"; added Hunch row to the table; added Hunch to install list; added Hunch paragraph to "How it works" (after Retrospect).
+3. Updated `CITATION.cff`: title changed to "Six Composable Skills"; abstract extended with Hunch description; version bumped to 3.11.0.
+4. Updated `CHANGELOG.md`: new v3.11.0 entry documenting the addition and naming the bottleneck it addresses (human-articulation cost).
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The skills suite at v3.11.0 has, for the first time, a mechanism for the agent to actively reduce the operator's articulation cost rather than passively waiting for the operator to write better vision. A future run could disagree with this by showing that Hunch in practice either (a) produces hunches so generic they don't help, or (b) produces hunches so specific they feel like the agent imposing its own model on the operator. Both are real failure modes the spec tries to prevent but cannot guarantee.
+
+**Named blind spot:**
+
+This run did not invoke Hunch on the operator who just asked for it. The most authentic test of the new skill would have been to run it on this very conversation — what hunches has the agent formed about where the operator is heading next? — and offer those for confirmation. Skipping that means the skill is now defined but unproven on its first natural opportunity. The next time the operator's direction feels even slightly unclear, the next agent should run Hunch immediately rather than guess silently.
+
+**Imagined-reader pushback:**
+
+"You added a sixth skill in response to a single conversation, in the same session as v3.10.0 which split vision from compass. That is two structural changes in two consecutive runs, with the second one not surfaced by the loop but handed in by the operator. The convergence claim ('three independent silences, three model families') is still pinned at v3.1.0 — every structural change since has invalidated convergence and the README has not acknowledged that. Are you actually doing iterative improvement, or are you doing rapid feature addition with the trail as decoration?"
+
+That pushback is hard and largely correct. The convergence baseline does sit at v3.1.0; everything since has been operator-driven structural change followed by doc propagation. The honest answer is: the work happening now is no longer convergence work, it is design work. The convergence loop will resume only after the design work settles enough that diverse evaluators can be invited back in. The README's claim should probably be qualified to say so — but that is itself a documentation propagation, which is exactly the pattern the loop has been criticising itself for. Naming the tension here in the trail is the minimum honest move; whether to also surface it in the README is the kind of thing a future Hunch run could ask the operator about.
+
+[!REALIZATION] The first natural use of Hunch is on the operator who just commissioned it. The agent has hunches about where this conversation is heading (more skills addressing the human-bottleneck side; integration eventually but not yet; possibly a vision elicitation skill as a follow-up; possibly a conversation-as-evidence skill). The right move on the next operator turn — if the operator does not specify a direction — is to run Hunch and ask, not to guess and act.
+
+**Across-trail macro-Hansei** *(triggered: two consecutive structural changes in two runs; the loop's convergence baseline is becoming stale; operator-driven additions outpace loop-discovered ones)*:
+
+Reading runs 55 through 68 as one document: the loop has shifted decisively from convergence work to design work since approximately run 64 (Retrospect added). The peg-3 convergence at v3.1.0 was on a five-skill suite without Retrospect, without compass, without vision, without Hunch. Three of those four additions were operator-prompted; one (compass) emerged in conversation. The trail no longer shows iterative refinement of a converged design; it shows active design of a new one. That is not a bug of the loop — it is a phase change the loop has not named. The loop's convergence semantics (three silences, three model families) apply to the *previous* design and have not been re-established for the current one. Once the current design settles, a new convergence cycle will be needed; the README should not claim convergence at v3.1.0 in a way that implies the v3.11.0 suite is also converged. Naming this here so the next run that touches README convergence claims has the context.

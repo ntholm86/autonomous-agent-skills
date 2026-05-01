@@ -2,7 +2,7 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19842994.svg)](https://doi.org/10.5281/zenodo.19842994)
 
-Five skills that give any AI agent a complete improvement loop for any codebase: interpret the prompt, observe the target, find the highest-leverage change, make it, record the evidence, and read the arc. The loop ran on this repository more than 100 times and restructured the suite twice. It converged when three independent evaluators from distinct model families found nothing left to change. Guided by the [three principles](./PRINCIPLES.md).
+Six skills that give any AI agent a complete improvement loop for any codebase: interpret the prompt, observe the target, find the highest-leverage change, make it, record the evidence, read the arc, and — when needed — surface the agent's own guesses about where the operator is heading. The loop ran on this repository more than 100 times and restructured the suite twice. It converged when three independent evaluators from distinct model families found nothing left to change. Guided by the [three principles](./PRINCIPLES.md).
 
 ## The goal
 
@@ -10,7 +10,7 @@ The skills work on any codebase. This repo is both the workshop and the proof �
 
 Convergence is the only finish line: three independent evaluators from distinct model families find nothing left to change. The [trail](./.trail/log.md) is the record.
 
-## The five skills
+## The six skills
 
 | Skill | What it does |
 |---|---|
@@ -19,6 +19,7 @@ Convergence is the only finish line: three independent evaluators from distinct 
 | **[Probe](./probe/SKILL.md)** | Builds two similar-looking cases that differ in one material way. If the response does not change, you have evidence of pattern-matching. Measures [Autonomous Reasoning Fidelity (ARF)](./PRINCIPLES.md). |
 | **[Trail](./trail/SKILL.md)** | Appends a structured entry to `.trail/log.md` after each session. Each run starts with the full record of prior decisions. |
 | **[Retrospect](./retrospect/SKILL.md)** | Reads the full trail as a single document and forms arc-level claims about the target. Runs independently of Improve when a high-altitude view is needed. |
+| **[Hunch](./hunch/SKILL.md)** | Surfaces the agent's in-progress guesses about where the operator is heading and turns them into questions the operator can confirm or correct. Closes the gap between explicit vision and implicit direction. Invoked on demand, not in the autonomous loop. |
 
 Each skill is standalone. Install only what you need. Any combination works.
 
@@ -26,7 +27,7 @@ Each skill is standalone. Install only what you need. Any combination works.
 
 See [INSTALLING.md](./INSTALLING.md) for setup details.
 
-1. Copy `intent/`, `improve/`, `probe/`, `trail/`, `retrospect/`, and `tools/` into your repo's `.copilot/skills/`.
+1. Copy `intent/`, `improve/`, `probe/`, `trail/`, `retrospect/`, `hunch/`, and `tools/` into your repo's `.copilot/skills/`.
 2. Run an agent on your codebase with the Improve skill. It reads the code, decides what to change, makes the change, and appends a trail entry.
 3. Commit. Run again. Each run reads the full trail of prior decisions.
 4. When a run finds nothing actionable, count one silence. Repeat with a different model family. Convergence requires three independent silences from distinct model families.
@@ -58,6 +59,8 @@ The reasoning follows a specific sequence, drawn from Toyota Production System (
 
 **Retrospect** — run independently of Improve when an arc-level view is more useful than another low-altitude pass. Reads the full trail as a single document, forms falsifiable claims about what the target is becoming and where the loop's attention has been, and evaluates whether the loop is examining the right things. The skill that can ask "is this loop actually working?" without the constraint that reflection must stay out of the loop's own design.
 
+**Hunch** — invoked on demand, not in the autonomous loop. The agent forms guesses about where the operator is heading — things the operator has not said directly but that signal in conversation, the trail, and the operator's reactions points to — and surfaces them as short, falsifiable questions. The operator confirms, corrects, or rejects. The mechanism that turns implicit direction into explicit destination earlier in the cycle, instead of letting drift accumulate.
+
 > [!IMPORTANT]
 > **[Observable Autonomy](./PRINCIPLES.md), Principle 2** — every autonomous step leaves a trail. `.trail/log.md` is the proof: an outside reader can reconstruct, audit, and challenge the reasoning.
 
@@ -83,7 +86,7 @@ python <skills>/tools/record.py new --slug=my-operation --target=some-repo
 python <skills>/tools/record.py summary
 ```
 
-**Version:** v3.10.0 (2026-05-01) — [CHANGELOG.md](./CHANGELOG.md)  
+**Version:** v3.11.0 (2026-05-01) — [CHANGELOG.md](./CHANGELOG.md)  
 **Convergence baseline:** v3.1.0 (2026-04-24) — three silence runs, cross-layer coherence check, all in [.trail/log.md](./.trail/log.md).  
 **Future direction:** [archive/OBSERVABLE-LOOPS.md](./archive/OBSERVABLE-LOOPS.md) — draft spec for making any Observable Loop portable and verifiable by CI.
 

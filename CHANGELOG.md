@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.11.0 — 2026-05-01
+
+### Added
+- `hunch/SKILL.md` (v1.0.0) — new sixth skill. Invoked on demand (not in the autonomous loop). The agent forms guesses about where the operator is heading from signal in conversation, the trail, and the operator's reactions, then surfaces them as short, falsifiable questions the operator can confirm, correct, or reject. Closes the gap between explicit vision (what the operator has written down) and implicit direction (what the agent has picked up but the operator has not articulated). Addresses the human-articulation bottleneck that vision alone cannot solve. Hunch never writes to `.trail/vision.md` without operator approval (run 68).
+- `README.md`, `CITATION.cff` — updated to describe the suite as six skills (run 68).
+
+---
+
 ## v3.10.0 — 2026-05-01
 
 ### Added
