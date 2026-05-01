@@ -56,7 +56,7 @@ The probe outcome is one of:
 
 *If [Trail](../trail/SKILL.md) is installed, apply it now — it handles this step in full. Include the probe-specific fields below in the "Examination" section of the log entry.*
 
-If Trail is not installed: append an entry to `trail/log.md` containing:
+If Trail is not installed: append an entry to `.trail/log.md` containing:
 
 - The mandatory metadata (`target`, `agent`, `skill`, `outcome`). For `outcome`, state the verdict.
 - The claim being tested.

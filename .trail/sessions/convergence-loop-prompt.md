@@ -18,4 +18,4 @@ Target: `C:\Users\admin\.copilot\skills` (the `autonomous-agent-skills` repo).
 
 **Done means convergence:** you find nothing left to change that would make the skills more effective on any arbitrary codebase. Not a score. Not a checklist. If you genuinely find nothing, say so clearly and state why — that silence is the signal.
 
-**The trail** (`C:\Users\admin\.copilot\skills\trail\log.md`) is the full history of prior runs and decisions. Read it before acting. Record your run in it after.
+**The trail** (`C:\Users\admin\.copilot\skills\.trail\log.md`) is the full history of prior runs and decisions. Read it before acting. Record your run in it after.

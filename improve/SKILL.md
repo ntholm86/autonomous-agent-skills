@@ -86,7 +86,7 @@ If the loop is churning, that is itself a finding. Surface it. Do not silently k
 
 **In multi-iteration runs, this step executes after every iteration — not once at the end of all iterations.** The trail entry is the commit point for that iteration. Append it, regenerate `history.md`, and commit before starting the next iteration. A user who stops a 10-iteration run after iteration 4 must have 4 committed trail entries, not 0.
 
-If Trail is not installed: append a single entry to `trail/log.md`. The entry must include:
+If Trail is not installed: append a single entry to `.trail/log.md`. The entry must include:
 
 - Date, target, operator (if known), model identity (provider + tool-call ID prefix if observable).
 - Your interpretation of the ask.

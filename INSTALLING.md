@@ -67,7 +67,7 @@ All four skills work with only their own `SKILL.md`. No required sibling files.
 | **intent** | `PRINCIPLES.md` (cross-reference link; content is inlined) |
 | **improve** | `PRINCIPLES.md` |
 | **probe** | `PRINCIPLES.md` |
-| **trail** | nothing — creates `trail/log.md` on first use |
+| **trail** | nothing — creates `.trail/log.md` on first use |
 
 ---
 
@@ -76,13 +76,13 @@ All four skills work with only their own `SKILL.md`. No required sibling files.
 The trail is **per project**. It lives in the root of the repo being worked on — not inside `.copilot/skills/`.
 
 When the trail skill runs for the first time on a project it creates a single file:
-`<repo-root>/trail/log.md` (the append-only evidence log).
+`<repo-root>/.trail/log.md` (the append-only evidence log).
 
 Nothing else gets installed into the target repo. `record.py` stays in the skills install and is invoked from there — it writes into the current working directory by default, or whatever `$TRAIL_ROOT` points to.
 
 After every run that adds an entry to `log.md`, regenerate the readable summary **from the target repo root**:
 ```
-python <skills>/tools/record.py history --write    # writes trail/history.md
+python <skills>/tools/record.py history --write    # writes .trail/history.md
 ```
 Replace `<skills>` with your skills install path (e.g. `~/.copilot/skills`).
 
@@ -92,7 +92,7 @@ python <skills>/tools/record.py history    # timeline to stdout
 python <skills>/tools/record.py summary    # digest of the most recent run
 ```
 
-Commit `trail/log.md` and `trail/history.md`. **Do not** commit `record.py` to the target repo — it lives in the skills install only.
+Commit `.trail/log.md` and `.trail/history.md`. **Do not** commit `record.py` to the target repo — it lives in the skills install only.
 
 ### Multi-iteration runs
 

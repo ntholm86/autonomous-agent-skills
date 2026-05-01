@@ -24,7 +24,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-LOG = ROOT / "trail" / "log.md"
+LOG = ROOT / ".trail" / "log.md"
 
 REQUIRED_FILES = [
     "README.md",
@@ -35,7 +35,7 @@ REQUIRED_FILES = [
     "intent/SKILL.md",
     "trail/SKILL.md",
     "trail/README.md",
-    "trail/log.md",
+    ".trail/log.md",
 ]
 
 ENTRY_HEADING = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s+[\u2014-]\s+(.+?)\s*$")
@@ -68,10 +68,10 @@ def check_required_files() -> list[str]:
 def check_log_format() -> list[str]:
     failures: list[str] = []
     if not LOG.exists():
-        return ["trail/log.md does not exist"]
+        return [".trail/log.md does not exist"]
     text = LOG.read_text(encoding="utf-8")
     if not text.strip():
-        return ["trail/log.md is empty"]
+        return [".trail/log.md is empty"]
 
     entries: list[tuple[str, str, str]] = []
     current_date: str | None = None
@@ -86,14 +86,14 @@ def check_log_format() -> list[str]:
             current_date, current_slug = m.group(1), m.group(2)
             current_body = []
         elif malformed_heading.match(line):
-            failures.append(f"malformed entry heading in trail/log.md: {line}")
+            failures.append(f"malformed entry heading in .trail/log.md: {line}")
         elif current_date is not None:
             current_body.append(line)
     if current_date is not None:
         entries.append((current_date, current_slug or "", "\n".join(current_body)))
 
     if not entries:
-        failures.append("trail/log.md contains no entries matching '## YYYY-MM-DD — slug'")
+        failures.append(".trail/log.md contains no entries matching '## YYYY-MM-DD — slug'")
         return failures
 
     prev_date: str | None = None
@@ -132,7 +132,7 @@ def check_no_mojibake() -> list[str]:
 def check_required_markdown_docs() -> list[str]:
     failures: list[str] = []
     # PRINCIPLES.md is a verbatim external copy; its relative links point to its home repo
-    markdown_files = [rel for rel in REQUIRED_FILES if rel.endswith(".md") and rel not in ("trail/log.md", "PRINCIPLES.md")]
+    markdown_files = [rel for rel in REQUIRED_FILES if rel.endswith(".md") and rel not in (".trail/log.md", "PRINCIPLES.md")]
     for rel in markdown_files:
         path = ROOT / rel
         if not path.exists():

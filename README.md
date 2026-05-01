@@ -8,7 +8,7 @@ Four skills that give any AI agent a complete improvement loop for any codebase:
 
 The skills work on any codebase. This repo is both the workshop and the proof — if the loop can't improve itself, the claim that it improves anything else is empty.
 
-Convergence is the only finish line: three independent evaluators from distinct model families find nothing left to change. The [trail](./trail/log.md) is the record.
+Convergence is the only finish line: three independent evaluators from distinct model families find nothing left to change. The [trail](./.trail/log.md) is the record.
 
 ## The four skills
 
@@ -65,7 +65,7 @@ This repository is the loop it describes. It was applied to itself more than 100
 > [!IMPORTANT]
 > **[Convergence Is Silence](./PRINCIPLES.md), Principle 3** — the model families are named separately because convergence only counts when independent evaluators with different training and failure modes all find nothing left to change.
 
-All runs are recorded in [trail/log.md](./trail/log.md). Earlier iterations in `archive/v2/`.
+All runs are recorded in [.trail/log.md](./.trail/log.md). Earlier iterations in `archive/v2/`.
 
 ## Reference
 
@@ -81,7 +81,7 @@ python <skills>/tools/record.py summary
 ```
 
 **Version:** v3.6.1 (2026-04-30) — [CHANGELOG.md](./CHANGELOG.md)  
-**Convergence baseline:** v3.1.0 (2026-04-24) — three silence runs, cross-layer coherence check, all in [trail/log.md](./trail/log.md).  
+**Convergence baseline:** v3.1.0 (2026-04-24) — three silence runs, cross-layer coherence check, all in [.trail/log.md](./.trail/log.md).  
 **Future direction:** [archive/OBSERVABLE-LOOPS.md](./archive/OBSERVABLE-LOOPS.md) — draft spec for making any Observable Loop portable and verifiable by CI.
 
 ## License

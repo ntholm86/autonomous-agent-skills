@@ -25,16 +25,16 @@ Evidence → Trust → Autonomy
 
 The trail lives in the **root of the target repo being worked on** — not in the skills install directory.
 
-If you are improving `c:\git\clikit`, the trail is `c:\git\clikit\trail\log.md`.
-If you are improving `~/projects/myapp`, the trail is `~/projects/myapp/trail/log.md`.
+If you are improving `c:\git\clikit`, the trail is `c:\git\clikit\.trail\log.md`.
+If you are improving `~/projects/myapp`, the trail is `~/projects/myapp/.trail/log.md`.
 
 Every repo gets its own trail. The trail is local evidence for that project — it belongs with the project.
 
-One file: `trail/log.md` in the target repo root. Append-only. One `##` entry per session, newest at the bottom.
+One file: `.trail/log.md` in the target repo root. Append-only. One `##` entry per session, newest at the bottom.
 
-If `trail/log.md` does not exist yet, initialise it:
+If `.trail/log.md` does not exist yet, initialise it:
 
-Create `trail/log.md` with this header:
+Create `.trail/log.md` with this header:
 
 ```markdown
 # Trail log
@@ -52,15 +52,15 @@ After appending to `log.md`, two more steps are **mandatory before the next iter
 ```
 python <skills>/tools/record.py history --write
 ```
-Replace `<skills>` with the absolute path to the skills install (e.g. `~/.copilot/skills` or `%USERPROFILE%\.copilot\skills`). This writes `trail/history.md` — a readable summary of all runs. Do not skip this step.
+Replace `<skills>` with the absolute path to the skills install (e.g. `~/.copilot/skills` or `%USERPROFILE%\.copilot\skills`). This writes `.trail/history.md` — a readable summary of all runs. Do not skip this step.
 
 **Step 2 — commit both files**:
 ```
-git add trail/log.md trail/history.md
+git add .trail/log.md .trail/history.md
 git commit -m "trail: <slug>"
 ```
 
-Both `log.md` and `history.md` must be committed together. `history.md` is generated from `log.md` — if only one is committed they will diverge.
+Both `.trail/log.md` and `.trail/history.md` must be committed together. `history.md` is generated from `log.md` — if only one is committed they will diverge.
 
 For ad-hoc viewing in the terminal:
 
@@ -70,7 +70,7 @@ python <skills>/tools/record.py summary    # digest of the most recent run
 ```
 
 ```
-trail/
+.trail/
   log.md          — append-only ledger, one entry per session (the source of truth)
   history.md      — auto-generated readable summary (regenerated each run)
   sessions/       — optional: full verbatim transcripts, linked from log entries

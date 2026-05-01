@@ -1,6 +1,6 @@
 # History
 
-Auto-generated from `trail/log.md` by the `record.py history --write` command in the autonomous-agent-skills install.
+Auto-generated from `.trail/log.md` by the `record.py history --write` command in the autonomous-agent-skills install.
 Do not edit by hand — re-run the command to refresh.
 
 | # | Date | Slug | Outcome | Delta |
@@ -51,6 +51,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 44 | 2026-04-30 | trail-readme-shiken-jargon | one incremental change | removed "(Shiken-style)" v2 jargon from probe skill description |
 | · 45 | 2026-04-30 | claude-silence-run-1 | silence | none — zero actionable findings |
 | · 46 | 2026-05-01 | claude-silence-run-2 | silence | none — zero actionable findings; second consecutive silence from this model family |
+| ▸ 47 | 2026-05-01 | trail-dir-rename-to-dottrail | changed — structural fix; evidence trail moved from `trail/` to `.trail/` | v3.6.1 → v3.7.0 |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -252,4 +253,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Declare silence. Nothing actionable found that would improve the skills' effectiveness on an arbitrary codebase.
 
-**46 runs total — 34 with changes, 12 silence**
+### Run 47 — 2026-05-01 — trail-dir-rename-to-dottrail
+
+- **decided:** Move evidence (`log.md`, `history.md`, `sessions/`) from `trail/` to `.trail/`. Update the skill convention in all four SKILL.md files, INSTALLING.md, README.md, trail/README.md, verify.py, and tools/record.py to use `.trail/` as the evidence location. The skill definition folder (`trail/SKILL.md`, `trail/README.md`) stays at `trail/`.
+
+**47 runs total — 35 with changes, 12 silence**

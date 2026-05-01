@@ -1918,3 +1918,41 @@ No files changed. `python verify.py` → OK.
 ### Reflection
 
 Two consecutive silences from Claude Sonnet 4.6 (entries 45 and 46). Per PRINCIPLES.md minimum bar, convergence requires "3 consecutive runs, 3 distinct evaluator families, same score, zero artifact changes." This model family's contribution is complete. The loop must proceed to a second distinct model family (e.g., OpenAI GPT-4o or Gemini) to continue the convergence chain.
+
+## 2026-05-01 — trail-dir-rename-to-dottrail
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve
+- outcome: changed — structural fix; evidence trail moved from `trail/` to `.trail/`
+- delta: v3.6.1 → v3.7.0
+
+### Interpretation of the ask
+
+The operator identified a real structural collision: the `trail/` directory serves two roles in this repo — it contains the Trail skill definition AND the repo's own evidence. Any user who copies `trail/` to install the skill accidentally gets `log.md`, `history.md`, and `sessions/` as pollution. The fix was to move evidence to `.trail/` (hidden, mirrors `.git/` convention) and update the skill convention to match.
+
+### Examination
+
+Inconsistency lens: `trail/` is simultaneously the skill definition directory and the evidence directory. In every other target repo these are cleanly separated (skill in `.copilot/skills/trail/`, evidence in `trail/log.md`). Only this repo conflates them, because this repo is both the skills install and the target being improved.
+
+Overburden lens: `trail/` directory is carrying two responsibilities that belong to different concerns.
+
+Waste lens: none contributing to this fix.
+
+### Decision
+
+[!DECISION] Move evidence (`log.md`, `history.md`, `sessions/`) from `trail/` to `.trail/`. Update the skill convention in all four SKILL.md files, INSTALLING.md, README.md, trail/README.md, verify.py, and tools/record.py to use `.trail/` as the evidence location. The skill definition folder (`trail/SKILL.md`, `trail/README.md`) stays at `trail/`.
+Alternative considered: rename to `TRAIL/` (uppercase) — rejected; `.trail/` is universally clean and requires no exception notes.
+
+### Action
+
+- `git mv trail/log.md .trail/log.md`
+- `git mv trail/history.md .trail/history.md`
+- `git mv trail/sessions .trail/sessions`
+- Updated `verify.py`, `tools/record.py`, `trail/SKILL.md`, `trail/README.md`, `improve/SKILL.md`, `intent/SKILL.md`, `probe/SKILL.md`, `README.md`, `INSTALLING.md`, `CHANGELOG.md`, `trail/sessions/convergence-loop-prompt.md`
+- `python verify.py` → OK
+
+### Reflection
+
+This fix eliminates a genuine installation footgun: the collision between skill definition and evidence in the same directory. The `.trail/` convention is now universal — this repo uses it too, so the skill eats its own dog food. Convergence chain resets to 0/3 per Principle 3 (a diff was produced).

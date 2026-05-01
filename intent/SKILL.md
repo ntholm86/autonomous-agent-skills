@@ -33,9 +33,9 @@ These are probes, not a checklist. Use different probes if the situation calls f
 
 A single prompt is a thin signal. Before extracting intent, read what already exists:
 
-- **The trail** (`trail/log.md`) — past decisions, reversals, and realisations reveal what the user has consistently cared about, what they rejected, and where things went wrong before. A pattern of `[!REVERSAL]` entries around a particular approach is stronger evidence of intent than any single prompt.
+- **The trail** (`.trail/log.md`) — past decisions, reversals, and realisations reveal what the user has consistently cared about, what they rejected, and where things went wrong before. A pattern of `[!REVERSAL]` entries around a particular approach is stronger evidence of intent than any single prompt.
 - **The conversation** — corrections, approvals, and the moments the user stepped in all carry intent signal. A user who keeps redirecting toward simplicity is telling you something that no single prompt states explicitly.
-- **Past sessions** — if earlier sessions exist in `trail/sessions/`, read their intent sections. Accumulated learnings about how this user frames problems, what they consider done, and what they care about carry over.
+- **Past sessions** — if earlier sessions exist in `.trail/sessions/`, read their intent sections. Accumulated learnings about how this user frames problems, what they consider done, and what they care about carry over.
 
 The immediate prompt is the latest instruction. The trail and conversation history are the context that determines what it actually means. An agent that reads only the prompt is working with the thinnest possible signal.
 
