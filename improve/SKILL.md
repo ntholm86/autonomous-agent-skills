@@ -7,7 +7,7 @@ argument-hint: 'The target to improve, and optionally the concern (correctness, 
 
 # Improve
 
-*Examine. Decide. Change. Verify. Record. Or argue convincingly that nothing should change.*
+*Understand. Examine. Challenge. Decide. Act. Reflect. Record. Or argue convincingly that nothing should change.*
 
 This is the only skill you need for most autonomous work. It combines what v2 split into Kaizen (incremental), Kaikaku (radical), and Hansei (reflection) — because in practice the agent should pick which mode the situation calls for, not be told.
 

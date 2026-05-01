@@ -64,6 +64,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 57 | 2026-05-01 | stub-reflection-scaffold | changed — `tools/record.py` STUB_TEMPLATE `### Reflection` section upgraded from bare `TODO` to structured three-prompt scaffold matching step 6a + conditional 6b | none (tooling quality improvement, no version bump) |
 | · 58 | 2026-05-01 | echo-sweep-silence | silence — full repo sweep found no remaining v3.8.0 echo in any active instruction file | none |
 | ▸ 59 | 2026-05-01 | zenodo-description-update | changed — updated .zenodo.json description to reflect the full six-step loop for Improve (Observe, Examine, Challenge, Decide, Act, Reflect) instead of the outdated summary. | none |
+| ▸ 60 | 2026-05-01 | tagline-step-names | changed — updated SKILL.md subtitle and README table entry from the old 5-word formula ("Examine. Decide. Change. Verify. Record.") to the accurate 7-step sequence matching actual step headings | none (documentation alignment) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -317,4 +318,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Update `.zenodo.json` description to match the six canonical steps of the loop.
 
-**59 runs total — 46 with changes, 13 silence**
+### Run 60 — 2026-05-01 — tagline-step-names
+
+- **decided:** Replace both occurrences of "Examine. Decide. Change. Verify. Record." (and "examine, decide, change, verify, record") with the accurate 7-step sequence: "Understand. Examine. Challenge. Decide. Act. Reflect. Record." (and lowercase equivalent in README table).
+
+**60 runs total — 47 with changes, 13 silence**

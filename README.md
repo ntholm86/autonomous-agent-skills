@@ -15,7 +15,7 @@ Convergence is the only finish line: three independent evaluators from distinct 
 | Skill | What it does |
 |---|---|
 | **[Intent](./intent/SKILL.md)** | States the agent's interpretation of the ask before work begins. Catches misreading early. Start here. |
-| **[Improve](./improve/SKILL.md)** | Examine, decide, change, verify, record. The core autonomous loop. |
+| **[Improve](./improve/SKILL.md)** | Understand, examine, challenge, decide, act, reflect, record. The core autonomous loop. |
 | **[Probe](./probe/SKILL.md)** | Builds two similar-looking cases that differ in one material way. If the response does not change, you have evidence of pattern-matching. Measures [Autonomous Reasoning Fidelity (ARF)](./PRINCIPLES.md). |
 | **[Trail](./trail/SKILL.md)** | Appends a structured entry to `.trail/log.md` after each session. Each run starts with the full record of prior decisions. |
 
