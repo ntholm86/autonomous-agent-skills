@@ -17,7 +17,7 @@ Convergence is the only finish line: three independent evaluators from distinct 
 | **[Intent](./intent/SKILL.md)** | States the agent's interpretation of the ask before work begins. Catches misreading early. Start here. |
 | **[Improve](./improve/SKILL.md)** | Examine, decide, change, verify, record. The core autonomous loop. |
 | **[Probe](./probe/SKILL.md)** | Builds two similar-looking cases that differ in one material way. If the response does not change, you have evidence of pattern-matching. Measures [Autonomous Reasoning Fidelity (ARF)](./PRINCIPLES.md). |
-| **[Trail](./trail/SKILL.md)** | Appends a structured entry to `trail/log.md` after each session. Each run starts with the full record of prior decisions. |
+| **[Trail](./trail/SKILL.md)** | Appends a structured entry to `.trail/log.md` after each session. Each run starts with the full record of prior decisions. |
 
 Each skill is standalone. Install only what you need. Any combination works.
 
@@ -56,7 +56,7 @@ The reasoning follows a specific sequence, drawn from Toyota Production System (
 **Reflect** — reread the full trail of prior iterations. Is the loop converging or drifting? What should the next run examine? Each decision records the alternatives considered and why one path won.
 
 > [!IMPORTANT]
-> **[Observable Autonomy](./PRINCIPLES.md), Principle 2** — every autonomous step leaves a trail. `trail/log.md` is the proof: an outside reader can reconstruct, audit, and challenge the reasoning.
+> **[Observable Autonomy](./PRINCIPLES.md), Principle 2** — every autonomous step leaves a trail. `.trail/log.md` is the proof: an outside reader can reconstruct, audit, and challenge the reasoning.
 
 ## Evidence
 

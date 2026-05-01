@@ -53,6 +53,7 @@ Do not edit by hand — re-run the command to refresh.
 | · 46 | 2026-05-01 | claude-silence-run-2 | silence | none — zero actionable findings; second consecutive silence from this model family |
 | ▸ 47 | 2026-05-01 | trail-dir-rename-to-dottrail | changed — structural fix; evidence trail moved from `trail/` to `.trail/` | v3.6.1 → v3.7.0 |
 | ▸ 48 | 2026-05-01 | record-py-unicode-fix | changed — `record.py history` UnicodeEncodeError on Windows fixed; v3.7.1 | v3.7.0 → v3.7.1 |
+| ▸ 49 | 2026-05-01 | trail-stale-paths-cleanup | changed — stale `trail/log.md` paths from v3.7.0 rename fixed; v3.7.2 | v3.7.1 → v3.7.2 |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -262,4 +263,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Add `sys.stdout.reconfigure(encoding='utf-8')` at the start of `main()` in `tools/record.py`, guarded by `hasattr` for robustness. This configures stdout to write UTF-8 bytes regardless of the platform default, fixing the crash for all trail content (em-dashes, arrows, `▸`, `·`, and any other Unicode chars trail entries may contain).
 
-**48 runs total — 36 with changes, 12 silence**
+### Run 49 — 2026-05-01 — trail-stale-paths-cleanup
+
+- **decided:** Fix all five stale `trail/log.md` path references in the live skill surface to `.trail/log.md`. Treat as one conceptual change: cleanup of the v3.7.0 rename across the user-facing surface.
+
+**49 runs total — 37 with changes, 12 silence**

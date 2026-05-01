@@ -1,7 +1,7 @@
 ---
 name: trail
 version: 1.5.0
-description: 'Evidence trail management. Append a structured entry to trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
+description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
 
@@ -185,15 +185,15 @@ The mandatory sequence per iteration:
 
 ```
 iteration 1:
-  1. append entry to trail/log.md
-  2. python <skills>/tools/record.py history --write   ← updates trail/history.md
-  3. git add trail/log.md trail/history.md && git commit -m "trail: <slug>-1"
+  1. append entry to .trail/log.md
+  2. python <skills>/tools/record.py history --write   ← updates .trail/history.md
+  3. git add .trail/log.md .trail/history.md && git commit -m "trail: <slug>-1"
   ↓ only now begin iteration 2
 
 iteration 2:
-  1. append entry to trail/log.md
+  1. append entry to .trail/log.md
   2. python <skills>/tools/record.py history --write
-  3. git add trail/log.md trail/history.md && git commit -m "trail: <slug>-2"
+  3. git add .trail/log.md .trail/history.md && git commit -m "trail: <slug>-2"
   ↓ only now begin iteration 3
 ...
 ```

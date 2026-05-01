@@ -1998,3 +1998,57 @@ Verification: `python tools/record.py history` (without PYTHONUTF8=1) — runs c
 ### Reflection
 
 The `.trail/` rename from run 47 was a larger-scope change that reset the convergence chain. This run finds and fixes one real crash discovered during the run itself — an honest signal from actual use. The `trail/SKILL.md` frontmatter description stale path is deferred (documentation drift, not a runtime failure) and is the most obvious candidate for the next run. If the next run finds only that, the chain resumes converging. If the next run finds nothing at all, that would be the first silence post-rename.
+
+## 2026-05-01 — trail-stale-paths-cleanup
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve (self-targeting)
+- outcome: changed — stale `trail/log.md` paths from v3.7.0 rename fixed; v3.7.2
+- delta: v3.7.1 → v3.7.2
+
+### Interpretation of the ask
+
+Run the full Improve loop on the autonomous-agent-skills repo. Prior run (run 48) deferred one finding: `trail/SKILL.md` frontmatter description contains the old `trail/log.md` path. This run picks up from there.
+
+### Examination
+
+**Inconsistency lens:** Searched all live non-archive files for `trail/log.md` without a leading dot. Found stale paths in five locations across three files, all artifacts of the v3.7.0 `.trail/` rename:
+
+1. `trail/SKILL.md` frontmatter `description:` field — says `trail/log.md`, displayed in VS Code's skill picker before users read anything else. Wrong path causes users to create the wrong directory.
+2. `trail/SKILL.md` example git commands (lines 188-196) — `git add trail/log.md trail/history.md`. A user copying these commands would add the wrong files and commit would silently succeed with nothing staged.
+3. `README.md` table row for Trail — says `trail/log.md`, the first description of the Trail skill a new user reads.
+4. `README.md` Observable Autonomy blockquote — says `trail/log.md` is "the proof" in a prominent callout block.
+5. `verify.py` docstring — says `trail/log.md` in the Checks list. Cosmetic, but inconsistent with the check itself which correctly uses `.trail/log.md`.
+
+**Overburden lens:** Nothing new.
+
+**Waste lens:** Nothing new.
+
+**Challenge the first read:** Are these one finding or five? All are artifacts of the same rename, all describe the same wrong path. Treating them as a single cleanup is correct — partial fixes would leave the inconsistency visible to users who read more than one file.
+
+### Decision
+
+[!DECISION] Fix all five stale `trail/log.md` path references in the live skill surface to `.trail/log.md`. Treat as one conceptual change: cleanup of the v3.7.0 rename across the user-facing surface.
+Rationale: The example git commands in `trail/SKILL.md` are the most operationally dangerous (a user runs them and commits the wrong files). The frontmatter description is the most visible (shown by VS Code before anything else). Both must be fixed together; fixing one while leaving the other creates visible inconsistency.
+Alternative: fix only the highest-visibility one (frontmatter) — rejected because the git command examples are more operationally harmful and the inconsistency would remain.
+
+### Action
+
+`trail/SKILL.md`:
+- Frontmatter `description:`: `trail/log.md` → `.trail/log.md`
+- Example git commands (×4 lines): `trail/log.md trail/history.md` → `.trail/log.md .trail/history.md`
+
+`README.md`:
+- Table row for Trail: `trail/log.md` → `.trail/log.md`
+- Observable Autonomy blockquote: `trail/log.md` → `.trail/log.md`
+
+`verify.py`:
+- Docstring Checks list item 1: `trail/log.md` → `.trail/log.md`
+
+Verification: `python verify.py` → OK. No logic changed.
+
+### Reflection
+
+The v3.7.0 rename was a structural fix that touched ~12 files. This run cleaned up the 5 stale path references the rename missed. The convergence chain restarted at run 47 (rename). Runs 48 and 49 both produced changes — a Unicode crash and a stale-path sweep. The next run is the first real candidate for silence post-rename. If nothing actionable is found, that is peg 1/3 of the new convergence chain.

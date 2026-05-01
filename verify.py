@@ -5,7 +5,7 @@ Replaces verify-suite.ps1 from v2. Pure-Python, zero dependencies, runs on
 Windows / macOS / Linux.
 
 Checks:
-1. trail/log.md exists and is non-empty.
+1. .trail/log.md exists and is non-empty.
 2. Every entry heading matches `## YYYY-MM-DD — <slug>`.
 3. Entries are in non-decreasing date order.
 4. Every entry contains the mandatory metadata fields: target, agent, skill, outcome.
