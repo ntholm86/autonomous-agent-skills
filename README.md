@@ -35,7 +35,7 @@ See [INSTALLING.md](./INSTALLING.md) for setup details.
 
 The user still sets the direction in the prompt. The agent is autonomous in how it gets there.
 
-Each run starts by reading the full trail of prior decisions. That trail is both evidence and memory. The agent builds on earlier conclusions instead of starting cold. On this repo, that process eventually led it to stop making incremental fixes and propose a full restructure of the suite. Twice.
+Each run starts by reading `.trail/compass.md` (the current synthesized orientation, if Retrospect has been run) and then the full trail of prior decisions. That trail is the evidence; the compass is the distillation. The agent builds on earlier conclusions instead of starting cold. On this repo, that process eventually led it to stop making incremental fixes and propose a full restructure of the suite. Twice.
 
 The reasoning follows a specific sequence, drawn from Toyota Production System (TPS) and military doctrine:
 

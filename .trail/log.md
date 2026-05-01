@@ -2884,3 +2884,51 @@ The `model.md` file has no schema enforcement — it is prose, written by whiche
 **Imagined-reader pushback:**
 
 "You've added a file that agents are *instructed* to write and read, but there's no verification that they actually do. The trail already has this problem — agents can skip trail entries. Adding another file to the protocol adds another thing to skip. The working model is only valuable if agents consistently write it after Retrospect runs and consistently read it before Improve runs. What is the enforcement mechanism?" The answer is: the trail is the evidence. If `model.md` is not committed alongside retrospect trail entries, the run is incomplete. Same discipline as `history.md`.
+
+## 2026-05-01 — docs-readme-compass-orientation
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve (self-targeting)
+- outcome: fixed stale README description — runs now start with compass.md, not the full trail
+- delta: v3.9.1 (no version bump — docs fix only)
+
+### Interpretation of the ask
+
+"okay then lets continue" — resume the improve loop. Run 66.
+
+### Examination
+
+Checked all active files for references to "prior decisions", "full trail", and "compass.md" outside the `.trail/` directory. Found two hits in README.md:
+
+- Line 31 (Quick Start step 3): "Each run reads the full trail of prior decisions." — high-level summary, acceptable at that altitude.
+- Line 38 (How it works): "Each run starts by reading the full trail of prior decisions. That trail is both evidence and memory." — factually inaccurate since run 65. Improve step 1 now reads `compass.md` first; the trail is secondary. The "both evidence and memory" framing is also wrong: evidence is still the trail, but memory (current synthesis) is now compass.md.
+
+No other stale references found in active skill files. .zenodo.json and CITATION.cff don't describe the per-run reading order so they're unaffected.
+
+### Decision
+
+[!DECISION] Fix the README "How it works" opening sentence to correctly describe the reading order introduced in run 65.
+
+Rationale: this is the most-read user-facing document and it directly misrepresents the mechanism that was just introduced. A user reading the README to understand how the loop works would have a wrong mental model.
+
+Alternative: also update Quick Start step 3. Rejected — step 3 is a three-word description at high altitude; the nuance of compass.md vs. full trail isn't needed there and adding it would over-specify a quick-start instruction.
+
+### Action
+
+Updated README.md line 38: "Each run starts by reading the full trail of prior decisions. That trail is both evidence and memory." → "Each run starts by reading `.trail/compass.md` (the current synthesized orientation, if Retrospect has been run) and then the full trail of prior decisions. That trail is the evidence; the compass is the distillation."
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The suite at v3.9.1 now has two mechanisms for run orientation (compass.md + trail) but only one of them (compass.md) is described accurately in the user-facing documentation. The trail description is accurate everywhere. The compass description is accurate in retrospect/SKILL.md and improve/SKILL.md but was one sentence behind in README. That gap is now closed.
+
+**Named blind spot:**
+
+The Quick Start section still says "Each run reads the full trail of prior decisions" without mentioning compass.md. That's defensible at the quick-start altitude but a new user reading only Quick Start would not know the compass exists. No action taken — Quick Start is intentionally terse — but it's a documentation gap worth noting.
+
+**Imagined-reader pushback:**
+
+"You've made three documentation fixes in a row (runs 63-66) that all follow the same pattern: a new mechanism is added, its description propagates correctly to skill files, but the README 'How it works' paragraph lags one run behind. This is a systemic pattern, not a one-off. The root cause is that README's 'How it works' is a prose narrative written independently of the skill specs, and it requires manual synchronization with every behavioral change. The fix isn't another single-sentence patch — it's a process or structure change that prevents the lag." That pushback is accurate.
