@@ -11,9 +11,9 @@ This repo is **simultaneously the workshop and the proof**. The skills — inten
 The present focus has two parts:
 
 1. **Get the reasoning layer to a reasonable state** — each run finds the highest-leverage thing left to change in the skills themselves and changes it, or declares convergence.
-2. **Document the process well enough to be implementable** — by something like evo, by another agent framework, by a human team. "Reasonable" means: clear enough that someone who didn't write it can pick it up and run it.
+2. **Document the process well enough to be implementable** — by something like evo, by another agent framework, by a human team. "Good enough" is bounded by Principles 1 and 2: the documentation must **define the destination, not prescribe the route** (no checklists, no thresholds smuggled in as defaults), and the process it describes must **produce a visible trail as a structural property**, not as an optional add-on. A spec that satisfies a harness by being mechanical violates Principle 1. A spec that hides what the agent did violates Principle 2.
 
-These two goals constrain each other. A skill that works conversationally but can't be specified precisely enough for another system to invoke is not done. A specification precise enough for machine invocation but unreadable by a human violates the human-readable principle.
+These two goals constrain each other. A skill that works conversationally but can't be specified precisely enough for another system to invoke is not done. A specification precise enough for machine invocation but that turns the skill into a checklist — or strips out the trail — has broken what it was specifying.
 
 ## Architectural constraints (not guidelines)
 
