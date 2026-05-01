@@ -114,7 +114,7 @@ If Trail is not installed: append a single entry to `.trail/log.md`. The entry m
 - Lenses applied and what each revealed.
 - The decision (incremental, redesign argument, or silence).
 - The change made and verification evidence — or, if silence, a statement of what was examined.
-- Any reflection on the loop itself.
+- Reflection about the target (per step 6): a falsifiable model-claim, a named blind spot, and an imagined-reader pushback. Across-trail reflection if its triggers fired.
 - Marked moments: `[!DECISION]`, `[!REVERSAL]`, `[!REALIZATION]`.
 
 The format spec is in [trail/SKILL.md](../trail/SKILL.md). The script `<skills>/tools/record.py` can stub a new entry for you.

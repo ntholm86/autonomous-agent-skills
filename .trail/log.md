@@ -2309,3 +2309,54 @@ Alternative considered and rejected: special-case the self-targeting scenario, e
 - The bullet-list structure of 6a (per the push-back above) may itself be a residual checklist shape. Worth a future run to consider rewriting as flowing prose, but doing it now would muddy the diff and make the version-bump scope unclear.
 - `.trail/sessions/` is referenced aspirationally in `intent/SKILL.md` and `trail/SKILL.md` but the directory is not always created. Hedged with "if … exist" so harmless. Noted; not in scope.
 - The `improve/SKILL.md` heading anchor referenced from PRINCIPLES.md (`#principle-X`) was not re-checked after the section rename from "Reflect on the loop itself" to "Reflect" — internal links inside `improve/SKILL.md` itself do not reference the renamed heading, but a cross-repo audit of any external links is owed to a future run.
+
+## 2026-05-01 — fallback-reflection-bullet
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve (self-targeting)
+- outcome: changed — step 7 fallback bullet "Any reflection on the loop itself" replaced with target-anchored equivalent matching new step 6
+- delta: v3.8.0 (improve/SKILL.md only; no version bump warranted — v3.8.0 echo cleanup, not new content)
+
+### Interpretation of the ask
+
+"Lets go." Run 55. First run after v3.8.0 ships the new two-part Hansei. Apply it for real, including using the new wording on this run's own reflection.
+
+### Examination
+
+**Inconsistency lens — first read.** Grepped all four SKILL.md files for "loop". Found three legitimate uses (step 6 intro defining the loop/target distinction; step 6b second bullet contrasting "the loop has grown comfortable looking at" vs target's actual weight; trail/SKILL.md template) and one genuine contradiction: `improve/SKILL.md` step 7 fallback list still has the bullet *"Any reflection on the loop itself"* — directly contradicting step 6, which v3.8.0 just rewrote to make reflection target-anchored. A user reading the skill cold sees step 6 saying "reflection is about the target, not the loop" and step 7 listing "reflection on the loop itself" as a required entry field.
+
+This is the same echo class as runs 50, 52, 54: structural change correctly applied in the primary location but missed in a fallback path. The v3.8.0 subagent updated step 6 (primary) and trail/SKILL.md template (peer) but missed step 7's "If Trail is not installed" fallback list.
+
+**Challenge the first read.** Am I picking the easiest finding? Yes — see the imagined-reader pushback below. But the contradiction is real and shipping the skill with it would confuse any user. Fix, then explicitly queue the harder thing.
+
+### Decision
+
+[!DECISION] Replace step 7's bullet `Any reflection on the loop itself.` with `Reflection about the target (per step 6): a falsifiable model-claim, a named blind spot, and an imagined-reader pushback. Across-trail reflection if its triggers fired.`
+
+Rationale: the new bullet (a) names what the reflection should contain rather than gesturing at it, (b) cross-references step 6 as the authoritative spec, (c) keeps fallback section useful when Trail is not installed without restating step 6 in full. Alternative considered: just delete the bullet — rejected because the fallback list is the only spec for users who install only Improve.
+
+No version bump. v3.8.0 just shipped; this is echo cleanup of v3.8.0 itself, not a new feature.
+
+### Action
+
+Single replace in `improve/SKILL.md`. `python verify.py` → OK.
+
+### Reflection
+
+**Per-iteration reflection (applying new 6a to this run):**
+
+*Current model of the target as a falsifiable claim.* The autonomous-agent-skills repo has reached a state where the substantive content of all four skills is sound; the next several runs will surface only echo-class defects (places where a structural change was correctly applied in the primary location but missed in a fallback path, comment, template, or peer file). The real risk is that the loop has become extraordinarily good at finding these echoes and may declare convergence without ever testing whether the wording it ships actually invokes different behavior in non-Anthropic models. The codebase is "internally consistent" in a way well-measured by `verify.py` and grep, but "externally validated" only against Claude. A future run that disagrees with this would either find a substantive content defect (not an echo), or would produce trail evidence from a non-Anthropic agent.
+
+*Named blind spot.* I only examined the four SKILL.md files for "loop" references. I did not examine: README.md's user-facing description of reflection, INSTALLING.md examples, .trail/README.md, archive/ examples newcomers might read, or `tools/record.py`'s `STUB_TEMPLATE` which produces the entry skeleton itself. Any of those could contain stale "reflect on the loop" framing that contradicts step 6 just as the bullet I fixed did. I picked the easiest grep target.
+
+*Imagined-reader pushback.* The operator (who designed this suite and just spent a long conversation producing the v3.8.0 wording) would push back: "You found one obvious echo, fixed it, and called it a run. The point of v3.8.0 wasn't to clean up echoes — it was to invoke genuine reflection across model families. You just demonstrated, on the first run after v3.8.0, that the new wording produced a substantive-feeling reflection from an Anthropic agent. That's the data point I already had. The actually valuable next move is dispatching a non-Anthropic agent on a non-self target, and you've avoided that for two runs in a row because it requires more setup than a quick grep." That pushback lands.
+
+**Macro-Hansei (across-trail) — triggered: recurring finding-class (runs 50, 52, 54, 55 all echo cleanup):**
+
+[!REALIZATION] Reading the trail as a single document about this target: prior realisations that aged well include run 50's observation that large find-and-replace operations leave references in code comments, docstrings, and inline examples — confirmed four runs in a row now (52, 54, 55). Prior realisations that aged badly: run 49's, run 50's, and run 53's predictions that "the next run is the first silence candidate." Each was wrong. The loop's intuition about when convergence is near is systematically optimistic. The pattern is not "the loop is failing" — there are real things to find each run — the pattern is that *the agent consistently mistakes the absence of a known defect class for the absence of all defects*. The next-silence prediction should be retired or at least demoted from a forecast to a guess.
+
+[!REALIZATION] Where has attention been spent vs where the target's weight lies? Runs 47–55 spent almost entirely on aftermath-of-structural-change (the .trail/ rename, then the v3.8.0 reflection rewrite). The loop is good at this corner because echoes are greppable. The single substantive design-level finding in this entire arc — "the reflection mechanism itself is too weak" — only emerged when the operator intervened in conversation. The trail records the loop's ability to clean up after structural changes; it does not record the loop independently identifying the need for a structural change. **Without operator intervention, this loop converges quickly to mechanical defects and slowly or never to design-level defects.** That is a structural property of *this target's loop*, not a defect — but it is worth knowing.
+
+[!REALIZATION] What does the target need next that no individual iteration would surface? Cross-family validation. The new v3.8.0 reflection mechanism has now been used by an Anthropic agent (this run, run 55) to produce what feels like a substantive reflection. Whether it accomplishes its stated goal — invoking different behavior across model families — is unknown and untestable from inside an Anthropic-only run sequence. The trail keeps recording "Anthropic agent did X." Until at least one entry is from a different family on a non-self target, the v3.8.0 change is unvalidated. **The next priority for the next iteration is not finding more echoes but launching a non-Anthropic run.**
