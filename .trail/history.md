@@ -65,6 +65,7 @@ Do not edit by hand — re-run the command to refresh.
 | · 58 | 2026-05-01 | echo-sweep-silence | silence — full repo sweep found no remaining v3.8.0 echo in any active instruction file | none |
 | ▸ 59 | 2026-05-01 | zenodo-description-update | changed — updated .zenodo.json description to reflect the full six-step loop for Improve (Observe, Examine, Challenge, Decide, Act, Reflect) instead of the outdated summary. | none |
 | ▸ 60 | 2026-05-01 | tagline-step-names | changed — updated SKILL.md subtitle and README table entry from the old 5-word formula ("Examine. Decide. Change. Verify. Record.") to the accurate 7-step sequence matching actual step headings | none (documentation alignment) |
+| ▸ 61 | 2026-05-01 | frontmatter-description-fix | changed — rewritten `improve/SKILL.md` frontmatter `description` to use accurate step verbs; removed "verify, and record" tail and "change it" misname | none (no behaviour change, skill routing text updated) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -322,4 +323,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Replace both occurrences of "Examine. Decide. Change. Verify. Record." (and "examine, decide, change, verify, record") with the accurate 7-step sequence: "Understand. Examine. Challenge. Decide. Act. Reflect. Record." (and lowercase equivalent in README table).
 
-**60 runs total — 47 with changes, 13 silence**
+### Run 61 — 2026-05-01 — frontmatter-description-fix
+
+- **decided:** Rewrite the frontmatter `description` sentence to: "Understand the ask, examine the target, challenge the first read, decide on one change (or argue for redesign, or declare silence), act, reflect on the target, and record." The USE WHEN tags are unchanged. The "Combines incremental refinement…" sentence is accurate and unchanged.
+
+**61 runs total — 48 with changes, 13 silence**
