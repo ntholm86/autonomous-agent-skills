@@ -75,6 +75,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 68 | 2026-05-01 | split-vision-from-compass | introduced `.trail/vision.md` as a sibling to `.trail/compass.md`; vision is operator-held and never written by any skill, compass is Retrospect-derived and rewritten each run | suite v3.9.1 → v3.10.0; improve 3.3.0 → 3.4.0; retrospect 1.1.0 → 1.2.0; trail 1.6.0 → 1.7.0 |
 | ▸ 69 | 2026-05-01 | hunch-skill-added | added Hunch as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct | suite v3.10.0 → v3.11.0; new `hunch/SKILL.md` v1.0.0 |
 | ▸ 70 | 2026-05-01 | hunch-on-operator-vision-intent | vision.md gained a top-section research framing — "architecture of trustworthy delegation" — drafted from intent rather than operator's words, approved before write | .trail/vision.md +14 lines (new "What this work is, beyond a skillset" section) |
+| ▸ 71 | 2026-05-01 | position-md-v0-1-drafted | POSITION.md v0.1 drafted and committed — first standalone position document for the repo, framing "operation-time trustworthy delegation" as the bet, with explicit falsification criteria and adjacent-work mapping | POSITION.md +new file (~2200 words) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -372,4 +373,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Apply Hunch as designed: form 2-5 specific sourced hunches stated as guesses, turn each into a falsifiable question, surface one prioritized question (not all at once), do not write to vision.md without explicit operator approval. Three hunches formed:
 
-**70 runs total — 56 with changes, 14 silence**
+### Run 71 — 2026-05-01 — position-md-v0-1-drafted
+
+- **decided:** Draft POSITION.md as v0.1 with the following structure: open with the situation in plain language (no jargon, no field name), explain why existing labels miss it, name "operation-time trustworthy delegation" as the bet, define it via four sub-claims (operation-time / delegation / evidence-while-driving / protocol-not-tool), describe what I'm doing about it (the skills + workshop-and-proof setup) honestly including its limits, state what I'm NOT claiming, list 5 specific falsification criteria, sketch where this is going, mark as v0.1 provisional. Sign as the author. ~2200 words.
+
+**71 runs total — 57 with changes, 14 silence**
