@@ -39,6 +39,24 @@ These two goals constrain each other. A skill that works conversationally but ca
 - **Probe Intent's core claim** — that the agent is acting on what the operator means, not what they typed.
 - **Honest behavioral changes** — not docs catching up to a prior structural change. If the next high-leverage move is documentation, name it as such and ask whether the structural change before it was actually right.
 
+## Memory, learning, meta-cognition (the protocol must require all three)
+
+A reasoning layer that can't carry anything across runs is not a reasoning layer. The protocol the skills define must require all three, while leaving the implementation open — different harnesses will satisfy them in different (and sometimes faster) ways.
+
+**What this skillset has, and where:**
+- **Memory** — `.trail/log.md` (append-only, human-readable, source of truth) and `.trail/history.md` (auto-generated digest).
+- **Learning** — none in the strict sense. There is no mechanism that updates a stored strategy from outcomes; "learning" here means a future agent reads the trail and reasons over it.
+- **Meta-cognition** — `.trail/compass.md` (the current synthesized orientation, written by Retrospect, read by Improve at step 1). This is the only artifact that explicitly reasons about what the target is becoming.
+
+**What evo has, as a concrete reference implementation of the same three needs:**
+- **Memory** — proof-ledger.jsonl (hash-chained iteration log), history.jsonl (cross-repo), in-process file-change tracker.
+- **Learning** — gene library (per-category success rates feed PROPOSE), lessons journal (local + global cross-repo, feed ANALYZE/PROPOSE), category-stats (merge rates re-weight category priority).
+- **Meta-cognition** — fitness scorer (evo clamps its own authority when verification power is low), meta-analysis (when self-targeting, evo injects its own failure patterns into ANALYZE).
+
+The skills approach satisfies these needs through a single human-readable trail that an agent re-reasons over each run. Evo satisfies them through structured per-category statistics that adjust prompts mechanically. Both are valid. The protocol must specify **what** each artifact is for, not **how** it is stored — a harness with structured stats and a conversational agent with a markdown trail must both be able to claim conformance.
+
+**The gap that cuts deepest:** evo's meta-cognition (fitness, meta-analysis) reasons about *its own performance*. It does not reason about *what the target is becoming* — that vision is held by the human. Evo ran on itself and could not improve its own compass, because it had no mechanism to derive one. The skills suite is trying to give that mechanism a name and shape (Retrospect → compass), and self-targeting this repo just brings the loop a level deeper: the agent must derive the same compass we are right now writing by hand. **Solving that — autonomous compass derivation — is the hard problem this repo exists to chip away at.**
+
 ## Horizon (context, not current focus)
 
 The longer arc is that the skills suite is intended to become the reasoning layer for an autonomous execution harness — evo (`c:\git\evo`) is the concrete instance, but the goal is broader: **the skills should be specifiable cleanly enough that any execution harness could invoke them**. Integration with any specific system is **deferred** — it does not begin until the reasoning layer has proven itself on real targets with Retrospect in play, and until the specification is precise enough that the integration is a matter of wiring, not interpretation.
