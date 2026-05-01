@@ -61,6 +61,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 54 | 2026-05-01 | reflect-step-hansei-rewrite | changed — `improve/SKILL.md` step 6 rewritten as two-part Hansei (per-iteration + conditional across-trail); `trail/SKILL.md` Reflection template updated to match | v3.7.4 → v3.8.0; improve 3.2.0 → 3.3.0; trail 1.5.0 → 1.6.0 |
 | ▸ 55 | 2026-05-01 | fallback-reflection-bullet | changed — step 7 fallback bullet "Any reflection on the loop itself" replaced with target-anchored equivalent matching new step 6 | v3.8.0 (improve/SKILL.md only; no version bump warranted — v3.8.0 echo cleanup, not new content) |
 | ▸ 56 | 2026-05-01 | readme-reflection-echo | changed — updated README.md's description of the 'Reflect' step to reflect v3.8.0's target-anchored Hansei instead of old loop-convergence wording | none (documentation cleanup echo) |
+| ▸ 57 | 2026-05-01 | stub-reflection-scaffold | changed — `tools/record.py` STUB_TEMPLATE `### Reflection` section upgraded from bare `TODO` to structured three-prompt scaffold matching step 6a + conditional 6b | none (tooling quality improvement, no version bump) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -302,4 +303,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Replace the stale "Reflect" description in `README.md` with wording that accurately mirrors the v3.8.0 specification (falsifiable claim about target, named blind spot, imagined reader pushback, and across-trail macro-Hansei).
 
-**56 runs total — 44 with changes, 12 silence**
+### Run 57 — 2026-05-01 — stub-reflection-scaffold
+
+- **decided:** Replace the bare `TODO` under `### Reflection` in `STUB_TEMPLATE` with a four-section scaffold: falsifiable claim, named blind spot, imagined-reader pushback, and conditional macro-Hansei with its triggers listed inline. This makes the required structure visible at stub generation time without requiring the agent to re-read SKILL.md step 6.
+
+**57 runs total — 45 with changes, 12 silence**

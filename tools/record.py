@@ -74,7 +74,21 @@ TODO
 
 ### Reflection
 
-TODO
+**Falsifiable claim about the target's current state:**
+
+TODO — a specific, disprovable statement about what is true of the target right now.
+
+**Named blind spot:**
+
+TODO — what this examination likely missed, and why.
+
+**Imagined-reader pushback:**
+
+TODO — the strongest objection from someone who knows the target better.
+
+**Across-trail macro-Hansei** *(conditional — only if a trigger fires: recurring finding-class, imminent silence, contradicted prior [!REALIZATION], or operator ask)*:
+
+TODO or N/A
 """
 
 
