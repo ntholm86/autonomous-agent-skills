@@ -1,38 +1,43 @@
 # Compass — autonomous-agent-skills
 
-_Last updated: 2026-05-01 (seeded from operator conversation, not a formal Retrospect run)_
+_Last updated: 2026-05-01 (seeded from operator conversation + convergence-loop-prompt; not a formal Retrospect run)_
 
 ---
 
-## What this suite is for
+## What this repo is for, right now
 
-The skills suite is the **reasoning layer** for autonomous software agents. Evo (`c:\git\evo`) is the **execution harness** — it implements, merges, releases, and maintains a proof trail. They are two halves of one system that have not yet been connected.
+This repo is **simultaneously the workshop and the proof**. The skills — intent, improve, probe, trail, retrospect — are generic tools meant to make any AI agent's improvement loop better. The honest test is whether they can improve themselves. If they can't, the claim is hollow.
 
-The skills as they currently exist are behavioral specs for a conversational agent. The next form they need to take — callable phases with defined inputs, outputs, and contracts that evo can invoke — has not been built yet. That work does not begin until the reasoning layer has proven itself.
+The present focus is **improving the reasoning layer**. Each run finds the highest-leverage thing left to change in the skills themselves and changes it — or declares convergence. Nothing else.
 
-## Current claims
+## Architectural constraints (not guidelines)
 
-1. **The skills are a prototype of the right protocol, not the finished protocol.** Retrospect, compass, trail, intent — the concepts are correct. The format is optimized for human-readable conversational use, not machine-orchestrated pipeline invocation. Both forms can coexist; neither currently exists in the machine-callable form.
+1. **Generic first.** No infrastructure, tests, or docs that only make sense because the target is a skills repo.
+2. **No test infrastructure.** The loop is the test. The trail is the evidence.
+3. **Human-readable.** If a term requires prior knowledge to understand, it fails.
+4. **One change per run, highest leverage, stated reason.** No batching.
+5. **The three principles are constraints, not preferences.** Violating one means a skill is broken.
 
-2. **The loop is a text-consistency engine, not a behavioral improvement engine.** Runs 55–66 were predominantly documentation propagation following structural changes. The two genuinely behavioral changes (Retrospect skill, compass.md mechanism) both originated from operator observation, not the loop finding them autonomously. This is not a failure — it is a structural limit of a file-reading loop.
+## Current claims about the reasoning layer
 
-3. **The missing reasoning gaps in evo are three and specific:**
-   - ANALYZE lacks an Intent phase — it identifies what is measurable, not what matters for this codebase's purpose
-   - PROPOSE lacks vision-alignment — proposals are evaluated against metrics, not against what the codebase is trying to become
-   - EVOLVE has diagnostic memory (lessons journal) but not strategic memory — it records "this fix worked" not "this is what this codebase is becoming"
+1. **The skills are a prototype of the right protocol, not the finished protocol.** Concepts (intent, improve, probe, trail, retrospect, compass) appear correct. The format is optimized for a conversational agent operating on a single repo. Whether that format is the right one for general use is still an open question.
 
-4. **The path to full autonomy is front-loaded reasoning, not more gates.** One human interaction — before the pipeline runs — to confirm: "this is what I believe this codebase is for, these are the constraints." After that, no gates. More autonomy requires better reasoning, not tighter controls.
+2. **The loop is closer to a text-consistency engine than a behavioral improvement engine.** Recent runs (55–66) were predominantly documentation propagation following structural changes. The two genuinely behavioral additions (Retrospect, compass) both originated from operator observation, not the loop finding them autonomously. This is the most important current limitation to address.
 
-5. **Retrospect has not yet been run on an external target.** Its value is an open empirical question. The constraint stands: no evo integration until the reasoning layer demonstrates it works on real codebases with Retrospect in the loop.
+3. **Retrospect and compass are unproven.** Retrospect has never been run end-to-end. This compass file was seeded from conversation, not derived from a trail-read. Their value is an open empirical question, not a settled fact.
+
+4. **Convergence is real but local.** Each silence ("nothing actionable found") is honest for that run, that reader, that day. It is not a global claim. The next operator with fresh eyes has repeatedly found something the loop missed.
 
 ## What the next runs should test
 
-- Run Retrospect against an external codebase (not self-targeting) and check whether the arc-claims it produces are distinct from what Improve step 6b would have found
-- Run Probe against Intent's core claim: "the agent is acting on what the operator means, not what they typed"
-- These are behavioral tests, not documentation fixes — they require running the skills, not reading them
+- **Run Retrospect for real** — produce a falsifiable arc-claim that an Improve run would not have surfaced, and check whether it holds up.
+- **Probe Intent's core claim** — that the agent is acting on what the operator means, not what they typed.
+- **Honest behavioral changes** — not docs catching up to a prior structural change. If the next high-leverage move is documentation, name it as such and ask whether the structural change before it was actually right.
 
-## Constraints that must hold before evo integration
+## Horizon (context, not current focus)
 
-1. Retrospect has demonstrated it produces arc-claims an Improve run would not have found
-2. The compass mechanism has proven it orients subsequent runs more accurately than cold-starting from the trail
-3. The skills have been run on at least one non-trivial external codebase by an operator who was not the author
+The longer arc is that the skills suite is intended to become the reasoning layer for an autonomous execution harness (evo, `c:\git\evo`). Integration is **deferred** — it does not begin until the reasoning layer has proven itself on real targets with Retrospect in play. Specifics of what that integration would require live in the trail and in evo's own docs, not here. This compass intentionally does not lead with that work.
+
+## What this compass is not
+
+This file was seeded from operator conversation, not from a Retrospect arc-read. It captures intent and orientation, not evidence. A future Retrospect run on the actual trail will produce a more grounded compass and should replace this. Treat the present file as a working hypothesis about what matters, to be falsified by the next real arc-read.
