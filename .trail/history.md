@@ -66,6 +66,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 59 | 2026-05-01 | zenodo-description-update | changed — updated .zenodo.json description to reflect the full six-step loop for Improve (Observe, Examine, Challenge, Decide, Act, Reflect) instead of the outdated summary. | none |
 | ▸ 60 | 2026-05-01 | tagline-step-names | changed — updated SKILL.md subtitle and README table entry from the old 5-word formula ("Examine. Decide. Change. Verify. Record.") to the accurate 7-step sequence matching actual step headings | none (documentation alignment) |
 | ▸ 61 | 2026-05-01 | frontmatter-description-fix | changed — rewritten `improve/SKILL.md` frontmatter `description` to use accurate step verbs; removed "verify, and record" tail and "change it" misname | none (no behaviour change, skill routing text updated) |
+| ▸ 62 | 2026-05-01 | v381-patch-release | changed — cut v3.8.1 patch release; CHANGELOG, README version line, CITATION.cff all bumped from 3.8.0 → 3.8.1 | v3.8.1 |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -327,4 +328,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Rewrite the frontmatter `description` sentence to: "Understand the ask, examine the target, challenge the first read, decide on one change (or argue for redesign, or declare silence), act, reflect on the target, and record." The USE WHEN tags are unchanged. The "Combines incremental refinement…" sentence is accurate and unchanged.
 
-**61 runs total — 48 with changes, 13 silence**
+### Run 62 — 2026-05-01 — v381-patch-release
+
+- **decided:** Cut v3.8.1: add CHANGELOG entry covering all seven post-v3.8.0 commits, bump README version line and CITATION.cff from 3.8.0 → 3.8.1. No skill-level version bumps warranted (no behavioral changes to any individual skill; step 7 fallback fix is a doc-only correction).
+
+**62 runs total — 49 with changes, 13 silence**

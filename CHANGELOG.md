@@ -1,5 +1,19 @@
 # Changelog
 
+## v3.8.1 — 2026-05-01
+
+### Fixed
+- `improve/SKILL.md` step 7 fallback bullet — "Any reflection on the loop itself" replaced with target-anchored prompt matching step 6a (run 55).
+- `tools/record.py` STUB_TEMPLATE — bare `TODO` under `### Reflection` replaced with four-section scaffold (falsifiable claim, named blind spot, imagined pushback, conditional macro-Hansei) so agents are prompted with the required structure at stub generation time (run 57).
+
+### Documentation
+- `README.md` — "Reflect" step description updated from "Is the loop converging or drifting?" to match v3.8.0 target-anchored Hansei (run 56).
+- `README.md` table + `improve/SKILL.md` subtitle — stale 5-word formula "Examine. Decide. Change. Verify. Record." replaced with accurate 7-step sequence matching actual SKILL.md headings (run 60).
+- `improve/SKILL.md` frontmatter description — rewritten to name all seven steps accurately; "change it" and "verify" were wrong/absent step names (run 61).
+- `.zenodo.json` description — Improve step summary updated to include all six enumerable steps (run 59).
+
+---
+
 ## v3.8.0 — 2026-05-01
 
 ### Changed

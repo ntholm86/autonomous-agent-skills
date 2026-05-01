@@ -2662,3 +2662,48 @@ I did not check the other three skills' frontmatter descriptions (intent, probe,
 "Runs 59, 60, and 61 are all fixing variations of the same problem — wrong step names in summary text — across three different files. This is incremental churn, not improvement. You could have fixed all three surfaces in a single run rather than spreading it across three." That's a valid structural critique. The counter: run 59 (Gemini) introduced "Observe" into zenodo, creating a new inconsistency while fixing an old one; run 60 caught it and fixed the highest-visibility surfaces; run 61 closes the last known active surface. Each run found the specific surface it could verify. Batching across runs would have required run 59 to have examined surfaces it was not prompted to look at.
 
 **Across-trail macro-Hansei** *(N/A — no triggers fire for this run)*:
+
+## 2026-05-01 — v381-patch-release
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve (self-targeting)
+- outcome: changed — cut v3.8.1 patch release; CHANGELOG, README version line, CITATION.cff all bumped from 3.8.0 → 3.8.1
+- delta: v3.8.1
+
+### Interpretation of the ask
+
+"please continue." Run 62. After run 61 completed the step-name inconsistency sweep (queued from run 61: check other skills' frontmatter), the next gap was version accounting. Seven commits have landed since v3.8.0 — none of them breaking changes, all doc/tooling quality improvements — with no corresponding CHANGELOG entry or version bump. That constitutes an unreleased accumulation requiring a patch version.
+
+### Examination
+
+**Inconsistency lens — version metadata.** `README.md` still said v3.8.0; `CITATION.cff` said "3.8.0"; `CHANGELOG.md` had no entry after v3.8.0. Meanwhile seven commits have shipped since that tag: runs 55–61 (one fix to step 7 fallback, one README reflection update, one record.py stub scaffold, one silence, one zenodo description, one tagline/table, one frontmatter description). These are not hidden — they are in the git log — but operators reading the version fields would think v3.8.0 is still current, and the CHANGELOG would not tell them what has changed.
+
+**Other skills' frontmatter (queued from run 61).** All three descriptions (intent, probe, trail) are accurate and current. No action needed.
+
+**Challenge the read.** Is a v3.8.1 bump the right scope, or should these be v3.9.0? Convention: the x.y increment was reserved for the Hansei redesign (v3.8.0); the echo-cleanup series is a patch tail of that same structural change. v3.8.1 is correct.
+
+### Decision
+
+[!DECISION] Cut v3.8.1: add CHANGELOG entry covering all seven post-v3.8.0 commits, bump README version line and CITATION.cff from 3.8.0 → 3.8.1. No skill-level version bumps warranted (no behavioral changes to any individual skill; step 7 fallback fix is a doc-only correction).
+
+### Action
+
+Three simultaneous edits: CHANGELOG.md (new v3.8.1 entry), README.md (version line), CITATION.cff (version). `verify.py` → OK.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+All version metadata fields (CHANGELOG, README version line, CITATION.cff) are now consistent at v3.8.1 and accurately describe the full set of changes since v3.8.0. If this is wrong, a future run would find a version field I missed or a commit not covered in the CHANGELOG entry.
+
+**Named blind spot:**
+
+I did not check whether `improve/SKILL.md`'s own `version:` frontmatter field (currently 3.3.0) should be bumped to 3.3.1 to reflect the step 7 fallback fix and the description/tagline corrections. The skill's behavior hasn't changed — but its self-description improved materially. Whether that constitutes a skill-level version increment is a judgment call I left as "no."
+
+**Imagined-reader pushback:**
+
+"Seven commits over multiple runs, each fixing a single line of stale text — and now you're cutting a patch release for all of them. At what point does this become release theater? The CHANGELOG entry is longer than the combined diff of the changes it documents." The pushback lands on the theater framing. Counter: the purpose of the version bump is that operators pinning versions know what they pinned. Without a CHANGELOG entry, the seven commits are opaque. The documentation cost is appropriate to the visibility gain.
+
+**Across-trail macro-Hansei** *(N/A — no new triggers fire)*:
