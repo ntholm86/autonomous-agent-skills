@@ -63,6 +63,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 56 | 2026-05-01 | readme-reflection-echo | changed — updated README.md's description of the 'Reflect' step to reflect v3.8.0's target-anchored Hansei instead of old loop-convergence wording | none (documentation cleanup echo) |
 | ▸ 57 | 2026-05-01 | stub-reflection-scaffold | changed — `tools/record.py` STUB_TEMPLATE `### Reflection` section upgraded from bare `TODO` to structured three-prompt scaffold matching step 6a + conditional 6b | none (tooling quality improvement, no version bump) |
 | · 58 | 2026-05-01 | echo-sweep-silence | silence — full repo sweep found no remaining v3.8.0 echo in any active instruction file | none |
+| ▸ 59 | 2026-05-01 | zenodo-description-update | changed — updated .zenodo.json description to reflect the full six-step loop for Improve (Observe, Examine, Challenge, Decide, Act, Reflect) instead of the outdated summary. | none |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -312,4 +313,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Silence. All active instruction surfaces are aligned with v3.8.0. The v3.8.0 echo propagation chain is complete: SKILL.md core (run 54) → step 7 fallback (run 55) → README user docs (run 56) → record.py stub (run 57) → full sweep clear (run 58).
 
-**58 runs total — 45 with changes, 13 silence**
+### Run 59 — 2026-05-01 — zenodo-description-update
+
+- **decided:** Update `.zenodo.json` description to match the six canonical steps of the loop.
+
+**59 runs total — 46 with changes, 13 silence**

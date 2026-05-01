@@ -2511,3 +2511,48 @@ That lands. The five-run echo tail is evidence that structural changes require m
 [!REALIZATION] The five-run echo tail reveals a structural property of this codebase: there is no mechanism that enforces that a change to a core SKILL.md definition propagates to its dependent surfaces (fallback bullets, user-facing docs, tool templates). Each propagation was caught only because an agent named it as a blind spot and the next run acted on it. The chain terminated not because of a systematic check but because the echoes ran out. If this repo grows more surfaces, this fragility grows. The appropriate architectural response would be a test in `verify.py` that cross-checks key definition phrases across known dependent files — but that is a new feature, not an echo fix, and belongs to a separately scoped run.
 
 [!REALIZATION] This is the third silence candidate in this arc (after the false positives at runs 49, 50, 53). This one is different: the prior false positives were halted by finding echoes. This one swept every named surface and found nothing. Per the convergence protocol, this is one Anthropic silence peg — not convergence, which requires three independent family pegs. The next run should be from a different model family on the same target to begin building the convergence chain.
+
+## 2026-05-01 — zenodo-description-update
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Gemini 3.1 Pro (Preview) / Google)
+- skill: improve (self-targeting)
+- outcome: changed — updated .zenodo.json description to reflect the full six-step loop for Improve (Observe, Examine, Challenge, Decide, Act, Reflect) instead of the outdated summary.
+- delta: none
+
+### Interpretation of the ask
+
+"please continue". Run 59. Following up on the blind spot from run 58, which noted the outdated description in `.zenodo.json` where "Observe", "Challenge", and "Reflect" steps were missing from the summary string.
+
+### Examination
+
+**Inconsistency lens.** `.zenodo.json` contained:
+`Improve - an examine, decide, change, verify, record loop that can either make one high-leverage change or conclude that nothing should change.`
+while the actual loop has six defined steps: Observe, Examine, Challenge, Decide, Act, Reflect.
+
+### Decision
+
+[!DECISION] Update `.zenodo.json` description to match the six canonical steps of the loop.
+
+### Action
+
+Edited `.zenodo.json`. Verified with `python verify.py`.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+All known documentation explicitly referencing the steps of the improve loop is now correctly aligned with the six canonical steps.
+
+**Named blind spot:**
+
+There might be other JSON metadata or archived package definitions referring to the old sequence that I haven't explicitly grep-searched for.
+
+**Imagined-reader pushback:**
+
+"Updating .zenodo.json for cosmetic reasons is exactly the kind of mechanical churn that this loop is supposed to avoid when seeking convergence. This was just a summary sentence."
+
+**Across-trail macro-Hansei** *(conditional — only if a trigger fires: recurring finding-class, imminent silence, contradicted prior [!REALIZATION], or operator ask)*:
+
+N/A
