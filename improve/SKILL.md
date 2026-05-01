@@ -72,7 +72,7 @@ If the change introduces a problem, surface it immediately. Half-done work that 
 
 ### 6. Reflect
 
-Two operations live in this step. The first runs every iteration. The second runs only when the first surfaces a reason for it. Reflection in this skill is always *about the target* — the codebase, the system, the artefact you are working on — not about the loop that examines it. The loop is only interesting insofar as it reveals or obscures something about the target.
+Two operations live in this step. The first runs every iteration. The second runs only when the first surfaces a reason for it. Reflection in this skill is always *about the target* — the codebase, the system, the artefact you are working on — not about the loop that examines it. The loop is only interesting insofar as it reveals or obscures something about the target. For arc-level questions about whether the loop is examining the right parts of the target — questions this step does not answer — use [Retrospect](../retrospect/SKILL.md) as a standalone skill.
 
 #### 6a. Per-iteration reflection
 
@@ -100,6 +100,8 @@ When triggered, read `.trail/log.md` as a *single document about the target*, no
 - What does the target need next that *no individual iteration would have surfaced* — only the arc reveals?
 
 Write the result as `[!REALIZATION]` in this entry, framed as a claim about the target. If it changes the priority for the next iteration, say so plainly.
+
+For an arc-read that runs outside an improve iteration, use [Retrospect](../retrospect/SKILL.md).
 
 ### 7. Record
 

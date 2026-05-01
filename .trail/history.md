@@ -68,6 +68,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 61 | 2026-05-01 | frontmatter-description-fix | changed — rewritten `improve/SKILL.md` frontmatter `description` to use accurate step verbs; removed "verify, and record" tail and "change it" misname | none (no behaviour change, skill routing text updated) |
 | ▸ 62 | 2026-05-01 | v381-patch-release | changed — cut v3.8.1 patch release; CHANGELOG, README version line, CITATION.cff all bumped from 3.8.0 → 3.8.1 | v3.8.1 |
 | · 63 | 2026-05-01 | silence-run-63 | silence — no actionable finding after full sweep of all active files | none |
+| ▸ 64 | 2026-05-01 | feat-retrospect-skill | added Retrospect — new standalone arc-reflection skill (v1.0.0) | v3.8.1 → v3.9.0 |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -337,4 +338,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Silence. No actionable finding. This is Anthropic silence peg 2 for the post-v3.8.1 state (peg 1 was run 58, which was post-v3.8.0 pre-description fixes; run 63 is the first clean peg on the fully updated v3.8.1 state).
 
-**63 runs total — 49 with changes, 14 silence**
+### Run 64 — 2026-05-01 — feat-retrospect-skill
+
+- **decided:** Create `retrospect/SKILL.md` as a new standalone arc-reflection skill. Update improve/SKILL.md step 6 to reference it. Propagate to all metadata surfaces.
+
+**64 runs total — 50 with changes, 14 silence**

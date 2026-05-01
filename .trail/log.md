@@ -2763,3 +2763,68 @@ I did not run any of the four skills against a non-self target during this exami
 **Across-trail macro-Hansei** *(triggered: about to declare silence; Anthropic run peg 2)*:
 
 [!REALIZATION] Reading the trail as a single document: the pattern across runs 55–63 is a clean documentation propagation cycle following a structural change (v3.8.0). Every run found exactly what the pattern predicts — an echo of the structural change in the next-outermost layer. The loop is functioning correctly as a convergence mechanism for documentation consistency. The question the trail cannot answer is whether it functions correctly as an improvement mechanism for *behavior*. The behavioral change (v3.8.0 Hansei redesign) was conceived in conversation, not found by the loop. This is not a bug — it is a boundary condition: the loop finds what can be found by reading files; it cannot find behavioral improvements that require user feedback from real use. The next meaningful test for this repo is deployment evidence, not another self-targeting run.
+
+## 2026-05-01 — feat-retrospect-skill
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve (self-targeting)
+- outcome: added Retrospect — new standalone arc-reflection skill (v1.0.0)
+- delta: v3.8.1 → v3.9.0
+
+### Interpretation of the ask
+
+The operator named the skill ("Retrospect") and confirmed it should be implemented. Prior two turns established: (a) macro-Hansei should be extracted into its own skill; (b) the constraint "Reflection in this skill is always about the target, not the loop" in improve/SKILL.md step 6 breaks self-targeting arc-reflection; (c) a standalone skill cleanly resolves the constraint conflict rather than requiring an exception clause; (d) "Retrospect" passes the human-readable constraint.
+
+The run 63 macro-Hansei produced the precipitating signal: "the loop cannot find behavioral improvements from inside file inspection alone" — a finding about the loop's own effectiveness. That finding had nowhere to live cleanly inside improve's step 6 because of the constraint. The operator recognized this gap during review.
+
+### Examination
+
+**Constraint analysis:** improve/SKILL.md step 6 reads "Reflection in this skill is always about the target — not about the loop that examines it." This is correct for improve — it prevents agents from substituting loop-introspection for real examination during an improve run. But when the target is itself a skill repo, the loop's design is part of the target's story. The constraint makes self-targeting arc-reflection worse than external-target arc-reflection.
+
+**Gap analysis:** The macro-Hansei trigger in improve/SKILL.md step 6b is in-loop only — it fires as a sub-step inside an improve iteration. There is no mechanism to run arc-reflection independently, without committing to a change. An operator who wants "read the trail and tell me what it reveals" has no skill for that.
+
+**Fit with principles:** A new skill is justified if it (a) enables a new use case, (b) is generic enough to work on any target, (c) passes human-readable. All three hold: (a) standalone arc-read without an improve iteration is new; (b) any target with a trail can use it; (c) "Retrospect" is plain English with immediately intelligible connotation (agile retrospective, arc-level review).
+
+**Constraint 1 check (generic first):** Retrospect references `.trail/log.md` — the same structure every trail-enabled target produces. No skills-repo-specific infrastructure.
+
+**Constraint 4 check (one change):** Creating the retrospect skill is one change. Propagation to improve/SKILL.md, README, CHANGELOG, CITATION.cff, INSTALLING.md, and .zenodo.json is housekeeping that follows from the one change, not additional changes.
+
+### Decision
+
+[!DECISION] Create `retrospect/SKILL.md` as a new standalone arc-reflection skill. Update improve/SKILL.md step 6 to reference it. Propagate to all metadata surfaces.
+
+Rationale: the constraint conflict is real; the use case is genuinely new; the name passes all three tests. Creating an exception clause inside improve would solve the constraint conflict but not the missing-use-case gap — a skill does both.
+
+Alternative considered: add a trigger to improve step 6b that explicitly permits loop-effectiveness questions during self-targeting runs. Rejected: it patches a symptom (constraint too narrow) rather than filling the structural gap (no standalone arc-read skill exists).
+
+### Action
+
+1. Created `retrospect/SKILL.md` v1.0.0 — five steps: scope, read-arc, form arc-claims, evaluate loop effectiveness (conditional), record. "What this skill does not do" section distinguishes it from improve's step 6b.
+2. Updated `improve/SKILL.md` step 6 intro — added "For arc-level questions about whether the loop is examining the right parts of the target, use Retrospect as a standalone skill."
+3. Updated `improve/SKILL.md` step 6b — added "For an arc-read that runs outside an improve iteration, use Retrospect."
+4. Updated README: "four skills" → "five skills", new table row, updated install step, added Retrospect to "How it works", updated version line.
+5. Updated CHANGELOG: new v3.9.0 entry.
+6. Updated CITATION.cff: title, abstract, version → 3.9.0.
+7. Updated INSTALLING.md: install tree and heading updated to five skills.
+8. Updated .zenodo.json: title, description list, read-order.
+9. `verify.py` passes.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The suite now has a structural gap closed: arc-level reflection has a home that is not constrained by improve's per-iteration scope. The claim to test: "a future run applying Retrospect to this repo will surface arc-level findings that the improve loop would not have surfaced in the same session." If retrospect and improve always find the same things, the skill is redundant and should be folded back.
+
+**Named blind spot:**
+
+The Retrospect skill was designed in a single session without running it against an external target. Its step structure is plausible but untested. The most likely failure mode: step 4 (evaluate loop effectiveness) is too open-ended and produces generic reflection rather than specific claims. The constraint "name it concretely" is present but may not be strong enough.
+
+**Imagined-reader pushback:**
+
+"You've described what Retrospect does differently from improve step 6b, but the actual instructions overlap significantly — both read the trail, both form claims, both mark [!REALIZATION]. An agent running both in sequence would produce nearly identical output. The skill boundary is conceptual, not operational." That pushback is not fully answerable until Retrospect runs on a real target. The distinction is real — standalone vs. in-loop, no change required, loop-effectiveness permitted — but whether agents actually use it differently is an open empirical question.
+
+**Across-trail arc-reflection** *(triggered: structural change, new skill added)*:
+
+[!REALIZATION] The suite has now grown from four skills to five by the loop's own operation — the loop identified a gap in itself (run 63 macro-Hansei), the operator named the solution, and the loop implemented it. This is the first time the improve loop on this repo produced a structural addition (new skill) rather than a refinement or correction. Whether Retrospect earns its place depends on whether it produces distinct signal when run on external targets. The next meaningful test: run Retrospect as a standalone skill on any non-trivial external target with a trail, and check whether the arc-claims differ from what improve's step 6b would have produced in the same session.

@@ -36,7 +36,7 @@ No sibling files required. Each skill is self-contained as of v3.3.1.
 
 ---
 
-## Full install (all four skills)
+## Full install (all five skills)
 
 ```
 your-repo/
@@ -49,6 +49,8 @@ your-repo/
       probe/
         SKILL.md
       trail/
+        SKILL.md
+      retrospect/
         SKILL.md
       tools/
         record.py

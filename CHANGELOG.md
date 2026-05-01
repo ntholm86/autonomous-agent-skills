@@ -1,5 +1,13 @@
 # Changelog
 
+## v3.9.0 — 2026-05-01
+
+### Added
+- `retrospect/SKILL.md` (v1.0.0) — new standalone arc-reflection skill. Reads `.trail/log.md` as a single document about the target and forms falsifiable arc-level claims. Runs independently of Improve when a high-altitude view is needed rather than another incremental pass. Includes an optional loop-effectiveness step (step 4) for evaluating whether the loop is examining the right things — a question that Improve's step 6 explicitly defers (run 64).
+- `improve/SKILL.md` — step 6 intro and step 6b updated to reference Retrospect for arc-reads that run outside an improve iteration (run 64).
+
+---
+
 ## v3.8.1 — 2026-05-01
 
 ### Fixed
