@@ -60,6 +60,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 53 | 2026-05-01 | version-consistency-v374 | changed — CHANGELOG entry for v3.7.4 written; README and CITATION.cff updated to v3.7.4 | v3.7.4 (CHANGELOG + README + CITATION.cff only; no code change) |
 | ▸ 54 | 2026-05-01 | reflect-step-hansei-rewrite | changed — `improve/SKILL.md` step 6 rewritten as two-part Hansei (per-iteration + conditional across-trail); `trail/SKILL.md` Reflection template updated to match | v3.7.4 → v3.8.0; improve 3.2.0 → 3.3.0; trail 1.5.0 → 1.6.0 |
 | ▸ 55 | 2026-05-01 | fallback-reflection-bullet | changed — step 7 fallback bullet "Any reflection on the loop itself" replaced with target-anchored equivalent matching new step 6 | v3.8.0 (improve/SKILL.md only; no version bump warranted — v3.8.0 echo cleanup, not new content) |
+| ▸ 56 | 2026-05-01 | readme-reflection-echo | changed — updated README.md's description of the 'Reflect' step to reflect v3.8.0's target-anchored Hansei instead of old loop-convergence wording | none (documentation cleanup echo) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -297,4 +298,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Replace step 7's bullet `Any reflection on the loop itself.` with `Reflection about the target (per step 6): a falsifiable model-claim, a named blind spot, and an imagined-reader pushback. Across-trail reflection if its triggers fired.`
 
-**55 runs total — 43 with changes, 12 silence**
+### Run 56 — 2026-05-01 — readme-reflection-echo
+
+- **decided:** Replace the stale "Reflect" description in `README.md` with wording that accurately mirrors the v3.8.0 specification (falsifiable claim about target, named blind spot, imagined reader pushback, and across-trail macro-Hansei).
+
+**56 runs total — 44 with changes, 12 silence**

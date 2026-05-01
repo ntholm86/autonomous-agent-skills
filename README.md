@@ -53,7 +53,7 @@ The reasoning follows a specific sequence, drawn from Toyota Production System (
 
 **Act** — make the change. State what and why before touching anything. Verify after.
 
-**Reflect** — reread the full trail of prior iterations. Is the loop converging or drifting? What should the next run examine? Each decision records the alternatives considered and why one path won.
+**Reflect** — ground the reflection in the target, not the loop. State a falsifiable claim about the target's current state, name a blind spot in the examination, and imagine pushback from a reader. Plus across-trail macro-Hansei if triggers like recurring finding-classes fire. Each decision records the alternatives considered and why one path won.
 
 > [!IMPORTANT]
 > **[Observable Autonomy](./PRINCIPLES.md), Principle 2** — every autonomous step leaves a trail. `.trail/log.md` is the proof: an outside reader can reconstruct, audit, and challenge the reasoning.
