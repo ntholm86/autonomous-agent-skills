@@ -1,7 +1,7 @@
 ---
 name: retrospect
 version: 1.1.0
-description: 'Read the trail as a single document and form arc-level claims about the target. What is the target becoming? Where has the loop''s attention been, and is that where the target''s real weight lies? What does the arc reveal that no individual iteration would surface? USE WHEN: about to declare convergence, recurring finding-class suspected, operator asks "how are we doing?", or an independent arc-read is needed without running a full improve loop.'
+description: 'Read the trail as a single document and form arc-level claims about the target. What is the target becoming? Where has the loop''s attention been, and is that where the target''s real weight lies? What does the arc reveal that no individual iteration would surface? Writes .trail/compass.md — the current orientation for the target that Improve reads at the start of each run. USE WHEN: about to declare convergence, recurring finding-class suspected, operator asks "how are we doing?", or an independent arc-read is needed without running a full improve loop.'
 argument-hint: 'The target and its trail, and optionally the specific arc-question to answer'
 ---
 
@@ -69,16 +69,16 @@ Ask:
 
 Run this step when: the loop is about to declare convergence, the finding pattern looks suspiciously tidy, or the operator explicitly asked how the loop is performing.
 
-### 5. Write the working model
+### 5. Write the compass
 
-Write the arc-claims from step 3 (and any loop-effectiveness findings from step 4) to `.trail/model.md` in the target repo root. This file is the **working model** — the current synthesized understanding of the target that future runs read first, before the full trail.
+Write the arc-claims from step 3 (and any loop-effectiveness findings from step 4) to `.trail/compass.md` in the target repo root. This file is the **compass** — the current synthesized understanding of the target that orients future runs before they act.
 
-`.trail/model.md` is not append-only. Retrospect replaces it each time it runs. The full reasoning history lives in `log.md`; the model is the current distillation.
+`.trail/compass.md` is not append-only. Retrospect replaces it each time it runs. The full reasoning history lives in `log.md`; the compass is the current distillation.
 
 The file shape is simple:
 
 ```markdown
-# Working model — <target name>
+# Compass — <target name>
 
 _Last updated: YYYY-MM-DD (run: <slug>)_
 
@@ -91,7 +91,7 @@ _Last updated: YYYY-MM-DD (run: <slug>)_
 <From step 4, if triggered. Omit section if step 4 was not run.>
 ```
 
-Commit `.trail/model.md` alongside `log.md` and `history.md` after the run.
+Commit `.trail/compass.md` alongside `log.md` and `history.md` after the run.
 
 ### 6. Record
 
