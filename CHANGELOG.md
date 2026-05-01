@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.7.4 — 2026-05-01
+
+### Fixed
+- `.trail/README.md` line 32: `trail/log.md` → `.trail/log.md` in the skill description bullet for Trail.
+- `.zenodo.json`: two occurrences of `trail/log.md` → `.trail/log.md` in the Zenodo metadata description HTML (Trail skill description and "Read in this order" list). Published on next Zenodo release.
+- `CITATION.cff`: version updated to reflect current HEAD.
+
+---
+
 ## v3.7.3 — 2026-05-01
 
 ### Fixed

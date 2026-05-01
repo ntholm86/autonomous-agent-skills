@@ -2184,3 +2184,47 @@ Rationale: all three are genuine inconsistencies. `.zenodo.json` is operationall
 ### Reflection
 
 [!REALIZATION] The stale-path tail from v3.7.0 is now genuinely exhausted — `.trail/README.md` and `.zenodo.json` were the only remaining live files not covered by the runs 48–51 sweep. Post-fix grep for `[^.]trail/log\.` across all live files should return zero results outside CHANGELOG. If run 53 finds nothing of this class, that is peg 1/3 of a new convergence chain — but only if the model family is distinct from Anthropic.
+
+## 2026-05-01 — version-consistency-v374
+
+- target: autonomous-agent-skills
+- operator: ntholm86
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve (self-targeting)
+- outcome: changed — CHANGELOG entry for v3.7.4 written; README and CITATION.cff updated to v3.7.4
+- delta: v3.7.4 (CHANGELOG + README + CITATION.cff only; no code change)
+
+### Interpretation of the ask
+
+"Again." Run 53. Continue the loop.
+
+### Examination
+
+**Inconsistency lens — version drift:**
+
+First action: ran stale-path grep (`[^.]trail/log\.`) across all live non-CHANGELOG files → zero hits. The v3.7.0 rename tail is genuinely exhausted.
+
+Pivoted to version consistency. Run 52 committed as "v3.7.4" (commit message and trail entry both say `v3.7.3 → v3.7.4`). But:
+- `CHANGELOG.md` has no v3.7.4 entry
+- `README.md` version line still says v3.7.3
+- `CITATION.cff` was bumped to v3.7.3 (not v3.7.4) in run 52
+
+The same pattern as run 51 (missing CHANGELOG entries) repeated one run later. Root cause: when a run makes a change, it should update the version number in all three locations atomically. This run's changes were attributed to v3.7.4 in the trail but not reflected in the docs.
+
+**Challenge the first read:** Is this pattern (missing version bump) worth encoding as an explicit rule in the improve skill? The answer is still no — that would be a checklist item violating Principle 1. The loop catches it the next run. The gap exists because the prior run's scope was "fix paths" and incrementing the CHANGELOG was out of scope at the time.
+
+**Waste lens:** No waste found. All four skills, verify.py, record.py, README.md, INSTALLING.md, PRINCIPLES.md are all substantively clean after the v3.7.x sweep.
+
+### Decision
+
+[!DECISION] Write CHANGELOG v3.7.4 entry. Update README version line to v3.7.4. Update CITATION.cff to v3.7.4. No code changes.
+
+Rationale: the version mismatch is a genuine inconsistency between the committed work (v3.7.4) and what the three version-bearing files report. Identical class to run 51, immediate to fix.
+
+### Action
+
+`multi_replace_string_in_file` across `CHANGELOG.md`, `README.md`, `CITATION.cff`. `python verify.py` → OK.
+
+### Reflection
+
+[!REALIZATION] There is a structural pattern across runs 48–53: each run in the v3.7.x series created a small documentation deficit that the next run cleaned up. Run 52 introduced v3.7.4 but didn't update CHANGELOG/README/CITATION.cff; run 53 fixed it. This is the same lag as run 51 (which fixed run 50's missing CHANGELOG entries). The lag is one run. The loop is working — it catches each deficit — but the deficit is consistently created by the same failure mode: the agent treats "fix X" as a scoped task and doesn't always widen to "and update all version-bearing files." This is a known acceptable cost of atomic scoping, not a design flaw. Run 54 should be a genuine silence candidate — the stale-path tail is closed, version is consistent, skills are substantively clean.

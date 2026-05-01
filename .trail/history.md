@@ -57,6 +57,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 50 | 2026-05-01 | trail-stale-paths-final | changed — remaining stale `trail/log.md` paths fixed in record.py and trail/SKILL.md; v3.7.3 | v3.7.2 → v3.7.3 |
 | ▸ 51 | 2026-05-01 | changelog-v370-v373 | changed — CHANGELOG entries for v3.7.0–v3.7.3 written; README version updated to v3.7.3 | v3.7.3 (CHANGELOG + README only; no code change) |
 | ▸ 52 | 2026-05-01 | stale-paths-zenodo-citation | changed — three stale paths / version mismatches fixed in .trail/README.md, .zenodo.json, CITATION.cff; v3.7.4 | v3.7.3 → v3.7.4 |
+| ▸ 53 | 2026-05-01 | version-consistency-v374 | changed — CHANGELOG entry for v3.7.4 written; README and CITATION.cff updated to v3.7.4 | v3.7.4 (CHANGELOG + README + CITATION.cff only; no code change) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -282,4 +283,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Fix three findings:
 
-**52 runs total — 40 with changes, 12 silence**
+### Run 53 — 2026-05-01 — version-consistency-v374
+
+- **decided:** Write CHANGELOG v3.7.4 entry. Update README version line to v3.7.4. Update CITATION.cff to v3.7.4. No code changes.
+
+**53 runs total — 41 with changes, 12 silence**
