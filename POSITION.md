@@ -1,6 +1,6 @@
 # A stance on what we're actually trying to solve
 
-_Author: Lars K. Nielsen ([@ntholm86](https://github.com/ntholm86)). Version 0.1, 2026-05-01. This is a stance, not a paper. It states what I'm betting on, where I think it differs from adjacent work, and what would prove me wrong._
+_Author: Nils Holmager ([@ntholm86](https://github.com/ntholm86)). Version 0.1, 2026-05-01. This is a stance, not a paper. It states what I'm betting on, where I think it differs from adjacent work, and what would prove me wrong._
 
 ---
 
