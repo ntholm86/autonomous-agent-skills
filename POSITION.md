@@ -85,6 +85,27 @@ A stance without falsification is a manifesto. Here's what I'd take as serious e
 
 I don't expect all of these to come back negative. I expect at least one to. That's the point of stating them up front.
 
+## What the runs are showing
+
+_Added 2026-05-02. This section is updated as evidence accumulates._
+
+The Hunch skill was the first mechanism in the protocol to produce something the operator had not written down before the run. Four runs in a single session, each on a different target, each at a different level of prior context:
+
+1. **Own vision paragraph.** The operator wrote a paragraph about the repo's direction. Hunch read it and surfaced a latent intent the operator hadn't stated directly. Confirmed.
+2. **Known target with history (evo).** A repo the operator knows deeply, with an existing trail. Hunch surfaced three direction and constraint hunches from the trail arc. All three confirmed.
+3. **Cold foreign target (vectorium).** A repo not discussed in the session, no `.trail/`, no vision, no priming. Signal came entirely from code structure, git commit arc, and package.json. Hunch 1 surfaced "lost interest after beating the benchmark" — not written anywhere in the repo, inferred from the commit arc alone (performance climbs to a peak, then cleaning commits, then silence). Confirmed.
+4. **Production system with trail history (leifoglenedk).** A live driving school management system with three prior improvement runs in the trail. Hunch surfaced the dual-role tension (production vs. practice target), the reason P0 security work was blocked, and the sequencing logic behind the three runs. All three confirmed.
+
+The pattern across all four: **the agent articulated something the operator had not written down, the operator confirmed it, and the confirmation came as recognition rather than surprise.** None of the confirmed hunches were new information to the operator. But none were written anywhere the agent could have retrieved them.
+
+The mechanism: an agent reads signal the operator never consciously gave it — emphasis patterns, what gets pushed back on, what the commit arc looks like when motivation runs out, what's named in every run but never touched — and surfaces that signal as falsifiable questions. Not conclusions. Not actions. Questions the operator answers in a sentence. The operator then either confirms, corrects, or redirects; the agent updates its working model.
+
+This is how Observable Autonomy and Commander's Intent combine in practice. Commander's Intent says: give the AI the destination, not the route, so it can adapt. But "the destination" assumes the operator has the destination fully articulated. The Hunch mechanism works one step earlier: it reduces the cost of articulation, making implicit intent explicit enough to steer from. The operator stays in the loop not by reviewing every action but by answering questions whose answers are already in their head — they just hadn't said them yet.
+
+This is early evidence, not proof. Four runs in one session, one operator. But the pattern held across cold and warm targets, across targets with and without existing trails, and across targets where the operator has deep knowledge and targets they haven't looked at recently. The falsification condition — "Hunch only ever confirms things already written in vision.md" — failed to trigger. Hunch produced signal not in any file.
+
+What remains unproven: whether this scales to capability gaps large enough that the operator can't verify the agent's source-reading even conversationally; whether it holds with operators other than the one building it; whether the questions the agent asks are well-calibrated or systematically biased toward certain kinds of implicit intent. Those are the next tests.
+
 ## Where this is going
 
 The next stretch of work, in order:
@@ -100,7 +121,7 @@ If steps 1-3 hold up, the stance is worth defending publicly. If they don't, the
 
 ## Status
 
-This stance is **v0.1 and provisional**. The repo it sits in is at v3.11.0 of the skillset and is not converged. The convergence baseline at v3.1.0 was for a smaller, simpler suite; the current suite is in active research, not production refinement. Any external claim about the suite's "convergence" should be read against that distinction.
+This stance is **v0.2 and provisional** (updated 2026-05-02 with first empirical evidence from Hunch runs). The repo it sits in is at v3.13.0 of the skillset and is not converged. The convergence baseline at v3.1.0 was for a smaller, simpler suite; the current suite is in active research, not production refinement. Any external claim about the suite's "convergence" should be read against that distinction.
 
 I'm putting this here so the bet is stated and findable. If you read it and think I'm pointing at something real, I'd like to hear from you. If you read it and think I'm pointing at something that already has a name and a literature I'm ignoring, I'd especially like to hear from you.
 
