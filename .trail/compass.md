@@ -1,7 +1,7 @@
 ﻿# Compass -- autonomous-agent-skills
 
-_Last updated: 2026-05-02 (run: retrospect-first-real-run)_
-_Derived from: full arc read, runs 55-71. Vision read first (step 0)._
+_Last updated: 2026-05-02 (run: session-v3-16-0-retrospect-first-run + follow-on)_
+_Derived from: full arc read, runs 55-71. Vision read first (step 0). Updated after follow-on session._
 
 ---
 
@@ -16,8 +16,8 @@ Every prior compass entry named "Hunch unproven in execution" as the validation 
 **3. The loop still has no occasion-independence -- every structural change in runs 64-71 was operator-prompted.**
 The trail names this repeatedly (runs 68, 71) but no run has resolved it. Hunch was designed to reduce operator-prompting dependency; it has reduced content dependency (agent surfaces direction rather than waiting for operator to articulate it) but not occasion dependency (operator still creates the moment). Whether Hunch will eventually surface direction questions without being invoked is an open empirical question.
 
-**4. The two-repo relationship (manifesto = principles layer, skills = one domain conformance) is now tracked at the trail level but not yet reflected in either repo's README.**
-The manifesto's .trail/vision.md names this relationship explicitly. Neither repo's README explains it to an incoming reader. This is a documentation gap that is now strategically important as the operator moves toward SOLID-like recognition for the principles.
+**4. The two-repo relationship (manifesto = principles layer, skills = one domain conformance) is now reflected in both READMEs.** ~~OPEN~~ **CLOSED 2026-05-02.**
+Both READMEs now name the other repo and state the relationship explicitly. Skills README: "this suite is one conformance example of the Autonomous Agent Principles." Manifesto README: names skills suite as the reference implementation with "evidence, not proof" framing. Gap closed.
 
 **5. The skills suite is specifiable and composable but has never been run by a harness that did not co-evolve with it.**
 Vision names this as a hard requirement before integration with evo or any other harness. No evidence exists yet that the skills work cleanly when invoked by a system that did not participate in their design. This remains the most important unvalidated claim in the entire research bet.
@@ -27,9 +27,9 @@ Vision names this as a hard requirement before integration with evo or any other
 ## What the next runs should test
 
 1. **Retrospect self-validation:** Does this Retrospect run produce claims an Improve run this session would not have produced? This run itself is the first data point.
-2. **Commit pending mechanical debt:** POSITION.md fix, CHANGELOG v3.15.1 entry, manifesto .trail/ commit, trail entry for this session.
-3. **Manifesto PROOF.md rewrite:** restructure from "Nils tested this once" to "here is what conformance looks like and how you would test it in your own context." Highest-leverage move for the recognition goal.
-4. **README relationship statement:** Both repos need a sentence explaining the two-repo structure to an incoming reader.
+2. ~~**Commit pending mechanical debt:** done.~~
+3. ~~**Manifesto PROOF.md rewrite:** done (2026-05-02). Restructured to lead with domain-agnostic conformance protocol per principle; kata evidence labeled as "reference evidence — one implementation, one domain.".~~
+4. ~~**README relationship statement:** done (2026-05-02). Both READMEs updated.~~
 5. **One external proof:** run the protocol on a target where the AI exceeds the operator on the underlying task and the operator is not the author.
 
 ---
