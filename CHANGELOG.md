@@ -1,5 +1,27 @@
 # Changelog
 
+## v3.16.0 — 2026-05-02
+
+### Added — Retrospect step 0: read vision.md before arc analysis
+
+`retrospect/SKILL.md` (v1.4.0 → v1.5.0) — vision.md was previously consulted only at the compass write step, meaning the arc analysis happened without the destination in view. A new step 0 "Read vision first" now precedes the scope statement and arc-read. This matches the pattern Intent already used. The redundant vision reference at the write step was removed.
+
+### Added — all writing skills create `.trail/` directory before any write
+
+`trail/SKILL.md` (v1.8.0 → v1.9.0), `hunch/SKILL.md` (v1.2.0 → v1.3.0), `retrospect/SKILL.md` (v1.3.0 → v1.4.0), `improve/SKILL.md` (v3.5.0 → v3.6.0), `probe/SKILL.md` (v3.2.0 → v3.3.0) — no skill previously created the `.trail/` directory explicitly. On a fresh repo the write would silently fail or error. Every write point now carries an explicit instruction: "create the `.trail/` directory in the target repo root if it does not already exist — before any write, regardless of whether the skill runs alone, in a chain, or for the first time."
+
+### Fixed — Hunch writes vision.md automatically; operator commits to git
+
+`hunch/SKILL.md` (v1.1.0 → v1.2.0 → v1.3.0) — the skill previously instructed the agent to "propose the diff and let the operator commit it," which caused the agent to hand back file-creation work that should have been done automatically. Hunch now writes `.trail/vision.md` as part of completing the run. The operator's job is to review and commit to git when it reads right, not to write the file.
+
+### Fixed — POSITION.md signature
+
+Corrected closing signature from hallucinated "— Lars" to "— Nils". Author throughout is **Nils Wendelboe Holmager** ([@ntholm86](https://github.com/ntholm86)).
+
+### Trail — first real Retrospect arc-read
+
+First Retrospect run on this repo with a populated trail (runs 55–71). Produced five arc-level claims: phase boundary crossed (doc-convergence to validated-capability); validation gap shifted from Hunch to Retrospect; loop still has no occasion-independence; two-repo relationship not yet in any README; no harness-independent validation yet. Compass updated from operator-seeded to evidence-derived.
+
 ## v3.15.0 — 2026-05-02
 
 ### Changed — all skills: explicit target-repo anchor for `.trail/` reads and writes
