@@ -1,45 +1,41 @@
-﻿# Compass -- autonomous-agent-skills
+﻿# Compass — autonomous-agent-skills
 
-_Last updated: 2026-05-02 (run: retrospect-second-real-pass-after-v3-16-0)_
-_Derived from: full arc read, runs 55-71, plus follow-on improve passes across manifesto docs and resumed self-targeting entries. Vision read first (step 0)._
+_Last updated: 2026-05-02 (run: retro-on-updated-vision)_  
+_Derived from: full arc read through intent-v1-2-1-not-hunch, read against substantially updated vision.md (recognition claim, two-phase architecture, adoption success condition, learning falsification condition — all added since previous compass)._
 
 ---
 
 ## Current claims
 
-**1. Phase boundary crossed: documentation-convergence to validated-capability.**
-Runs 55-63 were documentation propagation after structural changes. Runs 64-71 added four structural capabilities (Retrospect, compass/vision split, Hunch, .trail/ directory discipline) and validated three of them against real targets. The suite is no longer converging on a stable design -- it is proving a live design against external evidence. The convergence baseline at v3.1.0 does not apply to the current suite; a new convergence cycle has not yet started.
+**1. Phase 1 (vision convergence) has its first mechanism but remains operator-initiated in practice.**  
+The two-phase architecture vision names is now partially instantiated: Hunch is the Phase 1 mechanism, the iterative loop is Phase 2. Hunch has been validated across five foreign-target runs. But reading the arc as one document, every major direction shift — Retrospect, Hunch, compass/vision split, position document, competitive framing — was triggered by operator input, not agent-initiated Hunch. The occasion-independence experiment (2026-05-02) is the first data point of agent-initiated direction questions, but it occurred immediately after the mechanism was designed, in the same operator-agent pairing. Phase 1 occasion-independence — agent surfaces direction questions cold, on a future arc, without recent priming — remains unobserved.
 
-**2. Retrospect has a second real data point; the gap narrows from existence to reliability.**
-Every prior compass entry named "Hunch unproven in execution" as the validation gap. As of 2026-05-02, Hunch has confirmed hunches on five runs across four targets (own vision, evo, vectorium, leifoglenedk, manifesto). The falsification condition was met. Retrospect now has two real executions: the first arc-read (session-v3-16-0-retrospect-first-run) and this second pass. The second pass is compatible with the first: it keeps the same unresolved structural bets (occasion-independence and external harness proof) while incorporating new evidence (manifesto consistency sweep completed). The remaining gap is no longer "does Retrospect produce arc claims at all" but "does it remain stable and decision-useful across more arcs and operators."
+**2. The recognition claim and adoption success condition introduce a validation gap no internal loop pass can close.**  
+The updated vision redefines one test of success: recognition by practitioners who have felt the friction, and adoption by developers using the skills in their own projects without the author's help. Internal convergence runs (three-family silence) measure structural consistency — they do not test whether the framework produces instant recognition in the target audience, or whether a stranger can deploy it. Phase 3 of the position document plan (direct outreach) is the only mechanism for this. The loop's arc to date has been Phase 2 work. Phase 3 has not started.
 
-**3. Occasion-independence now has two positive data points across different arcs; reliability is partially supported.**
-The trail previously named this as unresolved (runs 68, 71). In the first pass (2026-05-02, same session as the mechanism's design), an agent-initiated direction question produced one structural change (`improve/SKILL.md` v3.7.0). In the second pass (2026-05-02, different target: manifesto), an underspecified ask ("lets go") triggered the bootstrap on a different arc — the agent formed hunches from vision+trail tail, identified the PROOF.md Digest gap as the highest-confidence structural finding, and proceeded without operator topic injection. Two data points across two different targets and two different arcs. Reliability is partially supported. Remaining open: repeatability across different session families and longer time gaps.
+**3. Trail v1.10.0 closes the longest-standing Observable Autonomy gap; enforcement remains soft.**  
+Sessions/ was marked "optional" since the trail structure was first specified — an explicit permission-to-skip for the full-resolution tier. Trail v1.10.0 (2026-05-02) makes it mandatory with an explicit write step, fixing both the mechanical gap (no write procedure) and the rhetorical one (the word "optional"). Observable Autonomy now has structural support at the skill level. Remaining gap: verify.py does not check for sessions/ file presence — the mandatory framing is a skill-level requirement, not a mechanically enforced one.
 
-**4. The two-repo relationship (manifesto = principles layer, skills = one domain conformance) is now reflected in both READMEs.** ~~OPEN~~ **CLOSED 2026-05-02.**
-Both READMEs now name the other repo and state the relationship explicitly. Skills README: "this suite is one conformance example of the Autonomous Agent Principles." Manifesto README: names skills suite as the reference implementation with "evidence, not proof" framing. Gap closed.
+**4. The learning falsification condition is precisely defined but has one borderline case, not a clear cross-session positive.**  
+Vision defines learning as: a future agent acts on a prior `[!REALIZATION]` rather than rediscovering it. The closest candidate in the arc: a `[!REALIZATION]` about operator-prompting dependency (runs 68, 71) preceded the occasion-independence mechanism design (2026-05-02, same session). But "same session" means same context window — not a fresh agent encountering the [!REALIZATION] without memory of it. A clear cross-session case has not yet been observed.
 
-**Status note:** manifesto internal consistency sweep is complete (README, PROOF, PRINCIPLES, PROBLEM aligned; no known cross-file naming drift).
+**5. Capability claims are evidence-grounded across multiple targets and two model families; thin, not absent.**  
+Hunch: 5 confirmations across 4 targets (own vision, evo, vectorium, leifoglenedk, manifesto). Retrospect: 2 compatible passes (Anthropic + GPT-5.3-Codex). Improve occasion-independence: 2 data points across 2 arcs. Intent/Hunch cross-reference fixed (d149c48) — closes a practitioner-discoverability asymmetry where entering the suite through Intent gave no pointer to Hunch. The suite is no longer asserting capabilities without evidence; the evidence is real but thin and requires cross-family and external replication.
 
-**5. The skills suite is specifiable and composable but has never been run by a harness that did not co-evolve with it.**
-Vision names this as a hard requirement before integration with evo or any other harness. No evidence exists yet that the skills work cleanly when invoked by a system that did not participate in their design. This remains the most important unvalidated claim in the entire research bet.
+**6. External harness proof is the highest-urgency unvalidated claim with two-sided urgency.**  
+Research side: the skills have only been run by agents that co-evolved with them. The research question requires the protocol to work outside its author's context. Adoption side: adoption success requires a developer to encounter and deploy the skills without help. An external proof — operator not the author, harness didn't co-evolve — is the minimum evidence bar for both. Nothing in the current queue removes this gap.
 
 ---
 
 ## What the next runs should test
 
-1. ~~**Retrospect self-validation:** second real pass completed (2026-05-02), compatible with first pass.~~
-2. ~~**Commit pending mechanical debt:** done.~~
-3. ~~**Manifesto PROOF.md rewrite:** done (2026-05-02). Restructured to lead with domain-agnostic conformance protocol per principle; kata evidence labeled as "reference evidence — one implementation, one domain.".~~
-4. ~~**README relationship statement:** done (2026-05-02). Both READMEs updated.~~
-5. **One external proof:** run the protocol on a target where the AI exceeds the operator on the underlying task and the operator is not the author.
-6. ~~**Occasion-independence experiment:** first pass completed (2026-05-02). Agent-initiated direction question led to structural change in Improve v3.7.0.~~
-7. ~~**Occasion-independence reliability test (pass 2):** second pass completed (2026-05-02). Bootstrap fired on manifesto target with underspecified ask ("lets go") — PROOF.md Digest gap found and fixed without operator topic injection. Two data points across two targets and two arcs.~~
-8. **Occasion-independence reliability test (pass 3+):** repeat on a third arc in a different session family to establish cross-family reliability.
-8. **Retrospect reliability test (next level):** run on a materially different future arc (not same-day cleanup arc) and compare claim stability plus decision usefulness.
+1. **External proof** — run the protocol on a target where the operator is not the author and the harness did not co-evolve with the skills. Addresses both research success and adoption success simultaneously.
+2. **Phase 1 occasion-independence (cold case)** — trigger Hunch in a fresh session with no recent priming on a new arc. This is the missing data point: agent initiates a direction question cold, not in the session where the mechanism was designed.
+3. **Retrospect reliability test** — run on a materially different arc (foreign target, longer history, different operator). Check claim stability and decision usefulness outside the self-targeting context.
+4. **Learning falsification: first clear cross-session case** — identify a `[!REALIZATION]` from a prior session that a future agent (in a new context window, no memory of the prior session) would encounter and act on differently because of it. The trail needs at least one clear case before the learning claim in vision is anything more than a definition.
 
 ---
 
 ## Loop-effectiveness notes
 
-The loop is executing correctly as a structural-tightening and validation mechanism: every gap surfaced this session was found, fixed, and committed. With two Retrospect passes now compatible, the immediate uncertainty shifted from capability existence to capability reliability under varied arcs. Occasion-independence moved one step forward: there is now a first positive data point, but not yet a repeatable pattern.
+This arc-read was conducted against a substantially updated vision: the recognition claim, two-phase architecture, adoption success condition, and learning falsification condition were all added since the previous compass. The most significant finding from reading the arc against this updated vision: the loop has executed Phase 2 (iterative improvement, documentation convergence, capability validation) well and has produced evidence for its capability claims. It has not executed Phase 1 (vision convergence initiated by the agent) independently — every direction input has come from the operator. Vision itself says Phase 1 is not automatable. But the arc does not yet distinguish between "the agent cannot surface direction questions unprompted" and "the agent has been too continuously primed by the operator's own initiatives to need to." The occasion-independence experiment is the right test for this distinction, and it needs cold passes to be informative.

@@ -3471,3 +3471,35 @@ Blind spot: enforcement is soft. The skill says "mandatory" but verify.py does n
 
 - The naming gap: neither "strategy" nor "reasoning framework" fully captures it; operator is uncertain; vision captures the intent without forcing a label
 - Adoption success condition has no mechanism in the loop yet — no falsification path for "did a stranger use this"
+
+## 2026-05-02 — retro-on-updated-vision
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
+- skill: retrospect v1.5.0
+- outcome: compass updated — arc read against substantially updated vision.md (recognition claim, two-phase architecture, adoption success, learning falsification); six claims formed; prior compass replaced
+- session-file: .trail/sessions/2026-05-02-retro-on-updated-vision.md
+- delta: .trail/compass.md replaced
+
+### Scope
+
+Read the full arc (runs 55 through intent-v1-2-1-not-hunch) against the vision.md updated in this session. The vision was updated in two prior entries this day: hunch:vision-competitive-framing added competitive framing, two explicit success conditions, and a learning falsification condition. The arc question: has the loop been attending to what the updated vision says matters — recognition claim, two-phase architecture, adoption success, trustworthy delegation research?
+
+### Arc-claims
+
+1. **Phase 1 (vision convergence) has its first mechanism but remains operator-initiated in practice.** Hunch is validated as a Phase 1 tool (5 confirmations, 4 targets). But every major direction shift in the arc was operator-triggered. Agent-initiated Phase 1 vision convergence in a cold context has not been observed.
+
+2. **Recognition claim and adoption success condition introduce a validation gap no internal loop pass can close.** Internal convergence runs measure structural consistency, not practitioner recognition or stranger deployability. Phase 3 (outreach) has not started.
+
+3. **Trail v1.10.0 closes the longest-standing Observable Autonomy gap.** Sessions/ was optional from the beginning; now mandatory with an explicit write step. The rhetorical and mechanical gaps are both fixed. verify.py does not yet enforce sessions/ presence — soft enforcement only.
+
+4. **Learning falsification condition is defined but has one borderline case, not a clear cross-session positive.** The occasion-independence mechanism was designed in the same session as the [!REALIZATION] that motivated it. A cross-session case remains unobserved.
+
+5. **Capability claims are evidence-grounded but thin.** Hunch: 5 confirmations / 4 targets. Retrospect: 2 compatible passes / 2 model families. Occasion-independence: 2 data points / 2 arcs. Intent/Hunch cross-reference (d149c48) closes practitioner-discoverability asymmetry.
+
+6. **External harness proof is highest-urgency unvalidated claim with two-sided urgency.** Required for research success (skills work outside author context) and adoption success (stranger can deploy). Nothing in current queue addresses this.
+
+### Loop-effectiveness
+
+Loop has executed Phase 2 (iterative improvement) well across the arc. Phase 1 (vision convergence initiated by the agent) is unproven cold. The arc does not distinguish between "agent cannot surface direction questions unprompted" and "agent has been too continuously primed to need to." Cold occasion-independence passes are the right test.
