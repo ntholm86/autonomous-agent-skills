@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.17.0 — 2026-05-02
+
+### Fixed — Trail sessions/ writing is now mandatory with explicit format
+
+`trail/SKILL.md` (v1.9.0 → v1.10.0) — `sessions/` was listed as "optional" in the directory structure and had no explicit write step anywhere in the skill. The agent had guidance about what session files should contain (three-resolution table) but no instruction to actually create one. Fixed: (1) `sessions/` is now mandatory, not optional; (2) a new "Writing the session file" section defines the exact filename convention (`YYYY-MM-DD-<slug>.md`), required content structure, fidelity labeling, the `session-file:` link in `log.md`, and the git commit sequence. Session files are part of every trail commit.
+
 ## v3.16.1 — 2026-05-02
 
 ### Added — Improve can bootstrap direction on underspecified asks (occasion-independence mechanism)

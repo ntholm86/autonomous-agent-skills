@@ -1,6 +1,6 @@
 ---
 name: trail
-version: 1.9.0
+version: 1.10.0
 description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
@@ -73,7 +73,7 @@ If you write `history.md`, commit it separately — it is a derived convenience 
   history.md      — on-demand human-readable summary (run: record.py history --write)
   vision.md       — operator-held destination (optional; read by Improve, never written by any skill)
   compass.md      — Retrospect-derived current orientation (written by Retrospect, read by Improve)
-  sessions/       — optional: full verbatim transcripts, linked from log entries
+  sessions/       — per-session detail file (mandatory); one per run, linked from log.md
 ```
 
 Vision and compass are distinct: vision is the destination the operator holds and rarely changes; compass is the agent's current synthesis of where the target is, rewritten each Retrospect run. Vision is input to the loop; compass is output.
@@ -159,9 +159,68 @@ The trail must be readable at three levels simultaneously — because different 
 |---|---|---|---|
 | **Digest** | The `outcome` and `delta` fields in `log.md` | 30 seconds | What just happened? Should I be concerned? |
 | **Indexed** | The `[!DECISION]` / `[!REALIZATION]` / `[!REVERSAL]` markers | minutes | What was decided, when, and why? |
-| **Full** | `sessions/*.md` — verbatim transcripts | hours | The complete reasoning, including dead ends |
+| **Full** | `sessions/*.md` — per-session detail file (mandatory) | hours | The complete reasoning, including dead ends |
 
 A trail at only one resolution is observable to one class of observer and invisible to the rest.
+
+---
+
+## Writing the session file
+
+After every substantive run, write a session file to `.trail/sessions/` in the target repo root.
+
+Create the `sessions/` subdirectory if it does not already exist.
+
+**Filename:** `YYYY-MM-DD-<slug>.md` — same date and slug as the corresponding `log.md` entry.
+
+**Content minimum:**
+
+```markdown
+# YYYY-MM-DD — <slug>
+
+fidelity: reconstructed | verbatim | mixed
+
+## Request
+
+<The operator's request, verbatim or near-verbatim.>
+
+## Examination
+
+<What was looked at. What each lens revealed.>
+
+## Decisions and Realizations
+
+<Every [!DECISION], [!REALIZATION], and [!REVERSAL] with surrounding reasoning — not just the markers.>
+
+## Actions
+
+<What was done, in enough detail to follow without the diff.>
+
+## Reflection
+
+<Updated model of the target. Named blind spots. What a more informed observer would push back on.>
+```
+
+If the platform exports a verbatim transcript, paste it here (mark `fidelity: verbatim`). If not, reconstruct from the session (mark `fidelity: reconstructed`).
+
+Link the session file from the `log.md` entry by adding a `session-file:` line to the entry header:
+
+```markdown
+## YYYY-MM-DD — <slug>
+
+- target: ...
+- session-file: .trail/sessions/YYYY-MM-DD-<slug>.md
+- ...
+```
+
+Include the session file in the same commit as the log.md entry:
+
+```
+git add .trail/log.md .trail/sessions/YYYY-MM-DD-<slug>.md
+git commit -m "trail: <slug>"
+```
+
+The session file is the **Full** resolution tier. Without it, the trail cannot be reconstructed in detail — which undermines the Observable Autonomy claim. It is not optional.
 
 ---
 
