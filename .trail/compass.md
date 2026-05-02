@@ -1,7 +1,7 @@
 ﻿# Compass -- autonomous-agent-skills
 
-_Last updated: 2026-05-02 (run: session-v3-16-0-retrospect-first-run + follow-on)_
-_Derived from: full arc read, runs 55-71. Vision read first (step 0). Updated after follow-on session._
+_Last updated: 2026-05-02 (run: self-run-resume-after-v3-16-0)_
+_Derived from: full arc read, runs 55-71, plus follow-on improve passes across manifesto docs. Vision read first (step 0)._
 
 ---
 
@@ -19,6 +19,8 @@ The trail names this repeatedly (runs 68, 71) but no run has resolved it. Hunch 
 **4. The two-repo relationship (manifesto = principles layer, skills = one domain conformance) is now reflected in both READMEs.** ~~OPEN~~ **CLOSED 2026-05-02.**
 Both READMEs now name the other repo and state the relationship explicitly. Skills README: "this suite is one conformance example of the Autonomous Agent Principles." Manifesto README: names skills suite as the reference implementation with "evidence, not proof" framing. Gap closed.
 
+**Status note:** manifesto internal consistency sweep is complete (README, PROOF, PRINCIPLES, PROBLEM aligned; no known cross-file naming drift).
+
 **5. The skills suite is specifiable and composable but has never been run by a harness that did not co-evolve with it.**
 Vision names this as a hard requirement before integration with evo or any other harness. No evidence exists yet that the skills work cleanly when invoked by a system that did not participate in their design. This remains the most important unvalidated claim in the entire research bet.
 
@@ -26,14 +28,15 @@ Vision names this as a hard requirement before integration with evo or any other
 
 ## What the next runs should test
 
-1. **Retrospect self-validation:** Does this Retrospect run produce claims an Improve run this session would not have produced? This run itself is the first data point.
+1. **Retrospect self-validation:** run a second real Retrospect pass now that the arc includes post-v3.16.0 consistency work, and test whether it yields claims Improve would not surface in-session.
 2. ~~**Commit pending mechanical debt:** done.~~
 3. ~~**Manifesto PROOF.md rewrite:** done (2026-05-02). Restructured to lead with domain-agnostic conformance protocol per principle; kata evidence labeled as "reference evidence — one implementation, one domain.".~~
 4. ~~**README relationship statement:** done (2026-05-02). Both READMEs updated.~~
 5. **One external proof:** run the protocol on a target where the AI exceeds the operator on the underlying task and the operator is not the author.
+6. **Occasion-independence experiment:** trigger one Hunch or Improve run without operator topic injection (agent-initiated direction question) and record whether it surfaces a structural finding independently.
 
 ---
 
 ## Loop-effectiveness notes
 
-The loop is executing correctly as a structural-tightening and validation mechanism: every gap surfaced this session was found, fixed, and committed. The loop is not yet functioning as an independent finding mechanism -- direction has consistently been operator-supplied. This is honest for the current phase (design and validation, not convergence), but should be named. The operator-prompting dependency is structural, not accidental -- the trail names it in [!REALIZATION] markers in runs 68 and 71, and it has persisted across two sessions without resolution.
+The loop is executing correctly as a structural-tightening and validation mechanism: every gap surfaced this session was found, fixed, and committed. The loop is not yet functioning as an independent finding mechanism -- direction has consistently been operator-supplied. This is honest for the current phase (design and validation, not convergence), but should be named. The operator-prompting dependency is structural, not accidental -- the trail names it in [!REALIZATION] markers in runs 68 and 71, and it has persisted across two sessions without resolution. This run resumes self-targeting after orientation artifacts (vision + compass) are in place; the next meaningful evidence is whether the loop can originate a structural question on its own.

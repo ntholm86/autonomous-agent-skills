@@ -3289,3 +3289,32 @@ Read full trail (runs 55-71) against vision.md. Arc-claims produced:
 **Named blind spot:** This session's fixes were all surfaced in conversation (operator raised .trail/ concern, sequencing gap was found during review). The loop still has not produced a structural finding independently. Occasion-dependency persists.
 
 **Imagined-reader pushback:** "You ran Retrospect for the first time, declared the validation gap closed, and immediately moved on. That is one data point. The claim that Retrospect produces qualitatively different output from Improve step 6b requires more than one run to be credible." Correct -- this is a first data point, not a closed finding.
+
+## 2026-05-02 — self-run-resume-after-v3-16-0
+
+- target: autonomous-agent-skills
+- operator: Nils Wendelboe Holmager (ntholm86)
+- agent: GitHub Copilot (GPT-5.3-Codex)
+- skill: improve v3.6.0
+- outcome: compass refreshed after manifesto consistency sweep; next self-tests narrowed to Retrospect second-pass, occasion-independence experiment, and external proof
+
+### Interpretation of the ask
+
+Operator asked to continue and explicitly set direction: start running the skills suite on itself now that vision and compass exist in the skills repo.
+
+### Change made
+
+Updated .trail/compass.md to reflect current reality after the follow-on manifesto passes. Added explicit status note that manifesto docs are internally aligned and no known cross-file naming drift remains.
+Refined next-run queue: (1) second Retrospect pass as self-validation, (2) external proof run, (3) explicit occasion-independence experiment where the agent initiates the direction question.
+
+### Why this change was highest leverage
+
+Before running the next loop step, orientation needed to match current evidence. The prior compass still reflected earlier uncertainty; now it cleanly separates closed items from the few open validation bets.
+
+### Reflection
+
+Falsifiable claim: with this compass update, two independent runs starting from skills vision + compass should prioritize the same top three tests (Retrospect second-pass, occasion-independence experiment, external proof) even if they differ on implementation details.
+
+Blind spot: this run updated orientation but did not execute the second Retrospect pass itself. The validation gap remains open until that run is completed.
+
+Imagined-reader pushback: this is still documentation-level movement, not capability validation. Correct. This run is a queue-cleaning step intended to make the next capability-validating runs unambiguous.
