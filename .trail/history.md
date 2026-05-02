@@ -76,6 +76,16 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 69 | 2026-05-01 | hunch-skill-added | added Hunch as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct | suite v3.10.0 → v3.11.0; new `hunch/SKILL.md` v1.0.0 |
 | ▸ 70 | 2026-05-01 | hunch-on-operator-vision-intent | vision.md gained a top-section research framing — "architecture of trustworthy delegation" — drafted from intent rather than operator's words, approved before write | .trail/vision.md +14 lines (new "What this work is, beyond a skillset" section) |
 | ▸ 71 | 2026-05-01 | position-md-v0-1-drafted | POSITION.md v0.1 drafted and committed — first standalone position document for the repo, framing "operation-time trustworthy delegation" as the bet, with explicit falsification criteria and adjacent-work mapping | POSITION.md +new file (~2200 words) |
+| ▸ 72 | 2026-05-02 | hunch-skill-validated-on-foreign-target | Hunch exercised cold on vectorium — no .trail/, no vision.md, no priming. All three hunches confirmed. Hunch 1 surfaced "lost interest after beating the benchmark" — not written anywhere in vectorium, inferred from commit arc alone. | c:\git\vectorium\.trail\log.md created (full run record lives there) |
+| ▸ 73 | 2026-05-02 | session-v3-16-0-retrospect-first-run | v3.16.0 -- Hunch validated on 3 foreign targets; all writing skills gain .trail/ directory creation; Retrospect gains vision-first read order; first real Retrospect arc-read; compass updated from operator-seeded to evidence-derived | v3.15.0 -> v3.16.0 |
+| ▸ 74 | 2026-05-02 | self-run-resume-after-v3-16-0 | compass refreshed after manifesto consistency sweep; next self-tests narrowed to Retrospect second-pass, occasion-independence experiment, and external proof |  |
+| ▸ 75 | 2026-05-02 | retrospect-second-real-pass-after-v3-16-0 | second real Retrospect pass completed; compass updated; first-pass claims remained compatible while integrating new evidence from manifesto consistency sweep |  |
+| ▸ 76 | 2026-05-02 | occasion-independence-experiment-pass-1 | PASS (first data point) — agent-initiated direction question produced one structural change without operator topic injection |  |
+| ▸ 77 | 2026-05-02 | trail-v1-10-0-sessions-mandatory | fixed — sessions/ writing is now mandatory with explicit format | trail/SKILL.md v1.9.0 → v1.10.0 |
+| ▸ 78 | 2026-05-02 | hunch: vision-competitive-framing | vision.md updated — competitive framing, adoption success condition, and learning falsification condition added | .trail/vision.md updated in place |
+| ▸ 79 | 2026-05-02 | retro-on-updated-vision | compass updated — arc read against substantially updated vision.md (recognition claim, two-phase architecture, adoption success, learning falsification); six claims formed; prior compass replaced | .trail/compass.md replaced |
+| ▸ 80 | 2026-05-02 | external-proof-vectorium-improve-run | Improve run completed end-to-end on a non-self-targeting codebase. One correctness fix shipped (StateMachine test import path). Trail entry written to vectorium's .trail/log.md. Committed to vectorium repo (33c34aa). | vectorium StateMachine.test.ts import corrected; vectorium .trail/log.md updated |
+| ▸ 81 | 2026-05-02 | external-proof-vectorium-retrospect | First compass written for vectorium. Three-skill arc (Hunch + Improve + Retrospect) completed on a real non-self-targeting codebase. | vectorium `.trail/compass.md` created; `.trail/sessions/2026-05-02-retrospect-after-hunch-and-improve.md` created; committed 74f65f1 |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -377,4 +387,12 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Draft POSITION.md as v0.1 with the following structure: open with the situation in plain language (no jargon, no field name), explain why existing labels miss it, name "operation-time trustworthy delegation" as the bet, define it via four sub-claims (operation-time / delegation / evidence-while-driving / protocol-not-tool), describe what I'm doing about it (the skills + workshop-and-proof setup) honestly including its limits, state what I'm NOT claiming, list 5 specific falsification criteria, sketch where this is going, mark as v0.1 provisional. Sign as the author. ~2200 words.
 
-**71 runs total — 57 with changes, 14 silence**
+### Run 76 — 2026-05-02 — occasion-independence-experiment-pass-1
+
+- **decided:** Question posed by agent: What mechanism prevents Improve from stalling on underspecified asks (continue/keep going/next) without waiting for the operator to inject a topic?
+
+### Run 77 — 2026-05-02 — trail-v1-10-0-sessions-mandatory
+
+- **decided:** Add a new "Writing the session file" section to trail/SKILL.md with: mandatory framing (not optional), filename convention (YYYY-MM-DD-<slug>.md), content template with fidelity label, session-file: link in log.md entry header, and git commit sequence. Change directory listing from "optional" to mandatory.
+
+**81 runs total — 67 with changes, 14 silence**

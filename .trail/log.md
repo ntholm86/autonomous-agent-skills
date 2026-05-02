@@ -3503,3 +3503,54 @@ Read the full arc (runs 55 through intent-v1-2-1-not-hunch) against the vision.m
 ### Loop-effectiveness
 
 Loop has executed Phase 2 (iterative improvement) well across the arc. Phase 1 (vision convergence initiated by the agent) is unproven cold. The arc does not distinguish between "agent cannot surface direction questions unprompted" and "agent has been too continuously primed to need to." Cold occasion-independence passes are the right test.
+
+
+## 2026-05-02 — external-proof-vectorium-improve-run
+
+- target: vectorium (C:\git\vectorium) — real game engine, separate codebase
+- operator: lkn
+- agent: GitHub Copilot (Claude, vscode chat)
+- skill: intent + improve + trail (v3.17.1)
+- outcome: Improve run completed end-to-end on a non-self-targeting codebase. One correctness fix shipped (StateMachine test import path). Trail entry written to vectorium's .trail/log.md. Committed to vectorium repo (33c34aa).
+- delta: vectorium StateMachine.test.ts import corrected; vectorium .trail/log.md updated
+
+### Interpretation of the ask
+
+Operator asked to run external proof testing on vectorium — directly addressing compass claim #6 (external harness proof, highest-urgency gap). Vectorium has an existing .trail/vision.md from a prior Hunch run (2026-05-02). Improve protocol run in full: intent (step 1), examine (step 2), challenge (step 3), decide (step 4), act (step 5), reflect (step 6), trail (step 7).
+
+### What this run demonstrates (external proof evidence)
+
+This run is the first complete Improve loop on a real non-self-targeting codebase in this session:
+
+- **Vision existed and was usable.** .trail/vision.md (written by Hunch on vectorium the same day) gave the Improve run its orientation before any code was examined. The "API surface and harness robustness" priority directly shaped what findings were worth acting on.
+- **Examination produced real findings.** Three lenses surfaced three distinct problems: inconsistency (any-cast service injection), waste (dead test import + dead benchmark path). None were manufactured.
+- **One-change discipline held.** Two waste findings competed for highest leverage. The decision not to fix both at once (and the explicit reasoning for which ranked higher) is recorded in the trail.
+- **Trail was written to the target repo root.** The vectorium .trail/log.md received the entry. The skills install directory was not touched.
+
+### What this run does not prove
+
+The operator is also the author of vectorium. The "operator ≠ author" case (compass claim #6 strict reading) remains unobserved. This run provides evidence for "skills work on a real, non-self-targeting, dormant codebase" but not for "skills work for a stranger who encounters them without the author's help."
+
+### Reflection
+
+[!REALIZATION] External proof on a target where the operator is also the author produces real evidence (the protocol ran correctly, found real issues, held discipline) but does not close the adoption success condition. The adoption success condition requires a developer who did not co-author the skills to encounter and deploy them. That gap is narrower than before this run, but not closed.
+
+**Falsifiable claim:** The skills protocol ran correctly on a second real codebase (vectorium), producing a real finding with supporting evidence in the trail. If a future run on a truly foreign target (operator ≠ author) produces the same structural behavior (vision read → examination → one-change decision → trail entry), the external proof claim is substantiated.
+
+
+## 2026-05-02 — external-proof-vectorium-retrospect
+
+- target: vectorium (`C:\git\vectorium`) — Retrospect run completing the three-skill arc
+- operator: lkn
+- agent: GitHub Copilot (Claude, vscode chat)
+- skill: retrospect v1.5.0 (autonomous-agent-skills v3.17.1)
+- outcome: First compass written for vectorium. Three-skill arc (Hunch + Improve + Retrospect) completed on a real non-self-targeting codebase.
+- delta: vectorium `.trail/compass.md` created; `.trail/sessions/2026-05-02-retrospect-after-hunch-and-improve.md` created; committed 74f65f1
+
+### Evidence value for compass claim #6
+
+The full three-skill arc ran correctly on vectorium — a real, dormant, non-self-targeting codebase. Vision was read at step 0. Arc-claims were formed from two independent findings. Loop-effectiveness was evaluated. Compass was written with five falsifiable claims. Session file created. All artifacts committed to target repo root.
+
+Gap that remains: operator is also the author. Adoption success condition (stranger deploys skills without help) is still unobserved.
+
+[!REALIZATION] The external proof run also generated a potential learning falsification case: the `[!REALIZATION]` about the `(any)` injection pattern in vectorium's Improve trail entry is now in vectorium's `.trail/log.md`. A future agent reading that trail in a fresh session should act on it rather than re-diagnosing the same root cause. If it does, that is the first clean cross-session learning falsification case the suite has produced.
