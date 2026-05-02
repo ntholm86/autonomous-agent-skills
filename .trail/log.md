@@ -3596,3 +3596,54 @@ Six claims updated relative to prior compass:
 **Named blind spot:** The arc-read was conducted by the same agent that ran the vectorium improve sessions — the one that wrote the [!REALIZATION] it is now citing as a learning case. There is a circularity risk: I am the agent that wrote the prior session's compass and I am now citing its correctness as evidence. An independent agent (different model family or different operator) reading the same arc might assess the learning case differently.
 
 **Imagined-reader pushback:** "You are citing the compass itself as both the distillation artifact and the evidence that distillation worked. That is circular. The real test is whether the compass entry was read and acted on, not whether I can trace a chain of commits that look like acting on it." Counter: the commits are the evidence — statemachine-tests-all-green and typed-scene-services are both committed to vectorium with trail entries that describe the work done. The chain from [!REALIZATION] → compass queue → session-2 commits is traceable. The circularity concern is real but the evidence chain is not closed.
+
+## 2026-05-03 — compass-claim6-operator-framing-correction
+
+- target: autonomous-agent-skills
+- operator: Nils Wendelboe Holmager (ntholm86)
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve v3.7.0
+- outcome: changed — compass claim 6 corrected; model-introduced "operator != author" framing removed; replaced with operator-confirmed intent: a codebase the operator did not build
+- session-file: .trail/sessions/2026-05-03-compass-claim6-operator-framing-correction.md
+- delta: .trail/compass.md updated (claim 6 + next-runs item 1 + loop-effectiveness note)
+
+### Interpretation of the ask
+
+"what else can we do to improve the skillset?" — new session, unspecified. Occasion-independence mechanism applied: read vision + compass, form sourced hunches, identify highest-leverage gap before acting.
+
+Three candidates surfaced: (1) compass claim 6 contains a model-introduced framing the operator explicitly corrected in yesterday's Hunch run; (2) verify.py has no check for sessions/ file presence, named as a gap three times but never closed; (3) Probe may have drifted or have no evidence of use.
+
+### Examination
+
+**Inconsistency lens.** Compass claim 6 and the corresponding next-runs item 1 use the framing "operator != author" as the definition of what makes an external proof run valid. This framing was introduced by the agent during the Retrospect run on 2026-05-02 — it does not appear in vision.md and was not stated by the operator. In yesterday's Hunch run, the operator explicitly corrected it: "this was not something I said as the operator it was something the model came with during retrospect. So external proof means running on another project." The compass contains a factual error sourced to model drift, not operator intent.
+
+**Overburden lens.** verify.py enforces entry format, metadata, mojibake, and link integrity — but not the sessions/ mandate trail v1.10.0 introduced. The check is implementable: parse entries that have a session-file: header field and verify the referenced file exists. Real gap; named in trail three times; mechanically addressable.
+
+**Waste lens.** Probe v3.3.0 read in full. Clean, self-consistent, no stale framing, no structural drift from the rest of the suite. Silence on Probe.
+
+**Challenge the first read.** Is compass higher leverage than verify.py? Yes — an incorrect claim in the compass is an active error that will misdirect any run that reads it from the first line. The sessions/ enforcement gap has been open for three runs without causing a missed sessions/ file (they are being created). The compass error is live and consequential now.
+
+### Decision
+
+[!DECISION] Fix compass claim 6: remove "operator != author" framing from the claim title, body, and next-runs queue item 1. Replace with operator-confirmed intent: a codebase the operator did not build, with the practical note that no such target is currently available. No structural or design change — this is a factual correction of a model-introduced constraint.
+
+verify.py sessions/ enforcement: valid and explicitly queued for the next run. Single-purpose discipline prevents doing both in one run.
+
+Probe: silence. No change.
+
+### Action
+
+Three targeted replacements in .trail/compass.md:
+1. Claim 6 title + body: "operator != author still the minimum unmet bar" replaced with "the remaining gap is practical, not structural" + corrected body.
+2. Next-runs item 1: "External proof (operator != author)" replaced with "External proof (unfamiliar codebase)" with the practical-constraint note.
+3. Loop-effectiveness closing sentence: "operator != author" removed, correction acknowledged, queue redirected.
+
+verify.py -> OK.
+
+### Reflection
+
+**Falsifiable claim about the target's current state.** The compass now accurately reflects what the operator stated as the external proof intent: a codebase the operator did not build. A future run that disagrees would either find further model-introduced framing I missed, or would argue that "operator != author" is implied by the operator's stated intent even if not explicitly said. The latter would be a legitimate challenge.
+
+**Named blind spot.** I corrected the compass without running a full Retrospect arc-read. This is appropriate here (the error is a known, point-fix, operator-confirmed correction) but means the compass is no longer "purely Retrospect-derived" — it is now a mix of Retrospect output and an Improve correction. A future Retrospect run will overwrite it fully and should validate or contradict the correction.
+
+**Imagined-reader pushback.** "You fixed one sentence in the compass and called it a run. The verify.py gap has been named three times and is now queued for the fourth time without being closed. What is the actual barrier to fixing it?" The barrier is the single-purpose discipline: two changes in one run makes the diff scope unclear and creates the risk that one change's rationale gets merged with another's. But the pushback is fair: if the next run opens with verify.py and finds it's a five-line addition, naming the discipline as a barrier will start to look like avoidance.
