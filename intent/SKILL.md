@@ -1,6 +1,6 @@
 ---
 name: intent
-version: 1.2.0
+version: 1.2.1
 description: 'Apply Commander''s Intent to the user''s own prompt before acting. Interpret what the user is trying to achieve, not what they literally wrote. Narrate the interpretation so the user can correct drift before work begins. USE WHEN: any substantive request that implies work (build, fix, improve, explain, investigate, decide). SKIP WHEN: the request is unambiguous and mechanical (a specific file read, a one-line command, a yes/no confirmation).'
 argument-hint: 'Triggered automatically by any substantive user prompt; can also be invoked explicitly: "apply intent to this request"'
 ---
@@ -72,6 +72,8 @@ Proceed with the interpreted task. If during the work the interpretation turns o
 **Not mind-reading.** If the prompt genuinely does not determine the task, ask. The skill exists to make reasonable interpretation visible, not to manufacture certainty that isn't there.
 
 **Not self-justification.** "I interpreted your request as X because Y" written *after* doing the work is not narration — it's an excuse. The interpretation must precede the action.
+
+**Not Hunch.** Intent decodes what the user means by *this specific prompt*. If the question is where the operator is heading overall — implicit goals across sessions, a destination that has not yet been articulated — run [Hunch](../hunch/SKILL.md) instead. Intent is per-prompt; Hunch is per-direction.
 
 ---
 

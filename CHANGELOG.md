@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.17.1 — 2026-05-02
+
+### Fixed — Intent now cross-references Hunch in "What This Skill Is Not"
+
+`intent/SKILL.md` (v1.2.0 → v1.2.1) — Hunch already carried a symmetric note ("It does not replace Intent — Intent is per-prompt, Hunch is per-direction") but Intent had no corresponding entry. A practitioner reading Intent alone had no pointer to Hunch when direction-level questions arose. Added "Not Hunch." item to "What This Skill Is Not", mirroring the existing cross-reference in Hunch and making the distinction discoverable from either skill.
+
 ## v3.17.0 — 2026-05-02
 
 ### Fixed — Trail sessions/ writing is now mandatory with explicit format
