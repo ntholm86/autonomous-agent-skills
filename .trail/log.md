@@ -3443,3 +3443,31 @@ Trail is now structurally complete: log.md (digest + indexed tiers) + sessions/ 
 Blind spot: enforcement is soft. The skill says "mandatory" but verify.py does not check for a sessions/ file accompanying each commit. A harness-level enforcement step would close this.
 
 [!REALIZATION] The gap was partly mechanical (no write step) and partly rhetorical (the word "optional" gave explicit permission to skip). Both needed fixing. The mechanical fix without removing "optional" would still leave the agent an out.
+
+
+## 2026-05-02 — hunch: vision-competitive-framing
+
+- target: skills repo (this repo)
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
+- skill: hunch v1.3.0
+- outcome: vision.md updated — competitive framing, adoption success condition, and learning falsification condition added
+- session-file: .trail/sessions/2026-05-02-hunch-vision-competitive-framing.md
+- delta: .trail/vision.md updated in place
+
+### Hunches formed
+
+1. Operator is orienting toward showing the work to an audience (confirmed but not the useful frame — focus stays on research + implementation quality)
+2. Vision had no falsification condition for developer adoption — confirmed missing; operator answered: success = devs read and use the skills in their own projects
+3. This is an entry in an emerging reasoning-framework space; the differentiator is simplicity + explainability + effectiveness simultaneously — confirmed; "reasoning framework" closer than "strategy"; both must hold simultaneously
+
+### Changes to vision.md
+
+- Added competitive framing paragraph: "This is an entry in an emerging space... as easy to understand and explain as it is efficient"
+- Added two explicit success conditions: research success and adoption success
+- Rewrote the learning entry with a falsification condition: what done looks like is a future agent acting on a prior [!REALIZATION] rather than rediscovering it
+
+### What is still open
+
+- The naming gap: neither "strategy" nor "reasoning framework" fully captures it; operator is uncertain; vision captures the intent without forcing a label
+- Adoption success condition has no mechanism in the loop yet — no falsification path for "did a stranger use this"

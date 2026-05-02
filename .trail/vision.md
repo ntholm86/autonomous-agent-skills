@@ -12,6 +12,12 @@ This repo is **as much research as it is development**. The development output i
 
 The skills are one attempt at an answer. They may turn out to be the wrong attempt, the right attempt for a narrower class of work than hoped, or a step toward an architecture none of us has named yet. A negative result on the skills is still a result on the question.
 
+**This is an entry in an emerging space.** Reasoning frameworks for AI agents are being developed from multiple directions simultaneously. The differentiator this one is aiming for is not feature depth — it is that it is *as easy to understand and explain as it is efficient*. Simplicity and explainability are not polish added at the end; they are design constraints from the start. A framework that works but cannot be explained in a conversation has failed the adoption test. A framework that can be explained but does not produce better outcomes has failed the research test. Both constraints must hold simultaneously.
+
+**Two success conditions run in parallel:**
+1. **Research success** — the experiment produces evidence about what trustworthy delegation actually requires, including negative results.
+2. **Adoption success** — developers read the skills and start using them in their own projects without help from the author. Not integration into a pipeline — just: someone encounters these skills, understands what they do, and finds them worth running.
+
 A load-bearing piece of any answer to that question — and the piece this skillset is most directly aimed at — is this: **the AI's power has to be made transparent enough that the human keeps steering even when the AI exceeds their ability to verify in detail.** "Transparent" here does not mean regulator-grade auditability after the fact; it means evidence the operator can use *while driving*, in time to correct course. That is what the trail, the compass, and the read-order at step 1 of Improve are trying to be — instruments on a dashboard, not a black box and a logfile.
 
 **Convergence on a particular skill is not convergence on the question.** The question is the longer arc the skills serve. Every claim this repo makes about being "done" must be read against that distinction.
@@ -43,7 +49,8 @@ A reasoning layer that can't carry anything across runs is not a reasoning layer
 - *How the skillset solves it:* `.trail/log.md` — append-only, human-readable, source of truth. `.trail/history.md` is an auto-generated digest. The Trail skill enforces the structure.
 
 **Learning** — *what to do differently next time.* Some signal extracted from prior runs that changes future behavior. This is not the same as memory; memory is the substrate, learning is the update.
-- *How the skillset solves it:* Indirectly and weakly. There is no stored strategy artifact. "Learning" here means a future agent re-reads the trail and reasons over it. This is honest but slow; it is also the most underdeveloped of the three and a likely place a future loop run will find leverage.
+- *How the skillset solves it:* Indirectly and weakly. There is no stored strategy artifact. "Learning" here means a future agent re-reads the trail and reasons over it. This is honest but slow.
+- *What done looks like:* The agent begins a run with a different approach than it would have used on run 1 — not because the operator told it to, but because it read what didn't work and adjusted. Concretely: a run produces a `[!REALIZATION]` or `[!REVERSAL]`; a later run in a fresh session, on the same target, shows evidence it acted on that prior finding rather than rediscovering it. That is learning. The skillset does not currently produce this reliably. This is the most underdeveloped of the three and the most important gap for a future loop run to target.
 
 **Meta-cognition** — *what the target is becoming, and is the loop's attention in the right place.* Reasoning about the work itself: the arc, the recurring patterns, whether the questions being asked are the right questions. Without this, an agent will keep solving local problems while the structural problem drifts.
 - *How the skillset solves it:* `.trail/compass.md` — the current synthesized orientation, written by Retrospect after reading the arc, read by Improve at step 1 before each run. The Retrospect skill is the mechanism that produces it. This `vision.md` sits alongside it: vision is what the operator/team holds and does not change without an explicit decision; compass is what the agent derives from the trail and is rewritten each Retrospect run.
