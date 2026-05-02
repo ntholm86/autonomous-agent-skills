@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.16.1 — 2026-05-02
+
+### Added — Improve can bootstrap direction on underspecified asks (occasion-independence mechanism)
+
+`improve/SKILL.md` (v3.6.0 → v3.7.0) — step 1 now includes an explicit rule for prompts like "continue"/"keep going"/"next": before examination, the agent must form 1-3 sourced hunches from vision+compass+recent trail, surface one prioritized falsifiable direction question, and proceed on an explicit highest-confidence assumption if no operator answer is available. This is a structural mechanism for reducing occasion-dependence without overriding operator intent.
+
 ## v3.16.0 — 2026-05-02
 
 ### Added — Retrospect step 0: read vision.md before arc analysis

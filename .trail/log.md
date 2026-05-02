@@ -3353,3 +3353,46 @@ Falsifiable claim: two independent Retrospect passes on this arc are now compati
 Blind spot: this second pass was run in the same broad session family as the first and by the same operator-agent pairing. Occasion variation remains low.
 
 Imagined-reader pushback: compatibility across two passes on a nearby arc is weak validation. Correct. This is evidence of stability, not proof of robustness.
+
+## 2026-05-02 — occasion-independence-experiment-pass-1
+
+- target: autonomous-agent-skills
+- operator: Nils Wendelboe Holmager (ntholm86)
+- agent: GitHub Copilot (GPT-5.3-Codex)
+- skill: improve v3.7.0
+- outcome: PASS (first data point) — agent-initiated direction question produced one structural change without operator topic injection
+
+### Experiment definition (pre-commit)
+
+Pass criteria:
+1. Agent initiates one direction question without operator topic injection.
+2. The question leads to one structural finding (not cosmetic cleanup).
+3. The finding is implemented and verified.
+
+### Agent-initiated direction question
+
+[!DECISION] Question posed by agent: What mechanism prevents Improve from stalling on underspecified asks (continue/keep going/next) without waiting for the operator to inject a topic?
+
+### Finding and change
+
+Finding: Improve step 1 had no explicit bootstrap behavior for underspecified asks. This left occasion-independence implicit and fragile.
+Change: improve/SKILL.md v3.6.0 -> v3.7.0. Added step-1 rule: form 1-3 sourced hunches from vision+compass+recent trail, ask one prioritized falsifiable direction question, and proceed on explicit assumption if no operator answer is available. This is a structural mechanism, not wording cleanup.
+
+### Verification
+
+- verify.py: OK — trail integrity checks pass.
+- Changelog updated with v3.16.1 entry for this mechanism.
+- Compass updated: occasion-independence moved from unresolved to first positive data point; reliability test remains open.
+
+### Result
+
+PASS for existence claim (occasion-independence can occur at least once).
+NOT YET PASS for reliability claim (repeatability across different arcs/sessions not shown).
+
+### Reflection
+
+Falsifiable claim: on a future run with an underspecified ask, Improve v3.7.0 will produce an explicit direction question before step 2 and choose work from that question rather than waiting for topic injection.
+
+Blind spot: this pass occurred in the same session family and same operator-agent pairing as prior runs; it may overfit local context.
+
+Imagined-reader pushback: this is self-referential because the same loop designed and evaluated the mechanism. Correct. Reliability testing on a different arc remains required and is now explicitly queued.

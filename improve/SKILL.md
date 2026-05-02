@@ -1,6 +1,6 @@
 ---
 name: improve
-version: 3.6.0
+version: 3.7.0
 description: 'The improvement skill. Understand the ask, examine the target, challenge the first read, decide on one change (or argue for redesign, or declare silence), act, reflect on the target, and record. Combines incremental refinement, structural rethinking, and reflection on the target itself. USE WHEN: improve, audit, review, fix, refactor, redesign, evaluate, what would make this better, am I missing something.'
 argument-hint: 'The target to improve, and optionally the concern (correctness, simplicity, performance, etc.)'
 ---
@@ -38,6 +38,14 @@ Before examining the target, check the **target repo's** `.trail/` folder for tw
 3. `.trail/log.md` — the full history. Read for the evidence behind the orientation, and for any specific prior decision the current run might contradict.
 
 Vision is the destination, compass is the current location, the trail is the path. If vision and compass disagree, vision wins (the operator holds the destination); if compass and trail disagree, the trail wins (the trail is the evidence).
+
+If the ask is underspecified (for example: "continue", "keep going", "next", or equivalent), do not wait for the operator to inject a topic. Generate one agent-initiated direction question before step 2:
+
+1. Form 1-3 sourced hunches from vision, compass, and recent trail entries about what structural uncertainty matters most now.
+2. State one prioritized falsifiable question that would change what you choose to work on.
+3. If no operator answer is available in this run, proceed with your highest-confidence hunch as an explicit assumption and continue.
+
+Treat this as a bootstrap for occasion-independence, not a replacement for operator intent. If a direct operator objective exists, it wins.
 
 This is not ceremony. The most common failure mode in autonomous improvement is solving a precisely-executed wrong problem.
 
