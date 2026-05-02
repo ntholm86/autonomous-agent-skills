@@ -22,16 +22,18 @@ grep -rn '\[!DECISION\]\|\[!REALIZATION\]\|\[!REVERSAL\]' .trail/
 
 This returns every load-bearing turning point across all sessions, with file and line, in seconds. The markers are inserted by the operating agent during the session, in context, so the rationale lives one paragraph away rather than in a separately-curated index that can drift.
 
-## The four skills
+## The six skills
 
-The suite has four skills:
+The suite currently has six skills:
 
 - **intent** — state the agent's interpretation of the ask before work begins. Catches misreading early.
-- **improve** — examine a target, find what most needs changing, change it (or argue for radical redesign), verify, and record. The core autonomous loop.
+- **improve** — examine a target, find what most needs changing, change it (or argue for radical redesign), verify, and record. The core autonomous loop. Reads `vision.md` → `compass.md` → `log.md` in that order at step 1.
 - **probe** — construct a novelty probe that distinguishes genuine situated reasoning from pattern-matching against a checklist.
-- **trail** — append a structured evidence entry to `.trail/log.md` after every session. Implements Observable Autonomy.
+- **trail** — append a structured evidence entry to `.trail/log.md` after every session, then regenerate `history.md`. Implements Observable Autonomy.
+- **retrospect** — read the full trail as a single document, form arc-level claims about the target, and write `.trail/compass.md`. Runs independently when a high-altitude view is needed.
+- **hunch** — surface the agent's in-progress guesses about where the operator is heading as short falsifiable questions. Conversational; reads `vision.md`, `compass.md`, `log.md`, and the current conversation. Does not produce a dedicated output file — findings are recorded in `log.md` via Trail.
 
-Earlier versions of this suite (v1, v2) had more skills with Japanese vocabulary (Kata, Kaizen, Kaikaku, Hansei, Mura, Muri, Muda, Intent). v3.0.0 collapsed them into two (improve and probe). v3.2.0 re-extracted intent and trail as standalone first-class skills. The full history is preserved in `archive/v2/` and the v2 tags.
+Earlier versions of this suite (v1, v2) had more skills with Japanese vocabulary (Kata, Kaizen, Kaikaku, Hansei, Mura, Muri, Muda, Intent). v3.0.0 collapsed them into two (improve and probe). v3.2.0 re-extracted intent and trail as standalone first-class skills. v3.9.0 added retrospect; v3.11.0 added hunch. The full history is preserved in `archive/v2/` and the v2 tags.
 
 ## Fidelity levels
 
