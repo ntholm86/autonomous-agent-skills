@@ -21,8 +21,8 @@ authors:
     orcid: "https://orcid.org/0009-0009-7157-9084"
 repository-code: "https://github.com/ntholm86/autonomous-agent-skills"
 license: MIT
-version: "3.17.2"
-date-released: "2026-05-02"
+version: "3.17.3"
+date-released: "2026-05-03"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.19842994"

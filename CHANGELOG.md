@@ -1,5 +1,14 @@
 # Changelog
 
+## v3.17.3 — 2026-05-03
+
+### Changed
+- `README.md` — added daily-use statement: "These are the skills I use in my daily work as a senior software engineer. I run them on real codebases — not as a showcase."
+- `.trail/vision.md` — "revision cycles" corrected to "Retrospect cycles" for terminological precision.
+
+### Fixed
+- `.zenodo.json` — title and description updated from "Five" to "Six" skills; Hunch added to the skill list and read-order.
+
 ## v3.17.2 — 2026-05-03
 
 ### Fixed — verify.py now enforces session-file: references
