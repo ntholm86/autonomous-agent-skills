@@ -22,7 +22,7 @@ The skills are one attempt at an answer. They may turn out to be the wrong attem
 
 **The architecture has two phases, and only one is fully automatable.**
 
-Phase 1 is **vision convergence**: the human and the AI converge on a shared, precise model of what is to be built and why. This is done through dialogue — Hunch, Intent, and revision cycles on this file. It cannot be automated; the AI cannot derive the full vision from the work alone, because the human's understanding of the goal is always ahead of what has been written down. Vision will expand and change as the operator has realisations — that is expected and healthy. Hunch is the mechanism for revisiting it.
+Phase 1 is **vision convergence**: the human and the AI converge on a shared, precise model of what is to be built and why. This is done through dialogue — Hunch, Intent, and Retrospect cycles on this file. It cannot be automated; the AI cannot derive the full vision from the work alone, because the human's understanding of the goal is always ahead of what has been written down. Vision will expand and change as the operator has realisations — that is expected and healthy. Hunch is the mechanism for revisiting it.
 
 Phase 2 is **the iterative loop**: once vision is precise enough, the loop runs against it. The autonomy level is configurable — from full autonomy to human-gated at key decision points. What is safe to automate fully: testing, robustness improvements, internal consistency fixes, trail maintenance. What requires a human gate: direction changes, and most importantly — **what to implement next**.
 
@@ -55,7 +55,7 @@ These two goals constrain each other. A skill that works conversationally but ca
 
 A reasoning layer that can't carry anything across runs is not a reasoning layer. The protocol the skills define must require all three, while leaving the implementation open — different harnesses will satisfy them in different ways, and some of those ways will be faster or more structured than what this skillset uses.
 
-**Memory** — *what happened.* The full record of decisions, actions, and reflections from prior runs, kept in a form that can be re-read. Without it, every run starts from zero and the agent cannot be held to anything it concluded yesterday.
+**Memory** — *what happened.* The full record of decisions and reasoning behind it, actions, and reflections from prior runs, kept in a form that can be re-read. Without it, every run starts from zero and the agent cannot be held to anything it concluded yesterday.
 - *How the skillset solves it:* `.trail/log.md` — append-only, human-readable, source of truth. `.trail/history.md` is an auto-generated digest. The Trail skill enforces the structure.
 
 **Learning** — *what to do differently next time.* Some signal extracted from prior runs that changes future behavior. This is not the same as memory; memory is the substrate, learning is the update.
