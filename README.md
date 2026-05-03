@@ -4,6 +4,8 @@
 
 Six skills that give any AI agent a complete improvement loop for any codebase: interpret the prompt, observe the target, find the highest-leverage change, make it, record the evidence, read the arc, and — when needed — surface the agent's own guesses about where the operator is heading. The loop ran on this repository more than 100 times and restructured the suite twice. It converged when three independent evaluators from distinct model families found nothing left to change. Guided by the [three principles](./PRINCIPLES.md).
 
+These are the skills I use in my daily work as a senior software engineer. I run them on real codebases — not as a showcase.
+
 This suite is one conformance example of the [Autonomous Agent Principles](https://github.com/ntholm86/autonomous-agent-principles) — a separate repository that states the principles in implementation-agnostic terms. The principles are the rulebook; the skills are evidence that they work in one domain (developer tooling). Any other tool, process, or platform can conform to the same principles.
 
 ## The goal
