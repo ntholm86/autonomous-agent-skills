@@ -3647,3 +3647,52 @@ verify.py -> OK.
 **Named blind spot.** I corrected the compass without running a full Retrospect arc-read. This is appropriate here (the error is a known, point-fix, operator-confirmed correction) but means the compass is no longer "purely Retrospect-derived" — it is now a mix of Retrospect output and an Improve correction. A future Retrospect run will overwrite it fully and should validate or contradict the correction.
 
 **Imagined-reader pushback.** "You fixed one sentence in the compass and called it a run. The verify.py gap has been named three times and is now queued for the fourth time without being closed. What is the actual barrier to fixing it?" The barrier is the single-purpose discipline: two changes in one run makes the diff scope unclear and creates the risk that one change's rationale gets merged with another's. But the pushback is fair: if the next run opens with verify.py and finds it's a five-line addition, naming the discipline as a barrier will start to look like avoidance.
+
+## 2026-05-03 — verify-session-file-enforcement
+
+- target: autonomous-agent-skills
+- operator: Nils Wendelboe Holmager (ntholm86)
+- agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
+- skill: improve v3.7.0
+- outcome: changed — verify.py check 8 added; session-file: references now mechanically enforced
+- session-file: .trail/sessions/2026-05-03-verify-session-file-enforcement.md
+- delta: v3.17.1 -> v3.17.2; verify.py +check_session_files(); CHANGELOG, README, CITATION.cff bumped
+
+### Interpretation of the ask
+
+"lets go" — continuation of the queued verify.py sessions/ enforcement work named in the prior run (compass-claim6-operator-framing-correction). The prior run's reflection named it explicitly: "if the next run opens verify.py and finds it's a five-line addition, naming the discipline as a barrier will start to look like avoidance." This run acts on that.
+
+### Examination
+
+**Inconsistency lens.** trail v1.10.0 (2026-05-02) made sessions/ mandatory with an explicit write step. verify.py's docstring lists seven checks; none of them verify that a session-file: reference in log.md actually points to an existing file. An entry with a broken session-file: path passes verify.py silently. The three-run gap between the mandate and the enforcement is the inconsistency.
+
+**Scope check.** The check requires: (1) parse log.md entries, (2) extract session-file: path from each entry's metadata block, (3) verify ROOT / path exists. The entry-parsing logic already exists in check_log_format(); the session-file extraction is a one-line regex. The new function is ~25 lines and reuses ENTRY_HEADING. No new dependencies, no new files, no API changes.
+
+**Challenge the first read.** Should the check also enforce that *every* entry has a session-file: field (not just those that reference one)? Rejected — many entries predate trail v1.10.0 and have no session-file: field; retroactive enforcement would break verify.py for the entire historical trail. The minimum meaningful check is: if a session-file: reference exists, the file must exist.
+
+**Waste lens / Probe.** Nothing else surfaced.
+
+### Decision
+
+[!DECISION] Add SESSION_FILE_META regex + check_session_files() function to verify.py. Call it from main(). Update docstring check list. Bump to v3.17.2; update CHANGELOG, README, CITATION.cff atomically.
+
+Alternative considered: enforce that ALL entries have session-file:. Rejected — retroactive enforcement on pre-v1.10.0 entries is disproportionate. The mandate applies to new entries; the check enforces the reference is not broken when present.
+
+### Action
+
+1. verify.py docstring: added check 8.
+2. SESSION_FILE_META regex added alongside existing regex constants.
+3. check_session_files() function: parses entries, extracts session-file: paths, checks existence.
+4. main(): added all_failures.extend(check_session_files()).
+5. CHANGELOG.md: v3.17.2 entry.
+6. README.md: version line v3.16.0 -> v3.17.2 (also corrects a two-version lag: README was still at v3.16.0 while CHANGELOG was at v3.17.1).
+7. CITATION.cff: version 3.16.0 -> 3.17.2.
+8. verify.py -> OK.
+
+### Reflection
+
+**Falsifiable claim about the target's current state.** verify.py now enforces all mandatory trail artifacts: entry format, metadata fields, mojibake, link integrity, and session-file: reference validity. A future run that disagrees would find a remaining case verify.py misses — e.g. an entry with a session-file: that contains a typo in the filename rather than a wrong path, or a sessions/ file that exists but is empty. Both are real edge cases but neither has been observed.
+
+**Named blind spot.** verify.py still does not check that the *content* of session files is non-trivial. A session file that consists of a single whitespace line would pass. This is a content-quality check that would require defining a minimum content schema — a different class of enforcement from the structural checks currently implemented.
+
+**Imagined-reader pushback.** "You fixed a gap that was named three times over two sessions. That is slow. The loop catches things on the third mention, not the first. Is that acceptable?" Counter: single-purpose discipline means each run does one thing. The gap was named each time and queued each time. The first run that was explicitly about this gap closed it. The pattern is: name, queue, act on in the dedicated run. Whether three runs is too slow depends on whether missing a session-file reference was causing harm — it wasn't, because every recent entry had a correct reference anyway. The enforcement is preemptive, not remedial.

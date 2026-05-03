@@ -14,6 +14,7 @@ Checks:
 6. Live repo files that current docs depend on exist.
 7. Required markdown docs do not contain duplicate H1 headings, and their local
     markdown links resolve.
+8. Every `session-file:` reference in log.md points to an existing file.
 
 Exit code: 0 if all checks pass, 1 otherwise.
 """
@@ -39,6 +40,7 @@ REQUIRED_FILES = [
 
 ENTRY_HEADING = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s+[\u2014-]\s+(.+?)\s*$")
 META_FIELD = re.compile(r"^-\s+(target|agent|skill|outcome)\s*:", re.MULTILINE)
+SESSION_FILE_META = re.compile(r"^-\s+session-file:\s+(.+?)\s*$", re.MULTILINE)
 H1_HEADING = re.compile(r"^#\s+.+$", re.MULTILINE)
 MARKDOWN_LINK = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 EXTERNAL_LINK = re.compile(r"^[a-z][a-z0-9+.-]*:", re.IGNORECASE)
@@ -158,12 +160,46 @@ def check_required_markdown_docs() -> list[str]:
     return failures
 
 
+def check_session_files() -> list[str]:
+    """Check that every session-file: reference in log.md points to an existing file."""
+    failures: list[str] = []
+    if not LOG.exists():
+        return failures
+    text = LOG.read_text(encoding="utf-8")
+
+    entries: list[tuple[str, str, str]] = []
+    current_date: str | None = None
+    current_slug: str | None = None
+    current_body: list[str] = []
+    for line in text.splitlines():
+        m = ENTRY_HEADING.match(line)
+        if m:
+            if current_date is not None:
+                entries.append((current_date, current_slug or "", "\n".join(current_body)))
+            current_date, current_slug = m.group(1), m.group(2)
+            current_body = []
+        elif current_date is not None:
+            current_body.append(line)
+    if current_date is not None:
+        entries.append((current_date, current_slug or "", "\n".join(current_body)))
+
+    for date, slug, body in entries:
+        for m in SESSION_FILE_META.finditer(body):
+            rel_path = m.group(1).strip()
+            if not (ROOT / rel_path).exists():
+                failures.append(
+                    f"entry '{date} {slug}' references missing session file: {rel_path}"
+                )
+    return failures
+
+
 def main() -> int:
     all_failures: list[str] = []
     all_failures.extend(check_required_files())
     all_failures.extend(check_log_format())
     all_failures.extend(check_no_mojibake())
     all_failures.extend(check_required_markdown_docs())
+    all_failures.extend(check_session_files())
 
     if all_failures:
         print(f"FAIL — {len(all_failures)} issue(s):")

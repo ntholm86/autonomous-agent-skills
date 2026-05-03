@@ -1,5 +1,11 @@
 # Changelog
 
+## v3.17.2 — 2026-05-03
+
+### Fixed — verify.py now enforces session-file: references
+
+Added check 8 to `verify.py`: every `session-file:` reference in `.trail/log.md` must point to an existing file. Trail v1.10.0 made sessions/ mandatory but the mechanical check was missing — an entry could reference a non-existent session file and verify.py would pass. Named as a gap in three consecutive trail entries before being closed here.
+
 ## v3.17.1 — 2026-05-02
 
 ### Fixed — Intent now cross-references Hunch in "What This Skill Is Not"
