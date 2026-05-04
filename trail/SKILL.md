@@ -55,7 +55,7 @@ git add .trail/log.md
 git commit -m "trail: <slug>"
 ```
 
-If Retrospect ran this session and updated `.trail/compass.md`, include it in the same commit. `.trail/vision.md` is operator-managed and is committed only when the operator changes it — never as a side effect of an agent run.
+If Retrospect ran this session and updated `.trail/retrospect.md`, include it in the same commit. `.trail/vision.md` is operator-managed and is committed only when the operator changes it — never as a side effect of an agent run.
 
 `history.md` is **not** generated automatically. Run it on demand when a human-readable summary is useful:
 
@@ -72,11 +72,11 @@ If you write `history.md`, commit it separately — it is a derived convenience 
   log.md          — append-only ledger, one entry per session (the source of truth)
   history.md      — on-demand human-readable summary (run: record.py history --write)
   vision.md       — operator-held destination (optional; read by Improve, never written by any skill)
-  compass.md      — Retrospect-derived current orientation (written by Retrospect, read by Improve)
+  retrospect.md      — Retrospect-derived current orientation (written by Retrospect, read by Improve)
   sessions/       — per-session detail file (mandatory); one per run, linked from log.md
 ```
 
-Vision and compass are distinct: vision is the destination the operator holds and rarely changes; compass is the agent's current synthesis of where the target is, rewritten each Retrospect run. Vision is input to the loop; compass is output.
+Vision and retrospect.md are distinct: vision is the destination the operator holds and rarely changes; retrospect.md is the agent's current synthesis of where the target is, rewritten each Retrospect run. Vision is input to the loop; retrospect.md is output.
 
 Both files are committed. `record.py` is **not** committed to the target repo — it stays in the skills install.
 

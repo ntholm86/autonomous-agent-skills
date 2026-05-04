@@ -34,16 +34,16 @@ If the ask is about convergence or publication readiness, read the repo's conver
 Before examining the target, check the **target repo's** `.trail/` folder for two orientation files and read whichever exist, in this order. The `.trail/` folder is always in the root of the repo being worked on — never in the skills install directory.
 
 1. `.trail/vision.md` — the **operator-held destination**. What the target is for, the constraints that hold across all runs, the hard problem the work is trying to chip away at. Stable: not written by any skill, only by the operator/team. If present, it is the highest-priority context — it tells you what success means before you decide what to change.
-2. `.trail/compass.md` — the **current Retrospect-derived orientation**. What the arc currently shows is true of the target, what the next runs should test. Rewritten each Retrospect run. If present, it tells you where the loop's attention has been and what the latest arc-read concluded.
+2. `.trail/retrospect.md` — the **current Retrospect-derived orientation**. What the arc currently shows is true of the target, what the next runs should test. Rewritten each Retrospect run. If present, it tells you where the loop's attention has been and what the latest arc-read concluded.
 3. `.trail/log.md` — the full history. Read for the evidence behind the orientation, and for any specific prior decision the current run might contradict.
 
-Vision is the destination, compass is the current location, the trail is the path. If vision and compass disagree, vision wins (the operator holds the destination); if compass and trail disagree, the trail wins (the trail is the evidence).
+Vision is the destination, retrospect.md is the current location, the trail is the path. If vision and retrospect.md disagree, vision wins (the operator holds the destination); if retrospect.md and trail disagree, the trail wins (the trail is the evidence).
 
 If the ask is underspecified (for example: "continue", "keep going", "next", or equivalent), do not wait for the operator to inject a topic. Generate one agent-initiated direction question before step 2:
 
-1. Form 1-3 sourced hunches from vision, compass, and recent trail entries about what structural uncertainty matters most now.
+1. Form 1-3 sourced hunches from vision, retrospect.md, and recent trail entries about what structural uncertainty matters most now.
 2. State one prioritized falsifiable question that would change what you choose to work on.
-3. If no operator answer is available in this run, proceed with your highest-confidence hunch as an explicit assumption and continue.
+3. If no operator answer is available in this run, proceed with your highest-confidence vision as an explicit assumption and continue.
 
 Treat this as a bootstrap for occasion-independence, not a replacement for operator intent. If a direct operator objective exists, it wins.
 

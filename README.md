@@ -16,7 +16,7 @@ These are the exact skills I use daily as a senior software engineer to safely d
 ### #2: The Agent Drifted Over Time
 
 **The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
-**The Solution:** Hunch surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
+**The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
 
 ### #3: The Agent is Pattern-Matching, Not Thinking
 
@@ -37,7 +37,7 @@ These are the exact skills I use daily as a senior software engineer to safely d
 
 1. Read [INSTALLING.md](./INSTALLING.md) for configuration instructions.
 2. Copy the skill directories (intent/, improve/, probe/, 	rail/, 
-etrospect/, and hunch/) into your repository's .copilot/skills/ folder.
+etrospect/, and vision/) into your repository's .copilot/skills/ folder.
 3. Start assigning verifiable, autonomous tasks.
 
 ## Reference
