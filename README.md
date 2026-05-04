@@ -41,8 +41,8 @@ These are the exact skills I use daily as software engineer to safely delegate c
 | 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision | The agent will read your mind and uncover and articulate your vision |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 🧪 **[Probe](./probe/SKILL.md)** | The agent is parroting, not thinking | Forces a "spot the difference" test to prove the agent is actually reasoning |
-| 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every decision, discarded alternative, and rationale. |
-| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The Agent Drifted Over Time | Steps back to read the full history and re-orients the loop. |
+| 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
+| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
 
 ## The Workflow
 
