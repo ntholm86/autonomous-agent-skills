@@ -46,7 +46,7 @@ These are the exact skills I use daily as software engineer to safely delegate c
 
 ## The Workflow
 
-*Note: All skills automatically invoke `trail` in the background to capture evidence. The trail accumulates knowledge across iterations — every decision, rationale, and reflection — so the agent becomes increasingly aware of the target, the vision, and everything that has already been tried.*
+*Note: All skills automatically invoke `trail` in the background to capture evidence. The trail accumulates knowledge across iterations — every decision, rationale, and reflection — so the agent becomes increasingly aware of the target, the vision, and everything that has already been done.*
 
 1. **Set the Target:** Run `vision` first to determine the destination before starting work.
 2. **Execute:** Run `improve` for X amount of iterations until you reach a plateau.
