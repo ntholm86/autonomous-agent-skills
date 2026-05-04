@@ -3696,3 +3696,46 @@ Alternative considered: enforce that ALL entries have session-file:. Rejected �
 **Named blind spot.** verify.py still does not check that the *content* of session files is non-trivial. A session file that consists of a single whitespace line would pass. This is a content-quality check that would require defining a minimum content schema — a different class of enforcement from the structural checks currently implemented.
 
 **Imagined-reader pushback.** "You fixed a gap that was named three times over two sessions. That is slow. The loop catches things on the third mention, not the first. Is that acceptable?" Counter: single-purpose discipline means each run does one thing. The gap was named each time and queued each time. The first run that was explicitly about this gap closed it. The pattern is: name, queue, act on in the dedicated run. Whether three runs is too slow depends on whether missing a session-file reference was causing harm — it wasn't, because every recent entry had a correct reference anyway. The enforcement is preemptive, not remedial.
+
+## 2026-05-04 — rename-hunch-compass-plain-english-retrospect
+
+- target: autonomous-agent-skills
+- operator: TODO
+- agent: TODO (provider, tool-call ID prefix)
+- skill: improve
+- outcome: TODO
+- delta: TODO
+
+### Interpretation of the ask
+
+TODO
+
+### Examination
+
+TODO
+
+### Decision
+
+[!DECISION] TODO
+
+### Action
+
+TODO
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+TODO — a specific, disprovable statement about what is true of the target right now.
+
+**Named blind spot:**
+
+TODO — what this examination likely missed, and why.
+
+**Imagined-reader pushback:**
+
+TODO — the strongest objection from someone who knows the target better.
+
+**Across-trail macro-Hansei** *(conditional — only if a trigger fires: recurring finding-class, imminent silence, contradicted prior [!REALIZATION], or operator ask)*:
+
+TODO or N/A

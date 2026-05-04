@@ -1,41 +1,37 @@
 # retrospect.md — autonomous-agent-skills
 
-_Last updated: 2026-05-02 (run: retrospect-vectorium-arc-evidence-2026-05-02)_  
-_Derived from: full arc read through typed-scene-services (vectorium run 5, session 2), read against current vision.md. Incorporates vectorium external-proof arc across two sessions and five trail entries._
+_Last updated: 2026-05-04 (run: plain-english-and-terminology-unification-arc)_
+_Derived from: Full arc read covering the transition of marketing copy (zenodo/readme) to plain English, and the mechanical renaming of hunch->vision and compass->retrospect.md across the entire repository._
 
 ---
 
 ## Current claims
 
-**1. Phase 1 (vision convergence) mechanism fires on primed arcs; cold-context independence still unobserved.**  
-Improve v3.7.0's occasion-independence mechanism — form sourced hunches from vision+retrospect.md+recent trail before acting on underspecified "continue" prompts — fired correctly during the vectorium continuation in this session. The agent read the retrospect.md, identified queued work (typed Scene services), and acted on it without operator topic injection. That is a real data point. But the arc has not yet produced a cold case: a fresh session on a genuinely new arc with no retrospect.md and no priming. Every occasion-independence pass to date has been on an arc already in motion. The mechanism exists and fires on primed arcs; its behaviour cold is still unknown.
+**1. The suite's terminology is now mechanically aligned with the practitioner's natural conceptual model.**
+The transition from compass.md to etrospect.md and from hunch to ision explicitly connects the mechanism to the outcome. By standardizing these terms across all tools, scripts, and documentation, the cognitive load for a new developer attempting to adopt the loop is significantly reduced. This formally closes the gap where the suite used proprietary names for universal concepts.
 
-**2. The recognition claim and adoption success condition introduce a validation gap no internal loop pass can close.**  
-The updated vision redefines one test of success: recognition by practitioners who have felt the friction, and adoption by developers using the skills in their own projects without the author's help. Internal convergence runs measure structural consistency — they do not test whether the framework produces instant recognition in the target audience, or whether a stranger can deploy it. Phase 3 of the position document plan (direct outreach) is the only mechanism for this. The loop's arc to date has been Phase 2 work. Phase 3 has not started.
+**2. The public-facing proposition has moved from academic framing to concrete pain-point resolution.**
+The updates to README.md and .zenodo.json structurally reorganized the selling point around "The Failure Mode" and "The Solution" using plain English. It removes jargon like "vibe coding" and "verifiable engineering" in favor of direct descriptions of agent failure modes (drifting, unauditable messes, pattern-matching). The repository is now optimized for Phase 3: Developer Recognition.
 
-**3. Trail v1.10.0 + retrospect.md are functioning as inter-session memory in practice, not just in spec.**  
-The vectorium arc across two sessions demonstrates the mechanism working end-to-end: Retrospect (session 1) wrote a retrospect.md with queued work; the next session opened the retrospect.md, found the queue, and acted on it directly. This is Observable Autonomy in practice: a non-present observer reading the vectorium trail could reconstruct what happened and why. Remaining gap: verify.py does not enforce sessions/ file presence — soft enforcement only.
+**3. Phase 1 (vision convergence) mechanism fires correctly but still awaits a truly cold context.**
+The occasion-independence mechanisms continue to operate correctly on primed trails. However, the exact behavior of the Vision skill initiating on a fully unprimed, cold codebase (no prior trail, no prior configuration) remains the necessary next proof point.
 
-**4. Learning falsification: first clear cross-session case observed, mediated by retrospect.md.**  
-Vision defines learning as: a future agent acts on a prior `[!REALIZATION]` rather than rediscovering it. The vectorium arc provides the first clean case. Session 1's Retrospect and Improve trail entries identified the `(any)` cast injection pattern as a root cause and queued "typed Scene services" as next work. Session 2 (this session) began by acting on that queued work — removing 5 `(any)` casts from Engine.ts and adding typed service setters to Scene.ts — without re-diagnosing the root cause. Qualifier: the learning was mediated by the retrospect.md (which distilled the trail finding), not by the agent independently reading a `[!REALIZATION]` buried in a long log. retrospect.md is the mechanism; that is as intended.
+**4. External proof on an unfamiliar codebase remains the primary structural gap.**
+A run on a codebase the operator did not build remains unfulfilled. While the suite has successfully cleaned up internal consistency and copy, and tested successfully against dormat repos like vectorium (authored by the operator), true adoption success evidence relies on proving the loop finds issues when the operator has zero prior context.
 
-**5. Capability claims are strengthened by the vectorium arc; cross-family and stranger-deployed replication still required.**  
-Vectorium arc evidence (5 trail entries, 2 sessions, 3 skills, Anthropic): Vision surfaced a real insight not in any file (lost-interest-after-benchmark); Improve found and fixed real correctness issues across runs; Retrospect produced a decision-useful retrospect.md that oriented the next session; learning carry-forward worked as designed; 30/30 tests passing on a real TypeScript/WebGL2 codebase. All three skills now have multi-session, multi-run evidence on a real foreign target. The arc is still single-operator (author = operator) and single-agent-family (Anthropic only). Cross-family replication (non-Anthropic agent on vectorium or similar) and stranger-deployed replication remain required.
-
-**6. External proof on an unfamiliar codebase: the remaining gap is practical, not structural.**  
-The vectorium arc provides the most extensive external-proof evidence to date: 5 runs, 2 sessions, multi-skill arc, retrospect.md-mediated learning, real code correctness improvements. The remaining gap is simpler than the prior retrospect.md framed it: the skills have only been run on codebases the operator built. A run on a codebase the operator did not build is the next evidence step — the question is whether the skills find genuine issues when the operator has no prior model of the target. No suitable target is currently available; this is a practical constraint, not a design gap.
+**5. Trail enforcement verification remains structurally sound.**
+Verify.py continues to enforce session files and metadata correctly, proving robust despite across-the-board renaming and global search-and-replace runs that modified the artifact formats. Observable Autonomy remains unbroken.
 
 ---
 
 ## What the next runs should test
 
-1. **External proof (unfamiliar codebase)** — run the protocol on a codebase the operator did not build. The question is whether the examination step finds genuine issues when the operator has no prior model of the target. No suitable target is currently available; revisit when one becomes accessible.
-2. **Phase 1 occasion-independence (cold case)** — open a genuinely fresh session on a new arc with no retrospect.md and no prior priming. Does the mechanism in Improve v3.7.0 fire and produce a useful direction question without operator topic injection? One primed data point is not enough to claim the mechanism is reliable.
-3. **Retrospect reliability (different operator or much longer arc)** — all Retrospect runs to date share the same operator. Run on an arc with different operator authorship, or on a target with a substantially longer trail history, to test claim stability.
-4. **Learning carry-forward without retrospect.md mediation** — identify a `[!REALIZATION]` buried in a long log that the retrospect.md has not explicitly surfaced, and verify whether a future agent finds and acts on it. This would test whether the trail itself (not just the distilled retrospect.md) carries learning.
+1. **External proof (unfamiliar codebase)** — Run the protocol on a codebase the operator has explicitly never seen or contributed to.
+2. **Phase 1 occasion-independence (cold case)** — Attempt a fresh run on a completely unprimed codebase to see if the Vision skill behaves correctly without prompt injection.
+3. **End-to-End Practitioner Adoption Test** — With plain English applied to the README and Zenodo, the repo should be handed to an independent engineer to trace initial setup friction.
 
 ---
 
 ## Loop-effectiveness notes
 
-The vectorium arc across two sessions is the most informative arc the suite has produced for testing the claims in vision. It delivered: the first clear cross-session learning case, practical validation of Observable Autonomy as an inter-session mechanism, and the most extensive external-proof evidence to date. The arc also surfaced a model-introduced framing — "operator ? author" — that the operator subsequently corrected: the actual intent is a codebase the operator did not build, not a requirement for a different human operator. That correction is reflected in claim 6. No suitable unfamiliar codebase is currently available; the next high-leverage run is one of the remaining items in the queue above.
+The recent arc shows a highly effective response to human-directed correction of marketing copy and terminology standardization. The loop demonstrated the capacity to perform dangerous global substitutions (renaming core conceptual artifacts like compass ? etrospect.md and hunch ? ision) without breaking the tooling or verification scripts. The structural ability to rewrite its own operating rules iteratively is strongly confirmed. The next leap in evidence value cannot be gained by further internal polish; the loop must now look outward to external codebases to prove applicability.
