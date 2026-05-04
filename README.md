@@ -38,7 +38,7 @@ These are the exact skills I use daily as software engineer to safely delegate c
 | Skill 🛠️ | Problem ⚠️ | Solution ✅ |
 | :--- | :--- | :--- |
 | 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
-| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - its only in your head | The agent will read your mind and uncover your vision. |
+| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - its only in your head | The agent will read your mind, uncover your vision and use it in the other skills |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
@@ -46,7 +46,7 @@ These are the exact skills I use daily as software engineer to safely delegate c
 
 ## The Workflow
 
-*Note: All skills automatically invoke `trail` in the background to capture evidence.*
+*Note: All skills automatically invoke `trail` in the background to capture evidence. The trail accumulates knowledge across iterations — every decision, rationale, and reflection — so the agent becomes increasingly aware of the target, the vision, and everything that has already been tried.*
 
 1. **Set the Target:** Run `vision` first to determine the destination before starting work.
 2. **Execute:** Run `improve` for X amount of iterations until you reach a plateau.
