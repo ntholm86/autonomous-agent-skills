@@ -37,7 +37,7 @@ These are the exact skills I use daily as a senior software engineer to safely d
 
 1. Read [INSTALLING.md](./INSTALLING.md) for configuration instructions.
 2. Copy the skill directories (intent/, improve/, probe/, 	rail/, 
-etrospect/, and vision/) into your repository's .copilot/skills/ folder.
+retrospect/, and vision/) into your repository's .copilot/skills/ folder.
 3. Start assigning verifiable, autonomous tasks.
 
 ## Reference

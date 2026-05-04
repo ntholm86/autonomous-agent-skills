@@ -88,7 +88,7 @@ The retrospect.md should make sense in light of vision (read at step 0) — arc-
 The file shape is simple:
 
 ```markdown
-# Compass — <target name>
+# retrospect.md — <target name>
 
 _Last updated: YYYY-MM-DD (run: <slug>)_
 

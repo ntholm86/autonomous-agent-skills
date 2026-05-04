@@ -2885,13 +2885,13 @@ The `model.md` file has no schema enforcement — it is prose, written by whiche
 
 "You've added a file that agents are *instructed* to write and read, but there's no verification that they actually do. The trail already has this problem — agents can skip trail entries. Adding another file to the protocol adds another thing to skip. The working model is only valuable if agents consistently write it after Retrospect runs and consistently read it before Improve runs. What is the enforcement mechanism?" The answer is: the trail is the evidence. If `model.md` is not committed alongside retrospect trail entries, the run is incomplete. Same discipline as `history.md`.
 
-## 2026-05-01 — docs-readme-compass-orientation
+## 2026-05-01 — docs-readme-retrospect.md-orientation
 
 - target: autonomous-agent-skills
 - operator: ntholm86
 - agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
 - skill: improve (self-targeting)
-- outcome: fixed stale README description — runs now start with compass.md, not the full trail
+- outcome: fixed stale README description — runs now start with retrospect.md, not the full trail
 - delta: v3.9.1 (no version bump — docs fix only)
 
 ### Interpretation of the ask
@@ -2900,10 +2900,10 @@ The `model.md` file has no schema enforcement — it is prose, written by whiche
 
 ### Examination
 
-Checked all active files for references to "prior decisions", "full trail", and "compass.md" outside the `.trail/` directory. Found two hits in README.md:
+Checked all active files for references to "prior decisions", "full trail", and "retrospect.md" outside the `.trail/` directory. Found two hits in README.md:
 
 - Line 31 (Quick Start step 3): "Each run reads the full trail of prior decisions." — high-level summary, acceptable at that altitude.
-- Line 38 (How it works): "Each run starts by reading the full trail of prior decisions. That trail is both evidence and memory." — factually inaccurate since run 65. Improve step 1 now reads `compass.md` first; the trail is secondary. The "both evidence and memory" framing is also wrong: evidence is still the trail, but memory (current synthesis) is now compass.md.
+- Line 38 (How it works): "Each run starts by reading the full trail of prior decisions. That trail is both evidence and memory." — factually inaccurate since run 65. Improve step 1 now reads `retrospect.md` first; the trail is secondary. The "both evidence and memory" framing is also wrong: evidence is still the trail, but memory (current synthesis) is now retrospect.md.
 
 No other stale references found in active skill files. .zenodo.json and CITATION.cff don't describe the per-run reading order so they're unaffected.
 
@@ -2913,34 +2913,34 @@ No other stale references found in active skill files. .zenodo.json and CITATION
 
 Rationale: this is the most-read user-facing document and it directly misrepresents the mechanism that was just introduced. A user reading the README to understand how the loop works would have a wrong mental model.
 
-Alternative: also update Quick Start step 3. Rejected — step 3 is a three-word description at high altitude; the nuance of compass.md vs. full trail isn't needed there and adding it would over-specify a quick-start instruction.
+Alternative: also update Quick Start step 3. Rejected — step 3 is a three-word description at high altitude; the nuance of retrospect.md vs. full trail isn't needed there and adding it would over-specify a quick-start instruction.
 
 ### Action
 
-Updated README.md line 38: "Each run starts by reading the full trail of prior decisions. That trail is both evidence and memory." → "Each run starts by reading `.trail/compass.md` (the current synthesized orientation, if Retrospect has been run) and then the full trail of prior decisions. That trail is the evidence; the compass is the distillation."
+Updated README.md line 38: "Each run starts by reading the full trail of prior decisions. That trail is both evidence and memory." → "Each run starts by reading `.trail/retrospect.md` (the current synthesized orientation, if Retrospect has been run) and then the full trail of prior decisions. That trail is the evidence; the retrospect.md is the distillation."
 
 ### Reflection
 
 **Falsifiable claim about the target's current state:**
 
-The suite at v3.9.1 now has two mechanisms for run orientation (compass.md + trail) but only one of them (compass.md) is described accurately in the user-facing documentation. The trail description is accurate everywhere. The compass description is accurate in retrospect/SKILL.md and improve/SKILL.md but was one sentence behind in README. That gap is now closed.
+The suite at v3.9.1 now has two mechanisms for run orientation (retrospect.md + trail) but only one of them (retrospect.md) is described accurately in the user-facing documentation. The trail description is accurate everywhere. The retrospect.md description is accurate in retrospect/SKILL.md and improve/SKILL.md but was one sentence behind in README. That gap is now closed.
 
 **Named blind spot:**
 
-The Quick Start section still says "Each run reads the full trail of prior decisions" without mentioning compass.md. That's defensible at the quick-start altitude but a new user reading only Quick Start would not know the compass exists. No action taken — Quick Start is intentionally terse — but it's a documentation gap worth noting.
+The Quick Start section still says "Each run reads the full trail of prior decisions" without mentioning retrospect.md. That's defensible at the quick-start altitude but a new user reading only Quick Start would not know the retrospect.md exists. No action taken — Quick Start is intentionally terse — but it's a documentation gap worth noting.
 
 **Imagined-reader pushback:**
 
 "You've made three documentation fixes in a row (runs 63-66) that all follow the same pattern: a new mechanism is added, its description propagates correctly to skill files, but the README 'How it works' paragraph lags one run behind. This is a systemic pattern, not a one-off. The root cause is that README's 'How it works' is a prose narrative written independently of the skill specs, and it requires manual synchronization with every behavioral change. The fix isn't another single-sentence patch — it's a process or structure change that prevents the lag." That pushback is accurate.
 
-## 2026-05-01 — compass-seed-evo-vision
+## 2026-05-01 — retrospect.md-seed-evo-vision
 
 - target: autonomous-agent-skills
 - operator: ntholm86
 - agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
-- skill: retrospect (compass seeding — operator conversation, not formal arc-read)
-- outcome: created .trail/compass.md — first compass for this repo, capturing the evo connection and constraints that must hold before integration
-- delta: no version bump — compass is a new artifact, not a code change
+- skill: retrospect (retrospect.md seeding — operator conversation, not formal arc-read)
+- outcome: created .trail/retrospect.md — first retrospect.md for this repo, capturing the evo connection and constraints that must hold before integration
+- delta: no version bump — retrospect.md is a new artifact, not a code change
 
 ### Interpretation of the ask
 
@@ -2948,15 +2948,15 @@ The Quick Start section still says "Each run reads the full trail of prior decis
 
 ### Examination
 
-Runs 55–66: predominantly documentation propagation following structural changes. Two genuinely behavioral additions (Retrospect, compass) both originated from operator observation, not the loop. The loop has not been run on an external target. Retrospect exists but has never been applied. compass.md existed as a protocol but no compass file existed yet for this repo. Evo (c:\git\evo) read: nine-phase pipeline with proof ledger, lessons journal, scope enforcement — execution is complete; reasoning layer (Intent before pipeline, vision-alignment in PROPOSE, strategic memory in EVOLVE) is missing.
+Runs 55–66: predominantly documentation propagation following structural changes. Two genuinely behavioral additions (Retrospect, retrospect.md) both originated from operator observation, not the loop. The loop has not been run on an external target. Retrospect exists but has never been applied. retrospect.md existed as a protocol but no retrospect.md file existed yet for this repo. Evo (c:\git\evo) read: nine-phase pipeline with proof ledger, lessons journal, scope enforcement — execution is complete; reasoning layer (Intent before pipeline, vision-alignment in PROPOSE, strategic memory in EVOLVE) is missing.
 
 ### Decision
 
-[!DECISION] Seed `.trail/compass.md` from operator conversation. This is a bootstrap exception — normally compass is generated by a Retrospect arc-read. Seeding from conversation captures strategic insight that a trail-read alone would not produce. Future Retrospect runs will replace and update it.
+[!DECISION] Seed `.trail/retrospect.md` from operator conversation. This is a bootstrap exception — normally retrospect.md is generated by a Retrospect arc-read. Seeding from conversation captures strategic insight that a trail-read alone would not produce. Future Retrospect runs will replace and update it.
 
 ### Action
 
-Created `.trail/compass.md` containing: what the suite is for, five current claims, three specific evo reasoning gaps, the path to full autonomy, what next runs should test, and three constraints that must hold before evo integration begins.
+Created `.trail/retrospect.md` containing: what the suite is for, five current claims, three specific evo reasoning gaps, the path to full autonomy, what next runs should test, and three constraints that must hold before evo integration begins.
 
 ### Reflection
 
@@ -2966,51 +2966,51 @@ The autonomous-agent-skills suite at v3.9.1 has correct concepts and wrong scope
 
 **Named blind spot:**
 
-The compass was seeded from one operator's understanding on one day. If the operator's vision shifts — which it has already done significantly across this arc — the compass will lag. A compass that was accurate six months ago and is now subtly wrong is more dangerous than no compass at all: it orients confidently in the wrong direction.
+The retrospect.md was seeded from one operator's understanding on one day. If the operator's vision shifts — which it has already done significantly across this arc — the retrospect.md will lag. A retrospect.md that was accurate six months ago and is now subtly wrong is more dangerous than no retrospect.md at all: it orients confidently in the wrong direction.
 
 **Imagined-reader pushback:**
 
-"You've written a strategic vision document and put it in `.trail/`. That's a README, not a compass. A compass should be derived from evidence — what the trail shows has actually happened — not from what the operator said in conversation. By seeding from conversation you've made it an aspiration document, not an evidence-based orientation."
+"You've written a strategic vision document and put it in `.trail/`. That's a README, not a retrospect.md. A retrospect.md should be derived from evidence — what the trail shows has actually happened — not from what the operator said in conversation. By seeding from conversation you've made it an aspiration document, not an evidence-based orientation."
 
-[!REALIZATION] That pushback is correct and important. The compass seeded here is aspirational, not evidence-based. A formal Retrospect run on the trail would produce a different, more grounded document. Both are useful but should be kept distinct. The convention should be: compass.md is always evidence-based (generated by Retrospect); operator strategic vision belongs elsewhere — perhaps in the README or a separate `.trail/vision.md`. This seeding is a documented bootstrap exception.
+[!REALIZATION] That pushback is correct and important. The retrospect.md seeded here is aspirational, not evidence-based. A formal Retrospect run on the trail would produce a different, more grounded document. Both are useful but should be kept distinct. The convention should be: retrospect.md is always evidence-based (generated by Retrospect); operator strategic vision belongs elsewhere — perhaps in the README or a separate `.trail/vision.md`. This seeding is a documented bootstrap exception.
 
-## 2026-05-01 — split-vision-from-compass
+## 2026-05-01 — split-vision-from-retrospect.md
 
 - target: autonomous-agent-skills
 - operator: ntholm86
 - agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
-- skill: improve (full loop, convergence-loop-prompt with compass guidance)
-- outcome: introduced `.trail/vision.md` as a sibling to `.trail/compass.md`; vision is operator-held and never written by any skill, compass is Retrospect-derived and rewritten each run
+- skill: improve (full loop, convergence-loop-prompt with retrospect.md guidance)
+- outcome: introduced `.trail/vision.md` as a sibling to `.trail/retrospect.md`; vision is operator-held and never written by any skill, retrospect.md is Retrospect-derived and rewritten each run
 - delta: suite v3.9.1 → v3.10.0; improve 3.3.0 → 3.4.0; retrospect 1.1.0 → 1.2.0; trail 1.6.0 → 1.7.0
 
 ### Interpretation of the ask
 
-The convergence-loop-prompt asks for the highest-leverage thing left to change — or silence. The compass surfaces three leverage points (text-consistency limit, weak learning, autonomous compass derivation) and explicitly invites pushing on them. The constraint: don't manufacture findings, don't make a documentation edit dressed up as structural.
+The convergence-loop-prompt asks for the highest-leverage thing left to change — or silence. The retrospect.md surfaces three leverage points (text-consistency limit, weak learning, autonomous retrospect.md derivation) and explicitly invites pushing on them. The constraint: don't manufacture findings, don't make a documentation edit dressed up as structural.
 
 ### Examination
 
-Compared `.trail/compass.md` (as it stood at the start of this run) to `retrospect/SKILL.md` step 5. Compass contained: architectural constraints, what the repo is for, memory/learning/meta-cognition definitions, the hard problem, the horizon, current arc-style claims, what next runs should test, and a disclaimer. Retrospect's step 5 says compass is rewritten each run with a minimal shape (current claims + optional loop-effectiveness notes). The two are incompatible: a Retrospect run executing its spec literally would erase most of the compass content. The compass file's own disclaimer already named this — "operator strategic vision belongs elsewhere — perhaps in the README or a separate `.trail/vision.md`. This seeding is a documented bootstrap exception."
+Compared `.trail/retrospect.md` (as it stood at the start of this run) to `retrospect/SKILL.md` step 5. retrospect.md contained: architectural constraints, what the repo is for, memory/learning/meta-cognition definitions, the hard problem, the horizon, current arc-style claims, what next runs should test, and a disclaimer. Retrospect's step 5 says retrospect.md is rewritten each run with a minimal shape (current claims + optional loop-effectiveness notes). The two are incompatible: a Retrospect run executing its spec literally would erase most of the retrospect.md content. The retrospect.md file's own disclaimer already named this — "operator strategic vision belongs elsewhere — perhaps in the README or a separate `.trail/vision.md`. This seeding is a documented bootstrap exception."
 
 Lenses applied:
-- **Inconsistency** (between Retrospect's contract and the compass file's contents) — the dominant finding.
-- **Overburden** (compass.md was being asked to be both stable orientation and arc-derived synthesis) — same finding from a different angle.
-- **Waste** — none surfaced; the content in compass.md is genuinely useful, it just lives in the wrong artifact.
+- **Inconsistency** (between Retrospect's contract and the retrospect.md file's contents) — the dominant finding.
+- **Overburden** (retrospect.md was being asked to be both stable orientation and arc-derived synthesis) — same finding from a different angle.
+- **Waste** — none surfaced; the content in retrospect.md is genuinely useful, it just lives in the wrong artifact.
 
 ### Decision
 
-[!DECISION] Split orientation into two artifacts: `.trail/vision.md` (operator-held, stable, never written by any skill) and `.trail/compass.md` (Retrospect-derived, rewritten each run). Improve reads vision first, then compass, then trail. Vision is the destination; compass is the current location; trail is the path.
+[!DECISION] Split orientation into two artifacts: `.trail/vision.md` (operator-held, stable, never written by any skill) and `.trail/retrospect.md` (Retrospect-derived, rewritten each run). Improve reads vision first, then retrospect.md, then trail. Vision is the destination; retrospect.md is the current location; trail is the path.
 
 Alternatives considered and rejected:
-1. Update Retrospect to preserve sections of compass it didn't write (e.g. via section markers). Rejected — introduces format complexity and muddles the clean "compass = arc-derived" semantics. The split is conceptually cleaner.
+1. Update Retrospect to preserve sections of retrospect.md it didn't write (e.g. via section markers). Rejected — introduces format complexity and muddles the clean "retrospect.md = arc-derived" semantics. The split is conceptually cleaner.
 2. Move all stable content into the README. Rejected — README is for humans reading the repo from outside; agent reads `.trail/` before each run. Putting vision in `.trail/` keeps it inside the same protocol attention pass.
 3. Silence — leave the contract incoherence in place. Rejected — the next real Retrospect run would either erase operator content (loss) or silently violate the spec (worse). The contract had to be made coherent before Retrospect can be run for real.
 
 ### Action
 
-1. Created `.trail/vision.md` with the operator-held content from compass: what the repo is for, architectural constraints, memory/learning/meta-cognition section, the hard problem, horizon. Header makes the artifact's role explicit ("operator-held, stable across runs, not written by any skill").
-2. Rewrote `.trail/compass.md` to contain only Retrospect-shaped content: current claims about the reasoning layer, what the next runs should test, and the seeded-not-derived disclaimer. Header points to vision as input.
-3. Updated `improve/SKILL.md` step 1: read order is vision → compass → log, with disagreement-resolution rules spelled out (vision wins over compass; trail wins over compass).
-4. Updated `retrospect/SKILL.md` step 5: Retrospect reads vision but never writes to it; compass shape extended with explicit "What the next runs should test" section; frontmatter description updated.
+1. Created `.trail/vision.md` with the operator-held content from retrospect.md: what the repo is for, architectural constraints, memory/learning/meta-cognition section, the hard problem, horizon. Header makes the artifact's role explicit ("operator-held, stable across runs, not written by any skill").
+2. Rewrote `.trail/retrospect.md` to contain only Retrospect-shaped content: current claims about the reasoning layer, what the next runs should test, and the seeded-not-derived disclaimer. Header points to vision as input.
+3. Updated `improve/SKILL.md` step 1: read order is vision → retrospect.md → log, with disagreement-resolution rules spelled out (vision wins over retrospect.md; trail wins over retrospect.md).
+4. Updated `retrospect/SKILL.md` step 5: Retrospect reads vision but never writes to it; retrospect.md shape extended with explicit "What the next runs should test" section; frontmatter description updated.
 5. Updated `trail/SKILL.md`: directory listing includes `vision.md`; commit step clarifies vision is operator-managed.
 6. Updated `README.md` "How it works" for the new read order.
 7. Bumped versions in CHANGELOG, README, CITATION.cff.
@@ -3019,7 +3019,7 @@ Alternatives considered and rejected:
 
 **Falsifiable claim about the target's current state:**
 
-The skills suite at v3.10.0 has a coherent contract for orientation across runs for the first time: operator-held content (vision) and agent-derived content (compass) live in distinct artifacts with distinct ownership and write-rules. A Retrospect run can now execute its spec literally — including replacing the entire compass file — without destroying operator content. A future run could disagree with this by demonstrating a case where the boundary between vision and compass is ambiguous (e.g. an arc-claim that *should* update vision because it overturns a stated constraint).
+The skills suite at v3.10.0 has a coherent contract for orientation across runs for the first time: operator-held content (vision) and agent-derived content (retrospect.md) live in distinct artifacts with distinct ownership and write-rules. A Retrospect run can now execute its spec literally — including replacing the entire retrospect.md file — without destroying operator content. A future run could disagree with this by demonstrating a case where the boundary between vision and retrospect.md is ambiguous (e.g. an arc-claim that *should* update vision because it overturns a stated constraint).
 
 **Named blind spot:**
 
@@ -3027,96 +3027,96 @@ This run did not actually run Retrospect. The contract is now coherent on paper 
 
 **Imagined-reader pushback:**
 
-"You added a new artifact in the same run that you renamed the old one's purpose, and you did it across five files. That is exactly the 'documentation propagation following structural changes' pattern the compass calls out as the loop's main failure mode. How is this different?"
+"You added a new artifact in the same run that you renamed the old one's purpose, and you did it across five files. That is exactly the 'documentation propagation following structural changes' pattern the retrospect.md calls out as the loop's main failure mode. How is this different?"
 
 It is different in one specific way: the doc updates here are the contract change itself, not a description of a contract change made earlier. Vision did not exist before this run; the spec saying Retrospect doesn't write to it cannot have been written before vision existed. But the imagined reader is right to note that the loop has now produced two consecutive runs of structural change followed immediately by full propagation. If the next run also produces structural change, the pattern is no longer "doc lag" — it is "the loop only knows how to do structural changes accompanied by full doc rewrites." That would be its own finding worth examining.
 
-[!REALIZATION] The split sharpens the hard problem. "Autonomous compass derivation" used to be vague because compass content was a mix of derivable and operator-given material. After the split, the hard problem is precise: given vision (input) and the trail (evidence), can Retrospect produce compass (output) that holds up to scrutiny? The next milestone is concrete and testable in a way it wasn't before this run.
+[!REALIZATION] The split sharpens the hard problem. "Autonomous retrospect.md derivation" used to be vague because retrospect.md content was a mix of derivable and operator-given material. After the split, the hard problem is precise: given vision (input) and the trail (evidence), can Retrospect produce retrospect.md (output) that holds up to scrutiny? The next milestone is concrete and testable in a way it wasn't before this run.
 
-**Across-trail macro-Hansei** *(triggered: this run is structural; the prior [!REALIZATION] in run "compass-seed-evo-vision" predicted exactly this split)*:
+**Across-trail macro-Hansei** *(triggered: this run is structural; the prior [!REALIZATION] in run "retrospect.md-seed-evo-vision" predicted exactly this split)*:
 
 The realization in the previous run already named this fix: "operator strategic vision belongs elsewhere — perhaps in the README or a separate `.trail/vision.md`. This seeding is a documented bootstrap exception." This run executed that prediction. That is a healthy sign: the trail's [!REALIZATION] markers are doing what they are supposed to do — surfacing structural debt that subsequent runs can act on. If they had been ignored, this run would have been another doc edit instead.
 
-## 2026-05-01 — hunch-skill-added
+## 2026-05-01 — Vision-skill-added
 
 - target: autonomous-agent-skills
 - operator: ntholm86
 - agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
 - skill: improve (operator-directed addition; not a loop-discovered finding)
-- outcome: added Hunch as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct
-- delta: suite v3.10.0 → v3.11.0; new `hunch/SKILL.md` v1.0.0
+- outcome: added Vision as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct
+- delta: suite v3.10.0 → v3.11.0; new `vision/SKILL.md` v1.0.0
 
 ### Interpretation of the ask
 
-The operator named the deepest bottleneck under "autonomous compass derivation": vision derivation. Vision (operator-held) only captures what the human has managed to externalise. The richer interior model — interests, focus, ethics, hunches — stays implicit. The operator chose the "Hunch" shape from three offered: an on-demand skill that lets the AI surface its own in-progress guesses about where the human is heading and have the human respond, narrowing the compass earlier in the iterative process. Explicitly: invoked on demand, not part of the autonomous loop; allowed to orchestrate reasoning logic but must not become a checklist.
+The operator named the deepest bottleneck under "autonomous retrospect.md derivation": vision derivation. Vision (operator-held) only captures what the human has managed to externalise. The richer interior model — interests, focus, ethics, hunches — stays implicit. The operator chose the "Vision" shape from three offered: an on-demand skill that lets the AI surface its own in-progress guesses about where the human is heading and have the human respond, narrowing the retrospect.md earlier in the iterative process. Explicitly: invoked on demand, not part of the autonomous loop; allowed to orchestrate reasoning logic but must not become a checklist.
 
 ### Examination
 
 Looked at what the suite already has for direction-setting:
 - **Intent** — surfaces interpretation of *one specific request* before action.
 - **Vision** — operator-held destination, written by the operator only.
-- **Compass** — agent-derived synthesis of where the target currently is, written by Retrospect.
+- **retrospect.md** — agent-derived synthesis of where the target currently is, written by Retrospect.
 - **No mechanism for** — agent-derived guesses about where the operator wants the target to go *that the operator has not yet articulated*.
 
 That gap is the exact one the operator named. Nothing in the existing skill set surfaces hunches as questions; the agent either guesses silently and acts, or asks generic clarification questions that put the synthesis cost back on the human.
 
 ### Decision
 
-[!DECISION] Add a new sixth skill, Hunch, with this contract:
+[!DECISION] Add a new sixth skill, Vision, with this contract:
 - Invoked on demand (operator-triggered or by another skill that detects need); not in the autonomous loop.
 - Six steps: gather signal → form hunches → turn each into a question → surface one at a time in priority order → record what was learned (believed, rejected, still open) → record the run.
 - Hunches must be specific enough to be wrong, sourced (so the operator can correct the source-reading not just the conclusion), and stated as guesses not findings.
 - Never writes to `.trail/vision.md` without operator approval.
-- Records silence honestly when the agent has no genuine hunch to offer.
+- Records silence honestly when the agent has no genuine Vision to offer.
 
 Alternatives offered to the operator and considered:
-1. *Vision elicitation skill (extension of Intent)* — rejected by operator implicitly by choosing Hunch, which is more bidirectional. Intent is one-way (agent states interpretation); Hunch is iterative and conversational.
-2. *Conversation-as-evidence (read sessions/ the way Retrospect reads log.md)* — partially absorbed into Hunch step 1. A standalone skill for this could exist later if Hunch's signal-gathering proves too thin.
-3. *Hunches as a separate `.trail/hunches.md` artifact* — rejected for now. Recording in the trail entry is sufficient and avoids creating another orientation file before the vision/compass split has been proven in use.
+1. *Vision elicitation skill (extension of Intent)* — rejected by operator implicitly by choosing Vision, which is more bidirectional. Intent is one-way (agent states interpretation); Vision is iterative and conversational.
+2. *Conversation-as-evidence (read sessions/ the way Retrospect reads log.md)* — partially absorbed into Vision step 1. A standalone skill for this could exist later if Vision's signal-gathering proves too thin.
+3. *Hunches as a separate `.trail/hunches.md` artifact* — rejected for now. Recording in the trail entry is sufficient and avoids creating another orientation file before the vision/retrospect.md split has been proven in use.
 
 ### Action
 
-1. Created `hunch/SKILL.md` (v1.0.0): six steps, governing principles section, "When to invoke" guidance (four trigger conditions), "What this skill does not do" section that distinguishes Hunch from Intent, Retrospect, and from any acting role. Self-targeting paragraph included.
-2. Updated `README.md`: header changed from "Five skills" to "Six skills"; added Hunch row to the table; added Hunch to install list; added Hunch paragraph to "How it works" (after Retrospect).
-3. Updated `CITATION.cff`: title changed to "Six Composable Skills"; abstract extended with Hunch description; version bumped to 3.11.0.
+1. Created `vision/SKILL.md` (v1.0.0): six steps, governing principles section, "When to invoke" guidance (four trigger conditions), "What this skill does not do" section that distinguishes Vision from Intent, Retrospect, and from any acting role. Self-targeting paragraph included.
+2. Updated `README.md`: header changed from "Five skills" to "Six skills"; added Vision row to the table; added Vision to install list; added Vision paragraph to "How it works" (after Retrospect).
+3. Updated `CITATION.cff`: title changed to "Six Composable Skills"; abstract extended with Vision description; version bumped to 3.11.0.
 4. Updated `CHANGELOG.md`: new v3.11.0 entry documenting the addition and naming the bottleneck it addresses (human-articulation cost).
 
 ### Reflection
 
 **Falsifiable claim about the target's current state:**
 
-The skills suite at v3.11.0 has, for the first time, a mechanism for the agent to actively reduce the operator's articulation cost rather than passively waiting for the operator to write better vision. A future run could disagree with this by showing that Hunch in practice either (a) produces hunches so generic they don't help, or (b) produces hunches so specific they feel like the agent imposing its own model on the operator. Both are real failure modes the spec tries to prevent but cannot guarantee.
+The skills suite at v3.11.0 has, for the first time, a mechanism for the agent to actively reduce the operator's articulation cost rather than passively waiting for the operator to write better vision. A future run could disagree with this by showing that Vision in practice either (a) produces hunches so generic they don't help, or (b) produces hunches so specific they feel like the agent imposing its own model on the operator. Both are real failure modes the spec tries to prevent but cannot guarantee.
 
 **Named blind spot:**
 
-This run did not invoke Hunch on the operator who just asked for it. The most authentic test of the new skill would have been to run it on this very conversation — what hunches has the agent formed about where the operator is heading next? — and offer those for confirmation. Skipping that means the skill is now defined but unproven on its first natural opportunity. The next time the operator's direction feels even slightly unclear, the next agent should run Hunch immediately rather than guess silently.
+This run did not invoke Vision on the operator who just asked for it. The most authentic test of the new skill would have been to run it on this very conversation — what hunches has the agent formed about where the operator is heading next? — and offer those for confirmation. Skipping that means the skill is now defined but unproven on its first natural opportunity. The next time the operator's direction feels even slightly unclear, the next agent should run Vision immediately rather than guess silently.
 
 **Imagined-reader pushback:**
 
-"You added a sixth skill in response to a single conversation, in the same session as v3.10.0 which split vision from compass. That is two structural changes in two consecutive runs, with the second one not surfaced by the loop but handed in by the operator. The convergence claim ('three independent silences, three model families') is still pinned at v3.1.0 — every structural change since has invalidated convergence and the README has not acknowledged that. Are you actually doing iterative improvement, or are you doing rapid feature addition with the trail as decoration?"
+"You added a sixth skill in response to a single conversation, in the same session as v3.10.0 which split vision from retrospect.md. That is two structural changes in two consecutive runs, with the second one not surfaced by the loop but handed in by the operator. The convergence claim ('three independent silences, three model families') is still pinned at v3.1.0 — every structural change since has invalidated convergence and the README has not acknowledged that. Are you actually doing iterative improvement, or are you doing rapid feature addition with the trail as decoration?"
 
-That pushback is hard and largely correct. The convergence baseline does sit at v3.1.0; everything since has been operator-driven structural change followed by doc propagation. The honest answer is: the work happening now is no longer convergence work, it is design work. The convergence loop will resume only after the design work settles enough that diverse evaluators can be invited back in. The README's claim should probably be qualified to say so — but that is itself a documentation propagation, which is exactly the pattern the loop has been criticising itself for. Naming the tension here in the trail is the minimum honest move; whether to also surface it in the README is the kind of thing a future Hunch run could ask the operator about.
+That pushback is hard and largely correct. The convergence baseline does sit at v3.1.0; everything since has been operator-driven structural change followed by doc propagation. The honest answer is: the work happening now is no longer convergence work, it is design work. The convergence loop will resume only after the design work settles enough that diverse evaluators can be invited back in. The README's claim should probably be qualified to say so — but that is itself a documentation propagation, which is exactly the pattern the loop has been criticising itself for. Naming the tension here in the trail is the minimum honest move; whether to also surface it in the README is the kind of thing a future Vision run could ask the operator about.
 
-[!REALIZATION] The first natural use of Hunch is on the operator who just commissioned it. The agent has hunches about where this conversation is heading (more skills addressing the human-bottleneck side; integration eventually but not yet; possibly a vision elicitation skill as a follow-up; possibly a conversation-as-evidence skill). The right move on the next operator turn — if the operator does not specify a direction — is to run Hunch and ask, not to guess and act.
+[!REALIZATION] The first natural use of Vision is on the operator who just commissioned it. The agent has hunches about where this conversation is heading (more skills addressing the human-bottleneck side; integration eventually but not yet; possibly a vision elicitation skill as a follow-up; possibly a conversation-as-evidence skill). The right move on the next operator turn — if the operator does not specify a direction — is to run Vision and ask, not to guess and act.
 
 **Across-trail macro-Hansei** *(triggered: two consecutive structural changes in two runs; the loop's convergence baseline is becoming stale; operator-driven additions outpace loop-discovered ones)*:
 
-Reading runs 55 through 68 as one document: the loop has shifted decisively from convergence work to design work since approximately run 64 (Retrospect added). The peg-3 convergence at v3.1.0 was on a five-skill suite without Retrospect, without compass, without vision, without Hunch. Three of those four additions were operator-prompted; one (compass) emerged in conversation. The trail no longer shows iterative refinement of a converged design; it shows active design of a new one. That is not a bug of the loop — it is a phase change the loop has not named. The loop's convergence semantics (three silences, three model families) apply to the *previous* design and have not been re-established for the current one. Once the current design settles, a new convergence cycle will be needed; the README should not claim convergence at v3.1.0 in a way that implies the v3.11.0 suite is also converged. Naming this here so the next run that touches README convergence claims has the context.
+Reading runs 55 through 68 as one document: the loop has shifted decisively from convergence work to design work since approximately run 64 (Retrospect added). The peg-3 convergence at v3.1.0 was on a five-skill suite without Retrospect, without retrospect.md, without vision, without Vision. Three of those four additions were operator-prompted; one (retrospect.md) emerged in conversation. The trail no longer shows iterative refinement of a converged design; it shows active design of a new one. That is not a bug of the loop — it is a phase change the loop has not named. The loop's convergence semantics (three silences, three model families) apply to the *previous* design and have not been re-established for the current one. Once the current design settles, a new convergence cycle will be needed; the README should not claim convergence at v3.1.0 in a way that implies the v3.11.0 suite is also converged. Naming this here so the next run that touches README convergence claims has the context.
 
-## 2026-05-01 — hunch-on-operator-vision-intent
+## 2026-05-01 — Vision-on-operator-vision-intent
 
 - target: autonomous-agent-skills
 - operator: lkn
 - agent: GitHub Copilot (Claude, vscode chat)
-- skill: hunch
+- skill: Vision
 - outcome: vision.md gained a top-section research framing — "architecture of trustworthy delegation" — drafted from intent rather than operator's words, approved before write
 - delta: .trail/vision.md +14 lines (new "What this work is, beyond a skillset" section)
 
 ### Interpretation of the ask
 
-Operator drafted a paragraph about the repo being "as much research as development" with the question being how to safely leverage AI while keeping it transparent/reviewable/verifiable to "the human who sit behind the wheel," then said: **"understand my intent from this and not my words."** That is an explicit invitation to apply Intent + Hunch — interpret what they actually mean, surface the interpretation as falsifiable guesses, let them confirm or correct before any writing happens.
+Operator drafted a paragraph about the repo being "as much research as development" with the question being how to safely leverage AI while keeping it transparent/reviewable/verifiable to "the human who sit behind the wheel," then said: **"understand my intent from this and not my words."** That is an explicit invitation to apply Intent + Vision — interpret what they actually mean, surface the interpretation as falsifiable guesses, let them confirm or correct before any writing happens.
 
-This is the **first natural invocation of Hunch** since the skill was added (run 68). The previous compass run named exactly this — "Hunch unproven in execution" — as the validation gap.
+This is the **first natural invocation of Vision** since the skill was added (run 68). The previous retrospect.md run named exactly this — "Vision unproven in execution" — as the validation gap.
 
 ### Examination
 
@@ -3126,21 +3126,21 @@ Gathered signal from the paragraph itself + the arc of recent conversation:
 - Phrase "convergence on a particular skill is not the same as convergence on that question" — operator already separating skill-convergence from question-convergence; the skills are disposable, the question outlasts them.
 - Phrase "the human who sit behind the wheel" — active steering language, not passive "in the loop" language.
 - Triple "transparent, reviewable, verifiable" — three different things; operator did not pick one. Examination suggested only one is load-bearing for the in-time-to-correct case.
-- Recent compass already named the suite as "research not refinement" — operator is now articulating the destination side of that.
+- Recent retrospect.md already named the suite as "research not refinement" — operator is now articulating the destination side of that.
 
 ### Decision
 
-[!DECISION] Apply Hunch as designed: form 2-5 specific sourced hunches stated as guesses, turn each into a falsifiable question, surface one prioritized question (not all at once), do not write to vision.md without explicit operator approval. Three hunches formed:
+[!DECISION] Apply Vision as designed: form 2-5 specific sourced hunches stated as guesses, turn each into a falsifiable question, surface one prioritized question (not all at once), do not write to vision.md without explicit operator approval. Three hunches formed:
 
-1. **Direction hunch** — the question is older/bigger than the skills; the real subject is the *architecture of trustworthy delegation*; skills are one disposable attempt.
-2. **Constraint hunch** — "human at the wheel" is doing real work; "transparent" means evidence the *driver* uses *in real time*, not regulator-grade audit-after-the-fact. Of the triple (transparent/reviewable/verifiable), transparent-while-driving is the load-bearing one.
-3. **Priority hunch** — "research" framing means operator is open to a negative result on the skills; the skillset failing is still a result on the question.
+1. **Direction Vision** — the question is older/bigger than the skills; the real subject is the *architecture of trustworthy delegation*; skills are one disposable attempt.
+2. **Constraint Vision** — "human at the wheel" is doing real work; "transparent" means evidence the *driver* uses *in real time*, not regulator-grade audit-after-the-fact. Of the triple (transparent/reviewable/verifiable), transparent-while-driving is the load-bearing one.
+3. **Priority Vision** — "research" framing means operator is open to a negative result on the skills; the skillset failing is still a result on the question.
 
 Prioritized question to operator: pick (a) trustworthy-delegation framing, (b) keep-steering-despite-power framing, or (c) neither.
 
 ### Action
 
-1. Surfaced the three hunches and the (a)/(b)/(c) question to operator as text response (no tool calls — Hunch's first step is conversation, not edit).
+1. Surfaced the three hunches and the (a)/(b)/(c) question to operator as text response (no tool calls — Vision's first step is conversation, not edit).
 2. Operator answered: **"both A and B and i think B is part of the answer to A."** That collapses the framing: (a) is the question, (b) is a load-bearing piece of the answer to (a). Neither is rejected; the relationship between them is what matters.
 3. Drafted vision.md addition in agent's own words capturing that intent — *not* pasting the operator's paragraph. Deliberately avoided "human in the loop" / "behind the wheel" (worn phrasing) and collapsed the transparent/reviewable/verifiable triple to transparent-while-steering (the operative one). Replaced black-box-and-logfile with dashboard-instruments metaphor to make the in-time-to-correct point structural.
 4. Surfaced the proposed diff to operator before writing.
@@ -3150,7 +3150,7 @@ Prioritized question to operator: pick (a) trustworthy-delegation framing, (b) k
 
 **Falsifiable claim about the target's current state:**
 
-The vision.md / compass.md split now has a coherent three-layer top: research question (vision §1) → skillset as one attempt (vision §2 "What this repo is for") → arc-claims about current state (compass.md). Any future Improve run that opens vision and reads top-down should be able to answer "what is this for, what is the current bet, what is the current orientation" in three reads. If a run still has to guess any of the three after reading them in order, the layering has failed.
+The vision.md / retrospect.md split now has a coherent three-layer top: research question (vision §1) → skillset as one attempt (vision §2 "What this repo is for") → arc-claims about current state (retrospect.md). Any future Improve run that opens vision and reads top-down should be able to answer "what is this for, what is the current bet, what is the current orientation" in three reads. If a run still has to guess any of the three after reading them in order, the layering has failed.
 
 **Named blind spot:**
 
@@ -3158,34 +3158,34 @@ The new section uses "trustworthy delegation" as if it is a known phrase. It is 
 
 **Imagined-reader pushback:**
 
-"You moved the operator's actual words out and put your interpretation in. That is the opposite of fidelity." Counter: the operator explicitly asked for intent over words, surfaced the interpretation as falsifiable hunches before writing, and got direct confirmation on the framing. The Hunch contract was honored — silence would have been to paste their paragraph and call it done.
+"You moved the operator's actual words out and put your interpretation in. That is the opposite of fidelity." Counter: the operator explicitly asked for intent over words, surfaced the interpretation as falsifiable hunches before writing, and got direct confirmation on the framing. The Vision contract was honored — silence would have been to paste their paragraph and call it done.
 
 **Across-trail macro-Hansei** *(conditional — only if a trigger fires: recurring finding-class, imminent silence, contradicted prior [!REALIZATION], or operator ask)*:
 
-Triggered: Hunch was added run 68 specifically because every behavioral mechanism in the suite had been operator-prompted; the compass at v3.11.0 named "Hunch unproven in execution" as the validation gap. This run closes that gap for the first time. The arc-level pattern: when the skillset adds a capability, the next natural use of it is the validation. The pattern only works if the operator keeps creating moments where the new skill is the right tool — which is itself a form of operator-prompting. Hunch reduces the *content* dependency on operator prompting, but not yet the *occasion* dependency. That is the next layer of the same problem.
+Triggered: Vision was added run 68 specifically because every behavioral mechanism in the suite had been operator-prompted; the retrospect.md at v3.11.0 named "Vision unproven in execution" as the validation gap. This run closes that gap for the first time. The arc-level pattern: when the skillset adds a capability, the next natural use of it is the validation. The pattern only works if the operator keeps creating moments where the new skill is the right tool — which is itself a form of operator-prompting. Vision reduces the *content* dependency on operator prompting, but not yet the *occasion* dependency. That is the next layer of the same problem.
 
 ## 2026-05-01 — position-md-v0-1-drafted
 
 - target: autonomous-agent-skills
 - operator: lkn
 - agent: GitHub Copilot (Claude, vscode chat)
-- skill: hunch
+- skill: Vision
 - outcome: POSITION.md v0.1 drafted and committed — first standalone position document for the repo, framing "operation-time trustworthy delegation" as the bet, with explicit falsification criteria and adjacent-work mapping
 - delta: POSITION.md +new file (~2200 words)
 
 ### Interpretation of the ask
 
-Operator: "yes . lets proceed this — its becoming interesting" in response to the four-phase plan to own the area cleanly. Phase 1 step 1 was: write POSITION.md. The substantive work this turn is to draft that document, but to do it under the Hunch contract — surface guesses about what the document needs to be for the operator before drafting, get confirmation, then draft.
+Operator: "yes . lets proceed this — its becoming interesting" in response to the four-phase plan to own the area cleanly. Phase 1 step 1 was: write POSITION.md. The substantive work this turn is to draft that document, but to do it under the Vision contract — surface guesses about what the document needs to be for the operator before drafting, get confirmation, then draft.
 
-The deeper ask from the conversation arc: the repo has been gathering strategic clarity for several runs (vision/compass split, research-framing addition, "where are we going" answer). This document is the first artifact that consolidates that clarity into something a reader who has never seen the repo can engage with. It's the externalization step.
+The deeper ask from the conversation arc: the repo has been gathering strategic clarity for several runs (vision/retrospect.md split, research-framing addition, "where are we going" answer). This document is the first artifact that consolidates that clarity into something a reader who has never seen the repo can engage with. It's the externalization step.
 
 ### Examination
 
-Ran Hunch on the document itself before drafting:
+Ran Vision on the document itself before drafting:
 
-1. **Audience hunch** — operator's writing pattern, rejection of jargon in vision.md, and "is it already defined?" question all pointed at *skeptical technical practitioner* as the target reader, not academic researchers.
-2. **Genre hunch** — operator's comfort with "negative result is still a result," the falsification-as-load-bearing in the four-phase plan, and the repo's overall research-not-refinement framing all pointed at *stance* as the genre — not manifesto (no falsification), not paper (no proof yet).
-3. **Voice hunch** — operator writes as themselves throughout (linkedInPost.md, Ansoegning.txt, repo is `ntholm86/`); pretending to be a research group would be a tell. *First-person, signed work.*
+1. **Audience Vision** — operator's writing pattern, rejection of jargon in vision.md, and "is it already defined?" question all pointed at *skeptical technical practitioner* as the target reader, not academic researchers.
+2. **Genre Vision** — operator's comfort with "negative result is still a result," the falsification-as-load-bearing in the four-phase plan, and the repo's overall research-not-refinement framing all pointed at *stance* as the genre — not manifesto (no falsification), not paper (no proof yet).
+3. **Voice Vision** — operator writes as themselves throughout (linkedInPost.md, Ansoegning.txt, repo is `ntholm86/`); pretending to be a research group would be a tell. *First-person, signed work.*
 
 Surfaced all three to operator with one prioritized question (audience a/b/c/d). Operator: "all three hunches are correct" — collapses to (a), skeptical technical practitioner.
 
@@ -3200,7 +3200,7 @@ Deliberately NOT included: literature-review-style citation density (one or two 
 1. Read PRINCIPLES.md to align voice and ensure POSITION.md doesn't contradict the published principles.
 2. Drafted POSITION.md in one pass with the structure above.
 3. Section breakdown: situation in plain language → why existing labels miss it → name + four sub-claims → what I'm doing about it → what I'm NOT claiming → 5 falsification criteria → where this is going → status as v0.1 provisional.
-4. Created the file at repo root (peer to README.md, PRINCIPLES.md, vision/compass which live in .trail/).
+4. Created the file at repo root (peer to README.md, PRINCIPLES.md, vision/retrospect.md which live in .trail/).
 5. Stubbed and filled this trail entry.
 6. Will verify, regen history, commit, push.
 
@@ -3224,49 +3224,49 @@ Counter (partial): the label exists because the *combination* of the four sub-cl
 
 **Across-trail macro-Hansei** *(conditional — only if a trigger fires: recurring finding-class, imminent silence, contradicted prior [!REALIZATION], or operator ask)*:
 
-Triggered: this run completes a multi-run arc (run 67 vision/compass split → run 68 Hunch → run 69 compass update → run 70 Hunch on operator vision intent → this run). The arc has moved the repo from "skillset under iteration" to "skillset attached to a stated research bet, with a position document that names the area." That's a meaningful state change. Looking back at the arc, the trigger was operator's question "where are we going?" which forced the conversation up one level of abstraction. Without that prompt, I would have continued running Improve at the skill-level. The pattern: the operator's high-level questions are still the mechanism that lifts the work to the right altitude. Hunch was supposed to reduce that dependency by surfacing direction-questions proactively. It hasn't yet — I used Hunch to interpret operator intent on a paragraph they wrote, but I have not used Hunch to ask *direction questions of my own initiative.* That's the next layer of the operator-prompting dependency, and the next thing to actually exercise.
+Triggered: this run completes a multi-run arc (run 67 vision/retrospect.md split → run 68 Vision → run 69 retrospect.md update → run 70 Vision on operator vision intent → this run). The arc has moved the repo from "skillset under iteration" to "skillset attached to a stated research bet, with a position document that names the area." That's a meaningful state change. Looking back at the arc, the trigger was operator's question "where are we going?" which forced the conversation up one level of abstraction. Without that prompt, I would have continued running Improve at the skill-level. The pattern: the operator's high-level questions are still the mechanism that lifts the work to the right altitude. Vision was supposed to reduce that dependency by surfacing direction-questions proactively. It hasn't yet — I used Vision to interpret operator intent on a paragraph they wrote, but I have not used Vision to ask *direction questions of my own initiative.* That's the next layer of the operator-prompting dependency, and the next thing to actually exercise.
 
-## 2026-05-02 — hunch-skill-validated-on-foreign-target
+## 2026-05-02 — Vision-skill-validated-on-foreign-target
 
-- target: skills suite (meta — validating Hunch skill behaviour)
+- target: skills suite (meta — validating Vision skill behaviour)
 - operator: lkn
 - agent: GitHub Copilot (Claude, vscode chat)
-- skill: hunch
-- outcome: Hunch exercised cold on vectorium — no .trail/, no vision.md, no priming. All three hunches confirmed. Hunch 1 surfaced "lost interest after beating the benchmark" — not written anywhere in vectorium, inferred from commit arc alone.
+- skill: Vision
+- outcome: Vision exercised cold on vectorium — no .trail/, no vision.md, no priming. All three hunches confirmed. Vision 1 surfaced "lost interest after beating the benchmark" — not written anywhere in vectorium, inferred from commit arc alone.
 - delta: c:\git\vectorium\.trail\log.md created (full run record lives there)
 
 The full trail entry for this run is in `c:\git\vectorium\.trail\log.md` — it belongs to the target repo, not here.
 
-Skills-level significance: this is the first cold foreign-target validation of the Hunch skill. Falsification condition from POSITION.md — "Hunch surfaces something not written anywhere, confirmed by operator" — was met. Hunch is no longer unproven across all three use modes (operator intent, known target, cold foreign target).
+Skills-level significance: this is the first cold foreign-target validation of the Vision skill. Falsification condition from POSITION.md — "Vision surfaces something not written anywhere, confirmed by operator" — was met. Vision is no longer unproven across all three use modes (operator intent, known target, cold foreign target).
 
 ## 2026-05-02 — session-v3-16-0-retrospect-first-run
 
 - target: autonomous-agent-skills
 - operator: Nils Wendelboe Holmager (ntholm86)
 - agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
-- skill: hunch, retrospect, improve (structural fixes)
-- outcome: v3.16.0 -- Hunch validated on 3 foreign targets; all writing skills gain .trail/ directory creation; Retrospect gains vision-first read order; first real Retrospect arc-read; compass updated from operator-seeded to evidence-derived
+- skill: Vision, retrospect, improve (structural fixes)
+- outcome: v3.16.0 -- Vision validated on 3 foreign targets; all writing skills gain .trail/ directory creation; Retrospect gains vision-first read order; first real Retrospect arc-read; retrospect.md updated from operator-seeded to evidence-derived
 - delta: v3.15.0 -> v3.16.0
 
 ### Interpretation of the ask
 
-Multi-part session. Operator asked to run Hunch on the manifesto repo, confirmed all three hunches, then raised the .trail/ folder correctness concern, then asked for Retrospect on this repo. Between those three anchors: six structural fixes shipped.
+Multi-part session. Operator asked to run Vision on the manifesto repo, confirmed all three hunches, then raised the .trail/ folder correctness concern, then asked for Retrospect on this repo. Between those three anchors: six structural fixes shipped.
 
-### Hunch runs this session
+### Vision runs this session
 
 1. **manifesto** (c:\git\manifesto) -- cold run, no prior .trail/. Three hunches formed and confirmed: (1) manifesto is a living document seeking SOLID-like recognition; (2) content is not the bottleneck, principles read cleanly; (3) PROOF.md needs restructuring from "Nils tested once" to "here is what conformance looks like." .trail/ initialized in manifesto repo with log.md + vision.md. Full record in c:\git\manifesto\.trail\log.md.
 
 ### Structural fixes shipped
 
-**hunch v1.1.0 -> v1.2.0 -> v1.3.0:**
+**Vision v1.1.0 -> v1.2.0 -> v1.3.0:**
 - v1.2.0: agent now writes vision.md automatically as part of completing a run; operator commits to git when ready (not writes the file)
 - v1.3.0: explicit "create .trail/ directory before any write"
 
-**All five writing skills (trail v1.9.0, hunch v1.3.0, retrospect v1.4.0, improve v3.6.0, probe v3.3.0):**
+**All five writing skills (trail v1.9.0, Vision v1.3.0, retrospect v1.4.0, improve v3.6.0, probe v3.3.0):**
 Added "create .trail/ directory in target repo root if it does not already exist" to every write point. No skill previously created the directory -- on a fresh repo writes would silently fail.
 
 **retrospect v1.4.0 -> v1.5.0:**
-Added step 0 "Read vision first" before scope statement and arc-read. Vision was previously only consulted at the compass write step -- the arc analysis happened without the destination in view.
+Added step 0 "Read vision first" before scope statement and arc-read. Vision was previously only consulted at the retrospect.md write step -- the arc analysis happened without the destination in view.
 
 **POSITION.md:**
 Fixed closing signature from hallucinated "-- Lars" to "-- Nils". Author: Nils Wendelboe Holmager.
@@ -3275,16 +3275,16 @@ Fixed closing signature from hallucinated "-- Lars" to "-- Nils". Author: Nils W
 
 Read full trail (runs 55-71) against vision.md. Arc-claims produced:
 1. Phase boundary crossed: doc-convergence to validated-capability (not named anywhere before this run)
-2. Validation gap shifted: Hunch (now proven) to Retrospect (first run today)
+2. Validation gap shifted: Vision (now proven) to Retrospect (first run today)
 3. Loop occasion-independence still unresolved (named in [!REALIZATION] in runs 68+71, persisted two sessions)
 4. Two-repo relationship (manifesto = principles, skills = one conformance) not yet in any README
 5. Skills never run by a harness that did not co-evolve with them -- most important unvalidated claim
 
-[!REALIZATION] Retrospect produced three claims an Improve run could not have produced in the same session. The arc-level view is qualitatively different from a per-run view. Validation gap confirmed closed for Hunch; now open for Retrospect.
+[!REALIZATION] Retrospect produced three claims an Improve run could not have produced in the same session. The arc-level view is qualitatively different from a per-run view. Validation gap confirmed closed for Vision; now open for Retrospect.
 
 ### Reflection
 
-**Falsifiable claim:** The compass at v3.16.0 is the first evidence-derived compass for this repo (all prior versions were operator-seeded or bootstrapped). A future Retrospect run that reads the same arc should produce compatible claims or surface a specific reason for disagreement. If two consecutive Retrospect runs on the same arc produce fundamentally incompatible compasses, the skill is not stable.
+**Falsifiable claim:** The retrospect.md at v3.16.0 is the first evidence-derived retrospect.md for this repo (all prior versions were operator-seeded or bootstrapped). A future Retrospect run that reads the same arc should produce compatible claims or surface a specific reason for disagreement. If two consecutive Retrospect runs on the same arc produce fundamentally incompatible compasses, the skill is not stable.
 
 **Named blind spot:** This session's fixes were all surfaced in conversation (operator raised .trail/ concern, sequencing gap was found during review). The loop still has not produced a structural finding independently. Occasion-dependency persists.
 
@@ -3296,24 +3296,24 @@ Read full trail (runs 55-71) against vision.md. Arc-claims produced:
 - operator: Nils Wendelboe Holmager (ntholm86)
 - agent: GitHub Copilot (GPT-5.3-Codex)
 - skill: improve v3.6.0
-- outcome: compass refreshed after manifesto consistency sweep; next self-tests narrowed to Retrospect second-pass, occasion-independence experiment, and external proof
+- outcome: retrospect.md refreshed after manifesto consistency sweep; next self-tests narrowed to Retrospect second-pass, occasion-independence experiment, and external proof
 
 ### Interpretation of the ask
 
-Operator asked to continue and explicitly set direction: start running the skills suite on itself now that vision and compass exist in the skills repo.
+Operator asked to continue and explicitly set direction: start running the skills suite on itself now that vision and retrospect.md exist in the skills repo.
 
 ### Change made
 
-Updated .trail/compass.md to reflect current reality after the follow-on manifesto passes. Added explicit status note that manifesto docs are internally aligned and no known cross-file naming drift remains.
+Updated .trail/retrospect.md to reflect current reality after the follow-on manifesto passes. Added explicit status note that manifesto docs are internally aligned and no known cross-file naming drift remains.
 Refined next-run queue: (1) second Retrospect pass as self-validation, (2) external proof run, (3) explicit occasion-independence experiment where the agent initiates the direction question.
 
 ### Why this change was highest leverage
 
-Before running the next loop step, orientation needed to match current evidence. The prior compass still reflected earlier uncertainty; now it cleanly separates closed items from the few open validation bets.
+Before running the next loop step, orientation needed to match current evidence. The prior retrospect.md still reflected earlier uncertainty; now it cleanly separates closed items from the few open validation bets.
 
 ### Reflection
 
-Falsifiable claim: with this compass update, two independent runs starting from skills vision + compass should prioritize the same top three tests (Retrospect second-pass, occasion-independence experiment, external proof) even if they differ on implementation details.
+Falsifiable claim: with this retrospect.md update, two independent runs starting from skills vision + retrospect.md should prioritize the same top three tests (Retrospect second-pass, occasion-independence experiment, external proof) even if they differ on implementation details.
 
 Blind spot: this run updated orientation but did not execute the second Retrospect pass itself. The validation gap remains open until that run is completed.
 
@@ -3325,11 +3325,11 @@ Imagined-reader pushback: this is still documentation-level movement, not capabi
 - operator: Nils Wendelboe Holmager (ntholm86)
 - agent: GitHub Copilot (GPT-5.3-Codex)
 - skill: retrospect v1.5.0
-- outcome: second real Retrospect pass completed; compass updated; first-pass claims remained compatible while integrating new evidence from manifesto consistency sweep
+- outcome: second real Retrospect pass completed; retrospect.md updated; first-pass claims remained compatible while integrating new evidence from manifesto consistency sweep
 
 ### Scope and method
 
-Read skills vision first, then current compass, then recent trail arc including session-v3-16-0-retrospect-first-run and self-run-resume-after-v3-16-0.
+Read skills vision first, then current retrospect.md, then recent trail arc including session-v3-16-0-retrospect-first-run and self-run-resume-after-v3-16-0.
 Objective: test whether a second Retrospect pass yields incompatible arc-claims or remains stable and decision-useful.
 
 ### Arc-level result
@@ -3341,7 +3341,7 @@ Second pass is compatible with first pass. No contradiction emerged on the major
 
 New evidence absorbed cleanly: manifesto internal consistency sweep completed and relationship framing now aligned across both repos. This closes a documentation coherence loop but does not close the external validation bets.
 
-### Decision recorded in compass
+### Decision recorded in retrospect.md
 
 Claim 2 moved from capability-existence uncertainty (does Retrospect produce arc claims at all) to reliability uncertainty (does Retrospect stay stable and useful across varied arcs and operators).
 Next-run queue updated: self-validation item marked done; added explicit Retrospect reliability test on a materially different future arc.
@@ -3376,13 +3376,13 @@ Pass criteria:
 ### Finding and change
 
 Finding: Improve step 1 had no explicit bootstrap behavior for underspecified asks. This left occasion-independence implicit and fragile.
-Change: improve/SKILL.md v3.6.0 -> v3.7.0. Added step-1 rule: form 1-3 sourced hunches from vision+compass+recent trail, ask one prioritized falsifiable direction question, and proceed on explicit assumption if no operator answer is available. This is a structural mechanism, not wording cleanup.
+Change: improve/SKILL.md v3.6.0 -> v3.7.0. Added step-1 rule: form 1-3 sourced hunches from vision+retrospect.md+recent trail, ask one prioritized falsifiable direction question, and proceed on explicit assumption if no operator answer is available. This is a structural mechanism, not wording cleanup.
 
 ### Verification
 
 - verify.py: OK — trail integrity checks pass.
 - Changelog updated with v3.16.1 entry for this mechanism.
-- Compass updated: occasion-independence moved from unresolved to first positive data point; reliability test remains open.
+- retrospect.md updated: occasion-independence moved from unresolved to first positive data point; reliability test remains open.
 
 ### Result
 
@@ -3445,14 +3445,14 @@ Blind spot: enforcement is soft. The skill says "mandatory" but verify.py does n
 [!REALIZATION] The gap was partly mechanical (no write step) and partly rhetorical (the word "optional" gave explicit permission to skip). Both needed fixing. The mechanical fix without removing "optional" would still leave the agent an out.
 
 
-## 2026-05-02 — hunch: vision-competitive-framing
+## 2026-05-02 — Vision: vision-competitive-framing
 
 - target: skills repo (this repo)
 - operator: Nils Holmager
 - agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
-- skill: hunch v1.3.0
+- skill: Vision v1.3.0
 - outcome: vision.md updated — competitive framing, adoption success condition, and learning falsification condition added
-- session-file: .trail/sessions/2026-05-02-hunch-vision-competitive-framing.md
+- session-file: .trail/sessions/2026-05-02-Vision-vision-competitive-framing.md
 - delta: .trail/vision.md updated in place
 
 ### Hunches formed
@@ -3478,17 +3478,17 @@ Blind spot: enforcement is soft. The skill says "mandatory" but verify.py does n
 - operator: Nils Holmager
 - agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
 - skill: retrospect v1.5.0
-- outcome: compass updated — arc read against substantially updated vision.md (recognition claim, two-phase architecture, adoption success, learning falsification); six claims formed; prior compass replaced
+- outcome: retrospect.md updated — arc read against substantially updated vision.md (recognition claim, two-phase architecture, adoption success, learning falsification); six claims formed; prior retrospect.md replaced
 - session-file: .trail/sessions/2026-05-02-retro-on-updated-vision.md
-- delta: .trail/compass.md replaced
+- delta: .trail/retrospect.md replaced
 
 ### Scope
 
-Read the full arc (runs 55 through intent-v1-2-1-not-hunch) against the vision.md updated in this session. The vision was updated in two prior entries this day: hunch:vision-competitive-framing added competitive framing, two explicit success conditions, and a learning falsification condition. The arc question: has the loop been attending to what the updated vision says matters — recognition claim, two-phase architecture, adoption success, trustworthy delegation research?
+Read the full arc (runs 55 through intent-v1-2-1-not-Vision) against the vision.md updated in this session. The vision was updated in two prior entries this day: Vision:vision-competitive-framing added competitive framing, two explicit success conditions, and a learning falsification condition. The arc question: has the loop been attending to what the updated vision says matters — recognition claim, two-phase architecture, adoption success, trustworthy delegation research?
 
 ### Arc-claims
 
-1. **Phase 1 (vision convergence) has its first mechanism but remains operator-initiated in practice.** Hunch is validated as a Phase 1 tool (5 confirmations, 4 targets). But every major direction shift in the arc was operator-triggered. Agent-initiated Phase 1 vision convergence in a cold context has not been observed.
+1. **Phase 1 (vision convergence) has its first mechanism but remains operator-initiated in practice.** Vision is validated as a Phase 1 tool (5 confirmations, 4 targets). But every major direction shift in the arc was operator-triggered. Agent-initiated Phase 1 vision convergence in a cold context has not been observed.
 
 2. **Recognition claim and adoption success condition introduce a validation gap no internal loop pass can close.** Internal convergence runs measure structural consistency, not practitioner recognition or stranger deployability. Phase 3 (outreach) has not started.
 
@@ -3496,7 +3496,7 @@ Read the full arc (runs 55 through intent-v1-2-1-not-hunch) against the vision.m
 
 4. **Learning falsification condition is defined but has one borderline case, not a clear cross-session positive.** The occasion-independence mechanism was designed in the same session as the [!REALIZATION] that motivated it. A cross-session case remains unobserved.
 
-5. **Capability claims are evidence-grounded but thin.** Hunch: 5 confirmations / 4 targets. Retrospect: 2 compatible passes / 2 model families. Occasion-independence: 2 data points / 2 arcs. Intent/Hunch cross-reference (d149c48) closes practitioner-discoverability asymmetry.
+5. **Capability claims are evidence-grounded but thin.** Vision: 5 confirmations / 4 targets. Retrospect: 2 compatible passes / 2 model families. Occasion-independence: 2 data points / 2 arcs. Intent/Vision cross-reference (d149c48) closes practitioner-discoverability asymmetry.
 
 6. **External harness proof is highest-urgency unvalidated claim with two-sided urgency.** Required for research success (skills work outside author context) and adoption success (stranger can deploy). Nothing in current queue addresses this.
 
@@ -3516,20 +3516,20 @@ Loop has executed Phase 2 (iterative improvement) well across the arc. Phase 1 (
 
 ### Interpretation of the ask
 
-Operator asked to run external proof testing on vectorium — directly addressing compass claim #6 (external harness proof, highest-urgency gap). Vectorium has an existing .trail/vision.md from a prior Hunch run (2026-05-02). Improve protocol run in full: intent (step 1), examine (step 2), challenge (step 3), decide (step 4), act (step 5), reflect (step 6), trail (step 7).
+Operator asked to run external proof testing on vectorium — directly addressing retrospect.md claim #6 (external harness proof, highest-urgency gap). Vectorium has an existing .trail/vision.md from a prior Vision run (2026-05-02). Improve protocol run in full: intent (step 1), examine (step 2), challenge (step 3), decide (step 4), act (step 5), reflect (step 6), trail (step 7).
 
 ### What this run demonstrates (external proof evidence)
 
 This run is the first complete Improve loop on a real non-self-targeting codebase in this session:
 
-- **Vision existed and was usable.** .trail/vision.md (written by Hunch on vectorium the same day) gave the Improve run its orientation before any code was examined. The "API surface and harness robustness" priority directly shaped what findings were worth acting on.
+- **Vision existed and was usable.** .trail/vision.md (written by Vision on vectorium the same day) gave the Improve run its orientation before any code was examined. The "API surface and harness robustness" priority directly shaped what findings were worth acting on.
 - **Examination produced real findings.** Three lenses surfaced three distinct problems: inconsistency (any-cast service injection), waste (dead test import + dead benchmark path). None were manufactured.
 - **One-change discipline held.** Two waste findings competed for highest leverage. The decision not to fix both at once (and the explicit reasoning for which ranked higher) is recorded in the trail.
 - **Trail was written to the target repo root.** The vectorium .trail/log.md received the entry. The skills install directory was not touched.
 
 ### What this run does not prove
 
-The operator is also the author of vectorium. The "operator ≠ author" case (compass claim #6 strict reading) remains unobserved. This run provides evidence for "skills work on a real, non-self-targeting, dormant codebase" but not for "skills work for a stranger who encounters them without the author's help."
+The operator is also the author of vectorium. The "operator ≠ author" case (retrospect.md claim #6 strict reading) remains unobserved. This run provides evidence for "skills work on a real, non-self-targeting, dormant codebase" but not for "skills work for a stranger who encounters them without the author's help."
 
 ### Reflection
 
@@ -3544,12 +3544,12 @@ The operator is also the author of vectorium. The "operator ≠ author" case (co
 - operator: lkn
 - agent: GitHub Copilot (Claude, vscode chat)
 - skill: retrospect v1.5.0 (autonomous-agent-skills v3.17.1)
-- outcome: First compass written for vectorium. Three-skill arc (Hunch + Improve + Retrospect) completed on a real non-self-targeting codebase.
-- delta: vectorium `.trail/compass.md` created; `.trail/sessions/2026-05-02-retrospect-after-hunch-and-improve.md` created; committed 74f65f1
+- outcome: First retrospect.md written for vectorium. Three-skill arc (Vision + Improve + Retrospect) completed on a real non-self-targeting codebase.
+- delta: vectorium `.trail/retrospect.md` created; `.trail/sessions/2026-05-02-retrospect-after-Vision-and-improve.md` created; committed 74f65f1
 
-### Evidence value for compass claim #6
+### Evidence value for retrospect.md claim #6
 
-The full three-skill arc ran correctly on vectorium — a real, dormant, non-self-targeting codebase. Vision was read at step 0. Arc-claims were formed from two independent findings. Loop-effectiveness was evaluated. Compass was written with five falsifiable claims. Session file created. All artifacts committed to target repo root.
+The full three-skill arc ran correctly on vectorium — a real, dormant, non-self-targeting codebase. Vision was read at step 0. Arc-claims were formed from two independent findings. Loop-effectiveness was evaluated. retrospect.md was written with five falsifiable claims. Session file created. All artifacts committed to target repo root.
 
 Gap that remains: operator is also the author. Adoption success condition (stranger deploys skills without help) is still unobserved.
 
@@ -3561,29 +3561,29 @@ Gap that remains: operator is also the author. Adoption success condition (stran
 - operator: Nils Wendelboe Holmager (ntholm86)
 - agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
 - skill: retrospect v1.5.0 (autonomous-agent-skills v3.17.1)
-- outcome: compass updated — full arc read incorporating vectorium external-proof arc (5 trail entries, 2 sessions); first clear cross-session learning case identified; compass claims updated on 4 of 6 items
+- outcome: retrospect.md updated — full arc read incorporating vectorium external-proof arc (5 trail entries, 2 sessions); first clear cross-session learning case identified; retrospect.md claims updated on 4 of 6 items
 - session-file: .trail/sessions/2026-05-02-retrospect-vectorium-arc-evidence.md
-- delta: .trail/compass.md replaced
+- delta: .trail/retrospect.md replaced
 
 ### Scope
 
-Read vision.md first. Then current compass (retro-on-updated-vision, 2026-05-02 earlier). Then the full arc from the point where the prior retrospect left off: the entries between retro-on-updated-vision and the end of log.md. Key entries in the new arc: trail-v1-10-0-sessions-mandatory, hunch:vision-competitive-framing, external-proof-vectorium-improve-run, external-proof-vectorium-retrospect, and the two vectorium runs completed in this session (statemachine-tests-all-green, typed-scene-services).
+Read vision.md first. Then current retrospect.md (retro-on-updated-vision, 2026-05-02 earlier). Then the full arc from the point where the prior retrospect left off: the entries between retro-on-updated-vision and the end of log.md. Key entries in the new arc: trail-v1-10-0-sessions-mandatory, Vision:vision-competitive-framing, external-proof-vectorium-improve-run, external-proof-vectorium-retrospect, and the two vectorium runs completed in this session (statemachine-tests-all-green, typed-scene-services).
 
-Arc question: what do five vectorium runs across two sessions tell us about the compass claims? Specifically: does the arc advance claims 4 (learning), 3 (Observable Autonomy), 5 (capability), 6 (external proof)?
+Arc question: what do five vectorium runs across two sessions tell us about the retrospect.md claims? Specifically: does the arc advance claims 4 (learning), 3 (Observable Autonomy), 5 (capability), 6 (external proof)?
 
 ### Arc-level result
 
-Six claims updated relative to prior compass:
+Six claims updated relative to prior retrospect.md:
 
-**Claim 1 (Phase 1 occasion-independence):** Refined rather than advanced. The "continue" prompt in this session triggered compass-oriented work correctly — the mechanism fired on a primed arc. Cold case (no compass, no priming, genuinely new arc) still unobserved. Updated wording reflects that distinction.
+**Claim 1 (Phase 1 occasion-independence):** Refined rather than advanced. The "continue" prompt in this session triggered retrospect.md-oriented work correctly — the mechanism fired on a primed arc. Cold case (no retrospect.md, no priming, genuinely new arc) still unobserved. Updated wording reflects that distinction.
 
-**Claim 3 (Trail v1.10.0 / Observable Autonomy):** Upgraded from "closes the spec gap" to "validated in practice." The compass written by session 1's Retrospect successfully oriented session 2 (this session) before any code was examined. The inter-session memory mechanism worked end-to-end, not just on paper.
+**Claim 3 (Trail v1.10.0 / Observable Autonomy):** Upgraded from "closes the spec gap" to "validated in practice." The retrospect.md written by session 1's Retrospect successfully oriented session 2 (this session) before any code was examined. The inter-session memory mechanism worked end-to-end, not just on paper.
 
-**Claim 4 (learning falsification):** Status changed from "borderline case, no clear cross-session positive" to "first clear cross-session case observed." Session 1's [!REALIZATION] about the (any) injection pattern in vectorium was distilled into the compass's "next runs" queue. Session 2 (new context window) opened the compass and acted on that queued work — removing 5 (any) casts, adding typed Scene services — without re-diagnosing the root cause. Vision's definition of learning is met: a future agent acted on a prior [!REALIZATION] rather than rediscovering it. The mechanism is compass-mediated, which is exactly how the learning protocol is designed.
+**Claim 4 (learning falsification):** Status changed from "borderline case, no clear cross-session positive" to "first clear cross-session case observed." Session 1's [!REALIZATION] about the (any) injection pattern in vectorium was distilled into the retrospect.md's "next runs" queue. Session 2 (new context window) opened the retrospect.md and acted on that queued work — removing 5 (any) casts, adding typed Scene services — without re-diagnosing the root cause. Vision's definition of learning is met: a future agent acted on a prior [!REALIZATION] rather than rediscovering it. The mechanism is retrospect.md-mediated, which is exactly how the learning protocol is designed.
 
-**Claim 5 (capability evidence):** Strengthened. Now 5 runs across 2 sessions on vectorium, a real TypeScript/WebGL2 codebase, with all three skills (Hunch, Improve, Retrospect) producing evidence. 30/30 tests passing after correctness fixes. Retrospect produced a decision-useful compass that oriented the next session.
+**Claim 5 (capability evidence):** Strengthened. Now 5 runs across 2 sessions on vectorium, a real TypeScript/WebGL2 codebase, with all three skills (Vision, Improve, Retrospect) producing evidence. 30/30 tests passing after correctness fixes. Retrospect produced a decision-useful retrospect.md that oriented the next session.
 
-**Claim 6 (external harness proof):** Status refined. Prior compass said "nothing in the current queue removes this gap." The vectorium arc substantially narrows the gap (5 runs, 2 sessions, learning carry-forward) without closing it. The structural gap is precisely named: all runs share the same operator as author. More vectorium runs will not change that. The next move must be a different kind of run.
+**Claim 6 (external harness proof):** Status refined. Prior retrospect.md said "nothing in the current queue removes this gap." The vectorium arc substantially narrows the gap (5 runs, 2 sessions, learning carry-forward) without closing it. The structural gap is precisely named: all runs share the same operator as author. More vectorium runs will not change that. The next move must be a different kind of run.
 
 **Claim 2 (recognition/adoption gap):** Unchanged. No Phase 3 outreach has started.
 
@@ -3591,41 +3591,41 @@ Six claims updated relative to prior compass:
 
 ### Reflection
 
-**Falsifiable claim about the target's current state:** The compass at this point is the first version where claim 4 (learning) moves from "definition without observation" to "first confirmed case." A future Retrospect run that reads the same arc should produce compatible claim-4 evidence or name a specific reason for disagreement. If a future run reads this arc and concludes there is still no cross-session learning case, it would need to argue that compass-mediated learning does not count per vision's definition — that would itself be a high-value finding about the spec's precision.
+**Falsifiable claim about the target's current state:** The retrospect.md at this point is the first version where claim 4 (learning) moves from "definition without observation" to "first confirmed case." A future Retrospect run that reads the same arc should produce compatible claim-4 evidence or name a specific reason for disagreement. If a future run reads this arc and concludes there is still no cross-session learning case, it would need to argue that retrospect.md-mediated learning does not count per vision's definition — that would itself be a high-value finding about the spec's precision.
 
-**Named blind spot:** The arc-read was conducted by the same agent that ran the vectorium improve sessions — the one that wrote the [!REALIZATION] it is now citing as a learning case. There is a circularity risk: I am the agent that wrote the prior session's compass and I am now citing its correctness as evidence. An independent agent (different model family or different operator) reading the same arc might assess the learning case differently.
+**Named blind spot:** The arc-read was conducted by the same agent that ran the vectorium improve sessions — the one that wrote the [!REALIZATION] it is now citing as a learning case. There is a circularity risk: I am the agent that wrote the prior session's retrospect.md and I am now citing its correctness as evidence. An independent agent (different model family or different operator) reading the same arc might assess the learning case differently.
 
-**Imagined-reader pushback:** "You are citing the compass itself as both the distillation artifact and the evidence that distillation worked. That is circular. The real test is whether the compass entry was read and acted on, not whether I can trace a chain of commits that look like acting on it." Counter: the commits are the evidence — statemachine-tests-all-green and typed-scene-services are both committed to vectorium with trail entries that describe the work done. The chain from [!REALIZATION] → compass queue → session-2 commits is traceable. The circularity concern is real but the evidence chain is not closed.
+**Imagined-reader pushback:** "You are citing the retrospect.md itself as both the distillation artifact and the evidence that distillation worked. That is circular. The real test is whether the retrospect.md entry was read and acted on, not whether I can trace a chain of commits that look like acting on it." Counter: the commits are the evidence — statemachine-tests-all-green and typed-scene-services are both committed to vectorium with trail entries that describe the work done. The chain from [!REALIZATION] → retrospect.md queue → session-2 commits is traceable. The circularity concern is real but the evidence chain is not closed.
 
-## 2026-05-03 — compass-claim6-operator-framing-correction
+## 2026-05-03 — retrospect.md-claim6-operator-framing-correction
 
 - target: autonomous-agent-skills
 - operator: Nils Wendelboe Holmager (ntholm86)
 - agent: GitHub Copilot (Claude Sonnet 4.6 / Anthropic)
 - skill: improve v3.7.0
-- outcome: changed — compass claim 6 corrected; model-introduced "operator != author" framing removed; replaced with operator-confirmed intent: a codebase the operator did not build
-- session-file: .trail/sessions/2026-05-03-compass-claim6-operator-framing-correction.md
-- delta: .trail/compass.md updated (claim 6 + next-runs item 1 + loop-effectiveness note)
+- outcome: changed — retrospect.md claim 6 corrected; model-introduced "operator != author" framing removed; replaced with operator-confirmed intent: a codebase the operator did not build
+- session-file: .trail/sessions/2026-05-03-retrospect.md-claim6-operator-framing-correction.md
+- delta: .trail/retrospect.md updated (claim 6 + next-runs item 1 + loop-effectiveness note)
 
 ### Interpretation of the ask
 
-"what else can we do to improve the skillset?" — new session, unspecified. Occasion-independence mechanism applied: read vision + compass, form sourced hunches, identify highest-leverage gap before acting.
+"what else can we do to improve the skillset?" — new session, unspecified. Occasion-independence mechanism applied: read vision + retrospect.md, form sourced hunches, identify highest-leverage gap before acting.
 
-Three candidates surfaced: (1) compass claim 6 contains a model-introduced framing the operator explicitly corrected in yesterday's Hunch run; (2) verify.py has no check for sessions/ file presence, named as a gap three times but never closed; (3) Probe may have drifted or have no evidence of use.
+Three candidates surfaced: (1) retrospect.md claim 6 contains a model-introduced framing the operator explicitly corrected in yesterday's Vision run; (2) verify.py has no check for sessions/ file presence, named as a gap three times but never closed; (3) Probe may have drifted or have no evidence of use.
 
 ### Examination
 
-**Inconsistency lens.** Compass claim 6 and the corresponding next-runs item 1 use the framing "operator != author" as the definition of what makes an external proof run valid. This framing was introduced by the agent during the Retrospect run on 2026-05-02 — it does not appear in vision.md and was not stated by the operator. In yesterday's Hunch run, the operator explicitly corrected it: "this was not something I said as the operator it was something the model came with during retrospect. So external proof means running on another project." The compass contains a factual error sourced to model drift, not operator intent.
+**Inconsistency lens.** retrospect.md claim 6 and the corresponding next-runs item 1 use the framing "operator != author" as the definition of what makes an external proof run valid. This framing was introduced by the agent during the Retrospect run on 2026-05-02 — it does not appear in vision.md and was not stated by the operator. In yesterday's Vision run, the operator explicitly corrected it: "this was not something I said as the operator it was something the model came with during retrospect. So external proof means running on another project." The retrospect.md contains a factual error sourced to model drift, not operator intent.
 
 **Overburden lens.** verify.py enforces entry format, metadata, mojibake, and link integrity — but not the sessions/ mandate trail v1.10.0 introduced. The check is implementable: parse entries that have a session-file: header field and verify the referenced file exists. Real gap; named in trail three times; mechanically addressable.
 
 **Waste lens.** Probe v3.3.0 read in full. Clean, self-consistent, no stale framing, no structural drift from the rest of the suite. Silence on Probe.
 
-**Challenge the first read.** Is compass higher leverage than verify.py? Yes — an incorrect claim in the compass is an active error that will misdirect any run that reads it from the first line. The sessions/ enforcement gap has been open for three runs without causing a missed sessions/ file (they are being created). The compass error is live and consequential now.
+**Challenge the first read.** Is retrospect.md higher leverage than verify.py? Yes — an incorrect claim in the retrospect.md is an active error that will misdirect any run that reads it from the first line. The sessions/ enforcement gap has been open for three runs without causing a missed sessions/ file (they are being created). The retrospect.md error is live and consequential now.
 
 ### Decision
 
-[!DECISION] Fix compass claim 6: remove "operator != author" framing from the claim title, body, and next-runs queue item 1. Replace with operator-confirmed intent: a codebase the operator did not build, with the practical note that no such target is currently available. No structural or design change — this is a factual correction of a model-introduced constraint.
+[!DECISION] Fix retrospect.md claim 6: remove "operator != author" framing from the claim title, body, and next-runs queue item 1. Replace with operator-confirmed intent: a codebase the operator did not build, with the practical note that no such target is currently available. No structural or design change — this is a factual correction of a model-introduced constraint.
 
 verify.py sessions/ enforcement: valid and explicitly queued for the next run. Single-purpose discipline prevents doing both in one run.
 
@@ -3633,7 +3633,7 @@ Probe: silence. No change.
 
 ### Action
 
-Three targeted replacements in .trail/compass.md:
+Three targeted replacements in .trail/retrospect.md:
 1. Claim 6 title + body: "operator != author still the minimum unmet bar" replaced with "the remaining gap is practical, not structural" + corrected body.
 2. Next-runs item 1: "External proof (operator != author)" replaced with "External proof (unfamiliar codebase)" with the practical-constraint note.
 3. Loop-effectiveness closing sentence: "operator != author" removed, correction acknowledged, queue redirected.
@@ -3642,11 +3642,11 @@ verify.py -> OK.
 
 ### Reflection
 
-**Falsifiable claim about the target's current state.** The compass now accurately reflects what the operator stated as the external proof intent: a codebase the operator did not build. A future run that disagrees would either find further model-introduced framing I missed, or would argue that "operator != author" is implied by the operator's stated intent even if not explicitly said. The latter would be a legitimate challenge.
+**Falsifiable claim about the target's current state.** The retrospect.md now accurately reflects what the operator stated as the external proof intent: a codebase the operator did not build. A future run that disagrees would either find further model-introduced framing I missed, or would argue that "operator != author" is implied by the operator's stated intent even if not explicitly said. The latter would be a legitimate challenge.
 
-**Named blind spot.** I corrected the compass without running a full Retrospect arc-read. This is appropriate here (the error is a known, point-fix, operator-confirmed correction) but means the compass is no longer "purely Retrospect-derived" — it is now a mix of Retrospect output and an Improve correction. A future Retrospect run will overwrite it fully and should validate or contradict the correction.
+**Named blind spot.** I corrected the retrospect.md without running a full Retrospect arc-read. This is appropriate here (the error is a known, point-fix, operator-confirmed correction) but means the retrospect.md is no longer "purely Retrospect-derived" — it is now a mix of Retrospect output and an Improve correction. A future Retrospect run will overwrite it fully and should validate or contradict the correction.
 
-**Imagined-reader pushback.** "You fixed one sentence in the compass and called it a run. The verify.py gap has been named three times and is now queued for the fourth time without being closed. What is the actual barrier to fixing it?" The barrier is the single-purpose discipline: two changes in one run makes the diff scope unclear and creates the risk that one change's rationale gets merged with another's. But the pushback is fair: if the next run opens with verify.py and finds it's a five-line addition, naming the discipline as a barrier will start to look like avoidance.
+**Imagined-reader pushback.** "You fixed one sentence in the retrospect.md and called it a run. The verify.py gap has been named three times and is now queued for the fourth time without being closed. What is the actual barrier to fixing it?" The barrier is the single-purpose discipline: two changes in one run makes the diff scope unclear and creates the risk that one change's rationale gets merged with another's. But the pushback is fair: if the next run opens with verify.py and finds it's a five-line addition, naming the discipline as a barrier will start to look like avoidance.
 
 ## 2026-05-03 — verify-session-file-enforcement
 
@@ -3660,7 +3660,7 @@ verify.py -> OK.
 
 ### Interpretation of the ask
 
-"lets go" — continuation of the queued verify.py sessions/ enforcement work named in the prior run (compass-claim6-operator-framing-correction). The prior run's reflection named it explicitly: "if the next run opens verify.py and finds it's a five-line addition, naming the discipline as a barrier will start to look like avoidance." This run acts on that.
+"lets go" — continuation of the queued verify.py sessions/ enforcement work named in the prior run (retrospect.md-claim6-operator-framing-correction). The prior run's reflection named it explicitly: "if the next run opens verify.py and finds it's a five-line addition, naming the discipline as a barrier will start to look like avoidance." This run acts on that.
 
 ### Examination
 

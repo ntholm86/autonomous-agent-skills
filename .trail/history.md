@@ -70,22 +70,22 @@ Do not edit by hand — re-run the command to refresh.
 | · 63 | 2026-05-01 | silence-run-63 | silence — no actionable finding after full sweep of all active files | none |
 | ▸ 64 | 2026-05-01 | feat-retrospect-skill | added Retrospect — new standalone arc-reflection skill (v1.0.0) | v3.8.1 → v3.9.0 |
 | ▸ 65 | 2026-05-01 | feat-working-model | added `.trail/model.md` as the working model artifact — written by Retrospect, read by Improve | v3.9.0 → v3.9.1 |
-| ▸ 66 | 2026-05-01 | docs-readme-compass-orientation | fixed stale README description — runs now start with compass.md, not the full trail | v3.9.1 (no version bump — docs fix only) |
-| ▸ 67 | 2026-05-01 | compass-seed-evo-vision | created .trail/compass.md — first compass for this repo, capturing the evo connection and constraints that must hold before integration | no version bump — compass is a new artifact, not a code change |
-| ▸ 68 | 2026-05-01 | split-vision-from-compass | introduced `.trail/vision.md` as a sibling to `.trail/compass.md`; vision is operator-held and never written by any skill, compass is Retrospect-derived and rewritten each run | suite v3.9.1 → v3.10.0; improve 3.3.0 → 3.4.0; retrospect 1.1.0 → 1.2.0; trail 1.6.0 → 1.7.0 |
-| ▸ 69 | 2026-05-01 | hunch-skill-added | added Hunch as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct | suite v3.10.0 → v3.11.0; new `hunch/SKILL.md` v1.0.0 |
-| ▸ 70 | 2026-05-01 | hunch-on-operator-vision-intent | vision.md gained a top-section research framing — "architecture of trustworthy delegation" — drafted from intent rather than operator's words, approved before write | .trail/vision.md +14 lines (new "What this work is, beyond a skillset" section) |
+| ▸ 66 | 2026-05-01 | docs-readme-retrospect.md-orientation | fixed stale README description — runs now start with retrospect.md, not the full trail | v3.9.1 (no version bump — docs fix only) |
+| ▸ 67 | 2026-05-01 | retrospect.md-seed-evo-vision | created .trail/retrospect.md — first retrospect.md for this repo, capturing the evo connection and constraints that must hold before integration | no version bump — retrospect.md is a new artifact, not a code change |
+| ▸ 68 | 2026-05-01 | split-vision-from-retrospect.md | introduced `.trail/vision.md` as a sibling to `.trail/retrospect.md`; vision is operator-held and never written by any skill, retrospect.md is Retrospect-derived and rewritten each run | suite v3.9.1 → v3.10.0; improve 3.3.0 → 3.4.0; retrospect 1.1.0 → 1.2.0; trail 1.6.0 → 1.7.0 |
+| ▸ 69 | 2026-05-01 | Vision-skill-added | added Vision as the sixth skill — on-demand interview mechanism that surfaces the agent's guesses about where the operator is heading and turns them into questions the operator can confirm or correct | suite v3.10.0 → v3.11.0; new `vision/SKILL.md` v1.0.0 |
+| ▸ 70 | 2026-05-01 | Vision-on-operator-vision-intent | vision.md gained a top-section research framing — "architecture of trustworthy delegation" — drafted from intent rather than operator's words, approved before write | .trail/vision.md +14 lines (new "What this work is, beyond a skillset" section) |
 | ▸ 71 | 2026-05-01 | position-md-v0-1-drafted | POSITION.md v0.1 drafted and committed — first standalone position document for the repo, framing "operation-time trustworthy delegation" as the bet, with explicit falsification criteria and adjacent-work mapping | POSITION.md +new file (~2200 words) |
-| ▸ 72 | 2026-05-02 | hunch-skill-validated-on-foreign-target | Hunch exercised cold on vectorium — no .trail/, no vision.md, no priming. All three hunches confirmed. Hunch 1 surfaced "lost interest after beating the benchmark" — not written anywhere in vectorium, inferred from commit arc alone. | c:\git\vectorium\.trail\log.md created (full run record lives there) |
-| ▸ 73 | 2026-05-02 | session-v3-16-0-retrospect-first-run | v3.16.0 -- Hunch validated on 3 foreign targets; all writing skills gain .trail/ directory creation; Retrospect gains vision-first read order; first real Retrospect arc-read; compass updated from operator-seeded to evidence-derived | v3.15.0 -> v3.16.0 |
-| ▸ 74 | 2026-05-02 | self-run-resume-after-v3-16-0 | compass refreshed after manifesto consistency sweep; next self-tests narrowed to Retrospect second-pass, occasion-independence experiment, and external proof |  |
-| ▸ 75 | 2026-05-02 | retrospect-second-real-pass-after-v3-16-0 | second real Retrospect pass completed; compass updated; first-pass claims remained compatible while integrating new evidence from manifesto consistency sweep |  |
+| ▸ 72 | 2026-05-02 | Vision-skill-validated-on-foreign-target | Vision exercised cold on vectorium — no .trail/, no vision.md, no priming. All three hunches confirmed. Vision 1 surfaced "lost interest after beating the benchmark" — not written anywhere in vectorium, inferred from commit arc alone. | c:\git\vectorium\.trail\log.md created (full run record lives there) |
+| ▸ 73 | 2026-05-02 | session-v3-16-0-retrospect-first-run | v3.16.0 -- Vision validated on 3 foreign targets; all writing skills gain .trail/ directory creation; Retrospect gains vision-first read order; first real Retrospect arc-read; retrospect.md updated from operator-seeded to evidence-derived | v3.15.0 -> v3.16.0 |
+| ▸ 74 | 2026-05-02 | self-run-resume-after-v3-16-0 | retrospect.md refreshed after manifesto consistency sweep; next self-tests narrowed to Retrospect second-pass, occasion-independence experiment, and external proof |  |
+| ▸ 75 | 2026-05-02 | retrospect-second-real-pass-after-v3-16-0 | second real Retrospect pass completed; retrospect.md updated; first-pass claims remained compatible while integrating new evidence from manifesto consistency sweep |  |
 | ▸ 76 | 2026-05-02 | occasion-independence-experiment-pass-1 | PASS (first data point) — agent-initiated direction question produced one structural change without operator topic injection |  |
 | ▸ 77 | 2026-05-02 | trail-v1-10-0-sessions-mandatory | fixed — sessions/ writing is now mandatory with explicit format | trail/SKILL.md v1.9.0 → v1.10.0 |
-| ▸ 78 | 2026-05-02 | hunch: vision-competitive-framing | vision.md updated — competitive framing, adoption success condition, and learning falsification condition added | .trail/vision.md updated in place |
-| ▸ 79 | 2026-05-02 | retro-on-updated-vision | compass updated — arc read against substantially updated vision.md (recognition claim, two-phase architecture, adoption success, learning falsification); six claims formed; prior compass replaced | .trail/compass.md replaced |
+| ▸ 78 | 2026-05-02 | Vision: vision-competitive-framing | vision.md updated — competitive framing, adoption success condition, and learning falsification condition added | .trail/vision.md updated in place |
+| ▸ 79 | 2026-05-02 | retro-on-updated-vision | retrospect.md updated — arc read against substantially updated vision.md (recognition claim, two-phase architecture, adoption success, learning falsification); six claims formed; prior retrospect.md replaced | .trail/retrospect.md replaced |
 | ▸ 80 | 2026-05-02 | external-proof-vectorium-improve-run | Improve run completed end-to-end on a non-self-targeting codebase. One correctness fix shipped (StateMachine test import path). Trail entry written to vectorium's .trail/log.md. Committed to vectorium repo (33c34aa). | vectorium StateMachine.test.ts import corrected; vectorium .trail/log.md updated |
-| ▸ 81 | 2026-05-02 | external-proof-vectorium-retrospect | First compass written for vectorium. Three-skill arc (Hunch + Improve + Retrospect) completed on a real non-self-targeting codebase. | vectorium `.trail/compass.md` created; `.trail/sessions/2026-05-02-retrospect-after-hunch-and-improve.md` created; committed 74f65f1 |
+| ▸ 81 | 2026-05-02 | external-proof-vectorium-retrospect | First retrospect.md written for vectorium. Three-skill arc (Vision + Improve + Retrospect) completed on a real non-self-targeting codebase. | vectorium `.trail/retrospect.md` created; `.trail/sessions/2026-05-02-retrospect-after-Vision-and-improve.md` created; committed 74f65f1 |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -363,25 +363,25 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Add `.trail/model.md` as the working model artifact. Retrospect writes it (new step 5); Improve reads it at step 1; Trail documents it in the directory structure. Bump retrospect to v1.1.0, suite to v3.9.1.
 
-### Run 66 — 2026-05-01 — docs-readme-compass-orientation
+### Run 66 — 2026-05-01 — docs-readme-retrospect.md-orientation
 
 - **decided:** Fix the README "How it works" opening sentence to correctly describe the reading order introduced in run 65.
 
-### Run 67 — 2026-05-01 — compass-seed-evo-vision
+### Run 67 — 2026-05-01 — retrospect.md-seed-evo-vision
 
-- **decided:** Seed `.trail/compass.md` from operator conversation. This is a bootstrap exception — normally compass is generated by a Retrospect arc-read. Seeding from conversation captures strategic insight that a trail-read alone would not produce. Future Retrospect runs will replace and update it.
+- **decided:** Seed `.trail/retrospect.md` from operator conversation. This is a bootstrap exception — normally retrospect.md is generated by a Retrospect arc-read. Seeding from conversation captures strategic insight that a trail-read alone would not produce. Future Retrospect runs will replace and update it.
 
-### Run 68 — 2026-05-01 — split-vision-from-compass
+### Run 68 — 2026-05-01 — split-vision-from-retrospect.md
 
-- **decided:** Split orientation into two artifacts: `.trail/vision.md` (operator-held, stable, never written by any skill) and `.trail/compass.md` (Retrospect-derived, rewritten each run). Improve reads vision first, then compass, then trail. Vision is the destination; compass is the current location; trail is the path.
+- **decided:** Split orientation into two artifacts: `.trail/vision.md` (operator-held, stable, never written by any skill) and `.trail/retrospect.md` (Retrospect-derived, rewritten each run). Improve reads vision first, then retrospect.md, then trail. Vision is the destination; retrospect.md is the current location; trail is the path.
 
-### Run 69 — 2026-05-01 — hunch-skill-added
+### Run 69 — 2026-05-01 — Vision-skill-added
 
-- **decided:** Add a new sixth skill, Hunch, with this contract:
+- **decided:** Add a new sixth skill, Vision, with this contract:
 
-### Run 70 — 2026-05-01 — hunch-on-operator-vision-intent
+### Run 70 — 2026-05-01 — Vision-on-operator-vision-intent
 
-- **decided:** Apply Hunch as designed: form 2-5 specific sourced hunches stated as guesses, turn each into a falsifiable question, surface one prioritized question (not all at once), do not write to vision.md without explicit operator approval. Three hunches formed:
+- **decided:** Apply Vision as designed: form 2-5 specific sourced hunches stated as guesses, turn each into a falsifiable question, surface one prioritized question (not all at once), do not write to vision.md without explicit operator approval. Three hunches formed:
 
 ### Run 71 — 2026-05-01 — position-md-v0-1-drafted
 

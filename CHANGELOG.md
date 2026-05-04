@@ -12,7 +12,7 @@
 - `.trail/vision.md` — "revision cycles" corrected to "Retrospect cycles" for terminological precision.
 
 ### Fixed
-- `.zenodo.json` — title and description updated from "Five" to "Six" skills; Hunch added to the skill list and read-order.
+- `.zenodo.json` — title and description updated from "Five" to "Six" skills; Vision added to the skill list and read-order.
 
 ## v3.17.2 — 2026-05-03
 
@@ -22,9 +22,9 @@ Added check 8 to `verify.py`: every `session-file:` reference in `.trail/log.md`
 
 ## v3.17.1 — 2026-05-02
 
-### Fixed — Intent now cross-references Hunch in "What This Skill Is Not"
+### Fixed — Intent now cross-references Vision in "What This Skill Is Not"
 
-`intent/SKILL.md` (v1.2.0 → v1.2.1) — Hunch already carried a symmetric note ("It does not replace Intent — Intent is per-prompt, Hunch is per-direction") but Intent had no corresponding entry. A practitioner reading Intent alone had no pointer to Hunch when direction-level questions arose. Added "Not Hunch." item to "What This Skill Is Not", mirroring the existing cross-reference in Hunch and making the distinction discoverable from either skill.
+`intent/SKILL.md` (v1.2.0 → v1.2.1) — Vision already carried a symmetric note ("It does not replace Intent — Intent is per-prompt, Vision is per-direction") but Intent had no corresponding entry. A practitioner reading Intent alone had no pointer to Vision when direction-level questions arose. Added "Not Vision." item to "What This Skill Is Not", mirroring the existing cross-reference in Vision and making the distinction discoverable from either skill.
 
 ## v3.17.0 — 2026-05-02
 
@@ -36,21 +36,21 @@ Added check 8 to `verify.py`: every `session-file:` reference in `.trail/log.md`
 
 ### Added — Improve can bootstrap direction on underspecified asks (occasion-independence mechanism)
 
-`improve/SKILL.md` (v3.6.0 → v3.7.0) — step 1 now includes an explicit rule for prompts like "continue"/"keep going"/"next": before examination, the agent must form 1-3 sourced hunches from vision+compass+recent trail, surface one prioritized falsifiable direction question, and proceed on an explicit highest-confidence assumption if no operator answer is available. This is a structural mechanism for reducing occasion-dependence without overriding operator intent.
+`improve/SKILL.md` (v3.6.0 → v3.7.0) — step 1 now includes an explicit rule for prompts like "continue"/"keep going"/"next": before examination, the agent must form 1-3 sourced hunches from vision+retrospect.md+recent trail, surface one prioritized falsifiable direction question, and proceed on an explicit highest-confidence assumption if no operator answer is available. This is a structural mechanism for reducing occasion-dependence without overriding operator intent.
 
 ## v3.16.0 — 2026-05-02
 
 ### Added — Retrospect step 0: read vision.md before arc analysis
 
-`retrospect/SKILL.md` (v1.4.0 → v1.5.0) — vision.md was previously consulted only at the compass write step, meaning the arc analysis happened without the destination in view. A new step 0 "Read vision first" now precedes the scope statement and arc-read. This matches the pattern Intent already used. The redundant vision reference at the write step was removed.
+`retrospect/SKILL.md` (v1.4.0 → v1.5.0) — vision.md was previously consulted only at the retrospect.md write step, meaning the arc analysis happened without the destination in view. A new step 0 "Read vision first" now precedes the scope statement and arc-read. This matches the pattern Intent already used. The redundant vision reference at the write step was removed.
 
 ### Added — all writing skills create `.trail/` directory before any write
 
-`trail/SKILL.md` (v1.8.0 → v1.9.0), `hunch/SKILL.md` (v1.2.0 → v1.3.0), `retrospect/SKILL.md` (v1.3.0 → v1.4.0), `improve/SKILL.md` (v3.5.0 → v3.6.0), `probe/SKILL.md` (v3.2.0 → v3.3.0) — no skill previously created the `.trail/` directory explicitly. On a fresh repo the write would silently fail or error. Every write point now carries an explicit instruction: "create the `.trail/` directory in the target repo root if it does not already exist — before any write, regardless of whether the skill runs alone, in a chain, or for the first time."
+`trail/SKILL.md` (v1.8.0 → v1.9.0), `vision/SKILL.md` (v1.2.0 → v1.3.0), `retrospect/SKILL.md` (v1.3.0 → v1.4.0), `improve/SKILL.md` (v3.5.0 → v3.6.0), `probe/SKILL.md` (v3.2.0 → v3.3.0) — no skill previously created the `.trail/` directory explicitly. On a fresh repo the write would silently fail or error. Every write point now carries an explicit instruction: "create the `.trail/` directory in the target repo root if it does not already exist — before any write, regardless of whether the skill runs alone, in a chain, or for the first time."
 
-### Fixed — Hunch writes vision.md automatically; operator commits to git
+### Fixed — Vision writes vision.md automatically; operator commits to git
 
-`hunch/SKILL.md` (v1.1.0 → v1.2.0 → v1.3.0) — the skill previously instructed the agent to "propose the diff and let the operator commit it," which caused the agent to hand back file-creation work that should have been done automatically. Hunch now writes `.trail/vision.md` as part of completing the run. The operator's job is to review and commit to git when it reads right, not to write the file.
+`vision/SKILL.md` (v1.1.0 → v1.2.0 → v1.3.0) — the skill previously instructed the agent to "propose the diff and let the operator commit it," which caused the agent to hand back file-creation work that should have been done automatically. Vision now writes `.trail/vision.md` as part of completing the run. The operator's job is to review and commit to git when it reads right, not to write the file.
 
 ### Fixed — POSITION.md signature
 
@@ -58,7 +58,7 @@ Corrected closing signature from hallucinated "— Lars" to "— Nils". Author t
 
 ### Trail — first real Retrospect arc-read
 
-First Retrospect run on this repo with a populated trail (runs 55–71). Produced five arc-level claims: phase boundary crossed (doc-convergence to validated-capability); validation gap shifted from Hunch to Retrospect; loop still has no occasion-independence; two-repo relationship not yet in any README; no harness-independent validation yet. Compass updated from operator-seeded to evidence-derived.
+First Retrospect run on this repo with a populated trail (runs 55–71). Produced five arc-level claims: phase boundary crossed (doc-convergence to validated-capability); validation gap shifted from Vision to Retrospect; loop still has no occasion-independence; two-repo relationship not yet in any README; no harness-independent validation yet. retrospect.md updated from operator-seeded to evidence-derived.
 
 ## v3.15.0 — 2026-05-02
 
@@ -70,33 +70,33 @@ Every skill that reads or writes `.trail/` now explicitly states that `.trail/` 
 - `improve/SKILL.md` (v3.4.0 → v3.5.0) — same anchor added to the trail-read step; fallback write step now says "`.trail/log.md` **in the target repo root**".
 - `probe/SKILL.md` (v3.1.0 → v3.2.0) — fallback write step now says "`.trail/log.md` **in the target repo root**".
 - `retrospect/SKILL.md` (v1.2.0 → v1.3.0) — arc-read step now says "`.trail/log.md` **in the target repo root**".
-- `hunch/SKILL.md` (v1.0.0 → v1.1.0) — signal-gather step now opens with the explicit anchor; vision write step now says "`.trail/vision.md` **in the target repo root**".
+- `vision/SKILL.md` (v1.0.0 → v1.1.0) — signal-gather step now opens with the explicit anchor; vision write step now says "`.trail/vision.md` **in the target repo root**".
 
 `trail/SKILL.md` was already explicit — it is the reference implementation. All other skills now match it.
 
 
 
 ### Changed
-- `intent/SKILL.md` (v1.0.0 → v1.1.0) — "Read the accumulated context" section now explicitly lists `.trail/vision.md` and `.trail/compass.md` as the first two documents to read before interpreting any prompt. Vision (operator-held destination) and compass (Retrospect-derived orientation) are the most important context for intent interpretation; reading only `log.md` and sessions was insufficient. Adds note: if no `.trail/` exists yet, run Hunch first.
+- `intent/SKILL.md` (v1.0.0 → v1.1.0) — "Read the accumulated context" section now explicitly lists `.trail/vision.md` and `.trail/retrospect.md` as the first two documents to read before interpreting any prompt. Vision (operator-held destination) and retrospect.md (Retrospect-derived orientation) are the most important context for intent interpretation; reading only `log.md` and sessions was insufficient. Adds note: if no `.trail/` exists yet, run Vision first.
 
 ### Added
-- `README.md` — new "The recommended flow for a new codebase" section. Explains the Hunch-first onboarding flow (establish vision before the loop starts), the Intent+Improve loop, Trail's role as the evidence record, and Retrospect's role as the arc reader. Includes a table showing which skills read and write to `.trail/`. Captures the operator's articulation of how the skills compose through shared `.trail/` state.
+- `README.md` — new "The recommended flow for a new codebase" section. Explains the Vision-first onboarding flow (establish vision before the loop starts), the Intent+Improve loop, Trail's role as the evidence record, and Retrospect's role as the arc reader. Includes a table showing which skills read and write to `.trail/`. Captures the operator's articulation of how the skills compose through shared `.trail/` state.
 
 
 
 ### Added
 - `POSITION.md` (v0.1) — new top-level stance document. Names what this repo is betting on: **operation-time trustworthy delegation** — what it takes for a human to safely hand real work to an AI more capable than themselves on that work and remain the responsible party. Defines the area via four sub-claims (operation-time, delegation, evidence-while-driving, protocol-not-tool), maps it against adjacent fields (scalable oversight, agentic AI safety, human-AI collaboration, constitutional AI, SRE), states what the repo is **not** claiming, and lists five explicit falsification criteria. Marked v0.1 and provisional. Aimed at skeptical technical practitioners; signed work, not corporate-we (run 71).
-- `.trail/vision.md` — added "What this work is, beyond a skillset" section framing the repo as research as much as development; introduces the trustworthy-delegation question and the dashboard-instruments framing for transparency-while-steering. Drafted from operator intent via Hunch, not paraphrased from operator words (run 70).
+- `.trail/vision.md` — added "What this work is, beyond a skillset" section framing the repo as research as much as development; introduces the trustworthy-delegation question and the dashboard-instruments framing for transparency-while-steering. Drafted from operator intent via Vision, not paraphrased from operator words (run 70).
 
 ## v3.13.0 — 2026-05-02
 
 ### Changed
-- `trail/SKILL.md` (v1.7.0 → v1.8.0) — `history.md` generation is now **manual/on-demand only**. Removed mandatory `record.py history --write` post-session step. Commit step now only requires `log.md` (plus `compass.md` if Retrospect ran). `history.md` is a convenience file for humans, not part of the evidence chain — it should not be auto-generated after every session.
+- `trail/SKILL.md` (v1.7.0 → v1.8.0) — `history.md` generation is now **manual/on-demand only**. Removed mandatory `record.py history --write` post-session step. Commit step now only requires `log.md` (plus `retrospect.md` if Retrospect ran). `history.md` is a convenience file for humans, not part of the evidence chain — it should not be auto-generated after every session.
 
 ## v3.11.0 — 2026-05-01
 
 ### Added
-- `hunch/SKILL.md` (v1.0.0) — new sixth skill. Invoked on demand (not in the autonomous loop). The agent forms guesses about where the operator is heading from signal in conversation, the trail, and the operator's reactions, then surfaces them as short, falsifiable questions the operator can confirm, correct, or reject. Closes the gap between explicit vision (what the operator has written down) and implicit direction (what the agent has picked up but the operator has not articulated). Addresses the human-articulation bottleneck that vision alone cannot solve. Hunch never writes to `.trail/vision.md` without operator approval (run 68).
+- `vision/SKILL.md` (v1.0.0) — new sixth skill. Invoked on demand (not in the autonomous loop). The agent forms guesses about where the operator is heading from signal in conversation, the trail, and the operator's reactions, then surfaces them as short, falsifiable questions the operator can confirm, correct, or reject. Closes the gap between explicit vision (what the operator has written down) and implicit direction (what the agent has picked up but the operator has not articulated). Addresses the human-articulation bottleneck that vision alone cannot solve. Vision never writes to `.trail/vision.md` without operator approval (run 68).
 - `README.md`, `CITATION.cff` — updated to describe the suite as six skills (run 68).
 
 ---
@@ -104,22 +104,22 @@ Every skill that reads or writes `.trail/` now explicitly states that `.trail/` 
 ## v3.10.0 — 2026-05-01
 
 ### Added
-- `.trail/vision.md` — new optional artifact: the **operator-held destination**. Stable across runs, never written by any skill, read by Improve at step 1 before compass and trail. Resolves the contract incoherence between Retrospect (which rewrites `.trail/compass.md` each run) and operator-written orientation that should not be overwritten. Vision is input to the loop; compass is output (run 67).
+- `.trail/vision.md` — new optional artifact: the **operator-held destination**. Stable across runs, never written by any skill, read by Improve at step 1 before retrospect.md and trail. Resolves the contract incoherence between Retrospect (which rewrites `.trail/retrospect.md` each run) and operator-written orientation that should not be overwritten. Vision is input to the loop; retrospect.md is output (run 67).
 
 ### Changed
-- `improve/SKILL.md` (v3.3.0 → v3.4.0) — step 1 read order now: vision → compass → log. Vision is the destination, compass is the current location, trail is the path. Resolution rule on disagreement spelled out: vision wins over compass (operator holds destination); trail wins over compass (trail is evidence) (run 67).
-- `retrospect/SKILL.md` (v1.1.0 → v1.2.0) — step 5 clarified: Retrospect reads vision but never writes to it. Compass shape extended with explicit "What the next runs should test" section (previously implicit). Frontmatter description updated to name vision as input (run 67).
+- `improve/SKILL.md` (v3.3.0 → v3.4.0) — step 1 read order now: vision → retrospect.md → log. Vision is the destination, retrospect.md is the current location, trail is the path. Resolution rule on disagreement spelled out: vision wins over retrospect.md (operator holds destination); trail wins over retrospect.md (trail is evidence) (run 67).
+- `retrospect/SKILL.md` (v1.1.0 → v1.2.0) — step 5 clarified: Retrospect reads vision but never writes to it. retrospect.md shape extended with explicit "What the next runs should test" section (previously implicit). Frontmatter description updated to name vision as input (run 67).
 - `trail/SKILL.md` (v1.6.0 → v1.7.0) — directory listing includes `vision.md`; commit step clarifies vision is committed only when the operator changes it, not as a side effect of any agent run (run 67).
-- `README.md` — "How it works" updated for the vision/compass/trail read order (run 67).
+- `README.md` — "How it works" updated for the vision/retrospect.md/trail read order (run 67).
 
 ---
 
 ## v3.9.1 — 2026-05-01
 
 ### Added
-- `retrospect/SKILL.md` (v1.0.0 → v1.1.0) — new step 5: write `.trail/compass.md`, the **compass** for the target. After each retrospect run the arc-claims are written to `.trail/compass.md` — a plain file that distills the current synthesized understanding of the target and orients future runs. Retrospect owns it; Improve reads it (run 65).
-- `improve/SKILL.md` — step 1 updated: check for `.trail/compass.md` before examining the target; if present, read it first before reading the full trail (run 65).
-- `trail/SKILL.md` — directory structure updated to include `compass.md`; commit step updated to include `compass.md` when Retrospect ran this session (run 65).
+- `retrospect/SKILL.md` (v1.0.0 → v1.1.0) — new step 5: write `.trail/retrospect.md`, the **retrospect.md** for the target. After each retrospect run the arc-claims are written to `.trail/retrospect.md` — a plain file that distills the current synthesized understanding of the target and orients future runs. Retrospect owns it; Improve reads it (run 65).
+- `improve/SKILL.md` — step 1 updated: check for `.trail/retrospect.md` before examining the target; if present, read it first before reading the full trail (run 65).
+- `trail/SKILL.md` — directory structure updated to include `retrospect.md`; commit step updated to include `retrospect.md` when Retrospect ran this session (run 65).
 
 ---
 

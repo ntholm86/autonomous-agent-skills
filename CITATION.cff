@@ -9,7 +9,7 @@ abstract: >
   probes to distinguish situated reasoning from pattern-matching), Trail (append
   a structured evidence log after every session), Retrospect (read the full trail
   as a single document and form arc-level claims about the target's trajectory and the
-  loop's effectiveness), and Hunch (surface the agent's in-progress guesses about where
+  loop's effectiveness), and Vision (surface the agent's in-progress guesses about where
   the operator is heading and turn them into questions the operator can confirm or
   correct, closing the gap between explicit vision and implicit direction).
   Accompanied by Python tools for trail management and integrity
