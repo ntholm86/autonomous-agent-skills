@@ -35,14 +35,14 @@ These are the exact skills I use daily as software engineer to safely delegate c
 
 ## The Skills Arsenal
 
-| Skill 🛠️ | Reads 📖 | Writes ✍️ | Core Mechanic ⚙️ |
-| :--- | :--- | :--- | :--- |
-| 🛡️ **[Intent](./intent/SKILL.md)** | `vision.md`, `retrospect.md`, `log.md` | — | Forces interpretation *before* execution. |
-| 👁️ **[Vision](./vision/SKILL.md)** | `log.md`, `retrospect.md` | `vision.md` (with user) | Surfaces implicit guesses about the destination. |
-| ⚔️ **[Improve](./improve/SKILL.md)** | `vision.md`, `retrospect.md`, `log.md` | *(Target codebase)* | Runs a TPS-inspired examine/challenge/decide loop. |
-| 🧪 **[Probe](./probe/SKILL.md)** | *(Target codebase)* | — | Injects structurally similar but distinct scenarios. |
-| 📜 **[Trail](./trail/SKILL.md)** | — | `log.md`, `sessions/` | Logs every decision, discarded alternative, and rationale. |
-| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| `vision.md`, `log.md`, `sessions/` | `retrospect.md` | Steps back to read the full history and re-orients the loop. |
+| Skill 🛠️ | Problem ⚠️ | Solution ✅ |
+| :--- | :--- | :--- |
+| 🛡️ **[Intent](./intent/SKILL.md)** | The Agent Built the Wrong Thing | Forces interpretation *before* execution. |
+| 👁️ **[Vision](./vision/SKILL.md)** | The destination feels thin or unclear | Surfaces implicit guesses about the destination. |
+| ⚔️ **[Improve](./improve/SKILL.md)** | The Loop Lacks Discipline | Runs a TPS-inspired examine/challenge/decide loop making one high-leverage change. |
+| 🧪 **[Probe](./probe/SKILL.md)** | The Agent is Pattern-Matching | Injects structurally similar but distinct scenarios to test reasoning. |
+| 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every decision, discarded alternative, and rationale. |
+| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The Agent Drifted Over Time | Steps back to read the full history and re-orients the loop. |
 
 ## The Workflow
 
