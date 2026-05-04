@@ -18,10 +18,10 @@ These are the exact skills I use daily as software engineer to safely delegate c
 **The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
 **The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
 
-### #3: The Agent is Pattern-Matching, Not Thinking
+### #3: The Agent is Parroting, Not Thinking
 
-**The Failure Mode:** You suspect the agent is just copy-pasting standard boilerplate instead of reasoning about your specific constraints.
-**The Solution:** Probe injects two structurally similar but materially different scenarios. If the agent gives the exact same response, you immediately know it's failing to reason autonomously.
+**The Failure Mode:** You suspect the agent isn't actually thinking—it's just regurgitating standard boilerplate or blindly complying without grasping your specific constraints.
+**The Solution:** Probe forces the agent into a "spot the difference" test. It injects two scenarios that look identical but have a hidden, critical difference. If the agent gives the same generic answer to both, it fails the test.
 
 ### #4: The Work is Unauditable
 
@@ -40,7 +40,7 @@ These are the exact skills I use daily as software engineer to safely delegate c
 | 🛡️ **[Intent](./intent/SKILL.md)** | The agent did what you said - not what you meant | Forces the agent to understand the intent behind the prompt |
 | 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision | The agent will read your mind and uncover and articulate your vision |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
-| 🧪 **[Probe](./probe/SKILL.md)** | The Agent is Pattern-Matching | Injects structurally similar but distinct scenarios to test reasoning. |
+| 🧪 **[Probe](./probe/SKILL.md)** | The agent is parroting, not thinking | Forces a "spot the difference" test to prove the agent is actually reasoning |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every decision, discarded alternative, and rationale. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The Agent Drifted Over Time | Steps back to read the full history and re-orients the loop. |
 
