@@ -6,6 +6,17 @@ When an AI agent runs without constraints, it creates massive technical debt. Th
 
 These are the exact skills I use daily as software engineer to safely delegate complex goals to AI agents.
 
+## The Skills Arsenal
+
+| Skill 🛠️ | Problem ⚠️ | Solution ✅ |
+| :--- | :--- | :--- |
+| 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
+| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because its in your head | The agent will read your mind, uncover your vision and produce vision.md that other skills will see |
+| ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
+| 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
+| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
+| 🧪 **[Probe](./probe/SKILL.md)** | Measure Autonomous Reasoning Fidelity | Forces a "spot the difference" test to prove the agent is actually reasoning |
+
 ## Why These Skills Exist
 
 ### #1: The Agent Built the Wrong Thing
@@ -32,17 +43,6 @@ These are the exact skills I use daily as software engineer to safely delegate c
 
 **The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste. They fire off scattered changes without a cohesive strategy.
 **The Solution:** Improve runs a disciplined, iterative improvement loop (examine-challenge-decide-act-reflect). It explicitly questions the code and learns from the context, ensuring exactly one high-leverage change is made per iteration.
-
-## The Skills Arsenal
-
-| Skill 🛠️ | Problem ⚠️ | Solution ✅ |
-| :--- | :--- | :--- |
-| 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
-| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - its only in your head | The agent will read your mind, uncover your vision and use it in the other skills |
-| ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
-| 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
-| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
-| 🧪 **[Probe](./probe/SKILL.md)** | Measure Autonomous Reasoning Fidelity | Forces a "spot the difference" test to prove the agent is actually reasoning |
 
 ## The Workflow
 
