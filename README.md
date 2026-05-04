@@ -35,14 +35,14 @@ These are the exact skills I use daily as software engineer to safely delegate c
 
 ## The Skills Arsenal
 
-| Skill 🛠️ | Reads / Writes 📂 | Core Mechanic ⚙️ | Tactical Advantage 🎯 |
-| :--- | :--- | :--- | :--- |
-| 🛡️ **[Intent](./intent/SKILL.md)** | **Reads:** `vision.md`, `retrospect.md`, `log.md`<br>**Writes:** — | Forces interpretation *before* execution. | Intercepts misaligned assumptions at step zero. |
-| 👁️ **[Vision](./vision/SKILL.md)** | **Reads:** `log.md`, `retrospect.md`<br>**Writes:** `vision.md` (with user) | Surfaces implicit guesses about the destination. | Prevents the loop from drifting over long sessions. |
-| ⚔️ **[Improve](./improve/SKILL.md)** | **Reads:** `vision.md`, `retrospect.md`, `log.md`<br>**Writes:** *(Target codebase)* | Runs a TPS-inspired examine/challenge/decide loop. | Ensures exactly *one* high-leverage change per iteration. |
-| 🧪 **[Probe](./probe/SKILL.md)** | **Reads:** *(Target codebase)*<br>**Writes:** — | Injects structurally similar but distinct scenarios. | Catches shallow pattern-matching and tests reasoning fidelity. |
-| 📜 **[Trail](./trail/SKILL.md)** | **Reads:** —<br>**Writes:** `log.md`, `sessions/` | Logs every decision, discarded alternative, and rationale.| Makes every autonomous action fully auditable and observable. |
-| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| **Reads:** `vision.md`, `log.md`, `sessions/`<br>**Writes:** `retrospect.md` | Steps back to read the full history and re-orients the loop. | Breaks local-maxima loops and connects back to the strategy. |
+| Skill 🛠️ | Reads 📖 | Writes ✍️ | Core Mechanic ⚙️ | Tactical Advantage 🎯 |
+| :--- | :--- | :--- | :--- | :--- |
+| 🛡️ **[Intent](./intent/SKILL.md)** | `vision.md`, `retrospect.md`, `log.md` | — | Forces interpretation *before* execution. | Intercepts misaligned assumptions at step zero. |
+| 👁️ **[Vision](./vision/SKILL.md)** | `log.md`, `retrospect.md` | `vision.md` (with user) | Surfaces implicit guesses about the destination. | Prevents the loop from drifting over long sessions. |
+| ⚔️ **[Improve](./improve/SKILL.md)** | `vision.md`, `retrospect.md`, `log.md` | *(Target codebase)* | Runs a TPS-inspired examine/challenge/decide loop. | Ensures exactly *one* high-leverage change per iteration. |
+| 🧪 **[Probe](./probe/SKILL.md)** | *(Target codebase)* | — | Injects structurally similar but distinct scenarios. | Catches shallow pattern-matching and tests reasoning fidelity. |
+| 📜 **[Trail](./trail/SKILL.md)** | — | `log.md`, `sessions/` | Logs every decision, discarded alternative, and rationale. | Makes every autonomous action fully auditable and observable. |
+| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| `vision.md`, `log.md`, `sessions/` | `retrospect.md` | Steps back to read the full history and re-orients the loop. | Breaks local-maxima loops and connects back to the strategy. |
 
 ## Quickstart
 
