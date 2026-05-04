@@ -28,10 +28,10 @@ These are the exact skills I use daily as software engineer to safely delegate c
 **The Failure Mode:** The agent modified dozens of files. You have no idea why it chose one implementation over another, making it impossible to confidently take ownership of the code.
 **The Solution:** Trail enforces observable autonomy. Every decision, rationale, and discarded alternative is appended to a readable .trail/log.md. If it isn't logged, it didn't happen.
 
-### #5: The Loop Lacks Discipline
+### #5: The Agent Makes Superficial Edits
 
-**The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste.
-**The Solution:** Improve runs a rigorous, TPS-inspired cycle (examine-challenge-decide-act-reflect). It explicitly looks for waste and inconsistency, ensuring exactly one high-leverage change is made per iteration.
+**The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste. They fire off scattered changes without a cohesive strategy.
+**The Solution:** Improve runs a disciplined, iterative improvement loop (examine-challenge-decide-act-reflect). It explicitly questions the code and learns from the context, ensuring exactly one high-leverage change is made per iteration.
 
 ## The Skills Arsenal
 
@@ -39,7 +39,7 @@ These are the exact skills I use daily as software engineer to safely delegate c
 | :--- | :--- | :--- |
 | 🛡️ **[Intent](./intent/SKILL.md)** | The agent did what you said - not what you meant | Forces the agent to understand the intent behind the prompt |
 | 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision | The agent will read your mind and uncover and articulate your vision |
-| ⚔️ **[Improve](./improve/SKILL.md)** | The Loop Lacks Discipline | Runs a TPS-inspired examine/challenge/decide loop making one high-leverage change. |
+| ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 🧪 **[Probe](./probe/SKILL.md)** | The Agent is Pattern-Matching | Injects structurally similar but distinct scenarios to test reasoning. |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every decision, discarded alternative, and rationale. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The Agent Drifted Over Time | Steps back to read the full history and re-orients the loop. |
