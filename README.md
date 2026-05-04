@@ -1,8 +1,8 @@
 # Autonomous Development Skills Suite
 
-Six composable skills for AI agents that prioritize verifiable engineering over unchecked automation.
+Six skills that make your AI agent show its work, so you stay in control of your codebase.
 
-When an autonomous agent runs without constraints, it builds up technical debt at lightspeed. These skills are designed to keep the AI's execution observable, intentional, and strictly aligned with your codebase's actual needs.
+When an AI agent runs without constraints, it creates technical debt at lightspeed. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
 
 These are the exact skills I use daily as a senior software engineer to safely delegate complex goals to AI agents.
 
@@ -36,7 +36,8 @@ These are the exact skills I use daily as a senior software engineer to safely d
 ## Quickstart
 
 1. Read [INSTALLING.md](./INSTALLING.md) for configuration instructions.
-2. Copy the skill directories (intent/, improve/, probe/, 	rail/, etrospect/, and hunch/) into your repository's .copilot/skills/ folder.
+2. Copy the skill directories (intent/, improve/, probe/, 	rail/, 
+etrospect/, and hunch/) into your repository's .copilot/skills/ folder.
 3. Start assigning verifiable, autonomous tasks.
 
 ## Reference
