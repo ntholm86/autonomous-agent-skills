@@ -37,12 +37,12 @@ These are the exact skills I use daily as software engineer to safely delegate c
 
 | Skill 🛠️ | Problem ⚠️ | Solution ✅ |
 | :--- | :--- | :--- |
-| 🛡️ **[Intent](./intent/SKILL.md)** | The agent did what you said - not what you meant | Forces the agent to understand the intent behind the prompt |
-| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision | The agent will read your mind and uncover and articulate your vision |
+| 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
+| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - its only in your head | The agent will read your mind and uncover your vision. |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
-| 🧪 **[Probe](./probe/SKILL.md)** | The agent is parroting, not thinking | Forces a "spot the difference" test to prove the agent is actually reasoning |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
+| 🧪 **[Probe](./probe/SKILL.md)** | Measure Autonomous Reasoning Fidelity | Forces a "spot the difference" test to prove the agent is actually reasoning |
 
 ## The Workflow
 
