@@ -2,9 +2,9 @@
 
 Six skills that make your AI agent show its work, so you stay in control of your codebase.
 
-When an AI agent runs without constraints, it creates technical debt at lightspeed. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
+When an AI agent runs without constraints, it creates massive technical debt. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
 
-These are the exact skills I use daily as a senior software engineer to safely delegate complex goals to AI agents.
+These are the exact skills I use daily as software engineer to safely delegate complex goals to AI agents.
 
 ## Why These Skills Exist
 
@@ -32,6 +32,17 @@ These are the exact skills I use daily as a senior software engineer to safely d
 
 **The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste.
 **The Solution:** Improve runs a rigorous, TPS-inspired cycle (examine-challenge-decide-act-reflect). It explicitly looks for waste and inconsistency, ensuring exactly one high-leverage change is made per iteration.
+
+## The Skills Arsenal
+
+| Skill 🛠️ | Role 🎭 | Core Mechanic ⚙️ | Tactical Advantage 🎯 |
+| :--- | :--- | :--- | :--- |
+| 🛡️ **[Intent](./intent/SKILL.md)** | **The Vanguard** | Forces interpretation *before* execution. | Intercepts misaligned assumptions at step zero. |
+| 👁️ **[Vision](./vision/SKILL.md)** | **The Oracle** | Surfaces implicit guesses about the destination. | Prevents the loop from drifting over long sessions. |
+| ⚔️ **[Improve](./improve/SKILL.md)** | **The Striker** | Runs a TPS-inspired examine/challenge/decide loop. | Ensures exactly *one* high-leverage change per iteration. |
+| 🧪 **[Probe](./probe/SKILL.md)** | **The Inquisitor**| Injects structurally similar but distinct scenarios. | Catches shallow pattern-matching and tests reasoning fidelity. |
+| 📜 **[Trail](./trail/SKILL.md)** | **The Archivist** | Logs every decision, discarded alternative, and rationale.| Makes every autonomous action fully auditable and observable. |
+| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| **The Tactician** | Steps back to read the full history and re-orients the loop. | Breaks local-maxima loops and connects back to the strategy. |
 
 ## Quickstart
 
