@@ -44,6 +44,15 @@ These are the exact skills I use daily as software engineer to safely delegate c
 | 📜 **[Trail](./trail/SKILL.md)** | — | `log.md`, `sessions/` | Logs every decision, discarded alternative, and rationale. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| `vision.md`, `log.md`, `sessions/` | `retrospect.md` | Steps back to read the full history and re-orients the loop. |
 
+## The Workflow
+
+*Note: All skills automatically invoke `trail` in the background to capture evidence.*
+
+1. **Set the Target:** Run `vision` first to determine the destination before starting work.
+2. **Execute:** Run `improve` for X amount of iterations until you reach a plateau.
+3. **Reflect:** Run `retrospect` to evaluate the entire loop history and reflect on progress.
+4. **Validate:** Run `probe` to prove Autonomous Reasoning Fidelity (ARF) and ensure the agent lives up to the principles.
+
 ## Quickstart
 
 1. Read [INSTALLING.md](./INSTALLING.md) for configuration instructions.
