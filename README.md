@@ -37,7 +37,7 @@ These are the exact skills I use daily as software engineer to safely delegate c
 
 | Skill 🛠️ | Problem ⚠️ | Solution ✅ |
 | :--- | :--- | :--- |
-| 🛡️ **[Intent](./intent/SKILL.md)** | The Agent Built the Wrong Thing | Forces interpretation *before* execution. |
+| 🛡️ **[Intent](./intent/SKILL.md)** | The agent did what you said - not what you meant | Forces the agent to understand the intent behind the prompt |
 | 👁️ **[Vision](./vision/SKILL.md)** | The destination feels thin or unclear | Surfaces implicit guesses about the destination. |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The Loop Lacks Discipline | Runs a TPS-inspired examine/challenge/decide loop making one high-leverage change. |
 | 🧪 **[Probe](./probe/SKILL.md)** | The Agent is Pattern-Matching | Injects structurally similar but distinct scenarios to test reasoning. |
