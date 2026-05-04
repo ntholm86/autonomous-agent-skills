@@ -1,5 +1,10 @@
 # Changelog
 
+## v3.17.4 — 2026-05-04
+
+### Changed
+- `.zenodo.json` — full description rewrite. Problem-first structure: accountability under capability asymmetry, the two broken stances, the central question ("what does it take to safely delegate?"). Three principles stated as architectural constraints with their rationale, not as a feature list. Skills presented as the implementation of those constraints, not as a catalogue.
+
 ## v3.17.3 — 2026-05-03
 
 ### Changed
