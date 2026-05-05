@@ -1,37 +1,21 @@
 # retrospect.md — autonomous-agent-skills
 
-_Last updated: 2026-05-04 (run: plain-english-and-terminology-unification-arc)_
-_Derived from: Full arc read covering the transition of marketing copy (zenodo/readme) to plain English, and the mechanical renaming of hunch->vision and compass->retrospect.md across the entire repository._
-
----
+_Last updated: 2026-05-05 (run: run-retrospect-mitigations)_
 
 ## Current claims
 
-**1. The suite's terminology is now mechanically aligned with the practitioner's natural conceptual model.**
-The transition from compass.md to etrospect.md and from hunch to ision explicitly connects the mechanism to the outcome. By standardizing these terms across all tools, scripts, and documentation, the cognitive load for a new developer attempting to adopt the loop is significantly reduced. This formally closes the gap where the suite used proprietary names for universal concepts.
-
-**2. The public-facing proposition has moved from academic framing to concrete pain-point resolution.**
-The updates to README.md and .zenodo.json structurally reorganized the selling point around "The Failure Mode" and "The Solution" using plain English. It removes jargon like "vibe coding" and "verifiable engineering" in favor of direct descriptions of agent failure modes (drifting, unauditable messes, pattern-matching). The repository is now optimized for Phase 3: Developer Recognition.
-
-**3. Phase 1 (vision convergence) mechanism fires correctly but still awaits a truly cold context.**
-The occasion-independence mechanisms continue to operate correctly on primed trails. However, the exact behavior of the Vision skill initiating on a fully unprimed, cold codebase (no prior trail, no prior configuration) remains the necessary next proof point.
-
-**4. External proof on an unfamiliar codebase remains the primary structural gap.**
-A run on a codebase the operator did not build remains unfulfilled. While the suite has successfully cleaned up internal consistency and copy, and tested successfully against dormat repos like vectorium (authored by the operator), true adoption success evidence relies on proving the loop finds issues when the operator has zero prior context.
-
-**5. Trail enforcement verification remains structurally sound.**
-Verify.py continues to enforce session files and metadata correctly, proving robust despite across-the-board renaming and global search-and-replace runs that modified the artifact formats. Observable Autonomy remains unbroken.
-
----
+- The suite has established a robust architectural defense against the LLM post-hoc rationalization threat via five integrated mitigations, achieved without expanding the 5-skill taxonomy.
+- Tooling alignment is complete: the `tools/record.py` stub generator actively enforces the Pre-commit prediction (Mitigation #1), permanently scaffolding it into daily developer workflows.
+- The mitigation protocols (Writer Split, Adversarial Audit) currently rely heavily on operator invocation. The framework does not yet proactively self-trigger high-fidelity or adversarial modes without external prompting.
+- The recent implementation arc contains zero reversals or dead ends. Under the newly established Reversal Density metric (Mitigation #3), this unbroken success is treated as an anomaly that warrants adversarial probing to confirm it is not localized compliance smoothing over underlying complexity.
 
 ## What the next runs should test
 
-1. **External proof (unfamiliar codebase)** — Run the protocol on a codebase the operator has explicitly never seen or contributed to.
-2. **Phase 1 occasion-independence (cold case)** — Attempt a fresh run on a completely unprimed codebase to see if the Vision skill behaves correctly without prompt injection.
-3. **End-to-End Practitioner Adoption Test** — With plain English applied to the README and Zenodo, the repo should be handed to an independent engineer to trace initial setup friction.
-
----
+- Trigger `retrospect` in Adversarial Audit Mode against a long, ambiguous historical trail to verify the model can actually detect contradictions and rationalizations in practice.
+- Validate Autonomous Reasoning Fidelity using the `probe` skill, explicitly testing if an agent will refuse to write a post-hoc trail if the prediction block was bypassed or manipulated.
 
 ## Loop-effectiveness notes
 
-The recent arc shows a highly effective response to human-directed correction of marketing copy and terminology standardization. The loop demonstrated the capacity to perform dangerous global substitutions (renaming core conceptual artifacts like compass ? etrospect.md and hunch ? ision) without breaking the tooling or verification scripts. The structural ability to rewrite its own operating rules iteratively is strongly confirmed. The next leap in evidence value cannot be gained by further internal polish; the loop must now look outward to external codebases to prove applicability.
+- The loop demonstrated strong architectural protection by rejecting the instinct to create an `audit` skill, choosing instead to embed the requirements structurally into existing protocols.
+- The addition of the Prediction block is having immediate effects. Recent log entries exhibit a clear anchoring constraint where the agent states its expectations before executing, making the success mapping verifiable instead of rhetorical.
+
