@@ -21,7 +21,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
-| 🧪 **[Probe](./probe/SKILL.md)** | Measure Autonomous Reasoning Fidelity | Forces a "spot the difference" test to prove the agent is actually reasoning |
+| 🧪 **[Probe](./probe/SKILL.md)** | Measure [Autonomous Reasoning Fidelity](https://github.com/ntholm86/autonomous-agent-principles/blob/v1.0.0/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) | Forces a "spot the difference" test to prove the agent is actually reasoning |
 
 ## Why These Skills Exist
 
