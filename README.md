@@ -68,7 +68,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 3. Start assigning verifiable, autonomous tasks.
 
 ## Reference
-- **Convergence:** The agent loop converges only when 3 independent models (e.g., Claude, Grok, Gemini) confirm no further improvements exist.
+- **Convergence:** The agent loop converges only when 3 independent models (e.g., Claude, Gpt, Gemini) confirm no further improvements exist.
 - **Principles:** Built on the [Autonomous Agent Principles](https://github.com/ntholm86/autonomous-agent-principles).
 - **Verify:** Run `python verify.py` to validate your evidence trail.
 
