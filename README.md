@@ -21,7 +21,10 @@ If the loop can't improve itself, the claim that it improves anything else is em
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
-| 🧪 **[Probe](./probe/SKILL.md)** | Measure [Autonomous Reasoning Fidelity](https://github.com/ntholm86/autonomous-agent-principles/blob/v1.0.0/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) | Forces a "spot the difference" test to prove the agent is actually reasoning |
+
+### Validation skill
+
+🧪 **[Probe](./probe/SKILL.md)** — included for research and validation use. Constructs a "spot the difference" test to measure whether the agent is genuinely reasoning or pattern-matching. Used to validate [Autonomous Reasoning Fidelity](https://github.com/ntholm86/autonomous-agent-principles/blob/v1.0.0/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) — not a skill you'd run in daily development.
 
 ## Why These Skills Exist
 
@@ -35,17 +38,12 @@ If the loop can't improve itself, the claim that it improves anything else is em
 **The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
 **The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
 
-### #3: The Agent is Parroting, Not Thinking
-
-**The Failure Mode:** You suspect the agent isn't actually thinking—it's just regurgitating standard boilerplate or blindly complying without grasping your specific constraints.
-**The Solution:** Probe forces the agent into a "spot the difference" test. It injects two scenarios that look identical but have a hidden, critical difference. If the agent gives the same generic answer to both, it fails the test.
-
-### #4: The Work is Unauditable
+### #3: The Work is Unauditable
 
 **The Failure Mode:** The agent modified dozens of files. You have no idea why it chose one implementation over another, making it impossible to confidently take ownership of the code.
 **The Solution:** Trail enforces observable autonomy. Every decision, rationale, and discarded alternative is appended to a readable .trail/log.md. If it isn't logged, it didn't happen.
 
-### #5: The Agent Makes Superficial Edits
+### #4: The Agent Makes Superficial Edits
 
 **The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste. They fire off scattered changes without a cohesive strategy.
 **The Solution:** Improve runs a disciplined, iterative improvement loop (examine-challenge-decide-act-reflect). It explicitly questions the code and learns from the context, ensuring exactly one high-leverage change is made per iteration.
@@ -57,7 +55,6 @@ If the loop can't improve itself, the claim that it improves anything else is em
 1. **Set the Target:** Run `vision` first to determine the destination before starting work.
 2. **Execute:** Run `improve` for X amount of iterations until you reach a plateau.
 3. **Reflect:** Run `retrospect` to evaluate the entire loop history and reflect on progress.
-4. **Validate:** Run `probe` to prove Autonomous Reasoning Fidelity (ARF) and ensure the agent lives up to the principles.
 
 ## Quickstart
 
