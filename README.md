@@ -6,7 +6,7 @@ When an AI agent runs without constraints, it creates massive technical debt. Th
 
 ## The Suite Improved Itself 200+ iterations
 
-The suite ran on itself **200+ times**. Along the way, the it autonomously decided to re-write itself from scratch. Twice.
+The suite ran on itself **200+ times**. Along the way, it autonomously decided to re-write itself from scratch. Twice.
 
 Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/log.md](./.trail/log.md). Earlier iterations are preserved in [archive/v2/TRAIL/](./archive/v2/TRAIL/) (v2) and [archive/v2/v1_archive/](./archive/v2/v1_archive/) (v1).
 
