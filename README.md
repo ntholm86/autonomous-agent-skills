@@ -4,9 +4,9 @@ These are the skills I use daily as software engineer to safely delegate complex
 
 When an AI agent runs without constraints, it creates massive technical debt. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
 
-## Proof: The Suite Improved Itself 200+ iteration
+## Proof: The Suite Improved Itself 200+ iterations
 
-The suite ran on itself **200+ times**. Along the way, the agent decided — autonomously — to re-write itsself from scratch. Twice.
+The suite ran on itself **200+ times**. Along the way, the agent decided — autonomously — to re-write itself from scratch. Twice.
 
 Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/log.md](./.trail/log.md). Earlier iterations are preserved in [archive/v2/TRAIL/](./archive/v2/TRAIL/) (v2) and [archive/v2/v1_archive/](./archive/v2/v1_archive/) (v1).
 
