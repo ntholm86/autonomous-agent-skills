@@ -34,7 +34,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 ## The Skills Get Smarter Over Time
 
-Every run appends to `.trail/log.md` — the agent reads it before acting, so knowledge compounds: it never repeats a rejected approach, and every iteration it understands your codebase more precisely than the last.
+The more you use it, the better it knows your codebase — what failed, what worked, what's already been tried.
 
 ## Why These Skills Exist
 
