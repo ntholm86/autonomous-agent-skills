@@ -12,6 +12,10 @@ The suite ran on itself **200+ times**. Along the way, the agent decided — aut
 
 Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/log.md](./.trail/log.md). Earlier iterations are preserved in [archive/v2/TRAIL/](./archive/v2/TRAIL/) (v2) and [archive/v2/v1_archive/](./archive/v2/v1_archive/) (v1).
 
+> "LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction."
+>
+> — Jie Huang et al., [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) (ICLR 2024)
+
 If the loop can't improve itself, the claim that it improves anything else is empty. It can.
 
 ## The Skills
@@ -33,26 +37,36 @@ If the loop can't improve itself, the claim that it improves anything else is em
 ### #1: The agent did literally exactly what you wrote - not what you meant
 
 **The Failure Mode:** You describe a goal. The agent did litterally exactly what you said - but not what you actually meant.
-**The Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions. 
+**The Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions.
+
+*Rooted in [Commander's Intent](https://en.wikipedia.org/wiki/Commander%27s_intent) (U.S. Army doctrine) · [Coaching Kata](https://www.amazon.com/Toyota-Kata-Managing-Improvement-Adaptiveness/dp/0071635238) (Mike Rother, Toyota Kata) · [Socratic Method](https://plato.stanford.edu/entries/socratic-method/) (Stanford Encyclopedia of Philosophy)*
 
 ### #2: The Agent Drifted Over Time
+
+**The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
+**The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
 
 > "No-one knows exactly what they want."
 >
 > — David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
-
-**The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
-**The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
 
 ### #3: The Work is Unauditable
 
 **The Failure Mode:** The agent modified dozens of files. You have no idea why it chose one implementation over another, making it impossible to confidently take ownership of the code.
 **The Solution:** Trail enforces observable autonomy. Every decision, rationale, and discarded alternative is appended to a readable .trail/log.md. If it isn't logged, it didn't happen.
 
+> "Without data, you're just another person with an opinion."
+>
+> — W. Edwards Deming
+
 ### #4: The Agent Makes Superficial Edits
 
 **The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste. They fire off scattered changes without a cohesive strategy.
 **The Solution:** Improve runs a disciplined, iterative improvement loop (examine-challenge-decide-act-reflect). It explicitly questions the code and learns from the context, ensuring exactly one high-leverage change is made per iteration.
+
+> "Invest in the design of the system every day."
+>
+> — Kent Beck, [Extreme Programming Explained](https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)
 
 ## The Workflow
 
