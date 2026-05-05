@@ -1,6 +1,6 @@
 # Autonomous Development Skills Suite
 
-AI agents forget everything between sessions — and many things within a session. No memory of what was tried. No memory of why a decision was made. No memory of where you were heading. Every new chat starts from zero.
+AI agents forget everything between sessions — and many things within a session. No memory of what was tried. No memory of why a decision was made. No memory of where you were heading. Forgets what it already created.
 
 These five skills fix that. Together they form a **Memory Model** — a persistent layer of context that survives session resets and model swaps. The agent reads it before every run. You read it to stay in control.
 
