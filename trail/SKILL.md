@@ -1,7 +1,7 @@
 ---
 name: trail
-version: 1.10.0
-description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any substantive autonomous work that produces decisions, changes, or findings.'
+version: 1.11.0
+description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any session that produces a decision, realization, or finding — including conversations. There is no such thing as "just conversation" if a decision was made in it.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
 
@@ -240,9 +240,13 @@ A summary written by the audited party is evidence, but it is not independent ev
 
 ## When to write an entry
 
-Every session where substantive work happens. If the work produces decisions, changes, or findings, it produces a log entry. No autonomous session is invisible.
+Every session that produces a decision, realization, or finding. This includes conversations. **There is no such thing as "just conversation" if a decision was made in it.**
+
+The distinction between "doing work" and "having a conversation" is false. A conversation that names a threat, approves a design direction, or rejects an approach is work. If it isn't logged, the next session cannot inherit it. The Memory Model breaks at exactly that boundary.
 
 Write during the session, not after. A trail written from memory compresses and rationalises. The markers belong in context, at the moment the decision or reversal occurs.
+
+If you are unsure whether this session warrants an entry: if a decision was made that the next agent session would need to know about, write the entry. If nothing was decided and nothing was learned, silence is correct.
 
 ### Multi-iteration runs
 
