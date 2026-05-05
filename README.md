@@ -1,5 +1,7 @@
 # Autonomous Development Skills Suite
 
+Five skills that make your AI agent show its work, so you stay in control of your codebase.
+
 These are the skills I use daily as software engineer to safely delegate complex goals to AI agents.
 
 When an AI agent runs without constraints, it creates massive technical debt. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
@@ -59,7 +61,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 ## Quickstart
 
 1. Read [INSTALLING.md](./INSTALLING.md) for configuration instructions.
-2. Copy the skill directories (intent/, vision/, improve/, probe/, trail/, retrospect/) into your repository's .copilot/skills/ folder.
+2. Copy the skill directories (intent/, vision/, improve/, trail/, retrospect/) into your repository's .copilot/skills/ folder.
 3. Start assigning verifiable, autonomous tasks.
 
 ## Reference
