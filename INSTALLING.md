@@ -32,7 +32,7 @@ your-repo/
         SKILL.md
 ```
 
-No sibling files required. Each skill is self-contained as of v3.3.1.
+No sibling files required. Each skill is self-contained.
 
 ---
 
@@ -124,7 +124,9 @@ Append and commit **before** starting the next iteration. A partial run (agent c
 
 ## Using a skill
 
-Once installed, type `/intent`, `/improve`, `/probe` in the Copilot chat to invoke a skill directly. Or just describe your task — skills whose `description` field matches will be suggested automatically.
+Once installed, type the skill name prefixed with `/` in the Copilot chat to invoke it directly. Or just describe your task — skills whose `description` field matches will be suggested automatically.
+
+Available slash commands: `/intent`, `/vision`, `/improve`, `/trail`, `/retrospect`, `/probe`
 
 Example:
 ```

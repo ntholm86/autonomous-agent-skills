@@ -6,9 +6,9 @@ When an AI agent runs without constraints, it creates massive technical debt. Th
 
 These are the exact skills I use daily as software engineer to safely delegate complex goals to AI agents.
 
-## Proof: This Suite Improved Itself
+## Proof: The Suite Improved Itself 200+ iteration
 
-The suite ran on its own itself **200+ times**. Along the way, the agent decided — autonomously — that incremental fixes weren't enough and rewrote the entire suite from scratch. Twice.
+The suite ran on itself **200+ times**. Along the way, the agent decided — autonomously — that incremental fixes weren't enough and rewrote the entire suite from scratch. Twice.
 
 Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/log.md](./.trail/log.md).
 
@@ -19,7 +19,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 | Skill 🛠️ | Problem ⚠️ | Solution ✅ |
 | :--- | :--- | :--- |
 | 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
-| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because its in your head | The agent will read your mind, uncover your vision and produce vision.md and other skills will use it |
+| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because it's in your head | The agent will read your mind, uncover your vision and produce vision.md and other skills will use it |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
@@ -70,7 +70,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 ## Reference
 - **Convergence:** The agent loop converges only when 3 independent models (e.g., Claude, Grok, Gemini) confirm no further improvements exist.
 - **Principles:** Built on the [Autonomous Agent Principles](https://github.com/ntholm86/autonomous-agent-principles).
-- **Verify:** Run python verify.py to validate your evidence trail.
+- **Verify:** Run `python verify.py` to validate your evidence trail.
 
 ## Citation & License
 MIT License.
