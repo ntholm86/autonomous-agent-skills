@@ -1,10 +1,8 @@
 # Autonomous Development Skills Suite
 
-Six skills that make your AI agent show its work, so you stay in control of your codebase.
+These are the skills I use daily as software engineer to safely delegate complex goals to AI agents.
 
 When an AI agent runs without constraints, it creates massive technical debt. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
-
-These are the exact skills I use daily as software engineer to safely delegate complex goals to AI agents.
 
 ## Proof: The Suite Improved Itself 200+ iteration
 
