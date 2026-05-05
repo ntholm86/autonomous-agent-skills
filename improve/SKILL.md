@@ -74,17 +74,17 @@ The third question is the Kaikaku question. If the answer is yes, do not produce
 
 If you find nothing the first read missed, say so. Do not manufacture blind spots to appear thorough.
 
-### 4. Decide
+### 4. Decide and Predict
 
 Pick one of:
 
-- **One incremental change.** The single highest-leverage finding. State why it ranks above the alternatives in one sentence each.
+- **One incremental change.** The single highest-leverage finding. State why it ranks above the alternatives in one sentence each. **Crucially, make a pre-commit prediction:** formulate a falsifiable prediction of what this change will achieve and what will *not* happen, before taking action ("I will change X. I expect Y. I expect Z not to happen.").
 - **Argument for redesign.** A statement of why incremental work won't pay off here, and a sketch of what redesign would look like. Stop and surface the argument; do not redesign without confirmation.
 - **Silence.** Nothing actionable was found. State what was examined and why nothing warranted change. This advances the convergence chain (Principle 3) and is a legitimate outcome.
 
 ### 5. Act (if a change was decided)
 
-Make the change. For each non-trivial step, state what you are about to do and why before doing it. Show the reasoning, not just the diff. After the change, verify it: run tests, check types, re-read the surrounding code to confirm no regression.
+Make the change. For each non-trivial step, state what you are about to do and why before doing it. Show the reasoning, not just the diff. After the change, verify it: run tests, check types, re-read the surrounding code to confirm no regression. Evaluate the actual outcome against the prediction made in Step 4. Observe and document if the prediction held or failed.
 
 If the change introduces a problem, surface it immediately. Half-done work that pretends to be done is worse than no work at all.
 
@@ -125,6 +125,8 @@ For an arc-read that runs outside an improve iteration, use [Retrospect](../retr
 
 *If [Trail](../trail/SKILL.md) is installed, apply it now — it handles this step in full.*
 
+**High-Fidelity Mode (Writer Splitting):** If the highest level of anti-rationalization security is required, the agent running `Improve` DOES NOT write the trail. Instead, it halts here, outputting its diff, prediction, and internal reasoning. A *second, independent agent* must then be invoked to execute the `Trail` skill. This prevents a single agent from post-hoc rationalizing its own decisions.
+
 **In multi-iteration runs, this step executes after every iteration — not once at the end of all iterations.** The trail entry is the commit point for that iteration. Append it, regenerate `history.md`, and commit before starting the next iteration. A user who stops a 10-iteration run after iteration 4 must have 4 committed trail entries, not 0.
 
 If Trail is not installed: create the `.trail/` directory in the target repo root if it does not already exist, then append a single entry to `.trail/log.md` **in the target repo root** (not the skills install directory). The entry must include:
@@ -132,8 +134,8 @@ If Trail is not installed: create the `.trail/` directory in the target repo roo
 - Date, target, operator (if known), model identity (provider + tool-call ID prefix if observable).
 - Your interpretation of the ask.
 - Lenses applied and what each revealed.
-- The decision (incremental, redesign argument, or silence).
-- The change made and verification evidence — or, if silence, a statement of what was examined.
+- The decision (incremental, redesign argument, or silence) and the pre-commit prediction.
+- The change made and verification evidence — including a comparison of the actual outcome versus the prediction — or, if silence, a statement of what was examined.
 - Reflection about the target (per step 6): a falsifiable model-claim, a named blind spot, and an imagined-reader pushback. Across-trail reflection if its triggers fired.
 - Marked moments: `[!DECISION]`, `[!REVERSAL]`, `[!REALIZATION]`.
 

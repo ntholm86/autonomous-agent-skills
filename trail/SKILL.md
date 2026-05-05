@@ -107,9 +107,13 @@ If Intent was applied, paste its narration here.>
 
 [!DECISION] <choice made, rationale, alternatives rejected>
 
+### Prediction
+
+<Falsifiable statement of what the change will achieve and what it will NOT achieve, committed to BEFORE the action.>
+
 ### Action
 
-<What was done. Reasoning shown, not just the diff.>
+<What was done. Reasoning shown, not just the diff. Include the actual outcome compared to the prediction.>
 
 ### Reflection
 
@@ -132,7 +136,7 @@ Insert these inline wherever they occur — inside any section, not only Decisio
 
 **`[!REALIZATION]`** — Something discovered during the work that changed understanding.
 
-**`[!REVERSAL]`** — A decision made and then undone. Reversals are more valuable than decisions — they show the reasoning evolved.
+**`[!REVERSAL]`** — A decision made and then undone. Reversals are more valuable than decisions — they show the reasoning evolved. A healthy trail demonstrates consistent reversal density: a long run of entries lacking `[!REVERSAL]`, `[!REALIZATION]`, or outcome-mismatches should be treated as suspect (likely post-hoc rationalization) rather than celebrated as perfection.
 
 ```markdown
 [!DECISION] Collapsed six skills to two.
@@ -190,9 +194,13 @@ fidelity: reconstructed | verbatim | mixed
 
 <What was looked at. What each lens revealed.>
 
-## Decisions and Realizations
+## Prediction
 
-<Every [!DECISION], [!REALIZATION], and [!REVERSAL] with surrounding reasoning — not just the markers.>
+<The pre-commit expectation of what the changes will achieve.>
+
+## Actions
+
+<What was done, in enough detail to follow without the diff. State whether the actual outcome matched or falsified the predictionrrounding reasoning — not just the markers.>
 
 ## Actions
 
@@ -233,6 +241,7 @@ Mark every session transcript with its fidelity level:
 - **verbatim** — exported directly from the platform. Exact dialogue preserved. Highest trust.
 - **reconstructed** — recreated from memory. Decisions and outcomes reliable; exact wording approximate.
 - **mixed** — verbatim tool outputs with reconstructed narrative.
+- **split-writer** — the Decider and the Writer were two independent agent invocations. The decider made the code changes; the writer evaluated the diff and prediction to write this log. Highest anti-rationalization trust.
 
 A summary written by the audited party is evidence, but it is not independent evidence. Mark it as such.
 

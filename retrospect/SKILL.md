@@ -47,10 +47,19 @@ A scope statement prevents the arc-read from being undirected. It also makes the
 Read `.trail/log.md` **in the target repo root** as a single document about the target — not as a list of past runs. Look for:
 
 - **What has changed, and in what order?** The sequence often reveals a target's actual architecture more clearly than any single snapshot.
+- **Outcome anchoring:** For every claim and prediction made in the trail across the arc, did it actually hold up over subsequent runs? If multiple entries confidently claim improvements (e.g., "reduced complexity") but reality contradicts it, the trail is confabulating per-iteration.
+- **Reversal density:** Identify the ratio of smooth "successes" to reversals and failed predictions. A long unbroken sequence with no `[!REVERSAL]`, `[!REALIZATION]`, or mismatched predictions strongly suggests post-hoc rationalization rather than flawless execution.
 - **Where has attention been concentrated?** Name the specific areas of the target that received the most runs, the most finding-types, the most reversals.
 - **What has been consistently avoided?** Corners the loop never examined are as informative as corners it examined repeatedly.
 - **Which `[!REALIZATION]` markers aged well, and which were later contradicted?** Realizations that got overturned without a matching `[!REVERSAL]` signal the loop was converging on a wrong model.
 - **What is the target becoming?** Not what it was at run 1 — what trajectory does the arc suggest?
+
+### 2b. Adversarial Audit Mode
+
+If invoked explicitly to audit the trail (Mitigation #4), use this lens:
+- **Hunt for rationalizations:** Where does the stated outcome conveniently ignore part of the prediction?
+- **Test the failures:** Is the trail completely green (no reversals)? A trail with no `[!REVERSAL]` or `[!REALIZATION]` markers is mathematically unlikely in complex work and strongly indicates post-hoc LLM confabulation.
+- **Diff vs. Claim:** Do the actual file diffs support the grand claims made in the log entries? 
 
 ### 3. Form arc-claims
 

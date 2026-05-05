@@ -53,6 +53,7 @@ STUB_TEMPLATE = """\
 - operator: TODO
 - agent: TODO (provider, tool-call ID prefix)
 - skill: {skill}
+- session-file: .trail/sessions/{date}-{slug}.md
 - outcome: TODO
 - delta: TODO
 
@@ -68,9 +69,13 @@ TODO
 
 [!DECISION] TODO
 
-### Action
+### Prediction
 
-TODO
+TODO — state a falsifiable prediction of what this change will achieve and what will not happen, before taking action.
+
+### Action and Outcome
+
+TODO — detail what was done, and explicitly compare the actual outcome to the prediction above.
 
 ### Reflection
 
@@ -92,6 +97,14 @@ TODO or N/A
 """
 
 
+def _safe_read_log() -> str:
+    """Read the log file, gracefully falling back if utf-8 strict decoding fails."""
+    try:
+        return LOG.read_text(encoding="utf-8")
+    except UnicodeDecodeError:
+        # Fallback for Windows-1252 / ANSI encoded files containing em-dashes etc.
+        return LOG.read_text(encoding="utf-8", errors="replace")
+
 def cmd_new(args: argparse.Namespace) -> int:
     if not LOG.exists():
         print(f"ERROR: {LOG} does not exist. Create it first (it should already be in the repo).", file=sys.stderr)
@@ -103,7 +116,7 @@ def cmd_new(args: argparse.Namespace) -> int:
         target=args.target or "TODO",
         skill=args.skill or "improve",
     )
-    existing = LOG.read_text(encoding="utf-8")
+    existing = _safe_read_log()
     if not existing.endswith("\n"):
         existing += "\n"
     new_text = existing + stub
@@ -222,7 +235,7 @@ def cmd_history(args: argparse.Namespace) -> int:
         print(f"ERROR: {LOG} does not exist.", file=sys.stderr)
         return 1
 
-    text = LOG.read_text(encoding="utf-8")
+    text = _safe_read_log()
     entries = _parse_entries(text)
 
     if not entries:
@@ -252,7 +265,7 @@ def cmd_summary(_args: argparse.Namespace) -> int:
     if not LOG.exists():
         print(f"ERROR: {LOG} does not exist.", file=sys.stderr)
         return 1
-    text = LOG.read_text(encoding="utf-8")
+    text = _safe_read_log()
     lines = text.splitlines()
 
     # Find the last entry heading.

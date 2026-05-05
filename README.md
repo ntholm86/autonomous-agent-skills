@@ -36,7 +36,11 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 Each skill externalizes what normally only lives inside a single model session — the goal, the destination, the decisions, the arc. Together they form a persistent memory layer that no model reset can erase.
 
-The more you use it, the better it knows your codebase. When you swap from Claude to Gpt to Gemini, the next model picks up the same vision, trail, history. That memory accumulates and is what makes the suite get smarter over time.
+The files (`.trail/log.md`, `.trail/vision.md`, `.trail/retrospect.md`) provide the literal storage, but the interaction of the skills with those files creates **contextual awareness**.
+
+Memory alone is just retrieval; awareness is orientation. Because `Retrospect` reads the arc, `Vision` uncovers the destination, and `Intent` aligns the goal, the suite uses that memory to understand where it is and where it is going.
+
+When you swap from Claude to Gpt to Gemini, the next model picks up this exact orientation. That accumulation is what makes the suite get smarter over time.
 
 ## Why These Skills Exist
 
@@ -111,7 +115,14 @@ Trail logs what the agent *says* it decided. Research shows this is not always t
 >
 > — Yanda Chen et al., [Reasoning Models Don't Always Say What They Think](https://arxiv.org/abs/2505.05410) (2025)
 
-**How this suite partially addresses it:** Trail gives you the agent's *stated* rationale — the same thing a human collaborator provides, and equally worth having. The convergence requirement (three independent model families must agree) reduces the risk that all three are rationalizing in the same unfaithful direction. Probe validates behavioral evidence independently of stated reasoning. No single mechanism is sufficient; the suite uses all three in combination.
+**How this suite mitigates it (The Rationalization Loop Mitigations):** To prevent LLMs from generating post-hoc justifications to fit decisions already made (the core threat identified in the research above), the suite enforces structural constraints:
+1. **Pre-commit prediction (`Improve`, `Trail`):** The agent must record a falsifiable prediction of what a change will and will not achieve *before* acting or observing the actual outcome. 
+2. **Outcome anchoring (`Retrospect`):** Subsequent arc-reads systematically evaluate actual outcomes against those prior pre-commit predictions to expose localized confabulation.
+3. **Reversal density (`Trail`, `Retrospect`):** A uniform, unbroken trail of "successes" is actively flagged as suspect rationalization. True reasoning leaves a trail of reversals, dead ends, and tested predictions.
+4. **Adversarial Audit (`Retrospect`):** A dedicated lens to actively hunt for outcome mismatch and logical discontinuities across the trail history.
+5. **Separating Writer and Decider (`Improve`, `Trail`):** In maximum-trust sequences (High-Fidelity Mode), the agent making the change is procedurally forbidden from writing the final trail for the change, handing off the raw artifact evidence to a second independent evaluator. 
+
+Together, these force the agent to lock its reasoning *before* acquiring evidence, and introduces explicit adversarial structures to break the post-hoc rationalization loop.
 
 ## Citation & License
 MIT License.
