@@ -1,14 +1,16 @@
 # Autonomous Development Skills Suite
 
-These are the skills I use daily as software engineer to safely delegate complex goals to AI agents.
+AI agents forget everything between sessions — and many things within a session. No memory of what was tried. No memory of why a decision was made. No memory of where you were heading. Every new chat starts from zero.
 
-When an AI agent runs without constraints, it creates massive technical debt. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
+These five skills fix that. Together they form a **Memory Model** — a persistent layer of context that survives session resets and model swaps. The agent reads it before every run. You read it to stay in control.
+
+These are the skills I use daily as a software engineer to safely delegate complex goals to AI agents. When an agent runs without constraints, it creates massive technical debt. These skills force it to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
 
 ## The Suite Improved Itself 200+ iterations
 
 The suite ran on itself **200+ times**. Along the way, it autonomously decided to re-write itself from scratch. Twice.
 
-Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/log.md](./.trail/log.md). Earlier iterations are preserved in [archive/v2/TRAIL/](./archive/v2/TRAIL/) (v2) and [archive/v2/v1_archive/](./archive/v2/v1_archive/) (v1).
+Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/log.md](./.trail/log.md).
 
 > "LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction."
 >

@@ -9,6 +9,8 @@ argument-hint: 'The target being worked on (repo, file, system) — used to popu
 
 *The record of what actually happened.*
 
+*Memory Model role: Writes the core of the memory layer — `.trail/log.md`, the append-only record every other skill reads.*
+
 > **Governing principle:** [Observable Autonomy](../PRINCIPLES.md#principle-2-observable-autonomy) — *The degree of autonomy a system deserves is bounded by the degree of transparency it provides.* This skill is how that transparency is produced.
 
 Autonomy without evidence is abdication. When an agent does work autonomously, the question is never "did it do something?" but "can someone who wasn't there reconstruct what happened, why, and whether to trust it?"

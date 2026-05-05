@@ -9,6 +9,8 @@ argument-hint: 'The target and its trail, and optionally the specific arc-questi
 
 *Read the whole arc. See what no single iteration can.*
 
+*Memory Model role: Synthesizes the trail into `.trail/retrospect.md` — the arc-level orientation the next run starts from.*
+
 The Improve loop is optimised for one iteration at a time. Retrospect is optimised for reading all of them at once. Where Improve asks "what should change next?", Retrospect asks "what has been changing, where is the weight of this target actually sitting, and is the loop looking at the right thing?"
 
 Run this skill when an arc-level view is more useful than another low-altitude pass: before declaring convergence, when a pattern of similar findings has emerged, when the operator asks "how are we doing?", or any time you want arc-level understanding without committing to a change.

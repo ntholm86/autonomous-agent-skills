@@ -9,6 +9,8 @@ argument-hint: 'The target to improve, and optionally the concern (correctness, 
 
 *Understand. Examine. Challenge. Decide. Act. Reflect. Record. Or argue convincingly that nothing should change.*
 
+*Memory Model role: Reads the full memory layer before every run; extends it with each iteration's findings.*
+
 This is the only skill you need for most autonomous work. It combines what v2 split into Kaizen (incremental), Kaikaku (radical), and Hansei (reflection) — because in practice the agent should pick which mode the situation calls for, not be told.
 
 ## Governing principles

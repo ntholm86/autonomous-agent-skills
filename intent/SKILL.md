@@ -9,6 +9,8 @@ argument-hint: 'Triggered automatically by any substantive user prompt; can also
 
 *Act on what the user means. Not on what they typed.*
 
+*Memory Model role: Ensures each session is aimed correctly — so the memory accumulates progress, not drift.*
+
 > **Governing principle:** [Commander's Intent](../PRINCIPLES.md#principle-1-commanders-intent) — *Define the destination. Never prescribe the route.* This skill applies that principle in reverse: the user is the commander, the agent is the subordinate, and imprecise prompts are the norm, not the exception.
 
 A prompt is a compressed statement of intent. The user has a destination in mind and has picked words to point at it. Those words are almost always under-specified, occasionally contradictory, and sometimes literally wrong about details the user doesn't care about. An agent that executes the literal text produces technically-correct work that misses the point. An agent that interprets the intent, states the interpretation, and then executes gets to the destination.

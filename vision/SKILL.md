@@ -9,6 +9,8 @@ argument-hint: 'Optionally: the area you want hunches about (a specific concern,
 
 *Say what you are starting to think the human means, before they have to say it again.*
 
+*Memory Model role: Maintains `.trail/vision.md` — the operator-held destination that anchors all other memory.*
+
 This skill exists for one bottleneck the rest of the suite cannot touch: **the operator's articulation cost**. Vision is whatever the human has so far managed to write down. But the human is operating from a much richer interior model — interests, focus, ethics, hunches of their own — most of it implicit. Even they cannot extract it on demand.
 
 Meanwhile the agent has signal the operator never deliberately gave it: what gets emphasised in conversation, what gets pushed back on, what gets re-routed, what makes the operator say "no, more like this." Today that signal evaporates between sessions. Vision keeps it.

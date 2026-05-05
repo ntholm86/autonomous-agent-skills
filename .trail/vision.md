@@ -32,6 +32,22 @@ A load-bearing piece of any answer to that question — and the piece this skill
 
 **Convergence on a particular skill is not convergence on the question.** The question is the longer arc the skills serve. Every claim this repo makes about being "done" must be read against that distinction.
 
+## The Memory Model
+
+AI agents forget everything between sessions — and many things within a session. This is not a bug to be patched. It is the architecture: large language models have no native long-term memory.
+
+The research converged on a named answer: **The Memory Model**. The files `vision.md`, `log.md`, `retrospect.md`, and `sessions/` are not isolated documents. They are one architectural layer — a persistent memory that survives session resets, context window limits, and model swaps. When you switch from Claude to GPT to Gemini, the next model picks up the same destination, the same trail, the same arc. The substrate survives the model change.
+
+Each skill has a defined role in this layer:
+
+- **Intent** — ensures each session is aimed correctly, so the memory accumulates progress rather than drift
+- **Vision** — holds the operator's destination in `vision.md`, the part of memory that only changes by deliberate decision
+- **Trail** — writes the append-only decision record in `log.md`, the core of the memory layer
+- **Improve** — reads the full memory layer before every run; extends it with each iteration's findings
+- **Retrospect** — synthesizes the arc into `retrospect.md`, the orientation the next run starts from
+
+The Memory Model is what makes the convergence requirement meaningful. Three independent model families reasoning over the same persistent memory layer produces genuine agreement. Three models starting from zero each time produces noise.
+
 ## What this repo is for
 
 This repo is **simultaneously the workshop and the proof**. The skills — intent, improve, probe, trail, retrospect — are generic tools meant to make any AI agent's improvement loop better. The honest test is whether they can improve themselves. If they can't, the claim is hollow.
