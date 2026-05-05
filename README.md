@@ -34,11 +34,9 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 ## The Skills Get Smarter Over Time
 
-Every skill automatically appends to `.trail/log.md`. The log is not just an audit trail — it is the agent's memory of your codebase.
+Every skill appends to `.trail/log.md`. Before acting, the agent reads it.
 
-On the first run, the agent knows nothing. By the tenth run it knows the architecture decisions you rejected, the refactors that failed, the patterns that work for this specific project. Each iteration the agent reads the log before acting, so it never repeats a discarded approach and can build on what already worked.
-
-The longer the loop runs on a given codebase, the more precisely it understands it. The skills are not just tools — they are a compounding knowledge system.
+Run 1: the agent knows nothing. Run 10: it knows which refactors failed, which patterns work, which approaches were already rejected. It never repeats a discarded idea — it builds on what already happened. The longer the loop runs on a codebase, the more precisely it understands it.
 
 ## Why These Skills Exist
 
