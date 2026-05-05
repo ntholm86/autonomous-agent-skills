@@ -36,7 +36,7 @@ No sibling files required. Each skill is self-contained.
 
 ---
 
-## Full install (all six skills)
+## Full install (all five skills)
 
 ```
 your-repo/
@@ -48,8 +48,6 @@ your-repo/
         SKILL.md
       improve/
         SKILL.md
-      probe/
-        SKILL.md
       trail/
         SKILL.md
       retrospect/
@@ -59,6 +57,10 @@ your-repo/
 That's it. The skills are plain markdown files — no scripts, no dependencies, nothing to install or execute.
 
 Optionally copy `PRINCIPLES.md` next to the skill folders — the skills reference it but work fully without it (the principles are inlined in each SKILL.md).
+
+### Also included: Probe (research and validation)
+
+`probe/SKILL.md` is included in the repo but is **not part of the daily workflow**. It measures [Autonomous Reasoning Fidelity](https://github.com/ntholm86/autonomous-agent-principles/blob/v1.0.0/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) — useful if you want to validate that the agent is genuinely reasoning and not pattern-matching. Copy it in if you need it; leave it out if you don't.
 
 ---
 
@@ -71,7 +73,6 @@ All skills work with only their own `SKILL.md`. No required sibling files.
 | **intent** | `PRINCIPLES.md` (cross-reference link; content is inlined) |
 | **vision** | `PRINCIPLES.md` |
 | **improve** | `PRINCIPLES.md` |
-| **probe** | `PRINCIPLES.md` |
 | **trail** | nothing — creates `.trail/log.md` on first use |
 | **retrospect** | nothing — reads `.trail/log.md` written by trail |
 
