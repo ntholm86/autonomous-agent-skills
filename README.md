@@ -6,7 +6,7 @@ These are the skills I use daily as software engineer to safely delegate complex
 
 When an AI agent runs without constraints, it creates massive technical debt. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
 
-## Proof: The Suite Improved Itself 200+ iterations
+## The Suite Improved Itself 200+ iterations
 
 The suite ran on itself **200+ times**. Along the way, the agent decided — autonomously — to re-write itself from scratch. Twice.
 
@@ -14,7 +14,7 @@ Convergence was declared only when **three independent evaluators from distinct 
 
 If the loop can't improve itself, the claim that it improves anything else is empty. It can.
 
-## The Skills Arsenal
+## The Skills
 
 | Skill 🛠️ | Problem ⚠️ | Solution ✅ |
 | :--- | :--- | :--- |
@@ -30,12 +30,16 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 ## Why These Skills Exist
 
-### #1: The Agent Built the Wrong Thing
+### #1: The agent did literally exactly what you wrote - not what you meant
 
-**The Failure Mode:** You describe a goal. The agent immediately writes code. Ten minutes later, you review a pull request that completely missed the mark.
-**The Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions.
+**The Failure Mode:** You describe a goal. The agent did litterally exactly what you said - but not what you actually meant.
+**The Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions. 
 
 ### #2: The Agent Drifted Over Time
+
+> "No-one knows exactly what they want."
+>
+> — David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
 
 **The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
 **The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
