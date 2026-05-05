@@ -34,7 +34,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 ## The Skills Get Smarter Over Time
 
-The more you use it, the better it knows your codebase — what failed, what worked, what's already been tried.
+The more you use it, the better it knows your codebase — what failed, what worked, what's already been tried. Every run logs to `.trail/log.md`; the agent reads it before acting.
 
 ## Why These Skills Exist
 
