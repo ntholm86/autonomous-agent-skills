@@ -1,14 +1,12 @@
 # Autonomous Development Skills Suite
 
-Five skills that make your AI agent show its work, so you stay in control of your codebase.
-
 These are the skills I use daily as software engineer to safely delegate complex goals to AI agents.
 
 When an AI agent runs without constraints, it creates massive technical debt. These skills force the AI to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
 
 ## The Suite Improved Itself 200+ iterations
 
-The suite ran on itself **200+ times**. Along the way, the agent decided — autonomously — to re-write itself from scratch. Twice.
+The suite ran on itself **200+ times**. Along the way, the it autonomously decided to re-write itself from scratch. Twice.
 
 Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/log.md](./.trail/log.md). Earlier iterations are preserved in [archive/v2/TRAIL/](./archive/v2/TRAIL/) (v2) and [archive/v2/v1_archive/](./archive/v2/v1_archive/) (v1).
 
@@ -22,8 +20,8 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 | Skill 🛠️ | Problem ⚠️ | Solution ✅ |
 | :--- | :--- | :--- |
-| 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
-| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because it's in your head | The agent will read your mind, uncover your vision and produce vision.md and other skills will use it |
+| 🛡️ **[Intent](./intent/SKILL.md)** | The agent did what you said - not what you meant | Force the agent to understand the intent behind your prompt |
+| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because it's in your head | The agent will read your mind, uncover your vision and produce vision.md that other skills will use |
 | 📜 **[Trail](./trail/SKILL.md)** | The work is unauditable | Logs every autonomous decision made by the agent and the reason behind it |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)** | The agent can't see its own arc | Self-evaluates the progress of all iterations and determines what is next |
