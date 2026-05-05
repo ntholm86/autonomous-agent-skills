@@ -30,23 +30,25 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 🧪 **[Probe](./probe/SKILL.md)** — included for research and validation use. Constructs a "spot the difference" test to measure whether the agent is genuinely reasoning or pattern-matching. Used to validate [Autonomous Reasoning Fidelity](https://github.com/ntholm86/autonomous-agent-principles/blob/v1.0.0/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) — not a skill you'd run in daily development.
 
-## Meta-learning - The Skills Get Smarter Over Time
+## The Memory Model
 
-The more you use it, the better it knows your codebase. Every run logs to `.trail/log.md`; the agent reads it before acting. The log is both audit-trail and memory.
+Each skill externalizes what normally only lives inside a single model session — the goal, the destination, the decisions, the arc. Together they form a persistent memory layer that no model reset can erase.
+
+The more you use it, the better it knows your codebase. When you swap from Claude to Gpt to Gemini, the next model picks up the same vision, trail, history. That memory accumulates and is what makes the suite get smarter over time.
 
 ## Why These Skills Exist
 
 ### #1: INTENT - The agent did what you wrote - not what you meant
 
-**The Failure Mode:** The agent did literally exactly what you wrote - word-by-word - not what you actually meant.
-**The Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions.
+**Problem:** The agent did literally exactly what you wrote - word-by-word - not what you actually meant.
+**Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions.
 
 *Rooted in [Commander's Intent](https://en.wikipedia.org/wiki/Commander%27s_intent) (U.S. Army doctrine) · [Coaching Kata](https://www.amazon.com/Toyota-Kata-Managing-Improvement-Adaptiveness/dp/0071635238) (Mike Rother, Toyota Kata) · [Socratic Method](https://plato.stanford.edu/entries/socrates/) (Stanford Encyclopedia of Philosophy)*
 
 ### #2: VISION - The Agent Drifted Over Time
 
-**The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
-**The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
+**Problem:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
+**Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
 
 > "No-one knows exactly what they want."
 >
@@ -54,8 +56,8 @@ The more you use it, the better it knows your codebase. Every run logs to `.trai
 
 ### #3: TRAIL - The Work is Unauditable
 
-**The Failure Mode:** The agent modified dozens of files. You have no idea why it chose one implementation over another, making it impossible to confidently take ownership of the code.
-**The Solution:** Trail enforces observable autonomy. Every decision, rationale, and discarded alternative is appended to a readable .trail/log.md. If it isn't logged, it didn't happen.
+**Problem:** The agent modified dozens of files. You have no idea why it chose one implementation over another, making it impossible to confidently take ownership of the code.
+**Solution:** Trail enforces observable autonomy. Every decision, rationale, and discarded alternative is appended to a readable .trail/log.md. If it isn't logged, it didn't happen.
 
 > "Without data, you're just another person with an opinion."
 >
@@ -63,8 +65,8 @@ The more you use it, the better it knows your codebase. Every run logs to `.trai
 
 ### #4: IMPROVE - The Agent Makes Superficial Edits
 
-**The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste. They fire off scattered changes without a cohesive strategy.
-**The Solution:** Improve runs a disciplined, iterative improvement loop (examine-challenge-decide-act-reflect). It explicitly questions the code and learns from the context, ensuring exactly one high-leverage change is made per iteration.
+**Problem:** The agent edits what's easy. Typos, whitespace, obvious renames, writes tests. The real problems — stay untouched.
+**Solution:** Improve is the workhorse of this suite. Point it at any target and run it repeatedly. Each iteration: it examines what's there, challenges its own first instinct, makes exactly one high-leverage change, and reflects. It reads the full memory suite before every run — so it never wastes an iteration on something already tried.
 
 > "Invest in the design of the system every day."
 >
@@ -72,8 +74,8 @@ The more you use it, the better it knows your codebase. Every run logs to `.trai
 
 ### #5: RETROSPECT - The Agent Can't See Its Own Arc
 
-**The Failure Mode:** After 50 iterations, the agent has been diligently improving — but nobody stepped back to ask whether those 50 iterations were solving the right problem. Each step looked locally optimal. The overall arc drifted.
-**The Solution:** Retrospect reads the entire trail history as a single document and forms arc-level claims: what is the target becoming, where has the loop's attention been, and is that where the real weight lies? It surfaces what no individual iteration would reveal.
+**Problem:** After 50 iterations, the agent has been diligently improving — but nobody stepped back to ask whether those 50 iterations were solving the right problem. Each step looked locally optimal. The overall arc drifted.
+**Solution:** Retrospect reads the entire trail history as a single document and forms arc-level claims: what is the target becoming, where has the loop's attention been, and is that where the real weight lies? It surfaces what no individual iteration would reveal.
 
 > "Life can only be understood backwards; but it must be lived forwards."
 >
