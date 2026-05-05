@@ -36,13 +36,15 @@ No sibling files required. Each skill is self-contained as of v3.3.1.
 
 ---
 
-## Full install (all five skills)
+## Full install (all six skills)
 
 ```
 your-repo/
   .copilot/
     skills/
       intent/
+        SKILL.md
+      vision/
         SKILL.md
       improve/
         SKILL.md
@@ -62,14 +64,16 @@ Optionally copy `PRINCIPLES.md` next to the skill folders — the skills referen
 
 ## What each skill needs at runtime
 
-All four skills work with only their own `SKILL.md`. No required sibling files.
+All skills work with only their own `SKILL.md`. No required sibling files.
 
 | Skill | Optional sibling files |
 |---|---|
 | **intent** | `PRINCIPLES.md` (cross-reference link; content is inlined) |
+| **vision** | `PRINCIPLES.md` |
 | **improve** | `PRINCIPLES.md` |
 | **probe** | `PRINCIPLES.md` |
 | **trail** | nothing — creates `.trail/log.md` on first use |
+| **retrospect** | nothing — reads `.trail/log.md` written by trail |
 
 ---
 
@@ -86,7 +90,9 @@ After every run that adds an entry to `log.md`, regenerate the readable summary 
 ```
 python <skills>/tools/record.py history --write    # writes .trail/history.md
 ```
-Replace `<skills>` with your skills install path (e.g. `~/.copilot/skills`).
+Replace `<skills>` with your skills install path.
+- Windows example: `C:\Users\you\.copilot\skills\tools\record.py`
+- macOS/Linux example: `~/.copilot/skills/tools/record.py`
 
 For ad-hoc viewing:
 ```
@@ -95,6 +101,12 @@ python <skills>/tools/record.py summary    # digest of the most recent run
 ```
 
 Commit `.trail/log.md` and `.trail/history.md`. **Do not** commit `record.py` to the target repo — it lives in the skills install only.
+
+### What the scripts actually do
+
+**`tools/record.py`** — writes trail entries into `.trail/log.md` in the current working directory (or `$TRAIL_ROOT` if set). It never reads or modifies anything outside that folder. No network calls. Three subcommands: `new` (append a blank entry stub), `summary` (print the latest entry), `history` (print a timeline of all runs).
+
+**`verify.py`** — read-only audit. It reads `.trail/log.md` and checks formatting, date ordering, required metadata fields, and that all referenced session files exist. It writes nothing and makes no network calls. Exit 0 = all checks pass, exit 1 = something is wrong.
 
 ### Multi-iteration runs
 

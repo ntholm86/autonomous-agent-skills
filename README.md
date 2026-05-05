@@ -19,7 +19,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 | Skill 🛠️ | Problem ⚠️ | Solution ✅ |
 | :--- | :--- | :--- |
 | 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
-| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because its in your head | The agent will read your mind, uncover your vision and produce vision.md that other skills will see |
+| 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because its in your head | The agent will read your mind, uncover your vision and produce vision.md and other skills will use it |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
 | 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
 | 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
@@ -64,8 +64,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 ## Quickstart
 
 1. Read [INSTALLING.md](./INSTALLING.md) for configuration instructions.
-2. Copy the skill directories (intent/, improve/, probe/, 	rail/, 
-retrospect/, and vision/) into your repository's .copilot/skills/ folder.
+2. Copy the skill directories (intent/, vision/, improve/, probe/, trail/, retrospect/) into your repository's .copilot/skills/ folder.
 3. Start assigning verifiable, autonomous tasks.
 
 ## Reference
