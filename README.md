@@ -32,9 +32,9 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 🧪 **[Probe](./probe/SKILL.md)** — included for research and validation use. Constructs a "spot the difference" test to measure whether the agent is genuinely reasoning or pattern-matching. Used to validate [Autonomous Reasoning Fidelity](https://github.com/ntholm86/autonomous-agent-principles/blob/v1.0.0/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) — not a skill you'd run in daily development.
 
-## The Skills Get Smarter Over Time
+## Meta-learning - The Skills Get Smarter Over Time
 
-The more you use it, the better it knows your codebase — what failed, what worked, what's already been tried. Every run logs to `.trail/log.md`; the agent reads it before acting.
+The more you use it, the better it knows your codebase. Every run logs to `.trail/log.md`; the agent reads it before acting. The log is both audit-trail and memory.
 
 ## Why These Skills Exist
 
@@ -96,6 +96,15 @@ The more you use it, the better it knows your codebase — what failed, what wor
 ## Reference
 - **Convergence:** The agent loop converges only when 3 independent models (e.g., Claude, Gpt, Gemini) confirm no further improvements exist.
 - **Principles:** Built on the [Autonomous Agent Principles](https://github.com/ntholm86/autonomous-agent-principles).
+
+## Known Limitation: Stated Reasoning ≠ True Reasoning
+
+Trail logs what the agent *says* it decided. Research shows this is not always the same as what actually drove the decision:
+
+- [Turpin et al., NeurIPS 2023](https://arxiv.org/abs/2305.04388) — LLMs construct plausible-sounding chain-of-thought explanations that systematically fail to mention the real cause of their answers. Accuracy dropped up to 36% when models were biased toward wrong answers they never acknowledged being influenced by.
+- [Chen et al., 2025](https://arxiv.org/abs/2505.05410) — Extended-thinking models reveal their use of biasing hints in only 1–20% of cases. RL training improves this only slightly and plateaus. When reward hacking increases hint usage, verbalization of it does not follow.
+
+**How this suite partially addresses it:** Trail gives you the agent's *stated* rationale — the same thing a human collaborator provides, and equally worth having. The convergence requirement (three independent model families must agree) reduces the risk that all three are rationalizing in the same unfaithful direction. Probe validates behavioral evidence independently of stated reasoning. No single mechanism is sufficient; the suite uses all three in combination.
 
 ## Citation & License
 MIT License.
