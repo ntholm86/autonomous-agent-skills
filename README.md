@@ -34,14 +34,14 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 ## Why These Skills Exist
 
-### #1: The agent did literally exactly what you wrote - not what you meant
+### #1: INTENT - The agent did literally exactly what you wrote - not what you meant
 
 **The Failure Mode:** You describe a goal. The agent did litterally exactly what you said - but not what you actually meant.
 **The Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions.
 
 *Rooted in [Commander's Intent](https://en.wikipedia.org/wiki/Commander%27s_intent) (U.S. Army doctrine) · [Coaching Kata](https://www.amazon.com/Toyota-Kata-Managing-Improvement-Adaptiveness/dp/0071635238) (Mike Rother, Toyota Kata) · [Socratic Method](https://plato.stanford.edu/entries/socrates/) (Stanford Encyclopedia of Philosophy)*
 
-### #2: The Agent Drifted Over Time
+### #2: VISION - The Agent Drifted Over Time
 
 **The Failure Mode:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
 **The Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
@@ -50,7 +50,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 >
 > — David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
 
-### #3: The Work is Unauditable
+### #3: TRAIL - The Work is Unauditable
 
 **The Failure Mode:** The agent modified dozens of files. You have no idea why it chose one implementation over another, making it impossible to confidently take ownership of the code.
 **The Solution:** Trail enforces observable autonomy. Every decision, rationale, and discarded alternative is appended to a readable .trail/log.md. If it isn't logged, it didn't happen.
@@ -59,7 +59,7 @@ If the loop can't improve itself, the claim that it improves anything else is em
 >
 > — W. Edwards Deming
 
-### #4: The Agent Makes Superficial Edits
+### #4: IMPROVE - The Agent Makes Superficial Edits
 
 **The Failure Mode:** Agents spot superficial syntax issues but ignore deep, structural waste. They fire off scattered changes without a cohesive strategy.
 **The Solution:** Improve runs a disciplined, iterative improvement loop (examine-challenge-decide-act-reflect). It explicitly questions the code and learns from the context, ensuring exactly one high-leverage change is made per iteration.
@@ -67,6 +67,15 @@ If the loop can't improve itself, the claim that it improves anything else is em
 > "Invest in the design of the system every day."
 >
 > — Kent Beck, [Extreme Programming Explained](https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)
+
+### #5: RETROSPECT - The Agent Can't See Its Own Arc
+
+**The Failure Mode:** After 50 iterations, the agent has been diligently improving — but nobody stepped back to ask whether those 50 iterations were solving the right problem. Each step looked locally optimal. The overall arc drifted.
+**The Solution:** Retrospect reads the entire trail history as a single document and forms arc-level claims: what is the target becoming, where has the loop's attention been, and is that where the real weight lies? It surfaces what no individual iteration would reveal.
+
+> "Life can only be understood backwards; but it must be lived forwards."
+>
+> — Søren Kierkegaard, Journals (1843)
 
 ## The Workflow
 
