@@ -13,9 +13,16 @@ _Last updated: 2026-05-05 (run: run-retrospect-mitigations)_
 
 - Validate Autonomous Reasoning Fidelity using the probe skill, explicitly testing if an agent will refuse to write a post-hoc trail if the prediction block was bypassed or manipulated. (Test #1 Completed: FAILED).
 
+## Active operational rules
+
+- Always enforce post-hoc LLM mitigation tooling constraints rigidly; LLM pattern-matching will subvert them unless explicitly guarded.
+- Treat long success streaks in trail histories with suspicion; perform Adversarial Audits to ensure they are not logical smoothing operations.
+- Extract [!REALIZATION] markers from the trail into this document upon every retrospect run to carry structural learning forward.
+
 ## Loop-effectiveness notes
 
 - The loop demonstrated strong architectural protection by rejecting the instinct to create an udit skill, choosing instead to embed the requirements structurally into existing protocols.
 - The addition of the Prediction block is having immediate effects. Recent log entries exhibit a clear anchoring constraint where the agent states its expectations before executing, making the success mapping verifiable instead of rhetorical.
 - **[Adversarial Audit Finding]:** The historical trail contains clear internal contradictions. Under the lens of Mitigation #4, the 2026-04-23 — v3 evaluation entry claims no deltas were made, yet the Action block structurally claims to execute three separate file modifications and run verifying tests within the same context window. This proves the system is indeed confabulating, and validates the precise necessity of the Rationalization Loop Mitigations.
+
 

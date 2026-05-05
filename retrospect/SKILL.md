@@ -86,6 +86,13 @@ Ask:
 
 Run this step when: the loop is about to declare convergence, the finding pattern looks suspiciously tidy, or the operator explicitly asked how the loop is performing.
 
+### 4b. Extract operational rules (Learning)
+
+The arc is the mechanism by which the agent learns how to work within the specific target environment. Without explicitly harvesting structural lessons, the agent will repeat the same mistakes in fresh sessions.
+
+- Look for `[!REALIZATION]` markers across the arc that describe operational failures, successful rules of engagement, or architectural landmines specific to this target (e.g., "Never trust the build script to clean up," "This repo forbids adding third-party dependencies").
+- Synthesize these historical realizations into concrete, imperative rules for future agents. Do not just summarize what happened; state *what must be done differently next time*.
+
 ### 5. Write the retrospect.md
 
 **Before writing: create the `.trail/` directory in the target repo root if it does not already exist.**
@@ -110,6 +117,10 @@ _Last updated: YYYY-MM-DD (run: <slug>)_
 ## What the next runs should test
 
 <Specific arc-derived suggestions for what would most advance the target now.>
+
+## Active operational rules
+
+<Imperative, target-specific rules of engagement extracted from step 4b (e.g., "Do not bypass the prediction block", "Always use replace encoding when reading log.md"). These carry the 'Learning' forward across sessions.>
 
 ## Loop-effectiveness notes
 
