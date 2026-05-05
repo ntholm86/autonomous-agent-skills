@@ -54,9 +54,9 @@ your-repo/
         SKILL.md
       retrospect/
         SKILL.md
-      tools/
-        record.py
 ```
+
+That's it. The skills are plain markdown files — no scripts, no dependencies, nothing to install or execute.
 
 Optionally copy `PRINCIPLES.md` next to the skill folders — the skills reference it but work fully without it (the principles are inlined in each SKILL.md).
 
@@ -77,48 +77,35 @@ All skills work with only their own `SKILL.md`. No required sibling files.
 
 ---
 
-## The trail — where it lives and how to use it
+## The trail — where it lives
 
-The trail is **per project**. It lives in the root of the repo being worked on — not inside `.copilot/skills/`.
+The trail is **per project**. The AI writes it automatically — no scripts required.
 
-When the trail skill runs for the first time on a project it creates a single file:
-`<repo-root>/.trail/log.md` (the append-only evidence log).
+When the trail skill runs for the first time on a project it creates:
+`<repo-root>/.trail/log.md` (the append-only evidence log)
 
-Nothing else gets installed into the target repo. `record.py` stays in the skills install and is invoked from there — it writes into the current working directory by default, or whatever `$TRAIL_ROOT` points to.
+Commit `.trail/log.md` after each session. That's the full workflow.
 
-After every run that adds an entry to `log.md`, regenerate the readable summary **from the target repo root**:
+---
+
+## For maintainers: experiment tooling
+
+*This section is for people running the improvement loop on the skills repo itself. If you're adopting the skills for your own project, you don't need any of this.*
+
+`tools/record.py` and `verify.py` exist to support the experiment that produced this suite — running the loop 200+ times and proving the trail is intact.
+
+**`tools/record.py`** — generates a human-readable `history.md` from the trail log. Run from the repo root:
 ```
-python <skills>/tools/record.py history --write    # writes .trail/history.md
+python tools/record.py history --write    # writes .trail/history.md
+python tools/record.py summary            # prints the latest entry
 ```
-Replace `<skills>` with your skills install path.
-- Windows example: `C:\Users\you\.copilot\skills\tools\record.py`
-- macOS/Linux example: `~/.copilot/skills/tools/record.py`
+It only writes into `.trail/`. No network calls.
 
-For ad-hoc viewing:
+**`verify.py`** — read-only integrity check. Confirms the trail is well-formed, dates are in order, required files exist, and referenced session files are present. Writes nothing.
 ```
-python <skills>/tools/record.py history    # timeline to stdout
-python <skills>/tools/record.py summary    # digest of the most recent run
+python verify.py
 ```
-
-Commit `.trail/log.md` and `.trail/history.md`. **Do not** commit `record.py` to the target repo — it lives in the skills install only.
-
-### What the scripts actually do
-
-**`tools/record.py`** — writes trail entries into `.trail/log.md` in the current working directory (or `$TRAIL_ROOT` if set). It never reads or modifies anything outside that folder. No network calls. Three subcommands: `new` (append a blank entry stub), `summary` (print the latest entry), `history` (print a timeline of all runs).
-
-**`verify.py`** — read-only audit. It reads `.trail/log.md` and checks formatting, date ordering, required metadata fields, and that all referenced session files exist. It writes nothing and makes no network calls. Exit 0 = all checks pass, exit 1 = something is wrong.
-
-### Multi-iteration runs
-
-Each iteration is a separate trail entry. The commit sequence is:
-
-```
-iteration 1 → append trail entry → record.py history --write → commit
-iteration 2 → append trail entry → record.py history --write → commit
-...
-```
-
-Append and commit **before** starting the next iteration. A partial run (agent crashes, user stops at iteration 4 of 10) must produce partial trail — batch writing at the end of all iterations defeats the purpose.
+Exit 0 = all checks pass, exit 1 = something is wrong.
 
 ---
 
