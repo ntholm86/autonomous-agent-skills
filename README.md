@@ -32,6 +32,14 @@ If the loop can't improve itself, the claim that it improves anything else is em
 
 🧪 **[Probe](./probe/SKILL.md)** — included for research and validation use. Constructs a "spot the difference" test to measure whether the agent is genuinely reasoning or pattern-matching. Used to validate [Autonomous Reasoning Fidelity](https://github.com/ntholm86/autonomous-agent-principles/blob/v1.0.0/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) — not a skill you'd run in daily development.
 
+## The Skills Get Smarter Over Time
+
+Every skill automatically appends to `.trail/log.md`. The log is not just an audit trail — it is the agent's memory of your codebase.
+
+On the first run, the agent knows nothing. By the tenth run it knows the architecture decisions you rejected, the refactors that failed, the patterns that work for this specific project. Each iteration the agent reads the log before acting, so it never repeats a discarded approach and can build on what already worked.
+
+The longer the loop runs on a given codebase, the more precisely it understands it. The skills are not just tools — they are a compounding knowledge system.
+
 ## Why These Skills Exist
 
 ### #1: INTENT - The agent did literally exactly what you wrote - not what you meant
@@ -78,8 +86,6 @@ If the loop can't improve itself, the claim that it improves anything else is em
 > — Søren Kierkegaard, Journals (1843)
 
 ## The Workflow
-
-*Note: All skills automatically invoke `trail` in the background to capture evidence. The trail accumulates knowledge across iterations — every decision, rationale, and reflection — so the agent becomes increasingly aware of the target, the vision, and everything that has already been done.*
 
 1. **Set the Target:** Run `vision` first to determine the destination before starting work.
 2. **Execute:** Run `improve` for X amount of iterations until you reach a plateau.
