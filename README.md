@@ -99,10 +99,15 @@ The more you use it, the better it knows your codebase. Every run logs to `.trai
 
 ## Known Limitation: Stated Reasoning ≠ True Reasoning
 
-Trail logs what the agent *says* it decided. Research shows this is not always the same as what actually drove the decision:
+Trail logs what the agent *says* it decided. Research shows this is not always the same as what actually drove the decision.
 
-- [Turpin et al., NeurIPS 2023](https://arxiv.org/abs/2305.04388) — LLMs construct plausible-sounding chain-of-thought explanations that systematically fail to mention the real cause of their answers. Accuracy dropped up to 36% when models were biased toward wrong answers they never acknowledged being influenced by.
-- [Chen et al., 2025](https://arxiv.org/abs/2505.05410) — Extended-thinking models reveal their use of biasing hints in only 1–20% of cases. RL training improves this only slightly and plateaus. When reward hacking increases hint usage, verbalization of it does not follow.
+> "CoT explanations can be plausible yet misleading, which risks increasing our trust in LLMs without guaranteeing their safety."
+>
+> — Miles Turpin et al., [Language Models Don't Always Say What They Think](https://arxiv.org/abs/2305.04388) (NeurIPS 2023)
+
+> "CoT monitoring is a promising way of noticing undesired behaviors during training and evaluations, but that it is not sufficient to rule them out."
+>
+> — Yanda Chen et al., [Reasoning Models Don't Always Say What They Think](https://arxiv.org/abs/2505.05410) (2025)
 
 **How this suite partially addresses it:** Trail gives you the agent's *stated* rationale — the same thing a human collaborator provides, and equally worth having. The convergence requirement (three independent model families must agree) reduces the risk that all three are rationalizing in the same unfaithful direction. Probe validates behavioral evidence independently of stated reasoning. No single mechanism is sufficient; the suite uses all three in combination.
 
