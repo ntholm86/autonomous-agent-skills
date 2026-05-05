@@ -24,9 +24,9 @@ If the loop can't improve itself, the claim that it improves anything else is em
 | :--- | :--- | :--- |
 | 🛡️ **[Intent](./intent/SKILL.md)** | The agent did literally what you wrote - not what you meant | Force the agent to understand the intent behind your prompt |
 | 👁️ **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision - because it's in your head | The agent will read your mind, uncover your vision and produce vision.md and other skills will use it |
+| 📜 **[Trail](./trail/SKILL.md)** | The work is unauditable | Logs every autonomous decision made by the agent and the reason behind it |
 | ⚔️ **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
-| 📜 **[Trail](./trail/SKILL.md)** | The Work is Unauditable | Logs every autonomous decision made by the agent and the reason behind it. |
-| 🗺️ **[Retrospect](./retrospect/SKILL.md)**| The agent drifts over time | Self-evaluates the progress of all iterations and determines what is next |
+| 🗺️ **[Retrospect](./retrospect/SKILL.md)** | The agent can't see its own arc | Self-evaluates the progress of all iterations and determines what is next |
 
 ### Validation skill
 
