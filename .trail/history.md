@@ -115,6 +115,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 108 | 2026-05-11 | retrospect-after-marker-integrity | changed — retrospect.md fully replaced with arc-claims for entries 63–106 | .trail/retrospect.md (full rewrite) |
 | ▸ 109 | 2026-05-11 | improve-offer-next-moves | changed — improve gains step 6c, trail entry template gains "Candidate next moves" subsection | improve/SKILL.md (v3.8.2 → 3.9.0, new step 6c), trail/SKILL.md (v1.14.0 → 1.15.0, template addition), tools/record.py (stub template addition) |
 | ▸ 110 | 2026-05-11 | improve-reversal-honesty | changed — `[!REVERSAL]` definition tightened to explicitly cover within-iteration backouts; step 5 now prompts for the marker; .gitignore added | trail/SKILL.md (v1.15.0 → 1.15.1, definition + example), improve/SKILL.md (v3.9.0 → 3.9.1, step 5 prompt), .gitignore (new), __pycache__/verify.cpython-313.pyc (untracked) |
+| ▸ 111 | 2026-05-11 | audit-reversal-density-and-frame-vision-gap | changed — audit performed; retrospect's "2:118" claim partially refuted; vision-gap framed as operator question | no code/spec changes — this entry is the artifact (audit findings + framed question) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -534,4 +535,10 @@ Do not edit by hand — re-run the command to refresh.
 - **REVERSAL:** ` definition now reads "Both kinds count: reversing a prior run's decision, *and* backing out of a step planned earlier in the same iteration." Example block gained a within-iteration example drawn from iter 7 of today's sweep. improve/SKILL.md step 5 gained a final paragraph naming the under-marking pattern explicitly as a confabulation signal. `.gitignore` created with `__pycache__/`, `*.pyc`, `*.pyo`; the previously-tracked pyc was untracked via `git rm --cached`.
 - **REVERSAL:** `? The number is the baseline; the next 5 iterations after this one should show the gap closing.
 
-**110 runs total — 96 with changes, 14 silence**
+### Run 111 — 2026-05-11 — audit-reversal-density-and-frame-vision-gap
+
+- **decided:** No code/spec changes this iteration. The entry itself is the artifact: audit numbers, partial refutation of the retrospect's claim, framed question for #3. Rejected: implementing an autonomous Retrospect trigger directly — that is a destination decision for the operator (Vision territory), not an Improve change.
+- **REVERSAL:** ` text occurrences (most are mentions in prose: "the [!REVERSAL] marker", "Contradicts prior [!REVERSAL]")
+- **REVERSAL:** ` markers but no narrated-pattern hit, and 1 that has both. The 7 marker-only entries may contain reversal narrations my patterns missed (e.g., "instead of X, did Y" or "this approach didn't work"). The "1 narrated-but-unmarked" finding is therefore a *lower bound*, not a complete count. A more thorough audit would manually read each entry's narrative.
+
+**111 runs total — 97 with changes, 14 silence**

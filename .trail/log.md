@@ -5150,3 +5150,95 @@ This is the first iteration where step 6c's ranking was directly operative: the 
 1. **Test step 6c on a fresh-session arc.** Carried forward from the prior iteration's #1. Still the highest-value research move — verify the spec is load-bearing rather than only honored by the agent that wrote it. Requires a fresh session or a different model family.
 2. **Audit the trail for narrated-but-unmarked reversals across the full arc.** Not retroactive marking (which violates append-only) but a count: how many entries narrate "tried X then removed it" without `[!REVERSAL]`? The number is the baseline; the next 5 iterations after this one should show the gap closing.
 3. **Look at vision.md and retrospect.md against each other** as a paired read — the vision says "the loop should derive retrospect.md autonomously"; the latest retrospect.md was operator-triggered. Vision-vs-actual gap may be worth a Vision dialogue (operator-held) rather than another Improve iteration.
+
+## 2026-05-11 — audit-reversal-density-and-frame-vision-gap
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.5 (GitHub Copilot)
+- skill: improve
+- session-file: .trail/sessions/2026-05-11-audit-reversal-density-and-frame-vision-gap.md
+- outcome: changed — audit performed; retrospect's "2:118" claim partially refuted; vision-gap framed as operator question
+- delta: no code/spec changes — this entry is the artifact (audit findings + framed question)
+
+### Interpretation of the ask
+
+Operator: "continue with all of it." Three candidate next moves were on the table from the prior iteration's ranking: (1) fresh-session test of step 6c, (2) audit narrated-but-unmarked reversals, (3) vision-vs-actual gap on autonomous Retrospect derivation. This iteration does (2) in full, frames (3) as an operator question, and honestly defers (1) — it requires a session/agent that did not write the spec, which this session cannot provide.
+
+### Examination
+
+**Reversal-density audit (#2):**
+
+Counted across all 110 entries in `.trail/log.md`:
+- 21 raw `[!REVERSAL]` text occurrences (most are mentions in prose: "the [!REVERSAL] marker", "Contradicts prior [!REVERSAL]")
+- 8 captured by `record.py` parser (line-level `.search()` on each line)
+- learning.md derives 7 reversals from 119 realizations = 5.9% ratio
+- 1 narrated-but-unmarked reversal: `improve-marker-integrity` (iter 7) — exactly the one the May 11 retrospect already named
+
+The retrospect's "2:118 reversal-to-realization ratio" was based on stale learning.md data captured *before* the iter 7 regex fix that recovered 37 markers. The actual ratio — 7:119 — is still low but is meaningfully different from the implausibly-low 2:118 the retrospect treated as a confabulation signal.
+
+**Vision gap framing (#3):**
+
+vision.md is explicit: "autonomous retrospect.md derivation is the hard problem." It also says: "the system should be able to discover the need for a new skill like retrospect on its own." The May 11 retrospect was operator-triggered ("okay lets do retro"). The gap is real — Retrospect runs are currently operator-gated, not agent-initiated.
+
+This is operator/Vision territory: deciding when the agent *should* trigger Retrospect autonomously is a destination question, not a route question. Several mechanisms are available — frame them as options for operator selection rather than implement one.
+
+### Decision
+
+[!DECISION] No code/spec changes this iteration. The entry itself is the artifact: audit numbers, partial refutation of the retrospect's claim, framed question for #3. Rejected: implementing an autonomous Retrospect trigger directly — that is a destination decision for the operator (Vision territory), not an Improve change.
+
+### Prediction
+
+The next Retrospect run, when it happens, will need to update its reversal-density claim with the corrected number (7:119, not 2:118) and treat the partially-refuted prior claim as evidence that arc-claims should not anchor on derived-artifact totals when the derivation tooling has recently changed. Will NOT change the underlying concern about reversal-marking discipline — even 7:119 is low for hard architectural work, and the iter 9 spec changes (clarified definition + step 5 prompt) remain the right response.
+
+### Action and Outcome
+
+Audit ran via inline Python in the terminal (regex over log.md; no script committed because the audit is one-shot, not a recurring check). Findings recorded in Examination above. Vision-gap question framed for operator below.
+
+Outcome matches prediction in spirit: the audit produced a number lower than the retrospect's framing implied, and the framing question is now visible.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+Retrospect runs in this target are currently operator-gated — every retrospect.md regeneration in the trail was triggered by an operator prompt, never by the agent autonomously detecting "the arc has shifted enough that orientation needs refreshing." This is a vision-vs-actual gap vision.md explicitly names; it has not narrowed across the May 11 sweep.
+
+**Named blind spot:**
+
+The audit's regex for "narrated reversals" matched 7 entries that have `[!REVERSAL]` markers but no narrated-pattern hit, and 1 that has both. The 7 marker-only entries may contain reversal narrations my patterns missed (e.g., "instead of X, did Y" or "this approach didn't work"). The "1 narrated-but-unmarked" finding is therefore a *lower bound*, not a complete count. A more thorough audit would manually read each entry's narrative.
+
+**Imagined-reader pushback:**
+
+"You partially refuted a Retrospect claim using the same Retrospect-style read it produced. The audit is not independent." Concession: this is the same agent and same session. A genuinely independent audit would come from a fresh session or different model family — which is candidate #1, deferred. The number itself (7:119) is mechanical and reproducible, but the *interpretation* of whether 5.9% is "implausibly low" is still a judgement call.
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* not fired — single audit move, no recurrence pattern.
+- *About to declare silence:* not fired — substantive findings recorded (the audit refutation alone is a non-trivial finding).
+- *Contradicts prior [!REALIZATION]:* FIRED — the May 11 retrospect's claim "reversal-to-realization ratio is 2:118" is now shown to have been based on stale learning.md data; the corrected ratio is 7:119. This entry partially contradicts that retrospect claim.
+- *Operator explicitly asked:* FIRED — operator: "continue with all of it."
+
+**Across-trail macro-Hansei** *(triggered by Contradicts prior [!REALIZATION] and Operator explicitly asked)*:
+
+[!REALIZATION] The retrospect's reversal-density claim was based on a `learning.md` snapshot captured *before* the same retrospect's run also recommended fixing the parser bug that made `learning.md` accurate. The retrospect was reasoning about derived-artifact totals from a moment where the artifact was known to be lossy. This is a methodological pattern worth naming: **Retrospect should regenerate derived artifacts before reading them, or explicitly note when working from a known-stale snapshot.** A future Retrospect run would benefit from a step-0 check: "is `learning.md` current relative to `log.md`?" If not, regenerate before reading. verify.py check 10 already enforces this at commit time, but Retrospect should do its own freshness check at read time. This is candidate-worthy for a future iteration.
+
+### Candidate next moves
+
+*(One ranked list of candidate moves visible from this iteration. Operator may pick, redirect, or ignore.)*
+
+1. **Operator decision: how should Retrospect be triggered?** The vision-vs-actual gap from #3 above. Options to consider: (a) keep it explicitly operator-triggered (vision is aspirational; the operator-gate is the right architecture); (b) add an autonomous trigger inside Improve step 6b — "if recurring-finding-class fires AND no Retrospect ran since the last firing, recommend Retrospect"; (c) add an entry-rate trigger — every N entries, surface the option; (d) all three — Improve recommends, operator confirms, vision aspirational stays. This is a Vision/Intent question, not an Improve question — it shapes the destination, not the route.
+2. **Add Retrospect-side freshness check** for derived artifacts (the realization above). Retrospect should regenerate `learning.md` and `history.md` before reading them, or note "working from snapshot dated X." This closes the methodological gap that produced the partially-refuted reversal-density claim. Smaller and concrete; could be next-iteration Improve.
+3. **Fresh-session test of step 6c (carried forward).** Still requires a different session or model. Highest research value, lowest in-session feasibility.
+
+---
+
+### Question for operator (deferred from candidate #1 above)
+
+vision.md says autonomous Retrospect derivation is the hard problem. The May 11 retrospect was operator-triggered. **How should Retrospect be invoked?**
+
+- **Option A:** Keep it operator-triggered. Vision is aspirational; the operator-gate is the right architecture for now.
+- **Option B:** Add an autonomous trigger to Improve step 6b — when recurring-finding-class fires AND no Retrospect since the last firing, the iteration recommends running Retrospect.
+- **Option C:** Add an entry-rate trigger — every N entries (10? 20?), Improve surfaces the option to run Retrospect.
+- **Option D:** Combination — Improve recommends; operator decides; vision-aspiration of fully-autonomous Retrospect remains the long-term target.
+
+This is a destination question. Pick or redirect.

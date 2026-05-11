@@ -509,6 +509,26 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REVERSAL]** `? The number is the baseline; the next 5 iterations after this one should show the gap closing.
 
+## 2026-05-11 — audit-reversal-density-and-frame-vision-gap
+
+**[!REALIZATION]** :* FIRED — the May 11 retrospect's claim "reversal-to-realization ratio is 2:118" is now shown to have been based on stale learning.md data; the corrected ratio is 7:119. This entry partially contradicts that retrospect claim.
+
+## 2026-05-11 — audit-reversal-density-and-frame-vision-gap
+
+**[!REALIZATION]** and Operator explicitly asked)*:
+
+## 2026-05-11 — audit-reversal-density-and-frame-vision-gap
+
+**[!REALIZATION]** The retrospect's reversal-density claim was based on a `learning.md` snapshot captured *before* the same retrospect's run also recommended fixing the parser bug that made `learning.md` accurate. The retrospect was reasoning about derived-artifact totals from a moment where the artifact was known to be lossy. This is a methodological pattern worth naming: **Retrospect should regenerate derived artifacts before reading them, or explicitly note when working from a known-stale snapshot.** A future Retrospect run would benefit from a step-0 check: "is `learning.md` current relative to `log.md`?" If not, regenerate before reading. verify.py check 10 already enforces this at commit time, but Retrospect should do its own freshness check at read time. This is candidate-worthy for a future iteration.
+
+## 2026-05-11 — audit-reversal-density-and-frame-vision-gap
+
+**[!REVERSAL]** ` text occurrences (most are mentions in prose: "the [!REVERSAL] marker", "Contradicts prior [!REVERSAL]")
+
+## 2026-05-11 — audit-reversal-density-and-frame-vision-gap
+
+**[!REVERSAL]** ` markers but no narrated-pattern hit, and 1 that has both. The 7 marker-only entries may contain reversal narrations my patterns missed (e.g., "instead of X, did Y" or "this approach didn't work"). The "1 narrated-but-unmarked" finding is therefore a *lower bound*, not a complete count. A more thorough audit would manually read each entry's narrative.
+
 ---
 
-**126 markers — 119 realisations, 7 reversals**
+**131 markers — 122 realisations, 9 reversals**
