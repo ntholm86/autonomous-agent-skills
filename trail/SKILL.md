@@ -1,6 +1,6 @@
 ---
 name: trail
-version: 1.11.0
+version: 1.12.0
 description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any session that produces a decision, realization, or finding — including conversations. There is no such thing as "just conversation" if a decision was made in it.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
@@ -117,13 +117,20 @@ If Intent was applied, paste its narration here.>
 
 ### Reflection
 
-<Reflection is about the target, not about the loop. At minimum: an updated model
-of the target as a falsifiable claim a future run could disagree with, a named
-blind spot in this iteration, and what someone who knows the target better would
-push back on. If across-trail reflection was triggered (recurring class of
-finding, about to declare silence, prior [!REALIZATION] contradicted, or
-operator asked), also include an arc-claim about the target read from the trail
-as a whole. Mark material insights with [!REALIZATION].>
+<Reflection is about the target, not about the loop. At minimum: an updated
+model of the target as a falsifiable claim a future run could disagree with, a
+named blind spot in this iteration, and what someone who knows the target
+better would push back on.
+
+Then, **every entry must record an across-trail trigger evaluation** — one
+short evidence-bearing line per trigger, drawn from the trail. Bare "N/A" is
+not allowed; the audit value is showing the check was made, not skipped. The
+four triggers are: recurring finding-class, about to declare silence, prior
+[!REALIZATION] contradicted, operator explicitly asked.
+
+If any trigger fired, also include an across-trail macro-Hansei: an arc-claim
+about the target read from the trail as a whole. Mark material insights with
+[!REALIZATION].>
 ```
 
 ---

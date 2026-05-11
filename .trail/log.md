@@ -4521,3 +4521,64 @@ Reading log.md as one document about the target: every architectural shift since
 ### Provenance
 
 Reconstructed live from this conversation; full reasoning narrated in chat before each step (Understand / Examine / Challenge / Decide / Act / Reflect) per Principle 2.
+
+## 2026-05-11 — improve-trail-template-align
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Opus 4.7 (Anthropic, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-11-improve-trail-template-align.md
+- outcome: Updated trail/SKILL.md Reflection template to match improve v3.8.0 contract — trigger evaluation is mandatory per entry; macro-Hansei is conditional on triggers firing. Closes the documentation tail named as the prior entry's blind spot.
+- delta: trail/SKILL.md 1.11.0 → 1.12.0; Reflection template rewritten to specify mandatory four-trigger evaluation and conditional macro-Hansei.
+
+### Interpretation of the ask
+
+Operator: "run improve again." No new directive — vision and retrospect remain the brief. The prior entry (`improve-step6b-trigger-observability`) named as its blind spot: "I did not check whether other skills reference the old wording or the old single-field macro-Hansei format." Retrospect's active operational rule #1: structural changes carry doc/tooling tails. This run starts from those two facts.
+
+### Examination
+
+Swept all `*.md` for stale references to the old format. Findings: `trail/SKILL.md` Reflection template (the spec `trail` step 7 delegates to) describes across-trail reflection as conditional ("If across-trail reflection was triggered..."). It does not encode the v3.8.0 change that *trigger evaluation itself is mandatory; only the macro-Hansei is conditional.* `CHANGELOG.md` and `.trail/log.md` mentions are historical and not edited. Single live spec inconsistency: trail/SKILL.md.
+
+### Decision
+
+[!DECISION] Update trail/SKILL.md Reflection template to encode the v3.8.0 contract; bump trail 1.11.0 → 1.12.0. Rationale: this completes the propagation of the prior structural change so it actually takes effect when agents follow trail/SKILL.md as the spec. Alternative considered and deferred: build the verify.py enforcement check (the imagined-reader pushback from the prior entry). Deferred because an enforcement check that contradicts the published spec creates pure friction — the template fix is the precondition. One change per run.
+
+### Prediction
+
+After change: trail/SKILL.md and improve/SKILL.md agree on the Reflection contract; an agent reading either as the spec produces entries with the four mandatory trigger lines. verify.py reports the same single pre-existing failure (retrospect-run-2 stub) and no new ones. This change does NOT add enforcement — agents who ignore the spec can still write malformed entries; that is the next run's work.
+
+### Action and Outcome
+
+1. Edited trail/SKILL.md Reflection template inside the entry-shape code block: removed conditional phrasing; added the mandatory-evaluation paragraph; preserved the conditional macro-Hansei sentence.
+2. Bumped trail/SKILL.md version 1.11.0 → 1.12.0.
+3. Ran verify.py: same single pre-existing failure, no new failures. Prediction held.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The trail and improve skills now agree on the Reflection contract. Any agent reading either spec will produce entries with the four mandatory trigger lines.
+
+**Named blind spot:**
+
+I did not run `record.py new` to confirm the stub it generates matches the wording in the updated trail/SKILL.md template. The two specs agree semantically; whether the wording is close enough that an agent reading both does not get confused is unverified.
+
+**Imagined-reader pushback:**
+
+"Two runs in a row, you've made small text changes and called them structural. The format is now consistent with itself but no agent will obey it without enforcement. Your prior entry deferred the verify.py check; this entry deferred it again. The pattern is starting to look like a deferral chain — each run does the thing that makes the *next* run's structural change easier, but the structural change keeps not happening."
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* CANDIDATE — last 5 entries: 4 mechanical cleanups → 1 structural (trigger-observability) → 1 doc-tail follow-up (this entry). Not yet a recurring class (n=1 of "doc-tail-after-structural"). However, the imagined-reader pushback names a *different* candidate class forming: "structural-deferral chain" — entry N defers the structural fix that makes entry N+1 easier, and entry N+1 does it again. Recording so the next run can check.
+- *About to declare silence:* not fired — a change was made.
+- *Contradicts prior [!REALIZATION]:* not fired — extends the prior arc-claim about format-as-cause; does not contradict it.
+- *Operator explicitly asked:* not fired — operator gave a generic "run improve."
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+Not triggered. The deferral-chain risk is recorded as the imagined-reader pushback so the next run starts from it; the next run should treat the verify.py enforcement check as the pre-committed candidate unless it finds a strictly higher-leverage finding.
+
+### Provenance
+
+Reconstructed live from this conversation; full reasoning narrated in chat before each step (Understand / Examine / Challenge / Decide / Act / Reflect) per Principle 2.
