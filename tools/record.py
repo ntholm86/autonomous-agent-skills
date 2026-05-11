@@ -91,9 +91,16 @@ TODO — what this examination likely missed, and why.
 
 TODO — the strongest objection from someone who knows the target better.
 
-**Across-trail macro-Hansei** *(conditional — only if a trigger fires: recurring finding-class, imminent silence, contradicted prior [!REALIZATION], or operator ask)*:
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
 
-TODO or N/A
+- *Recurring finding-class:* TODO (FIRED / not fired — evidence from last N entries)
+- *About to declare silence:* TODO
+- *Contradicts prior [!REALIZATION]:* TODO
+- *Operator explicitly asked:* TODO
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+TODO
 """
 
 

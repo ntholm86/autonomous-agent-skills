@@ -1,6 +1,6 @@
 ---
 name: improve
-version: 3.7.0
+version: 3.8.0
 description: 'The improvement skill. Understand the ask, examine the target, challenge the first read, decide on one change (or argue for redesign, or declare silence), act, reflect on the target, and record. Combines incremental refinement, structural rethinking, and reflection on the target itself. USE WHEN: improve, audit, review, fix, refactor, redesign, evaluate, what would make this better, am I missing something.'
 argument-hint: 'The target to improve, and optionally the concern (correctness, simplicity, performance, etc.)'
 ---
@@ -105,14 +105,20 @@ When something material surfaces — an updated model, a contradiction with a pr
 
 #### 6b. Across-trail reflection
 
-Most iterations do not need this. Run it only when one of the following is true:
+Most iterations do not perform the macro reflection. But every iteration must *evaluate* whether to perform it, and record that evaluation in the trail entry. The check is cheap; the cost discipline lives in what the check decides, not in skipping the check.
 
-- The last few iterations found the same *class* of finding (not the same text — the same kind of thing). A recurring shape of inconsistency, a repeating fix pattern, the same lens triggering each time.
-- You are about to declare silence. Read the arc of the trail before counting the peg — silence read against a mistaken arc is not convergence.
-- A prior `[!REALIZATION]` is contradicted by what this run found.
-- The operator explicitly asked.
+**Evaluate each of the four triggers explicitly, with brief evidence drawn from the trail.** Bare "N/A" is not allowed. The format for the entry is one short line per trigger, e.g.:
 
-When triggered, read `.trail/log.md` as a *single document about the target*, not as a list of past runs. Then sit with this:
+- *Recurring finding-class:* FIRED — last 4 entries were paragraph-add, encoding-fix, label-add, section-removal (all mechanical inconsistency cleanups).
+- *About to declare silence:* not fired — this run made a change.
+- *Contradicts prior `[!REALIZATION]`:* not fired — checked last 10 realisations, none contradicted.
+- *Operator explicitly asked:* not fired.
+
+If any trigger fired, perform the macro reflection. If none fired, the entry still records the evaluation — that is the audit trail showing the check was made, not skipped.
+
+*Why this is structural, not ceremonial:* the recurring-class trigger has historically been the one most often quietly waived. Recording the evaluation makes "I didn't notice the pattern" distinguishable from "I noticed and judged it didn't fire," and makes both visible to the next iteration.
+
+When the macro reflection runs, read `.trail/log.md` as a *single document about the target*, not as a list of past runs. Then sit with this:
 
 - Which prior realisations aged well, and which were wrong in retrospect? If the trail is long enough, name at least one of each.
 - Where has attention been spent, and is that where the target's real weight lies? A long tail of small fixes in one corner can mean either "that corner is the bottleneck" or "this is the corner the loop has grown comfortable looking at." The trail itself is the evidence — re-read it.

@@ -4453,3 +4453,71 @@ TODO — the strongest objection from someone who knows the target better.
 **Across-trail macro-Hansei** *(conditional — only if a trigger fires: recurring finding-class, imminent silence, contradicted prior [!REALIZATION], or operator ask)*:
 
 TODO or N/A
+
+## 2026-05-11 — improve-step6b-trigger-observability
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Opus 4.7 (Anthropic, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-11-improve-step6b-trigger-observability.md
+- outcome: Restructured improve/SKILL.md step 6b so across-trail trigger evaluation is observable per Principle 2 — every entry must record one evidence-bearing line per trigger; bare "N/A" is no longer permitted. Updated tools/record.py STUB_TEMPLATE to match.
+- delta: improve/SKILL.md 3.7.0 → 3.8.0; tools/record.py STUB_TEMPLATE replaces single conditional macro-Hansei field with mandatory four-trigger evaluation block plus conditional macro-Hansei subsection.
+
+### Interpretation of the ask
+
+Operator asked: "Run the improve skill now please. Vision and Retro is clear." Vision identifies *learning* as the most underdeveloped of memory/learning/meta-cognition and the highest-leverage gap to target. Retrospect explicitly sets the test for this run: "Can the Purpose lens + hansei reflection lead the agent to propose a structural change based on vision.md alone?" Commander's intent reading: do not return another mechanical cleanup; find a design-level finding the loop has been structurally blind to, and act on it.
+
+### Examination
+
+**Purpose lens (vision-anchored):** retrospect's macro-reflection is the mechanism vision relies on to convert prior runs into changed future behaviour. If that mechanism is bypassed, the learning gap stays open by design.
+
+**Inconsistency lens (read against the trail):** last four improve runs (improve-intent-composition, improve-trail-integrity, improve-probe-memory-model, improve-intent-remove-the-test) are all small mechanical fixes — paragraph-add, encoding-fix, label-add, section-removal. Every entry records `Across-trail macro-Hansei: N/A`. The recurring-finding-class trigger objectively fired by run 3; the agent waived it four times in a row. The format permitted the waiver: a single field labelled "conditional" with an "or N/A" escape hatch.
+
+**Overburden lens:** step 6b conflated *trigger evaluation* with *macro reflection itself*. The first job — the one that should be observable per Principle 2 — had no recording protocol at all.
+
+### Decision
+
+[!DECISION] Restructure step 6b so trigger evaluation is mandatory and evidence-bearing for every entry, while the macro reflection itself remains conditional on whether a trigger fired. Update tools/record.py STUB_TEMPLATE to pull future entries toward the new contract. Rationale: this is the smallest change that closes the structural gap retrospect named, without inventing a new skill or a new tool. Alternatives considered: (a) fix retrospect.md duplicated tail — rejected as the exact mechanical-cleanup pattern vision flags as the failure mode; (b) fill the abandoned `retrospect-run-2` stub — same rejection; (c) make macro-hansei mandatory every run — rejected as cost-disproportionate and signal-diluting; (d) build a tool that scans the trail and refuses entries when triggers fired but no macro section exists — argued for, but premature: the precondition is that the agent first start *recording* the evaluation. You cannot automate a check the trail has no shape for.
+
+### Prediction
+
+After this change: (1) the next 3 improve runs will record an explicit per-trigger evaluation with brief evidence drawn from the trail; (2) at least one of those next 3 runs will, as a result, perform a non-omitted macro-Hansei it would otherwise have skipped; (3) this change will NOT by itself cause the agent to autonomously propose architectural redesigns — necessary, not sufficient — vision's full goal needs more mechanisms than this one; (4) verify.py will still pass (i.e., no new failures introduced).
+
+### Action and Outcome
+
+1. Replaced step 6b in improve/SKILL.md: removed "Most iterations do not need this. Run it only when one of the following is true:" and the four-bullet trigger list as gate; replaced with a mandatory per-entry evaluation paragraph specifying one short evidence-bearing line per trigger, "bare N/A is not allowed"; preserved the original macro-reflection guidance for when a trigger fires.
+2. Bumped improve/SKILL.md version 3.7.0 → 3.8.0.
+3. Updated tools/record.py STUB_TEMPLATE to emit four trigger lines plus a conditional macro-Hansei subsection.
+4. Ran verify.py: FAIL with 1 issue — `entry '2026-05-11 retrospect-run-2' references missing session file`. Confirmed pre-existing via `git stash; verify.py; git stash pop` — same failure on unmodified HEAD.
+
+**Outcome vs prediction:** Predictions (1)–(3) are forward-looking, falsifiable by the next 3 runs. Prediction (4) was substantively correct (no regression introduced) but literally wrong (verify.py was already failing pre-change). I did not check verify.py status before predicting it would still pass — that is a small but real prediction-discipline miss. Recording it honestly.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The improve skill now has a structural mechanism — observable per Principle 2 — that pushes back against tactical drift. Trigger evaluation is no longer honor-system. A future run examining the next 3 trail entries should see explicit per-trigger lines with evidence; if it does not, this change failed silently and the architectural diagnosis was wrong.
+
+**Named blind spot:**
+
+I did not check whether other skills (intent, trail, retrospect, probe) reference the old "Most iterations do not need this" wording or the old single-field macro-Hansei format. If they do, the suite now has a documentation-drift tail consistent with retrospect's first active operational rule. I also did not run the new step 6b retroactively against any of the last 4 entries — the first entry obeying the new format is this one, which means I have one data point on whether the new format is actually fillable.
+
+**Imagined-reader pushback:**
+
+"You restructured the form for an honest reflection. The agent that wrote `N/A` four times in a row will now write `not fired — not fired — not fired — not fired` four times in a row. You added a ritual, not a constraint. The structural fix is a verify.py check that refuses entries when the recurring-class trigger fired but no macro subsection exists. Until that exists, this change is decorative."
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* **FIRED** — last 4 improve entries (improve-intent-composition, improve-trail-integrity, improve-probe-memory-model, improve-intent-remove-the-test) are all mechanical inconsistency cleanups: paragraph-add, encoding-fix, label-add, section-removal. This run breaks the class.
+- *About to declare silence:* not fired — a structural change was made.
+- *Contradicts prior [!REALIZATION]:* not fired — checked the realisations of the last 5 entries; this run *confirms* the prior arc-claim about tactical-vs-strategic gap rather than contradicting any.
+- *Operator explicitly asked:* fired implicitly — operator pointed at vision and retrospect as the brief; retrospect's "next runs should test" section explicitly named this as the test.
+
+**Across-trail macro-Hansei** *(trigger fired)*:
+
+Reading log.md as one document about the target: every architectural shift since v3.0 — intent, trail, hansei rewrite, retrospect, the v3 redesign itself — was operator-initiated. The recurring-finding-class trigger has fired silently many times in the trail because the entry shape made cleanup-class fixes maximally easy to record and architectural-class fixes invisible by default. **`[!REALIZATION]`** The skill suite's tactical-drift problem is not only a model-capability problem; it is partly a *format* problem. The trail entry shape was a quiet contributor to the diagnosed failure mode. This run's change addresses the format contribution. The model-capability contribution is untouched and will require separate work.
+
+### Provenance
+
+Reconstructed live from this conversation; full reasoning narrated in chat before each step (Understand / Examine / Challenge / Decide / Act / Reflect) per Principle 2.
