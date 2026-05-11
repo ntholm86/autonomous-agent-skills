@@ -1,6 +1,6 @@
 ---
 name: improve
-version: 3.9.0
+version: 3.9.1
 description: 'The improvement skill. Understand the ask, examine the target, challenge the first read, decide on one change (or argue for redesign, or declare silence), act, reflect on the target, and record. Combines incremental refinement, structural rethinking, and reflection on the target itself. USE WHEN: improve, audit, review, fix, refactor, redesign, evaluate, what would make this better, am I missing something.'
 argument-hint: 'The target to improve, and optionally the concern (correctness, simplicity, performance, etc.)'
 ---
@@ -89,6 +89,8 @@ Pick one of:
 Make the change. For each non-trivial step, state what you are about to do and why before doing it. Show the reasoning, not just the diff. After the change, verify it: run tests, check types, re-read the surrounding code to confirm no regression. Evaluate the actual outcome against the prediction made in Step 4. Observe and document if the prediction held or failed.
 
 If the change introduces a problem, surface it immediately. Half-done work that pretends to be done is worse than no work at all.
+
+**If you back out of a planned step within this iteration** (attempted X, then removed it after Y showed it was wrong), mark it `[!REVERSAL]` in the trail entry. Within-iteration reversals are as much evidence of honest reasoning as cross-iteration ones; under-marking them produces a trail with implausibly high success density and is a known confabulation pattern.
 
 ### 6. Reflect
 

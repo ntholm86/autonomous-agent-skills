@@ -1,6 +1,6 @@
 ---
 name: trail
-version: 1.15.0
+version: 1.15.1
 description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any session that produces a decision, realization, or finding — including conversations. There is no such thing as "just conversation" if a decision was made in it.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
@@ -155,7 +155,7 @@ Insert these inline wherever they occur — inside any section, not only Decisio
 
 **`[!REALIZATION]`** — Something discovered during the work that changed understanding.
 
-**`[!REVERSAL]`** — A decision made and then undone. Reversals are more valuable than decisions — they show the reasoning evolved. A healthy trail demonstrates consistent reversal density: a long run of entries lacking `[!REVERSAL]`, `[!REALIZATION]`, or outcome-mismatches should be treated as suspect (likely post-hoc rationalization) rather than celebrated as perfection.
+**`[!REVERSAL]`** — A decision made and then undone. **Both kinds count:** reversing a prior run's decision, *and* backing out of a step planned earlier in the same iteration ("attempted X, then removed it after Y"). Reversals are more valuable than decisions — they show the reasoning evolved. A healthy trail demonstrates consistent reversal density: a long run of entries lacking `[!REVERSAL]`, `[!REALIZATION]`, or outcome-mismatches should be treated as suspect (likely post-hoc rationalization) rather than celebrated as perfection. If your Action and Outcome section narrates "I tried X then removed it," mark it.
 
 ```markdown
 [!DECISION] Collapsed six skills to two.
@@ -166,6 +166,10 @@ Alternative: keep all six, add cross-references — rejected, complexity without
 
 [!REVERSAL] Initially planned to keep the PowerShell scripts. Reversed after confirming
 they bind the suite to one OS for no reason a few hundred lines of Python won't satisfy.
+
+[!REVERSAL] Within this iteration: added a check_non_canonical_markers() function to verify.py.
+Reversed after running it produced 46 false positives from entries that mention marker syntax in prose.
+The data-loss problem is solved at the source by the regex fix; the style check needs a better heuristic.
 ```
 
 To find every load-bearing decision across all sessions:

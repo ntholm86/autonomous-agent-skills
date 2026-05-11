@@ -5079,3 +5079,74 @@ The "do both" framing — formalize the pattern AND keep it informal — is itse
 1. **Test the new step on a fresh-session arc.** Have a different model family (or a fresh session of this one) run Improve on something and verify the `### Candidate next moves` section is naturally produced. If the step is only honored when the agent that wrote it is the one running, the documentation is not load-bearing.
 2. **Address the reversal-density signal from the prior retrospect.** Add brief guidance to step 5 or 6a that within-iteration backouts (planned change attempted then removed) should be marked `[!REVERSAL]`. The retrospect named this as a likely confabulation pattern; closing it is structural, not cosmetic.
 3. **Run Retrospect again after 3-5 iterations using the new step 6c format**, specifically to test the macro-Hansei claim above (is "make visible, keep informal" a real design pattern of this target, or pattern-matching across three coincidences?).
+
+## 2026-05-11 — improve-reversal-honesty
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.5 (GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-11-improve-reversal-honesty.md
+- outcome: changed — `[!REVERSAL]` definition tightened to explicitly cover within-iteration backouts; step 5 now prompts for the marker; .gitignore added
+- delta: trail/SKILL.md (v1.15.0 → 1.15.1, definition + example), improve/SKILL.md (v3.9.0 → 3.9.1, step 5 prompt), .gitignore (new), __pycache__/verify.cpython-313.pyc (untracked)
+
+### Interpretation of the ask
+
+Operator: "go with your recommendation lets go." The recommendation was the top-ranked candidate from the prior iteration's `### Candidate next moves`: address the reversal-density signal from the May 11 retrospect (2:118 ratio, with at least one within-iteration reversal narrated but unmarked in the same session). Smallest change, highest confabulation-defense payoff. Folded in the .gitignore housekeeping (carried in the operator memory from compacted context as cosmetic) since the trail is being committed anyway.
+
+### Examination
+
+The current `[!REVERSAL]` definition in trail/SKILL.md says "A decision made and then undone." That is technically inclusive of within-iteration backouts but is being read as "reversing a prior run." Evidence: today's `check_non_canonical_markers` was attempted, produced 46 false positives, removed — narrated in the iter 7 entry, not marked. The author did not see the narration as a reversal. The definition needs an explicit clause naming both kinds.
+
+improve/SKILL.md step 5 currently has no prompt to mark within-iteration changes-of-course. Adding a single sentence at the end of step 5 covers the missing prompt without bloating the step.
+
+.gitignore: confirmed missing (`Test-Path .gitignore` returned False); `__pycache__/verify.cpython-313.pyc` is currently tracked. Trivial fix.
+
+### Decision
+
+[!DECISION] Three small edits in one iteration: (1) tighten the `[!REVERSAL]` definition in trail/SKILL.md to explicitly include within-iteration backouts, with an example. (2) add a single-sentence prompt in improve/SKILL.md step 5. (3) create `.gitignore` and untrack the pyc.
+
+Rejected: a verify.py check that pattern-matches narrated reversals against unmarked ones — the prior iteration's failed `check_non_canonical_markers` attempt is recent evidence that NLP-style heuristics in verify.py over-trigger. Honesty-marker enforcement belongs in human/operator review (and now Retrospect, per the prior arc-claim), not in the mechanical checker.
+
+### Prediction
+
+Within the next 5 iterations, at least one within-iteration backout will be marked `[!REVERSAL]` if any occurs. The next Retrospect will be able to compare narrated-but-unmarked vs marked reversals across the arc and report whether the gap closed. Will NOT cause artificial inflation of reversal density — most iterations don't have within-iteration backouts; the rate stays a function of the work, not the prompt.
+
+### Action and Outcome
+
+All three edits applied as planned. trail/SKILL.md `[!REVERSAL]` definition now reads "Both kinds count: reversing a prior run's decision, *and* backing out of a step planned earlier in the same iteration." Example block gained a within-iteration example drawn from iter 7 of today's sweep. improve/SKILL.md step 5 gained a final paragraph naming the under-marking pattern explicitly as a confabulation signal. `.gitignore` created with `__pycache__/`, `*.pyc`, `*.pyo`; the previously-tracked pyc was untracked via `git rm --cached`.
+
+This entry contains no within-iteration backouts to demonstrate the new prompt — the change was clean. The first natural test will be the next iteration that does back out of something.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The reversal-density gap from the May 11 retrospect now has both a clarified definition and an explicit prompt at the point of action. If the next 5 iterations produce backouts that still go unmarked, the failure is in author interpretation, not in spec ambiguity — and the spec change has done what it can do.
+
+**Named blind spot:**
+
+This iteration did not attempt to retroactively mark prior unmarked reversals (e.g., iter 7's `check_non_canonical_markers` removal). Doing so would require editing historical log entries, which violates append-only — but it leaves the historical reversal-density data understated. A future Retrospect can correct for this by counting *narrated* reversals separately from *marked* ones; this entry didn't do that work.
+
+**Imagined-reader pushback:**
+
+"You added a prompt to step 5 telling the agent to mark its own reversals. The agent already had the marker in trail/SKILL.md and didn't use it. Adding more text doesn't fix a behavioral gap." Partial concession: the step 5 prompt is a small bet, not a guarantee. The stronger bet is the tightened definition (which removes the ambiguity that allowed "I tried X then removed it" to be read as not-a-reversal). The step 5 prompt is the redundant safety; the definition fix is the load-bearing change.
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* not fired — single retrospect-derived finding being addressed; no recurrence pattern.
+- *About to declare silence:* not fired — substantive change made.
+- *Contradicts prior [!REALIZATION]:* not fired — extends the May 11 retrospect's reversal-asymmetry claim rather than contradicting any prior realization.
+- *Operator explicitly asked:* FIRED — operator: "go with your recommendation lets go." The recommendation was sourced from the prior iteration's `### Candidate next moves`, top-ranked.
+
+**Across-trail macro-Hansei** *(triggered by Operator explicitly asked)*:
+
+This is the first iteration where step 6c's ranking was directly operative: the prior iteration produced a ranked list, the operator picked the top item, this iteration executed it. The arc-evidence is now first-order: step 6c is doing what it was designed to do. The next Retrospect should be able to read this back-to-back pair (`improve-offer-next-moves` → `improve-reversal-honesty`) as the first instance of the pattern operating end-to-end — agent ranks, operator selects, agent executes, trail records both. If that pattern repeats, it's evidence the operator-gate dialogue is not just visible but reliably-runnable.
+
+### Candidate next moves
+
+*(One ranked list of candidate moves visible from this iteration. Operator may pick, redirect, or ignore.)*
+
+1. **Test step 6c on a fresh-session arc.** Carried forward from the prior iteration's #1. Still the highest-value research move — verify the spec is load-bearing rather than only honored by the agent that wrote it. Requires a fresh session or a different model family.
+2. **Audit the trail for narrated-but-unmarked reversals across the full arc.** Not retroactive marking (which violates append-only) but a count: how many entries narrate "tried X then removed it" without `[!REVERSAL]`? The number is the baseline; the next 5 iterations after this one should show the gap closing.
+3. **Look at vision.md and retrospect.md against each other** as a paired read — the vision says "the loop should derive retrospect.md autonomously"; the latest retrospect.md was operator-triggered. Vision-vs-actual gap may be worth a Vision dialogue (operator-held) rather than another Improve iteration.

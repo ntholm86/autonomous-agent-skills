@@ -489,6 +489,26 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REVERSAL]** `. The retrospect named this as a likely confabulation pattern; closing it is structural, not cosmetic.
 
+## 2026-05-11 — improve-reversal-honesty
+
+**[!REALIZATION]** :* not fired — extends the May 11 retrospect's reversal-asymmetry claim rather than contradicting any prior realization.
+
+## 2026-05-11 — improve-reversal-honesty
+
+**[!REVERSAL]** ` definition in trail/SKILL.md says "A decision made and then undone." That is technically inclusive of within-iteration backouts but is being read as "reversing a prior run." Evidence: today's `check_non_canonical_markers` was attempted, produced 46 false positives, removed — narrated in the iter 7 entry, not marked. The author did not see the narration as a reversal. The definition needs an explicit clause naming both kinds.
+
+## 2026-05-11 — improve-reversal-honesty
+
+**[!REVERSAL]** ` if any occurs. The next Retrospect will be able to compare narrated-but-unmarked vs marked reversals across the arc and report whether the gap closed. Will NOT cause artificial inflation of reversal density — most iterations don't have within-iteration backouts; the rate stays a function of the work, not the prompt.
+
+## 2026-05-11 — improve-reversal-honesty
+
+**[!REVERSAL]** ` definition now reads "Both kinds count: reversing a prior run's decision, *and* backing out of a step planned earlier in the same iteration." Example block gained a within-iteration example drawn from iter 7 of today's sweep. improve/SKILL.md step 5 gained a final paragraph naming the under-marking pattern explicitly as a confabulation signal. `.gitignore` created with `__pycache__/`, `*.pyc`, `*.pyo`; the previously-tracked pyc was untracked via `git rm --cached`.
+
+## 2026-05-11 — improve-reversal-honesty
+
+**[!REVERSAL]** `? The number is the baseline; the next 5 iterations after this one should show the gap closing.
+
 ---
 
-**121 markers — 118 realisations, 3 reversals**
+**126 markers — 119 realisations, 7 reversals**
