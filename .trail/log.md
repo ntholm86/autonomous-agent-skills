@@ -4582,3 +4582,70 @@ Not triggered. The deferral-chain risk is recorded as the imagined-reader pushba
 ### Provenance
 
 Reconstructed live from this conversation; full reasoning narrated in chat before each step (Understand / Examine / Challenge / Decide / Act / Reflect) per Principle 2.
+
+## 2026-05-11 — improve-verify-trigger-contract
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Opus 4.7 (Anthropic, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-11-improve-verify-trigger-contract.md
+- outcome: Added `check_trigger_evaluation()` to verify.py — enforces the v3.8.0 reflection contract from the contract slug onward. Two prior contract-era entries pass; pre-existing pre-contract failure unchanged. Breaks the structural-deferral chain by acting on the candidate named in the prior two entries.
+- delta: verify.py grows one check (~70 LOC) plus a small `_parse_entries` helper extracted from `check_session_files` for reuse.
+
+### Interpretation of the ask
+
+Operator: "run improve again." Generic prompt. The pre-committed candidate from the prior entry was building this enforcement check. Two consecutive deferrals — a third would confirm the "structural-deferral chain" recurring-class candidate. This run treats the pre-commit as binding unless a strictly higher-leverage finding surfaces. None did.
+
+### Examination
+
+Read verify.py end-to-end. The existing checks parse log.md into (date, slug, body) tuples; the new check needs the same shape. Extracted `_parse_entries()` helper to remove duplication. The contract entry slug `improve-step6b-trigger-observability` provides a clean cutoff — entries strictly before it are grandfathered (applying the contract retroactively would be revisionism and would break verify against historical truth). The two prior contract-era entries (this entry's predecessors) already use the four-trigger format; they should pass without modification — and that is the test of whether the spec I documented and the spec I now enforce agree.
+
+### Decision
+
+[!DECISION] Add `check_trigger_evaluation()` to verify.py. Scan entries from the contract slug onward; require all four trigger keywords (recurring, silence, contradict, operator) present in italicised labels; reject bare "N/A"/"TODO" as line content; require a `**Across-trail macro-Hansei**` subsection when any trigger contains "FIRED" not preceded by "not". Rationale: this is the structural pressure the prior two entries' imagined readers called for; without it, the v3.8.0 contract is decorative. Alternative considered and rejected: build the check as a pre-commit hook instead. Rejected because verify.py is the existing integrity surface and adding a parallel mechanism would split the audit story.
+
+### Prediction
+
+After change: the two prior contract-era entries pass the new check unchanged. The pre-existing `retrospect-run-2` failure is unchanged (predates the contract). This entry, written under the contract, must itself pass. If it does not, the documented format and the enforced format disagree and that is a bug to fix before commit. Total verify.py output: same single pre-existing failure, no regressions, no new failures from this run's artefacts.
+
+### Action and Outcome
+
+1. Added module-level constants: `TRIGGER_CONTRACT_SLUG`, `TRIGGER_KEYWORDS`, three regexes (`MACRO_HANSEI_HEADING`, `TRIGGER_LINE`, `BARE_PLACEHOLDER`, `FIRED_NOT_NEGATED`).
+2. Extracted `_parse_entries()` helper.
+3. Added `check_trigger_evaluation()` that finds the contract entry by slug and applies the contract from there forward.
+4. Wired into `main()`.
+5. Updated module docstring.
+6. **First test run failed** — 8 spurious failures because the regex expected the colon outside the italic markup (`*Recurring finding-class*:`) when the actual format places it inside (`*Recurring finding-class:*`). Fixed regex; second run reports the single pre-existing failure as predicted.
+7. Smoke-tested regex behaviour: `FIRED` in line → `any_fired = True`; `not fired` only → `any_fired = False`. Confirmed.
+
+**Outcome vs prediction:** Substantively held. One miss: I didn't check the format-vs-regex assumption before predicting "no new failures" — the first verify run produced 8. The bug was caught and fixed inside this run. The lesson — stated in the prior entry as a blind spot ("did not run record.py to confirm wording matches") — repeated here in slightly different shape: I made a structural assumption about the on-disk format and verified it only after running the check. That is the second iteration in a row this prediction-discipline gap surfaced.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The v3.8.0 reflection contract is now structurally enforced. An agent that writes a contract-era entry without four trigger lines, or with bare "N/A"/"TODO" placeholders, or with a fired trigger but no macro-Hansei subsection, is now rejected by verify.py rather than silently passing. The decorative-vs-structural distinction the prior two entries' imagined readers raised is closed for this contract.
+
+**Named blind spot:**
+
+I did not test what happens when an agent writes a `**FIRED**` (with markdown emphasis around the word) inside a longer sentence containing the phrase "not fired" elsewhere. The `FIRED_NOT_NEGATED` regex uses a fixed-width lookbehind for "not " preceding "fired" — it should handle this correctly, but I did not construct an adversarial test case to confirm. The check could have a false-negative path that says "looks fine" when the agent has actually written ambiguous text.
+
+**Imagined-reader pushback:**
+
+"You enforced the *form*. The *content* is still post-hoc. An agent will write `not fired — last 5 entries` four times in a row and the check will pass; the recurring-class trigger only fires when the agent honestly notices it. The retrospect.md said the loop mistakes absence of known defect for absence of all defects — your check catches one defect class (missing/empty trigger lines) but does nothing about the deeper class (dishonest evaluations that look honest)."
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* not fired — last 3 entries form a coherent arc (introduce contract → propagate to spec → enforce mechanically), not a recurring class. The "structural-deferral chain" candidate from the prior entry is *resolved*, not extended.
+- *About to declare silence:* not fired — a change was made.
+- *Contradicts prior [!REALIZATION]:* not fired — this run executes on the prior entry's pre-commitment; consistent with the arc.
+- *Operator explicitly asked:* not fired — generic prompt.
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+Not triggered. (Subsection retained per the v3.8.0 spec wording "otherwise omit" — but kept here as a one-line confirmation so the trail shows the question was addressed, not skipped.)
+
+### Provenance
+
+Reconstructed live from this conversation; full reasoning narrated in chat per Principle 2.

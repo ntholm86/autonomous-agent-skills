@@ -15,6 +15,10 @@ Checks:
 7. Required markdown docs do not contain duplicate H1 headings, and their local
     markdown links resolve.
 8. Every `session-file:` reference in log.md points to an existing file.
+9. Entries written under the v3.8.0 reflection contract (from
+    `improve-step6b-trigger-observability` onward) record an explicit
+    four-trigger evaluation — bare "N/A"/"TODO" rejected — and include a
+    macro-Hansei subsection when any trigger fired.
 
 Exit code: 0 if all checks pass, 1 otherwise.
 """
@@ -162,6 +166,91 @@ def check_required_markdown_docs() -> list[str]:
     return failures
 
 
+# Slug at and after which the v3.8.0 reflection contract applies.
+# Entries strictly before this slug (in file order) are grandfathered.
+TRIGGER_CONTRACT_SLUG = "improve-step6b-trigger-observability"
+
+TRIGGER_KEYWORDS = ("recurring", "silence", "contradict", "operator")
+MACRO_HANSEI_HEADING = re.compile(
+    r"^\*\*Across-trail macro-Hansei", re.MULTILINE
+)
+TRIGGER_LINE = re.compile(
+    r"^-\s+\*([^*]*?)\*\s*(.*)$",
+    re.MULTILINE,
+)
+BARE_PLACEHOLDER = re.compile(r"^\s*(?:n/?a|todo)\s*\.?\s*$", re.IGNORECASE)
+FIRED_NOT_NEGATED = re.compile(r"(?<!not\s)\bfired\b", re.IGNORECASE)
+
+
+def _parse_entries(text: str) -> list[tuple[str, str, str]]:
+    entries: list[tuple[str, str, str]] = []
+    current_date: str | None = None
+    current_slug: str | None = None
+    current_body: list[str] = []
+    for line in text.splitlines():
+        m = ENTRY_HEADING.match(line)
+        if m:
+            if current_date is not None:
+                entries.append((current_date, current_slug or "", "\n".join(current_body)))
+            current_date, current_slug = m.group(1), m.group(2)
+            current_body = []
+        elif current_date is not None:
+            current_body.append(line)
+    if current_date is not None:
+        entries.append((current_date, current_slug or "", "\n".join(current_body)))
+    return entries
+
+
+def check_trigger_evaluation() -> list[str]:
+    """Enforce the v3.8.0 reflection contract for entries from the contract slug onward."""
+    failures: list[str] = []
+    if not LOG.exists():
+        return failures
+    entries = _parse_entries(LOG.read_text(encoding="utf-8"))
+
+    contract_index: int | None = None
+    for i, (_, slug, _) in enumerate(entries):
+        if slug == TRIGGER_CONTRACT_SLUG:
+            contract_index = i
+            break
+    if contract_index is None:
+        return failures  # contract entry not yet present; nothing to enforce
+
+    for date, slug, body in entries[contract_index:]:
+        matches = TRIGGER_LINE.findall(body)
+        # Map keyword -> content for trigger lines (label may include trailing ':').
+        trigger_content: dict[str, str] = {}
+        for label, content in matches:
+            label_lc = label.lower()
+            for kw in TRIGGER_KEYWORDS:
+                if kw in label_lc:
+                    trigger_content.setdefault(kw, content)
+                    break
+        for required in TRIGGER_KEYWORDS:
+            if required not in trigger_content:
+                failures.append(
+                    f"entry '{date} {slug}' missing trigger evaluation line for: {required}"
+                )
+
+        any_fired = False
+        for kw, content in trigger_content.items():
+            placeholder_text = content.strip().strip("*").strip()
+            if BARE_PLACEHOLDER.match(placeholder_text):
+                failures.append(
+                    f"entry '{date} {slug}' trigger '{kw}' uses bare placeholder"
+                )
+                continue
+            if FIRED_NOT_NEGATED.search(content):
+                any_fired = True
+
+        if any_fired and not MACRO_HANSEI_HEADING.search(body):
+            failures.append(
+                f"entry '{date} {slug}' has a fired trigger but no 'Across-trail macro-Hansei' subsection"
+            )
+
+    return failures
+
+
 def check_session_files() -> list[str]:
     """Check that every session-file: reference in log.md points to an existing file."""
     failures: list[str] = []
@@ -202,6 +291,7 @@ def main() -> int:
     all_failures.extend(check_no_mojibake())
     all_failures.extend(check_required_markdown_docs())
     all_failures.extend(check_session_files())
+    all_failures.extend(check_trigger_evaluation())
 
     if all_failures:
         print(f"FAIL — {len(all_failures)} issue(s):")
