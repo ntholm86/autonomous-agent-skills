@@ -83,7 +83,15 @@ A reasoning layer that can't carry anything across runs is not a reasoning layer
 
 ## The hard problem this repo exists to chip away at
 
+The central research question is: **What is the architecture of trustworthy delegation?**
+
 When this repo targets itself, the loop has to derive its retrospect.md from the trail. The agent cannot be told "this is what the target is becoming" — it has to read the trail, form arc-claims, and write that orientation itself. **That — autonomous retrospect.md derivation — is the hard problem.** Every other reasoning capability sits on top of it: an agent that cannot derive what the target is becoming will keep optimizing for whatever metric is in front of it.
+
+The next frontier for this research is to elevate the agent's capability from mechanical consistency to architectural insight. The loop's self-correction mechanism for design-level flaws is currently operator-dependent. The ultimate aim is for the `improve` skill to be so effective that it can find and fix its own deep, architectural flaws without any human prompting. The system should be able to discover the need for a new skill like `retrospect` on its own.
+
+This involves two related sub-goals:
+1.  **Codify Strategic Thinking:** Embed the process of strategic thinking directly into the skills. The agent must explicitly reason about the "why" behind a target's design, not just the "what."
+2.  **Create a Self-Bootstrapping System:** Develop the capability for the system to generate its own `vision.md` for any new, unfamiliar codebase it encounters, forming a "best guess" at the project's purpose for the operator to refine.
 
 Vision (this file) is what the operator gives the agent as input. retrospect.md is what the agent must produce as output. The gap between them is what Retrospect is trying to close.
 

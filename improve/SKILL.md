@@ -57,6 +57,7 @@ Look at the target. Read what is there. Run what can be run. Form a mental model
 
 Three lenses are available as thinking tools — not a procedure, not a checklist. Apply the ones the target invites:
 
+- **Purpose.** Does the target achieve what it is for? Read `.trail/vision.md` and the target's own README. Is there a gap between the stated goal and what the artifact actually does? Is the design the right one for the job? This lens runs first.
 - **Inconsistency.** Where does the target contradict itself? Mixed conventions, asymmetric handling of similar cases, naming patterns that diverge for no reason. Inconsistency is often a root cause whose symptoms surface elsewhere.
 - **Overburden.** Where is some component asked to do too much? Functions, modules, files, or processes that concentrate too many responsibilities. Overburden concentrates risk: the overburdened component is the one most likely to break and hardest to change.
 - **Waste.** Where does the target carry things that don't earn their existence? Dead code, abstractions with one consumer, validation that can never fire, documentation that restates the obvious. Waste creates cognitive load without contributing value.

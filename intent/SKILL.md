@@ -51,6 +51,8 @@ State the interpretation before acting. Brief is fine; silent is not. The user c
 
 The narration must contain enough for the user to catch a wrong interpretation cheaply — at minimum the destination you extracted and, when a material alternative exists, the one you rejected and why. If the prompt was unambiguous, say so in one line and proceed — but say it.
 
+Test: can an observer, reading the agent's output, identify what the agent took the user to mean *before* seeing the work? If not, the narration failed, regardless of how good the work was.
+
 ### Check the Gap
 
 Compare the interpretation against the literal prompt. When they diverge, decide:
@@ -79,17 +81,11 @@ Proceed with the interpreted task. If during the work the interpretation turns o
 
 ---
 
-## The Test
-
-If you removed this skill, would the agent still interpret the user's intent rather than the literal text? Maybe — good agents do this anyway. The skill exists because "maybe" is not enough when the cost of literal execution is a wrong artifact, a wasted run, or a user who has to repeat themselves.
-
-A secondary test: can an observer, reading the agent's output, identify what the agent took the user to mean *before* seeing the work? If not, the narration failed, regardless of how good the work was.
-
----
-
 ## Composing with other skills
 
 This skill runs first. When Improve or Probe is also active, Intent operates on the prompt that identifies the target before those skills examine the target itself. If Intent changes what the target is, the downstream skill works on the corrected target.
+
+When Vision or Retrospect is also active, their output files (`vision.md`, `retrospect.md`) are already read as part of Intent's own 'Read the accumulated context' step — no additional ordering is needed. Intent reads these files; it never writes them.
 
 When Trail is also active, paste the Intent narration verbatim into the "Interpretation of the ask" section of the log entry. A session with Intent but no Trail means the next session starts cold — the interpretation was visible once and is now gone.
 

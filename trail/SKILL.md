@@ -171,66 +171,50 @@ A trail at only one resolution is observable to one class of observer and invisi
 
 ---
 
-## Writing the session file
+## Structural Session Capture (Real-time Transcript)
 
-After every substantive run, write a session file to `.trail/sessions/` in the target repo root.
+The most critical principle of the trail is that it must be **structural telemetry, not reported telemetry**. An agent writing a summary of its own actions at the end of a session introduces a post-hoc rationalization threat.
 
-Create the `sessions/` subdirectory if it does not already exist.
+**The Harness Boundary Constraint:**
+You, the agent, CANNOT structurally log your own internal reasoning (the internal chain of thought). Any attempt by the agent to "write down its thoughts" inside the transcript using a text-generation tool call is structurally a *newly generated post-hoc summary*, not the literal thought tokens themselves. True "verbatim" fidelity of the internal reasoning layer can *only* be achieved by reading the raw platform transcript from disk.
 
-**Filename:** `YYYY-MM-DD-<slug>.md` — same date and slug as the corresponding `log.md` entry.
+**Mandatory Action During the Session:**
+To achieve 100% auditable, literal capture of the conversation word-by-word (including your raw `reasoningText`), you must use the execution harness's own logs. 
+If running inside VS Code Copilot:
+1. Locate the `.jsonl` transcript file for the current session. (Stored locally in the `workspaceStorage` directory under `GitHub.copilot-chat\transcripts\`).
+2. Write and execute a script (e.g., PowerShell or Python) to parse this JSONL file.
+3. Extract the `user.message` content, the `assistant.message` `reasoningText` (the raw thoughts), and `content` (the text response).
+4. Append this extracted raw data to `.trail/session/transcript.md`.
 
-**Content minimum:**
+Do not attempt to summarize or paraphrase the transcript. Use file operations to move the bytes from the JSONL log directly into the verifiable `.trail/session/` directory.
+
+**Content minimum for transcript.md:**
 
 ```markdown
-# YYYY-MM-DD — <slug>
+## Timestamp / Turn
 
-fidelity: reconstructed | verbatim | mixed
+**User:**
+<Literal exact copy of the user's prompt>
 
-## Request
-
-<The operator's request, verbatim or near-verbatim.>
-
-## Examination
-
-<What was looked at. What each lens revealed.>
-
-## Prediction
-
-<The pre-commit expectation of what the changes will achieve.>
-
-## Actions
-
-<What was done, in enough detail to follow without the diff. State whether the actual outcome matched or falsified the predictionrrounding reasoning — not just the markers.>
-
-## Actions
-
-<What was done, in enough detail to follow without the diff.>
-
-## Reflection
-
-<Updated model of the target. Named blind spots. What a more informed observer would push back on.>
+**Agent:**
+<Literal exact copy of the agent's response, including reasoning and tool calls>
 ```
 
-If the platform exports a verbatim transcript, paste it here (mark `fidelity: verbatim`). If not, reconstruct from the session (mark `fidelity: reconstructed`).
-
-Link the session file from the `log.md` entry by adding a `session-file:` line to the entry header:
+**Linking the Session:**
+After the session concludes, when writing the final aggregate `log.md` entry, you must link it to this verbatim transcript file:
 
 ```markdown
 ## YYYY-MM-DD — <slug>
 
 - target: ...
-- session-file: .trail/sessions/YYYY-MM-DD-<slug>.md
+- session-file: .trail/session/transcript.md
+- fidelity: verbatim-structural
 - ...
 ```
 
-Include the session file in the same commit as the log.md entry:
+Include the session directory files in the trail commit.
 
-```
-git add .trail/log.md .trail/sessions/YYYY-MM-DD-<slug>.md
-git commit -m "trail: <slug>"
-```
-
-The session file is the **Full** resolution tier. Without it, the trail cannot be reconstructed in detail — which undermines the Observable Autonomy claim. It is not optional.
+The session transcript is the **Full** resolution tier. Without it, the trail is merely a post-hoc "resumé" which undermines the Observable Autonomy claim. It is not optional.
 
 ---
 

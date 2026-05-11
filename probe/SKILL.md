@@ -9,6 +9,8 @@ argument-hint: 'The agent or skill to probe, and what claim about its reasoning 
 
 *Build a situation the checklist couldn't anticipate. See whether reasoning emerges or pattern-matching is exposed.*
 
+*Memory Model role: Produces external ARF evidence — probe verdicts recorded in the trail are the primary signal that the loop is reasoning rather than pattern-matching.*
+
 This is the only skill in the suite that genuinely tests something external. Improve makes the agent better; Probe finds out whether it is reasoning at all.
 
 ## Governing principles
