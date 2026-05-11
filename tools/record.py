@@ -14,6 +14,11 @@ Subcommands:
   history [--target=<target>]
       Print a per-iteration timeline: date, slug, outcome, and decisions.
       Shows convergence direction at a glance. Optionally filter by target.
+
+  learning [--write]
+      Print (or write to .trail/learning.md) a compact chronological extract
+      of every [!REALIZATION] and [!REVERSAL] marker from .trail/log.md.
+      The learning surface — what the loop has actually concluded across runs.
 """
 from __future__ import annotations
 
@@ -268,6 +273,78 @@ def cmd_history(args: argparse.Namespace) -> int:
     return 0
 
 
+def _render_learning(entries: list[dict], markdown: bool) -> str:
+    """Render the [!REALIZATION] / [!REVERSAL] markers across all entries.
+
+    The compact learning surface — what the loop has concluded across runs.
+    Each item carries its date+slug context so the source entry is locatable
+    in log.md.
+    """
+    items: list[tuple[str, str, str, str]] = []  # (date, slug, kind, content)
+    for e in entries:
+        for r in e["realizations"]:
+            items.append((e["date"], e["slug"], "REALIZATION", r))
+        for r in e["reversals"]:
+            items.append((e["date"], e["slug"], "REVERSAL", r))
+
+    if markdown:
+        lines: list[str] = []
+        lines.append("# Learning")
+        lines.append("")
+        lines.append("Auto-generated from `.trail/log.md` by the `record.py learning --write` command in the autonomous-agent-skills install.")
+        lines.append("Do not edit by hand — re-run the command to refresh.")
+        lines.append("")
+        lines.append("Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker. The learning surface — what the loop has actually concluded across runs. Read this before reading `log.md` in full; reach for `log.md` only when an item here needs its surrounding context.")
+        lines.append("")
+        if not items:
+            lines.append("_(no markers found)_")
+            return "\n".join(lines) + "\n"
+        for date, slug, kind, content in items:
+            lines.append(f"## {date} — {slug}")
+            lines.append("")
+            lines.append(f"**[!{kind}]** {content}")
+            lines.append("")
+        lines.append(f"---")
+        lines.append("")
+        realisation_count = sum(1 for it in items if it[2] == "REALIZATION")
+        reversal_count = len(items) - realisation_count
+        lines.append(f"**{len(items)} markers — {realisation_count} realisations, {reversal_count} reversals**")
+        return "\n".join(lines) + "\n"
+
+    # Terminal format
+    lines = []
+    if not items:
+        lines.append("(no [!REALIZATION] or [!REVERSAL] markers found)")
+        return "\n".join(lines)
+    for date, slug, kind, content in items:
+        truncated = content if len(content) <= 100 else content[:97] + "..."
+        lines.append(f"{date}  {slug}")
+        lines.append(f"  [!{kind}] {truncated}")
+        lines.append("")
+    realisation_count = sum(1 for it in items if it[2] == "REALIZATION")
+    reversal_count = len(items) - realisation_count
+    lines.append(f"  {len(items)} markers — {realisation_count} realisations, {reversal_count} reversals")
+    return "\n".join(lines)
+
+
+def cmd_learning(args: argparse.Namespace) -> int:
+    if not LOG.exists():
+        print(f"ERROR: {LOG} does not exist.", file=sys.stderr)
+        return 1
+    text = _safe_read_log()
+    entries = _parse_entries(text)
+    write = getattr(args, "write", False)
+    output = _render_learning(entries, markdown=write)
+    if write:
+        out_path = LOG.parent / "learning.md"
+        out_path.write_text(output, encoding="utf-8")
+        item_count = sum(len(e["realizations"]) + len(e["reversals"]) for e in entries)
+        print(f"wrote {out_path} ({item_count} markers from {len(entries)} entries)")
+    else:
+        print(output)
+    return 0
+
+
 def cmd_summary(_args: argparse.Namespace) -> int:
     if not LOG.exists():
         print(f"ERROR: {LOG} does not exist.", file=sys.stderr)
@@ -309,6 +386,10 @@ def build_parser() -> argparse.ArgumentParser:
     p_hist.add_argument("--target", default=None, help="Filter entries by target name (substring match).")
     p_hist.add_argument("--write", action="store_true", help="Write .trail/history.md as committed markdown instead of printing.")
     p_hist.set_defaults(func=cmd_history)
+
+    p_learn = sub.add_parser("learning", help="Extract every [!REALIZATION]/[!REVERSAL] marker — the compact learning surface.")
+    p_learn.add_argument("--write", action="store_true", help="Write .trail/learning.md as committed markdown instead of printing.")
+    p_learn.set_defaults(func=cmd_learning)
 
     return p
 

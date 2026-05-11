@@ -1,6 +1,6 @@
 ---
 name: trail
-version: 1.12.0
+version: 1.13.0
 description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any session that produces a decision, realization, or finding — including conversations. There is no such thing as "just conversation" if a decision was made in it.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
@@ -73,10 +73,13 @@ If you write `history.md`, commit it separately — it is a derived convenience 
 .trail/
   log.md          — append-only ledger, one entry per session (the source of truth)
   history.md      — on-demand human-readable summary (run: record.py history --write)
+  learning.md     — on-demand compact extract of [!REALIZATION] / [!REVERSAL] markers (run: record.py learning --write)
   vision.md       — operator-held destination (optional; read by Improve, never written by any skill)
   retrospect.md      — Retrospect-derived current orientation (written by Retrospect, read by Improve)
   sessions/       — per-session detail file (mandatory); one per run, linked from log.md
 ```
+
+`learning.md` is the compact learning surface — every `[!REALIZATION]` and `[!REVERSAL]` from the full trail, in chronological order with date+slug context. Improve reads it before `log.md` to act on prior conclusions without re-reading the full history. It is derived; regenerate it after any run that adds new markers.
 
 Vision and retrospect.md are distinct: vision is the destination the operator holds and rarely changes; retrospect.md is the agent's current synthesis of where the target is, rewritten each Retrospect run. Vision is input to the loop; retrospect.md is output.
 
