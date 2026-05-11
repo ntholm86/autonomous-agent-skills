@@ -477,6 +477,10 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** :* not fired — no prior realization claimed the MARKER regex was sufficient; the bug was identified and documented in iter 5.
 
+## 2026-05-11 — retrospect-after-marker-integrity
+
+**[!REALIZATION]** :* not fired — extends and confirms the May 5 arc-claims; introduces new ones without overturning prior ones.
+
 ---
 
-**118 markers — 116 realisations, 2 reversals**
+**119 markers — 117 realisations, 2 reversals**

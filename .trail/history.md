@@ -112,6 +112,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 105 | 2026-05-11 | improve-learning-artifact | Added `record.py learning [--write]` subcommand and `.trail/learning.md` derived artifact — a compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker. improve step 1 now reads it before log.md; trail/SKILL.md documents it. First operator-directed run targeting the learning gap rather than the safe pre-committed candidate. | tools/record.py +1 subcommand (~80 LOC); improve/SKILL.md 3.8.1 → 3.8.2 step 1 reads learning.md before log.md; trail/SKILL.md 1.12.0 → 1.13.0 file map adds learning.md; new file .trail/learning.md (74 markers from 104 entries; 9.5% the size of log.md). |
 | ▸ 106 | 2026-05-11 | trail-derived-artifact-freshness | Trail now structurally owns derived-artifact freshness. The commit-step block in trail/SKILL.md mandates regeneration of both `history.md` and `learning.md` as part of every Trail commit; the multi-iteration block already required history.md regeneration but contradictory "on-demand" prose elsewhere has been reconciled. learning.md staleness — flagged as the prior entry's pre-committed candidate — is closed at the spec level. | trail/SKILL.md 1.13.0 → 1.14.0; commit-step block, file-map paragraph, and multi-iteration sequence updated. tools/record.py unchanged (the `learning --write` subcommand built in iteration 5 already exists). improve/SKILL.md unchanged — Trail owns this responsibility, not Improve. |
 | ▸ 107 | 2026-05-11 | improve-marker-integrity | changed — MARKER regex broadened; staleness check added; check_session_files deduplicated | tools/record.py (MARKER regex + .search()), verify.py (check 10: freshness, deduplication) |
+| ▸ 108 | 2026-05-11 | retrospect-after-marker-integrity | changed — retrospect.md fully replaced with arc-claims for entries 63–106 | .trail/retrospect.md (full rewrite) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -514,4 +515,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Three-part change: (1) record.py MARKER regex — remove `^` anchor, change `.match()` to `.search()`. (2) verify.py: add `check_derived_artifact_freshness()` using mtime comparison. (3) verify.py: refactor `check_session_files()` to use `_parse_entries()` helper.
 
-**107 runs total — 93 with changes, 14 silence**
+### Run 108 — 2026-05-11 — retrospect-after-marker-integrity
+
+- **decided:** Replace `.trail/retrospect.md` with arc-claims focused on three meta-shifts: (1) the centre-of-gravity shift to trail epistemics, now load-bearing for ~25 entries; (2) the artifact-symmetry of the three pillars now being structurally complete; (3) the operator-gate pattern as the empirical strategic engine. Plus an adversarial-audit observation: the 2:118 reversal-to-realization ratio is implausibly low and signals likely under-use of `[!REVERSAL]`.
+
+**108 runs total — 94 with changes, 14 silence**
