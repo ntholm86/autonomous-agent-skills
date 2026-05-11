@@ -4886,3 +4886,68 @@ Reading the session as one document: of 6 iterations, the first 4 were tactical 
 ### Provenance
 
 Reasoning narrated in chat before each step per Principle 2. Decision rationale (Improve = vehicle, Trail = home) made explicit in chat before any edit was made.
+
+## 2026-05-11 — improve-marker-integrity
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.5 (GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-11-improve-marker-integrity.md
+- outcome: changed — MARKER regex broadened; staleness check added; check_session_files deduplicated
+- delta: tools/record.py (MARKER regex + .search()), verify.py (check 10: freshness, deduplication)
+
+### Interpretation of the ask
+
+Operator confirmed "yes" to bundling two related items from the prior session's candidate list: (1) fix the MARKER regex in record.py that silently dropped mid-paragraph markers, and (2) add a verify.py staleness check for learning.md and history.md. Both items target the same failure arc — evidence markers being lost or unverified — so bundling them is justified. A third incidental item was folded in: deduplicating the inline parsing loop in check_session_files() to use the existing _parse_entries() helper.
+
+### Examination
+
+`tools/record.py` line 51: `MARKER = re.compile(r"^\[!(DECISION|REVERSAL|REALIZATION)\]\s*(.+)$")` called via `MARKER.match(line)` at line 177. `.match()` anchors at the start of the string — a line like "Reading the trail as one document. [!REALIZATION] The conclusion." fails to match because the line doesn't start with `[!`. This is the exact bug that hit two consecutive iterations (iter 5 and iter 6).
+
+`verify.py`: nine checks, `check_session_files()` has its own inline copy of the entry-parsing loop that `_parse_entries()` already provides. No staleness check for derived artifacts.
+
+### Decision
+
+[!DECISION] Three-part change: (1) record.py MARKER regex — remove `^` anchor, change `.match()` to `.search()`. (2) verify.py: add `check_derived_artifact_freshness()` using mtime comparison. (3) verify.py: refactor `check_session_files()` to use `_parse_entries()` helper.
+
+A fourth idea (check_non_canonical_markers) was attempted and reversed — see Reflection.
+
+### Prediction
+
+1. `record.py learning --write` will recover markers that were previously silently dropped. Marker count will increase.
+2. verify.py will gain check 10 (staleness), wired into main().
+3. Single pre-existing failure (`retrospect-run-2` missing session file) will remain; no new failures will appear from this run's own artifacts.
+
+### Action and Outcome
+
+All three planned changes implemented. Marker count increased from 78 to 115 after `record.py learning --write` — confirming 37 previously-dropped markers are now recovered.
+
+`check_non_canonical_markers()` was also attempted (an INLINE_MARKER regex to flag markers preceded by non-whitespace text on the same line). It generated 46 failures, of which the vast majority were false positives: trail entries that *discuss* marker syntax (e.g., "search for `[!REALIZATION]` markers", "Contradicts prior [!REALIZATION]") triggered the regex. With record.py now capturing mid-line markers correctly via `.search()`, the data-loss problem is solved at the source; the style-enforcement check is not ready and was removed.
+
+verify.py runs clean except the one grandfathered failure.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+`record.py learning --write` now produces a learning.md that captures every marker in log.md regardless of where it appears in a line. 115 markers are present; none are dropped due to position.
+
+**Named blind spot:**
+
+The mtime-based staleness check has a known limitation: on a fresh git clone, both log.md and learning.md have the same checkout timestamp, so the check passes even if they were last committed in a non-synchronized state. The check covers the primary failure mode (agent appends to log.md and forgets to regenerate before committing) but not the cross-repo-clone case.
+
+**Imagined-reader pushback:**
+
+"You fixed the parser to handle mid-line markers instead of enforcing canonical form. Now authors may be sloppy and write markers anywhere in a paragraph. The canonical form (marker at line-start, marker is the whole line) was a useful discipline." Valid — but the data-integrity problem (silent loss) is more severe than the style problem (marker embedded in prose). Canonical-form enforcement belongs in a future run with a better heuristic than a regex that can't distinguish use from mention.
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* FIRED — the MARKER regex bug has hit twice in consecutive iterations (iter 5 and iter 6, both caught only after comparing marker counts). This entry fixes the root cause; the recurrence that prompted this entry is closed.
+- *About to declare silence:* not fired — the staleness check and regex fix are clearly non-trivial structural improvements.
+- *Contradicts prior [!REALIZATION]:* not fired — no prior realization claimed the MARKER regex was sufficient; the bug was identified and documented in iter 5.
+- *Operator explicitly asked:* FIRED — operator confirmed "yes" to this exact bundle of items at the end of the prior session.
+
+**Across-trail macro-Hansei** *(triggered by Recurring finding-class and Operator explicitly asked)*:
+
+The MARKER regex bug hit two consecutive iterations and went unnoticed until manual marker-count comparison. The arc reveals a pattern: enforcement gaps are not caught until the same failure class recurs. The trigger-contract check from iter 3, the freshness mandate from iter 6, and this fix from iter 7 are all retroactive catches of structural gaps that existed for many entries before detection. The pattern suggests the trail infra is still primarily reactive. A prospective measure — like running `record.py learning` as a pre-check at the START of each session and comparing with the expected count — would catch staleness before writing new entries rather than after.

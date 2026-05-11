@@ -48,7 +48,7 @@ LOG = ROOT / ".trail" / "log.md"
 
 ENTRY_HEADING = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s+[\u2014-]\s+(.+?)\s*$")
 META_FIELD = re.compile(r"^-\s+(target|outcome|delta):\s*(.+)$")
-MARKER = re.compile(r"^\[!(DECISION|REVERSAL|REALIZATION)\]\s*(.+)$")
+MARKER = re.compile(r"\[!(DECISION|REVERSAL|REALIZATION)\]\s*(.+?)\s*$")
 
 STUB_TEMPLATE = """\
 
@@ -174,7 +174,7 @@ def _parse_entries(text: str) -> list[dict]:
             current[meta.group(1)] = meta.group(2).strip()
             continue
 
-        marker = MARKER.match(line)
+        marker = MARKER.search(line)
         if marker:
             kind = marker.group(1).lower() + "s"
             current[kind].append(marker.group(2).strip())

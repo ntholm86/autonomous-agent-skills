@@ -111,6 +111,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 104 | 2026-05-11 | improve-learning-marker-access | Added explicit [!REALIZATION]/[!REVERSAL] marker-surfacing guidance to improve step 1's log.md reading instruction; these markers are now named as the efficient access path to learning residue when the log is long. | improve/SKILL.md 3.8.0 → 3.8.1; one sentence added to step 1 log.md bullet. |
 | ▸ 105 | 2026-05-11 | improve-learning-artifact | Added `record.py learning [--write]` subcommand and `.trail/learning.md` derived artifact — a compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker. improve step 1 now reads it before log.md; trail/SKILL.md documents it. First operator-directed run targeting the learning gap rather than the safe pre-committed candidate. | tools/record.py +1 subcommand (~80 LOC); improve/SKILL.md 3.8.1 → 3.8.2 step 1 reads learning.md before log.md; trail/SKILL.md 1.12.0 → 1.13.0 file map adds learning.md; new file .trail/learning.md (74 markers from 104 entries; 9.5% the size of log.md). |
 | ▸ 106 | 2026-05-11 | trail-derived-artifact-freshness | Trail now structurally owns derived-artifact freshness. The commit-step block in trail/SKILL.md mandates regeneration of both `history.md` and `learning.md` as part of every Trail commit; the multi-iteration block already required history.md regeneration but contradictory "on-demand" prose elsewhere has been reconciled. learning.md staleness — flagged as the prior entry's pre-committed candidate — is closed at the spec level. | trail/SKILL.md 1.13.0 → 1.14.0; commit-step block, file-map paragraph, and multi-iteration sequence updated. tools/record.py unchanged (the `learning --write` subcommand built in iteration 5 already exists). improve/SKILL.md unchanged — Trail owns this responsibility, not Improve. |
+| ▸ 107 | 2026-05-11 | improve-marker-integrity | changed — MARKER regex broadened; staleness check added; check_session_files deduplicated | tools/record.py (MARKER regex + .search()), verify.py (check 10: freshness, deduplication) |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -191,6 +192,7 @@ Do not edit by hand — re-run the command to refresh.
 
 ### Run 19 — 2026-04-24 — trail/README.md drift fix
 
+- **decided:** ` / `[!REALIZATION]` / `[!REVERSAL]` markers inside `sessions/*.md` already satisfy this. So the implementation was compliant; only the documentation drifted.
 - **decided:** Rewrite `trail/README.md` to describe the actual three-resolution-across-two-files structure, with a grep example for the indexed layer. Update the Glossary to reflect v3 skills (`improve`, `probe`) and note v1/v2 vocabulary preserved in `archive/v2/`.
 - **decided:** Do not change PROOF.md in the manifesto. The L52 phrasing ("the resolution they need") doesn't claim a number; the three-resolution claim holds. The `trail/README.md` defect is a kata-repo issue outside the manifesto convergence chain's scope.
 - **decided:** Cut v3.0.1 for the README fix. Keep v3.0.0 tag at d75b5e1 (the convergence-validated commit) — that is what the chain ratified.
@@ -294,6 +296,7 @@ Do not edit by hand — re-run the command to refresh.
 
 ### Run 42 — 2026-04-30 — indexed-marker-grep-path
 
+- **decided:** ` markers; `trail/sessions/` contains exactly one file. A user following the documented command would get near-zero results despite the abundance of markers. This is a functional bug, not just stale wording.
 - **decided:** Change the grep target from `trail/sessions/` to `trail/` in both files. This covers `log.md` (where markers actually live) and `sessions/*.md` (if the optional layer is in use).
 
 ### Run 43 — 2026-04-30 — trail-readme-v2-vocabulary
@@ -495,14 +498,20 @@ Do not edit by hand — re-run the command to refresh.
 
 ### Run 104 — 2026-05-11 — improve-learning-marker-access
 
+- **decided:** |[!REALIZATION]|[!REVERSAL]' .trail/`". That guidance lives in the *trail* spec, not in the *improve* spec agents read before every run. The mechanism is documented in the wrong place.
 - **decided:** Add one sentence to improve step 1's log.md bullet: name `[!REALIZATION]`/`[!REVERSAL]` markers as the efficient access path to learning residue when the log is long. Bump 3.8.0 → 3.8.1. Rationale: smallest change that makes vision's learning mechanism operational without a new tool or skill. The access path already exists in trail/SKILL.md; this puts it where agents look before every run.
 
 ### Run 105 — 2026-05-11 — improve-learning-artifact
 
 - **decided:** Add `record.py learning [--write]` and `.trail/learning.md` as a derived compact artifact mirroring the history.md pattern. Update improve step 1 to read learning.md before log.md. Update trail/SKILL.md file map to document it. Bump improve 3.8.1 → 3.8.2 and trail 1.12.0 → 1.13.0.
+- **decided:** ` markers too: bloats with choices that aren't learning residue. REALIZATION + REVERSAL is the learning content.
 
 ### Run 106 — 2026-05-11 — trail-derived-artifact-freshness
 
 - **decided:** Update trail/SKILL.md to make derived-artifact regeneration mandatory at every commit, for both history.md and learning.md. Reconcile the "on-demand" prose for history.md with the multi-iteration block that already requires it. Bump 1.13.0 → 1.14.0. tools/record.py needs no changes.
 
-**106 runs total — 92 with changes, 14 silence**
+### Run 107 — 2026-05-11 — improve-marker-integrity
+
+- **decided:** Three-part change: (1) record.py MARKER regex — remove `^` anchor, change `.match()` to `.search()`. (2) verify.py: add `check_derived_artifact_freshness()` using mtime comparison. (3) verify.py: refactor `check_session_files()` to use `_parse_entries()` helper.
+
+**107 runs total — 93 with changes, 14 silence**

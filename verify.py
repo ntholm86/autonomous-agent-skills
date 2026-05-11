@@ -19,6 +19,8 @@ Checks:
     `improve-step6b-trigger-observability` onward) record an explicit
     four-trigger evaluation — bare "N/A"/"TODO" rejected — and include a
     macro-Hansei subsection when any trigger fired.
+10. `.trail/history.md` and `.trail/learning.md` are not older than
+    `.trail/log.md` (staleness check using file mtime).
 
 Exit code: 0 if all checks pass, 1 otherwise.
 """
@@ -251,30 +253,40 @@ def check_trigger_evaluation() -> list[str]:
     return failures
 
 
+def check_derived_artifact_freshness() -> list[str]:
+    """Fail when history.md or learning.md is older than log.md.
+
+    Uses file mtime. After a git checkout both files have the same checkout
+    timestamp and the check correctly passes. The check catches the primary
+    failure mode: agent appended to log.md but forgot to regenerate the
+    derived artifacts before committing.
+    """
+    failures: list[str] = []
+    if not LOG.exists():
+        return failures
+    log_mtime = LOG.stat().st_mtime
+    for artifact_name in ("history.md", "learning.md"):
+        artifact = ROOT / ".trail" / artifact_name
+        subcommand = artifact_name.replace(".md", "")
+        if not artifact.exists():
+            failures.append(
+                f"missing derived artifact .trail/{artifact_name} — "
+                f"run: python tools/record.py {subcommand} --write"
+            )
+        elif artifact.stat().st_mtime < log_mtime:
+            failures.append(
+                f"stale derived artifact .trail/{artifact_name} is older than .trail/log.md — "
+                f"run: python tools/record.py {subcommand} --write"
+            )
+    return failures
+
+
 def check_session_files() -> list[str]:
     """Check that every session-file: reference in log.md points to an existing file."""
     failures: list[str] = []
     if not LOG.exists():
         return failures
-    text = LOG.read_text(encoding="utf-8")
-
-    entries: list[tuple[str, str, str]] = []
-    current_date: str | None = None
-    current_slug: str | None = None
-    current_body: list[str] = []
-    for line in text.splitlines():
-        m = ENTRY_HEADING.match(line)
-        if m:
-            if current_date is not None:
-                entries.append((current_date, current_slug or "", "\n".join(current_body)))
-            current_date, current_slug = m.group(1), m.group(2)
-            current_body = []
-        elif current_date is not None:
-            current_body.append(line)
-    if current_date is not None:
-        entries.append((current_date, current_slug or "", "\n".join(current_body)))
-
-    for date, slug, body in entries:
+    for date, slug, body in _parse_entries(LOG.read_text(encoding="utf-8")):
         for m in SESSION_FILE_META.finditer(body):
             rel_path = m.group(1).strip()
             if not (ROOT / rel_path).exists():
@@ -292,6 +304,7 @@ def main() -> int:
     all_failures.extend(check_required_markdown_docs())
     all_failures.extend(check_session_files())
     all_failures.extend(check_trigger_evaluation())
+    all_failures.extend(check_derived_artifact_freshness())
 
     if all_failures:
         print(f"FAIL — {len(all_failures)} issue(s):")

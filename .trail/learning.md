@@ -153,6 +153,10 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** Checking fenced code blocks as live markdown was too naive for this repo. Once the verifier stopped treating examples as content, the remaining failures were all real and actionable.
 
+## 2026-04-30 — readme-title-and-hook
+
+**[!REALIZATION]** This is both an inconsistency and a first-impression failure — a reader landing on the repo sees "Skills" and has no idea what they're looking at.
+
 ## 2026-04-30 — readme-goal-section
 
 **[!REALIZATION]** This entry records the operator's intent not because the README lacked a goal section, but because the intent itself had never been formally committed to the trail. All prior sessions operated on this intent implicitly. Making it explicit and permanent in the trail is the correct place for it — the trail is the evidence layer, and the operator's intent is the most load-bearing piece of context in the entire system. Any future agent reading this log now has the destination stated directly, not inferred from patterns.
@@ -180,6 +184,22 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 ## 2026-05-01 — version-consistency-v374
 
 **[!REALIZATION]** There is a structural pattern across runs 48–53: each run in the v3.7.x series created a small documentation deficit that the next run cleaned up. Run 52 introduced v3.7.4 but didn't update CHANGELOG/README/CITATION.cff; run 53 fixed it. This is the same lag as run 51 (which fixed run 50's missing CHANGELOG entries). The lag is one run. The loop is working — it catches each deficit — but the deficit is consistently created by the same failure mode: the agent treats "fix X" as a scoped task and doesn't always widen to "and update all version-bearing files." This is a known acceptable cost of atomic scoping, not a design flaw. Run 54 should be a genuine silence candidate — the stale-path tail is closed, version is consistent, skills are substantively clean.
+
+## 2026-05-01 — reflect-step-hansei-rewrite
+
+**[!REALIZATION]** `, or operator request) that reads the trail as one document about the target. Both must speak about THE TARGET (never THE LOOP), use invocational register ("sit with three questions") rather than checklist register, reuse the existing `[!REALIZATION]` marker, and remain target-agnostic enough that the self-targeting case falls out without special-casing. `trail/SKILL.md`'s "Reflection" template will need a corresponding update so the entry shape matches the new wording.
+
+## 2026-05-01 — reflect-step-hansei-rewrite
+
+**[!REALIZATION]** ` already carries the right semantics ("something discovered during the work that changed understanding").
+
+## 2026-05-01 — reflect-step-hansei-rewrite
+
+**[!REALIZATION]** ` reused as storage; no new markers, files, or tooling introduced.
+
+## 2026-05-01 — reflect-step-hansei-rewrite
+
+**[!REALIZATION]** ` storage.
 
 ## 2026-05-01 — reflect-step-hansei-rewrite
 
@@ -217,6 +237,10 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** This is the third silence candidate in this arc (after the false positives at runs 49, 50, 53). This one is different: the prior false positives were halted by finding echoes. This one swept every named surface and found nothing. Per the convergence protocol, this is one Anthropic silence peg — not convergence, which requires three independent family pegs. The next run should be from a different model family on the same target to begin building the convergence chain.
 
+## 2026-05-01 — zenodo-description-update
+
+**[!REALIZATION]** , or operator ask)*:
+
 ## 2026-05-01 — tagline-step-names
 
 **[!REALIZATION]** Run 59 (Gemini) fixed `.zenodo.json` but used "Observe" as the step 1 name — consistent with the README body but inconsistent with SKILL.md's actual step 1 heading "Understand the target and the ask." The README body has used "Observe" since an earlier run that pre-dates the convergence baseline. Whether "Observe" or "Understand" is the canonical name for step 1 is now an open question: SKILL.md says "Understand", README body says "Observe", zenodo now says "Observe". These co-exist as aliases but a newcomer reading across files would see two different names. This is a lower-priority inconsistency than the "Change/Verify" problem just fixed, but it is real and flagged for a future run.
@@ -227,7 +251,19 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 ## 2026-05-01 — feat-retrospect-skill
 
+**[!REALIZATION]** . An agent running both in sequence would produce nearly identical output. The skill boundary is conceptual, not operational." That pushback is not fully answerable until Retrospect runs on a real target. The distinction is real — standalone vs. in-loop, no change required, loop-effectiveness permitted — but whether agents actually use it differently is an open empirical question.
+
+## 2026-05-01 — feat-retrospect-skill
+
 **[!REALIZATION]** The suite has now grown from four skills to five by the loop's own operation — the loop identified a gap in itself (run 63 macro-Hansei), the operator named the solution, and the loop implemented it. This is the first time the improve loop on this repo produced a structural addition (new skill) rather than a refinement or correction. Whether Retrospect earns its place depends on whether it produces distinct signal when run on external targets. The next meaningful test: run Retrospect as a standalone skill on any non-trivial external target with a trail, and check whether the arc-claims differ from what improve's step 6b would have produced in the same session.
+
+## 2026-05-01 — feat-working-model
+
+**[!REALIZATION]** markers are the closest thing to a current model, but finding them requires reading the full log. There is no synthesized forward-facing document.
+
+## 2026-05-01 — feat-working-model
+
+**[!REALIZATION]** markers automatically. Rejected: automated extraction misses the judgment call about which realizations are still current — Retrospect's arc-read is that judgment. The human-written synthesis is the point.
 
 ## 2026-05-01 — retrospect.md-seed-evo-vision
 
@@ -237,9 +273,29 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The split sharpens the hard problem. "Autonomous retrospect.md derivation" used to be vague because retrospect.md content was a mix of derivable and operator-given material. After the split, the hard problem is precise: given vision (input) and the trail (evidence), can Retrospect produce retrospect.md (output) that holds up to scrutiny? The next milestone is concrete and testable in a way it wasn't before this run.
 
+## 2026-05-01 — split-vision-from-retrospect.md
+
+**[!REALIZATION]** in run "retrospect.md-seed-evo-vision" predicted exactly this split)*:
+
+## 2026-05-01 — split-vision-from-retrospect.md
+
+**[!REALIZATION]** markers are doing what they are supposed to do — surfacing structural debt that subsequent runs can act on. If they had been ignored, this run would have been another doc edit instead.
+
 ## 2026-05-01 — Vision-skill-added
 
 **[!REALIZATION]** The first natural use of Vision is on the operator who just commissioned it. The agent has hunches about where this conversation is heading (more skills addressing the human-bottleneck side; integration eventually but not yet; possibly a vision elicitation skill as a follow-up; possibly a conversation-as-evidence skill). The right move on the next operator turn — if the operator does not specify a direction — is to run Vision and ask, not to guess and act.
+
+## 2026-05-01 — Vision-on-operator-vision-intent
+
+**[!REALIZATION]** , or operator ask)*:
+
+## 2026-05-01 — position-md-v0-1-drafted
+
+**[!REALIZATION]** , or operator ask)*:
+
+## 2026-05-02 — session-v3-16-0-retrospect-first-run
+
+**[!REALIZATION]** in runs 68+71, persisted two sessions)
 
 ## 2026-05-02 — session-v3-16-0-retrospect-first-run
 
@@ -248,6 +304,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 ## 2026-05-02 — trail-v1-10-0-sessions-mandatory
 
 **[!REALIZATION]** The gap was partly mechanical (no write step) and partly rhetorical (the word "optional" gave explicit permission to skip). Both needed fixing. The mechanical fix without removing "optional" would still leave the agent an out.
+
+## 2026-05-02 — Vision: vision-competitive-framing
+
+**[!REALIZATION]** rather than rediscovering it
+
+## 2026-05-02 — retro-on-updated-vision
+
+**[!REALIZATION]** that motivated it. A cross-session case remains unobserved.
 
 ## 2026-05-02 — external-proof-vectorium-improve-run
 
@@ -259,7 +323,23 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 ## 2026-05-02 — retrospect-vectorium-arc-evidence-2026-05-02
 
+**[!REALIZATION]** about the (any) injection pattern in vectorium was distilled into the retrospect.md's "next runs" queue. Session 2 (new context window) opened the retrospect.md and acted on that queued work — removing 5 (any) casts, adding typed Scene services — without re-diagnosing the root cause. Vision's definition of learning is met: a future agent acted on a prior [!REALIZATION] rather than rediscovering it. The mechanism is retrospect.md-mediated, which is exactly how the learning protocol is designed.
+
+## 2026-05-02 — retrospect-vectorium-arc-evidence-2026-05-02
+
 **[!REALIZATION]** Reading the arc as one document, the vectorium external-proof arc is the most evidence-dense arc the suite has produced. But it reveals a ceiling: accumulating more runs on the same target with the same operator cannot close the adoption success condition, no matter how many correctness fixes are made or how many (any) casts are removed. The single most leveraged remaining action is a run on a target the operator did not build.
+
+## 2026-05-02 — retrospect-vectorium-arc-evidence-2026-05-02
+
+**[!REALIZATION]** it is now citing as a learning case. There is a circularity risk: I am the agent that wrote the prior session's retrospect.md and I am now citing its correctness as evidence. An independent agent (different model family or different operator) reading the same arc might assess the learning case differently.
+
+## 2026-05-02 — retrospect-vectorium-arc-evidence-2026-05-02
+
+**[!REALIZATION]** → retrospect.md queue → session-2 commits is traceable. The circularity concern is real but the evidence chain is not closed.
+
+## 2026-05-04 — rename-hunch-compass-plain-english-retrospect
+
+**[!REALIZATION]** , or operator ask)*:
 
 ## 2026-05-05 — rationalization-loop threat named; five mitigations queued
 
@@ -301,6 +381,70 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** Structural safety mechanisms (like the python CLI scripts scaffolding the blocks) are drastically more critical than the markdown documentation of those rules. The agent cannot be trusted to be its own policeman against a user deliberately bypassing the loop.
 
+## 2026-05-05 — improve-learning-gap
+
+**[!REALIZATION]** tags to track meta-cognitive adjustments in the trail. However, relying on a future agent in a fresh session to locate and internalize these scattered tags from a 3000-line log.md is architectural waste.
+
+## 2026-05-05 — improve-learning-gap
+
+**[!REALIZATION]** markers to be harvested into a new ## Active operational rules block in
+
+## 2026-05-11 — retrospect-run-2
+
+**[!REALIZATION]** , or operator ask)*:
+
+## 2026-05-11 — improve-step6b-trigger-observability
+
+**[!REALIZATION]** :* not fired — checked the realisations of the last 5 entries; this run *confirms* the prior arc-claim about tactical-vs-strategic gap rather than contradicting any.
+
+## 2026-05-11 — improve-step6b-trigger-observability
+
+**[!REALIZATION]** `** The skill suite's tactical-drift problem is not only a model-capability problem; it is partly a *format* problem. The trail entry shape was a quiet contributor to the diagnosed failure mode. This run's change addresses the format contribution. The model-capability contribution is untouched and will require separate work.
+
+## 2026-05-11 — improve-trail-template-align
+
+**[!REALIZATION]** :* not fired — extends the prior arc-claim about format-as-cause; does not contradict it.
+
+## 2026-05-11 — improve-verify-trigger-contract
+
+**[!REALIZATION]** :* not fired — this run executes on the prior entry's pre-commitment; consistent with the arc.
+
+## 2026-05-11 — improve-learning-marker-access
+
+**[!REALIZATION]** `, not just rediscovering it. That gap is the session's direction.
+
+## 2026-05-11 — improve-learning-marker-access
+
+**[!REALIZATION]** `/`[!REVERSAL]` markers exist, are defined in trail/SKILL.md, and are used by agents in recording. The reading side — improve step 1 — says only "read log.md for the evidence behind the orientation, and for any specific prior decision the current run might contradict." With log.md now 4500+ lines, this gives no access path. The markers are the efficient access path to the learning residue; step 1 doesn't mention them.
+
+## 2026-05-11 — improve-learning-marker-access
+
+**[!REALIZATION]** `/`[!REVERSAL]` markers when the log is long.
+
+## 2026-05-11 — improve-learning-marker-access
+
+**[!REALIZATION]** ` and `[!REVERSAL]` markers — these are the settled conclusions and course-corrections from prior runs; reading them across the full history is more efficient than reading recent entries in full, and more likely to surface learning that predates the most recent Retrospect run."
+
+## 2026-05-11 — improve-learning-marker-access
+
+**[!REALIZATION]** `/`[!REVERSAL]` markers rather than reading recent entries in full. If a future run rediscovers a finding already marked as `[!REALIZATION]` without acknowledging the prior marker, this change failed to shift behavior — and the learning gap remains in capability, not format.
+
+## 2026-05-11 — improve-learning-marker-access
+
+**[!REALIZATION]** :* not fired — checked last 5 `[!REALIZATION]` markers; this run extends the arc-claim about format-as-cause rather than contradicting any prior realization.
+
+## 2026-05-11 — improve-learning-artifact
+
+**[!REALIZATION]** `/`[!REVERSAL]` markers) exists. The reading-side guidance was added in iteration 4. But the compact, cheaply-readable surface for the markers does not exist — they are scattered across 4500+ lines.
+
+## 2026-05-11 — improve-learning-artifact
+
+**[!REALIZATION]** `/`[!REVERSAL]` with date+slug context.
+
+## 2026-05-11 — improve-learning-artifact
+
+**[!REALIZATION]** :* not fired — extends the iteration-4 access-path realization rather than contradicting it; iteration-4's imagined-reader pushback ("markers still buried in 4500-line file") was the explicit precondition for this run.
+
 ## 2026-05-11 — improve-learning-artifact
 
 **[!REALIZATION]** Vision's three pillars (memory, learning, meta-cognition) each need a *first-class compact artifact* to work cross-session. Memory has it: log.md (full) + history.md (compact). Meta-cognition has it: log.md + retrospect.md. Learning was the asymmetric one — it had only the inline markers in log.md. This run closes that asymmetry. The capability gap (acting on what you read) remains, but it can now be tested cleanly: a fresh agent in a future session that doesn't act on a learning.md item is exhibiting capability failure, not infrastructure failure.
@@ -311,12 +455,28 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 ## 2026-05-11 — trail-derived-artifact-freshness
 
+**[!REALIZATION]** :* not fired — the iteration-5 realization that learning needed a first-class compact artifact assumed the artifact would stay current; this run makes that assumption true. Strengthens rather than contradicts.
+
+## 2026-05-11 — trail-derived-artifact-freshness
+
 **[!REALIZATION]** The "what should we do next?" exchange — agent ranks options, operator picks — is acting as a lightweight Vision/Intent dialogue inside Improve sessions. It is not currently a documented workflow but it is producing the strategic moves. Worth examining whether to formalise it (as a step in Improve, or as an explicit Intent invocation pattern) or leave it as the implicit operator-AI partnership vision.md describes.
 
 ## 2026-05-11 — trail-derived-artifact-freshness
 
 **[!REALIZATION]** I just made the same MARKER-parsing-strictness mistake iteration 5 named: I wrote the realization above mid-paragraph instead of on its own line, and `record.py learning --write` silently dropped it. Caught only because I cross-checked the marker count after regenerating. This is the SECOND consecutive run where the same parsing gap dropped the entry's own realization — the candidate from iteration 5's pre-commitment is now demonstrably load-bearing, not theoretical. Pre-committed for the next-next run: tighten the spec (canonical form mandatory, line-start required) AND broaden the regex to be forgiving, OR add a verify.py check that warns when an entry contains apparent markers in non-canonical form.
 
+## 2026-05-11 — improve-marker-integrity
+
+**[!REALIZATION]** The conclusion." fails to match because the line doesn't start with `[!`. This is the exact bug that hit two consecutive iterations (iter 5 and iter 6).
+
+## 2026-05-11 — improve-marker-integrity
+
+**[!REALIZATION]** ` markers", "Contradicts prior [!REALIZATION]") triggered the regex. With record.py now capturing mid-line markers correctly via `.search()`, the data-loss problem is solved at the source; the style-enforcement check is not ready and was removed.
+
+## 2026-05-11 — improve-marker-integrity
+
+**[!REALIZATION]** :* not fired — no prior realization claimed the MARKER regex was sufficient; the bug was identified and documented in iter 5.
+
 ---
 
-**78 markers — 76 realisations, 2 reversals**
+**118 markers — 116 realisations, 2 reversals**
