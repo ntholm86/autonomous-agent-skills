@@ -309,6 +309,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The MARKER regex in record.py only matches the canonical unwrapped form `[!REALIZATION] ...`. Several historical entries (and my first draft of this one) used `**\`[!REALIZATION]\`**` — bold + inline code — which the parser silently skips. Pre-committed for next run: either tighten the canonical form's enforcement (verify.py rejects wrapped markers) or broaden the regex (record.py matches both). I caught this on my own learning.md regeneration; without that smoke-check the entry's realization would have been silently lost.
 
+## 2026-05-11 — trail-derived-artifact-freshness
+
+**[!REALIZATION]** The "what should we do next?" exchange — agent ranks options, operator picks — is acting as a lightweight Vision/Intent dialogue inside Improve sessions. It is not currently a documented workflow but it is producing the strategic moves. Worth examining whether to formalise it (as a step in Improve, or as an explicit Intent invocation pattern) or leave it as the implicit operator-AI partnership vision.md describes.
+
+## 2026-05-11 — trail-derived-artifact-freshness
+
+**[!REALIZATION]** I just made the same MARKER-parsing-strictness mistake iteration 5 named: I wrote the realization above mid-paragraph instead of on its own line, and `record.py learning --write` silently dropped it. Caught only because I cross-checked the marker count after regenerating. This is the SECOND consecutive run where the same parsing gap dropped the entry's own realization — the candidate from iteration 5's pre-commitment is now demonstrably load-bearing, not theoretical. Pre-committed for the next-next run: tighten the spec (canonical form mandatory, line-start required) AND broaden the regex to be forgiving, OR add a verify.py check that warns when an entry contains apparent markers in non-canonical form.
+
 ---
 
-**76 markers — 74 realisations, 2 reversals**
+**78 markers — 76 realisations, 2 reversals**

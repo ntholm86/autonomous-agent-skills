@@ -4802,3 +4802,87 @@ Reading log.md (and now learning.md) as one document about the target: the loop 
 ### Provenance
 
 Reasoning narrated in chat before each step per Principle 2. Operator override of the prior entry's pre-committed candidate was made explicit in chat ("Yes lets run improve and target the learning gap") in response to the agent's own assessment of strategic shallowness.
+
+## 2026-05-11 — trail-derived-artifact-freshness
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-11-trail-derived-artifact-freshness.md
+- outcome: Trail now structurally owns derived-artifact freshness. The commit-step block in trail/SKILL.md mandates regeneration of both `history.md` and `learning.md` as part of every Trail commit; the multi-iteration block already required history.md regeneration but contradictory "on-demand" prose elsewhere has been reconciled. learning.md staleness — flagged as the prior entry's pre-committed candidate — is closed at the spec level.
+- delta: trail/SKILL.md 1.13.0 → 1.14.0; commit-step block, file-map paragraph, and multi-iteration sequence updated. tools/record.py unchanged (the `learning --write` subcommand built in iteration 5 already exists). improve/SKILL.md unchanged — Trail owns this responsibility, not Improve.
+
+### Interpretation of the ask
+
+Operator: "should the improve skill fix this? — yea i do." Distinction made explicit in chat: improve is the vehicle for *making* the fix (it's the skill that makes structural changes); Trail is the home for the *responsibility* (it's the writer of log.md and therefore the natural owner of derived-artifact freshness). Putting the responsibility in Improve would create a bootstrap problem — the skill that needs the file fresh would also be the one expected to refresh it, but it must already be fresh when step 1 runs. Commander's intent: make staleness structurally impossible at the spec level, not discipline-dependent.
+
+### Examination
+
+**Purpose lens (vision-anchored):** learning.md only delivers on its purpose if it reflects every committed entry. The prior entry left it as "regenerate after any run that adds new markers" — discipline-dependent guidance, the same failure mode the v3.8.0 trigger contract was built to address (relying on agent honor where the trail format permits silent skipping).
+
+**Inconsistency lens:** trail/SKILL.md already contained a contradiction: the prose around line 62 said "history.md is **not** generated automatically. Run it on demand," but the multi-iteration block at line 263–278 mandated `record.py history --write` as step 2 of every iteration. The "on-demand" framing predates the multi-iteration block. So the spec already had the right *behaviour* for derived files at the multi-iteration level; only the framing was stale. Adding learning.md alongside history.md is just bringing one more file into the existing-but-undocumented commit pattern.
+
+**Overburden lens:** improve/SKILL.md does not need touching for this. Trail is the natural home; improve only reads.
+
+### Decision
+
+[!DECISION] Update trail/SKILL.md to make derived-artifact regeneration mandatory at every commit, for both history.md and learning.md. Reconcile the "on-demand" prose for history.md with the multi-iteration block that already requires it. Bump 1.13.0 → 1.14.0. tools/record.py needs no changes.
+
+Alternatives rejected:
+- Auto-regenerate inside `record.py new`: hides responsibility; the spec is the contract, not the tool.
+- Add a verify.py check that fails when learning.md is older than log.md's most recent entry: belt-and-suspenders enforcement; the Trail spec change is the precondition. Pre-committed candidate for a future run.
+- Update only learning.md, leave history.md prose contradictory: cosmetic-only difference; would leave the next reader confused about which framing is authoritative.
+
+### Prediction
+
+1. trail/SKILL.md commit-step block lists `record.py learning --write` and `git add .trail/learning.md` alongside history.md.
+2. The "on-demand" prose for history.md is reconciled to match the multi-iteration block.
+3. The file-map paragraph for learning.md no longer says "on-demand."
+4. verify.py: same single pre-existing failure, no regressions.
+5. **Does NOT predict:** that future agents will follow the spec correctly. The mandate is now in the spec; structural enforcement (verify.py check) is a separate run.
+
+### Action and Outcome
+
+1. Bumped trail/SKILL.md version 1.13.0 → 1.14.0.
+2. Rewrote the simple commit-step block (after "After appending to log.md") to mandate both `history --write` and `learning --write` and to stage all three files. Replaced the "on-demand" prose with: "history.md and learning.md are derived from log.md and are regenerated as part of every Trail commit — they must not lag behind the source. record.py exposes both as standalone subcommands too."
+3. Updated the file-map paragraph for learning.md from "on-demand" to "regenerated by Trail at every commit."
+4. Updated the multi-iteration block: added step 3 (`record.py learning --write`), updated step 4's `git add` to include `.trail/learning.md`, updated the "steps 1–3" reference to "steps 1–4," and "in both files" to "in all three files."
+5. Practiced the new flow myself: ran `record.py history --write && record.py learning --write && verify.py` — both files regenerated, verify reports the same single pre-existing `retrospect-run-2` failure.
+
+**Outcome vs prediction:** Held in full. Predictions 1–4 confirmed. Prediction 5 (does NOT fix agent compliance) remains open and will be tested by the next run that follows Trail.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The Trail spec now structurally owns derived-artifact freshness. learning.md and history.md cannot legitimately lag behind log.md if Trail is followed. This closes the prior entry's named blind spot (learning.md staleness) at the spec level. The remaining gap is enforcement: an agent that ignores Trail's commit-step block can still produce a stale learning.md, and verify.py does not catch this.
+
+**Named blind spot:**
+
+I did not test what `record.py history --write` actually does on the current log.md beyond confirming the file gets written. If history.md has a parsing bug (e.g., the markdown table breaks on certain entry shapes), I would not have noticed in this run. Smoke-checked file size and exit code only.
+
+**Imagined-reader pushback:**
+
+"You moved the staleness problem from a specific file to a specific spec section. The mechanism is the same: agent discipline. The honest structural fix is to either (a) wire regeneration into `record.py new` so the spec doesn't need to mention it at all, or (b) add the verify.py check so spec violations get caught. You picked the option that is the least uncomfortable to write down and the easiest to silently skip."
+
+This pushback is stronger than usual. The honest counter is: Trail's commit-step block is followed by a separate enforcement layer (verify.py) in the next run; the spec change is the precondition for that enforcement, because verify.py cannot enforce something the spec doesn't say. But the pushback names a real two-step pattern in this session (spec change → enforcement check) that has only been completed once before (v3.8.0 trigger contract → check_trigger_evaluation). If the enforcement step doesn't follow in the next 1–2 runs, this entry will look like deferral.
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* CANDIDATE — this run's pattern (Trail spec change preceding a future verify.py enforcement) matches iterations 1–3 (improve spec change → trail spec change → verify.py enforcement). If the enforcement check is built next run, the pattern is "two-step structural changes." If it isn't, the pattern is "structural-deferral chain redux." Recording the evaluation; macro-hansei not triggered yet because the second instance is not yet a class.
+- *About to declare silence:* not fired — a structural change was made.
+- *Contradicts prior [!REALIZATION]:* not fired — the iteration-5 realization that learning needed a first-class compact artifact assumed the artifact would stay current; this run makes that assumption true. Strengthens rather than contradicts.
+- *Operator explicitly asked:* FIRED — operator asked "should the improve skill fix this? — yea i do" after the agent surfaced the strategic distinction (Improve is the vehicle, Trail is the home). Operator-directed for the second consecutive run.
+
+**Across-trail macro-Hansei** *(trigger fired)*:
+
+Reading the session as one document: of 6 iterations, the first 4 were tactical mechanism polish driven by safe pre-committed candidates; the last 2 (learning.md artifact, this entry) were strategic, both following operator override. The pattern is becoming clear: agent-initiated runs default to safe tactical work even when the agent's honest self-assessment names a strategic gap. The operator's "what should we do next?" question — followed by the agent ranking 3 options and the operator picking — is the mechanism that has produced the strategic moves this session. This is consistent with vision.md's claim that "the irreducible human gate is: what to implement." The session has not produced evidence that the agent will autonomously break out of safe tactical pre-commitments. Whether that's a model-capability ceiling or a format gap (no skill currently asks "is this run breaking the tactical chain or extending it?") remains open.
+
+[!REALIZATION] The "what should we do next?" exchange — agent ranks options, operator picks — is acting as a lightweight Vision/Intent dialogue inside Improve sessions. It is not currently a documented workflow but it is producing the strategic moves. Worth examining whether to formalise it (as a step in Improve, or as an explicit Intent invocation pattern) or leave it as the implicit operator-AI partnership vision.md describes.
+
+[!REALIZATION] I just made the same MARKER-parsing-strictness mistake iteration 5 named: I wrote the realization above mid-paragraph instead of on its own line, and `record.py learning --write` silently dropped it. Caught only because I cross-checked the marker count after regenerating. This is the SECOND consecutive run where the same parsing gap dropped the entry's own realization — the candidate from iteration 5's pre-commitment is now demonstrably load-bearing, not theoretical. Pre-committed for the next-next run: tighten the spec (canonical form mandatory, line-start required) AND broaden the regex to be forgiving, OR add a verify.py check that warns when an entry contains apparent markers in non-canonical form.
+
+### Provenance
+
+Reasoning narrated in chat before each step per Principle 2. Decision rationale (Improve = vehicle, Trail = home) made explicit in chat before any edit was made.
