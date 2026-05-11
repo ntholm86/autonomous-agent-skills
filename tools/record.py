@@ -106,6 +106,12 @@ TODO — the strongest objection from someone who knows the target better.
 **Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
 
 TODO
+
+### Candidate next moves
+
+*(One ranked list of candidate moves visible from this iteration. Operator may pick, redirect, or ignore. Omit if convergence was declared.)*
+
+1. TODO
 """
 
 

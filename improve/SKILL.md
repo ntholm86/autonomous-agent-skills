@@ -1,6 +1,6 @@
 ---
 name: improve
-version: 3.8.2
+version: 3.9.0
 description: 'The improvement skill. Understand the ask, examine the target, challenge the first read, decide on one change (or argue for redesign, or declare silence), act, reflect on the target, and record. Combines incremental refinement, structural rethinking, and reflection on the target itself. USE WHEN: improve, audit, review, fix, refactor, redesign, evaluate, what would make this better, am I missing something.'
 argument-hint: 'The target to improve, and optionally the concern (correctness, simplicity, performance, etc.)'
 ---
@@ -128,6 +128,20 @@ When the macro reflection runs, read `.trail/log.md` as a *single document about
 Write the result as `[!REALIZATION]` in this entry, framed as a claim about the target. If it changes the priority for the next iteration, say so plainly.
 
 For an arc-read that runs outside an improve iteration, use [Retrospect](../retrospect/SKILL.md).
+
+#### 6c. Offer next moves
+
+At the end of each iteration, before recording, surface a short ranked list of candidate next moves with one-sentence reasoning each. Two or three options is the typical shape; one is fine if only one stands out; zero is fine if convergence was declared in step 4.
+
+The candidates should come from this iteration's own examination — blind spots named in 6a, follow-ups implied by what was changed, structural questions surfaced but deferred. They are not a research project; they are what was already visible while doing this iteration's work.
+
+**This is not a step the operator must engage with.** The next session may pick from the ranking, redirect entirely, or run another improve loop without picking. Silence from the operator is a valid response. The ranking exists so that:
+
+- A future Retrospect can audit: did the operator's selection match the agent's top-ranked option? When it didn't, what redirected it? That comparison is arc-level evidence about how the operator-gate is actually steering the work.
+- A fresh-session agent reading the trail has a candidate next move ready, not just an arc-claim, in case the operator's intent is "continue from where you left off."
+- The strategic dialogue that has been operating informally as "what should we do next?" exchanges is now visible in the trail as a structural property of every iteration, without becoming a mandatory checklist for the operator.
+
+Write the ranking under a `### Candidate next moves` subsection inside the trail entry (recorded in step 7). Format: a numbered list, top-ranked first, each item a single sentence stating what the move is and why it ranks where it does. Keep it short — if it grows past a paragraph per item, the candidates are not yet sharp enough to offer.
 
 ### 7. Record
 

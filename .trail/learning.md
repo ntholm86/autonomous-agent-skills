@@ -481,6 +481,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** :* not fired — extends and confirms the May 5 arc-claims; introduces new ones without overturning prior ones.
 
+## 2026-05-11 — improve-offer-next-moves
+
+**[!REALIZATION]** :* not fired — extends the operator-gate observation from the May 11 retrospect rather than contradicting any prior realization.
+
+## 2026-05-11 — improve-offer-next-moves
+
+**[!REVERSAL]** `. The retrospect named this as a likely confabulation pattern; closing it is structural, not cosmetic.
+
 ---
 
-**119 markers — 117 realisations, 2 reversals**
+**121 markers — 118 realisations, 3 reversals**
