@@ -4649,3 +4649,72 @@ Not triggered. (Subsection retained per the v3.8.0 spec wording "otherwise omit"
 ### Provenance
 
 Reconstructed live from this conversation; full reasoning narrated in chat per Principle 2.
+
+## 2026-05-11 — improve-learning-marker-access
+
+- target: autonomous-agent-skills
+- operator: Nils Holmager
+- agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-11-improve-learning-marker-access.md
+- outcome: Added explicit [!REALIZATION]/[!REVERSAL] marker-surfacing guidance to improve step 1's log.md reading instruction; these markers are now named as the efficient access path to learning residue when the log is long.
+- delta: improve/SKILL.md 3.8.0 → 3.8.1; one sentence added to step 1 log.md bullet.
+
+### Interpretation of the ask
+
+Operator: generic "run improve skill again." Per the underspecified-request protocol, sourced a hunch from vision, retrospect.md, and the recent trail. Vision explicitly names *learning* as "the most underdeveloped of the three and the most important gap for a future loop run to target." The concrete definition: a later run shows evidence it acted on a prior `[!REALIZATION]`, not just rediscovering it. That gap is the session's direction.
+
+### Examination
+
+**Purpose lens (vision-anchored):** The `[!REALIZATION]`/`[!REVERSAL]` markers exist, are defined in trail/SKILL.md, and are used by agents in recording. The reading side — improve step 1 — says only "read log.md for the evidence behind the orientation, and for any specific prior decision the current run might contradict." With log.md now 4500+ lines, this gives no access path. The markers are the efficient access path to the learning residue; step 1 doesn't mention them.
+
+**Inconsistency lens:** trail/SKILL.md already has the access path in its "Three resolutions" section: "To find every load-bearing decision across all sessions: `grep -rn '[!DECISION]|[!REALIZATION]|[!REVERSAL]' .trail/`". That guidance lives in the *trail* spec, not in the *improve* spec agents read before every run. The mechanism is documented in the wrong place.
+
+**Secondary find (noted, not acted on):** `check_session_files()` in verify.py still has its own inline copy of the parsing loop that was extracted into `_parse_entries()` last run. The helper is used in `check_trigger_evaluation()` but not in `check_session_files()`. Code duplication — no strategic impact, flagged for next run.
+
+### Decision
+
+[!DECISION] Add one sentence to improve step 1's log.md bullet: name `[!REALIZATION]`/`[!REVERSAL]` markers as the efficient access path to learning residue when the log is long. Bump 3.8.0 → 3.8.1. Rationale: smallest change that makes vision's learning mechanism operational without a new tool or skill. The access path already exists in trail/SKILL.md; this puts it where agents look before every run.
+
+Alternatives rejected:
+- Fix `check_session_files()` duplication: no strategic impact; code quality only. Noted as next-run candidate.
+- Add a script that extracts markers into a summary file: over-engineering; the guidance change is sufficient and simpler.
+- Make macro-Hansei mandatory every run to surface learning: cost-disproportionate and signal-diluting.
+
+### Prediction
+
+1. Step 1's log.md bullet gains one sentence directing agents to search `[!REALIZATION]`/`[!REVERSAL]` markers when the log is long.
+2. verify.py reports the same single pre-existing failure (retrospect-run-2), no regressions.
+3. This change does NOT fix the retrospect.md lag gap (markers accumulate between Retrospect runs). It provides an efficient access path that works even when retrospect.md is stale.
+4. A future agent starting a new session on this target will now have explicit guidance to search markers — a testable behavior change.
+
+### Action and Outcome
+
+1. Added one sentence to improve step 1's log.md bullet: "When the log is long, search for `[!REALIZATION]` and `[!REVERSAL]` markers — these are the settled conclusions and course-corrections from prior runs; reading them across the full history is more efficient than reading recent entries in full, and more likely to surface learning that predates the most recent Retrospect run."
+2. Bumped improve/SKILL.md 3.8.0 → 3.8.1.
+3. Ran verify.py: same single pre-existing failure, no regressions. Prediction held.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The improve skill now has an explicit access path to the learning residue in log.md. A future agent starting fresh on this target should search for `[!REALIZATION]`/`[!REVERSAL]` markers rather than reading recent entries in full. If a future run rediscovers a finding already marked as `[!REALIZATION]` without acknowledging the prior marker, this change failed to shift behavior — and the learning gap remains in capability, not format.
+
+**Named blind spot:**
+
+`check_session_files()` in verify.py still has its own inline copy of the `_parse_entries()` parsing loop — the helper added in the last run isn't being used there. This is a secondary inconsistency that I examined but did not act on (one change per run). It is the pre-committed candidate for the next run.
+
+**Imagined-reader pushback:**
+
+"Adding 'search for markers' to the spec doesn't help an agent in a session where the log is too long to fit in context. The markers are still buried in a 4500-line file — you've added guidance to search for them, but the agent still has to read the search results. The learning residue needs to live in a dedicated, compact artifact (like a `[!REALIZATIONS].md` extract) for the access-path fix to be operationally meaningful."
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* not fired — last 4 entries form a coherent 3-run arc (introduce contract → propagate to spec → enforce) plus this entry beginning a new direction (learning gap). Not a recurring class.
+- *About to declare silence:* not fired — a change was made.
+- *Contradicts prior [!REALIZATION]:* not fired — checked last 5 `[!REALIZATION]` markers; this run extends the arc-claim about format-as-cause rather than contradicting any prior realization.
+- *Operator explicitly asked:* not fired — generic prompt.
+
+### Provenance
+
+Reasoning narrated in chat before each step per Principle 2.
