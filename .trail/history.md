@@ -122,6 +122,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 115 | 2026-05-12 | improve-retrospect-freshness-checklist | Added an executable freshness checklist and a minimal filled evidence example to retrospect/SKILL.md so the freshness guard can be applied consistently in real runs. | retrospect/SKILL.md 1.7.0 -> 1.8.0; added checklist and example under step 1b. |
 | ▸ 116 | 2026-05-12 | distribution-enforcement-discoverability | Closed three of four competitive gaps - enforcement (CI + pre-commit hook), distribution (one-line installers), discoverability (README subtitle + topic plan). Voice consistency (#4) declared sufficient without edit. | added .github/workflows/verify.yml, tools/hooks/pre-commit, tools/install-hooks.{sh,ps1}, install.{sh,ps1}; updated README.md and INSTALLING.md. |
 | ▸ 117 | 2026-05-12 | docs-changelog-for-v3.18.0 | Added release notes for v3.18.0 to CHANGELOG.md in preparation for release workflow run. | CHANGELOG.md updated with v3.18.0 entry. |
+| ▸ 118 | 2026-05-12 | cross-repo-positioning-alignment | Cross-repo naming and category framing aligned so manifesto and implementation now present one coherent PEA story. | Updated skills README/CITATION/.zenodo, updated manifesto README implementation link, and updated skills git origin URL to the renamed repository path. |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -572,4 +573,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Prepend the v3.18.0 release notes to the changelog. This is a standard documentation step before tagging a release.
 
-**117 runs total — 103 with changes, 14 silence**
+### Run 118 — 2026-05-12 — cross-repo-positioning-alignment
+
+- **decided:** Do one coordinated pass across both repos: align top-level framing, align canonical URLs/metadata, and trail both repos in the same session before commit.
+
+**118 runs total — 104 with changes, 14 silence**

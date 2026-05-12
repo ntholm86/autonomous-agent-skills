@@ -5628,3 +5628,60 @@ Updated CHANGELOG.md to include the release notes for 3.18.0.
 **Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
 
 [!REALIZATION] This is the second time in this session a documentation/metadata change was required after a feature commit. Grouping changelog updates with the features they describe is better practice and reduces trail noise.
+
+## 2026-05-12 - cross-repo-positioning-alignment
+
+- target: principles-of-earned-autonomy-skills-suite + principles-of-earned-autonomy
+- operator: user
+- agent: GPT-5.3-Codex (OpenAI, via GitHub Copilot)
+- skill: improve + trail
+- outcome: Cross-repo naming and category framing aligned so manifesto and implementation now present one coherent PEA story.
+- delta: Updated skills README/CITATION/.zenodo, updated manifesto README implementation link, and updated skills git origin URL to the renamed repository path.
+
+### Interpretation of the ask
+
+The operator approved executing the cross-repo cleanup plan and explicitly asked that we treat this as work across both repositories, with complete trail coverage.
+
+### Examination
+
+The skills repo had the new problem/stance framing in README but still lacked explicit manifesto implementation linkage and first-use acronym definition. Metadata still referenced pre-rename URLs and pre-release version fields. The manifesto README still linked to the old skills repo slug. Both repos had active trail logs.
+
+### Decision
+
+[!DECISION] Do one coordinated pass across both repos: align top-level framing, align canonical URLs/metadata, and trail both repos in the same session before commit.
+
+Alternative considered: only edit the skills repo and defer manifesto updates. Rejected because it keeps the two-repo architecture partially inconsistent to first-time readers.
+
+### Prediction
+
+After this change set, a new reader landing on either repo should immediately understand manifesto vs implementation roles, see the correct cross-links, and resolve only renamed repository URLs.
+
+### Action
+
+1. Skills README: added explicit manifesto implementation sentence and defined "Principles of Earned Autonomy Skills Suite (PEA Skills Suite)" at first use.
+2. Skills README reference link: updated principles source to the renamed manifesto repository URL.
+3. Skills CITATION.cff: updated title framing, framework naming, repository URL, version/date, and manifesto reference URL.
+4. Skills .zenodo.json: updated title, corrected "five" to "six" in description text, and updated manifesto URL references.
+5. Manifesto README: updated conformance example link to the renamed skills repo URL and display name.
+6. Skills git remote: changed origin to https://github.com/ntholm86/principles-of-earned-autonomy-skills-suite.git.
+
+Outcome vs prediction: confirmed in local file state and git remote output; both repos now present a coherent cross-linked naming model.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:** The two repositories now encode a clear architecture split in their landing docs: manifesto defines principles, skills repo enacts them.
+
+**Named blind spot:** The skills .zenodo description still contains legacy wording beyond the specific replacements done here; a full metadata prose refresh remains open.
+
+**Imagined-reader pushback:** "The architecture is clearer, but release metadata still mixes old and new phrasing in long-form fields." Valid; this is residual cleanup work, not a structural ambiguity.
+
+**Across-trail trigger evaluation:**
+
+- *Recurring finding-class:* fired - this is another naming/metadata consistency correction run after prior rename-related updates.
+- *About to declare silence:* not fired - this run made concrete cross-repo edits.
+- *Contradicts prior [!REALIZATION]:* not fired - this extends earlier conclusions about naming coherence as a trust surface.
+- *Operator explicitly asked:* fired - operator explicitly approved execution and required complete trail coverage.
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+[!REALIZATION] The repo rename was necessary but not sufficient. Category ownership appears only when manifesto, implementation, and metadata all speak with one voice; otherwise the architecture reads as accidental rather than intentional.

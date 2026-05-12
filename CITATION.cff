@@ -1,10 +1,10 @@
 cff-version: 1.2.0
 message: "If you use this skill suite, please cite it as below."
 type: software
-title: "Autonomous Development Skills Suite: Six Composable Skills for AI Agents"
+title: "Principles of Earned Autonomy - Skills Suite"
 abstract: >
   A suite of six composable reasoning skills for autonomous AI agents implementing the
-  Autonomous Agent Principles framework. Skills: Intent (surface interpretation before
+  Principles of Earned Autonomy framework. Skills: Intent (surface interpretation before
   acting), Improve (examine, decide, change, verify, record), Probe (construct novelty
   probes to distinguish situated reasoning from pattern-matching), Trail (append
   a structured evidence log after every session), Retrospect (read the full trail
@@ -14,15 +14,15 @@ abstract: >
   correct, closing the gap between explicit vision and implicit direction).
   Accompanied by Python tools for trail management and integrity
   verification. Evaluated across multiple model families with convergence protocols.
-  Constitutional foundation in the companion Autonomous Agent Principles repository.
+  Constitutional foundation in the companion Principles of Earned Autonomy repository.
 authors:
   - family-names: Holmager
     given-names: Nils Wendelboe
     orcid: "https://orcid.org/0009-0009-7157-9084"
-repository-code: "https://github.com/ntholm86/autonomous-agent-skills"
+repository-code: "https://github.com/ntholm86/principles-of-earned-autonomy-skills-suite"
 license: MIT
-version: "3.17.4"
-date-released: "2026-05-04"
+version: "3.18.0"
+date-released: "2026-05-12"
 identifiers:
   - type: doi
     value: "10.5281/zenodo.19842994"
@@ -40,8 +40,8 @@ keywords:
   - large language models
 references:
   - type: software
-    title: "Autonomous Agent Principles: A Governance Framework for Earned Autonomy"
+    title: "Principles of Earned Autonomy: A Governance Framework for Autonomous Agents"
     authors:
       - family-names: Holmager
         given-names: Nils Wendelboe
-    repository-code: "https://github.com/ntholm86/autonomous-agent-principles"
+    repository-code: "https://github.com/ntholm86/principles-of-earned-autonomy"

@@ -1,6 +1,8 @@
 # Principles of Earned Autonomy - Skills Suite
 
-A discipline framework for autonomous iterative work — works on any target, not just code.
+Implementation repo for [Principles of Earned Autonomy](https://github.com/ntholm86/principles-of-earned-autonomy). The manifesto defines the principles; this suite enacts them.
+
+The Principles of Earned Autonomy Skills Suite (PEA Skills Suite) is a discipline framework for autonomous iterative work — works on any target, not just code.
 
 Compatible with Claude (skills / Agent SDK), GitHub Copilot (custom skills), and any LLM agent that can read markdown and append to a file.
 
@@ -10,6 +12,12 @@ It is built on two core claims:
    The target can be code, prose, strategy, design, a psychological profile, medical diagnosis, or an organizational structure, anything.
 2. **It uses structural controls to reduce post-hoc rationalization.**
    The trail is append-only, reversals are recorded, and convergence requires agreement from independent evaluators.
+
+**The Problem**: How do you safely delegate to a non-human that can reason?
+All the other frameworks are implicitly solving a different, smaller problem: "How do I make an AI build my app faster?" That's a capability problem. PEA is built for the delegation problem, which is an accountability problem. As soon as the agent is powerful enough that you can't check all its work, you have a delegation problem.
+
+**The Stance**: The agent's reasoning must be auditable by default.
+This is the core architectural bet. Other frameworks treat the agent as a brilliant but sometimes buggy tool. This skillset treats the agent as a powerful but inherently untrustworthy narrator of its own actions. Trail skill is a structural defense against post-hoc rationalization (the AI tidying up its story after the fact).
 
 ## Evidence
 
@@ -90,7 +98,7 @@ Mitigations implemented by this suite:
 ## Reference
 
 - Convergence criterion: three independent model families report no further actionable change.
-- Principles source: [Autonomous Agent Principles](https://github.com/ntholm86/autonomous-agent-principles).
+- Principles source: [Principles of Earned Autonomy](https://github.com/ntholm86/principles-of-earned-autonomy).
 
 ## Citation and License
 

@@ -581,6 +581,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** This is the second time in this session a documentation/metadata change was required after a feature commit. Grouping changelog updates with the features they describe is better practice and reduces trail noise.
 
+## 2026-05-12 — cross-repo-positioning-alignment
+
+**[!REALIZATION]** :* not fired - this extends earlier conclusions about naming coherence as a trust surface.
+
+## 2026-05-12 — cross-repo-positioning-alignment
+
+**[!REALIZATION]** The repo rename was necessary but not sufficient. Category ownership appears only when manifesto, implementation, and metadata all speak with one voice; otherwise the architecture reads as accidental rather than intentional.
+
 ---
 
-**144 markers — 135 realisations, 9 reversals**
+**146 markers — 137 realisations, 9 reversals**
