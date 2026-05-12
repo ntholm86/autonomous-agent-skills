@@ -5505,3 +5505,77 @@ This change improves execution guidance but does not force checklist usage at ve
 1. Add a lightweight verify.py check that retrospect/SKILL.md still contains the step 1b checklist header and the two required record.py commands.
 2. Add one adversarial example showing a failed freshness check and explicit stop behavior, so negative-path handling is as clear as the pass case.
 3. Mirror this pattern in other operational guards (for example trigger evaluation) where contracts exist but execution scaffolds are thin.
+
+## 2026-05-12 - distribution-enforcement-discoverability
+
+- target: autonomous-agent-skills
+- operator: user
+- agent: Claude Opus 4.7 (Anthropic, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/log.md
+- outcome: Closed three of four competitive gaps - enforcement (CI + pre-commit hook), distribution (one-line installers), discoverability (README subtitle + topic plan). Voice consistency (#4) declared sufficient without edit.
+- delta: added .github/workflows/verify.yml, tools/hooks/pre-commit, tools/install-hooks.{sh,ps1}, install.{sh,ps1}; updated README.md and INSTALLING.md.
+
+### Interpretation of the ask
+
+Operator named four weak dimensions from the prior audit (Enforcement 5, Distribution 2, Operator clarity 6.5, Discoverability 3) and asked: how do we improve them, and should the Improve skill do any of it? The agent answered no to expanding Improve's scope and proposed routing each gap to its proper owner: Trail/CI for enforcement, repo metadata for discoverability, packaging for distribution, per-SKILL.md voice for clarity. Operator approved sequential execution.
+
+### Examination
+
+Examined verify.py to confirm it already had structural checks; no engine work needed, just an enforcement layer. Examined .github/workflows for prior CI patterns (release.yml exists). Examined INSTALLING.md to confirm install story was manual-copy only. Examined SKILL.md headers across all six skills - voice was already consistent (italic tagline, Memory Model role line, Governing principle), so #4 required no change.
+
+### Decision
+
+[!DECISION] Build a four-layer enforcement+distribution stack rather than expand the Improve skill. Improve remains a discipline; structural concerns belong in tools and CI.
+Alternatives rejected:
+- Add a "publish" or "enforce" lens to Improve - rejected, dilutes the skill's scope-discipline that the suite preaches.
+- Wait for marketplaces to mature before solving install - rejected, install.sh/ps1 is a one-day fix that unblocks adoption now.
+
+[!DECISION] Declare silence on #4 voice consistency - the six SKILL.md openings already share structure and tone. Manufacturing edits would be the manufactured-finding failure mode the principles warn against.
+
+### Prediction
+
+After this commit:
+- Pre-commit hook will reject substantive commits without trail entries (testable on next commit attempt without log update).
+- CI verify.yml will run on every push/PR (visible in Actions tab on next push).
+- A new user can install the suite with one command instead of manual cp.
+- README first paragraph will surface "agent skills / copilot skills / claude skills" search vocabulary.
+- Voice consistency will not measurably improve because no SKILL.md was edited.
+
+### Action
+
+1. Created .github/workflows/verify.yml - runs python verify.py on push/PR/manual.
+2. Created tools/hooks/pre-commit - bash script that fails commit if substantive files staged without .trail/log.md update; falls through to verify.py.
+3. Created tools/install-hooks.{sh,ps1} - one-command hook installer for target repos.
+4. Created install.{sh,ps1} at repo root - one-command skill installer to ~/.copilot/skills (overridable).
+5. Updated README.md - added subtitle "A discipline framework for autonomous iterative work - works on any target, not just code" and a compatibility line naming Claude / Copilot / any LLM agent. Updated Quickstart to lead with one-command install and mention the pre-commit hook.
+6. Updated INSTALLING.md - new "One-line install" section at top, including hook installer.
+7. Ran verify.py twice - both passed.
+
+Outcome vs prediction: confirmed for steps 1-7. CI and hook behavior will only be observable on the next push and the next commit respectively.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:** The suite is now structurally enforceable (CI + hook) and one-command installable, but discoverability remains weak until GitHub topics are set on the remote and the suite is cross-posted to awesome-ai-agent-skills - both manual operator actions outside the agent's reach in this session.
+
+**Named blind spot:** The pre-commit hook treats any .trail/log.md modification as sufficient evidence; it does not validate that the entry is non-trivial or matches the staged change. A drive-by entry would pass.
+
+**Imagined-reader pushback:** "Your CI runs verify.py on the suite's own repo, but a downstream user adopting PEA gets none of this enforcement unless they also wire it up. The install.sh installs SKILL.md files only - it does not install the CI workflow or the hook into the target repo." This is correct and is the next gap.
+
+**Across-trail trigger evaluation:**
+
+- *Recurring finding-class:* not fired - this iteration addressed structural gaps that had not appeared as recurring trail items.
+- *About to declare silence:* fired on item #4 only - voice consistency was examined and found sufficient; silence declared with stated rationale rather than fabricated edits.
+- *Contradicts prior [!REALIZATION]:* not fired - this work extends the policy-proofing arc (each contract gets structural backing) rather than reversing it.
+- *Operator explicitly asked:* fired - operator explicitly approved sequential execution of the four-item gap-closing plan.
+
+**Across-trail macro-Hansei:**
+
+[!REALIZATION] The suite's competitive position is no longer constrained by missing principles or skill design - it is constrained by the gap between specified discipline and structurally-enforced discipline. This iteration started closing that gap from the suite's own side; the next arc must close it from the downstream-adopter side (shipping the hook and CI as part of install).
+
+### Candidate Next Moves
+
+1. Extend install.sh/ps1 with an optional --with-hooks flag that also wires the pre-commit hook and a verify.yml template into the target repo - converts adopter-side enforcement from documentation to install behavior.
+2. Set GitHub repo topics via gh CLI when available: ai-agents, agent-skills, copilot-skills, claude-skills, autonomous-agents, agent-framework, llm-agents, ai-discipline.
+3. Tag v1.0.0 release using the existing release.yml workflow so adopters can pin a version instead of cloning main.
+4. Strengthen the pre-commit hook to require the new trail entry to reference at least one of the staged file paths, closing the drive-by-entry blind spot.

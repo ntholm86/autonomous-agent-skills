@@ -565,6 +565,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The arc has moved from proving one guard behavior once to making that behavior repeatable by default. Reliability now improves most when each proven contract gets an execution scaffold in the skill text itself.
 
+## 2026-05-12 — distribution-enforcement-discoverability
+
+**[!REALIZATION]** :* not fired - this work extends the policy-proofing arc (each contract gets structural backing) rather than reversing it.
+
+## 2026-05-12 — distribution-enforcement-discoverability
+
+**[!REALIZATION]** The suite's competitive position is no longer constrained by missing principles or skill design - it is constrained by the gap between specified discipline and structurally-enforced discipline. This iteration started closing that gap from the suite's own side; the next arc must close it from the downstream-adopter side (shipping the hook and CI as part of install).
+
 ---
 
-**140 markers — 131 realisations, 9 reversals**
+**142 markers — 133 realisations, 9 reversals**

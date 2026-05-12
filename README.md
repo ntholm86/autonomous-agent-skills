@@ -1,6 +1,8 @@
 # Principles of Earned Autonomy - Skills Suite
 
-This repository defines a discipline framework for autonomous iterative work.
+A discipline framework for autonomous iterative work — works on any target, not just code.
+
+Compatible with Claude (skills / Agent SDK), GitHub Copilot (custom skills), and any LLM agent that can read markdown and append to a file.
 
 It is built on two core claims:
 
@@ -60,10 +62,13 @@ At run start, skills read existing trail context before acting. Operators can in
 
 ## Quickstart
 
-1. Read [INSTALLING.md](./INSTALLING.md).
-2. Install these skill folders in `.copilot/skills/`: `intent/`, `vision/`, `improve/`, `trail/`, `retrospect/`, `probe/`.
-3. If the target is not a repository, keep `.trail/` artifacts next to the target material.
-4. Start with a verifiable task and review the resulting trail entry.
+1. Install with one command:
+   - macOS / Linux: `bash install.sh`
+   - Windows: `pwsh install.ps1`
+2. Or copy these skill folders manually into `.copilot/skills/`: `intent/`, `vision/`, `improve/`, `trail/`, `retrospect/`, `probe/`. See [INSTALLING.md](./INSTALLING.md) for details.
+3. Optional: install the pre-commit hook in your target repo to enforce trail discipline structurally — `bash tools/install-hooks.sh` or `pwsh tools/install-hooks.ps1`.
+4. If the target is not a repository, keep `.trail/` artifacts next to the target material.
+5. Start with a verifiable task and review the resulting trail entry.
 
 ## Known Limitation
 

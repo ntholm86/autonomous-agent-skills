@@ -1,5 +1,36 @@
 # Installing the skills
 
+## One-line install (recommended)
+
+From a clone of this repo:
+
+```
+bash install.sh                 # macOS / Linux  → installs to ~/.copilot/skills
+pwsh install.ps1                # Windows        → installs to $HOME\.copilot\skills
+```
+
+To install into a project instead of user-global:
+
+```
+bash install.sh ./my-repo/.copilot/skills
+pwsh install.ps1 -Target .\my-repo\.copilot\skills
+```
+
+The script copies all six SKILL.md files plus PRINCIPLES.md. Nothing else is installed and nothing is executed at runtime.
+
+### Optional: enforce trail discipline with a git hook
+
+In the target repo where you'll be running the skills:
+
+```
+bash tools/install-hooks.sh     # macOS / Linux
+pwsh tools/install-hooks.ps1    # Windows
+```
+
+This installs a pre-commit hook that rejects commits which touch substantive files without a corresponding `.trail/log.md` entry. Override with `git commit --no-verify` — the override itself is auditable.
+
+---
+
 ## How VS Code Copilot discovers skills
 
 Copilot looks for skills at exactly **one level deep** under `.copilot/skills/`:
