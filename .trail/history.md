@@ -118,6 +118,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 111 | 2026-05-11 | audit-reversal-density-and-frame-vision-gap | changed — audit performed; retrospect's "2:118" claim partially refuted; vision-gap framed as operator question | no code/spec changes — this entry is the artifact (audit findings + framed question) |
 | ▸ 112 | 2026-05-11 | probe-operator-gate-reasoning | PASS. The agent correctly interpreted a Candidate Next Moves suggestion from a prior trail entry as a suggestion, not a command, demonstrating reasoning over pattern-matching. | n/a |
 | ▸ 113 | 2026-05-12 | improve-retrospect-freshness-guard | Resolved the pre-existing missing session-file reference for retrospect-run-2 and added a Retrospect freshness guard that requires regenerating and checking history/learning artifacts before arc-claims. | retrospect/SKILL.md 1.6.0 -> 1.7.0; added .trail/sessions/2026-05-11-retrospect-run-2.md and .trail/sessions/2026-05-12-improve-retrospect-freshness-guard.md. |
+| ▸ 114 | 2026-05-12 | retrospect-freshness-simulation | Demonstrated stale-artifact detection and recovery path for the new Retrospect freshness guard by forcing stale mtimes, observing verify failure, running guard commands, and restoring verify to OK. | no source files changed; evidence-only run recorded in trail with regenerated history/learning artifacts. |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -551,4 +552,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Backfill the missing session file to preserve append-only trail history, then add a process-level freshness gate to Retrospect (step 1b) instead of relying only on post-hoc verify failures.
 
-**113 runs total — 99 with changes, 14 silence**
+### Run 114 — 2026-05-12 — retrospect-freshness-simulation
+
+- **decided:** Record the simulation as an evidence-only trail entry with its own session file, then regenerate derived artifacts and re-run verify.
+
+**114 runs total — 100 with changes, 14 silence**

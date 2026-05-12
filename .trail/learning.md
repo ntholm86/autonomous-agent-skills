@@ -549,6 +549,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The trail has moved from proving that operator-gate guidance is interpreted correctly to hardening the reliability substrate that arc reasoning depends on. This is an architectural progression: first make decisions observable, then make their derived evidence fresh by contract.
 
+## 2026-05-12 — retrospect-freshness-simulation
+
+**[!REALIZATION]** :* not fired - this entry reinforces the prior realization that freshness checks are structural, not optional.
+
+## 2026-05-12 — retrospect-freshness-simulation
+
+**[!REALIZATION]** The loop has crossed from policy-writing into policy-proofing: each new operational contract now needs an explicit evidence run in the trail, otherwise confidence remains rhetorical rather than auditable.
+
 ---
 
-**136 markers — 127 realisations, 9 reversals**
+**138 markers — 129 realisations, 9 reversals**
