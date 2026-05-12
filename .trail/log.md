@@ -5299,3 +5299,74 @@ The probe was executed as described above. The full trail logs for the probe are
 - *operator explicitly asked:* fired — operator requested a probe to validate the operator-gate formalization in improve/SKILL.md and trail/SKILL.md.
 
 **Across-trail macro-Hansei:** Reading the trail as a whole, the operator-gate formalization in 3.9.0/3.9.1 was a meaningful structural change, not a cosmetic one — the probe shows the agent now treats Candidate Next Moves as a soft signal that informs but does not command, which is the exact contract the documentation claims. The arc-level claim this supports: the suite has reached a state where loop-mechanics changes can be probed in isolation, evidence the skills are now testable artifacts rather than prose conventions. [!REALIZATION] When a probe of a new mechanism PASSes against a deliberately-tempting suggestion in the trail, that is a stronger convergence signal than several silent improve iterations — it shows the mechanism is doing real work, not riding on operator vigilance.
+
+## 2026-05-12 - improve-retrospect-freshness-guard
+
+- target: autonomous-agent-skills
+- operator: user
+- agent: GPT-5.3-Codex (OpenAI, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-12-improve-retrospect-freshness-guard.md
+- outcome: Resolved the pre-existing missing session-file reference for retrospect-run-2 and added a Retrospect freshness guard that requires regenerating and checking history/learning artifacts before arc-claims.
+- delta: retrospect/SKILL.md 1.6.0 -> 1.7.0; added .trail/sessions/2026-05-11-retrospect-run-2.md and .trail/sessions/2026-05-12-improve-retrospect-freshness-guard.md.
+
+### Interpretation of the ask
+
+The operator chose the ranked options in sequence: first resolve item 2 (the missing session-file reference for 2026-05-11 retrospect-run-2), then execute item 1 (one improve iteration implementing a Retrospect freshness guard for derived artifacts).
+
+### Examination
+
+verify.py previously failed only on a missing session file referenced by the historical stub entry 2026-05-11 - retrospect-run-2. That failure could be fixed without rewriting log history by creating the referenced session file.
+
+retrospect/SKILL.md at 1.6.0 did not explicitly require regenerating .trail/history.md and .trail/learning.md before making arc-claims, even though verify.py enforces derived-artifact freshness after log updates.
+
+### Decision
+
+[!DECISION] Backfill the missing session file to preserve append-only trail history, then add a process-level freshness gate to Retrospect (step 1b) instead of relying only on post-hoc verify failures.
+
+Alternative considered: remove or rewrite the old stub log entry. Rejected because log.md is append-only and historical entries should not be rewritten for repair work.
+
+### Prediction
+
+If the backfill file is created and Retrospect gains a pre-claim freshness gate, verify.py should pass and future Retrospect runs should fail fast before arc-claims when derived artifacts are stale.
+
+### Action and Outcome
+
+1. Created .trail/sessions/2026-05-11-retrospect-run-2.md as a minimal backfill repair for the historical stub's missing session-file: reference.
+2. Updated retrospect/SKILL.md to version 1.7.0 and added ### 1b. Freshness guard (derived artifacts) with explicit regeneration and freshness-check requirements.
+3. Updated Retrospect commit guidance to include learning.md alongside log.md and history.md.
+4. Appended this trail entry and regenerated .trail/history.md and .trail/learning.md.
+5. Ran verify.py.
+
+Outcome vs prediction: confirmed. The missing-reference failure was cleared, and the workflow now defines an explicit pre-claim freshness gate in the Retrospect skill itself.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+Retrospect now has a documented precondition that derived artifacts must be fresh before arc-claims are written; a future run that skips refresh and still claims compliance would directly contradict the skill text.
+
+**Named blind spot:**
+
+This iteration did not run a full standalone Retrospect invocation end-to-end against a noisy target trail; it validated contract and integrity tooling, not human readability under stress.
+
+**Imagined-reader pushback:**
+
+"The new guard is repo-tool specific (record.py). In other targets, this may read as local policy rather than generic Retrospect behavior."
+
+**Across-trail trigger evaluation** *(every entry - one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* fired - recent runs repeatedly surfaced trail integrity/freshness mechanics (session-file validity, trigger formatting, artifact staleness), indicating the same operational surface remains active.
+- *About to declare silence:* not fired - this run made two concrete structural changes (session backfill + skill update).
+- *Contradicts prior [!REALIZATION]:* not fired - the change reinforces prior realizations about observability and explicit operational contracts.
+- *Operator explicitly asked:* fired - the operator requested ordered execution: "first 2 then 1".
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+[!REALIZATION] The trail has moved from proving that operator-gate guidance is interpreted correctly to hardening the reliability substrate that arc reasoning depends on. This is an architectural progression: first make decisions observable, then make their derived evidence fresh by contract.
+
+### Candidate Next Moves
+
+1. Add one adversarial Retrospect example in retrospect/SKILL.md showing a blocked run when history/learning are stale, so the guard is executable as a concrete pattern.
+2. Add a lightweight verify check that retrospect/SKILL.md still contains the freshness-guard heading and required commands, preventing accidental regression in later edits.
+3. Run one full Retrospect pass after a deliberately stale artifact setup to confirm the new guard is followed behaviorally, not only documented.

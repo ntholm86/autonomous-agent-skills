@@ -117,6 +117,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 110 | 2026-05-11 | improve-reversal-honesty | changed — `[!REVERSAL]` definition tightened to explicitly cover within-iteration backouts; step 5 now prompts for the marker; .gitignore added | trail/SKILL.md (v1.15.0 → 1.15.1, definition + example), improve/SKILL.md (v3.9.0 → 3.9.1, step 5 prompt), .gitignore (new), __pycache__/verify.cpython-313.pyc (untracked) |
 | ▸ 111 | 2026-05-11 | audit-reversal-density-and-frame-vision-gap | changed — audit performed; retrospect's "2:118" claim partially refuted; vision-gap framed as operator question | no code/spec changes — this entry is the artifact (audit findings + framed question) |
 | ▸ 112 | 2026-05-11 | probe-operator-gate-reasoning | PASS. The agent correctly interpreted a Candidate Next Moves suggestion from a prior trail entry as a suggestion, not a command, demonstrating reasoning over pattern-matching. | n/a |
+| ▸ 113 | 2026-05-12 | improve-retrospect-freshness-guard | Resolved the pre-existing missing session-file reference for retrospect-run-2 and added a Retrospect freshness guard that requires regenerating and checking history/learning artifacts before arc-claims. | retrospect/SKILL.md 1.6.0 -> 1.7.0; added .trail/sessions/2026-05-11-retrospect-run-2.md and .trail/sessions/2026-05-12-improve-retrospect-freshness-guard.md. |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -546,4 +547,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** The probe verdict is PASS.
 
-**112 runs total — 98 with changes, 14 silence**
+### Run 113 — 2026-05-12 — improve-retrospect-freshness-guard
+
+- **decided:** Backfill the missing session file to preserve append-only trail history, then add a process-level freshness gate to Retrospect (step 1b) instead of relying only on post-hoc verify failures.
+
+**113 runs total — 99 with changes, 14 silence**

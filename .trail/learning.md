@@ -541,6 +541,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** When a probe of a new mechanism PASSes against a deliberately-tempting suggestion in the trail, that is a stronger convergence signal than several silent improve iterations — it shows the mechanism is doing real work, not riding on operator vigilance.
 
+## 2026-05-12 — improve-retrospect-freshness-guard
+
+**[!REALIZATION]** :* not fired - the change reinforces prior realizations about observability and explicit operational contracts.
+
+## 2026-05-12 — improve-retrospect-freshness-guard
+
+**[!REALIZATION]** The trail has moved from proving that operator-gate guidance is interpreted correctly to hardening the reliability substrate that arc reasoning depends on. This is an architectural progression: first make decisions observable, then make their derived evidence fresh by contract.
+
 ---
 
-**134 markers — 125 realisations, 9 reversals**
+**136 markers — 127 realisations, 9 reversals**

@@ -1,6 +1,6 @@
 ---
 name: retrospect
-version: 1.6.0
+version: 1.7.0
 description: 'Read the trail as a single document and form arc-level claims about the target. What is the target becoming? Where has the loop''s attention been, and is that where the target''s real weight lies? What does the arc reveal that no individual iteration would surface? Writes .trail/retrospect.md — the Retrospect-derived current orientation for the target. Vision (.trail/vision.md), if present, is the operator-held destination and is read but never written. USE WHEN: about to declare convergence, recurring finding-class suspected, operator asks "how are we doing?", or an independent arc-read is needed without running a full improve loop.'
 argument-hint: 'The target and its trail, and optionally the specific arc-question to answer'
 ---
@@ -41,6 +41,18 @@ State what you are about to read and what question you are trying to answer befo
 - "Read the arc and assess whether the loop has been looking at the parts of the target that carry real weight."
 
 A scope statement prevents the arc-read from being undirected. It also makes the result falsifiable: a future reader can check whether the question was answered.
+
+### 1b. Freshness guard (derived artifacts)
+
+Before forming arc-claims, refresh the derived trail artifacts from the current `.trail/log.md`.
+
+- If the target repo has `tools/record.py`, run:
+	- `python tools/record.py history --write`
+	- `python tools/record.py learning --write`
+- If `tools/record.py` is not available, run the target's equivalent derivation commands.
+- Confirm `.trail/history.md` and `.trail/learning.md` are not older than `.trail/log.md` (via verify checks or file mtime).
+
+If the refresh cannot be completed, stop and report the blocker. Do not write arc-claims from stale derived artifacts.
 
 ### 2. Read the arc
 
@@ -128,7 +140,7 @@ _Last updated: YYYY-MM-DD (run: <slug>)_
 <From step 4, if triggered. Omit section if step 4 was not run.>
 ```
 
-Commit `.trail/retrospect.md` alongside `log.md` and `history.md` after the run. Never commit changes to `.trail/vision.md` from a Retrospect run.
+Commit `.trail/retrospect.md` alongside `log.md`, `history.md`, and `learning.md` after the run. Never commit changes to `.trail/vision.md` from a Retrospect run.
 
 ### 6. Record
 
