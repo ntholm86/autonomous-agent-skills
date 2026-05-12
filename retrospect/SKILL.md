@@ -1,6 +1,6 @@
 ---
 name: retrospect
-version: 1.7.0
+version: 1.8.0
 description: 'Read the trail as a single document and form arc-level claims about the target. What is the target becoming? Where has the loop''s attention been, and is that where the target''s real weight lies? What does the arc reveal that no individual iteration would surface? Writes .trail/retrospect.md — the Retrospect-derived current orientation for the target. Vision (.trail/vision.md), if present, is the operator-held destination and is read but never written. USE WHEN: about to declare convergence, recurring finding-class suspected, operator asks "how are we doing?", or an independent arc-read is needed without running a full improve loop.'
 argument-hint: 'The target and its trail, and optionally the specific arc-question to answer'
 ---
@@ -53,6 +53,23 @@ Before forming arc-claims, refresh the derived trail artifacts from the current 
 - Confirm `.trail/history.md` and `.trail/learning.md` are not older than `.trail/log.md` (via verify checks or file mtime).
 
 If the refresh cannot be completed, stop and report the blocker. Do not write arc-claims from stale derived artifacts.
+
+Use this execution checklist in the run notes:
+
+- [ ] `python tools/record.py history --write`
+- [ ] `python tools/record.py learning --write`
+- [ ] `python verify.py` (or target-equivalent integrity check)
+- [ ] Confirm there are no stale-artifact failures for `.trail/history.md` or `.trail/learning.md`
+- [ ] If any freshness check fails, stop and report the blocker; no arc-claims are allowed
+
+Minimal filled example:
+
+```markdown
+**Freshness check (run evidence):**
+- commands: `python tools/record.py history --write`; `python tools/record.py learning --write`; `python verify.py`
+- verify result: `OK — trail integrity checks pass`
+- gate: PASS (arc-claims allowed)
+```
 
 ### 2. Read the arc
 

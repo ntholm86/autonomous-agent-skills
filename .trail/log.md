@@ -5437,3 +5437,71 @@ This simulation validates the timestamp-based stale check path, not semantic dri
 1. Add a tiny checklist block in retrospect/SKILL.md that operators can copy into log entries when running the freshness guard, reducing execution drift.
 2. Extend verify.py with an optional strict mode that requires a recent simulation entry when major process contracts are introduced.
 3. Run one semantic-drift simulation (fresh mtime but intentionally stale content) to characterize current limits of mtime-only freshness checks.
+
+## 2026-05-12 - improve-retrospect-freshness-checklist
+
+- target: autonomous-agent-skills
+- operator: user
+- agent: GPT-5.3-Codex (OpenAI, via GitHub Copilot)
+- skill: improve + trail
+- session-file: .trail/sessions/2026-05-12-improve-retrospect-freshness-checklist.md
+- outcome: Added an executable freshness checklist and a minimal filled evidence example to retrospect/SKILL.md so the freshness guard can be applied consistently in real runs.
+- delta: retrospect/SKILL.md 1.7.0 -> 1.8.0; added checklist and example under step 1b.
+
+### Interpretation of the ask
+
+The operator approved running the proposed Improve iteration: make the proven freshness guard easier to execute by adding a copy-paste checklist to the Retrospect skill.
+
+### Examination
+
+Retrospect 1.7.0 had the freshness guard contract and commands, but no structured run-note checklist. The prior behavioral proof-run is present in trail, so the next leverage point is execution consistency.
+
+### Decision
+
+[!DECISION] Add a short mandatory execution checklist plus one minimal filled example directly under step 1b in retrospect/SKILL.md.
+
+Alternative considered: put checklist only in trail templates. Rejected because the guard lives in Retrospect; colocating execution guidance with the guard reduces drift.
+
+### Prediction
+
+If the checklist is embedded in step 1b, Retrospect runs will show fewer freshness omissions and verify failures should continue to stay green after normal recording steps.
+
+### Action and Outcome
+
+1. Updated retrospect/SKILL.md version 1.7.0 to 1.8.0.
+2. Added a five-item execution checklist for history write, learning write, integrity check, stale-artifact confirmation, and hard stop on failure.
+3. Added a minimal filled evidence example that can be copied into run notes.
+4. Ran verify.py.
+
+Outcome vs prediction: confirmed for this iteration. verify.py remained OK and the guard section is now directly executable.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:**
+
+The freshness guard in retrospect/SKILL.md is now operationally prescriptive, not only declarative; a future Retrospect run can be audited against the checklist items line by line.
+
+**Named blind spot:**
+
+This change improves execution guidance but does not force checklist usage at verify-time; omission is still possible unless a future rule validates checklist evidence.
+
+**Imagined-reader pushback:**
+
+"The checklist may add process overhead and could become ritual unless tied to concrete failure modes."
+
+**Across-trail trigger evaluation** *(every entry - one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* fired - recent entries repeatedly focus on Retrospect guard reliability and trail integrity mechanics.
+- *About to declare silence:* not fired - this run made a concrete documentation/contract change.
+- *Contradicts prior [!REALIZATION]:* not fired - this extends the existing policy-proofing realization rather than reversing it.
+- *Operator explicitly asked:* fired - operator explicitly approved this Improve run ("yes lets do that").
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+[!REALIZATION] The arc has moved from proving one guard behavior once to making that behavior repeatable by default. Reliability now improves most when each proven contract gets an execution scaffold in the skill text itself.
+
+### Candidate Next Moves
+
+1. Add a lightweight verify.py check that retrospect/SKILL.md still contains the step 1b checklist header and the two required record.py commands.
+2. Add one adversarial example showing a failed freshness check and explicit stop behavior, so negative-path handling is as clear as the pass case.
+3. Mirror this pattern in other operational guards (for example trigger evaluation) where contracts exist but execution scaffolds are thin.

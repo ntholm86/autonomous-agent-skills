@@ -557,6 +557,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The loop has crossed from policy-writing into policy-proofing: each new operational contract now needs an explicit evidence run in the trail, otherwise confidence remains rhetorical rather than auditable.
 
+## 2026-05-12 — improve-retrospect-freshness-checklist
+
+**[!REALIZATION]** :* not fired - this extends the existing policy-proofing realization rather than reversing it.
+
+## 2026-05-12 — improve-retrospect-freshness-checklist
+
+**[!REALIZATION]** The arc has moved from proving one guard behavior once to making that behavior repeatable by default. Reliability now improves most when each proven contract gets an execution scaffold in the skill text itself.
+
 ---
 
-**138 markers — 129 realisations, 9 reversals**
+**140 markers — 131 realisations, 9 reversals**

@@ -119,6 +119,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 112 | 2026-05-11 | probe-operator-gate-reasoning | PASS. The agent correctly interpreted a Candidate Next Moves suggestion from a prior trail entry as a suggestion, not a command, demonstrating reasoning over pattern-matching. | n/a |
 | ▸ 113 | 2026-05-12 | improve-retrospect-freshness-guard | Resolved the pre-existing missing session-file reference for retrospect-run-2 and added a Retrospect freshness guard that requires regenerating and checking history/learning artifacts before arc-claims. | retrospect/SKILL.md 1.6.0 -> 1.7.0; added .trail/sessions/2026-05-11-retrospect-run-2.md and .trail/sessions/2026-05-12-improve-retrospect-freshness-guard.md. |
 | ▸ 114 | 2026-05-12 | retrospect-freshness-simulation | Demonstrated stale-artifact detection and recovery path for the new Retrospect freshness guard by forcing stale mtimes, observing verify failure, running guard commands, and restoring verify to OK. | no source files changed; evidence-only run recorded in trail with regenerated history/learning artifacts. |
+| ▸ 115 | 2026-05-12 | improve-retrospect-freshness-checklist | Added an executable freshness checklist and a minimal filled evidence example to retrospect/SKILL.md so the freshness guard can be applied consistently in real runs. | retrospect/SKILL.md 1.7.0 -> 1.8.0; added checklist and example under step 1b. |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -556,4 +557,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Record the simulation as an evidence-only trail entry with its own session file, then regenerate derived artifacts and re-run verify.
 
-**114 runs total — 100 with changes, 14 silence**
+### Run 115 — 2026-05-12 — improve-retrospect-freshness-checklist
+
+- **decided:** Add a short mandatory execution checklist plus one minimal filled example directly under step 1b in retrospect/SKILL.md.
+
+**115 runs total — 101 with changes, 14 silence**
