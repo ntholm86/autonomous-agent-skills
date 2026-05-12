@@ -5579,3 +5579,52 @@ Outcome vs prediction: confirmed for steps 1-7. CI and hook behavior will only b
 2. Set GitHub repo topics via gh CLI when available: ai-agents, agent-skills, copilot-skills, claude-skills, autonomous-agents, agent-framework, llm-agents, ai-discipline.
 3. Tag v1.0.0 release using the existing release.yml workflow so adopters can pin a version instead of cloning main.
 4. Strengthen the pre-commit hook to require the new trail entry to reference at least one of the staged file paths, closing the drive-by-entry blind spot.
+
+## 2026-05-12 - docs-changelog-for-v3.18.0
+
+- target: CHANGELOG.md
+- operator: user
+- agent: Claude Opus 4.7 (Anthropic, via GitHub Copilot)
+- skill: trail
+- session-file: .trail/log.md
+- outcome: Added release notes for v3.18.0 to CHANGELOG.md in preparation for release workflow run.
+- delta: CHANGELOG.md updated with v3.18.0 entry.
+
+### Interpretation of the ask
+
+The operator confirmed that the release notes for v3.18.0 should be added to the CHANGELOG.md file before they re-run the release workflow.
+
+### Examination
+
+The CHANGELOG.md file was read to find the correct insertion point (above the previous v3.17.4 entry).
+
+### Decision
+
+[!DECISION] Prepend the v3.18.0 release notes to the changelog. This is a standard documentation step before tagging a release.
+
+### Prediction
+
+The commit will contain only the CHANGELOG.md modification. The subsequent git push will be clean. The operator will then be able to run the elease.yml workflow successfully with the correct single-line note.
+
+### Action
+
+Updated CHANGELOG.md to include the release notes for 3.18.0.
+
+### Reflection
+
+**Falsifiable claim about the target's current state:** The CHANGELOG.md file is now up-to-date with the features committed in 8198f83.
+
+**Named blind spot:** This action assumes the operator will successfully run the release workflow. If they do not, the changelog will be ahead of the official release tags.
+
+**Imagined-reader pushback:** "This should have been part of the previous commit." Correct. Grouping changelog updates with the features they describe is better practice.
+
+**Across-trail trigger evaluation:**
+
+- *Recurring finding-class:* not fired.
+- *About to declare silence:* not fired.
+- *Contradicts prior [!REALIZATION]:* not fired.
+- *Operator explicitly asked:* fired - operator said "yes" to adding the notes.
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+[!REALIZATION] This is the second time in this session a documentation/metadata change was required after a feature commit. Grouping changelog updates with the features they describe is better practice and reduces trail noise.

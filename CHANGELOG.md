@@ -1,5 +1,17 @@
 # Changelog
 
+## v3.18.0 — 2026-05-12
+
+### Added
+- **Structural Enforcement (CI):** New GitHub Actions workflow (`.github/workflows/verify.yml`) runs `verify.py` on every push and pull request to `main`, structurally enforcing trail integrity.
+- **Structural Enforcement (Pre-commit Hook):** New cross-platform pre-commit hook (`tools/hooks/pre-commit`) rejects commits that modify substantive files without a corresponding `.trail/log.md` update.
+- **One-line Installers:** New `install.sh` and `install.ps1` scripts at the repo root allow users to install all skills with a single command.
+- **Hook Installers:** New `tools/install-hooks.sh` and `tools/install-hooks.ps1` scripts allow users to install the pre-commit hook into their own target repositories.
+
+### Changed
+- **README.md:** Added a subtitle and compatibility line to improve discoverability through keyword search. Quickstart now leads with the one-line installers.
+- **INSTALLING.md:** Restructured to lead with the new one-line install scripts and added instructions for the optional pre-commit hook installation.
+
 ## v3.17.4 — 2026-05-04
 
 ### Changed

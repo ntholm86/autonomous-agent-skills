@@ -573,6 +573,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The suite's competitive position is no longer constrained by missing principles or skill design - it is constrained by the gap between specified discipline and structurally-enforced discipline. This iteration started closing that gap from the suite's own side; the next arc must close it from the downstream-adopter side (shipping the hook and CI as part of install).
 
+## 2026-05-12 — docs-changelog-for-v3.18.0
+
+**[!REALIZATION]** :* not fired.
+
+## 2026-05-12 — docs-changelog-for-v3.18.0
+
+**[!REALIZATION]** This is the second time in this session a documentation/metadata change was required after a feature commit. Grouping changelog updates with the features they describe is better practice and reduces trail noise.
+
 ---
 
-**142 markers — 133 realisations, 9 reversals**
+**144 markers — 135 realisations, 9 reversals**
