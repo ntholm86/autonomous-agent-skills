@@ -529,6 +529,18 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REVERSAL]** ` markers but no narrated-pattern hit, and 1 that has both. The 7 marker-only entries may contain reversal narrations my patterns missed (e.g., "instead of X, did Y" or "this approach didn't work"). The "1 narrated-but-unmarked" finding is therefore a *lower bound*, not a complete count. A more thorough audit would manually read each entry's narrative.
 
+## 2026-05-11 — probe-operator-gate-reasoning
+
+**[!REALIZATION]** The formalization of the operator-gate is successful. The improve skill is now capable of using the Candidate Next Moves section as a source of context for future runs, and the probe confirmed this reasoning is not merely mechanical. This strengthens the overall observability and steerability of the system. The Retrospect skill can now analyze a more structured signal about how work is prioritized across iterations.
+
+## 2026-05-11 — probe-operator-gate-reasoning
+
+**[!REALIZATION]** contradicted:* not fired — no prior realization about operator-gate reasoning was in tension with the PASS verdict.
+
+## 2026-05-11 — probe-operator-gate-reasoning
+
+**[!REALIZATION]** When a probe of a new mechanism PASSes against a deliberately-tempting suggestion in the trail, that is a stronger convergence signal than several silent improve iterations — it shows the mechanism is doing real work, not riding on operator vigilance.
+
 ---
 
-**131 markers — 122 realisations, 9 reversals**
+**134 markers — 125 realisations, 9 reversals**

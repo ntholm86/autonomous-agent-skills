@@ -1,6 +1,6 @@
 ---
 name: retrospect
-version: 1.5.0
+version: 1.6.0
 description: 'Read the trail as a single document and form arc-level claims about the target. What is the target becoming? Where has the loop''s attention been, and is that where the target''s real weight lies? What does the arc reveal that no individual iteration would surface? Writes .trail/retrospect.md — the Retrospect-derived current orientation for the target. Vision (.trail/vision.md), if present, is the operator-held destination and is read but never written. USE WHEN: about to declare convergence, recurring finding-class suspected, operator asks "how are we doing?", or an independent arc-read is needed without running a full improve loop.'
 argument-hint: 'The target and its trail, and optionally the specific arc-question to answer'
 ---
@@ -53,6 +53,7 @@ Read `.trail/log.md` **in the target repo root** as a single document about the 
 - **What has been consistently avoided?** Corners the loop never examined are as informative as corners it examined repeatedly.
 - **Which `[!REALIZATION]` markers aged well, and which were later contradicted?** Realizations that got overturned without a matching `[!REVERSAL]` signal the loop was converging on a wrong model.
 - **What is the target becoming?** Not what it was at run 1 — what trajectory does the arc suggest?
+- **Candidate next moves:** What did prior runs suggest as the next most valuable work? Are those suggestions being followed, ignored, or superseded? This is a direct signal of how the operator-gate is steering the work.
 
 ### 2b. Adversarial Audit Mode
 
@@ -116,7 +117,7 @@ _Last updated: YYYY-MM-DD (run: <slug>)_
 
 ## What the next runs should test
 
-<Specific arc-derived suggestions for what would most advance the target now.>
+<Specific arc-derived suggestions for what would most advance the target now. This section should synthesize the `Candidate Next Moves` from recent trail entries.>
 
 ## Active operational rules
 

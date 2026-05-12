@@ -1,6 +1,6 @@
 ---
 name: trail
-version: 1.15.1
+version: 1.16.0
 description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any session that produces a decision, realization, or finding — including conversations. There is no such thing as "just conversation" if a decision was made in it.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
@@ -135,7 +135,7 @@ If any trigger fired, also include an across-trail macro-Hansei: an arc-claim
 about the target read from the trail as a whole. Mark material insights with
 [!REALIZATION].>
 
-### Candidate next moves
+### Candidate Next Moves
 
 <Optional. A short ranked list of candidate next moves visible from this
 iteration's own examination — blind spots named, follow-ups implied, structural

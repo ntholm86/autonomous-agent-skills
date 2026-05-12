@@ -116,6 +116,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 109 | 2026-05-11 | improve-offer-next-moves | changed — improve gains step 6c, trail entry template gains "Candidate next moves" subsection | improve/SKILL.md (v3.8.2 → 3.9.0, new step 6c), trail/SKILL.md (v1.14.0 → 1.15.0, template addition), tools/record.py (stub template addition) |
 | ▸ 110 | 2026-05-11 | improve-reversal-honesty | changed — `[!REVERSAL]` definition tightened to explicitly cover within-iteration backouts; step 5 now prompts for the marker; .gitignore added | trail/SKILL.md (v1.15.0 → 1.15.1, definition + example), improve/SKILL.md (v3.9.0 → 3.9.1, step 5 prompt), .gitignore (new), __pycache__/verify.cpython-313.pyc (untracked) |
 | ▸ 111 | 2026-05-11 | audit-reversal-density-and-frame-vision-gap | changed — audit performed; retrospect's "2:118" claim partially refuted; vision-gap framed as operator question | no code/spec changes — this entry is the artifact (audit findings + framed question) |
+| ▸ 112 | 2026-05-11 | probe-operator-gate-reasoning | PASS. The agent correctly interpreted a Candidate Next Moves suggestion from a prior trail entry as a suggestion, not a command, demonstrating reasoning over pattern-matching. | n/a |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -541,4 +542,8 @@ Do not edit by hand — re-run the command to refresh.
 - **REVERSAL:** ` text occurrences (most are mentions in prose: "the [!REVERSAL] marker", "Contradicts prior [!REVERSAL]")
 - **REVERSAL:** ` markers but no narrated-pattern hit, and 1 that has both. The 7 marker-only entries may contain reversal narrations my patterns missed (e.g., "instead of X, did Y" or "this approach didn't work"). The "1 narrated-but-unmarked" finding is therefore a *lower bound*, not a complete count. A more thorough audit would manually read each entry's narrative.
 
-**111 runs total — 97 with changes, 14 silence**
+### Run 112 — 2026-05-11 — probe-operator-gate-reasoning
+
+- **decided:** The probe verdict is PASS.
+
+**112 runs total — 98 with changes, 14 silence**

@@ -58,7 +58,7 @@ That four-part stance is what I mean by the term. It's also the boundary: a cont
 
 I'm building a small set of skills — currently six, version 3.11.0 — that an AI agent applies to its own work. The skills are: **intent** (interpret the operator's intent before acting), **improve** (one highest-leverage change per run, stated reason), **probe** (test reasoning vs. pattern-matching), **trail** (append-only structured evidence per run), **retrospect** (read the arc of the trail and synthesize current orientation), and **Vision** (surface guesses the agent has formed about the operator's direction, as falsifiable questions).
 
-The skills sit on top of three principles I've published separately ([Principles of Autonomous Development](https://github.com/ntholm86/autonomous-agent-principles)): Commander's Intent (define destination, not route), Observable Autonomy (autonomy is a function of transparency), and Convergence Is Silence (you're done when independent evaluators find nothing left to change).
+The skills sit on top of three principles I've published separately ([Principles of Earned Autonomy](https://github.com/ntholm86/principles-of-earned-autonomy)): Commander's Intent (define destination, not route), Observable Autonomy (autonomy is a function of transparency), and Convergence Is Silence (you're done when independent evaluators find nothing left to change).
 
 The repo where the skills live is **simultaneously the workshop and the proof**. The skills have to be able to improve themselves; if they can't, the claim that they're a usable reasoning layer is hollow. Each run finds the highest-leverage thing left to change in the skills themselves and changes it — or argues for convergence.
 
