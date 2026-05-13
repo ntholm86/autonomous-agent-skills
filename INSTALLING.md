@@ -104,8 +104,8 @@ All skills work with only their own `SKILL.md`. No required sibling files.
 | **intent** | `PRINCIPLES.md` (cross-reference link; content is inlined) |
 | **vision** | `PRINCIPLES.md` |
 | **improve** | `PRINCIPLES.md` |
-| **trail** | nothing — creates `.trail/log.md` on first use |
-| **retrospect** | nothing — reads `.trail/log.md` written by trail |
+| **trail** | nothing — creates `.trail/audit-trail.md` on first use |
+| **retrospect** | nothing — reads `.trail/audit-trail.md` written by trail |
 
 ---
 
@@ -114,9 +114,9 @@ All skills work with only their own `SKILL.md`. No required sibling files.
 The trail is **per project**. The AI writes it automatically — no scripts required.
 
 When the trail skill runs for the first time on a project it creates:
-`<repo-root>/.trail/log.md` (the append-only evidence log)
+`<repo-root>/.trail/audit-trail.md` (the append-only evidence log)
 
-Commit `.trail/log.md` after each session. That's the full workflow.
+Commit `.trail/audit-trail.md` after each session. That's the full workflow.
 
 ---
 

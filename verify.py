@@ -5,7 +5,7 @@ Replaces verify-suite.ps1 from v2. Pure-Python, zero dependencies, runs on
 Windows / macOS / Linux.
 
 Checks:
-1. .trail/log.md exists and is non-empty.
+1. .trail/audit-trail.md exists and is non-empty.
 2. Every entry heading matches `## YYYY-MM-DD — <slug>`.
 3. Entries are in non-decreasing date order.
 4. Every entry contains the mandatory metadata fields: target, agent, skill, outcome.
@@ -14,13 +14,13 @@ Checks:
 6. Live repo files that current docs depend on exist.
 7. Required markdown docs do not contain duplicate H1 headings, and their local
     markdown links resolve.
-8. Every `session-file:` reference in log.md points to an existing file.
+8. Every `session-file:` reference in audit-trail.md points to an existing file.
 9. Entries written under the v3.8.0 reflection contract (from
     `improve-step6b-trigger-observability` onward) record an explicit
     four-trigger evaluation — bare "N/A"/"TODO" rejected — and include a
     macro-Hansei subsection when any trigger fired.
 10. `.trail/history.md` and `.trail/learning.md` are not older than
-    `.trail/log.md` (staleness check using file mtime).
+    `.trail/audit-trail.md` (staleness check using file mtime).
 
 Exit code: 0 if all checks pass, 1 otherwise.
 """
@@ -31,7 +31,7 @@ import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
-LOG = ROOT / ".trail" / "log.md"
+LOG = ROOT / ".trail" / "audit-trail.md"
 
 REQUIRED_FILES = [
     "README.md",
@@ -43,7 +43,7 @@ REQUIRED_FILES = [
     "trail/SKILL.md",
     "vision/SKILL.md",
     "retrospect/SKILL.md",
-    ".trail/log.md",
+    ".trail/audit-trail.md",
 ]
 
 ENTRY_HEADING = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s+[\u2014-]\s+(.+?)\s*$")
@@ -77,10 +77,10 @@ def check_required_files() -> list[str]:
 def check_log_format() -> list[str]:
     failures: list[str] = []
     if not LOG.exists():
-        return [".trail/log.md does not exist"]
+        return [".trail/audit-trail.md does not exist"]
     text = LOG.read_text(encoding="utf-8")
     if not text.strip():
-        return [".trail/log.md is empty"]
+        return [".trail/audit-trail.md is empty"]
 
     entries: list[tuple[str, str, str]] = []
     current_date: str | None = None
@@ -95,14 +95,14 @@ def check_log_format() -> list[str]:
             current_date, current_slug = m.group(1), m.group(2)
             current_body = []
         elif malformed_heading.match(line):
-            failures.append(f"malformed entry heading in .trail/log.md: {line}")
+            failures.append(f"malformed entry heading in .trail/audit-trail.md: {line}")
         elif current_date is not None:
             current_body.append(line)
     if current_date is not None:
         entries.append((current_date, current_slug or "", "\n".join(current_body)))
 
     if not entries:
-        failures.append(".trail/log.md contains no entries matching '## YYYY-MM-DD — slug'")
+        failures.append(".trail/audit-trail.md contains no entries matching '## YYYY-MM-DD — slug'")
         return failures
 
     prev_date: str | None = None
@@ -141,7 +141,7 @@ def check_no_mojibake() -> list[str]:
 def check_required_markdown_docs() -> list[str]:
     failures: list[str] = []
     # PRINCIPLES.md is a verbatim external copy; its relative links point to its home repo
-    markdown_files = [rel for rel in REQUIRED_FILES if rel.endswith(".md") and rel not in (".trail/log.md", "PRINCIPLES.md")]
+    markdown_files = [rel for rel in REQUIRED_FILES if rel.endswith(".md") and rel not in (".trail/audit-trail.md", "PRINCIPLES.md")]
     for rel in markdown_files:
         path = ROOT / rel
         if not path.exists():
@@ -254,11 +254,11 @@ def check_trigger_evaluation() -> list[str]:
 
 
 def check_derived_artifact_freshness() -> list[str]:
-    """Fail when history.md or learning.md is older than log.md.
+    """Fail when history.md or learning.md is older than audit-trail.md.
 
     Uses file mtime. After a git checkout both files have the same checkout
     timestamp and the check correctly passes. The check catches the primary
-    failure mode: agent appended to log.md but forgot to regenerate the
+    failure mode: agent appended to audit-trail.md but forgot to regenerate the
     derived artifacts before committing.
     """
     failures: list[str] = []
@@ -275,14 +275,14 @@ def check_derived_artifact_freshness() -> list[str]:
             )
         elif artifact.stat().st_mtime < log_mtime:
             failures.append(
-                f"stale derived artifact .trail/{artifact_name} is older than .trail/log.md — "
+                f"stale derived artifact .trail/{artifact_name} is older than .trail/audit-trail.md — "
                 f"run: python tools/record.py {subcommand} --write"
             )
     return failures
 
 
 def check_session_files() -> list[str]:
-    """Check that every session-file: reference in log.md points to an existing file."""
+    """Check that every session-file: reference in audit-trail.md points to an existing file."""
     failures: list[str] = []
     if not LOG.exists():
         return failures

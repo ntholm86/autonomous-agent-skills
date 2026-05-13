@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""record.py — append entries to .trail/log.md and digest the latest one.
+"""record.py — append entries to .trail/audit-trail.md and digest the latest one.
 
 Replaces the kiroku-*.ps1 family from v2. Pure-Python, zero dependencies.
 
 Subcommands:
   new --slug=<slug> [--target=<target>] [--skill=<skill>]
-      Append a stub entry to .trail/log.md and print the line range so the
+      Append a stub entry to .trail/audit-trail.md and print the line range so the
       agent (or operator) can edit it.
 
   summary
@@ -17,7 +17,7 @@ Subcommands:
 
   learning [--write]
       Print (or write to .trail/learning.md) a compact chronological extract
-      of every [!REALIZATION] and [!REVERSAL] marker from .trail/log.md.
+      of every [!REALIZATION] and [!REVERSAL] marker from .trail/audit-trail.md.
       The learning surface — what the loop has actually concluded across runs.
 """
 from __future__ import annotations
@@ -44,7 +44,7 @@ def _resolve_root() -> Path:
 
 
 ROOT = _resolve_root()
-LOG = ROOT / ".trail" / "log.md"
+LOG = ROOT / ".trail" / "audit-trail.md"
 
 ENTRY_HEADING = re.compile(r"^##\s+(\d{4}-\d{2}-\d{2})\s+[\u2014-]\s+(.+?)\s*$")
 META_FIELD = re.compile(r"^-\s+(target|outcome|delta):\s*(.+)$")
@@ -143,14 +143,14 @@ def cmd_new(args: argparse.Namespace) -> int:
     # Compute and print the line range of the new entry.
     start_line = existing.count("\n") + 1
     end_line = new_text.count("\n")
-    print(f"appended stub: .trail/log.md lines {start_line}-{end_line}")
+    print(f"appended stub: .trail/audit-trail.md lines {start_line}-{end_line}")
     print(f"  date: {date}")
     print(f"  slug: {args.slug}")
     return 0
 
 
 def _parse_entries(text: str) -> list[dict]:
-    """Parse .trail/log.md into a list of entry dicts."""
+    """Parse .trail/audit-trail.md into a list of entry dicts."""
     lines = text.splitlines()
     entries: list[dict] = []
     current: dict | None = None
@@ -197,7 +197,7 @@ def _render_history(entries: list[dict], markdown: bool) -> str:
     if markdown:
         lines.append("# History")
         lines.append("")
-        lines.append("Auto-generated from `.trail/log.md` by the `record.py history --write` command in the autonomous-agent-skills install.")
+        lines.append("Auto-generated from `.trail/audit-trail.md` by the `record.py history --write` command in the autonomous-agent-skills install.")
         lines.append("Do not edit by hand — re-run the command to refresh.")
         lines.append("")
         lines.append("| # | Date | Slug | Outcome | Delta |")
@@ -257,7 +257,7 @@ def cmd_history(args: argparse.Namespace) -> int:
     entries = _parse_entries(text)
 
     if not entries:
-        print("(no entries in .trail/log.md)")
+        print("(no entries in .trail/audit-trail.md)")
         return 0
 
     target_filter: str | None = getattr(args, "target", None)
@@ -297,10 +297,10 @@ def _render_learning(entries: list[dict], markdown: bool) -> str:
         lines: list[str] = []
         lines.append("# Learning")
         lines.append("")
-        lines.append("Auto-generated from `.trail/log.md` by the `record.py learning --write` command in the autonomous-agent-skills install.")
+        lines.append("Auto-generated from `.trail/audit-trail.md` by the `record.py learning --write` command in the autonomous-agent-skills install.")
         lines.append("Do not edit by hand — re-run the command to refresh.")
         lines.append("")
-        lines.append("Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker. The learning surface — what the loop has actually concluded across runs. Read this before reading `log.md` in full; reach for `log.md` only when an item here needs its surrounding context.")
+        lines.append("Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker. The learning surface — what the loop has actually concluded across runs. Read this before reading `audit-trail.md` in full; reach for `audit-trail.md` only when an item here needs its surrounding context.")
         lines.append("")
         if not items:
             lines.append("_(no markers found)_")
@@ -364,22 +364,22 @@ def cmd_summary(_args: argparse.Namespace) -> int:
         if ENTRY_HEADING.match(line):
             last_idx = i
     if last_idx is None:
-        print("(no entries in .trail/log.md)")
+        print("(no entries in .trail/audit-trail.md)")
         return 0
 
     # Print from the last heading to EOF, but cap at 80 lines for digest size.
     body = lines[last_idx:]
     if len(body) > 80:
-        body = body[:80] + ["", f"... ({len(lines) - last_idx - 80} more lines; see .trail/log.md)"]
+        body = body[:80] + ["", f"... ({len(lines) - last_idx - 80} more lines; see .trail/audit-trail.md)"]
     print("\n".join(body))
     return 0
 
 
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(prog="record.py", description="Append to and read from .trail/log.md.")
+    p = argparse.ArgumentParser(prog="record.py", description="Append to and read from .trail/audit-trail.md.")
     sub = p.add_subparsers(dest="cmd", required=True)
 
-    p_new = sub.add_parser("new", help="Append a stub entry to .trail/log.md.")
+    p_new = sub.add_parser("new", help="Append a stub entry to .trail/audit-trail.md.")
     p_new.add_argument("--slug", required=True, help="Short slug for the entry (e.g. 'v3-redesign').")
     p_new.add_argument("--target", default=None, help="What is being operated on.")
     p_new.add_argument("--skill", default=None, help="Which skill is running (improve | probe).")

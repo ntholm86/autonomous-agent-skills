@@ -1,5 +1,24 @@
 # Changelog
 
+## v3.19.0 — 2026-05-12
+
+### Changed
+- **Trail file renamed:** `.trail/log.md` → `.trail/audit-trail.md`. The new name names its skill (Trail) and its function (audit) explicitly, eliminating the ambiguity of the generic `log.md`. All spec surface updated: `trail/SKILL.md` (1.16.0 → 1.17.0), `improve/SKILL.md`, `intent/SKILL.md`, `probe/SKILL.md`, `retrospect/SKILL.md`, `vision/SKILL.md`, `README.md`, `INSTALLING.md`, `.zenodo.json`, `tools/record.py`, `verify.py`, and `tools/hooks/pre-commit`. Derived artifacts (`.trail/history.md`, `.trail/learning.md`) regenerate with the new header automatically.
+
+### Migration (hard-cut, no legacy fallback)
+
+Existing target repos must rename their file once:
+
+```
+git mv .trail/log.md .trail/audit-trail.md
+python <skills>/tools/record.py history --write
+python <skills>/tools/record.py learning --write
+git add .trail/audit-trail.md .trail/history.md .trail/learning.md
+git commit -m "trail: rename log.md → audit-trail.md"
+```
+
+`record.py` and `verify.py` no longer recognise the old `.trail/log.md` path — they will report it as missing.
+
 ## v3.18.0 — 2026-05-12
 
 ### Added
@@ -351,7 +370,7 @@ All four skills now operate correctly with only their own `SKILL.md` present —
 
 ## v3.0.0 — 2026-04-23 (branch `v3-redesign`)
 
-Radical redesign. See [.trail/log.md](./.trail/log.md) for the rationale and decision trail.
+Radical redesign. See [.trail/audit-trail.md](./.trail/audit-trail.md) for the rationale and decision trail.
 
 ### Changed
 - Skill count reduced from 6 to 2: `improve` (Kaizen + Kaikaku + Hansei + Intent + Kata) and `probe` (Shiken).

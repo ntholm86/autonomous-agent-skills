@@ -46,7 +46,7 @@ Before forming any hunches, look at what is available in the **target repo's `.t
 
 - `.trail/vision.md` — what the operator has explicitly said (if it exists).
 - `.trail/retrospect.md` — what the agent's last arc-read concluded about the target.
-- `.trail/log.md` — recent decisions, reversals, realisations.
+- `.trail/audit-trail.md` — recent decisions, reversals, realisations.
 - `.trail/sessions/` — recent conversation transcripts, if present.
 - The current conversation — what the operator has been emphasising, dismissing, returning to.
 

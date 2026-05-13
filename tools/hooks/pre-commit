@@ -2,7 +2,7 @@
 """pre-commit hook — enforces Observable Autonomy.
 
 If this commit touches substantive files (skills, tools, principles, README)
-but does not stage a corresponding update to .trail/log.md, the commit is
+but does not stage a corresponding update to .trail/audit-trail.md, the commit is
 rejected. The agent (or operator) must record what changed and why.
 
 Override with `git commit --no-verify` — the override itself is auditable
@@ -20,7 +20,7 @@ import sys
 from pathlib import Path
 
 SUBSTANTIVE = re.compile(r"^(.*/SKILL\.md|PRINCIPLES\.md|README\.md|verify\.py|tools/.*\.py)$")
-TRAIL_LOG = ".trail/log.md"
+TRAIL_LOG = ".trail/audit-trail.md"
 
 
 def staged_files() -> list[str]:
@@ -37,7 +37,7 @@ def main() -> int:
     trail_staged = TRAIL_LOG in files
 
     if substantive and not trail_staged:
-        print("pre-commit: substantive changes staged without a .trail/log.md update.")
+        print("pre-commit: substantive changes staged without a .trail/audit-trail.md update.")
         print()
         print("Files touched:")
         for f in substantive:
@@ -45,7 +45,7 @@ def main() -> int:
         print()
         print("Observable Autonomy requires a trail entry for substantive changes.")
         print("Either:")
-        print("  1. Append a structured entry to .trail/log.md (see trail/SKILL.md), or")
+        print("  1. Append a structured entry to .trail/audit-trail.md (see trail/SKILL.md), or")
         print("  2. Override with: git commit --no-verify  (auditable; verify.py will catch it)")
         return 1
 

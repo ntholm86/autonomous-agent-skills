@@ -24,7 +24,7 @@ This is the core architectural bet. Other frameworks treat the agent as a brilli
 The suite has run the IMPROVE skill on itself for more than 200 iterations, including two full rewrites.
 
 Convergence was declared only after three independent evaluators from different model families (Claude, GPT, Gemini) each found no further actionable change.
-Evidence is recorded in [.trail/log.md](./.trail/log.md).
+Evidence is recorded in [.trail/audit-trail.md](./.trail/audit-trail.md).
 
 Self-application is a validity check for the framework: if the loop cannot improve itself, claims about improving external targets are weak.
 
@@ -53,7 +53,7 @@ Conceptual foundations include [Commander's Intent](https://en.wikipedia.org/wik
 ## Memory Model
 
 The suite maintains persistent context across sessions through trail files:
-- `.trail/log.md`
+- `.trail/audit-trail.md`
 - `.trail/vision.md`
 - `.trail/retrospect.md`
 

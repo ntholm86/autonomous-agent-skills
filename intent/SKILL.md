@@ -37,7 +37,7 @@ A single prompt is a thin signal. Before extracting intent, read what already ex
 
 - **Vision** (`.trail/vision.md`) — the operator-held destination. If present, this is the most important context. The prompt is a single instruction; vision is the overarching goal it serves. Read it first. Interpret the prompt in light of where the operator has said they are trying to go.
 - **retrospect.md** (`.trail/retrospect.md`) — the Retrospect-derived current orientation. Where the work actually is right now, what the loop has been attending to, what findings have accumulated. The prompt means something different depending on whether the target is early-stage, mid-refactor, or nearly converged.
-- **The trail** (`.trail/log.md`) — past decisions, reversals, and realisations reveal what the user has consistently cared about, what they rejected, and where things went wrong before. A pattern of `[!REVERSAL]` entries around a particular approach is stronger evidence of intent than any single prompt.
+- **The trail** (`.trail/audit-trail.md`) — past decisions, reversals, and realisations reveal what the user has consistently cared about, what they rejected, and where things went wrong before. A pattern of `[!REVERSAL]` entries around a particular approach is stronger evidence of intent than any single prompt.
 - **The conversation** — corrections, approvals, and the moments the user stepped in all carry intent signal. A user who keeps redirecting toward simplicity is telling you something that no single prompt states explicitly.
 - **Past sessions** (`.trail/sessions/`) — if earlier sessions exist, read their intent sections. Accumulated learnings about how this user frames problems, what they consider done, and what they care about carry over.
 

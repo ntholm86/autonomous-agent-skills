@@ -1,6 +1,6 @@
 # History
 
-Auto-generated from `.trail/log.md` by the `record.py history --write` command in the autonomous-agent-skills install.
+Auto-generated from `.trail/audit-trail.md` by the `record.py history --write` command in the autonomous-agent-skills install.
 Do not edit by hand — re-run the command to refresh.
 
 | # | Date | Slug | Outcome | Delta |
@@ -123,6 +123,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 116 | 2026-05-12 | distribution-enforcement-discoverability | Closed three of four competitive gaps - enforcement (CI + pre-commit hook), distribution (one-line installers), discoverability (README subtitle + topic plan). Voice consistency (#4) declared sufficient without edit. | added .github/workflows/verify.yml, tools/hooks/pre-commit, tools/install-hooks.{sh,ps1}, install.{sh,ps1}; updated README.md and INSTALLING.md. |
 | ▸ 117 | 2026-05-12 | docs-changelog-for-v3.18.0 | Added release notes for v3.18.0 to CHANGELOG.md in preparation for release workflow run. | CHANGELOG.md updated with v3.18.0 entry. |
 | ▸ 118 | 2026-05-12 | cross-repo-positioning-alignment | Cross-repo naming and category framing aligned so manifesto and implementation now present one coherent PEA story. | Updated skills README/CITATION/.zenodo, updated manifesto README implementation link, and updated skills git origin URL to the renamed repository path. |
+| ▸ 119 | 2026-05-13 | trail-file-rename-audit-trail | Renamed .trail/log.md → .trail/audit-trail.md across the spec surface; v3.19.0. | trail/SKILL.md 1.16.0 → 1.17.0; suite v3.18.0 → v3.19.0; 12 spec files updated; .trail/log.md → .trail/audit-trail.md (git mv); derived artifacts regenerated; two stale session-file path tokens updated to mirror the rename; one CHANGELOG link retargeted. |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -577,4 +578,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Do one coordinated pass across both repos: align top-level framing, align canonical URLs/metadata, and trail both repos in the same session before commit.
 
-**118 runs total — 104 with changes, 14 silence**
+### Run 119 — 2026-05-13 — trail-file-rename-audit-trail
+
+- **decided:** Hard-cut rename. File: `git mv .trail/log.md .trail/audit-trail.md`. Skill name unchanged. No legacy fallback. Rationale: every other skill produces an artifact whose name names the skill (vision.md, retrospect.md); `log.md` was the lone generic outlier. Rejected: keep `log.md` and add a doc note ("the trail is in log.md") — that is exactly the indirection the operator named as the cost.
+
+**119 runs total — 105 with changes, 14 silence**

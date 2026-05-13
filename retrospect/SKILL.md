@@ -44,13 +44,13 @@ A scope statement prevents the arc-read from being undirected. It also makes the
 
 ### 1b. Freshness guard (derived artifacts)
 
-Before forming arc-claims, refresh the derived trail artifacts from the current `.trail/log.md`.
+Before forming arc-claims, refresh the derived trail artifacts from the current `.trail/audit-trail.md`.
 
 - If the target repo has `tools/record.py`, run:
 	- `python tools/record.py history --write`
 	- `python tools/record.py learning --write`
 - If `tools/record.py` is not available, run the target's equivalent derivation commands.
-- Confirm `.trail/history.md` and `.trail/learning.md` are not older than `.trail/log.md` (via verify checks or file mtime).
+- Confirm `.trail/history.md` and `.trail/learning.md` are not older than `.trail/audit-trail.md` (via verify checks or file mtime).
 
 If the refresh cannot be completed, stop and report the blocker. Do not write arc-claims from stale derived artifacts.
 
@@ -73,7 +73,7 @@ Minimal filled example:
 
 ### 2. Read the arc
 
-Read `.trail/log.md` **in the target repo root** as a single document about the target — not as a list of past runs. Look for:
+Read `.trail/audit-trail.md` **in the target repo root** as a single document about the target — not as a list of past runs. Look for:
 
 - **What has changed, and in what order?** The sequence often reveals a target's actual architecture more clearly than any single snapshot.
 - **Outcome anchoring:** For every claim and prediction made in the trail across the arc, did it actually hold up over subsequent runs? If multiple entries confidently claim improvements (e.g., "reduced complexity") but reality contradicts it, the trail is confabulating per-iteration.
@@ -131,7 +131,7 @@ Write the arc-claims from step 3 (and any loop-effectiveness findings from step 
 
 The retrospect.md should make sense in light of vision (read at step 0) — arc-claims may reference whether the loop has been pursuing what vision says matters — but must not duplicate vision content. Never write to `.trail/vision.md` from a Retrospect run.
 
-`.trail/retrospect.md` is not append-only. Retrospect replaces it each time it runs. The full reasoning history lives in `log.md`; vision is the destination; the retrospect.md is the current distillation of where the target is along the way.
+`.trail/retrospect.md` is not append-only. Retrospect replaces it each time it runs. The full reasoning history lives in `audit-trail.md`; vision is the destination; the retrospect.md is the current distillation of where the target is along the way.
 
 The file shape is simple:
 
@@ -150,20 +150,20 @@ _Last updated: YYYY-MM-DD (run: <slug>)_
 
 ## Active operational rules
 
-<Imperative, target-specific rules of engagement extracted from step 4b (e.g., "Do not bypass the prediction block", "Always use replace encoding when reading log.md"). These carry the 'Learning' forward across sessions.>
+<Imperative, target-specific rules of engagement extracted from step 4b (e.g., "Do not bypass the prediction block", "Always use replace encoding when reading audit-trail.md"). These carry the 'Learning' forward across sessions.>
 
 ## Loop-effectiveness notes
 
 <From step 4, if triggered. Omit section if step 4 was not run.>
 ```
 
-Commit `.trail/retrospect.md` alongside `log.md`, `history.md`, and `learning.md` after the run. Never commit changes to `.trail/vision.md` from a Retrospect run.
+Commit `.trail/retrospect.md` alongside `audit-trail.md`, `history.md`, and `learning.md` after the run. Never commit changes to `.trail/vision.md` from a Retrospect run.
 
 ### 6. Record
 
 *If [Trail](../trail/SKILL.md) is installed, apply it now — it handles this step in full.*
 
-If Trail is not installed: append a single entry to `.trail/log.md` containing:
+If Trail is not installed: append a single entry to `.trail/audit-trail.md` containing:
 
 - Date, target, operator (if known), model identity (provider + tool-call ID prefix if observable).
 - The scope statement from step 1.

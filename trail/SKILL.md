@@ -1,7 +1,7 @@
 ---
 name: trail
-version: 1.16.0
-description: 'Evidence trail management. Append a structured entry to .trail/log.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any session that produces a decision, realization, or finding — including conversations. There is no such thing as "just conversation" if a decision was made in it.'
+version: 1.17.0
+description: 'Evidence trail management. Append a structured entry to .trail/audit-trail.md IN THE TARGET REPO ROOT at the end of every substantive session — recording the interpretation of the ask, examination, decisions, actions, and reflection. The implementation of Observable Autonomy — autonomy without evidence is not delegation, it is abdication. USE WHEN: any session that produces a decision, realization, or finding — including conversations. There is no such thing as "just conversation" if a decision was made in it.'
 argument-hint: 'The target being worked on (repo, file, system) — used to populate the log entry header'
 ---
 
@@ -9,7 +9,7 @@ argument-hint: 'The target being worked on (repo, file, system) — used to popu
 
 *The record of what actually happened.*
 
-*Memory Model role: Writes the core of the memory layer — `.trail/log.md`, the append-only record every other skill reads.*
+*Memory Model role: Writes the core of the memory layer — `.trail/audit-trail.md`, the append-only record every other skill reads.*
 
 > **Governing principle:** [Observable Autonomy](../PRINCIPLES.md#principle-2-observable-autonomy) — *The degree of autonomy a system deserves is bounded by the degree of transparency it provides.* This skill is how that transparency is produced.
 
@@ -27,21 +27,21 @@ Evidence → Trust → Autonomy
 
 The trail lives in the **root of the target repo being worked on** — not in the skills install directory.
 
-If you are improving `c:\git\clikit`, the trail is `c:\git\clikit\.trail\log.md`.
-If you are improving `~/projects/myapp`, the trail is `~/projects/myapp/.trail/log.md`.
+If you are improving `c:\git\clikit`, the trail is `c:\git\clikit\.trail\audit-trail.md`.
+If you are improving `~/projects/myapp`, the trail is `~/projects/myapp/.trail/audit-trail.md`.
 
 Every repo gets its own trail. The trail is local evidence for that project — it belongs with the project.
 
-One file: `.trail/log.md` in the target repo root. Append-only. One `##` entry per session, newest at the bottom.
+One file: `.trail/audit-trail.md` in the target repo root. Append-only. One `##` entry per session, newest at the bottom.
 
 **Before any write: create the `.trail/` directory in the target repo root if it does not already exist.** This applies whether the skill is run alone, as part of a chain, or for the first time on a fresh repo.
 
-If `.trail/log.md` does not exist yet, initialise it:
+If `.trail/audit-trail.md` does not exist yet, initialise it:
 
-Create `.trail/log.md` with this header:
+Create `.trail/audit-trail.md` with this header:
 
 ```markdown
-# Trail log
+# Audit trail
 
 Append-only ledger of autonomous operations on this repo. Newest entries at the bottom.
 
@@ -50,18 +50,18 @@ Append-only ledger of autonomous operations on this repo. Newest entries at the 
 
 That's it. Nothing else gets installed into the target repo. `record.py` lives in the skills install (`tools/record.py` next to this SKILL.md) and is invoked from there — it writes into the current working directory by default, or whatever `$TRAIL_ROOT` points to.
 
-After appending to `log.md`, regenerate the derived artifacts and commit them together:
+After appending to `audit-trail.md`, regenerate the derived artifacts and commit them together:
 
 ```
 python <skills>/tools/record.py history --write
 python <skills>/tools/record.py learning --write
-git add .trail/log.md .trail/history.md .trail/learning.md
+git add .trail/audit-trail.md .trail/history.md .trail/learning.md
 git commit -m "trail: <slug>"
 ```
 
 If Retrospect ran this session and updated `.trail/retrospect.md`, include it in the same commit. `.trail/vision.md` is operator-managed and is committed only when the operator changes it — never as a side effect of an agent run.
 
-`history.md` and `learning.md` are derived from `log.md` and are **regenerated as part of every Trail commit** — they must not lag behind the source. `record.py` exposes both as standalone subcommands too:
+`history.md` and `learning.md` are derived from `audit-trail.md` and are **regenerated as part of every Trail commit** — they must not lag behind the source. `record.py` exposes both as standalone subcommands too:
 
 ```
 python <skills>/tools/record.py history           # timeline to stdout (no write)
@@ -71,21 +71,21 @@ python <skills>/tools/record.py summary           # digest of the most recent ru
 
 ```
 .trail/
-  log.md          — append-only ledger, one entry per session (the source of truth)
+  audit-trail.md  — append-only ledger, one entry per session (the source of truth)
   history.md      — derived run timeline (regenerated by Trail at every commit)
   learning.md     — derived [!REALIZATION] / [!REVERSAL] surface (regenerated by Trail at every commit)
   vision.md       — operator-held destination (optional; read by Improve, never written by any skill)
   retrospect.md      — Retrospect-derived current orientation (written by Retrospect, read by Improve)
-  sessions/       — per-session detail file (mandatory); one per run, linked from log.md
+  sessions/       — per-session detail file (mandatory); one per run, linked from audit-trail.md
 ```
 
-`learning.md` is the compact learning surface — every `[!REALIZATION]` and `[!REVERSAL]` from the full trail, in chronological order with date+slug context. Improve reads it before `log.md` to act on prior conclusions without re-reading the full history. It is regenerated by Trail at every commit so it never lags behind `log.md`.
+`learning.md` is the compact learning surface — every `[!REALIZATION]` and `[!REVERSAL]` from the full trail, in chronological order with date+slug context. Improve reads it before `audit-trail.md` to act on prior conclusions without re-reading the full history. It is regenerated by Trail at every commit so it never lags behind `audit-trail.md`.
 
 Vision and retrospect.md are distinct: vision is the destination the operator holds and rarely changes; retrospect.md is the agent's current synthesis of where the target is, rewritten each Retrospect run. Vision is input to the loop; retrospect.md is output.
 
 Both files are committed. `record.py` is **not** committed to the target repo — it stays in the skills install.
 
-Each entry in `log.md` follows this shape:
+Each entry in `audit-trail.md` follows this shape:
 
 ```markdown
 ## YYYY-MM-DD — <slug>
@@ -186,7 +186,7 @@ The trail must be readable at three levels simultaneously — because different 
 
 | Resolution | Where | Time budget | Answers |
 |---|---|---|---|
-| **Digest** | The `outcome` and `delta` fields in `log.md` | 30 seconds | What just happened? Should I be concerned? |
+| **Digest** | The `outcome` and `delta` fields in `audit-trail.md` | 30 seconds | What just happened? Should I be concerned? |
 | **Indexed** | The `[!DECISION]` / `[!REALIZATION]` / `[!REVERSAL]` markers | minutes | What was decided, when, and why? |
 | **Full** | `sessions/*.md` — per-session detail file (mandatory) | hours | The complete reasoning, including dead ends |
 
@@ -224,7 +224,7 @@ Do not attempt to summarize or paraphrase the transcript. Use file operations to
 ```
 
 **Linking the Session:**
-After the session concludes, when writing the final aggregate `log.md` entry, you must link it to this verbatim transcript file:
+After the session concludes, when writing the final aggregate `audit-trail.md` entry, you must link it to this verbatim transcript file:
 
 ```markdown
 ## YYYY-MM-DD — <slug>
@@ -268,23 +268,23 @@ If you are unsure whether this session warrants an entry: if a decision was made
 
 **Each iteration is a separate trail entry. Append it immediately after that iteration completes — before beginning the next iteration.**
 
-Do not buffer entries to write at the end of all iterations. The trail is the checkpoint: if the agent crashes, times out, or the user stops the run after iteration 3 of 10, the first 3 entries must already be committed to `log.md`.
+Do not buffer entries to write at the end of all iterations. The trail is the checkpoint: if the agent crashes, times out, or the user stops the run after iteration 3 of 10, the first 3 entries must already be committed to `audit-trail.md`.
 
 The mandatory sequence per iteration:
 
 ```
 iteration 1:
-  1. append entry to .trail/log.md
+  1. append entry to .trail/audit-trail.md
   2. python <skills>/tools/record.py history --write    ← updates .trail/history.md
   3. python <skills>/tools/record.py learning --write   ← updates .trail/learning.md
-  4. git add .trail/log.md .trail/history.md .trail/learning.md && git commit -m "trail: <slug>-1"
+  4. git add .trail/audit-trail.md .trail/history.md .trail/learning.md && git commit -m "trail: <slug>-1"
   ↓ only now begin iteration 2
 
 iteration 2:
-  1. append entry to .trail/log.md
+  1. append entry to .trail/audit-trail.md
   2. python <skills>/tools/record.py history --write
   3. python <skills>/tools/record.py learning --write
-  4. git add .trail/log.md .trail/history.md .trail/learning.md && git commit -m "trail: <slug>-2"
+  4. git add .trail/audit-trail.md .trail/history.md .trail/learning.md && git commit -m "trail: <slug>-2"
   ↓ only now begin iteration 3
 ...
 ```
@@ -305,7 +305,7 @@ Do not begin the next iteration until steps 1–4 are complete. Each commit is a
 
 ## The test
 
-Can someone who was not present reconstruct what was done, why each significant decision was made, and whether the work achieved what was asked for — using only `.trail/log.md` and the linked sessions?
+Can someone who was not present reconstruct what was done, why each significant decision was made, and whether the work achieved what was asked for — using only `.trail/audit-trail.md` and the linked sessions?
 
 If yes, the trail is sufficient. If no, something is missing.
 

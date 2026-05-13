@@ -1,9 +1,9 @@
 # Learning
 
-Auto-generated from `.trail/log.md` by the `record.py learning --write` command in the autonomous-agent-skills install.
+Auto-generated from `.trail/audit-trail.md` by the `record.py learning --write` command in the autonomous-agent-skills install.
 Do not edit by hand — re-run the command to refresh.
 
-Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker. The learning surface — what the loop has actually concluded across runs. Read this before reading `log.md` in full; reach for `log.md` only when an item here needs its surrounding context.
+Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker. The learning surface — what the loop has actually concluded across runs. Read this before reading `audit-trail.md` in full; reach for `audit-trail.md` only when an item here needs its surrounding context.
 
 ## 2026-04-23 — v3 self-target and v2 retirement
 
@@ -589,6 +589,18 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The repo rename was necessary but not sufficient. Category ownership appears only when manifesto, implementation, and metadata all speak with one voice; otherwise the architecture reads as accidental rather than intentional.
 
+## 2026-05-13 — trail-file-rename-audit-trail
+
+**[!REALIZATION]** of the prior run that introduced check 8.
+
+## 2026-05-13 — trail-file-rename-audit-trail
+
+**[!REALIZATION]** :* not fired — checked recent realizations; none asserted `log.md` was the right name.
+
+## 2026-05-13 — trail-file-rename-audit-trail
+
+**[!REALIZATION]** The lone generic name in the suite was hiding in plain sight. Vision, Retrospect, Improve, Intent, Probe, Trail all produce artifacts that name themselves; `log.md` was the inherited Unix-conventional outlier. Once named as a defect, the fix took a single session. Lesson for future iterations: scan for generic names in artifact families and treat ambiguity as a finding-class even when no immediate confusion has been reported.
+
 ---
 
-**146 markers — 137 realisations, 9 reversals**
+**149 markers — 140 realisations, 9 reversals**
