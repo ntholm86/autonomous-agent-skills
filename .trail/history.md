@@ -124,6 +124,7 @@ Do not edit by hand — re-run the command to refresh.
 | ▸ 117 | 2026-05-12 | docs-changelog-for-v3.18.0 | Added release notes for v3.18.0 to CHANGELOG.md in preparation for release workflow run. | CHANGELOG.md updated with v3.18.0 entry. |
 | ▸ 118 | 2026-05-12 | cross-repo-positioning-alignment | Cross-repo naming and category framing aligned so manifesto and implementation now present one coherent PEA story. | Updated skills README/CITATION/.zenodo, updated manifesto README implementation link, and updated skills git origin URL to the renamed repository path. |
 | ▸ 119 | 2026-05-13 | trail-file-rename-audit-trail | Renamed .trail/log.md → .trail/audit-trail.md across the spec surface; v3.19.0. | trail/SKILL.md 1.16.0 → 1.17.0; suite v3.18.0 → v3.19.0; 12 spec files updated; .trail/log.md → .trail/audit-trail.md (git mv); derived artifacts regenerated; two stale session-file path tokens updated to mirror the rename; one CHANGELOG link retargeted. |
+| ▸ 120 | 2026-05-13 | sync-principles-from-manifesto | Synced PRINCIPLES.md from manifesto commit 8aadb43 (P2 multi-resolution requirement dropped). | PRINCIPLES.md updated; relative links rewritten to canonical GitHub URLs per existing copy convention. |
 
 ### Run 1 — 2026-04-23 — v3 redesign
 
@@ -582,4 +583,8 @@ Do not edit by hand — re-run the command to refresh.
 
 - **decided:** Hard-cut rename. File: `git mv .trail/log.md .trail/audit-trail.md`. Skill name unchanged. No legacy fallback. Rationale: every other skill produces an artifact whose name names the skill (vision.md, retrospect.md); `log.md` was the lone generic outlier. Rejected: keep `log.md` and add a doc note ("the trail is in log.md") — that is exactly the indirection the operator named as the cost.
 
-**119 runs total — 105 with changes, 14 silence**
+### Run 120 — 2026-05-13 — sync-principles-from-manifesto
+
+- **decided:** Overwrite skills PRINCIPLES.md with manifesto HEAD, rewriting ./PROBLEM.md and ./PROOF.md links to canonical GitHub URLs. No other changes.
+
+**120 runs total — 106 with changes, 14 silence**

@@ -5758,3 +5758,40 @@ External target repos that have an existing `.trail/log.md` are not migrated by 
 1. Trigger v3.18.0 and v3.19.0 GitHub releases via the release workflow UI (manual operator action, not an agent task).
 2. Update any external documentation, blog posts, or pinned issue references pointing at `.trail/log.md`.
 3. Consider whether `tools/record.py` should rename `new` → `append` so its primary subcommand also names what it does (deferred — not a clarity defect of the same magnitude).
+
+## 2026-05-13 — sync-principles-from-manifesto
+
+- target: autonomous-agent-skills
+- operator: user
+- agent: Claude Sonnet 4.6 (Anthropic, via GitHub Copilot)
+- skill: trail
+- session-file: .trail/audit-trail.md
+- outcome: Synced PRINCIPLES.md from manifesto commit 8aadb43 (P2 multi-resolution requirement dropped).
+- delta: PRINCIPLES.md updated; relative links rewritten to canonical GitHub URLs per existing copy convention.
+
+### Interpretation of the ask
+
+Operator: "copy over principles from manifesto repo into the skills repo." The skills repo carries a copy of PRINCIPLES.md with a "This file is a copy" banner and canonical URLs in place of relative links. After manifesto commit 8aadb43 dropped the multi-resolution requirement, the skills copy was stale.
+
+### Decision
+
+[!DECISION] Overwrite skills PRINCIPLES.md with manifesto HEAD, rewriting ./PROBLEM.md and ./PROOF.md links to canonical GitHub URLs. No other changes.
+
+### Action
+
+Used Python script to read manifesto PRINCIPLES.md (UTF-8), apply regex link rewrites, prepend the existing banner, write to skills PRINCIPLES.md. Derived artifacts regenerated after write to pass staleness check.
+
+### Reflection
+
+**Falsifiable claim:** `Select-String -Path PRINCIPLES.md -Pattern '\./'` returns zero hits in the skills copy — no relative links remain.
+
+**Across-trail trigger evaluation** *(every entry — one line per trigger, with brief evidence from the trail; bare "N/A" is not allowed)*:
+
+- *Recurring finding-class:* not fired — this is a one-off sync of a canonical source; no pattern in the trail.
+- *About to declare silence:* not fired — change was made.
+- *Contradicts prior [!REALIZATION]:* not fired — no prior realization asserted that the skills copy was current.
+- *Operator explicitly asked:* FIRED — operator requested the copy directly.
+
+**Across-trail macro-Hansei** *(only if a trigger above fired; otherwise omit this subsection)*:
+
+[!REALIZATION] The skills PRINCIPLES.md copy has no automated sync mechanism — it drifts every time the manifesto changes. This session exposed the drift after two manifesto commits in one session (v1.1.0 Premise addition, then P2 multi-resolution drop). If the cadence of manifesto edits increases, manual sync will become a recurring friction point. A `tools/sync-principles.py` script or a CI check comparing the two files would remove the manual step.

@@ -601,6 +601,14 @@ Compact chronological extract of every `[!REALIZATION]` and `[!REVERSAL]` marker
 
 **[!REALIZATION]** The lone generic name in the suite was hiding in plain sight. Vision, Retrospect, Improve, Intent, Probe, Trail all produce artifacts that name themselves; `log.md` was the inherited Unix-conventional outlier. Once named as a defect, the fix took a single session. Lesson for future iterations: scan for generic names in artifact families and treat ambiguity as a finding-class even when no immediate confusion has been reported.
 
+## 2026-05-13 — sync-principles-from-manifesto
+
+**[!REALIZATION]** :* not fired — no prior realization asserted that the skills copy was current.
+
+## 2026-05-13 — sync-principles-from-manifesto
+
+**[!REALIZATION]** The skills PRINCIPLES.md copy has no automated sync mechanism — it drifts every time the manifesto changes. This session exposed the drift after two manifesto commits in one session (v1.1.0 Premise addition, then P2 multi-resolution drop). If the cadence of manifesto edits increases, manual sync will become a recurring friction point. A `tools/sync-principles.py` script or a CI check comparing the two files would remove the manual step.
+
 ---
 
-**149 markers — 140 realisations, 9 reversals**
+**151 markers — 142 realisations, 9 reversals**
