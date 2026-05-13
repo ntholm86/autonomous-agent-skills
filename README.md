@@ -1,72 +1,101 @@
 # Principles of Earned Autonomy - Skills Suite
 
-Implementation repo for [Principles of Earned Autonomy](https://github.com/ntholm86/principles-of-earned-autonomy). The manifesto defines the principles; this suite enacts them.
+AI agents forget everything between sessions — and many things within a session. No memory of what was tried. No memory of why a decision was made. No memory of where you were heading. Forgets what it already created.
 
-The Principles of Earned Autonomy Skills Suite (PEA Skills Suite) is a discipline framework for autonomous iterative work — works on any target, not just code.
+These five skills fix that. Together they form a **Memory Model** — a persistent layer of context that survives session resets and model swaps. The agent reads it before every run. You read it to stay in control.
+
+These are the skills I use daily as a software engineer to safely delegate complex goals to AI agents. When an agent runs without constraints, it creates massive technical debt. These skills force it to stay on track, double-check its assumptions, and leave a clear record of why it made each change.
+
+Implementation repo for [Principles of Earned Autonomy](https://github.com/ntholm86/principles-of-earned-autonomy). The manifesto defines the principles; this suite enacts them.
 
 Compatible with Claude (skills / Agent SDK), GitHub Copilot (custom skills), and any LLM agent that can read markdown and append to a file.
 
-It is built on two core claims:
+## The Suite Improved Itself 200+ iterations
 
-1. **It works on any target an LLM can reason about.**
-   The target can be code, prose, strategy, design, a psychological profile, medical diagnosis, or an organizational structure, anything.
-2. **It uses structural controls to reduce post-hoc rationalization.**
-   The trail is append-only, reversals are recorded, and convergence requires agreement from independent evaluators.
+The suite ran on itself **200+ times**. Along the way, it autonomously decided to rewrite itself from scratch. Twice.
 
-**The Problem**: How do you safely delegate to a non-human that can reason?
-All the other frameworks are implicitly solving a different, smaller problem: "How do I make an AI build my app faster?" That's a capability problem. PEA is built for the delegation problem, which is an accountability problem. As soon as the agent is powerful enough that you can't check all its work, you have a delegation problem.
+Convergence was declared only when **three independent evaluators from distinct model families** (Claude, Gpt, Gemini) each ran the loop and found nothing left to change. The full evidence trail is in [.trail/audit-trail.md](./.trail/audit-trail.md).
 
-**The Stance**: The agent's reasoning must be auditable by default.
-This is the core architectural bet. Other frameworks treat the agent as a brilliant but sometimes buggy tool. This skillset treats the agent as a powerful but inherently untrustworthy narrator of its own actions. Trail skill is a structural defense against post-hoc rationalization (the AI tidying up its story after the fact).
+> "LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction."
+>
+> — Jie Huang et al., [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) (ICLR 2024)
 
-## Evidence
+If the loop can't improve itself, the claim that it improves anything else is empty. It can.
 
-The suite has run the IMPROVE skill on itself for more than 200 iterations, including two full rewrites.
+## The Skills
 
-Convergence was declared only after three independent evaluators from different model families (Claude, GPT, Gemini) each found no further actionable change.
-Evidence is recorded in [.trail/audit-trail.md](./.trail/audit-trail.md).
-
-Self-application is a validity check for the framework: if the loop cannot improve itself, claims about improving external targets are weak.
-
-Relevant research:
-- Jie Huang et al., [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) (ICLR 2024)
-- "LLMs struggle to self-correct their responses without external feedback, and at times, their performance even degrades after self-correction." — Jie Huang et al., [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798) (ICLR 2024)
-
-## Skills
-
-| Skill | Problem | Function |
+| Skill | Problem | Solution |
 | :--- | :--- | :--- |
-| [Intent](./intent/SKILL.md) | Literal execution can miss user intent | Interprets the request goal before action and makes that interpretation visible |
-| [Vision](./vision/SKILL.md) | Long-term goals are often implicit or incomplete | Surfaces and confirms the operator's intended direction |
-| [Trail](./trail/SKILL.md) | Audit trail of all autonomous decisions made and why | Appends decisions, predictions, reversals, and outcomes to an evidence log |
-| [Improve](./improve/SKILL.md) | Iterative improvement loop | Runs a structured improvement loop with prediction, action, and reflection |
-| [Retrospect](./retrospect/SKILL.md) | Retrospect on previous improvement runs | Reviews the full trail and produces cross-iteration claims |
-| [Probe](./probe/SKILL.md) | Measure Autonomous Reasoning Fidelity | Runs paired novelty tests to evaluate reasoning fidelity |
+| **[Intent](./intent/SKILL.md)** | The agent did what you said — not what you meant | Force the agent to understand the intent behind your prompt |
+| **[Vision](./vision/SKILL.md)** | The agent doesn't know your vision — because it's in your head | The agent will read your mind, uncover your vision and produce vision.md that other skills will use |
+| **[Trail](./trail/SKILL.md)** | The work is unauditable | Logs every autonomous decision made by the agent and the reason behind it |
+| **[Improve](./improve/SKILL.md)** | The agent makes superficial, undisciplined edits | A structured, iterative improvement loop that reflects and learns before acting |
+| **[Retrospect](./retrospect/SKILL.md)** | The agent can't see its own arc | Self-evaluates the progress of all iterations and determines what is next |
 
-Conceptual foundations include [Commander's Intent](https://en.wikipedia.org/wiki/Commander%27s_intent), [Coaching Kata](https://www.amazon.com/Toyota-Kata-Managing-Improvement-Adaptiveness/dp/0071635238), and the [Socratic Method](https://plato.stanford.edu/entries/socrates/).
+### Validation skill
 
-- "No-one knows exactly what they want." — David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
-- "Without data, you're just another person with an opinion." — W. Edwards Deming
-- "Invest in the design of the system every day." — Kent Beck, [Extreme Programming Explained](https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)
-- "Life can only be understood backwards; but it must be lived forwards." — Soren Kierkegaard, Journals (1843)
+**[Probe](./probe/SKILL.md)** — included for research and validation use. Constructs a "spot the difference" test to measure whether the agent is genuinely reasoning or pattern-matching. Used to validate [Autonomous Reasoning Fidelity](https://github.com/ntholm86/principles-of-earned-autonomy/blob/main/PRINCIPLES.md#autonomous-reasoning-fidelity-operational-definition) — not a skill you'd run in daily development.
 
-## Memory Model
+## The Memory Model
 
-The suite maintains persistent context across sessions through trail files:
-- `.trail/audit-trail.md`
-- `.trail/vision.md`
-- `.trail/retrospect.md`
+Each skill externalizes what normally only lives inside a single model session — the goal, the destination, the decisions, the arc. Together they form a persistent memory layer that no model reset can erase.
 
-This context is shared across model swaps and reused by each skill.
+The files (`.trail/audit-trail.md`, `.trail/vision.md`, `.trail/retrospect.md`) provide the literal storage, but the interaction of the skills with those files creates **contextual awareness**.
 
-At run start, skills read existing trail context before acting. Operators can inspect the same records.
+Memory alone is just retrieval; awareness is orientation. Because `Retrospect` reads the arc, `Vision` uncovers the destination, and `Intent` aligns the goal, the suite uses that memory to understand where it is and where it is going.
+
+When you swap from Claude to Gpt to Gemini, the next model picks up this exact orientation. That accumulation is what makes the suite get smarter over time.
+
+## Why These Skills Exist
+
+### #1: INTENT — The agent did what you wrote, not what you meant
+
+**Problem:** The agent did literally exactly what you wrote — word-by-word — not what you actually meant.
+**Solution:** Intent forces the agent to explicitly state its interpretation of your task *before* executing anything. It acts as an early warning system for misaligned assumptions.
+
+*Rooted in [Commander's Intent](https://en.wikipedia.org/wiki/Commander%27s_intent) (U.S. Army doctrine) · [Coaching Kata](https://www.amazon.com/Toyota-Kata-Managing-Improvement-Adaptiveness/dp/0071635238) (Mike Rother, Toyota Kata) · [Socratic Method](https://plato.stanford.edu/entries/socrates/) (Stanford Encyclopedia of Philosophy)*
+
+### #2: VISION — The agent drifted over time
+
+**Problem:** During a long autonomous run, the agent loses the plot, fixing minor issues rather than addressing the core architectural problem.
+**Solution:** Vision surfaces the agent's implicit assumptions about your destination, letting you course-correct early. Retrospect steps back, analyzes the full history of the work, and re-orients the loop.
+
+> "No-one knows exactly what they want."
+>
+> — David Thomas & Andrew Hunt, [The Pragmatic Programmer](https://pragprog.com/titles/tpp20/the-pragmatic-programmer-20th-anniversary-edition/)
+
+### #3: TRAIL — The work is unauditable
+
+**Problem:** The agent modified dozens of files. You have no idea why it chose one implementation over another, making it impossible to confidently take ownership of the work.
+**Solution:** Trail enforces observable autonomy. Every decision, rationale, and discarded alternative is appended to a readable `.trail/audit-trail.md`. If it isn't logged, it didn't happen.
+
+> "Without data, you're just another person with an opinion."
+>
+> — W. Edwards Deming
+
+### #4: IMPROVE — The agent makes superficial edits
+
+**Problem:** The agent edits what's easy. Typos, whitespace, obvious renames. The real problems stay untouched.
+**Solution:** Improve is the workhorse of this suite. Point it at any target and run it repeatedly. Each iteration: it examines what's there, challenges its own first instinct, makes exactly one high-leverage change, and reflects. It reads the full memory suite before every run — so it never wastes an iteration on something already tried.
+
+> "Invest in the design of the system every day."
+>
+> — Kent Beck, [Extreme Programming Explained](https://www.amazon.com/Extreme-Programming-Explained-Embrace-Change/dp/0321278658)
+
+### #5: RETROSPECT — The agent can't see its own arc
+
+**Problem:** After 50 iterations, the agent has been diligently improving — but nobody stepped back to ask whether those 50 iterations were solving the right problem. Each step looked locally optimal. The overall arc drifted.
+**Solution:** Retrospect reads the entire trail history as a single document and forms arc-level claims: what is the target becoming, where has the loop's attention been, and is that where the real weight lies? It surfaces what no individual iteration would reveal.
+
+> "Life can only be understood backwards; but it must be lived forwards."
+>
+> — Søren Kierkegaard, Journals (1843)
 
 ## Workflow
 
-1. Run [Vision](./vision/SKILL.md) to confirm the target and goal.
-2. Run [Improve](./improve/SKILL.md) for one or more iterations.
-3. Run [Retrospect](./retrospect/SKILL.md) when you need cross-iteration analysis.
-4. Run [Probe](./probe/SKILL.md) when you need reasoning-quality validation.
+1. **Set the target:** Run `vision` first to determine the destination before starting work.
+2. **Execute:** Run `improve` for as many iterations as needed until you reach a plateau.
+3. **Reflect:** Run `retrospect` to evaluate the entire loop history and reflect on progress.
 
 ## Quickstart
 
@@ -78,22 +107,26 @@ At run start, skills read existing trail context before acting. Operators can in
 4. If the target is not a repository, keep `.trail/` artifacts next to the target material.
 5. Start with a verifiable task and review the resulting trail entry.
 
-## Known Limitation
+## Known Limitation: Stated Reasoning ≠ True Reasoning
 
-Trail records stated reasoning. Stated reasoning can still differ from actual internal decision process.
+Trail logs what the agent *says* it decided. Research shows this is not always the same as what actually drove the decision.
 
-Relevant research:
-- Miles Turpin et al., [Language Models Don't Always Say What They Think](https://arxiv.org/abs/2305.04388) (NeurIPS 2023)
-- Yanda Chen et al., [Reasoning Models Don't Always Say What They Think](https://arxiv.org/abs/2505.05410) (2025)
-- "CoT explanations can be plausible yet misleading, which risks increasing our trust in LLMs without guaranteeing their safety." — Miles Turpin et al., [Language Models Don't Always Say What They Think](https://arxiv.org/abs/2305.04388) (NeurIPS 2023)
-- "CoT monitoring is a promising way of noticing undesired behaviors during training and evaluations, but that it is not sufficient to rule them out." — Yanda Chen et al., [Reasoning Models Don't Always Say What They Think](https://arxiv.org/abs/2505.05410) (2025)
+> "CoT explanations can be plausible yet misleading, which risks increasing our trust in LLMs without guaranteeing their safety."
+>
+> — Miles Turpin et al., [Language Models Don't Always Say What They Think](https://arxiv.org/abs/2305.04388) (NeurIPS 2023)
 
-Mitigations implemented by this suite:
-1. **Pre-commit prediction (Improve, Trail):** The agent records a falsifiable prediction before acting.
-2. **Outcome anchoring (Retrospect):** Later reviews compare outcomes to prior predictions.
-3. **Reversal density checks (Trail, Retrospect):** Uniform success patterns are treated as potential rationalization.
-4. **Adversarial audit lens (Retrospect):** Cross-entry inconsistencies are explicitly checked.
-5. **Writer/decider separation (Improve, Trail):** High-fidelity mode separates change execution from final trail writing.
+> "CoT monitoring is a promising way of noticing undesired behaviors during training and evaluations, but that it is not sufficient to rule them out."
+>
+> — Yanda Chen et al., [Reasoning Models Don't Always Say What They Think](https://arxiv.org/abs/2505.05410) (2025)
+
+**How this suite mitigates it:** To prevent LLMs from generating post-hoc justifications to fit decisions already made, the suite enforces structural constraints:
+1. **Pre-commit prediction (Improve, Trail):** The agent must record a falsifiable prediction of what a change will and will not achieve *before* acting or observing the actual outcome.
+2. **Outcome anchoring (Retrospect):** Subsequent arc-reads systematically evaluate actual outcomes against those prior predictions to expose localized confabulation.
+3. **Reversal density (Trail, Retrospect):** A uniform, unbroken trail of "successes" is actively flagged as suspect rationalization. True reasoning leaves a trail of reversals, dead ends, and tested predictions.
+4. **Adversarial audit (Retrospect):** A dedicated lens to actively hunt for outcome mismatch and logical discontinuities across the trail history.
+5. **Separating writer and decider (Improve, Trail):** In maximum-trust sequences (High-Fidelity Mode), the agent making the change is procedurally forbidden from writing the final trail entry, handing off to a second independent evaluator.
+
+Together, these force the agent to lock its reasoning *before* acquiring evidence, and introduce explicit adversarial structures to break the post-hoc rationalization loop.
 
 ## Reference
 
